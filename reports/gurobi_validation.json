@@ -1,0 +1,41 @@
+{
+  "created_at_utc": "2026-07-08T08:33:53.055032+00:00",
+  "environment": {
+    "credential_presence": {
+      "GRB_LICENSE_FILE": false,
+      "GUROBI_API_KEY": true,
+      "GUROBI_LICENSEID": false,
+      "GUROBI_WLSACCESSID": false,
+      "GUROBI_WLSSECRET": false,
+      "LICENSEID": false,
+      "WLSACCESSID": false,
+      "WLSSECRET": false
+    },
+    "exists": true,
+    "loaded": true,
+    "method": "python-dotenv",
+    "path": "/Users/agent/Desktop/cell_tracking/.env"
+  },
+  "gurobi_milp": {
+    "credential_source": "default_license_discovery",
+    "explicit_wls_params": false,
+    "objective": 2.0,
+    "status_code": 2,
+    "success": true,
+    "version": "13.0.2"
+  },
+  "gurobipy_import": {
+    "installed": false,
+    "module": "gurobipy",
+    "package": "gurobipy",
+    "success": true
+  },
+  "python": "3.14.6",
+  "status": "partial",
+  "ultrack_check_gurobi": {
+    "installed": false,
+    "pip_installed": false,
+    "skipped_reason": "ultrack_cli_not_found",
+    "success": false
+  }
+}

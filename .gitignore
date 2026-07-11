@@ -1,0 +1,8 @@
+# Large local datasets (includes the Kaggle ZIP archives)
+/data/
+
+# Local Python environment
+/.venv/
+
+.env
+.DS_Store

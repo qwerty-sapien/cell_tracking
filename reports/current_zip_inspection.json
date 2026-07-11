@@ -1,0 +1,17 @@
+[
+  {
+    "path": "/Users/agent/Desktop/biohub-cell-tracking-during-development.zip",
+    "exists": true,
+    "valid_zip": false,
+    "size_bytes": 9995026432,
+    "entry_count": null,
+    "compressed_bytes": null,
+    "uncompressed_bytes": null,
+    "top_level": null,
+    "suffix_counts": null,
+    "kaggle": null,
+    "ctc": null,
+    "sample_entries": null,
+    "error": "not a complete/valid ZIP: File is not a zip file"
+  }
+]

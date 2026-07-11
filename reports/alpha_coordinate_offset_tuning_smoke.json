@@ -1,0 +1,123 @@
+{
+  "prediction_csv": "reports/alpha_routed_full_44b6_0113de3b_submission.csv",
+  "dataset": "44b6_0113de3b",
+  "best": {
+    "offset_zyx": [
+      0,
+      -16,
+      8
+    ],
+    "score": 0.6283480979676915,
+    "edge_jaccard": 0.5964912280701754,
+    "node_recall": 0.8269230769230769,
+    "edge_tp": 34.0,
+    "edge_fp": 7.0,
+    "edge_fn": 16.0
+  },
+  "rows": [
+    {
+      "offset_zyx": [
+        0,
+        -16,
+        8
+      ],
+      "score": 0.6283480979676915,
+      "edge_jaccard": 0.5964912280701754,
+      "node_recall": 0.8269230769230769,
+      "edge_tp": 34.0,
+      "edge_fp": 7.0,
+      "edge_fn": 16.0
+    },
+    {
+      "offset_zyx": [
+        0,
+        -20,
+        8
+      ],
+      "score": 0.5891938047244405,
+      "edge_jaccard": 0.559322033898305,
+      "node_recall": 0.8269230769230769,
+      "edge_tp": 33.0,
+      "edge_fp": 9.0,
+      "edge_fn": 17.0
+    },
+    {
+      "offset_zyx": [
+        0,
+        -20,
+        0
+      ],
+      "score": 0.5596225247524753,
+      "edge_jaccard": 0.53125,
+      "node_recall": 0.9038461538461539,
+      "edge_tp": 34.0,
+      "edge_fp": 14.0,
+      "edge_fn": 16.0
+    },
+    {
+      "offset_zyx": [
+        1,
+        -16,
+        0
+      ],
+      "score": 0.5188423056528655,
+      "edge_jaccard": 0.4925373134328358,
+      "node_recall": 0.9038461538461539,
+      "edge_tp": 33.0,
+      "edge_fp": 17.0,
+      "edge_fn": 17.0
+    },
+    {
+      "offset_zyx": [
+        1,
+        -20,
+        0
+      ],
+      "score": 0.5102440666860804,
+      "edge_jaccard": 0.484375,
+      "node_recall": 0.8269230769230769,
+      "edge_tp": 31.0,
+      "edge_fp": 14.0,
+      "edge_fn": 19.0
+    },
+    {
+      "offset_zyx": [
+        0,
+        -16,
+        0
+      ],
+      "score": 0.48155753390465095,
+      "edge_jaccard": 0.45714285714285713,
+      "node_recall": 0.9423076923076923,
+      "edge_tp": 32.0,
+      "edge_fp": 20.0,
+      "edge_fn": 18.0
+    },
+    {
+      "offset_zyx": [
+        1,
+        -20,
+        8
+      ],
+      "score": 0.47882141155292,
+      "edge_jaccard": 0.45454545454545453,
+      "node_recall": 0.8269230769230769,
+      "edge_tp": 30.0,
+      "edge_fp": 16.0,
+      "edge_fn": 20.0
+    },
+    {
+      "offset_zyx": [
+        1,
+        -16,
+        8
+      ],
+      "score": 0.430939270397628,
+      "edge_jaccard": 0.4090909090909091,
+      "node_recall": 0.7692307692307693,
+      "edge_tp": 27.0,
+      "edge_fp": 16.0,
+      "edge_fn": 23.0
+    }
+  ]
+}

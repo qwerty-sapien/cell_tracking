@@ -1,0 +1,53 @@
+{
+  "run_id": "io-smoke",
+  "cache_dir": "data/derived/ultrack-smoke/io-smoke",
+  "configs": [
+    {
+      "label": "fq0p999_contour-low_link8p0",
+      "config": {
+        "scale_zyx": null,
+        "sigmas_um": [
+          0.8,
+          1.2,
+          1.8
+        ],
+        "dog_ratio": 1.7,
+        "q_low": 0.01,
+        "q_high": 0.999,
+        "foreground_quantile": 0.999,
+        "foreground_threshold": 0.5,
+        "local_contrast_sigma_um": 2.5,
+        "seed_h": 0.1,
+        "seed_dilation_um": 2.0,
+        "contour_preset": "low",
+        "min_frontier": null,
+        "min_cell_radius_um": 2.0,
+        "max_cell_radius_um": 4.0,
+        "min_area": null,
+        "max_area": null,
+        "max_link_um": 8.0,
+        "max_neighbors": 5,
+        "solver_name": "CBC",
+        "window_size": 3,
+        "overlap_size": 2,
+        "solution_gap": 0.01,
+        "time_limit": 3600,
+        "n_workers": 1,
+        "n_threads": -1,
+        "working_dir": null,
+        "database_file_name": "ultrack.db",
+        "max_segments_per_time": 100000
+      },
+      "submission": "data/derived/ultrack-smoke/io-smoke/fq0p999_contour-low_link8p0/submission.csv",
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "row_type_counts": {},
+        "dataset_count": 0
+      },
+      "rows": [],
+      "mean": {},
+      "failures": []
+    }
+  ]
+}

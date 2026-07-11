@@ -1,0 +1,185 @@
+[
+  {
+    "path": "data/ctc/raw/Fluo-N3DH-CE.zip",
+    "valid_zip": true,
+    "raw_sequence_count": 2,
+    "raw_tif_counts_by_sequence": {
+      "01": 250,
+      "02": 250
+    },
+    "image_probes": {
+      "01": [
+        {
+          "member": "Fluo-N3DH-CE/01/t000.tif",
+          "mode": "L",
+          "size_xy": [
+            708,
+            512
+          ],
+          "n_frames": 35,
+          "sampled_frames": [
+            {
+              "frame_index": 0,
+              "shape": [
+                512,
+                708
+              ],
+              "dtype": "uint8",
+              "min": 17.0,
+              "p01": 22.0,
+              "p50": 23.0,
+              "mean": 24.63345802436441,
+              "p99": 57.0,
+              "max": 167.0
+            },
+            {
+              "frame_index": 17,
+              "shape": [
+                512,
+                708
+              ],
+              "dtype": "uint8",
+              "min": 14.0,
+              "p01": 22.0,
+              "p50": 23.0,
+              "mean": 31.450818767655367,
+              "p99": 137.0,
+              "max": 255.0
+            },
+            {
+              "frame_index": 34,
+              "shape": [
+                512,
+                708
+              ],
+              "dtype": "uint8",
+              "min": 16.0,
+              "p01": 22.0,
+              "p50": 23.0,
+              "mean": 26.88228835628531,
+              "p99": 91.0,
+              "max": 188.0
+            }
+          ],
+          "preview_png": "reports/plots/Fluo-N3DH-CE_01_t000.png"
+        }
+      ],
+      "02": [
+        {
+          "member": "Fluo-N3DH-CE/02/t000.tif",
+          "mode": "L",
+          "size_xy": [
+            712,
+            512
+          ],
+          "n_frames": 31,
+          "sampled_frames": [
+            {
+              "frame_index": 0,
+              "shape": [
+                512,
+                712
+              ],
+              "dtype": "uint8",
+              "min": 19.0,
+              "p01": 24.0,
+              "p50": 25.0,
+              "mean": 27.67483486218399,
+              "p99": 54.0,
+              "max": 156.0
+            },
+            {
+              "frame_index": 15,
+              "shape": [
+                512,
+                712
+              ],
+              "dtype": "uint8",
+              "min": 18.0,
+              "p01": 24.0,
+              "p50": 26.0,
+              "mean": 32.773604832338485,
+              "p99": 110.0,
+              "max": 233.0
+            },
+            {
+              "frame_index": 30,
+              "shape": [
+                512,
+                712
+              ],
+              "dtype": "uint8",
+              "min": 18.0,
+              "p01": 25.0,
+              "p50": 26.0,
+              "mean": 28.508259633953653,
+              "p99": 72.0,
+              "max": 203.0
+            }
+          ],
+          "preview_png": "reports/plots/Fluo-N3DH-CE_02_t000.png"
+        }
+      ]
+    },
+    "track_files": {
+      "Fluo-N3DH-CE/01_GT/TRA/man_track.txt": {
+        "track_count": 720,
+        "division_parent_count": 358,
+        "min_t": 0,
+        "max_t": 194,
+        "parented_track_count": 716,
+        "example_divisions": {
+          "1": [
+            2,
+            129
+          ],
+          "2": [
+            3,
+            66
+          ],
+          "3": [
+            4,
+            35
+          ],
+          "4": [
+            5,
+            20
+          ],
+          "5": [
+            6,
+            13
+          ]
+        }
+      },
+      "Fluo-N3DH-CE/02_GT/TRA/man_track.txt": {
+        "track_count": 724,
+        "division_parent_count": 361,
+        "min_t": 0,
+        "max_t": 189,
+        "parented_track_count": 722,
+        "example_divisions": {
+          "1": [
+            2,
+            257
+          ],
+          "2": [
+            3,
+            130
+          ],
+          "3": [
+            4,
+            67
+          ],
+          "4": [
+            5,
+            36
+          ],
+          "5": [
+            6,
+            21
+          ]
+        }
+      }
+    }
+  }
+]

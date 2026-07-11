@@ -1,0 +1,43 @@
+{
+  "config": {
+    "sigmas_um": [
+      0.8,
+      1.2,
+      1.8
+    ],
+    "dog_ratio": 1.7,
+    "threshold_quantile": 0.99955,
+    "min_score": 0.015,
+    "min_distance_um": 2.8,
+    "max_points_per_t": 140,
+    "max_link_um": 8.0,
+    "q_low": 0.01,
+    "q_high": 0.999,
+    "max_timepoints": 5
+  },
+  "rows": [
+    {
+      "edge_tp": 0.0,
+      "edge_fp": 0.0,
+      "edge_fn": 50.0,
+      "edge_jaccard": 0.0,
+      "adj_edge_jaccard": 0.0,
+      "node_recall": 0.0,
+      "num_pred_nodes": 184.0,
+      "estimated_number_of_nodes": 25755.0,
+      "total_node_ratio": -0.9928557561638517,
+      "dataset": "44b6_0113de3b"
+    }
+  ],
+  "mean": {
+    "edge_tp": 0.0,
+    "edge_fp": 0.0,
+    "edge_fn": 50.0,
+    "edge_jaccard": 0.0,
+    "adj_edge_jaccard": 0.0,
+    "node_recall": 0.0,
+    "num_pred_nodes": 184.0,
+    "estimated_number_of_nodes": 25755.0,
+    "total_node_ratio": -0.9928557561638517
+  }
+}
