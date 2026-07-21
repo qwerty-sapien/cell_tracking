@@ -284,7 +284,11 @@ class KagglePackageTests(unittest.TestCase):
         )
         self.assertEqual(command[command.index("--mode") + 1], "cv")
         self.assertEqual(command[command.index("--split") + 1], "train")
-        self.assertEqual(command[command.index("--graph-variant") + 1], "legacy")
+        self.assertEqual(
+            command[command.index("--graph-variant") + 1],
+            pkgbh.RELEASED_GRAPH_VARIANT,
+        )
+        self.assertEqual(run["topology_mode"], "legacy")
         self.assertEqual(command[command.index("--edge-artifact") + 1], f"/src/{pkgbh.CV57_EDGE_ARTIFACT}")
         self.assertEqual(
             command[command.index("--edge-artifact-sha256") + 1],

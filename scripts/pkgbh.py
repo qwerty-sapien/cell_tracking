@@ -26,6 +26,7 @@ KERNEL_SLUG = "bhv45-private"
 KERNEL_REF = f"onebitbrain/{KERNEL_SLUG}"
 CV57_KERNEL_SLUG = "bhv45-cv57"
 KAGGLE_ACCELERATOR_ID = "NvidiaTeslaT4"
+RELEASED_GRAPH_VARIANT = "v45-motion-lazyrefine-locked"
 SUPPORT_DATASET_SLUG = "biohub-tracking-support-pack-50ep-v1"
 SUPPORT_REF = f"pilkwang/{SUPPORT_DATASET_SLUG}"
 COMPETITION_SLUG = "biohub-cell-tracking-during-development"
@@ -294,7 +295,8 @@ def submit_run_spec() -> dict[str, Any]:
         "split": "test",
         "datasets": None,
         "output_file": "submission.csv",
-        "graph_variant": "legacy",
+        "graph_variant": RELEASED_GRAPH_VARIANT,
+        "topology_mode": "legacy",
         "detection_tta": "D4-8-view",
         "division_enabled": False,
         "edge_artifact": None,
@@ -311,7 +313,7 @@ def cv57_run_spec(split_path: Path = DEFAULT_SPLIT) -> dict[str, Any]:
         "selection_sha256": CV57_SELECTION_SHA256,
         "excluded_identity": CV57_EXCLUDED_IDENTITY,
         "output_file": "cv57.csv",
-        "graph_variant": "legacy",
+        "graph_variant": RELEASED_GRAPH_VARIANT,
         "topology_mode": "legacy",
         "detection_tta": "D4-8-view",
         "division_enabled": False,
@@ -332,8 +334,12 @@ def validate_run_spec(value: Mapping[str, Any]) -> dict[str, Any]:
     edge = run.get("edge_artifact")
     if mode not in {"cv", "submit"} or split not in {"train", "test"}:
         raise PackageError("run specification has an invalid mode or split")
-    if run.get("graph_variant") != "legacy" or run.get("detection_tta") != "D4-8-view":
-        raise PackageError("run specification must use legacy topology and D4-8 detection")
+    if (
+        run.get("graph_variant") != RELEASED_GRAPH_VARIANT
+        or run.get("topology_mode") != "legacy"
+        or run.get("detection_tta") != "D4-8-view"
+    ):
+        raise PackageError("run specification must use the released graph variant, legacy topology, and D4-8 detection")
     if run.get("division_enabled") is not False:
         raise PackageError("run specification must keep divisions disabled")
     output_file = run.get("output_file")
@@ -458,6 +464,7 @@ SOURCE_ROOT = WORK / "bh45src"
 DIAGNOSTIC = WORK / "bhdiag.json"
 DEADLINE_SECONDS = 120 * 60
 KSHAPE = "NvidiaTeslaT4"
+RELEASED_GRAPH_VARIANT = "v45-motion-lazyrefine-locked"
 GPU_ENV_KEYS = (
     "CUDA_VISIBLE_DEVICES", "CUDA_VERSION", "NVIDIA_VISIBLE_DEVICES",
     "NVIDIA_DRIVER_CAPABILITIES", "NVIDIA_REQUIRE_CUDA",
@@ -843,8 +850,12 @@ def _runner_command(competition, support, package_manifest, view_batch_size, sco
         raise LaunchError("package run specification is missing")
     if run.get("mode") not in ("cv", "submit") or run.get("split") not in ("train", "test"):
         raise LaunchError("package run specification mode/split is invalid")
-    if run.get("graph_variant") != "legacy" or run.get("detection_tta") != "D4-8-view":
-        raise LaunchError("package run specification is not legacy D4-8")
+    if (
+        run.get("graph_variant") != RELEASED_GRAPH_VARIANT
+        or run.get("topology_mode") != "legacy"
+        or run.get("detection_tta") != "D4-8-view"
+    ):
+        raise LaunchError("package run specification is not released-graph legacy-topology D4-8")
     if run.get("division_enabled") is not False:
         raise LaunchError("package run specification attempted to enable divisions")
     datasets = run.get("datasets")
@@ -857,7 +868,7 @@ def _runner_command(competition, support, package_manifest, view_batch_size, sco
         "--mode", str(run["mode"]), "--split", str(run["split"]),
         "--devices", "cuda:0,cuda:1", "--pair-batch-size", "1",
         "--view-batch-size", str(view_batch_size), "--deadline-min", "120",
-        "--source-budget-bytes", "999999", "--graph-variant", "legacy",
+        "--source-budget-bytes", "999999", "--graph-variant", str(run["graph_variant"]),
     ]
     if datasets is not None:
         command.extend(("--datasets", ",".join(datasets)))
