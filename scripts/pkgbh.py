@@ -15,12 +15,16 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "kaggle_kernel" / "bh45pkg"
+CV57_OUTPUT = ROOT / "kaggle_kernel" / "bhcv57pkg"
 DEFAULT_REGISTRY = ROOT / "reports" / "g02" / "dataset_registry_v1.json"
 DEFAULT_SUPPORT = ROOT / "external" / "Tracking_Support"
+DEFAULT_SPLIT = ROOT / "reports" / "g02" / "grouped_3fold_audit20_v1.json"
 
 SOURCE_LIMIT = 1_000_000
 KERNEL_SLUG = "bhv45-private"
 KERNEL_REF = f"onebitbrain/{KERNEL_SLUG}"
+CV57_KERNEL_SLUG = "bhv45-cv57"
+KAGGLE_ACCELERATOR_ID = "NvidiaTeslaT4"
 SUPPORT_DATASET_SLUG = "biohub-tracking-support-pack-50ep-v1"
 SUPPORT_REF = f"pilkwang/{SUPPORT_DATASET_SLUG}"
 COMPETITION_SLUG = "biohub-cell-tracking-during-development"
@@ -60,6 +64,17 @@ SOURCE_PATHS = (
     "src/celltrack_alpha/bh_edge.py",
     "src/celltrack_alpha/bh_route.py",
 )
+EDGE_SOURCE_PATHS = (
+    "src/celltrack_alpha/v45_fast.py",
+    "src/celltrack_alpha/v45_head.py",
+    "src/celltrack_alpha/t_adapter.py",
+)
+CV57_EDGE_ARTIFACT = "reports/g02/conflict_edge_f0_fit117_v1/edge.json"
+CV57_EDGE_ARTIFACT_SHA256 = "5c6377cfdfe8bbc75bcef52c602cf86c402f07451a7751047a0adba87e7e8034"
+CV57_AUXILIARY_CHECKPOINT = "reports/g02/v45f4.pt"
+CV57_AUXILIARY_CHECKPOINT_SHA256 = "1cff90475b819b5652310ccb73ba57e1dc20069885962a06a5e10a6060c04473"
+CV57_EXCLUDED_IDENTITY = "train:6bba_f4ae811c"
+CV57_SELECTION_SHA256 = "58d090bc83702065b3bc8bc035c5d8e8911519c71a8d3a58f995e5abaf3099f1"
 
 DEPENDENCIES = (
     ("torch", "torch", "2.2", "3", ">=2.2,<3"),
@@ -119,7 +134,13 @@ def validate_slug(slug: str, label: str) -> None:
         raise PackageError(f"{label} must be a lowercase Kaggle slug of at most 15 characters: {slug!r}")
 
 
-def compact_registry(path: Path, *, expected_test_count: int = 4) -> bytes:
+def compact_registry(
+    path: Path,
+    *,
+    expected_test_count: int = 4,
+    split: str = "test",
+    selected_video_ids: Sequence[str] | None = None,
+) -> bytes:
     try:
         source = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, UnicodeError, ValueError, json.JSONDecodeError) as exc:
@@ -129,14 +150,24 @@ def compact_registry(path: Path, *, expected_test_count: int = 4) -> bytes:
     rows = source.get("records")
     if not isinstance(rows, list):
         raise PackageError("source registry records must be a list")
+    if split not in {"train", "test"}:
+        raise PackageError(f"compact registry split is invalid: {split!r}")
+    selected = tuple(selected_video_ids) if selected_video_ids is not None else None
+    if selected is not None and (
+        not selected
+        or len(set(selected)) != len(selected)
+        or any(not isinstance(item, str) or not item.startswith(f"{split}:") for item in selected)
+    ):
+        raise PackageError("compact registry selection must be nonempty, unique, and match its split")
+    selected_set = set(selected) if selected is not None else None
     records = []
     for row in rows:
-        if not isinstance(row, Mapping) or row.get("split") != "test":
+        if not isinstance(row, Mapping) or row.get("split") != split:
             continue
         try:
             shape = [int(item) for item in row["compact_metadata"]["image_shape"]]
             record = {
-                "split": "test",
+                "split": split,
                 "dataset": str(row["dataset"]),
                 "video_id": str(row["video_id"]),
                 "exact_identity_sha256": str(row["exact_identity_sha256"]),
@@ -144,25 +175,60 @@ def compact_registry(path: Path, *, expected_test_count: int = 4) -> bytes:
             }
         except (KeyError, TypeError, ValueError) as exc:
             raise PackageError("a test registry record lacks a required runner identity field") from exc
-        if record["video_id"] != f"test:{record['dataset']}" or len(shape) != 4 or any(item <= 0 for item in shape):
-            raise PackageError(f"invalid compact test registry identity: {record['video_id']!r}")
+        if record["video_id"] != f"{split}:{record['dataset']}" or len(shape) != 4 or any(item <= 0 for item in shape):
+            raise PackageError(f"invalid compact {split} registry identity: {record['video_id']!r}")
         digest = record["exact_identity_sha256"]
         if len(digest) != 64 or any(char not in "0123456789abcdef" for char in digest):
             raise PackageError(f"invalid exact identity SHA-256 for {record['video_id']}")
-        records.append(record)
+        if selected_set is None or record["video_id"] in selected_set:
+            records.append(record)
     records.sort(key=lambda item: item["video_id"])
-    if len(records) != expected_test_count or len({item["video_id"] for item in records}) != len(records):
+    expected_count = len(selected) if selected is not None else expected_test_count
+    observed_ids = [item["video_id"] for item in records]
+    if (
+        len(records) != expected_count
+        or len(set(observed_ids)) != len(records)
+        or (selected is not None and set(observed_ids) != selected_set)
+    ):
         raise PackageError(
-            f"compact registry requires {expected_test_count} unique test records, found {len(records)}"
+            f"compact registry requires {expected_count} unique {split} records, found {len(records)}"
         )
     payload = {
         "artifact": "dataset_registry_v1",
         "schema_version": 1,
         "source_registry_sha256": sha256_file(path),
-        "counts": {"test_videos": len(records), "videos": len(records)},
+        "counts": {f"{split}_videos": len(records), "videos": len(records)},
         "records": records,
     }
     return canonical_json(payload) + b"\n"
+
+
+def cv57_video_ids(split_path: Path = DEFAULT_SPLIT) -> tuple[str, ...]:
+    """Return the frozen terminal 57-video fold-0 holdout selection."""
+
+    try:
+        payload = json.loads(split_path.read_text(encoding="utf-8"))
+        fold = payload["folds"]["0"]
+        held_out = fold["held_out_video_ids"]
+        audit_ids = payload["audit"]["video_ids"]
+    except (OSError, UnicodeError, ValueError, KeyError, TypeError, json.JSONDecodeError) as exc:
+        raise PackageError(f"cannot read fold-0 split manifest {split_path}: {exc}") from exc
+    if (
+        not isinstance(held_out, list)
+        or len(held_out) != 58
+        or len(set(held_out)) != 58
+        or any(not isinstance(item, str) or not item.startswith("train:") for item in held_out)
+        or CV57_EXCLUDED_IDENTITY not in held_out
+        or set(held_out) & set(audit_ids)
+    ):
+        raise PackageError("fold-0 holdout does not match the frozen 58-video pre-exclusion contract")
+    selected = tuple(sorted(item for item in held_out if item != CV57_EXCLUDED_IDENTITY))
+    observed_sha256 = sha256_bytes(canonical_json(list(selected)))
+    if len(selected) != 57 or observed_sha256 != CV57_SELECTION_SHA256:
+        raise PackageError(
+            f"terminal fold-0 selection identity mismatch: expected {CV57_SELECTION_SHA256}, got {observed_sha256}"
+        )
+    return selected
 
 
 def source_tree_sha256(support_root: Path) -> str:
@@ -220,6 +286,83 @@ def pip_command(python: str, wheel_dir: str, specs: Sequence[str]) -> list[str]:
     ]
 
 
+def submit_run_spec() -> dict[str, Any]:
+    return {
+        "profile": "submit",
+        "mode": "submit",
+        "split": "test",
+        "datasets": None,
+        "output_file": "submission.csv",
+        "graph_variant": "legacy",
+        "detection_tta": "D4-8-view",
+        "division_enabled": False,
+        "edge_artifact": None,
+    }
+
+
+def cv57_run_spec(split_path: Path = DEFAULT_SPLIT) -> dict[str, Any]:
+    selected = cv57_video_ids(split_path)
+    return {
+        "profile": "fold0-holdout-57",
+        "mode": "cv",
+        "split": "train",
+        "datasets": list(selected),
+        "selection_sha256": CV57_SELECTION_SHA256,
+        "excluded_identity": CV57_EXCLUDED_IDENTITY,
+        "output_file": "cv57.csv",
+        "graph_variant": "legacy",
+        "topology_mode": "legacy",
+        "detection_tta": "D4-8-view",
+        "division_enabled": False,
+        "edge_artifact": {
+            "path": CV57_EDGE_ARTIFACT,
+            "sha256": CV57_EDGE_ARTIFACT_SHA256,
+            "auxiliary_checkpoint_path": CV57_AUXILIARY_CHECKPOINT,
+            "auxiliary_checkpoint_sha256": CV57_AUXILIARY_CHECKPOINT_SHA256,
+        },
+    }
+
+
+def validate_run_spec(value: Mapping[str, Any]) -> dict[str, Any]:
+    run = json.loads(canonical_json(value).decode("ascii"))
+    mode = run.get("mode")
+    split = run.get("split")
+    datasets = run.get("datasets")
+    edge = run.get("edge_artifact")
+    if mode not in {"cv", "submit"} or split not in {"train", "test"}:
+        raise PackageError("run specification has an invalid mode or split")
+    if run.get("graph_variant") != "legacy" or run.get("detection_tta") != "D4-8-view":
+        raise PackageError("run specification must use legacy topology and D4-8 detection")
+    if run.get("division_enabled") is not False:
+        raise PackageError("run specification must keep divisions disabled")
+    output_file = run.get("output_file")
+    if not isinstance(output_file, str) or Path(output_file).name != output_file or not output_file.endswith(".csv"):
+        raise PackageError("run specification output must be one CSV basename")
+    if mode == "submit":
+        if split != "test" or datasets is not None or edge is not None:
+            raise PackageError("default submit run specification must target the complete test split without an edge fit")
+    else:
+        if (
+            split != "train"
+            or not isinstance(datasets, list)
+            or not datasets
+            or len(set(datasets)) != len(datasets)
+            or any(not isinstance(item, str) or not item.startswith("train:") for item in datasets)
+        ):
+            raise PackageError("CV run specification has an invalid train selection")
+        if not isinstance(edge, Mapping):
+            raise PackageError("CV run specification requires a pinned edge artifact")
+        for key in ("path", "auxiliary_checkpoint_path"):
+            path = edge.get(key)
+            if not isinstance(path, str) or Path(path).is_absolute() or ".." in Path(path).parts:
+                raise PackageError(f"CV run specification has an unsafe {key}")
+        for key in ("sha256", "auxiliary_checkpoint_sha256"):
+            digest = edge.get(key)
+            if not isinstance(digest, str) or len(digest) != 64 or any(char not in "0123456789abcdef" for char in digest):
+                raise PackageError(f"CV run specification has an invalid {key}")
+    return run
+
+
 def runner_command(
     python: str,
     source_root: str,
@@ -229,6 +372,7 @@ def runner_command(
     *,
     view_batch_size: int = 1,
     score_gate: str | None = None,
+    run_spec: Mapping[str, Any] | None = None,
 ) -> list[str]:
     if type(view_batch_size) is not int or not 1 <= view_batch_size <= 8:
         raise PackageError("view_batch_size must be an integer in [1, 8]")
@@ -237,6 +381,7 @@ def runner_command(
     if view_batch_size > 1 and not score_gate:
         raise PackageError("view_batch_size 2..8 requires an explicit score gate")
     source = Path(source_root)
+    run = validate_run_spec(run_spec or submit_run_spec())
     command = [
         python,
         str(source / "scripts" / "run_bh.py"),
@@ -249,7 +394,11 @@ def runner_command(
         "--out-dir",
         output_root,
         "--output-file",
-        "submission.csv",
+        run["output_file"],
+        "--mode",
+        run["mode"],
+        "--split",
+        run["split"],
         "--devices",
         "cuda:0,cuda:1",
         "--pair-batch-size",
@@ -260,7 +409,21 @@ def runner_command(
         "120",
         "--source-budget-bytes",
         "999999",
+        "--graph-variant",
+        run["graph_variant"],
     ]
+    if run["datasets"] is not None:
+        command.extend(("--datasets", ",".join(run["datasets"])))
+    edge = run["edge_artifact"]
+    if edge is not None:
+        command.extend(
+            (
+                "--edge-artifact",
+                str(source / edge["path"]),
+                "--edge-artifact-sha256",
+                edge["sha256"],
+            )
+        )
     if score_gate is not None:
         command.extend(("--accelerated-score-gate", score_gate))
     return command
@@ -273,6 +436,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib
 import json
 import os
 from pathlib import Path
@@ -292,6 +456,12 @@ SOURCE_ARCHIVE = HERE / "bh45src.zip"
 SOURCE_ROOT = WORK / "bh45src"
 DIAGNOSTIC = WORK / "bhdiag.json"
 DEADLINE_SECONDS = 120 * 60
+KSHAPE = "NvidiaTeslaT4"
+GPU_ENV_KEYS = (
+    "CUDA_VISIBLE_DEVICES", "CUDA_VERSION", "NVIDIA_VISIBLE_DEVICES",
+    "NVIDIA_DRIVER_CAPABILITIES", "NVIDIA_REQUIRE_CUDA",
+)
+GPU_DIAG = None
 DEPENDENCIES = (
     ("torch", "torch", "2.2", "3", ">=2.2,<3"),
     ("numpy", "numpy", "1.26", "3", ">=1.26,<3"),
@@ -556,6 +726,99 @@ def _extract_source(package_manifest):
         archive.extractall(SOURCE_ROOT)
 
 
+def _diagnostic_call(function):
+    try:
+        return function()
+    except BaseException as exc:
+        return {"error_type": type(exc).__name__, "error_message": str(exc)}
+
+
+def _diagnostic_command(command):
+    try:
+        result = subprocess.run(
+            command, check=False, text=True, stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, timeout=10,
+        )
+        return {
+            "command": command, "returncode": int(result.returncode),
+            "stdout": result.stdout[-8000:], "stderr": result.stderr[-4000:],
+        }
+    except BaseException as exc:
+        return {"command": command, "error_type": type(exc).__name__, "error_message": str(exc)}
+
+
+def gpu():
+    """Attest the exact T4x2 runtime and retain classified failure evidence."""
+
+    global GPU_DIAG
+    torch = importlib.import_module("torch")
+    count = int(torch.cuda.device_count())
+    devices = []
+    for index in range(count):
+        name = _diagnostic_call(lambda i=index: str(torch.cuda.get_device_name(i)))
+        capability = _diagnostic_call(lambda i=index: list(torch.cuda.get_device_capability(i)))
+        properties = _diagnostic_call(lambda i=index: torch.cuda.get_device_properties(i))
+        row = {"index": index, "name": name, "capability": capability}
+        if isinstance(properties, dict):
+            row["properties_error"] = properties
+        else:
+            row.update({
+                "total_memory_bytes": int(properties.total_memory),
+                "multi_processor_count": int(properties.multi_processor_count),
+            })
+        devices.append(row)
+    names = [row["name"] if isinstance(row["name"], str) else "<name-error>" for row in devices]
+    name_mismatch = any("T4" not in name.upper() for name in names)
+    mismatches = []
+    if count != 2:
+        mismatches.append("device_count")
+    if name_mismatch:
+        mismatches.append("device_name")
+    if count == 0:
+        classification = "no_cuda_devices"
+    elif name_mismatch:
+        classification = "unexpected_accelerator_family"
+    elif count != 2:
+        classification = "honored_t4_wrong_device_count"
+    else:
+        classification = "exact_t4x2"
+    cudnn = getattr(getattr(torch, "backends", None), "cudnn", None)
+    GPU_DIAG = {
+        "requested": {
+            "kaggle_machine_shape": KSHAPE,
+            "logical_accelerator": "T4x2",
+            "expected_device_count": 2,
+            "expected_name_contains": "T4",
+            "devices": ["cuda:0", "cuda:1"],
+        },
+        "observed": {
+            "classification": classification,
+            "mismatches": mismatches,
+            "device_count": count,
+            "devices": devices,
+            "torch_version": str(getattr(torch, "__version__", None)),
+            "torch_cuda_version": str(getattr(getattr(torch, "version", None), "cuda", None)),
+            "torch_cuda_available": _diagnostic_call(lambda: bool(torch.cuda.is_available())),
+            "torch_compiled_arch_list": _diagnostic_call(lambda: list(torch.cuda.get_arch_list())),
+            "cudnn_version": _diagnostic_call(lambda: cudnn.version()) if cudnn is not None else None,
+        },
+        "environment": {key: os.environ.get(key) for key in GPU_ENV_KEYS},
+        "nvidia_smi": {
+            "inventory": _diagnostic_command(["nvidia-smi", "-L"]),
+            "query": _diagnostic_command([
+                "nvidia-smi", "--query-gpu=index,name,compute_cap,memory.total,driver_version",
+                "--format=csv,noheader,nounits",
+            ]),
+        },
+    }
+    if mismatches:
+        raise LaunchError(
+            "exact T4x2 required; requested_shape=%s classification=%s mismatches=%r count=%s names=%r"
+            % (KSHAPE, classification, mismatches, count, names)
+        )
+    return names
+
+
 def _competition_root():
     candidates = (
         Path("/kaggle/input/competitions/biohub-cell-tracking-during-development"),
@@ -567,21 +830,44 @@ def _competition_root():
     raise LaunchError("competition test input is missing from the two known Kaggle mount paths")
 
 
-def _runner_command(competition, support, view_batch_size, score_gate):
+def _runner_command(competition, support, package_manifest, view_batch_size, score_gate):
     if not 1 <= view_batch_size <= 8:
         raise LaunchError("--view-batch-size must be in [1, 8]")
     if view_batch_size == 1 and score_gate is not None:
         raise LaunchError("sequential view_batch_size=1 cannot use --score-gate")
     if view_batch_size > 1 and score_gate is None:
         raise LaunchError("view_batch_size 2..8 requires an explicit --score-gate")
+    run = package_manifest.get("identity", {}).get("runtime", {}).get("run")
+    if not isinstance(run, dict):
+        raise LaunchError("package run specification is missing")
+    if run.get("mode") not in ("cv", "submit") or run.get("split") not in ("train", "test"):
+        raise LaunchError("package run specification mode/split is invalid")
+    if run.get("graph_variant") != "legacy" or run.get("detection_tta") != "D4-8-view":
+        raise LaunchError("package run specification is not legacy D4-8")
+    if run.get("division_enabled") is not False:
+        raise LaunchError("package run specification attempted to enable divisions")
+    datasets = run.get("datasets")
+    if datasets is not None and (not isinstance(datasets, list) or not datasets):
+        raise LaunchError("package run specification datasets are invalid")
     command = [
         sys.executable, str(SOURCE_ROOT / "scripts" / "run_bh.py"),
         "--input", str(competition), "--registry", str(SOURCE_ROOT / "bhreg.json"),
-        "--support-root", str(support), "--out-dir", str(WORK), "--output-file", "submission.csv",
+        "--support-root", str(support), "--out-dir", str(WORK), "--output-file", str(run.get("output_file")),
+        "--mode", str(run["mode"]), "--split", str(run["split"]),
         "--devices", "cuda:0,cuda:1", "--pair-batch-size", "1",
         "--view-batch-size", str(view_batch_size), "--deadline-min", "120",
-        "--source-budget-bytes", "999999",
+        "--source-budget-bytes", "999999", "--graph-variant", "legacy",
     ]
+    if datasets is not None:
+        command.extend(("--datasets", ",".join(datasets)))
+    edge = run.get("edge_artifact")
+    if edge is not None:
+        if not isinstance(edge, dict):
+            raise LaunchError("package edge artifact specification is invalid")
+        command.extend((
+            "--edge-artifact", str(SOURCE_ROOT / str(edge.get("path"))),
+            "--edge-artifact-sha256", str(edge.get("sha256")),
+        ))
     if score_gate is not None:
         command.extend(("--accelerated-score-gate", str(score_gate)))
     return command
@@ -624,6 +910,8 @@ def main(argv=None):
         diagnostics["dependencies_before"] = _probe_dependencies()
         support, wheel_dir = _validate_attachment(diagnostics)
         diagnostics["dependencies_final"] = _install_missing(diagnostics["dependencies_before"], wheel_dir, diagnostics)
+        diagnostics["gpu_names"] = gpu()
+        diagnostics["gpu_attestation"] = GPU_DIAG
         _extract_source(package_manifest)
         competition = _competition_root()
         environment = dict(os.environ)
@@ -634,7 +922,7 @@ def main(argv=None):
             "PYTHONPATH": os.pathsep.join(python_paths), "PIP_NO_INDEX": "1",
             "PIP_DISABLE_PIP_VERSION_CHECK": "1", "CUDA_VISIBLE_DEVICES": "0,1",
         })
-        command = _runner_command(competition, support, args.view_batch_size, args.score_gate)
+        command = _runner_command(competition, support, package_manifest, args.view_batch_size, args.score_gate)
         diagnostics["runner"] = {
             "command": command, "device_count": 2, "devices": ["cuda:0", "cuda:1"],
             "view_batch_size": args.view_batch_size, "score_gate": str(args.score_gate) if args.score_gate else None,
@@ -646,6 +934,7 @@ def main(argv=None):
         _write_diagnostic(diagnostics)
         return 0
     except Exception as exc:
+        diagnostics["gpu_attestation"] = GPU_DIAG
         diagnostics["error"] = "%s: %s" % (type(exc).__name__, exc)
         diagnostics["elapsed_seconds"] = time.monotonic() - started
         _write_diagnostic(diagnostics)
@@ -725,13 +1014,32 @@ def _archive_members(
     registry: Path,
     *,
     expected_test_count: int,
+    run_spec: Mapping[str, Any] | None = None,
 ) -> dict[str, bytes]:
-    missing = [path for path in SOURCE_PATHS if not (repo_root / path).is_file()]
+    run = validate_run_spec(run_spec or submit_run_spec())
+    source_paths = SOURCE_PATHS + (EDGE_SOURCE_PATHS if run["edge_artifact"] is not None else ())
+    missing = [path for path in source_paths if not (repo_root / path).is_file()]
     if missing:
         raise PackageError(f"runner source files are missing: {missing}")
-    members = {path: (repo_root / path).read_bytes() for path in SOURCE_PATHS}
+    members = {path: (repo_root / path).read_bytes() for path in source_paths}
     members["src/celltrack_alpha/__init__.py"] = b'"""Private V45 sparse runner modules."""\n'
-    members["bhreg.json"] = compact_registry(registry, expected_test_count=expected_test_count)
+    members["bhreg.json"] = compact_registry(
+        registry,
+        expected_test_count=expected_test_count,
+        split=run["split"],
+        selected_video_ids=run["datasets"],
+    )
+    edge = run["edge_artifact"]
+    if edge is not None:
+        for path_key, sha_key in (
+            ("path", "sha256"),
+            ("auxiliary_checkpoint_path", "auxiliary_checkpoint_sha256"),
+        ):
+            relative = edge[path_key]
+            source = repo_root / relative
+            if not source.is_file() or sha256_file(source) != edge[sha_key]:
+                raise PackageError(f"pinned CV edge input identity mismatch: {relative}")
+            members[relative] = source.read_bytes()
     return members
 
 
@@ -748,23 +1056,31 @@ def _archive_identity(members: Mapping[str, bytes], archive: bytes) -> dict[str,
     }
 
 
-def _metadata_payload() -> bytes:
+def _metadata_payload(kernel_slug: str = KERNEL_SLUG) -> bytes:
     value = {
-        "id": KERNEL_REF,
-        "title": KERNEL_SLUG,
+        "id": f"onebitbrain/{kernel_slug}",
+        "title": kernel_slug,
         "code_file": ENTRYPOINT_NAME,
         "language": "python",
         "kernel_type": "script",
         "is_private": True,
         "enable_gpu": True,
         "enable_internet": False,
+        "machine_shape": KAGGLE_ACCELERATOR_ID,
         "competition_sources": [COMPETITION_SLUG],
         "dataset_sources": [SUPPORT_REF],
     }
     return json.dumps(value, indent=2, sort_keys=True).encode("ascii") + b"\n"
 
 
-def _manifest_payload(files: Mapping[str, bytes], archive_identity: Mapping[str, Any]) -> bytes:
+def _manifest_payload(
+    files: Mapping[str, bytes],
+    archive_identity: Mapping[str, Any],
+    *,
+    kernel_slug: str = KERNEL_SLUG,
+    run_spec: Mapping[str, Any] | None = None,
+) -> bytes:
+    run = validate_run_spec(run_spec or submit_run_spec())
     file_items = [
         {"path": name, "bytes": len(value), "sha256": sha256_bytes(value)}
         for name, value in sorted(files.items())
@@ -779,7 +1095,7 @@ def _manifest_payload(files: Mapping[str, bytes], archive_identity: Mapping[str,
             "package_bytes": package_bytes,
             "package_file_count": len(files) + 1,
             "strictly_under_budget": True,
-            "kernel_slug": KERNEL_SLUG,
+            "kernel_slug": kernel_slug,
             "external_support": {
                 "dataset_ref": SUPPORT_REF,
                 "dataset_slug": SUPPORT_DATASET_SLUG,
@@ -794,6 +1110,13 @@ def _manifest_payload(files: Mapping[str, bytes], archive_identity: Mapping[str,
                 "deadline_minutes": 120,
                 "devices": ["cuda:0", "cuda:1"],
                 "gpu_count": 2,
+                "machine_shape": KAGGLE_ACCELERATOR_ID,
+                "gpu_attestation_classifications": [
+                    "no_cuda_devices",
+                    "unexpected_accelerator_family",
+                    "honored_t4_wrong_device_count",
+                    "exact_t4x2",
+                ],
                 "pair_batch_size": 1,
                 "default_view_batch_size": 1,
                 "accelerated_view_batch_sizes": [2, 3, 4, 5, 6, 7, 8],
@@ -801,6 +1124,7 @@ def _manifest_payload(files: Mapping[str, bytes], archive_identity: Mapping[str,
                 "dependency_install": "python -m pip install --no-index --no-deps --find-links",
                 "install_only_missing_or_incompatible": True,
                 "compatible_core_reinstall": False,
+                "run": run,
             },
         }
         payload = {
@@ -817,20 +1141,33 @@ def _manifest_payload(files: Mapping[str, bytes], archive_identity: Mapping[str,
 
 def build_package(
     repo_root: Path = ROOT,
-    output_dir: Path = DEFAULT_OUTPUT,
+    output_dir: Path | None = None,
     *,
     registry: Path | None = None,
     support_root: Path | None = None,
     expected_artifact_hashes: Mapping[str, str] = EXPECTED_ARTIFACT_HASHES,
     expected_test_count: int = 4,
     support_mounts: Sequence[str] = SUPPORT_MOUNT_CANDIDATES,
+    profile: str = "submit",
+    split_manifest: Path | None = None,
 ) -> dict[str, Any]:
     repo_root = repo_root.resolve()
-    output_dir = output_dir.resolve()
     registry = (registry or (repo_root / "reports/g02/dataset_registry_v1.json")).resolve()
     support_root = (support_root or (repo_root / "external/Tracking_Support")).resolve()
+    split_manifest = (split_manifest or (repo_root / "reports/g02/grouped_3fold_audit20_v1.json")).resolve()
+    if profile == "submit":
+        kernel_slug = KERNEL_SLUG
+        run_spec = submit_run_spec()
+        default_output = repo_root / "kaggle_kernel/bh45pkg"
+    elif profile == "cv57":
+        kernel_slug = CV57_KERNEL_SLUG
+        run_spec = cv57_run_spec(split_manifest)
+        default_output = repo_root / "kaggle_kernel/bhcv57pkg"
+    else:
+        raise PackageError(f"unsupported package profile: {profile!r}")
+    output_dir = (output_dir or default_output).resolve()
 
-    validate_slug(KERNEL_SLUG, "kernel slug")
+    validate_slug(kernel_slug, "kernel slug")
     for name in (ENTRYPOINT_NAME, ARCHIVE_NAME, ATTACHMENT_NAME, MANIFEST_NAME, output_dir.name):
         if len(name) > 15:
             raise PackageError(f"created basename exceeds 15 characters: {name}")
@@ -843,19 +1180,24 @@ def build_package(
     if set(expected_artifact_hashes) != set(EXPECTED_ARTIFACT_HASHES):
         raise PackageError("expected artifact hash mapping has missing or unexpected fields")
 
-    members = _archive_members(repo_root, registry, expected_test_count=expected_test_count)
+    members = _archive_members(
+        repo_root,
+        registry,
+        expected_test_count=expected_test_count,
+        run_spec=run_spec,
+    )
     archive = deterministic_zip(members)
     archive_identity = _archive_identity(members, archive)
     entrypoint = ENTRYPOINT_SOURCE.encode("ascii")
     attachment = _attachment_payload(support_root, expected_artifact_hashes, support_mounts=support_mounts)
-    metadata = _metadata_payload()
+    metadata = _metadata_payload(kernel_slug)
     files = {
         ENTRYPOINT_NAME: entrypoint,
         ARCHIVE_NAME: archive,
         ATTACHMENT_NAME: attachment,
         METADATA_NAME: metadata,
     }
-    manifest = _manifest_payload(files, archive_identity)
+    manifest = _manifest_payload(files, archive_identity, kernel_slug=kernel_slug, run_spec=run_spec)
     files[MANIFEST_NAME] = manifest
     package_bytes = sum(len(value) for value in files.values())
     if package_bytes >= SOURCE_LIMIT:
@@ -875,6 +1217,8 @@ def build_package(
     records = [file_record(output_dir / name, relative_to=output_dir) for name in sorted(files)]
     report = {
         "schema": "bhv45-package-build.v1",
+        "profile": profile,
+        "kernel_ref": f"onebitbrain/{kernel_slug}",
         "output_dir": str(output_dir),
         "aggregate_bytes": package_bytes,
         "budget_bytes": SOURCE_LIMIT,
@@ -885,21 +1229,26 @@ def build_package(
         "attachment_manifest_sha256": sha256_bytes(attachment),
         "package_manifest_sha256": sha256_bytes(manifest),
         "network_or_kaggle_actions": False,
+        "run": run_spec,
     }
     return report
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--output", type=Path)
     parser.add_argument("--registry", type=Path, default=DEFAULT_REGISTRY)
     parser.add_argument("--support-root", type=Path, default=DEFAULT_SUPPORT)
+    parser.add_argument("--split-manifest", type=Path, default=DEFAULT_SPLIT)
+    parser.add_argument("--profile", choices=("submit", "cv57"), default="submit")
     args = parser.parse_args(argv)
     report = build_package(
         ROOT,
         args.output,
         registry=args.registry,
         support_root=args.support_root,
+        split_manifest=args.split_manifest,
+        profile=args.profile,
     )
     print(json.dumps(report, indent=2, sort_keys=True))
     return 0

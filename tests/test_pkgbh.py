@@ -6,7 +6,9 @@ from pathlib import Path
 import shutil
 import tempfile
 import types
+from types import SimpleNamespace
 import unittest
+from unittest import mock
 import zipfile
 
 from scripts import pkgbh
@@ -101,6 +103,15 @@ class KagglePackageTests(unittest.TestCase):
         )
         self.assertNotIn("member_vector", pkgbh.canonical_json(compact).decode("ascii"))
 
+    def test_cv57_selection_is_the_frozen_fold0_minus_terminal_exclusion(self) -> None:
+        selected = pkgbh.cv57_video_ids()
+        self.assertEqual(len(selected), 57)
+        self.assertNotIn(pkgbh.CV57_EXCLUDED_IDENTITY, selected)
+        self.assertEqual(
+            _sha(pkgbh.canonical_json(list(selected))),
+            pkgbh.CV57_SELECTION_SHA256,
+        )
+
     def test_build_is_deterministic_private_and_strictly_under_budget(self) -> None:
         first, first_report = self.build("pkg1")
         second, second_report = self.build("pkg2")
@@ -127,6 +138,7 @@ class KagglePackageTests(unittest.TestCase):
         self.assertTrue(metadata["is_private"])
         self.assertTrue(metadata["enable_gpu"])
         self.assertFalse(metadata["enable_internet"])
+        self.assertEqual(metadata["machine_shape"], pkgbh.KAGGLE_ACCELERATOR_ID)
         self.assertEqual(metadata["code_file"], pkgbh.ENTRYPOINT_NAME)
         self.assertEqual(metadata["dataset_sources"], [pkgbh.SUPPORT_REF])
         self.assertLessEqual(len(pkgbh.KERNEL_SLUG), 15)
@@ -145,6 +157,17 @@ class KagglePackageTests(unittest.TestCase):
         self.assertEqual(identity["runtime"]["deadline_minutes"], 120)
         self.assertEqual(identity["runtime"]["default_view_batch_size"], 1)
         self.assertTrue(identity["runtime"]["accelerated_score_gate_required"])
+        self.assertEqual(identity["runtime"]["machine_shape"], "NvidiaTeslaT4")
+        self.assertEqual(
+            identity["runtime"]["gpu_attestation_classifications"],
+            [
+                "no_cuda_devices",
+                "unexpected_accelerator_family",
+                "honored_t4_wrong_device_count",
+                "exact_t4x2",
+            ],
+        )
+        self.assertEqual(identity["runtime"]["run"], pkgbh.submit_run_spec())
         for item in identity["files"]:
             path = output / item["path"]
             self.assertEqual(item["bytes"], path.stat().st_size)
@@ -228,6 +251,98 @@ class KagglePackageTests(unittest.TestCase):
                 view_batch_size=1,
                 score_gate="/private/gate.json",
             )
+
+    def test_cv57_runner_command_is_exact_released_detector_configuration(self) -> None:
+        run = pkgbh.cv57_run_spec()
+        command = pkgbh.runner_command(
+            "python", "/src", "/competition", "/support", "/work", run_spec=run
+        )
+        self.assertEqual(command[command.index("--mode") + 1], "cv")
+        self.assertEqual(command[command.index("--split") + 1], "train")
+        self.assertEqual(command[command.index("--graph-variant") + 1], "legacy")
+        self.assertEqual(command[command.index("--edge-artifact") + 1], f"/src/{pkgbh.CV57_EDGE_ARTIFACT}")
+        self.assertEqual(
+            command[command.index("--edge-artifact-sha256") + 1],
+            pkgbh.CV57_EDGE_ARTIFACT_SHA256,
+        )
+        self.assertEqual(command[command.index("--datasets") + 1].split(","), list(pkgbh.cv57_video_ids()))
+        self.assertNotIn("--test-only-one-view", command)
+        self.assertNotIn("--allow-cpu", command)
+
+    def test_embedded_gpu_diagnostics_classify_wrong_family_and_t4_count(self) -> None:
+        output, _report = self.build("gpu")
+        module = types.ModuleType("bh45_gpu_fixture")
+        module.__file__ = str(output / pkgbh.ENTRYPOINT_NAME)
+        exec(pkgbh.ENTRYPOINT_SOURCE, module.__dict__)
+
+        class FakeCuda:
+            def __init__(self, count: int, name: str) -> None:
+                self.count = count
+                self.name = name
+
+            def device_count(self) -> int:
+                return self.count
+
+            def get_device_name(self, _index: int) -> str:
+                return self.name
+
+            @staticmethod
+            def get_device_capability(_index: int) -> tuple[int, int]:
+                return (7, 5)
+
+            @staticmethod
+            def get_device_properties(_index: int) -> SimpleNamespace:
+                return SimpleNamespace(total_memory=16_000_000_000, multi_processor_count=40)
+
+            @staticmethod
+            def is_available() -> bool:
+                return True
+
+            @staticmethod
+            def get_arch_list() -> list[str]:
+                return ["sm_75"]
+
+        result = SimpleNamespace(returncode=0, stdout="diagnostic\n", stderr="")
+        for count, name, classification, mismatches in (
+            (0, "Tesla T4", "no_cuda_devices", ["device_count"]),
+            (1, "Tesla T4", "honored_t4_wrong_device_count", ["device_count"]),
+            (2, "Tesla P100", "unexpected_accelerator_family", ["device_name"]),
+        ):
+            with self.subTest(classification=classification):
+                fake_torch = SimpleNamespace(
+                    __version__="2.9.0+cu126",
+                    version=SimpleNamespace(cuda="12.6"),
+                    cuda=FakeCuda(count, name),
+                    backends=SimpleNamespace(cudnn=SimpleNamespace(version=lambda: 91002)),
+                )
+                module.GPU_DIAG = None
+                with (
+                    mock.patch.object(module.importlib, "import_module", return_value=fake_torch),
+                    mock.patch.object(module.subprocess, "run", return_value=result),
+                    self.assertRaises(module.LaunchError),
+                ):
+                    module.gpu()
+                self.assertEqual(module.GPU_DIAG["observed"]["classification"], classification)
+                self.assertEqual(module.GPU_DIAG["observed"]["mismatches"], mismatches)
+                self.assertEqual(
+                    module.GPU_DIAG["requested"]["kaggle_machine_shape"],
+                    pkgbh.KAGGLE_ACCELERATOR_ID,
+                )
+
+        exact_torch = SimpleNamespace(
+            __version__="2.9.0+cu126",
+            version=SimpleNamespace(cuda="12.6"),
+            cuda=FakeCuda(2, "Tesla T4"),
+            backends=SimpleNamespace(cudnn=SimpleNamespace(version=lambda: 91002)),
+        )
+        module.GPU_DIAG = None
+        with (
+            mock.patch.object(module.importlib, "import_module", return_value=exact_torch),
+            mock.patch.object(module.subprocess, "run", return_value=result),
+        ):
+            self.assertEqual(module.gpu(), ["Tesla T4", "Tesla T4"])
+        self.assertEqual(module.GPU_DIAG["observed"]["classification"], "exact_t4x2")
+        self.assertEqual(module.GPU_DIAG["observed"]["mismatches"], [])
 
     def test_checkpoint_hash_mismatch_fails_before_writing_package(self) -> None:
         expected = dict(self.expected)

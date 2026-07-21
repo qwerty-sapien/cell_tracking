@@ -52,6 +52,8 @@ class Bh9PackageTests(unittest.TestCase):
                 "import celltrack_alpha.bh_graph\n"
                 "import celltrack_alpha.bh_edge\n"
                 "import celltrack_alpha.bh_route\n"
+                "import celltrack_alpha.v45_fast\n"
+                "import celltrack_alpha.t_adapter\n"
             ),
             "scripts/scoreall.py": (
                 "import celltrack_alpha.kaggle_calibration\n"
@@ -64,6 +66,10 @@ class Bh9PackageTests(unittest.TestCase):
                 "import celltrack_alpha.v45_head\n"
             ),
             "src/celltrack_alpha/v45_head.py": "import celltrack_alpha.bh_model\n",
+            "src/celltrack_alpha/v45_fast.py": (
+                "import celltrack_alpha.bh_model\n"
+                "import celltrack_alpha.v45_head\n"
+            ),
             "src/celltrack_alpha/official_eval.py": "import tracking_cellmot.metrics\n",
             "external/kaggle-cell-tracking-competition/src/tracking_cellmot/metrics.py": (
                 "import tracking_cellmot.division_metrics\n"
