@@ -1,0 +1,1 @@
+{"elapsed_seconds":9.221400000569702e-05,"error":"LaunchError: invalid package JSON /kaggle/src/bh45man.json: [Errno 2] No such file or directory: '/kaggle/src/bh45man.json'","gpu_attestation":null,"network":"forbidden","ok":false,"schema":"bhv45-kaggle-diagnostic.v1"}
