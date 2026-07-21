@@ -1,8 +1,9 @@
 # Scorer/submission path unification findings v1
 
 Status: Step 2 released in substance; the Step 3 kernel completed; Step 4 was
-scored with the frozen scorer; and the Step 5 submit package is locally ready.
-No submit-kernel upload or Kaggle competition submission has been performed.
+scored with the frozen scorer; and the Step 5 private submit kernel completed
+with a verified `submission.csv`. No Kaggle competition submission has been
+performed.
 
 ## Verified
 
@@ -107,13 +108,32 @@ No submit-kernel upload or Kaggle competition submission has been performed.
    evidence at `reports/g02/f4ason2/report.json` records `execution.d4_views` as
    `[0]`; it is itself a one-view run and cannot identify a TTA effect.
 
+14. The originally audited `onebitbrain/bhv45-private` slug returned Kaggle's
+    authenticated `Notebook not found` response before a kernel was created. The
+    unchanged run configuration was rebuilt deterministically under unused child
+    slug `onebitbrain/bhv45-submit` and committed as `83e2f29` before upload.
+
+15. Private kernel `onebitbrain/bhv45-submit/1` completed with `exact_t4x2` and
+    the uploaded package's decoded payloads matched byte-for-byte. It executed
+    all eight D4 views in exact-sequential mode, legacy topology, divisions off,
+    and artifact SHA-256
+    `5c6377cfdfe8bbc75bcef52c602cf86c402f07451a7751047a0adba87e7e8034`.
+    Launcher time was 345.200962 seconds and runner time was 324.888726 seconds.
+
+16. The verified `submission.csv` has 264,310 data rows: 134,840 nodes and
+    129,470 edges across exactly four public test datasets. Its size is
+    13,766,622 bytes and SHA-256 is
+    `44c6175bc337a144645426735dde461b3e513f1255f1f901001cde7cf109dd90`.
+    Global row IDs are continuous, the header and row types are exact, every edge
+    endpoint resolves to a node within its dataset, and all per-dataset counts
+    match the runner manifest.
+
 ## Inferred or pending
 
 - The released detector's pretraining exposure to imagery related to the four
   public test groups is not established by the grouped-split and edge-artifact
   evidence above.
-- Upload/start of the private submit kernel and the subsequent Kaggle competition
-  submission both require explicit approval. Neither has occurred.
+- Kaggle competition submission requires explicit approval and has not occurred.
 - `reports/g02/scorer_parity_v1.json` correctly remains
   `no_observed_kaggle_pairs`; it will be updated only after Kaggle returns the
   score paired with local baseline 0.8711885823490648.
@@ -128,6 +148,6 @@ No submit-kernel upload or Kaggle competition submission has been performed.
 - Relevant tests: 48 passed across `tests.test_pkgbh`,
   `tests.test_score_bh_cv57`, `tests.test_scoreall`, `tests.test_pkgbh9`,
   `tests.test_fitcache_kaggle`, and `tests.test_mkvs45`.
-- No training, push, submit-kernel upload, public artifact publication, or Kaggle
-  competition submission occurred. The private CV57 kernel versions described
-  above are the only external compute used in this work.
+- No training, Git push, public artifact publication, or Kaggle competition
+  submission occurred. External compute was limited to the approved private
+  CV57 and submit kernels described above.

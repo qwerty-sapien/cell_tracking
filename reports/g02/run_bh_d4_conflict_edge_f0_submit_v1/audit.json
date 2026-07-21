@@ -1,8 +1,9 @@
 {
   "approval_gate": {
-    "approval_required_before_kernel_upload": true,
+    "approval_required_before_kernel_upload": false,
     "approval_required_before_kaggle_submission": true,
-    "kernel_upload_performed": false,
+    "kernel_run_completed": true,
+    "kernel_upload_performed": true,
     "kaggle_submission_performed": false
   },
   "branch": "codex/fragmentation-57-rollback",
@@ -68,6 +69,71 @@
       "is_private": true,
       "machine_shape": "NvidiaTeslaT4"
     }
+  },
+  "private_kernel_execution": {
+    "decoded_package_payloads_match": true,
+    "diagnostic": {
+      "path": "kaggle_kernel/bhsubmitout_v1/bhdiag.json",
+      "sha256": "f4357cd13490b57b02850610f49eaa9c534b9566e2a94b6511daeebed09588b5"
+    },
+    "d4_views": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "division_enabled": false,
+    "gpu_classification": "exact_t4x2",
+    "kernel_ref": "onebitbrain/bhv45-submit/1",
+    "kernel_status": "COMPLETE",
+    "launcher_elapsed_seconds": 345.200962239,
+    "run_manifest": {
+      "path": "kaggle_kernel/bhsubmitout_v1/run.json",
+      "sha256": "f74486186f869cc38876a34e81aae1db45f3f890c1214c94a7dd4cac0faa710a"
+    },
+    "runner_elapsed_seconds": 324.88872599601746,
+    "submission": {
+      "bytes": 13766622,
+      "by_dataset": {
+        "44b6_0113de3b": {
+          "edges": 24940,
+          "nodes": 25741
+        },
+        "44b6_0b24845f": {
+          "edges": 25972,
+          "nodes": 27830
+        },
+        "6bba_05b6850b": {
+          "edges": 6462,
+          "nodes": 6751
+        },
+        "6bba_05db0fb1": {
+          "edges": 72096,
+          "nodes": 74518
+        }
+      },
+      "datasets": 4,
+      "edges": 129470,
+      "nodes": 134840,
+      "path": "kaggle_kernel/bhsubmitout_v1/submission.csv",
+      "rows": 264310,
+      "sha256": "44c6175bc337a144645426735dde461b3e513f1255f1f901001cde7cf109dd90"
+    },
+    "topology_mode": "legacy",
+    "validation": {
+      "all_edge_endpoints_resolve_within_dataset": true,
+      "continuous_global_row_ids": true,
+      "exact_header": true,
+      "feature_count": 4,
+      "fragment_count": 4,
+      "row_counts_match_run_manifest": true,
+      "status_count": 4
+    },
+    "view_execution": "exact-sequential"
   },
   "public_test_group_audit": {
     "artifact_source_group_intersection": [],
@@ -177,5 +243,5 @@
     "status": "no_observed_kaggle_pairs",
     "update_deferred_until_observed_kaggle_score": true
   },
-  "status": "local_package_ready_approval_required"
+  "status": "submission_csv_verified_approval_required"
 }
