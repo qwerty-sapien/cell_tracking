@@ -299,7 +299,16 @@ def submit_run_spec() -> dict[str, Any]:
         "topology_mode": "legacy",
         "detection_tta": "D4-8-view",
         "division_enabled": False,
-        "edge_artifact": None,
+        "edge_artifact": edge_artifact_run_spec(),
+    }
+
+
+def edge_artifact_run_spec() -> dict[str, str]:
+    return {
+        "path": CV57_EDGE_ARTIFACT,
+        "sha256": CV57_EDGE_ARTIFACT_SHA256,
+        "auxiliary_checkpoint_path": CV57_AUXILIARY_CHECKPOINT,
+        "auxiliary_checkpoint_sha256": CV57_AUXILIARY_CHECKPOINT_SHA256,
     }
 
 
@@ -317,12 +326,7 @@ def cv57_run_spec(split_path: Path = DEFAULT_SPLIT) -> dict[str, Any]:
         "topology_mode": "legacy",
         "detection_tta": "D4-8-view",
         "division_enabled": False,
-        "edge_artifact": {
-            "path": CV57_EDGE_ARTIFACT,
-            "sha256": CV57_EDGE_ARTIFACT_SHA256,
-            "auxiliary_checkpoint_path": CV57_AUXILIARY_CHECKPOINT,
-            "auxiliary_checkpoint_sha256": CV57_AUXILIARY_CHECKPOINT_SHA256,
-        },
+        "edge_artifact": edge_artifact_run_spec(),
     }
 
 
@@ -346,8 +350,8 @@ def validate_run_spec(value: Mapping[str, Any]) -> dict[str, Any]:
     if not isinstance(output_file, str) or Path(output_file).name != output_file or not output_file.endswith(".csv"):
         raise PackageError("run specification output must be one CSV basename")
     if mode == "submit":
-        if split != "test" or datasets is not None or edge is not None:
-            raise PackageError("default submit run specification must target the complete test split without an edge fit")
+        if split != "test" or datasets is not None:
+            raise PackageError("submit run specification must target the complete test split")
     else:
         if (
             split != "train"
@@ -357,16 +361,16 @@ def validate_run_spec(value: Mapping[str, Any]) -> dict[str, Any]:
             or any(not isinstance(item, str) or not item.startswith("train:") for item in datasets)
         ):
             raise PackageError("CV run specification has an invalid train selection")
-        if not isinstance(edge, Mapping):
-            raise PackageError("CV run specification requires a pinned edge artifact")
-        for key in ("path", "auxiliary_checkpoint_path"):
-            path = edge.get(key)
-            if not isinstance(path, str) or Path(path).is_absolute() or ".." in Path(path).parts:
-                raise PackageError(f"CV run specification has an unsafe {key}")
-        for key in ("sha256", "auxiliary_checkpoint_sha256"):
-            digest = edge.get(key)
-            if not isinstance(digest, str) or len(digest) != 64 or any(char not in "0123456789abcdef" for char in digest):
-                raise PackageError(f"CV run specification has an invalid {key}")
+    if not isinstance(edge, Mapping) or dict(edge) != edge_artifact_run_spec():
+        raise PackageError("run specification must use the pinned conflict edge artifact")
+    for key in ("path", "auxiliary_checkpoint_path"):
+        path = edge.get(key)
+        if not isinstance(path, str) or Path(path).is_absolute() or ".." in Path(path).parts:
+            raise PackageError(f"run specification has an unsafe {key}")
+    for key in ("sha256", "auxiliary_checkpoint_sha256"):
+        digest = edge.get(key)
+        if not isinstance(digest, str) or len(digest) != 64 or any(char not in "0123456789abcdef" for char in digest):
+            raise PackageError(f"run specification has an invalid {key}")
     return run
 
 

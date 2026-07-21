@@ -16,6 +16,9 @@ import zipfile
 from scripts import pkgbh
 
 
+ROOT = Path(__file__).resolve().parents[1]
+
+
 def _sha(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
 
@@ -27,10 +30,15 @@ class KagglePackageTests(unittest.TestCase):
         self.root = Path(self.temporary.name)
         self.repo = self.root / "repo"
         self.support = self.repo / "external" / "Tracking_Support"
-        for relative in pkgbh.SOURCE_PATHS:
+        for relative in (*pkgbh.SOURCE_PATHS, *pkgbh.EDGE_SOURCE_PATHS):
             path = self.repo / relative
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(f"# fixture {relative}\n", encoding="ascii")
+        for relative in (pkgbh.CV57_EDGE_ARTIFACT, pkgbh.CV57_AUXILIARY_CHECKPOINT):
+            source = ROOT / relative
+            target = self.repo / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, target)
 
         records = []
         for index in range(4):
@@ -217,6 +225,8 @@ class KagglePackageTests(unittest.TestCase):
             self.assertIn("scripts/run_bh.py", names)
             self.assertIn("src/celltrack_alpha/bh_model.py", names)
             self.assertIn("src/celltrack_alpha/bh_edge.py", names)
+            self.assertIn(pkgbh.CV57_EDGE_ARTIFACT, names)
+            self.assertIn(pkgbh.CV57_AUXILIARY_CHECKPOINT, names)
             self.assertIn("bhreg.json", names)
             self.assertFalse(any(name.endswith(".whl") for name in names))
             for item in report["archive"]["members"]:
@@ -297,6 +307,27 @@ class KagglePackageTests(unittest.TestCase):
         self.assertEqual(command[command.index("--datasets") + 1].split(","), list(pkgbh.cv57_video_ids()))
         self.assertNotIn("--test-only-one-view", command)
         self.assertNotIn("--allow-cpu", command)
+
+    def test_submit_runner_command_matches_scored_configuration(self) -> None:
+        run = pkgbh.submit_run_spec()
+        command = pkgbh.runner_command(
+            "python", "/src", "/competition", "/support", "/work", run_spec=run
+        )
+        self.assertEqual(command[command.index("--mode") + 1], "submit")
+        self.assertEqual(command[command.index("--split") + 1], "test")
+        self.assertEqual(
+            command[command.index("--graph-variant") + 1],
+            pkgbh.RELEASED_GRAPH_VARIANT,
+        )
+        self.assertEqual(command[command.index("--edge-artifact") + 1], f"/src/{pkgbh.CV57_EDGE_ARTIFACT}")
+        self.assertEqual(
+            command[command.index("--edge-artifact-sha256") + 1],
+            pkgbh.CV57_EDGE_ARTIFACT_SHA256,
+        )
+        self.assertNotIn("--datasets", command)
+        self.assertNotIn("--test-only-one-view", command)
+        self.assertFalse(run["division_enabled"])
+        self.assertEqual(run["topology_mode"], "legacy")
 
     def test_embedded_gpu_diagnostics_classify_wrong_family_and_t4_count(self) -> None:
         output, _report = self.build("gpu")

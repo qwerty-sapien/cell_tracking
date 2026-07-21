@@ -12,5 +12,6 @@
   "is_private": true,
   "kernel_type": "script",
   "language": "python",
+  "machine_shape": "NvidiaTeslaT4",
   "title": "bhv45-private"
 }
