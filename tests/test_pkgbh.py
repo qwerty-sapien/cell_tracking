@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import ast
+import base64
 import hashlib
 import json
 from pathlib import Path
@@ -131,6 +133,7 @@ class KagglePackageTests(unittest.TestCase):
         self.assertFalse(any(path.is_dir() for path in first.iterdir()))
         self.assertEqual(first_report["aggregate_bytes"], second_report["aggregate_bytes"])
         self.assertLess(first_report["aggregate_bytes"], 1_000_000)
+        self.assertLess(first_report["submitted_code_bytes"], 1_000_000)
         self.assertTrue(first_report["strictly_under_budget"])
         self.assertEqual(first_report["file_count"], 5)
 
@@ -152,7 +155,29 @@ class KagglePackageTests(unittest.TestCase):
         package = json.loads((output / pkgbh.MANIFEST_NAME).read_text(encoding="ascii"))
         identity = package["identity"]
         self.assertEqual(package["identity_sha256"], _sha(pkgbh.canonical_json(identity)))
-        self.assertEqual(identity["package_bytes"], sum(path.stat().st_size for path in output.iterdir() if path.is_file()))
+        logical_files = {
+            path.name: path.read_bytes()
+            for path in output.iterdir()
+            if path.is_file()
+        }
+        logical_files[pkgbh.ENTRYPOINT_NAME] = pkgbh.ENTRYPOINT_SOURCE.encode("ascii")
+        self.assertEqual(identity["package_bytes"], sum(map(len, logical_files.values())))
+        self.assertEqual(
+            (output / pkgbh.ENTRYPOINT_NAME).read_bytes(),
+            pkgbh.monolithic_entrypoint(logical_files),
+        )
+        wrapper_tree = ast.parse((output / pkgbh.ENTRYPOINT_NAME).read_text(encoding="ascii"))
+        payload_node = next(
+            node.value
+            for node in wrapper_tree.body
+            if isinstance(node, ast.Assign)
+            and any(isinstance(target, ast.Name) and target.id == "_PAYLOADS" for target in node.targets)
+        )
+        embedded = {
+            name: base64.b64decode(value, validate=True)
+            for name, value in ast.literal_eval(payload_node).items()
+        }
+        self.assertEqual(embedded, logical_files)
         self.assertEqual(identity["runtime"]["devices"], ["cuda:0", "cuda:1"])
         self.assertEqual(identity["runtime"]["deadline_minutes"], 120)
         self.assertEqual(identity["runtime"]["default_view_batch_size"], 1)
@@ -169,9 +194,9 @@ class KagglePackageTests(unittest.TestCase):
         )
         self.assertEqual(identity["runtime"]["run"], pkgbh.submit_run_spec())
         for item in identity["files"]:
-            path = output / item["path"]
-            self.assertEqual(item["bytes"], path.stat().st_size)
-            self.assertEqual(item["sha256"], pkgbh.sha256_file(path))
+            value = logical_files[item["path"]]
+            self.assertEqual(item["bytes"], len(value))
+            self.assertEqual(item["sha256"], _sha(value))
 
         attachment = json.loads((output / pkgbh.ATTACHMENT_NAME).read_text(encoding="ascii"))
         attach_identity = attachment["identity"]

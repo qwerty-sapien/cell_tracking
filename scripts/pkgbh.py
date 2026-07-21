@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import base64
 from collections.abc import Mapping, Sequence
 import hashlib
 import json
@@ -947,6 +948,54 @@ if __name__ == "__main__":
 '''
 
 
+def monolithic_entrypoint(payloads: Mapping[str, bytes]) -> bytes:
+    """Embed every attested runtime file in the sole Kaggle ``code_file``.
+
+    ``kaggle kernels push`` uploads the metadata-selected code file but does not
+    preserve arbitrary sibling files.  The small wrapper materializes the
+    already-attested logical package under ``/kaggle/working`` and executes its
+    launcher from there.  This mirrors the proven fit-cache packaging model.
+    """
+
+    expected = {ENTRYPOINT_NAME, ARCHIVE_NAME, ATTACHMENT_NAME, MANIFEST_NAME, METADATA_NAME}
+    if set(payloads) != expected:
+        raise PackageError(
+            f"monolithic payload coverage mismatch: expected={sorted(expected)} got={sorted(payloads)}"
+        )
+    encoded = {
+        name: base64.b64encode(payloads[name]).decode("ascii")
+        for name in sorted(payloads)
+    }
+    payload_json = json.dumps(encoded, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+    source = f'''#!/usr/bin/env python3
+"""Materialize and execute the attested private BH CV package."""
+
+import base64
+from pathlib import Path
+
+_ROOT = Path("/kaggle/working/.bh45pkg")
+_PAYLOADS = {payload_json}
+
+if _ROOT.exists():
+    raise RuntimeError("refusing to overwrite existing embedded package root: %s" % _ROOT)
+_ROOT.mkdir(parents=True, exist_ok=False)
+for _name, _encoded in _PAYLOADS.items():
+    if _name != Path(_name).name:
+        raise RuntimeError("unsafe embedded package basename: %r" % _name)
+    (_ROOT / _name).write_bytes(base64.b64decode(_encoded, validate=True))
+
+_ENTRY = _ROOT / {ENTRYPOINT_NAME!r}
+_GLOBALS = {{
+    "__name__": "__main__",
+    "__file__": str(_ENTRY),
+    "__package__": None,
+    "__cached__": None,
+}}
+exec(compile(_ENTRY.read_bytes(), str(_ENTRY), "exec"), _GLOBALS)
+'''
+    return source.encode("ascii")
+
+
 def _attachment_payload(
     support_root: Path,
     expected_hashes: Mapping[str, str],
@@ -1188,17 +1237,19 @@ def build_package(
     )
     archive = deterministic_zip(members)
     archive_identity = _archive_identity(members, archive)
-    entrypoint = ENTRYPOINT_SOURCE.encode("ascii")
+    entrypoint_template = ENTRYPOINT_SOURCE.encode("ascii")
     attachment = _attachment_payload(support_root, expected_artifact_hashes, support_mounts=support_mounts)
     metadata = _metadata_payload(kernel_slug)
-    files = {
-        ENTRYPOINT_NAME: entrypoint,
+    logical_files = {
+        ENTRYPOINT_NAME: entrypoint_template,
         ARCHIVE_NAME: archive,
         ATTACHMENT_NAME: attachment,
         METADATA_NAME: metadata,
     }
-    manifest = _manifest_payload(files, archive_identity, kernel_slug=kernel_slug, run_spec=run_spec)
-    files[MANIFEST_NAME] = manifest
+    manifest = _manifest_payload(logical_files, archive_identity, kernel_slug=kernel_slug, run_spec=run_spec)
+    logical_files[MANIFEST_NAME] = manifest
+    files = dict(logical_files)
+    files[ENTRYPOINT_NAME] = monolithic_entrypoint(logical_files)
     package_bytes = sum(len(value) for value in files.values())
     if package_bytes >= SOURCE_LIMIT:
         raise PackageError(f"aggregate submitted kernel source must be <{SOURCE_LIMIT} bytes, got {package_bytes}")
@@ -1221,6 +1272,8 @@ def build_package(
         "kernel_ref": f"onebitbrain/{kernel_slug}",
         "output_dir": str(output_dir),
         "aggregate_bytes": package_bytes,
+        "submitted_code_bytes": len(files[ENTRYPOINT_NAME]),
+        "logical_package_bytes": sum(len(value) for value in logical_files.values()),
         "budget_bytes": SOURCE_LIMIT,
         "strictly_under_budget": package_bytes < SOURCE_LIMIT,
         "file_count": len(records),
