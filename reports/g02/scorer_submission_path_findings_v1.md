@@ -75,12 +75,12 @@ No submit-kernel upload or Kaggle competition submission has been performed.
    readout requires them during artifact restoration.
 
 10. The Step 5 package at `kaggle_kernel/bh45pkg` is private kernel
-    `onebitbrain/bhv45-private`. Its embedded command is `run_bh.py --mode submit
+    `onebitbrain/bhv45-submit`. Its embedded command is `run_bh.py --mode submit
     --split test`, D4-8 exact-sequential, released graph token, legacy topology,
     divisions off, and the same conflict artifact SHA-256
     `5c6377cfdfe8bbc75bcef52c602cf86c402f07451a7751047a0adba87e7e8034`.
     The physical monolithic entrypoint is 238,819 bytes with SHA-256
-    `d4fb3cc137958dc179083fdcc31a8ba5b0ed5a5386e7b8cc4238aaa1051f9ea7`;
+    `2e4cc8f3311c4b307e563350982f64fdc816ed33c848826cb13ff831d274e09a`;
     the source archive is 139,102 bytes with SHA-256
     `fa5e04d6ecc348cccee8d89bad12808ceeb658371d3f487decc9655f904ac9d1`.
 

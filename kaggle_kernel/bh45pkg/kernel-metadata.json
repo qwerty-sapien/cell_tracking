@@ -8,10 +8,10 @@
   ],
   "enable_gpu": true,
   "enable_internet": false,
-  "id": "onebitbrain/bhv45-private",
+  "id": "onebitbrain/bhv45-submit",
   "is_private": true,
   "kernel_type": "script",
   "language": "python",
   "machine_shape": "NvidiaTeslaT4",
-  "title": "bhv45-private"
+  "title": "bhv45-submit"
 }

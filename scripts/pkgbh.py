@@ -22,7 +22,7 @@ DEFAULT_SUPPORT = ROOT / "external" / "Tracking_Support"
 DEFAULT_SPLIT = ROOT / "reports" / "g02" / "grouped_3fold_audit20_v1.json"
 
 SOURCE_LIMIT = 1_000_000
-KERNEL_SLUG = "bhv45-private"
+KERNEL_SLUG = "bhv45-submit"
 KERNEL_REF = f"onebitbrain/{KERNEL_SLUG}"
 CV57_KERNEL_SLUG = "bhv45-cv57"
 KAGGLE_ACCELERATOR_ID = "NvidiaTeslaT4"
