@@ -35,6 +35,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_REGISTRY = ROOT / "reports/g02/dataset_registry_v1.json"
 DEFAULT_SPLITS = ROOT / "reports/g02/grouped_3fold_audit20_v1.json"
 DEFAULT_SUPPORT = ROOT / "external/Tracking_Support"
+DEFAULT_EDGE_AUXILIARY_CHECKPOINT = ROOT / "reports/g02/v45f4.pt"
 
 RUNNER_SCHEMA = "celltrack-alpha.bh-runner.v1"
 CACHE_META_SCHEMA = "celltrack-alpha.bh-cache-meta.v1"
@@ -59,6 +60,8 @@ IMAGE_SUPPORT_EPSILON_UM = 1.0e-12
 MOTION_ROUTE = "motion"
 LOCKED_GRAPH_VARIANT = "v45-motion-lazyrefine-locked"
 A0_GRAPH_VARIANT = "a0"
+PRODUCTION_D4_VIEWS = tuple(range(8))
+TEST_ONLY_ONE_VIEW = (0,)
 A0_GATE_RADIUS_UM = 10.0
 A0_GATE_NEIGHBOR_CAP = 8
 GRAPH_VARIANTS = {
@@ -486,6 +489,7 @@ def preflight(
     source_budget_bytes: int = SOURCE_BUDGET_BYTES,
     pair_batch_size: int = DEFAULT_BATCH_SIZE,
     view_batch_size: int = 1,
+    d4_views: Sequence[int] | None = None,
 ) -> dict[str, Any]:
     """Import and pin every runtime dependency before any image data read."""
 
@@ -523,6 +527,7 @@ def preflight(
         numerical_config_sha256 = bh_model.v45_config_sha(
             pair_batch_size=pair_batch_size,
             view_batch_size=view_batch_size,
+            d4_views=d4_views,
         )
     except (AttributeError, ValueError) as exc:
         raise PreflightError(f"invalid pair/view batching mode: {exc}") from exc
@@ -569,6 +574,7 @@ def preflight(
             view_batch_size=view_batch_size,
             accelerated_gate=None,
             require_accelerated_gate=False,
+            d4_views=d4_views,
         ),
         "numerical_config_sha256": numerical_config_sha256,
         "offline_wheel_install_command": offline_command,
@@ -883,6 +889,7 @@ def view_batch_report(
     view_batch_size: int,
     accelerated_gate: Mapping[str, Any] | None,
     require_accelerated_gate: bool = True,
+    d4_views: Sequence[int] | None = None,
 ) -> dict[str, Any]:
     """Describe exact sequential or explicitly gated accelerated D4 execution."""
 
@@ -890,13 +897,36 @@ def view_batch_report(
         raise RunnerError("pair_batch_size must be a positive integer")
     if type(view_batch_size) is not int or not 1 <= view_batch_size <= 8:
         raise RunnerError("view_batch_size must be an integer in [1, 8]")
+    selected_views = PRODUCTION_D4_VIEWS if d4_views is None else tuple(d4_views)
+    if selected_views not in (PRODUCTION_D4_VIEWS, TEST_ONLY_ONE_VIEW):
+        raise RunnerError("runner D4 views must be all eight production views or explicit test-only view 0")
+    if view_batch_size > len(selected_views):
+        raise RunnerError("view_batch_size exceeds the selected D4 view count")
+    if selected_views == TEST_ONLY_ONE_VIEW:
+        if accelerated_gate is not None or view_batch_size != 1:
+            raise RunnerError("test-only one-view execution must be sequential and ungated")
+        return {
+            "pair_batch_size": pair_batch_size,
+            "view_batch_size": 1,
+            "d4_views": [0],
+            "mode": "test-only-one-view",
+            "production_eligible": False,
+            "exact_code_path_control": False,
+            "target_t4_numeric_parity": "not-applicable",
+            "parity_claim": "local-port-gate-only",
+            "observed_count_mismatch_cause": None,
+            "real_t4_ab_required": False,
+            "accelerated_score_gate_sha256": None,
+        }
     if view_batch_size == 1:
         if accelerated_gate is not None:
             raise RunnerError("an accelerated score gate cannot be attached to exact sequential D4")
         return {
             "pair_batch_size": pair_batch_size,
             "view_batch_size": 1,
+            "d4_views": list(PRODUCTION_D4_VIEWS),
             "mode": "exact-sequential",
+            "production_eligible": True,
             "exact_code_path_control": True,
             "target_t4_numeric_parity": "unverified",
             "parity_claim": "none-pending-real-t4-a-b",
@@ -917,7 +947,9 @@ def view_batch_report(
     return {
         "pair_batch_size": pair_batch_size,
         "view_batch_size": view_batch_size,
+        "d4_views": list(PRODUCTION_D4_VIEWS),
         "mode": "accelerated-experimental",
+        "production_eligible": True,
         "exact_code_path_control": False,
         "target_t4_numeric_parity": "not-claimed",
         "parity_claim": "none",
@@ -1026,6 +1058,7 @@ def inference_contract(
     pair_batch_size: int = DEFAULT_BATCH_SIZE,
     view_batch_size: int = 1,
     frame_count: int = FRAME_COUNT,
+    d4_views: Sequence[int] | None = None,
 ) -> dict[str, Any]:
     if (
         int(cache_identity.pair_batch_size) != pair_batch_size
@@ -1037,6 +1070,7 @@ def inference_contract(
         view_batch_size=view_batch_size,
         accelerated_gate=None,
         require_accelerated_gate=False,
+        d4_views=d4_views,
     )
     value = {
         "schema": CACHE_META_SCHEMA,
@@ -1046,6 +1080,7 @@ def inference_contract(
             "api": "bh_model.infer_video",
             "pair_batch_size": int(pair_batch_size),
             "view_batch_size": int(view_batch_size),
+            "d4_views": d4["d4_views"],
             "d4_mode": d4["mode"],
             "exact_code_path_control": d4["exact_code_path_control"],
             "target_t4_numeric_parity": d4["target_t4_numeric_parity"],
@@ -1063,6 +1098,7 @@ def run_contract(
     graph_variant: str,
     router_sha256: str | None,
     view_execution: Mapping[str, Any],
+    edge_artifact: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     if graph_variant not in GRAPH_VARIANTS:
         raise RunnerError(f"unsupported graph variant {graph_variant!r}")
@@ -1076,6 +1112,8 @@ def run_contract(
         "view_execution": dict(view_execution),
         "checkpoint_exposure": CHECKPOINT_EXPOSURE,
     }
+    if edge_artifact is not None:
+        value["edge_artifact"] = dict(edge_artifact)
     return {**value, "sha256": canonical_sha256(value)}
 
 
@@ -1174,6 +1212,178 @@ def build_a0_scorer(
     scorer = edge_module.A0CheckpointScorer.from_loaded_model(model, bundle)
     _a0_scorer_identity(scorer, str(cache_identity.weight_sha256))
     return scorer
+
+
+def pinned_edge_artifact_record(
+    artifact_path: str | os.PathLike[str] | None,
+    artifact_sha256: str | None,
+) -> dict[str, Any] | None:
+    """Validate the CLI pin exactly as v45feval does and record its identity."""
+
+    if artifact_path is None:
+        if artifact_sha256 is not None:
+            raise RunnerError("--edge-artifact-sha256 requires --edge-artifact")
+        return None
+    if not _is_sha256(artifact_sha256):
+        raise RunnerError("--edge-artifact requires a lowercase SHA-256")
+    source = Path(artifact_path)
+    if not source.is_file() or sha256_file(source) != artifact_sha256:
+        raise RunnerError("edge artifact SHA-256 does not match the pinned value")
+    payload = strict_json_load(source)
+    if not isinstance(payload, Mapping):
+        raise RunnerError("edge artifact must be a JSON object")
+    config = payload.get("config")
+    pretrained = payload.get("pretrained")
+    auxiliary = payload.get("auxiliary")
+    exposure = payload.get("exposure")
+    if not all(isinstance(value, Mapping) for value in (config, pretrained, auxiliary, exposure)):
+        raise RunnerError("edge artifact identity metadata is incomplete")
+    hidden = config.get("residual_hidden")
+    if type(hidden) is not int or hidden <= 0:
+        raise RunnerError("edge artifact residual hidden width is invalid")
+    auxiliary_enabled = auxiliary.get("enabled") is True
+    identity = {
+        "architecture_sha256": payload.get("architecture_sha256"),
+        "config_sha256": payload.get("config_sha256"),
+        "pretrained_weight_sha256": pretrained.get("checkpoint_weight_sha256"),
+        "frozen_subset_sha256": pretrained.get("frozen_subset_sha256"),
+        "residual_weight_sha256": (
+            payload.get("weights", {}).get("residual_weight_sha256")
+            if isinstance(payload.get("weights"), Mapping)
+            else None
+        ),
+        "auxiliary_checkpoint_sha256": auxiliary.get("checkpoint_sha256") if auxiliary_enabled else None,
+        "auxiliary_state_sha256": (
+            auxiliary.get("identity", {}).get("auxiliary_state_sha256")
+            if auxiliary_enabled and isinstance(auxiliary.get("identity"), Mapping)
+            else None
+        ),
+        "exposure": dict(exposure),
+    }
+    if any(not _is_sha256(value) for key, value in identity.items() if key != "exposure" and value is not None):
+        raise RunnerError("edge artifact contains an invalid identity SHA-256")
+    return json.loads(
+        canonical_json(
+            {
+                "path": str(source.resolve()),
+                "sha256": artifact_sha256,
+                "identity": identity,
+                "fitted_parameter_count": (16 + 1) * hidden + hidden + 2,
+                "runtime_trainable_parameter_count": 0,
+                "division_enabled": False,
+            }
+        ).decode("ascii")
+    )
+
+
+def load_sparse_edge_scorer(
+    artifact_path: str | os.PathLike[str] | None,
+    artifact_sha256: str | None,
+    auxiliary_checkpoint: str | os.PathLike[str],
+    model: Any,
+    bundle: Any,
+    *,
+    edge_module: Any | None = None,
+) -> tuple[Any | None, dict[str, Any] | None]:
+    """Restore one hash-pinned fit-only scorer and freeze it for inference."""
+
+    record = pinned_edge_artifact_record(artifact_path, artifact_sha256)
+    if record is None:
+        return None, None
+    source = Path(artifact_path)
+    payload = strict_json_load(source)
+    auxiliary_metadata = payload.get("auxiliary") if isinstance(payload, Mapping) else None
+    auxiliary = None
+    if isinstance(auxiliary_metadata, Mapping) and auxiliary_metadata.get("enabled") is True:
+        checkpoint_sha256 = auxiliary_metadata.get("checkpoint_sha256")
+        if not _is_sha256(checkpoint_sha256):
+            raise RunnerError("edge artifact auxiliary checkpoint identity is invalid")
+        checkpoint = Path(auxiliary_checkpoint)
+        if not checkpoint.is_file() or sha256_file(checkpoint) != checkpoint_sha256:
+            raise RunnerError("edge artifact auxiliary checkpoint SHA-256 does not match")
+        fast_module = importlib.import_module("celltrack_alpha.v45_fast")
+        head_module = importlib.import_module("celltrack_alpha.v45_head")
+        target_module = importlib.import_module("celltrack_alpha.t_adapter")
+        auxiliary, _identity = fast_module.load_fast_readout(
+            checkpoint,
+            bundle,
+            expected_sha256=checkpoint_sha256,
+            target_sha256=target_module.TARGET_CONTRACT_SHA256,
+            expected_core_state_sha256=head_module.v45_state_sha256(model),
+        )
+    edge_module = edge_module or importlib.import_module("celltrack_alpha.bh_edge")
+    scorer, identity = edge_module.load_edge_artifact(
+        source,
+        model,
+        expected_pretrained_weight_sha256=bundle.hashes.weight_sha256,
+        auxiliary=auxiliary,
+    )
+    fitted_parameter_count = int(scorer.trainable_parameter_count)
+    if fitted_parameter_count <= 0 or scorer.config.division_enabled is not False:
+        raise RunnerError("edge artifact must contain a fitted scorer with divisions disabled")
+    for parameter in scorer.parameters():
+        parameter.requires_grad_(False)
+    scorer.eval()
+    if scorer.trainable_parameter_count != 0:
+        raise RunnerError("fit-only edge scorer remained trainable during inference")
+    observed_identity = json.loads(canonical_json(asdict(identity)).decode("ascii"))
+    if observed_identity != record["identity"] or fitted_parameter_count != record["fitted_parameter_count"]:
+        raise RunnerError("loaded edge artifact identity differs from its pinned JSON record")
+    return scorer, record
+
+
+def score_sparse_edge_cache(
+    cache: Any,
+    scorer: Any,
+    *,
+    edge_module: Any | None = None,
+) -> tuple[dict[tuple[int, int], float], dict[int, float], dict[str, Any]]:
+    """Port v45feval's adjacent sparse scorer over a persisted run_bh cache."""
+
+    edge_module = edge_module or importlib.import_module("celltrack_alpha.bh_edge")
+    if not isinstance(scorer, edge_module.SparseEdgeScorer):
+        raise RunnerError("edge artifact execution requires SparseEdgeScorer")
+    detections = getattr(cache, "detections", None)
+    contexts = getattr(cache, "contexts", None)
+    if not isinstance(detections, tuple) or not isinstance(contexts, tuple) or not contexts:
+        raise RunnerError("edge artifact execution requires complete cached detections and contexts")
+    by_frame = {int(detection.frame_index): detection for detection in detections}
+    if len(by_frame) != len(detections):
+        raise RunnerError("edge artifact cache detections have duplicate frame identities")
+    pairs = []
+    for context in contexts:
+        source = by_frame.get(int(context.source_frame))
+        target = by_frame.get(int(context.target_frame))
+        if source is None or target is None:
+            raise RunnerError("edge artifact context references a missing detection frame")
+        pairs.append(scorer.score_pair(context, source, target))
+    probabilities = edge_module.learned_edge_probability_map(pairs)
+    no_link: dict[int, float] = {}
+    for pair in pairs:
+        for source_id, probability in zip(
+            pair.no_link_source_ids, pair.no_link_probabilities, strict=True
+        ):
+            source_id_int = int(source_id)
+            if source_id_int in no_link:
+                raise RunnerError("duplicate edge artifact no-link probability across frame pairs")
+            no_link[source_id_int] = float(probability)
+    candidate_count = sum(int(pair.stats.candidate_count) for pair in pairs)
+    if candidate_count != len(probabilities):
+        raise RunnerError("edge artifact candidate probability mapping is incomplete")
+    audit = {
+        "mode": "fit-only-v45-sparse-legacy",
+        "learned_association_active": True,
+        "topology_mode": "legacy",
+        "division_enabled": False,
+        "pair_count": len(pairs),
+        "candidate_count": candidate_count,
+        "probability_count": len(probabilities),
+        "no_link_probability_count": len(no_link),
+        "peak_pair_chunk": max((int(pair.stats.peak_pair_chunk) for pair in pairs), default=0),
+        "neighbor_cap": int(scorer.config.neighbor_cap),
+        "full_frame_dense_matrix": False,
+    }
+    return probabilities, no_link, audit
 
 
 def _merge_a0_association(records: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
@@ -2092,6 +2302,7 @@ def process_video(
     graph_variant: str = LOCKED_GRAPH_VARIANT,
     pair_batch_size: int = DEFAULT_BATCH_SIZE,
     view_batch_size: int = 1,
+    d4_views: Sequence[int] | None = None,
     expected_frames: int = FRAME_COUNT,
     deadline_epoch: float | None = None,
     router: Any | None = None,
@@ -2103,6 +2314,8 @@ def process_video(
     route_module: Any | None = None,
     infer_video_fn: Callable[..., Any] | None = None,
     a0_scorer: Any | None = None,
+    edge_scorer: Any | None = None,
+    edge_artifact_identity: Mapping[str, Any] | None = None,
     edge_module: Any | None = None,
 ) -> dict[str, Any]:
     """Run or contract-safely resume one whole video transaction."""
@@ -2113,6 +2326,10 @@ def process_video(
         raise RunnerError("motion graph must not receive an A0 scorer")
     if graph_variant == A0_GRAPH_VARIANT and a0_scorer is None:
         raise RunnerError("A0 graph requires the worker-local checkpoint scorer")
+    if edge_scorer is not None and (graph_variant != LOCKED_GRAPH_VARIANT or a0_scorer is not None):
+        raise RunnerError("edge artifact association requires the locked motion graph without A0")
+    if (edge_scorer is None) != (edge_artifact_identity is None):
+        raise RunnerError("edge scorer and artifact identity must be supplied together")
     model_module = model_module or importlib.import_module("celltrack_alpha.bh_model")
     graph_module = graph_module or importlib.import_module("celltrack_alpha.bh_graph")
     route_module = route_module or importlib.import_module("celltrack_alpha.bh_route")
@@ -2121,6 +2338,7 @@ def process_video(
         pair_batch_size=pair_batch_size,
         view_batch_size=view_batch_size,
         accelerated_gate=accelerated_gate,
+        d4_views=d4_views,
     )
     infer_value = inference_contract(
         job,
@@ -2128,12 +2346,14 @@ def process_video(
         pair_batch_size=pair_batch_size,
         view_batch_size=view_batch_size,
         frame_count=expected_frames,
+        d4_views=d4_views,
     )
     run_value = run_contract(
         infer_value,
         graph_variant=graph_variant,
         router_sha256=router_sha256,
         view_execution=view_execution,
+        edge_artifact=edge_artifact_identity,
     )
     fragment_path = output_dir / "fragments" / f"{job.slug}.csv"
     status_path = output_dir / "status" / f"{job.slug}.json"
@@ -2178,13 +2398,16 @@ def process_video(
                 node_id_start=0,
                 batch_size=pair_batch_size,
                 view_batch_size=view_batch_size,
+                d4_views=d4_views,
             )
             check_deadline(deadline_epoch, f"{job.identity} bh_model.infer_video")
             if (
                 getattr(inference, "pair_batch_size", pair_batch_size) != pair_batch_size
                 or getattr(inference, "view_batch_size", view_batch_size) != view_batch_size
+                or tuple(getattr(inference, "d4_views", view_execution["d4_views"]))
+                != tuple(view_execution["d4_views"])
             ):
-                raise RunnerError("bh_model inference batching provenance disagrees with the request")
+                raise RunnerError("bh_model inference D4/batching provenance disagrees with the request")
             pregraph = build_route_summary(
                 inference.detections,
                 frame_shape_zyx=job.record.image_shape[1:],
@@ -2214,7 +2437,9 @@ def process_video(
         route_decision = choose_route(pregraph, router)
         graph_nodes = detections_to_graph_nodes(cache.detections, graph_module.GraphNode)
         learned_probabilities = None
+        source_no_link_probabilities = None
         a0_audit = None
+        edge_audit = None
         if graph_variant == A0_GRAPH_VARIANT:
             learned_probabilities, a0_audit = score_a0_cache(
                 cache,
@@ -2223,6 +2448,13 @@ def process_video(
                 edge_module=edge_module,
             )
             a0_audit["cache"]["reused"] = cache_reused
+        elif edge_scorer is not None:
+            learned_probabilities, source_no_link_probabilities, edge_audit = score_sparse_edge_cache(
+                cache,
+                edge_scorer,
+                edge_module=edge_module,
+            )
+            edge_audit["cache_reused"] = cache_reused
         refiner_source = frames if frames is not None else handle.array
         refiner = LazyImageRefiner(
             refiner_source,
@@ -2230,11 +2462,19 @@ def process_video(
             deadline_epoch=deadline_epoch,
         )
         check_deadline(deadline_epoch, f"{job.identity} bh_graph calibration")
-        graph_result = graph_module.calibrate_v45_graph(
-            graph_nodes,
-            learned_edge_probabilities=learned_probabilities,
-            image_refine_callback=refiner,
-        )
+        graph_options: dict[str, Any] = {
+            "learned_edge_probabilities": learned_probabilities,
+            "image_refine_callback": refiner,
+        }
+        if edge_scorer is not None:
+            graph_options.update(
+                {
+                    "source_no_link_probabilities": source_no_link_probabilities,
+                    "topology_mode": "legacy",
+                    "division_enabled": False,
+                }
+            )
+        graph_result = graph_module.calibrate_v45_graph(graph_nodes, **graph_options)
         check_deadline(deadline_epoch, f"{job.identity} bh_graph calibration")
         if graph_result.provenance.get("full_frame_dense_matrix") is not False:
             raise RunnerError("bh_graph did not attest sparse graph execution")
@@ -2243,6 +2483,13 @@ def process_video(
                 "variant": A0_GRAPH_VARIANT,
                 "learned_probability_count": len(learned_probabilities),
                 "full_frame_dense_matrix": False,
+            }
+        if edge_audit is not None:
+            edge_audit["graph"] = {
+                "variant": LOCKED_GRAPH_VARIANT,
+                "learned_probability_count": len(learned_probabilities),
+                "full_frame_dense_matrix": False,
+                "division_enabled": False,
             }
         graph_result = project_graph_result_to_image_support(
             job.record.dataset,
@@ -2275,6 +2522,9 @@ def process_video(
         }
         if a0_audit is not None:
             feature_record["a0_audit"] = a0_audit
+        if edge_audit is not None:
+            feature_record["edge_artifact"] = dict(edge_artifact_identity)
+            feature_record["edge_association"] = edge_audit
         atomic_create_json(feature_path, feature_record, deadline_epoch)
         rows = graph_rows(job.record.dataset, graph_result, job.record.image_shape)
         for index, row in enumerate(rows):
@@ -2302,6 +2552,9 @@ def process_video(
         }
         if a0_audit is not None:
             result["a0_audit"] = a0_audit
+        if edge_audit is not None:
+            result["edge_artifact"] = dict(edge_artifact_identity)
+            result["edge_association"] = edge_audit
         status = {
             "schema": STATUS_SCHEMA,
             "ok": True,
@@ -2313,6 +2566,9 @@ def process_video(
         }
         if a0_audit is not None:
             status["a0_audit"] = a0_audit
+        if edge_audit is not None:
+            status["edge_artifact"] = dict(edge_artifact_identity)
+            status["edge_association"] = edge_audit
         atomic_create_json(status_path, status, deadline_epoch)
         return result
     finally:
@@ -2455,12 +2711,13 @@ def _worker_entry(job_path_text: str) -> None:
             bundle,
             pair_batch_size=int(payload["pair_batch_size"]),
             view_batch_size=int(payload["view_batch_size"]),
+            d4_views=payload.get("d4_views"),
         )
         if _identity_dict(identity) != payload["cache_identity"]:
             raise ResumeHashError("worker strict model identity differs from parent preflight")
         edge_module = (
             importlib.import_module("celltrack_alpha.bh_edge")
-            if payload["graph_variant"] == A0_GRAPH_VARIANT
+            if payload["graph_variant"] == A0_GRAPH_VARIANT or payload.get("edge_artifact") is not None
             else None
         )
         a0_scorer = build_a0_scorer(
@@ -2470,6 +2727,17 @@ def _worker_entry(job_path_text: str) -> None:
             identity,
             edge_module=edge_module,
         )
+        edge_scorer, edge_artifact_identity = load_sparse_edge_scorer(
+            payload.get("edge_artifact"),
+            payload.get("edge_artifact_sha256"),
+            payload.get("edge_auxiliary_checkpoint", str(DEFAULT_EDGE_AUXILIARY_CHECKPOINT)),
+            model,
+            bundle,
+            edge_module=edge_module,
+        )
+        expected_edge_identity = payload.get("edge_artifact_identity")
+        if edge_artifact_identity != expected_edge_identity:
+            raise ResumeHashError("worker edge artifact identity differs from parent validation")
         router = None
         router_sha = payload.get("router_sha256")
         if payload.get("router_json") is not None:
@@ -2492,6 +2760,7 @@ def _worker_entry(job_path_text: str) -> None:
                 graph_variant=payload["graph_variant"],
                 pair_batch_size=int(payload["pair_batch_size"]),
                 view_batch_size=int(payload["view_batch_size"]),
+                d4_views=payload.get("d4_views"),
                 expected_frames=FRAME_COUNT,
                 deadline_epoch=deadline_epoch,
                 router=router,
@@ -2499,6 +2768,8 @@ def _worker_entry(job_path_text: str) -> None:
                 accelerated_gate=payload.get("accelerated_gate"),
                 shared_zip_store=store,
                 a0_scorer=a0_scorer,
+                edge_scorer=edge_scorer,
+                edge_artifact_identity=edge_artifact_identity,
                 edge_module=edge_module,
             )
             results.append(result)
@@ -2646,6 +2917,11 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
     submission = output_dir / args.output_file
     if submission.exists():
         raise RunnerError(f"refusing to overwrite existing submission {submission}")
+    d4_views = TEST_ONLY_ONE_VIEW if args.test_only_one_view else PRODUCTION_D4_VIEWS
+    edge_artifact_identity = pinned_edge_artifact_record(
+        args.edge_artifact,
+        args.edge_artifact_sha256,
+    )
     preflight_report = preflight(
         support_root=args.support_root,
         report_path=output_dir / "preflight.json",
@@ -2653,6 +2929,7 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
         source_budget_bytes=args.source_budget_bytes,
         pair_batch_size=args.pair_batch_size,
         view_batch_size=args.view_batch_size,
+        d4_views=d4_views,
     )
     check_deadline(deadline_epoch, "post-preflight")
     records = load_registry(args.registry)
@@ -2676,6 +2953,7 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
     numerical_config_sha256 = bh_model.v45_config_sha(
         pair_batch_size=args.pair_batch_size,
         view_batch_size=args.view_batch_size,
+        d4_views=d4_views,
     )
     accelerated_gate = load_accelerated_score_gate(
         args.accelerated_score_gate,
@@ -2712,7 +2990,12 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
                 "graph_variant": args.graph_variant,
                 "pair_batch_size": args.pair_batch_size,
                 "view_batch_size": args.view_batch_size,
+                "d4_views": list(d4_views),
                 "accelerated_gate": accelerated_gate,
+                "edge_artifact": str(Path(args.edge_artifact).resolve()) if args.edge_artifact else None,
+                "edge_artifact_sha256": args.edge_artifact_sha256,
+                "edge_artifact_identity": edge_artifact_identity,
+                "edge_auxiliary_checkpoint": str(DEFAULT_EDGE_AUXILIARY_CHECKPOINT.resolve()),
                 "router_json": str(Path(args.router_json).resolve()) if args.router_json else None,
                 "router_sha256": router_sha,
                 "cache_identity": _identity_dict(cache_identity),
@@ -2751,12 +3034,15 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
                 pair_batch_size=args.pair_batch_size,
                 view_batch_size=args.view_batch_size,
                 accelerated_gate=accelerated_gate,
+                d4_views=d4_views,
             ),
             "router_sha256": router_sha,
             "checkpoint_exposure": CHECKPOINT_EXPOSURE,
             "preflight": preflight_report,
             "workers": aggregates,
         }
+        if edge_artifact_identity is not None:
+            report["edge_artifact"] = edge_artifact_identity
         if args.graph_variant == A0_GRAPH_VARIANT:
             video_audits = [
                 result["a0_audit"]
@@ -2813,6 +3099,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--accelerated-score-gate", type=Path)
     parser.add_argument("--deadline-min", type=float, default=DEFAULT_DEADLINE_MINUTES)
     parser.add_argument("--graph-variant", choices=tuple(GRAPH_VARIANTS), default=LOCKED_GRAPH_VARIANT)
+    parser.add_argument("--edge-artifact", type=Path)
+    parser.add_argument("--edge-artifact-sha256")
+    parser.add_argument(
+        "--test-only-one-view",
+        action="store_true",
+        help="Parity testing only: run unaugmented D4 view 0 in CV/train mode; never valid for submission",
+    )
     parser.add_argument("--router-json", type=Path)
     parser.add_argument("--source-budget-bytes", type=int, default=SOURCE_BUDGET_BYTES)
     parser.add_argument("--allow-cpu", action="store_true", help="Testing only; production requires two CUDA devices")
@@ -2833,6 +3126,21 @@ def validate_args(args: argparse.Namespace) -> None:
         raise RunnerError("production pair batch size is locked to 1")
     if not 1 <= args.view_batch_size <= 8:
         raise RunnerError("--view-batch-size must be in [1, 8]")
+    has_edge_artifact = args.edge_artifact is not None or args.edge_artifact_sha256 is not None
+    if has_edge_artifact and (args.edge_artifact is None or args.edge_artifact_sha256 is None):
+        raise RunnerError("--edge-artifact and --edge-artifact-sha256 must be supplied together")
+    if has_edge_artifact and args.graph_variant != LOCKED_GRAPH_VARIANT:
+        raise RunnerError("edge artifact association cannot be combined with --graph-variant a0")
+    if args.test_only_one_view and (
+        args.mode != "cv"
+        or args.split != "train"
+        or args.view_batch_size != 1
+        or not has_edge_artifact
+        or args.accelerated_score_gate is not None
+    ):
+        raise RunnerError(
+            "--test-only-one-view requires CV/train, view batch size 1, a pinned edge artifact, and no accelerated gate"
+        )
     if args.input is None and not args.preflight_only and args.cv_rungs_out is None:
         raise RunnerError("--input is required for inference")
 
@@ -2854,6 +3162,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             source_budget_bytes=args.source_budget_bytes,
             pair_batch_size=args.pair_batch_size,
             view_batch_size=args.view_batch_size,
+            d4_views=TEST_ONLY_ONE_VIEW if args.test_only_one_view else PRODUCTION_D4_VIEWS,
         )
         print(json.dumps(report, sort_keys=True))
         return 0

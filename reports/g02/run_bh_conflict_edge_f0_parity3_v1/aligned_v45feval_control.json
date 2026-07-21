@@ -1,0 +1,131 @@
+{
+  "schema": "celltrack-alpha.run-bh-v45feval-aligned-control.v1",
+  "status": "failed_whole_fragment_parity",
+  "run_bh": {
+    "path": "reports/g02/run_bh_conflict_edge_f0_parity3_v1",
+    "model": "released-bh-model",
+    "score": 0.7461104798347304,
+    "input_nodes": 85270,
+    "output_nodes": 83137,
+    "output_edges": 79766,
+    "elapsed_seconds": 1088.1129019260406
+  },
+  "v45feval": {
+    "path": "reports/g02/v45feval_conflict_edge_f0_divoff_parity3_v1",
+    "model": "frozen-v45-one-pass-compact-head",
+    "score": 0.7526175554583104,
+    "input_nodes": 84225,
+    "output_nodes": 82218,
+    "output_edges": 78870,
+    "elapsed_seconds": 1053.242367082974
+  },
+  "shared_configuration": {
+    "d4_views": [
+      0
+    ],
+    "edge_artifact": "reports/g02/conflict_edge_f0_fit117_v1/edge.json",
+    "edge_artifact_sha256": "5c6377cfdfe8bbc75bcef52c602cf86c402f07451a7751047a0adba87e7e8034",
+    "topology_mode": "legacy",
+    "division_enabled": false,
+    "frozen_scorer": true
+  },
+  "only_declared_configuration_difference": "detector implementation",
+  "videos": [
+    {
+      "video_id": "train:44b6_24264f12",
+      "run_bh": {
+        "input_nodes": 30328,
+        "candidate_count": 90226,
+        "output_nodes": 29739,
+        "output_edges": 28593,
+        "fragment_sha256": "d50017e57e23becd3d8ae6fc960c28d256a807d4437595df89592c22356b77ca",
+        "edge_tp": 205,
+        "edge_fp": 23,
+        "edge_fn": 16
+      },
+      "v45feval": {
+        "input_nodes": 30004,
+        "candidate_count": 89322,
+        "output_nodes": 29477,
+        "output_edges": 28334,
+        "fragment_sha256": "f246ca5447b354d8ab306db553b49b75563b9058ca4c40d0c97843019d23c74d",
+        "edge_tp": 206,
+        "edge_fp": 22,
+        "edge_fn": 15
+      },
+      "fragment_byte_identical": false,
+      "edge_count_identical": false,
+      "edge_count_delta_run_bh_minus_v45feval": {
+        "edge_tp": -1,
+        "edge_fp": 1,
+        "edge_fn": 1
+      }
+    },
+    {
+      "video_id": "train:44b6_267148e4",
+      "run_bh": {
+        "input_nodes": 27208,
+        "candidate_count": 82240,
+        "output_nodes": 26520,
+        "output_edges": 25323,
+        "fragment_sha256": "9d0b03415059d805d7b0e50ce09617d19ca98d32c46d9a64bdaeb525c6e9a32d",
+        "edge_tp": 237,
+        "edge_fp": 61,
+        "edge_fn": 40
+      },
+      "v45feval": {
+        "input_nodes": 26846,
+        "candidate_count": 80959,
+        "output_nodes": 26184,
+        "output_edges": 24997,
+        "fragment_sha256": "92a4a8009949263cb234ceedd83a1dd1c2c81832d57ad6f8716c4e850dfdb19f",
+        "edge_tp": 238,
+        "edge_fp": 60,
+        "edge_fn": 39
+      },
+      "fragment_byte_identical": false,
+      "edge_count_identical": false,
+      "edge_count_delta_run_bh_minus_v45feval": {
+        "edge_tp": -1,
+        "edge_fp": 1,
+        "edge_fn": 1
+      }
+    },
+    {
+      "video_id": "train:44b6_33b596bf",
+      "run_bh": {
+        "input_nodes": 27734,
+        "candidate_count": 74329,
+        "output_nodes": 26878,
+        "output_edges": 25850,
+        "fragment_sha256": "2b45a7d51037bcb9a828b8ea1b8e617dd45ba20e20e9d1f19451ed073172e4e8",
+        "edge_tp": 45,
+        "edge_fp": 5,
+        "edge_fn": 4
+      },
+      "v45feval": {
+        "input_nodes": 27375,
+        "candidate_count": 73279,
+        "output_nodes": 26557,
+        "output_edges": 25539,
+        "fragment_sha256": "50760968c844a268c858a1a42d3164bf436ee25d9b210788bf5c8be4c615f5a0",
+        "edge_tp": 45,
+        "edge_fp": 5,
+        "edge_fn": 4
+      },
+      "fragment_byte_identical": false,
+      "edge_count_identical": true,
+      "edge_count_delta_run_bh_minus_v45feval": {
+        "edge_tp": 0,
+        "edge_fp": 0,
+        "edge_fn": 0
+      }
+    }
+  ],
+  "association_port_evidence": "reports/g02/run_bh_conflict_edge_f0_parity3_v1/edge_port_parity.json",
+  "code_evidence": {
+    "run_bh_detector": "src/celltrack_alpha/bh_model.py:412-419 uses the released detect_head logits",
+    "v45feval_detector": "src/celltrack_alpha/v45_fast.py:339-358 adds the fitted compact corr_hid/corr_out correction to the released logits"
+  },
+  "conclusion": "Whole-fragment parity is unattainable between these declared paths without changing which detector is measured. The association port is exact on shared caches, but v45feval's compact correction changes detections and candidate sets before association."
+}

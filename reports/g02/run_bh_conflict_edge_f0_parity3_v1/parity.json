@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "status": "failed",
+  "acceptance_rule": {
+    "fragment_bytes": "byte-identical for all three videos",
+    "fallback": "identical edge_tp/edge_fp/edge_fn per video under the frozen scorer"
+  },
+  "result": {
+    "byte_identical_videos": 0,
+    "edge_count_identical_videos": 1,
+    "video_count": 3,
+    "stopped_before_step": 3,
+    "association_port_parity": "passed_on_identical_caches"
+  },
+  "run": {
+    "directory": "reports/g02/run_bh_conflict_edge_f0_parity3_v1",
+    "mode": "cv",
+    "split": "train",
+    "d4_views": [
+      0
+    ],
+    "view_mode": "test-only-one-view",
+    "production_eligible": false,
+    "edge_artifact": "reports/g02/conflict_edge_f0_fit117_v1/edge.json",
+    "edge_artifact_sha256": "5c6377cfdfe8bbc75bcef52c602cf86c402f07451a7751047a0adba87e7e8034",
+    "division_enabled": false,
+    "elapsed_seconds": 1088.1129019260406,
+    "merged_fragment": {
+      "path": "reports/g02/run_bh_conflict_edge_f0_parity3_v1/parity.csv",
+      "sha256": "323c91a737ee40701c6f9bebf0554aaf936f7f01139c9259ba0920a3f0b62631",
+      "bytes": 8422987,
+      "nodes": 83137,
+      "edges": 79766,
+      "rows": 162903
+    }
+  },
+  "reference": {
+    "directory": "reports/g02/source_softmax_edge_f0_fit117_holdout_complete57_v2",
+    "full_57_video_score": 0.8495036625176058,
+    "edge_jaccard": 0.8635120765608385,
+    "division_tp": 0,
+    "division_fp": 149,
+    "division_fn": 42
+  },
+  "videos": [
+    {
+      "dataset_id": "train:44b6_24264f12",
+      "run_fragment_sha256": "d50017e57e23becd3d8ae6fc960c28d256a807d4437595df89592c22356b77ca",
+      "reference_fragment_sha256": "f04c668a8f525d2ca96f4a20992889454bda3159bf04df9fe784e8d4955a3504",
+      "byte_identical": false,
+      "run_fragment_bytes": 2992636,
+      "reference_fragment_bytes": 2978656,
+      "run_nodes": 29739,
+      "reference_nodes": 29570,
+      "run_edges": 28593,
+      "reference_edges": 28498,
+      "run_edge_tp": 205,
+      "run_edge_fp": 23,
+      "run_edge_fn": 16,
+      "reference_edge_tp": 206,
+      "reference_edge_fp": 24,
+      "reference_edge_fn": 15,
+      "edge_count_identical": false,
+      "edge_count_delta_run_minus_reference": {
+        "edge_tp": -1,
+        "edge_fp": -1,
+        "edge_fn": 1
+      }
+    },
+    {
+      "dataset_id": "train:44b6_267148e4",
+      "run_fragment_sha256": "9d0b03415059d805d7b0e50ce09617d19ca98d32c46d9a64bdaeb525c6e9a32d",
+      "reference_fragment_sha256": "149dc29cd58d146c30901fb8d79a8f2582f2ae8dabc5ab53da69c3c6422781b5",
+      "byte_identical": false,
+      "run_fragment_bytes": 2654435,
+      "reference_fragment_bytes": 2630721,
+      "run_nodes": 26520,
+      "reference_nodes": 26259,
+      "run_edges": 25323,
+      "reference_edges": 25132,
+      "run_edge_tp": 237,
+      "run_edge_fp": 61,
+      "run_edge_fn": 40,
+      "reference_edge_tp": 235,
+      "reference_edge_fp": 67,
+      "reference_edge_fn": 42,
+      "edge_count_identical": false,
+      "edge_count_delta_run_minus_reference": {
+        "edge_tp": 2,
+        "edge_fp": -6,
+        "edge_fn": -2
+      }
+    },
+    {
+      "dataset_id": "train:44b6_33b596bf",
+      "run_fragment_sha256": "2b45a7d51037bcb9a828b8ea1b8e617dd45ba20e20e9d1f19451ed073172e4e8",
+      "reference_fragment_sha256": "c5de677661b611e58ae3205190b26e282b8eee524d44c5b443c049a5fd9ca0f7",
+      "byte_identical": false,
+      "run_fragment_bytes": 2690907,
+      "reference_fragment_bytes": 2671554,
+      "run_nodes": 26878,
+      "reference_nodes": 26667,
+      "run_edges": 25850,
+      "reference_edges": 25689,
+      "run_edge_tp": 45,
+      "run_edge_fp": 5,
+      "run_edge_fn": 4,
+      "reference_edge_tp": 45,
+      "reference_edge_fp": 5,
+      "reference_edge_fn": 4,
+      "edge_count_identical": true,
+      "edge_count_delta_run_minus_reference": {
+        "edge_tp": 0,
+        "edge_fp": 0,
+        "edge_fn": 0
+      }
+    }
+  ],
+  "verified_reference_configuration_mismatch": {
+    "requested_run": {
+      "model": "released-bh-model",
+      "d4_views": [
+        0
+      ],
+      "edge_artifact": "reports/g02/conflict_edge_f0_fit117_v1/edge.json",
+      "edge_artifact_sha256": "5c6377cfdfe8bbc75bcef52c602cf86c402f07451a7751047a0adba87e7e8034",
+      "division_enabled": false
+    },
+    "provided_reference": {
+      "model": "frozen-v45-one-pass-compact-head",
+      "d4_views": [
+        0
+      ],
+      "edge_artifact": "reports/g02/source_softmax_edge_f0_fit117_v1/edge.json",
+      "edge_artifact_sha256": "8621a5aa2f2a52894a1b9f14d0f442673eac9eeb221427cce3522f01bc4eb9db",
+      "division_mode": "inherited",
+      "effective_division_enabled": true
+    }
+  },
+  "association_port_evidence": {
+    "path": "reports/g02/run_bh_conflict_edge_f0_parity3_v1/edge_port_parity.json",
+    "videos_passed": 3,
+    "videos_tested": 3,
+    "probability_maps_exact": true,
+    "no_link_maps_exact": true,
+    "statistics_exact": true
+  },
+  "aligned_v45feval_control": {
+    "path": "reports/g02/run_bh_conflict_edge_f0_parity3_v1/aligned_v45feval_control.json",
+    "d4_views": [
+      0
+    ],
+    "same_edge_artifact": true,
+    "same_topology": true,
+    "same_division_mode": true,
+    "same_detector": false,
+    "byte_identical_videos": 0,
+    "edge_count_identical_videos": 1,
+    "video_count": 3,
+    "run_bh_score": 0.7461104798347304,
+    "v45feval_score": 0.7526175554583104
+  },
+  "inference": "The association port is exact on identical cached detections. A newly generated v45feval control aligned the artifact, topology, divisions-off setting, videos, and one-view setting; it still differed because v45feval applies a fitted compact detector correction that run_bh does not. The required whole-fragment parity criterion remains failed and no eight-view work may proceed."
+}

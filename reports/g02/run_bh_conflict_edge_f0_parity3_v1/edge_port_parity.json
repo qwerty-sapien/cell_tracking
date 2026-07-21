@@ -1,0 +1,48 @@
+{
+  "schema": "celltrack-alpha.run-bh-v45feval-edge-port-parity.v1",
+  "status": "passed",
+  "comparison": "run_bh.score_sparse_edge_cache versus v45feval.sparse_probs on the identical persisted run_bh cache and scorer instance",
+  "edge_artifact": "reports/g02/conflict_edge_f0_fit117_v1/edge.json",
+  "edge_artifact_sha256": "5c6377cfdfe8bbc75bcef52c602cf86c402f07451a7751047a0adba87e7e8034",
+  "fitted_parameter_count": 578,
+  "runtime_trainable_parameter_count": 0,
+  "videos": [
+    {
+      "video_id": "train:44b6_24264f12",
+      "detection_count": 30328,
+      "context_count": 99,
+      "candidate_count": 90226,
+      "no_link_count": 30031,
+      "probabilities_exact": true,
+      "probability_sha256": "6ce6bd59f6e4ec04f4c8db898fd7223a250cd0b894886fbdfb2466f56574ceaa",
+      "no_link_exact": true,
+      "no_link_sha256": "54bdb89f438e3aa5c60212a049a2de6b28061c18a4cb5d67e625a69854c51628",
+      "stats_exact": true
+    },
+    {
+      "video_id": "train:44b6_267148e4",
+      "detection_count": 27208,
+      "context_count": 99,
+      "candidate_count": 82240,
+      "no_link_count": 27022,
+      "probabilities_exact": true,
+      "probability_sha256": "01140e639630452921e2a46fd4fbbbb96289f8b5cb07ca44cb63cea7578782a6",
+      "no_link_exact": true,
+      "no_link_sha256": "76087d47d23245e80f97cc4c7efb0917d8c448e9828c5eabe388e5a8b7b06b3d",
+      "stats_exact": true
+    },
+    {
+      "video_id": "train:44b6_33b596bf",
+      "detection_count": 27734,
+      "context_count": 99,
+      "candidate_count": 74329,
+      "no_link_count": 27575,
+      "probabilities_exact": true,
+      "probability_sha256": "76cddb557b4fcca3ac3ebd96af792b35dbaf7a353614a016824e051205b55d37",
+      "no_link_exact": true,
+      "no_link_sha256": "3ab06135ff8536c7d4820fe7316affe1047a7014492a76ecbb484d568c8f1192",
+      "stats_exact": true
+    }
+  ],
+  "conclusion": "The run_bh association port is exact for these three caches. Whole-fragment parity remains failed because the requested comparison does not share an inference record and the supplied source-softmax reference also differs in edge artifact and effective division mode."
+}

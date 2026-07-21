@@ -299,6 +299,42 @@ class ModelGraphRouteTests(unittest.TestCase):
         self.assertEqual(report["parity_claim"], "none")
         self.assertTrue(report["real_t4_ab_required"])
 
+        one_view_identity = bh_model.CacheIdentity("f" * 64, "b" * 64, "c" * 64, 1, 1)
+        one_view = BH.inference_contract(
+            job,
+            one_view_identity,
+            pair_batch_size=1,
+            view_batch_size=1,
+            frame_count=3,
+            d4_views=(0,),
+        )
+        self.assertEqual(one_view["inference"]["d4_views"], [0])
+        self.assertEqual(one_view["inference"]["d4_mode"], "test-only-one-view")
+        self.assertNotEqual(one_view["sha256"], exact["sha256"])
+
+    def test_edge_artifact_cli_pin_and_one_view_gate_fail_closed(self) -> None:
+        artifact = ROOT / "reports/g02/conflict_edge_f0_fit117_v1/edge.json"
+        expected_sha256 = "5c6377cfdfe8bbc75bcef52c602cf86c402f07451a7751047a0adba87e7e8034"
+        record = BH.pinned_edge_artifact_record(artifact, expected_sha256)
+        self.assertEqual(record["sha256"], expected_sha256)
+        self.assertEqual(record["fitted_parameter_count"], 578)
+        self.assertFalse(record["division_enabled"])
+        with self.assertRaisesRegex(BH.RunnerError, "does not match"):
+            BH.pinned_edge_artifact_record(artifact, "0" * 64)
+
+        args = BH.build_parser().parse_args(
+            [
+                "--input", "/tmp/competition.zip",
+                "--mode", "cv", "--split", "train", "--test-only-one-view",
+                "--edge-artifact", str(artifact),
+                "--edge-artifact-sha256", expected_sha256,
+            ]
+        )
+        BH.validate_args(args)
+        args.mode = "submit"
+        with self.assertRaisesRegex(BH.RunnerError, "CV/train"):
+            BH.validate_args(args)
+
     def test_canonical_detection_conversion_preserves_float_until_csv(self) -> None:
         from celltrack_alpha import bh_graph
 
