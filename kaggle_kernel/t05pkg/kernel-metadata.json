@@ -1,0 +1,17 @@
+{
+  "code_file": "t05.ipynb",
+  "competition_sources": [
+    "biohub-cell-tracking-during-development"
+  ],
+  "dataset_sources": [
+    "thibautgoldsborough/cellmot-baseline-artifacts",
+    "pilkwang/biohub-tracking-support-pack-50ep-v1"
+  ],
+  "enable_gpu": true,
+  "enable_internet": false,
+  "id": "onebitbrain/biohub-t05d",
+  "is_private": true,
+  "kernel_type": "notebook",
+  "language": "python",
+  "title": "biohub-t05d"
+}

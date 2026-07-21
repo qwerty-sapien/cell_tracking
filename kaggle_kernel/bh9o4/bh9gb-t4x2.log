@@ -1,0 +1,52 @@
+[{"stream_name":"stdout","time":35.784141275,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/zarr-3.2.1-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":35.82711399,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/numcodecs-0.15.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":35.867500781,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/donfig-0.8.1.post1-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":35.877755482,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/polars-1.42.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":35.898755056,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/tracksdata-0.1.0rc6.dev3+g980c2d30a-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":35.913381948,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/bidict-0.23.1-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":35.923559408,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/geff-1.2.0.1.1-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":35.935745499,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/ilpy-0.6.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":35.9474676,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/imagecodecs-2026.6.26-cp312-abi3-manylinux_2_28_x86_64.whl\n"}
+,{"stream_name":"stdout","time":36.052188562,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/rustworkx-0.18.0-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl\n"}
+,{"stream_name":"stdout","time":36.07262826,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/geff_spec-1.1.1-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":36.082971523,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/polars_runtime_32-1.42.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":36.262329032,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/pyscipopt-6.2.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl\n"}
+,{"stream_name":"stdout","time":36.331016083,"data":"Installing collected packages: zarr, tracksdata, rustworkx, pyscipopt, polars-runtime-32, polars, numcodecs, imagecodecs, ilpy, geff-spec, geff, donfig, bidict\n"}
+,{"stream_name":"stdout","time":37.396280992,"data":"  Attempting uninstall: polars-runtime-32\n"}
+,{"stream_name":"stdout","time":37.545428295,"data":"    Found existing installation: polars-runtime-32 1.35.2\n"}
+,{"stream_name":"stdout","time":37.550403925,"data":"    Uninstalling polars-runtime-32-1.35.2:\n"}
+,{"stream_name":"stdout","time":38.460181398,"data":"      Successfully uninstalled polars-runtime-32-1.35.2\n"}
+,{"stream_name":"stdout","time":40.099430078,"data":"  Attempting uninstall: polars\n"}
+,{"stream_name":"stdout","time":40.426632711,"data":"    Found existing installation: polars 1.35.2\n"}
+,{"stream_name":"stdout","time":40.452517827,"data":"    Uninstalling polars-1.35.2:\n"}
+,{"stream_name":"stdout","time":40.537610657,"data":"      Successfully uninstalled polars-1.35.2\n"}
+,{"stream_name":"stdout","time":42.448414908,"data":"Successfully installed bidict-0.23.1 donfig-0.8.1.post1 geff-1.2.0.1.1 geff-spec-1.1.1 ilpy-0.6.0 imagecodecs-2026.6.26 numcodecs-0.15.1 polars-1.42.0 polars-runtime-32-1.42.0 pyscipopt-6.2.1 rustworkx-0.18.0 tracksdata-0.1.0rc6.dev3+g980c2d30a zarr-3.2.1\n"}
+,{"stream_name":"stderr","time":42.448905588,"data":"WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.\n"}
+,{"stream_name":"stderr","time":207.771600901,"data":"Process bh-gpu-0:\n"}
+,{"stream_name":"stderr","time":207.772271624,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":207.772673121,"data":"  File \"/usr/lib/python3.12/multiprocessing/process.py\", line 314, in _bootstrap\n"}
+,{"stream_name":"stderr","time":207.772721121,"data":"    self.run()\n"}
+,{"stream_name":"stderr","time":207.772729995,"data":"  File \"/usr/lib/python3.12/multiprocessing/process.py\", line 108, in run\n"}
+,{"stream_name":"stderr","time":207.772735419,"data":"    self._target(*self._args, **self._kwargs)\n"}
+,{"stream_name":"stderr","time":207.772740484,"data":"  File \"/kaggle/working/bh9src/scripts/run_bh.py\", line 1877, in _worker_entry\n"}
+,{"stream_name":"stderr","time":207.772745993,"data":"    result = process_video(\n"}
+,{"stream_name":"stderr","time":207.772750823,"data":"             ^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":207.77275557,"data":"  File \"/kaggle/working/bh9src/scripts/run_bh.py\", line 1689, in process_video\n"}
+,{"stream_name":"stderr","time":207.772760929,"data":"    rows = graph_rows(job.record.dataset, graph_result, job.record.image_shape)\n"}
+,{"stream_name":"stderr","time":207.772766424,"data":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":207.772771837,"data":"  File \"/kaggle/working/bh9src/scripts/run_bh.py\", line 1272, in graph_rows\n"}
+,{"stream_name":"stderr","time":207.772777014,"data":"    validate_graph_result(graph_result, shape_tzyx)\n"}
+,{"stream_name":"stderr","time":207.772795751,"data":"  File \"/kaggle/working/bh9src/scripts/run_bh.py\", line 1246, in validate_graph_result\n"}
+,{"stream_name":"stderr","time":207.772801084,"data":"    raise OutputValidationError(\"publicly rounded graph node lies outside the image\")\n"}
+,{"stream_name":"stderr","time":207.77280615,"data":"run_bh.OutputValidationError: publicly rounded graph node lies outside the image\n"}
+,{"stream_name":"stderr","time":209.280349151,"data":"bh9gb: failed closed: RunnerError: spawned worker failure: [1, None]; evidence=/kaggle/working/bh9fail.json\n"}
+,{"stream_name":"stderr","time":209.438668481,"data":"/usr/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown\n"}
+,{"stream_name":"stderr","time":209.438722317,"data":"  warnings.warn('resource_tracker: There appear to be %d '\n"}
+,{"stream_name":"stderr","time":209.811621728,"data":"LaunchError: bh9gb exited 2\n"}
+,{"stream_name":"stderr","time":212.941242218,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":212.941301498,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":213.267081542,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":213.267115242,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":214.176141275,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":216.109050305,"data":"[NbConvertApp] Writing 695416 bytes to __results__.html\n"}
+]

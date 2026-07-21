@@ -1,0 +1,212 @@
+{
+  "kind": "post_endpoint_offset_clone_probe",
+  "dataset": "6bba_1d0d8384",
+  "rows": [
+    {
+      "variant": "base",
+      "nodes": 1009,
+      "edges": 658,
+      "stats": null,
+      "edge_tp": 37.0,
+      "edge_fp": 1.0,
+      "edge_fn": 12.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 1009.0,
+      "node_recall": 0.76,
+      "total_node_ratio": 0.8780129171552479,
+      "edge_jaccard": 0.74,
+      "adj_edge_jaccard": 0.6750270441305116,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 537.27
+    },
+    {
+      "variant": "postA_min3",
+      "nodes": 1204,
+      "edges": 788,
+      "stats": {
+        "offset": [
+          4,
+          2,
+          19
+        ],
+        "source_mode": "base_endpoint",
+        "layer_nodes": 324,
+        "layer_edges": 201,
+        "kept_nodes": 195,
+        "kept_edges": 130,
+        "dropped": 129
+      },
+      "edge_tp": 37.0,
+      "edge_fp": 1.0,
+      "edge_fn": 12.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 1204.0,
+      "node_recall": 0.76,
+      "total_node_ratio": 1.2409589219573027,
+      "edge_jaccard": 0.74,
+      "adj_edge_jaccard": 0.6481690397751596,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 537.27
+    },
+    {
+      "variant": "postA_min2",
+      "nodes": 1264,
+      "edges": 818,
+      "stats": {
+        "offset": [
+          4,
+          2,
+          19
+        ],
+        "source_mode": "base_endpoint",
+        "layer_nodes": 324,
+        "layer_edges": 201,
+        "kept_nodes": 255,
+        "kept_edges": 160,
+        "dropped": 69
+      },
+      "edge_tp": 37.0,
+      "edge_fp": 1.0,
+      "edge_fn": 12.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 1264.0,
+      "node_recall": 0.76,
+      "total_node_ratio": 1.3526346157425504,
+      "edge_jaccard": 0.74,
+      "adj_edge_jaccard": 0.6399050384350512,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 537.27
+    },
+    {
+      "variant": "postA_endpoint_only",
+      "nodes": 1009,
+      "edges": 658,
+      "stats": {
+        "offset": [
+          4,
+          2,
+          19
+        ],
+        "source_mode": "endpoint_only",
+        "layer_nodes": 16,
+        "layer_edges": 0,
+        "kept_nodes": 0,
+        "kept_edges": 0,
+        "dropped": 16
+      },
+      "edge_tp": 37.0,
+      "edge_fp": 1.0,
+      "edge_fn": 12.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 1009.0,
+      "node_recall": 0.76,
+      "total_node_ratio": 0.8780129171552479,
+      "edge_jaccard": 0.74,
+      "adj_edge_jaccard": 0.6750270441305116,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 537.27
+    },
+    {
+      "variant": "post_chain1",
+      "nodes": 1204,
+      "edges": 788,
+      "stats": {
+        "offset": [
+          4,
+          3,
+          20
+        ],
+        "source_mode": "base_endpoint",
+        "layer_nodes": 324,
+        "layer_edges": 201,
+        "kept_nodes": 195,
+        "kept_edges": 130,
+        "dropped": 129
+      },
+      "edge_tp": 37.0,
+      "edge_fp": 1.0,
+      "edge_fn": 12.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 1204.0,
+      "node_recall": 0.76,
+      "total_node_ratio": 1.2409589219573027,
+      "edge_jaccard": 0.74,
+      "adj_edge_jaccard": 0.6481690397751596,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 537.27
+    },
+    {
+      "variant": "post_chain1_min2",
+      "nodes": 1264,
+      "edges": 818,
+      "stats": {
+        "offset": [
+          4,
+          3,
+          20
+        ],
+        "source_mode": "base_endpoint",
+        "layer_nodes": 324,
+        "layer_edges": 201,
+        "kept_nodes": 255,
+        "kept_edges": 160,
+        "dropped": 69
+      },
+      "edge_tp": 37.0,
+      "edge_fp": 1.0,
+      "edge_fn": 12.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 1264.0,
+      "node_recall": 0.76,
+      "total_node_ratio": 1.3526346157425504,
+      "edge_jaccard": 0.74,
+      "adj_edge_jaccard": 0.6399050384350512,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 537.27
+    }
+  ],
+  "summary": {
+    "n": 6,
+    "edge_jaccard": 0.74,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.7600000000000001,
+    "adj_edge_jaccard": 0.6543670407802409,
+    "n_adj": 6,
+    "score": 0.6543670407802409
+  },
+  "best": {
+    "variant": "base",
+    "nodes": 1009,
+    "edges": 658,
+    "stats": null,
+    "edge_tp": 37.0,
+    "edge_fp": 1.0,
+    "edge_fn": 12.0,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "num_pred_nodes": 1009.0,
+    "node_recall": 0.76,
+    "total_node_ratio": 0.8780129171552479,
+    "edge_jaccard": 0.74,
+    "adj_edge_jaccard": 0.6750270441305116,
+    "division_jaccard": NaN,
+    "estimated_number_of_nodes": 537.27
+  },
+  "runtime_sec": 63.45784020423889
+}

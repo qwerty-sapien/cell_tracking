@@ -1,0 +1,47 @@
+{
+  "artifact": "biohub-v45-d4-ab-result.v1",
+  "source": {
+    "kernel": "onebitbrain/biohub-v45abnb",
+    "version": 2,
+    "status": "complete",
+    "requested_machine_shape": "NvidiaTeslaT4",
+    "output": "/private/tmp/g02-ab45t4/v45ab.json",
+    "private": true,
+    "scored_submission": false
+  },
+  "scope": {
+    "dataset": "44b6_0113de3b",
+    "frames": [0, 1],
+    "input_shape_btzyx": [1, 2, 64, 64, 64],
+    "view_batch_sizes": [1, 4],
+    "checkpoint_sha256": "12f6881ee3620a831697ca098ff8f48e687a24225f4e048b538deec3562fe771"
+  },
+  "numerical_equivalence": {
+    "feature_bitwise_equal": true,
+    "logit_bitwise_equal": [true, true],
+    "detection_signatures_equal": true,
+    "max_abs_difference": 0.0,
+    "exactly_equal": true
+  },
+  "timing": {
+    "sequential": {
+      "wall_seconds": 0.8466688720000093,
+      "cuda_milliseconds": 846.6483154296875,
+      "memory_peak_delta_bytes": 566149120
+    },
+    "batched_four": {
+      "wall_seconds": 0.8424014500000112,
+      "cuda_milliseconds": 842.3533325195312,
+      "memory_peak_delta_bytes": 2039024128
+    },
+    "speedup_wall": 1.005065781878697,
+    "speedup_cuda": 1.0050987901921271,
+    "peak_memory_multiple": 3.601368268502624
+  },
+  "decision": {
+    "status": "rejected_as_runtime_optimization",
+    "reason": "The 0.5% speed gain is immaterial and consumes 3.6x the working memory. The successful equality check proves only that the optimization is safe, not that it is useful.",
+    "retain": "V45 sequential eight-view inference remains the quality reference.",
+    "next_candidate": "Benchmark graph-preserving compiler acceleration, then pursue a distilled small detector only if its frozen grouped validation clears the V45 quality floor."
+  }
+}

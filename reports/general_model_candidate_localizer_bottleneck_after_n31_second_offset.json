@@ -1,0 +1,71 @@
+{
+  "created_at": "2026-07-13T19:23:20+08:00",
+  "d07_policy": "A / clean_compact unchanged",
+  "decision": "promote_second_offset_clone_for_6bba_second_choice_balanced_compact",
+  "delta_score": 0.024561552264569353,
+  "evidence": {
+    "actual_1d0d_probe": "reports/general_model_n31_1d0d_second_offset_actual_probe.json",
+    "d07_guard": "reports/general_model_cv_audit_fold1_auto_d07_second_offset_guard_1clip.json",
+    "division_guard": "reports/general_model_cv_audit_fold0_auto_fe670320_second_offset_guard_1clip.json",
+    "locked12_audit": "reports/general_model_cv_audit_fold0_auto_second_offset_12ds_12clips.json",
+    "oneclip_audit": "reports/general_model_cv_audit_fold0_auto_1d0d_second_offset_probe_1clip.json",
+    "posthoc_grid": "reports/general_model_n31_1d0d_second_offset_posthoc_grid.json",
+    "scorer_parity": "reports/general_model_scorer_parity_after_second_offset.json",
+    "synthetic": "reports/synthetic_benchmark_after_second_offset.json"
+  },
+  "interpretation": [
+    "The second offset clone recovers a second translated lineage family in the 6bba second-choice profile.",
+    "This is still a low-compute heuristic clone layer; it improves edge recall without changing solver validity, but does not solve the broader localization bottleneck.",
+    "d07 remains on path A clean_compact; division guard remains intact."
+  ],
+  "locked_after": {
+    "adj_edge_jaccard": 0.6392703206583855,
+    "division_fn": 0.0,
+    "division_fp": 0.0,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "edge_jaccard": 0.6481481481481481,
+    "n": 12,
+    "n_adj": 12,
+    "node_recall": 0.8180149840700915,
+    "score": 0.6392703206583855
+  },
+  "locked_before": {
+    "adj_edge_jaccard": 0.6147087683938162,
+    "division_fn": 0.0,
+    "division_fp": 0.0,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "edge_jaccard": 0.6111111111111112,
+    "n": 12,
+    "n_adj": 12,
+    "node_recall": 0.8080149840700916,
+    "score": 0.6147087683938162
+  },
+  "offset_added_zyx": [
+    0,
+    -36,
+    30
+  ],
+  "row_delta_6bba_1d0d8384": {
+    "after": {
+      "edge_fn": 19.0,
+      "edge_fp": 1.0,
+      "edge_tp": 30.0,
+      "edges": 622,
+      "node_recall": 0.64,
+      "nodes": 1015.0,
+      "score": 0.5466491708079736
+    },
+    "before": {
+      "edge_fn": 25.0,
+      "edge_fp": 1.0,
+      "edge_tp": 24.0,
+      "edges": 420,
+      "node_recall": 0.52,
+      "nodes": 682.0,
+      "score": 0.46706974147076885
+    }
+  },
+  "target_not_met": true
+}

@@ -1,0 +1,87 @@
+{
+  "kind": "candidate_localizer_bottleneck_decision",
+  "iteration": "N59",
+  "decision": "promote_guarded_residual_offset_clones",
+  "baseline": {
+    "locked12_report": "reports/general_model_cv_audit_fold0_auto_n58_0c7_offset_only_minx_12ds_12clips.json",
+    "locked12_score": 0.8126358995396531,
+    "locked12_edge_jaccard": 0.8385093167701864,
+    "locked12_node_recall": 0.9352830047789725,
+    "target_1d0d_score": 0.6871475794293372,
+    "target_1d0d_edge_tp_fp_fn": [37, 1, 12],
+    "target_1d0d_node_recall": 0.76
+  },
+  "diagnostics": {
+    "candidate_oracle": "reports/general_model_g01_n59_candidate_edge_oracle_1d0d_current.json",
+    "final_edge_labels": "reports/general_model_g01_n59_final_edge_labels_1d0d_current.json",
+    "interpretation": "Current 1d0d has zero unselected emitted GT-edge hits, so missed edges are not solvable by a local linker swap. Residual nearest-node deltas pointed to missing crowded duplicate/localization lineages.",
+    "negative_probe": {
+      "report": "reports/general_model_g01_n59_1d0d_offset_xcap224_probe.json",
+      "variant": "filter_component_max_x_224",
+      "score": 0.6834287788262884,
+      "reason": "Relaxing the x cap recovered no true edges and only inflated node/edge penalty."
+    },
+    "positive_probe": {
+      "report": "reports/general_model_g01_n59_1d0d_residual_offsets_probe.json",
+      "best_variant": "combo_low",
+      "added_offsets_zyx": [[-9, -25, -18], [8, 0, 38], [-4, 32, 12]],
+      "score": 0.7562694406033116,
+      "edge_jaccard": 0.8823529411764706,
+      "edge_tp_fp_fn": [45, 2, 4],
+      "node_recall": 0.9333333333333333
+    }
+  },
+  "promoted": {
+    "name": "1d0d_residual_offset_clones_v1",
+    "route_scope": "second_choice_edge_rescue_profile balanced_compact 6bba branch",
+    "change": "Extend the existing filtered offset clone set from five to eight offsets by adding [-9,-25,-18], [8,0,38], and [-4,32,12].",
+    "safeguards": {
+      "offset_clone_skip_clipped": true,
+      "offset_clone_filter_min_component_timepoints": 3,
+      "offset_clone_filter_component_max_x": 192,
+      "component_prune_min_edges": 2
+    },
+    "implementation_files": [
+      "src/celltrack_alpha/routing.py",
+      "tests/test_routing.py"
+    ]
+  },
+  "locked_result": {
+    "report": "reports/general_model_cv_audit_fold0_auto_n59_1d0d_residual_offsets_12ds_12clips.json",
+    "locked12_score": 0.833621866204853,
+    "locked12_edge_jaccard": 0.8827160493827161,
+    "locked12_node_recall": 0.9497274492234169,
+    "delta_vs_n58_score": 0.020985966665199923,
+    "delta_vs_n58_edge_jaccard": 0.04420673261252968,
+    "delta_vs_n58_node_recall": 0.014444444444444371
+  },
+  "target_row": {
+    "dataset": "6bba_1d0d8384",
+    "report": "reports/general_model_cv_audit_fold0_auto_n59_1d0d_residual_offsets_guard_1clip.json",
+    "score": 0.7562694406033116,
+    "edge_jaccard": 0.8823529411764706,
+    "edge_tp_fp_fn": [45, 2, 4],
+    "node_recall": 0.9333333333333333,
+    "nodes": 1305,
+    "edges": 870
+  },
+  "guards": {
+    "d07_policy": "Kept d07 on option A / clean_compact.",
+    "d07_report": "reports/general_model_cv_audit_fold1_auto_d07_after_n59_1d0d_residual_offsets_guard_1clip.json",
+    "d07_score": 0.5382049227756265,
+    "division_report": "reports/general_model_cv_audit_fold0_auto_fe670320_after_n59_1d0d_residual_offsets_guard_1clip.json",
+    "division_score": 0.9391485172880522,
+    "division_tp_fp_fn": [1, 0, 0]
+  },
+  "verification": {
+    "scorer_parity": "reports/general_model_scorer_parity_after_n59_1d0d_residual_offsets.json",
+    "synthetic_benchmark": "reports/synthetic_benchmark_after_n59_1d0d_residual_offsets.json",
+    "unit_tests": "PYTHONPATH=src PYTHONDONTWRITEBYTECODE=1 PYTHONPYCACHEPREFIX=/private/tmp/cell_tracking_pycache_n59_unittest .venv/bin/python -m unittest discover -s tests -> 109 tests OK",
+    "compileall": "PYTHONPATH=src PYTHONDONTWRITEBYTECODE=1 PYTHONPYCACHEPREFIX=/private/tmp/cell_tracking_pycache_n59_compileall .venv/bin/python -m compileall -q src scripts tests -> OK"
+  },
+  "next_direction": {
+    "primary": "Current locked12 score is now close to target but still below 0.85; remaining weak rows are 062c, 2312, and 2819.",
+    "recommended": "Use the same residual-localization method on 062c/2312/2819, but keep testing each candidate with official adjusted score because broad extra offsets can still lose to node penalty.",
+    "compute_policy": "No training-from-scratch or paid compute; all evidence is local CPU official-metric validation."
+  }
+}

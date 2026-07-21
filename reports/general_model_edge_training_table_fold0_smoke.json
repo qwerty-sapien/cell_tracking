@@ -1,0 +1,157 @@
+{
+  "kind": "candidate_graph_training_table",
+  "created_at_unix": 1783788800.959552,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "split_manifest_sha256": "b02e489391b2f093b79a2416f94e84223702b9744ae61cdda11ed9485b66baae",
+  "fold_id": "0",
+  "source_datasets": [
+    "44b6_0db75fae",
+    "6bba_07477033"
+  ],
+  "calibration_train_count": 155,
+  "validation_count": 40,
+  "excluded_duplicate_public_ids": [
+    "44b6_0113de3b",
+    "44b6_0b24845f",
+    "6bba_05b6850b",
+    "6bba_05db0fb1"
+  ],
+  "routes": [
+    "balanced_compact"
+  ],
+  "match_radius_um": 7.0,
+  "hard_negative_radius_um": 14.0,
+  "clip_length": 3,
+  "clips_per_dataset": 1,
+  "node_csv": "data/derived/edge_scorer/candidate_nodes_fold0_balanced_compact_2ds.csv",
+  "edge_csv": "data/derived/edge_scorer/candidate_edges_fold0_balanced_compact_2ds.csv",
+  "node_csv_sha256": "4f5ad8b750845612db97fc43f21f5eea5687b7ec68a6adb5defaab61e8a05395",
+  "edge_csv_sha256": "92d59cdb041d08dfade109a90d343d204e9049a444a845d69e2c06a7c18b2f4f",
+  "node_rows": 960,
+  "edge_rows": 656,
+  "node_label_status": {
+    "unknown_far_from_sparse_gt": 910,
+    "positive_7um_assignment": 13,
+    "hard_negative_near_sparse_gt": 37
+  },
+  "edge_label_status": {
+    "unknown_sparse_endpoint": 591,
+    "hard_negative_endpoint": 59,
+    "positive_gt_edge": 6
+  },
+  "node_schema": [
+    "dataset",
+    "prefix",
+    "fold_id",
+    "route",
+    "clip_start",
+    "clip_end",
+    "t",
+    "node_id",
+    "z",
+    "y",
+    "x",
+    "label",
+    "label_status",
+    "matched_gt_id",
+    "nearest_gt_um",
+    "sources",
+    "feature__dog_only",
+    "feature__has_components",
+    "feature__has_dog",
+    "feature__has_dog_abs",
+    "feature__has_dog_bright",
+    "feature__has_dog_dark",
+    "feature__has_hmax",
+    "feature__has_local_contrast",
+    "feature__has_tile",
+    "feature__has_tile_contrast",
+    "feature__has_tile_raw",
+    "feature__intensity",
+    "feature__local_density",
+    "feature__log1p_intensity",
+    "feature__log1p_local_density",
+    "feature__score",
+    "feature__source_count",
+    "feature__source_family_count",
+    "feature__tile_only",
+    "feature__uncertainty"
+  ],
+  "edge_schema": [
+    "dataset",
+    "prefix",
+    "fold_id",
+    "route",
+    "clip_start",
+    "clip_end",
+    "source_id",
+    "target_id",
+    "label",
+    "label_status",
+    "matched_source_gt_id",
+    "matched_target_gt_id",
+    "feature__appearance_delta",
+    "feature__appearance_penalty",
+    "feature__density_penalty",
+    "feature__distance_norm",
+    "feature__distance_um",
+    "feature__dt",
+    "feature__edge_cost",
+    "feature__edge_score",
+    "feature__intensity_delta",
+    "feature__mean_density",
+    "feature__source_density",
+    "feature__source_has_dog",
+    "feature__source_has_tile",
+    "feature__source_log1p_intensity",
+    "feature__source_score",
+    "feature__target_density",
+    "feature__target_has_dog",
+    "feature__target_has_tile",
+    "feature__target_log1p_intensity",
+    "feature__target_score"
+  ],
+  "dataset_reports": [
+    {
+      "dataset": "44b6_0db75fae",
+      "route": "balanced_compact",
+      "clip_start": 0,
+      "clip_end": 3,
+      "nodes": 480,
+      "edge_candidates": 292,
+      "gt_misses_7um": 2,
+      "node_label_status": {
+        "unknown_far_from_sparse_gt": 467,
+        "positive_7um_assignment": 4,
+        "hard_negative_near_sparse_gt": 9
+      },
+      "edge_label_status": {
+        "unknown_sparse_endpoint": 280,
+        "hard_negative_endpoint": 12
+      },
+      "runtime_sec": 16.609352827072144
+    },
+    {
+      "dataset": "6bba_07477033",
+      "route": "balanced_compact",
+      "clip_start": 0,
+      "clip_end": 3,
+      "nodes": 480,
+      "edge_candidates": 364,
+      "gt_misses_7um": 3,
+      "node_label_status": {
+        "unknown_far_from_sparse_gt": 443,
+        "hard_negative_near_sparse_gt": 28,
+        "positive_7um_assignment": 9
+      },
+      "edge_label_status": {
+        "unknown_sparse_endpoint": 311,
+        "hard_negative_endpoint": 47,
+        "positive_gt_edge": 6
+      },
+      "runtime_sec": 17.012208938598633
+    }
+  ],
+  "runtime_sec": 33.73412084579468
+}

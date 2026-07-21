@@ -1,0 +1,29 @@
+schema_version: 1
+suite: cruise_goal
+planning_state: Draft
+mode: New
+current_slice: G-01
+last_reconciled: "2026-07-14"
+repository:
+  cwd: /Users/agent/Desktop/cell_tracking
+  head_commit: c3b9b703b049fc25f10e2b42bb986bb94f137a72
+  head_tree: 6545134fe081bf5a1e5b8e7b44b07ea8b0b66935
+  dirty_tracked_file_count: 28
+  untracked_file_count: 980
+raw_prompt: "$cruise:goal  have you submitted this model to biohub kaggle and is the score the true score reflected by the site? do so for verification and iterate as we proceed to revise our goal endpoint at 0.92 score"
+raw_prompt_sha256: cf050ce8f0385c4df44dab480f1f2cec4018aa4dcab54b4a189e16be56ff6aa3
+route:
+  selected_skill: cruise:goal
+  strategy: single-slice
+  reason: "The request requires external Kaggle verification, iterative model work toward a revised 0.92 target, durable evidence, permission boundaries, and recovery-sensitive execution."
+normalized_goal:
+  - "Verify whether the current model has been submitted to the Biohub Kaggle competition and distinguish local CV scores from Kaggle site scores."
+  - "If approved, submit the current low-compute model through the existing Kaggle workflow, capture the true Kaggle score, and use that evidence to iterate toward a 0.92 endpoint."
+  - "Preserve scorer parity, reproducibility, and low-compute constraints while incorporating other allowed heuristics or algorithmic paths only when they improve validated score."
+change_ledger:
+  - id: H-01
+    source: user
+    text: "Initial Cruise Goal request to verify Kaggle submission/site score and revise the endpoint to 0.92."
+  - id: H-02
+    source: user
+    text: "User explicitly approved Cruise worker repository-derived packet/evidence transfer and Kaggle account interactions through logged-in Chrome, including reading Kaggle content, uploading submission.csv, checking scores, and deleting/replacing generated submission CSVs."

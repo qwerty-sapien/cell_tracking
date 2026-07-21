@@ -1,0 +1,121 @@
+{
+  "kind": "n31_1d0d_second_offset_actual_probe",
+  "created_at_unix": 1783941244.263644,
+  "dataset": "6bba_1d0d8384",
+  "rows": [
+    {
+      "variant": "current",
+      "score": 0.46706974147076885,
+      "edge_jaccard": 0.48,
+      "node_recall": 0.52,
+      "edge_tp": 24.0,
+      "edge_fp": 1.0,
+      "edge_fn": 25.0,
+      "nodes": 682,
+      "edges": 420,
+      "offset_clone_layers": {
+        "enabled": true,
+        "offsets_zyx": [
+          [
+            0,
+            20,
+            17
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 333,
+        "base_edges": 202,
+        "cloned_nodes": 333,
+        "cloned_edges": 202,
+        "clipped_nodes": 26,
+        "mean_abs_offset_zyx": [
+          0.0,
+          19.243243,
+          16.867868
+        ]
+      },
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 3.0,
+        "max_per_t": 16,
+        "requires_history": false,
+        "base_nodes": 666,
+        "base_edges": 404,
+        "cloned_nodes": 16,
+        "cloned_edges": 16,
+        "new_per_t": {
+          "2": 16
+        },
+        "mean_abs_offset_zyx": [
+          0.8125,
+          1.375,
+          3.1875
+        ]
+      },
+      "runtime_sec": 39.38025665283203
+    },
+    {
+      "variant": "second_offset",
+      "score": 0.5466491708079736,
+      "edge_jaccard": 0.6,
+      "node_recall": 0.64,
+      "edge_tp": 30.0,
+      "edge_fp": 1.0,
+      "edge_fn": 19.0,
+      "nodes": 1015,
+      "edges": 622,
+      "offset_clone_layers": {
+        "enabled": true,
+        "offsets_zyx": [
+          [
+            0,
+            20,
+            17
+          ],
+          [
+            0,
+            -36,
+            30
+          ]
+        ],
+        "layers": 2,
+        "base_nodes": 333,
+        "base_edges": 202,
+        "cloned_nodes": 666,
+        "cloned_edges": 404,
+        "clipped_nodes": 101,
+        "mean_abs_offset_zyx": [
+          0.0,
+          25.992492,
+          23.106607
+        ]
+      },
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 3.0,
+        "max_per_t": 16,
+        "requires_history": false,
+        "base_nodes": 999,
+        "base_edges": 606,
+        "cloned_nodes": 16,
+        "cloned_edges": 16,
+        "new_per_t": {
+          "2": 16
+        },
+        "mean_abs_offset_zyx": [
+          0.8125,
+          1.375,
+          3.1875
+        ]
+      },
+      "runtime_sec": 47.01910710334778
+    }
+  ],
+  "runtime_sec": 86.47923493385315
+}

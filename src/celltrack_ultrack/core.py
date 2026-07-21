@@ -10,7 +10,8 @@ from __future__ import annotations
 import math
 import sys
 from collections.abc import Mapping
-from dataclasses import dataclass, replace
+from dataclasses import dataclass, fields, replace
+from numbers import Integral, Real
 from pathlib import Path
 from typing import Any
 
@@ -58,6 +59,9 @@ class UltrackConfig:
     database_file_name: str = "ultrack.db"
     max_segments_per_time: int = 100_000
 
+    def __post_init__(self) -> None:
+        validate_ultrack_config(self)
+
 
 _CONTOUR_PRESETS: dict[str, dict[str, float]] = {
     "low": {"gradient_quantile": 0.985, "frontier_weight": 0.55, "min_frontier": 0.05},
@@ -66,10 +70,182 @@ _CONTOUR_PRESETS: dict[str, dict[str, float]] = {
 }
 
 
+def validate_ultrack_config(config: UltrackConfig) -> None:
+    """Validate every public ``UltrackConfig`` field before backend work."""
+
+    if not isinstance(config, UltrackConfig):
+        raise TypeError(f"config must be an UltrackConfig, got {type(config).__name__}")
+
+    checked: set[str] = set()
+
+    def value(name: str) -> Any:
+        checked.add(name)
+        return getattr(config, name)
+
+    def require_number(
+        name: str,
+        *,
+        minimum: float | None = None,
+        strict: bool = False,
+        maximum: float | None = None,
+    ) -> float:
+        current = value(name)
+        if isinstance(current, bool) or not isinstance(current, Real):
+            raise ValueError(f"{name} must be a finite number, got {current!r}")
+        resolved = float(current)
+        if not math.isfinite(resolved):
+            raise ValueError(f"{name} must be a finite number, got {current!r}")
+        if minimum is not None and (resolved <= minimum if strict else resolved < minimum):
+            relation = "greater than" if strict else "at least"
+            raise ValueError(f"{name} must be {relation} {minimum}, got {current!r}")
+        if maximum is not None and resolved > maximum:
+            raise ValueError(f"{name} must be at most {maximum}, got {current!r}")
+        return resolved
+
+    def require_optional_number(
+        name: str,
+        *,
+        minimum: float,
+        maximum: float | None = None,
+    ) -> float | None:
+        current = value(name)
+        if current is None:
+            return None
+        if isinstance(current, bool) or not isinstance(current, Real):
+            raise ValueError(f"{name} must be None or a finite number, got {current!r}")
+        resolved = float(current)
+        if (
+            not math.isfinite(resolved)
+            or resolved < minimum
+            or (maximum is not None and resolved > maximum)
+        ):
+            upper = "" if maximum is None else f" and at most {maximum}"
+            raise ValueError(
+                f"{name} must be None or a finite number at least {minimum}{upper}, "
+                f"got {current!r}"
+            )
+        return resolved
+
+    def require_integer(name: str, *, minimum: int) -> int:
+        current = value(name)
+        if isinstance(current, bool) or not isinstance(current, Integral) or int(current) < minimum:
+            raise ValueError(f"{name} must be an integer at least {minimum}, got {current!r}")
+        return int(current)
+
+    def require_optional_integer(name: str, *, minimum: int) -> int | None:
+        current = value(name)
+        if current is None:
+            return None
+        if isinstance(current, bool) or not isinstance(current, Integral) or int(current) < minimum:
+            raise ValueError(
+                f"{name} must be None or an integer at least {minimum}, got {current!r}"
+            )
+        return int(current)
+
+    scale = value("scale_zyx")
+    if scale is not None and (
+        not isinstance(scale, tuple)
+        or len(scale) != 3
+        or any(
+            isinstance(item, bool)
+            or not isinstance(item, Real)
+            or not math.isfinite(float(item))
+            or float(item) <= 0.0
+            for item in scale
+        )
+    ):
+        raise ValueError("scale_zyx must be None or a Z/Y/X tuple of three positive finite values")
+
+    sigmas = value("sigmas_um")
+    if (
+        not isinstance(sigmas, tuple)
+        or not sigmas
+        or any(
+            isinstance(item, bool)
+            or not isinstance(item, Real)
+            or not math.isfinite(float(item))
+            or float(item) <= 0.0
+            for item in sigmas
+        )
+    ):
+        raise ValueError("sigmas_um must be a non-empty tuple of positive finite values")
+
+    require_number("dog_ratio", minimum=1.0, strict=True)
+    q_low = require_number("q_low", minimum=0.0, maximum=1.0)
+    q_high = require_number("q_high", minimum=0.0, maximum=1.0)
+    require_number("foreground_quantile", minimum=0.0, maximum=1.0)
+    require_number("foreground_threshold", minimum=0.0, maximum=1.0)
+    require_number("local_contrast_sigma_um", minimum=0.0, strict=True)
+    require_number("seed_h", minimum=0.0, strict=True)
+    require_number("seed_dilation_um", minimum=0.0)
+
+    contour_preset = value("contour_preset")
+    if not isinstance(contour_preset, str) or contour_preset not in _CONTOUR_PRESETS:
+        raise ValueError(
+            f"contour_preset must be one of {sorted(_CONTOUR_PRESETS)}, got {contour_preset!r}"
+        )
+    require_optional_number("min_frontier", minimum=0.0, maximum=1.0)
+
+    min_radius = require_number("min_cell_radius_um", minimum=0.0, strict=True)
+    max_radius = require_number("max_cell_radius_um", minimum=0.0, strict=True)
+    require_optional_integer("min_area", minimum=1)
+    require_optional_integer("max_area", minimum=1)
+    require_number("max_link_um", minimum=0.0, strict=True)
+    require_integer("max_neighbors", minimum=1)
+
+    solver_name = value("solver_name")
+    if not isinstance(solver_name, str) or solver_name not in {"CBC", "GUROBI"}:
+        raise ValueError(f"solver_name must be 'CBC' or 'GUROBI', got {solver_name!r}")
+    window_size = require_optional_integer("window_size", minimum=1)
+    overlap_size = require_integer("overlap_size", minimum=0)
+    require_number("solution_gap", minimum=0.0)
+    require_integer("time_limit", minimum=1)
+    require_integer("n_workers", minimum=1)
+
+    n_threads = value("n_threads")
+    if (
+        isinstance(n_threads, bool)
+        or not isinstance(n_threads, Integral)
+        or int(n_threads) == 0
+        or int(n_threads) < -1
+    ):
+        raise ValueError(f"n_threads must be -1 or a positive integer, got {n_threads!r}")
+
+    working_dir = value("working_dir")
+    if working_dir is not None and (
+        not isinstance(working_dir, (str, Path))
+        or (isinstance(working_dir, str) and not working_dir.strip())
+    ):
+        raise ValueError(f"working_dir must be None, a non-empty string, or a Path, got {working_dir!r}")
+
+    database_file_name = value("database_file_name")
+    if not isinstance(database_file_name, str) or not database_file_name.strip():
+        raise ValueError(
+            f"database_file_name must be a non-empty string, got {database_file_name!r}"
+        )
+    require_integer("max_segments_per_time", minimum=1)
+
+    if q_low >= q_high:
+        raise ValueError("q_low must be less than q_high")
+    if min_radius > max_radius:
+        raise ValueError("min_cell_radius_um must not exceed max_cell_radius_um")
+    if window_size is not None and overlap_size >= window_size:
+        raise ValueError("overlap_size must be less than window_size when window_size is set")
+
+    expected = {item.name for item in fields(config)}
+    if checked != expected:
+        missing = sorted(expected - checked)
+        extra = sorted(checked - expected)
+        raise RuntimeError(
+            f"UltrackConfig validation coverage mismatch; missing={missing}, extra={extra}"
+        )
+
+
 def _as_config(config: UltrackConfig | Mapping[str, Any] | None) -> UltrackConfig:
     if config is None:
         return UltrackConfig()
     if isinstance(config, UltrackConfig):
+        validate_ultrack_config(config)
         return config
     return UltrackConfig(**dict(config))
 
@@ -156,6 +332,7 @@ def _voxel_area_from_radius(radius_um: float, scale_zyx: tuple[float, float, flo
 def resolve_ultrack_areas(config: UltrackConfig) -> tuple[int, int]:
     """Return min/max candidate areas in voxels from physical-radius defaults."""
 
+    validate_ultrack_config(config)
     scale_zyx = config.scale_zyx or (1.625, 0.40625, 0.40625)
     min_area = config.min_area
     max_area = config.max_area
@@ -220,6 +397,7 @@ def build_ultrack_inputs(
 
 
 def _configure_ultrack(config: UltrackConfig):
+    validate_ultrack_config(config)
     try:
         from ultrack import MainConfig
     except ModuleNotFoundError as exc:

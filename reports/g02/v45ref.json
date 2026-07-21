@@ -1,0 +1,46 @@
+{
+  "artifact": "v45-reference-v1",
+  "graph": {
+    "density_gain": 0.0475,
+    "gap_close_um": 5.8,
+    "learned_motion_bonus": 1.0,
+    "min_track_length": 6,
+    "safe_div_existing_child_um": 7.65,
+    "safe_div_global_fraction_cap": 0.00375,
+    "safe_div_new_child_um": 4.66,
+    "safe_div_sister_um": 8.5
+  },
+  "inference": {
+    "detection_threshold": 0.97,
+    "detection_tta": "D4-8-view",
+    "edge_feature_tta": false,
+    "prediction_seconds": 636.6,
+    "test_videos": 4
+  },
+  "kaggle": {
+    "account_submission_id": 54633411,
+    "author_reported_score": 0.902,
+    "displayed_score": 0.903,
+    "notebook": "yusuketogashi/biohub-another-approach",
+    "notebook_version": 45,
+    "script_version_id": 335810749,
+    "scored_csv_sha256": "8c73d776abca799a37c2bd24768a1bbb510418c3327192430730540d56cea698"
+  },
+  "notebook": {
+    "papermill_duration_seconds": 968.376614,
+    "path": "reports/g02/v45.ipynb",
+    "sha256": "22ff9f980552fe66bd7e312e74411089a7d361670c067dcb54c7a70278a6caa6",
+    "title": "Biohub 097: Density Gain 0.0475"
+  },
+  "output": {
+    "archive_sha256": "75304b22389a81f28e9616ff7c63d6d200ef50f7d4348ee68818d4fdcbc97994",
+    "edges": 123859,
+    "nodes": 128383,
+    "replay_csv_path": "reports/g02/v45sub.csv",
+    "run_stats_path": "reports/g02/v45run.csv",
+    "rows": 252242,
+    "sha256": "6f8d81f6e5d9eaa066e47f0cdd2d22df48eaa74853d2940d0bc957f3ef3a19e1",
+    "status": "public_notebook_replay; distinct from the account-scored CSV hash"
+  },
+  "provenance": "exact-scored-notebook-downloaded-from-kaggle"
+}

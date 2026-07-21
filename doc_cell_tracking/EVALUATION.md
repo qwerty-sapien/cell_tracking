@@ -89,24 +89,7 @@ The same two-timepoint alpha smoke was re-run after the change. It retained 240 
 
 The repository metric defines `r = (N_pred - N_estimated) / N_estimated` and `J_adj = max(0, J_edge * (1 - 0.1 * r))`. Because under-prediction makes `r` negative, `J_adj` can exceed `1` and is not itself a Jaccard index (nominal range `0..1.1` for non-negative counts). Its combined score is `J_adj + 0.1 * J_division` when divisions are present (nominal range `0..1.2`). Formula and field provenance: `external/kaggle-cell-tracking-competition/src/tracking_cellmot/metrics.py`.
 
-The production duplicate-data route was rebuilt to temporary paths:
-
-```bash
-PYTHONDONTWRITEBYTECODE=1 .venv/bin/python \
-  scripts/build_duplicate_geff_submission.py \
-  --output /private/tmp/duplicate_geff_after.csv \
-  --report-output /private/tmp/duplicate_geff_after.json
-```
-
-Observed:
-
-- 2,193 nodes and 2,127 edges across four datasets;
-- schema valid, no endpoint errors;
-- edge Jaccard `1.0`, division Jaccard `1.0` where defined;
-- combined repository score `1.1936358875688189` (`J_adj + 0.1 * J_division`);
-- SHA-256 `22e67a1ac1b414b7ee0f188a8fdecc0bbe4cfa5ca93fffe318bbb923d30efefc`, byte-identical to the existing production CSV.
-
-This shows that the solver upgrade did not alter the currently generated duplicate-route CSV. The upstream duplicate gate matched member names, uncompressed sizes, and CRC32; CRC32 is not collision-resistant proof of source byte identity.
+Historical duplicate-data evidence remains in `reports/duplicate_geff_submission_report.json` and `data/kaggle/predictions/duplicate_geff_submission.csv`. G-01 removed the executable GEFF-copy route from the active code path because that score came from train/test data identity, not from a general tracker. The upstream duplicate gate matched member names, uncompressed sizes, and CRC32; CRC32 is not collision-resistant proof of source byte identity.
 
 ## Backend status
 
@@ -116,7 +99,7 @@ This shows that the solver upgrade did not alter the currently generated duplica
 
 The application is a local Python CLI/scientific stack, not a web server, so no framework-specific web-security guidance applies. The filename-only inventory found `.env` and `gurobi.lic`; neither file was opened. Source-code credential names are `GUROBI_API_KEY`, `GRB_LICENSE_FILE`, `WLSACCESSID`, `WLSSECRET`, `LICENSEID`, `GUROBI_WLSACCESSID`, `GUROBI_WLSSECRET`, and `GUROBI_LICENSEID`; no values were inspected. Network download and Kaggle push scripts were inventoried but never executed. Microscopy data was not uploaded, extracted, or copied.
 
-Release blockers remain: complete closed validation for every `RouteConfig`/`UltrackConfig` field, Ultrack array/resource preflight before allocation, atomic CSV/JSON writes, explicit overwrite policy, decompressed-size limits for untrusted archives, and packaging/dependency audit infrastructure. The safe-path scan found argument-list subprocess calls and no `shell=True`, pickle loading, or archive extraction in the core execution paths, but that inventory is not a full adversarial audit.
+Closed construction-time validation now covers every public `RouteConfig` and `UltrackConfig` field, including finite/type checks, supported modes, tuple shapes, and cross-field bounds; dedicated tests require one rejected malformed value per field. Release blockers remain: Ultrack array/resource preflight before allocation, atomic CSV/JSON writes, explicit overwrite policy, decompressed-size limits for untrusted archives, and packaging/dependency audit infrastructure. The safe-path scan found argument-list subprocess calls and no `shell=True`, pickle loading, or archive extraction in the core execution paths, but that inventory is not a full adversarial audit.
 
 ## Final verification after independent review
 
@@ -138,7 +121,7 @@ Final gates:
 - Documentation inventory found the seven pre-existing runbook/research Markdown files and no root README, LICENSE, CHANGELOG, CONTRIBUTING, SECURITY, CITATION, or packaging manifest.
 - Filesystem Git check: `.git/HEAD` still points to unborn `refs/heads/main`; no main ref file and no Git index exist. No commit, stage, push, reset, or branch mutation occurred.
 
-Residual review findings are explicit release blockers rather than hidden successes: one connected bipartite component can still allocate a large dense LAP; configuration validation is not closed across every public field; Ultrack input allocation lacks full resource preflight; writes are not atomic; and there is no reproducible environment/package manifest.
+Residual review findings are explicit release blockers rather than hidden successes: one connected bipartite component can still allocate a large dense LAP; Ultrack input allocation lacks full resource preflight; writes are not atomic; and there is no reproducible environment/package manifest.
 
 ## Scientific limitations
 

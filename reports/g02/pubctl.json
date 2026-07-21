@@ -1,0 +1,91 @@
+{
+  "artifact": "g02_public_control_provenance",
+  "schema_version": 1,
+  "decision": {
+    "accuracy_parent": "public_v45_temporal_unet_transformer_ilp",
+    "fast_checkpoint_role": "confidence_router_and_failure_fallback_only",
+    "union_of_unmatched_fast_nodes_allowed": false,
+    "v103_promoted": false,
+    "scored_submission_eligible": false,
+    "reason": "V45 is the only artifact with displayed score evidence. V103 is unscored, the fast checkpoint has no divisions and many unmatched detections, and the released public model training membership is unrecoverable."
+  },
+  "scored_reference": {
+    "owner": "yusuketogashi",
+    "kernel": "biohub-another-approach",
+    "script_version": 45,
+    "script_version_id": 335810749,
+    "url": "https://www.kaggle.com/code/yusuketogashi/biohub-another-approach?scriptVersionId=335810749",
+    "displayed_score": 0.903,
+    "author_account_score": 0.902,
+    "output_sha256": "6f8d81f6e5d9eaa066e47f0cdd2d22df48eaa74853d2940d0bc957f3ef3a19e1",
+    "rows": 252242,
+    "nodes": 128383,
+    "edges": 123859,
+    "configuration": {
+      "detection_threshold": 0.97,
+      "density_gain": 0.0475,
+      "detection_tta": "d4_eight_view",
+      "edge_tta": false,
+      "minimum_track_length": 6,
+      "motion_learned_bonus": 1.0,
+      "safe_division_parent_um": 4.66,
+      "safe_division_sister_um": 8.5
+    },
+    "provenance_key_policy": "Use output_sha256 because the rounded displayed score and author account score differ."
+  },
+  "unscored_candidate": {
+    "name": "public_v103_edge_tta_robust_drop1",
+    "source_sha256": "f49dccb2e897125afcc125ce53b064647d1b22bc1798ae181cdd63b12aa8c32f",
+    "output_sha256": "b33c0382551aa2e4c2e373431b62cbc5a5f39960d7eab351a493775a477b9722",
+    "rows": 256868,
+    "nodes": 130715,
+    "edges": 126153,
+    "score": null,
+    "promotion_status": "not_eligible_without_independent_score_evidence"
+  },
+  "released_support": {
+    "manifest_sha256": "bc20f1f04cfb682af3b27a836ce9a57f44a2fe27508dc59039200b2a23188103",
+    "local_edge_weight_sha256": "12f6881ee3620a831697ca098ff8f48e687a24225f4e048b538deec3562fe771",
+    "exact_v45_attachment_weight_identity_proven": false,
+    "training_membership_recovered": false,
+    "local_train_score_label": "frozen_model_exposure_unknown_postprocessing_holdout",
+    "fold_safe_claim_allowed": false
+  },
+  "v103_fast_graph_comparison": {
+    "report": "reports/g02/gcmp-v103.json",
+    "report_sha256": "2568581d15baff484ed0461c52e94e85f042ac63f88531cbd149ffad48303f83",
+    "matching_radius_um": 7.0,
+    "nodes": {
+      "fast": 140444,
+      "public_v103": 130715,
+      "matched": 103237,
+      "fast_overlap": 0.7350759021389308,
+      "public_overlap": 0.7897869410549669,
+      "fast_only": 37207,
+      "public_only": 27478
+    },
+    "edges": {
+      "fast": 117835,
+      "public_v103": 126153,
+      "matched": 85727,
+      "fast_overlap": 0.7275172911274239,
+      "public_overlap": 0.6795478506258273,
+      "fast_only": 32108,
+      "public_only": 40426
+    },
+    "divisions": {
+      "fast": 0,
+      "public_v103": 429,
+      "matched": 0
+    },
+    "interpretation": "Consensus is useful as a confidence feature. Fast-only detections are too numerous for add-only union, while public-only nodes include dense-scene detections lost to the fast 512-node frame cap."
+  },
+  "next_gate": {
+    "action": "build_frozen_v45_detector_sparse_cache_control",
+    "submission": "none",
+    "public_v45_score_target_gap": 0.017,
+    "acceptance_score": 0.92,
+    "fast_full_199_score": 0.6583106754265342,
+    "fast_full_199_score_sha256": "6a39cbbd2362391bfcbb14a9310df8c44db316f31ee4f9baebdadf0de7a3cc7b"
+  }
+}

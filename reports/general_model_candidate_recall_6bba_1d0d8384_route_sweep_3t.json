@@ -1,0 +1,138 @@
+{
+  "rows": [
+    {
+      "dataset": "6bba_1d0d8384",
+      "route": "clean_compact",
+      "gt_timepoints": 3,
+      "gt_nodes": 75,
+      "mean_candidates_per_gt_t": 60.0,
+      "recall_7um": 0.05333333333333334,
+      "recall_10um": 0.12,
+      "median_nearest_um": 17.014068603515625,
+      "p90_nearest_um": 34.883636474609375,
+      "runtime_sec": 9.566498041152954
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "route": "balanced_midpoint",
+      "gt_timepoints": 3,
+      "gt_nodes": 75,
+      "mean_candidates_per_gt_t": 120.0,
+      "recall_7um": 0.37333333333333335,
+      "recall_10um": 0.56,
+      "median_nearest_um": 8.7979154586792,
+      "p90_nearest_um": 13.955025672912598,
+      "runtime_sec": 12.16819715499878
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "route": "balanced_compact",
+      "gt_timepoints": 3,
+      "gt_nodes": 75,
+      "mean_candidates_per_gt_t": 160.0,
+      "recall_7um": 0.4533333333333333,
+      "recall_10um": 0.6266666666666667,
+      "median_nearest_um": 7.632744312286377,
+      "p90_nearest_um": 13.479777336120605,
+      "runtime_sec": 14.547266960144043
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "route": "balanced_local",
+      "gt_timepoints": 3,
+      "gt_nodes": 75,
+      "mean_candidates_per_gt_t": 260.0,
+      "recall_7um": 0.5466666666666666,
+      "recall_10um": 0.72,
+      "median_nearest_um": 6.563169479370117,
+      "p90_nearest_um": 13.023054122924805,
+      "runtime_sec": 18.731732845306396
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "route": "dense_fusion",
+      "gt_timepoints": 3,
+      "gt_nodes": 75,
+      "mean_candidates_per_gt_t": 260.0,
+      "recall_7um": 0.16,
+      "recall_10um": 0.3333333333333333,
+      "median_nearest_um": 13.063322067260742,
+      "p90_nearest_um": 32.13423538208008,
+      "runtime_sec": 43.532735109329224
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "route": "low_signal",
+      "gt_timepoints": 3,
+      "gt_nodes": 75,
+      "mean_candidates_per_gt_t": 220.0,
+      "recall_7um": 0.16,
+      "recall_10um": 0.3333333333333333,
+      "median_nearest_um": 13.107465744018555,
+      "p90_nearest_um": 31.132709503173828,
+      "runtime_sec": 38.167038917541504
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "route": "balanced_dog_compact",
+      "gt_timepoints": 3,
+      "gt_nodes": 75,
+      "mean_candidates_per_gt_t": 190.0,
+      "recall_7um": 0.36,
+      "recall_10um": 0.6,
+      "median_nearest_um": 8.295859336853027,
+      "p90_nearest_um": 13.064082145690918,
+      "runtime_sec": 30.336095333099365
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "route": "coverage_dog_compact",
+      "gt_timepoints": 3,
+      "gt_nodes": 75,
+      "mean_candidates_per_gt_t": 220.0,
+      "recall_7um": 0.22666666666666666,
+      "recall_10um": 0.4533333333333333,
+      "median_nearest_um": 10.357383728027344,
+      "p90_nearest_um": 14.255840301513672,
+      "runtime_sec": 15.193124771118164
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "route": "score_coverage_compact",
+      "gt_timepoints": 3,
+      "gt_nodes": 75,
+      "mean_candidates_per_gt_t": 240.0,
+      "recall_7um": 0.30666666666666664,
+      "recall_10um": 0.49333333333333335,
+      "median_nearest_um": 10.123698234558105,
+      "p90_nearest_um": 14.079946517944336,
+      "runtime_sec": 14.763682126998901
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "route": "hybrid_rescue_compact",
+      "gt_timepoints": 3,
+      "gt_nodes": 75,
+      "mean_candidates_per_gt_t": 220.0,
+      "recall_7um": 0.22666666666666666,
+      "recall_10um": 0.4533333333333333,
+      "median_nearest_um": 10.357383728027344,
+      "p90_nearest_um": 14.255840301513672,
+      "runtime_sec": 36.13241386413574
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "route": "subtile_dog_compact",
+      "gt_timepoints": 3,
+      "gt_nodes": 75,
+      "mean_candidates_per_gt_t": 260.0,
+      "recall_7um": 0.4,
+      "recall_10um": 0.6666666666666666,
+      "median_nearest_um": 7.3125,
+      "p90_nearest_um": 21.65892219543457,
+      "runtime_sec": 10.57414984703064
+    }
+  ],
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds.json",
+  "scoring_calibration_fold_id": "0"
+}

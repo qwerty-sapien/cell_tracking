@@ -1,0 +1,89 @@
+{
+  "kind": "062c_target_conflict_swap_probe",
+  "dataset": "6bba_062c8d37",
+  "rows": [
+    {
+      "label": "current",
+      "nodes": 115,
+      "edges": 62,
+      "graph": {
+        "num_nodes": 115,
+        "num_edges": 62,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 0.9604347826086957,
+        "mean_edge_score": 0.8161581044125219
+      },
+      "edge_tp": 5.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 115.0,
+      "node_recall": 0.5625,
+      "total_node_ratio": -0.3642896627971255,
+      "edge_jaccard": 0.45454545454545453,
+      "adj_edge_jaccard": 0.47110407558168754,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "label": "swap_target_290_to_712",
+      "nodes": 115,
+      "edges": 62,
+      "graph": {
+        "num_nodes": 115,
+        "num_edges": 62,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 0.9604347826086957,
+        "mean_edge_score": 0.8124994006315148
+      },
+      "edge_tp": 6.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 115.0,
+      "node_recall": 0.5625,
+      "total_node_ratio": -0.3642896627971255,
+      "edge_jaccard": 0.6,
+      "adj_edge_jaccard": 0.6218573797678275,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "label": "add_illegal_extra_in_290",
+      "nodes": 115,
+      "edges": 63,
+      "graph": {
+        "num_nodes": 115,
+        "num_edges": 63,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 1,
+        "mean_node_score": 0.9604347826086957,
+        "mean_edge_score": 0.8135929711600963
+      },
+      "edge_tp": 6.0,
+      "edge_fp": 1.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 115.0,
+      "node_recall": 0.5625,
+      "total_node_ratio": -0.3642896627971255,
+      "edge_jaccard": 0.5454545454545454,
+      "adj_edge_jaccard": 0.565324890698025,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    }
+  ],
+  "current_in": "CandidateEdge(source_id=174, target_id=290, dt=1, distance_um=1.6750116604071745, cost=0.0485747601163356, score=0.8813943439321495, kind='continuation', features={'source_score': 1.0, 'target_score': 1.0, 'density_penalty': 0.01, 'appearance_delta': 0.010727056006284796, 'appearance_penalty': 0.0, 'source_out_rank': 1.0, 'source_out_rank_norm': 0.0, 'source_out_candidate_count': 1.0, 'source_distance_to_best_um': 0.0, 'source_best_margin_um': 999.0, 'source_is_nearest': 1.0, 'target_in_rank': 1.0, 'target_in_rank_norm': 0.0, 'target_in_candidate_count': 3.0, 'target_distance_to_best_um': 0.0, 'target_best_margin_um': 0.7624883395928255, 'target_is_nearest': 1.0, 'mutual_nearest': 1.0, 'min_best_margin_um': 0.7624883395928255, 'candidate_ambiguity': 1.0986122886681098, 'source_best_distance_um': 1.6750116604071745, 'target_best_distance_um': 1.6750116604071745})",
+  "new_edge": "CandidateEdge(source_id=712, target_id=290, dt=1, distance_um=2.6012692214570947, cost=0.3902197775591699, score=0.6545547095097123, kind='continuation', features={'source_score': 0.65, 'target_score': 1.0, 'density_penalty': 0.01, 'appearance_delta': 0.044879171409805324, 'appearance_penalty': 0.0, 'source_out_rank': 1.0, 'source_out_rank_norm': 0.0, 'source_out_candidate_count': 1.0, 'source_distance_to_best_um': 0.0, 'source_best_margin_um': 999.0, 'source_is_nearest': 1.0, 'target_in_rank': 3.0, 'target_in_rank_norm': 1.0, 'target_in_candidate_count': 3.0, 'target_distance_to_best_um': 0.9262575610499202, 'target_best_margin_um': 0.9262575610499202, 'target_is_nearest': 0.0, 'mutual_nearest': 0.0, 'min_best_margin_um': 0.9262575610499202, 'candidate_ambiguity': 1.0986122886681098, 'source_best_distance_um': 2.6012692214570947, 'target_best_distance_um': 1.6750116604071745})"
+}

@@ -10,6 +10,7 @@ import csv
 import json
 import math
 import zipfile
+from collections.abc import Mapping, Sequence
 from collections import Counter
 from dataclasses import dataclass, replace
 from pathlib import Path
@@ -21,6 +22,22 @@ from scipy.optimize import linear_sum_assignment
 
 
 DEFAULT_SCALE_ZYX = (1.625, 0.40625, 0.40625)
+_SPATIAL_UNIT_TO_UM = {
+    "m": 1_000_000.0,
+    "meter": 1_000_000.0,
+    "metre": 1_000_000.0,
+    "mm": 1_000.0,
+    "millimeter": 1_000.0,
+    "millimetre": 1_000.0,
+    "um": 1.0,
+    "µm": 1.0,
+    "μm": 1.0,
+    "micrometer": 1.0,
+    "micrometre": 1.0,
+    "nm": 0.001,
+    "nanometer": 0.001,
+    "nanometre": 0.001,
+}
 SUBMISSION_COLUMNS = [
     "id",
     "dataset",
@@ -55,17 +72,225 @@ def with_timepoint_limit(config: BaselineConfig, max_timepoints: int | None) -> 
     return replace(config, max_timepoints=max_timepoints)
 
 
-def parse_scale(attrs: dict[str, Any] | None) -> tuple[float, float, float]:
-    """Parse z/y/x voxel scale from OME-NGFF zarr attrs."""
-    attrs = attrs or {}
-    try:
-        transform = attrs["multiscales"][0]["datasets"][0]["coordinateTransformations"][0]
-        if transform.get("type") == "scale":
-            scale = transform["scale"][-3:]
-            return float(scale[0]), float(scale[1]), float(scale[2])
-    except (KeyError, IndexError, TypeError, ValueError):
-        pass
-    return DEFAULT_SCALE_ZYX
+def _ngff_metadata_error(message: str) -> ValueError:
+    return ValueError(f"Invalid OME-NGFF physical metadata: {message}")
+
+
+def _metadata_sequence(value: Any, location: str) -> Sequence[Any]:
+    if not isinstance(value, Sequence) or isinstance(value, (str, bytes)):
+        raise _ngff_metadata_error(f"{location} must be a JSON array")
+    return value
+
+
+def _scale_transform(
+    transforms: Any,
+    *,
+    location: str,
+    axis_names: Sequence[str],
+) -> tuple[float, ...] | None:
+    """Return the single scale vector in an NGFF transform list, if present."""
+
+    transform_list = _metadata_sequence(transforms, location)
+    scale_transforms: list[tuple[int, Mapping[str, Any]]] = []
+    for index, transform in enumerate(transform_list):
+        if not isinstance(transform, Mapping):
+            raise _ngff_metadata_error(f"{location}[{index}] must be an object")
+        transform_type = transform.get("type")
+        if not isinstance(transform_type, str) or not transform_type.strip():
+            raise _ngff_metadata_error(
+                f"{location}[{index}].type must be a non-empty string"
+            )
+        if transform_type.strip().casefold() == "scale":
+            scale_transforms.append((index, transform))
+
+    if len(scale_transforms) > 1:
+        raise _ngff_metadata_error(
+            f"{location} contains multiple scale transforms; expected at most one"
+        )
+    if not scale_transforms:
+        return None
+
+    index, transform = scale_transforms[0]
+    raw_scale = _metadata_sequence(transform.get("scale"), f"{location}[{index}].scale")
+    if len(raw_scale) != len(axis_names):
+        raise _ngff_metadata_error(
+            f"{location}[{index}].scale has {len(raw_scale)} values for "
+            f"{len(axis_names)} axes"
+        )
+
+    scale: list[float] = []
+    for axis_name, value in zip(axis_names, raw_scale, strict=True):
+        if isinstance(value, bool):
+            raise _ngff_metadata_error(
+                f"scale for axis {axis_name!r} must be a positive finite number, got {value!r}"
+            )
+        try:
+            numeric = float(value)
+        except (TypeError, ValueError) as exc:
+            raise _ngff_metadata_error(
+                f"scale for axis {axis_name!r} must be a positive finite number, got {value!r}"
+            ) from exc
+        if not math.isfinite(numeric) or numeric <= 0.0:
+            raise _ngff_metadata_error(
+                f"scale for axis {axis_name!r} must be positive and finite, got {value!r}"
+            )
+        scale.append(numeric)
+    return tuple(scale)
+
+
+def parse_scale(attrs: Mapping[str, Any] | None) -> tuple[float, float, float]:
+    """Parse the z/y/x voxel scale from named OME-NGFF axes.
+
+    The historical competition scale remains the fallback only when no
+    ``multiscales`` metadata is present. Once NGFF physical metadata is
+    supplied, malformed or ambiguous axes/transforms raise an actionable
+    error rather than silently producing a potentially incorrect calibration.
+    """
+
+    if attrs is None:
+        return DEFAULT_SCALE_ZYX
+    if not isinstance(attrs, Mapping):
+        raise _ngff_metadata_error("attributes must be an object")
+    if "multiscales" not in attrs:
+        return DEFAULT_SCALE_ZYX
+
+    multiscales = _metadata_sequence(attrs["multiscales"], "multiscales")
+    if len(multiscales) != 1:
+        raise _ngff_metadata_error(
+            f"multiscales must contain exactly one image entry, got {len(multiscales)}"
+        )
+    multiscale = multiscales[0]
+    if not isinstance(multiscale, Mapping):
+        raise _ngff_metadata_error("multiscales[0] must be an object")
+
+    axes = _metadata_sequence(multiscale.get("axes"), "multiscales[0].axes")
+    if not axes:
+        raise _ngff_metadata_error("multiscales[0].axes must not be empty")
+
+    axis_names: list[str] = []
+    axis_types: list[str | None] = []
+    axis_units: list[str | None] = []
+    for index, axis in enumerate(axes):
+        if isinstance(axis, str):
+            raw_name = axis
+            raw_type = None
+            raw_unit = None
+        elif isinstance(axis, Mapping):
+            raw_name = axis.get("name")
+            raw_type = axis.get("type")
+            raw_unit = axis.get("unit")
+        else:
+            raise _ngff_metadata_error(
+                f"multiscales[0].axes[{index}] must be a name string or object"
+            )
+        if not isinstance(raw_name, str) or not raw_name.strip():
+            raise _ngff_metadata_error(
+                f"multiscales[0].axes[{index}].name must be a non-empty string"
+            )
+        if raw_type is not None and (
+            not isinstance(raw_type, str) or not raw_type.strip()
+        ):
+            raise _ngff_metadata_error(
+                f"multiscales[0].axes[{index}].type must be a non-empty string when present"
+            )
+        axis_names.append(raw_name.strip().casefold())
+        axis_types.append(raw_type.strip().casefold() if isinstance(raw_type, str) else None)
+        if raw_unit is not None and (
+            not isinstance(raw_unit, str) or not raw_unit.strip()
+        ):
+            raise _ngff_metadata_error(
+                f"multiscales[0].axes[{index}].unit must be a non-empty string when present"
+            )
+        axis_units.append(raw_unit.strip().casefold() if isinstance(raw_unit, str) else None)
+
+    duplicates = sorted({name for name in axis_names if axis_names.count(name) > 1})
+    if duplicates:
+        raise _ngff_metadata_error(
+            f"axis names must be unique (case-insensitive); duplicates: {duplicates}"
+        )
+
+    required_axes = {"z", "y", "x"}
+    present_spatial = required_axes.intersection(axis_names)
+    missing = sorted(required_axes - present_spatial)
+    if missing:
+        raise _ngff_metadata_error(
+            f"expected exactly one z, y, and x axis; missing: {missing}"
+        )
+    for name, axis_type in zip(axis_names, axis_types, strict=True):
+        if name in required_axes and axis_type != "space":
+            raise _ngff_metadata_error(
+                f"axis {name!r} must have type 'space', got {axis_type!r}"
+            )
+        if name == "t" and axis_type != "time":
+            raise _ngff_metadata_error(
+                f"axis 't' must have type 'time', got {axis_type!r}"
+            )
+        if axis_type == "space" and name not in required_axes:
+            raise _ngff_metadata_error(
+                f"unexpected spatial axis {name!r}; expected exactly z, y, and x"
+            )
+
+    if axis_names != ["t", "z", "y", "x"]:
+        raise _ngff_metadata_error(
+            "this raw-array API requires metadata axes in canonical T/Z/Y/X order; "
+            f"got {axis_names!r}"
+        )
+    spatial_units = [axis_units[axis_names.index(name)] for name in ("z", "y", "x")]
+    if any(unit is None for unit in spatial_units):
+        raise _ngff_metadata_error(
+            "z, y, and x axes must declare physical units because tracker thresholds are in micrometers"
+        )
+    if len(set(spatial_units)) != 1:
+        raise _ngff_metadata_error(
+            f"z, y, and x axes must use one consistent physical unit, got {spatial_units!r}"
+        )
+    spatial_unit = spatial_units[0]
+    if spatial_unit not in _SPATIAL_UNIT_TO_UM:
+        raise _ngff_metadata_error(
+            f"unsupported spatial unit {spatial_unit!r}; expected a recognized metric length unit"
+        )
+    unit_to_um = _SPATIAL_UNIT_TO_UM[spatial_unit]
+
+    datasets = _metadata_sequence(multiscale.get("datasets"), "multiscales[0].datasets")
+    if not datasets:
+        raise _ngff_metadata_error("multiscales[0].datasets must not be empty")
+    dataset = datasets[0]
+    if not isinstance(dataset, Mapping):
+        raise _ngff_metadata_error("multiscales[0].datasets[0] must be an object")
+
+    scale_vectors: list[tuple[float, ...]] = []
+    transform_locations = (
+        (dataset, "multiscales[0].datasets[0]"),
+        (multiscale, "multiscales[0]"),
+    )
+    for owner, owner_location in transform_locations:
+        if "coordinateTransformations" not in owner:
+            continue
+        scale = _scale_transform(
+            owner["coordinateTransformations"],
+            location=f"{owner_location}.coordinateTransformations",
+            axis_names=axis_names,
+        )
+        if scale is not None:
+            scale_vectors.append(scale)
+
+    if not scale_vectors:
+        raise _ngff_metadata_error(
+            "named axes are present but no scale transform was found in the first dataset "
+            "or multiscale entry"
+        )
+
+    combined_scale = [1.0] * len(axis_names)
+    for scale in scale_vectors:
+        combined_scale = [
+            current * factor
+            for current, factor in zip(combined_scale, scale, strict=True)
+        ]
+
+    index_by_name = {name: index for index, name in enumerate(axis_names)}
+    return tuple(
+        combined_scale[index_by_name[name]] * unit_to_um for name in ("z", "y", "x")
+    )
 
 
 def image_quantiles(attrs: dict[str, Any] | None) -> dict[float, float]:

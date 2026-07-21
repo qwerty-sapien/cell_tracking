@@ -1,0 +1,20 @@
+kind: "cruise_app_server_worker_report"
+launch:
+  agent_type: "cruise_l3"
+  alias: "terra-H"
+  provider_model_fallback_allowed: false
+  recommended_level: 3
+  requested:
+    model: "gpt-5.6-terra"
+    reasoning_effort: "high"
+  resolution_source: "exact_catalog_match"
+  resolved:
+    model: "gpt-5.6-terra"
+    reasoning_effort: "high"
+model_output: "I’m executing the bounded T-03 packet: local generation and validation only, with no network or submission.The required ZIP is present and contains all four test datasets (each 100×64×256×256). I’m starting the full auto-route generation into the owned G-01 report path.The first full-generation process ended before producing either the CSV or metrics file and returned no buffered diagnostics. I’m using the second permitted full attempt with unbuffered per-timepoint progress to capture a precise local runtime/block reason.## T-03 attempt report — BLOCKED\n\nFull test generation stopped after two local attempts; neither produced a CSV or metrics file.\n\n- Test ZIP present: 87,393,127,165 bytes; 4 test datasets, each `100×64×256×256` `uint16`.\n- Attempt 1: terminated after ~28s; no stdout, CSV, metrics, or captured exit status.\n- Attempt 2: emitted startup diagnostics, then terminated after ~10s before first dataset progress/result; no CSV, metrics, or captured exit status.\n- No network, Kaggle, browser, package install, credential access, or model/package-code change occurred.\n\nCandidate status:\n\n- Expected candidate: `reports/kaggle_g01/submission.csv`\n- Exists: no\n- SHA-256 / rows / coverage / nodes / edges / graph constraints: unavailable\n- AC-03: NOT_READY\n- AC-04: NOT_READY\n- T-04 upload candidate: none\n\nChanged paths:\n\n- [.cruise/runs/g01/T-03_generate_and_validate_full_alpha_submission.report.yaml](/Users/agent/Desktop/cell_tracking/.cruise/runs/g01/T-03_generate_and_validate_full_alpha_submission.report.yaml)\n- [reports/kaggle_g01/full_test_validation_report.yaml](/Users/agent/Desktop/cell_tracking/reports/kaggle_g01/full_test_validation_report.yaml)\n\nEvidence:\n\n- Report SHA-256: `406edfb2a04378afe4a1b717f693f105f420e5e0676888db95e80179729aa268`\n- Validation report SHA-256: `337517d435f15976e416dadf43e521702ca19728397bcc10f13d054d919549b7`\n- Package input retained: alpha package identity `7ed7c9949918cebd777cb4e3e300f89ed320006aa79504909f3f795982540620`.\n\nResidual risk: the local runner did not emit its shell status footer, so the precise termination cause/exit code is unobserved; no resource-specific cause is asserted."
+runtime:
+  status: "completed"
+  thread_id: "019f6213-1b76-7bd3-b5d5-85fe8168c57d"
+  turn_id: "019f6213-32dd-7790-9553-0efabe5d4f04"
+schema_version: 1
+warnings: []

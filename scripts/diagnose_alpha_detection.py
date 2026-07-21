@@ -19,6 +19,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from celltrack_alpha.proposals import detect_candidates_one_timepoint  # noqa: E402
 from celltrack_alpha.routing import default_route_configs  # noqa: E402
+from celltrack_alpha.scoring import load_scoring_calibration, proposal_policy_for_dataset, scoring_for_dataset  # noqa: E402
 from celltrack_baseline.rule_based import parse_scale, read_geff_arrays  # noqa: E402
 
 
@@ -30,6 +31,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--zip", type=Path, default=DEFAULT_ZIP)
     parser.add_argument("--dataset", required=True)
     parser.add_argument("--routes", default=",".join(sorted(default_route_configs())))
+    parser.add_argument("--split-manifest", type=Path, default=Path("reports/general_model_split_manifest.json"))
+    parser.add_argument("--fold-id", default="0")
+    parser.add_argument("--scoring-json", type=Path, default=None, help="Optional fold-safe proposal/scoring calibration JSON.")
     parser.add_argument("--max-gt-timepoints", type=int, default=None)
     parser.add_argument("--output", type=Path, default=Path("reports/alpha_detection_diagnostic.json"))
     return parser.parse_args()
@@ -62,6 +66,12 @@ def main() -> int:
     if unknown:
         raise ValueError(f"Unknown routes: {unknown}")
 
+    scoring_calibration = load_scoring_calibration(
+        args.scoring_json,
+        split_manifest_path=args.split_manifest,
+        expected_fold_id=str(args.fold_id) if args.scoring_json is not None else None,
+    )
+
     rows: list[dict[str, Any]] = []
     store = ZipStore(args.zip, mode="r")
     try:
@@ -82,6 +92,10 @@ def main() -> int:
             )
         for route in routes:
             config = configs[route]
+            scoring_payload = scoring_for_dataset(args.dataset, scoring_calibration)
+            proposal_policy = proposal_policy_for_dataset(
+                scoring_payload, dataset=args.dataset, route_label=route
+            )
             dists: list[float] = []
             node_counts: list[int] = []
             started = time.time()
@@ -95,6 +109,7 @@ def main() -> int:
                     scale_zyx=scale,
                     config=config,
                     next_node_id=next_node_id,
+                    proposal_policy=proposal_policy,
                 )
                 node_counts.append(len(nodes))
                 dists.extend(float(v) for v in nearest_distances_um(nodes, gt_by_t[t], scale))
@@ -116,7 +131,11 @@ def main() -> int:
     finally:
         store.close()
 
-    payload = {"rows": rows}
+    payload = {
+        "rows": rows,
+        "scoring_json": str(args.scoring_json) if args.scoring_json is not None else None,
+        "scoring_calibration_fold_id": scoring_calibration.fold_id if scoring_calibration is not None else None,
+    }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(f"Wrote {args.output}")

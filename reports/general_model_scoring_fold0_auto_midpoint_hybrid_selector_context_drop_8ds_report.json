@@ -1,0 +1,18 @@
+{
+  "kind": "hybrid_selector_context_drop_scoring_merge_report",
+  "output": "reports/general_model_scoring_fold0_auto_midpoint_hybrid_selector_context_drop_8ds.json",
+  "inputs": [
+    "reports/general_model_coordinate_corrector_fold0_auto_midpoint_hybrid_8ds.json",
+    "reports/general_model_candidate_pruner_fold0_hybrid_rescue_8ds.json",
+    "reports/general_model_edge_scorer_fold0_hybrid_rescue_context_drop_8ds.json"
+  ],
+  "fold_id": "0",
+  "node_policies": [
+    "hybrid_rescue_compact:44b6",
+    "hybrid_rescue_compact:6bba"
+  ],
+  "edge_policies": [
+    "hybrid_rescue_compact:44b6",
+    "hybrid_rescue_compact:6bba"
+  ]
+}

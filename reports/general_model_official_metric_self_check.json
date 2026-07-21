@@ -1,0 +1,101 @@
+{
+  "prediction_csv": "reports/general_model_gt_self_prediction.csv",
+  "datasets": [
+    "44b6_0c582fdc",
+    "6bba_062c8d37"
+  ],
+  "rows": [
+    {
+      "edge_tp": 70.0,
+      "edge_fp": 0.0,
+      "edge_fn": 0.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 71.0,
+      "node_recall": 1.0,
+      "total_node_ratio": -0.9974604764289291,
+      "edge_jaccard": 1.0,
+      "adj_edge_jaccard": 1.0997460476428929,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 27958.0,
+      "dataset": "44b6_0c582fdc"
+    },
+    {
+      "edge_tp": 898.0,
+      "edge_fp": 0.0,
+      "edge_fn": 0.0,
+      "division_tp": 1.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 930.0,
+      "node_recall": 1.0,
+      "total_node_ratio": -0.845771144278607,
+      "edge_jaccard": 1.0,
+      "adj_edge_jaccard": 1.0845771144278606,
+      "division_jaccard": 1.0,
+      "estimated_number_of_nodes": 6030.0,
+      "dataset": "6bba_062c8d37"
+    }
+  ],
+  "summary": {
+    "n": 2,
+    "edge_jaccard": 1.0,
+    "division_jaccard": 1.0,
+    "division_tp": 1.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 1.0,
+    "adj_edge_jaccard": 1.085674041416551,
+    "n_adj": 2,
+    "score": 1.1856740414165512
+  },
+  "gt_self_check": {
+    "rows": [
+      {
+        "edge_tp": 70.0,
+        "edge_fp": 0.0,
+        "edge_fn": 0.0,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "num_pred_nodes": 71.0,
+        "node_recall": 1.0,
+        "total_node_ratio": -0.9974604764289291,
+        "edge_jaccard": 1.0,
+        "adj_edge_jaccard": 1.0997460476428929,
+        "division_jaccard": NaN,
+        "estimated_number_of_nodes": 27958.0,
+        "dataset": "44b6_0c582fdc"
+      },
+      {
+        "edge_tp": 898.0,
+        "edge_fp": 0.0,
+        "edge_fn": 0.0,
+        "division_tp": 1.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "num_pred_nodes": 930.0,
+        "node_recall": 1.0,
+        "total_node_ratio": -0.845771144278607,
+        "edge_jaccard": 1.0,
+        "adj_edge_jaccard": 1.0845771144278606,
+        "division_jaccard": 1.0,
+        "estimated_number_of_nodes": 6030.0,
+        "dataset": "6bba_062c8d37"
+      }
+    ],
+    "summary": {
+      "n": 2,
+      "edge_jaccard": 1.0,
+      "division_jaccard": 1.0,
+      "division_tp": 1.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 1.0,
+      "adj_edge_jaccard": 1.085674041416551,
+      "n_adj": 2,
+      "score": 1.1856740414165512
+    }
+  }
+}

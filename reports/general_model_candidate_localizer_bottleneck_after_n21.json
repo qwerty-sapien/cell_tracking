@@ -1,0 +1,675 @@
+{
+  "kind": "candidate_localizer_bottleneck_report",
+  "created_at_unix": 1783930152.936661,
+  "status": "candidate_localizer_gate_not_met",
+  "current_locked_cv": {
+    "path": "reports/general_model_cv_audit_fold0_auto_interior_backward_12ds_12clips.json",
+    "summary": {
+      "n": 12,
+      "edge_jaccard": 0.5679012345679012,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.7563483174034249,
+      "adj_edge_jaccard": 0.5792049783485704,
+      "n_adj": 12,
+      "score": 0.5792049783485704
+    },
+    "graph": {
+      "datasets": 12,
+      "nodes": 2970,
+      "edges": 1744,
+      "dividing_nodes": 0,
+      "out_gt2": 0,
+      "merges": 0
+    },
+    "weak_rows_sorted": [
+      {
+        "dataset": "6bba_1d0d8384",
+        "route": "balanced_compact",
+        "adj_edge_jaccard": 0.4224661107952032,
+        "edge_jaccard": 0.40816326530612246,
+        "node_recall": 0.4,
+        "edge_tp": 20.0,
+        "edge_fp": 0.0,
+        "edge_fn": 29.0,
+        "num_pred_nodes": 349.0,
+        "num_pred_edges": 218
+      },
+      {
+        "dataset": "44b6_40c45f5a",
+        "route": "hybrid_rescue_compact",
+        "adj_edge_jaccard": 0.5395964015788991,
+        "edge_jaccard": 0.5,
+        "node_recall": 0.5,
+        "edge_tp": 2.0,
+        "edge_fp": 0.0,
+        "edge_fn": 2.0,
+        "num_pred_nodes": 204.0,
+        "num_pred_edges": 116
+      },
+      {
+        "dataset": "6bba_2312ac41",
+        "route": "balanced_midpoint",
+        "adj_edge_jaccard": 0.5520037192003718,
+        "edge_jaccard": 0.5333333333333333,
+        "node_recall": 0.5333333333333333,
+        "edge_tp": 16.0,
+        "edge_fp": 0.0,
+        "edge_fn": 14.0,
+        "num_pred_nodes": 233.0,
+        "num_pred_edges": 145
+      },
+      {
+        "dataset": "6bba_372c8cb8",
+        "route": "balanced_midpoint",
+        "adj_edge_jaccard": 0.5919560645793712,
+        "edge_jaccard": 0.6470588235294118,
+        "node_recall": 0.75,
+        "edge_tp": 11.0,
+        "edge_fp": 1.0,
+        "edge_fn": 5.0,
+        "num_pred_nodes": 390.0,
+        "num_pred_edges": 234
+      },
+      {
+        "dataset": "6bba_062c8d37",
+        "route": "balanced_midpoint",
+        "adj_edge_jaccard": 0.6218573797678275,
+        "edge_jaccard": 0.6,
+        "node_recall": 0.5625,
+        "edge_tp": 6.0,
+        "edge_fp": 0.0,
+        "edge_fn": 4.0,
+        "num_pred_nodes": 115.0,
+        "num_pred_edges": 62
+      },
+      {
+        "dataset": "6bba_2819ca14",
+        "route": "balanced_midpoint",
+        "adj_edge_jaccard": 0.6507908685700519,
+        "edge_jaccard": 0.65,
+        "node_recall": 0.6451612903225806,
+        "edge_tp": 13.0,
+        "edge_fp": 0.0,
+        "edge_fn": 7.0,
+        "num_pred_nodes": 164.0,
+        "num_pred_edges": 96
+      },
+      {
+        "dataset": "6bba_0c7fa718",
+        "route": "balanced_dog_tight",
+        "adj_edge_jaccard": 0.6632539682539682,
+        "edge_jaccard": 0.65,
+        "node_recall": 0.8518518518518519,
+        "edge_tp": 13.0,
+        "edge_fp": 2.0,
+        "edge_fn": 5.0,
+        "num_pred_nodes": 326.0,
+        "num_pred_edges": 192
+      },
+      {
+        "dataset": "44b6_71a4179f",
+        "route": "template_point_compact",
+        "adj_edge_jaccard": 0.8106695426072568,
+        "edge_jaccard": 0.75,
+        "node_recall": 0.8333333333333334,
+        "edge_tp": 3.0,
+        "edge_fp": 0.0,
+        "edge_fn": 1.0,
+        "num_pred_nodes": 388.0,
+        "num_pred_edges": 236
+      },
+      {
+        "dataset": "44b6_2f31fc2f",
+        "route": "balanced_axial_compact",
+        "adj_edge_jaccard": 1.0655285620485884,
+        "edge_jaccard": 1.0,
+        "node_recall": 1.0,
+        "edge_tp": 2.0,
+        "edge_fp": 0.0,
+        "edge_fn": 0.0,
+        "num_pred_nodes": 252.0,
+        "num_pred_edges": 143
+      },
+      {
+        "dataset": "44b6_587a1e22",
+        "route": "balanced_axial_compact",
+        "adj_edge_jaccard": 1.0722482586241753,
+        "edge_jaccard": 1.0,
+        "node_recall": 1.0,
+        "edge_tp": 2.0,
+        "edge_fp": 0.0,
+        "edge_fn": 0.0,
+        "num_pred_nodes": 151.0,
+        "num_pred_edges": 80
+      },
+      {
+        "dataset": "44b6_0c582fdc",
+        "route": "balanced_compact",
+        "adj_edge_jaccard": 1.0725779144907839,
+        "edge_jaccard": 1.0,
+        "node_recall": 1.0,
+        "edge_tp": 2.0,
+        "edge_fp": 0.0,
+        "edge_fn": 0.0,
+        "num_pred_nodes": 230.0,
+        "num_pred_edges": 131
+      },
+      {
+        "dataset": "44b6_18ced818",
+        "route": "balanced_compact",
+        "adj_edge_jaccard": 1.0928793042062968,
+        "edge_jaccard": 1.0,
+        "node_recall": 1.0,
+        "edge_tp": 2.0,
+        "edge_fp": 0.0,
+        "edge_fn": 0.0,
+        "num_pred_nodes": 168.0,
+        "num_pred_edges": 91
+      }
+    ]
+  },
+  "current_weak_6bba_subset": {
+    "datasets": [
+      "6bba_062c8d37",
+      "6bba_0c7fa718",
+      "6bba_1d0d8384",
+      "6bba_2312ac41",
+      "6bba_2819ca14",
+      "6bba_372c8cb8"
+    ],
+    "summary": {
+      "n": 6,
+      "edge_jaccard": 0.541095890410959,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.623807745917961,
+      "adj_edge_jaccard": 0.5467374975135897,
+      "n_adj": 6,
+      "score": 0.5467374975135897
+    }
+  },
+  "fold_safe_coordinate_probe": {
+    "calibration_path": "reports/general_model_coordinate_corrector_fold0_6bba_used_routes_match10_probe.json",
+    "audit_path": "reports/general_model_cv_audit_fold0_auto_6bba_match10_coord_probe_6clips.json",
+    "summary": {
+      "n": 6,
+      "edge_jaccard": 0.46794871794871795,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6184314018319395,
+      "adj_edge_jaccard": 0.47398087314758325,
+      "n_adj": 6,
+      "score": 0.47398087314758325
+    },
+    "graph": {
+      "datasets": 6,
+      "nodes": 1566,
+      "edges": 939,
+      "dividing_nodes": 0,
+      "out_gt2": 0,
+      "merges": 0
+    },
+    "provenance": {
+      "status": "fold_safe",
+      "fold_id": "0",
+      "split_manifest": "reports/general_model_split_manifest.json",
+      "split_manifest_sha256": "b02e489391b2f093b79a2416f94e84223702b9744ae61cdda11ed9485b66baae",
+      "source_datasets": [
+        "6bba_07477033",
+        "6bba_07e24132",
+        "6bba_085bf656",
+        "6bba_09961292"
+      ],
+      "calibration_train": [
+        "44b6_0db75fae",
+        "44b6_12dfb391",
+        "44b6_144b256d",
+        "44b6_1574802b",
+        "44b6_1d530831",
+        "44b6_24264f12",
+        "44b6_267148e4",
+        "44b6_2a2eff9f",
+        "44b6_33b596bf",
+        "44b6_341df25f",
+        "44b6_3a861e03",
+        "44b6_3bb3690f",
+        "44b6_415c0a3a",
+        "44b6_53f95252",
+        "44b6_551a5dba",
+        "44b6_5740d24b",
+        "44b6_5f15d135",
+        "44b6_668e0cc7",
+        "44b6_66f9292d",
+        "44b6_706092f0",
+        "44b6_74d0c52e",
+        "44b6_7a302da0",
+        "44b6_7e557709",
+        "44b6_808952d6",
+        "44b6_87bba6c4",
+        "44b6_8cc6506c",
+        "44b6_8f5ab931",
+        "44b6_8f9ecab4",
+        "44b6_949adeb1",
+        "44b6_95029e92",
+        "44b6_97725144",
+        "44b6_996155de",
+        "44b6_9bfa6a0a",
+        "44b6_a21120c2",
+        "44b6_a2bb48bb",
+        "44b6_aaf8b0ea",
+        "44b6_b2c44266",
+        "44b6_c15fded2",
+        "44b6_c50204e0",
+        "44b6_c771cb04",
+        "44b6_c96cfa10",
+        "44b6_cf2536e8",
+        "44b6_cf8fed6b",
+        "44b6_d29c9ab2",
+        "44b6_d5e7d891",
+        "44b6_d754aa59",
+        "44b6_d78e09d9",
+        "44b6_db3c847b",
+        "44b6_deabac95",
+        "44b6_e28840c6",
+        "44b6_e29f0176",
+        "44b6_e31261b4",
+        "44b6_e57ff5c6",
+        "44b6_eb2880fc",
+        "44b6_f28707c6",
+        "6bba_07477033",
+        "6bba_07e24132",
+        "6bba_085bf656",
+        "6bba_09961292",
+        "6bba_0e7c0d07",
+        "6bba_12665c0e",
+        "6bba_13f19531",
+        "6bba_15403b9a",
+        "6bba_1ebfb80d",
+        "6bba_1f58c2f6",
+        "6bba_207c6aaf",
+        "6bba_20852818",
+        "6bba_23af9eeb",
+        "6bba_2540cd90",
+        "6bba_2646afc7",
+        "6bba_268e1230",
+        "6bba_283bf9f1",
+        "6bba_312f0dc3",
+        "6bba_32db13fc",
+        "6bba_337b1b3a",
+        "6bba_3a1849c2",
+        "6bba_3abfe10a",
+        "6bba_3c5691b6",
+        "6bba_3db54e20",
+        "6bba_43fea39d",
+        "6bba_474be664",
+        "6bba_48816121",
+        "6bba_4aa14c89",
+        "6bba_4ffd3da3",
+        "6bba_55b7eebe",
+        "6bba_55c70843",
+        "6bba_57b7cc1e",
+        "6bba_5b28472a",
+        "6bba_5c039895",
+        "6bba_5c824876",
+        "6bba_5dfe9ad1",
+        "6bba_61dd1e0d",
+        "6bba_61ecbe65",
+        "6bba_6321a359",
+        "6bba_6479435d",
+        "6bba_6ca87370",
+        "6bba_6db0e9b4",
+        "6bba_6feb10f0",
+        "6bba_6feeb0b1",
+        "6bba_718b21f9",
+        "6bba_74686d6a",
+        "6bba_767a1e17",
+        "6bba_76db78c1",
+        "6bba_786893ac",
+        "6bba_789f8168",
+        "6bba_78a7bd97",
+        "6bba_7af54fde",
+        "6bba_7d3058ae",
+        "6bba_7f87b3d8",
+        "6bba_80d12824",
+        "6bba_825bd1c6",
+        "6bba_8b7818bf",
+        "6bba_907271db",
+        "6bba_91951b3a",
+        "6bba_96833384",
+        "6bba_971fa5e0",
+        "6bba_9a41d029",
+        "6bba_9e23430b",
+        "6bba_a5e926bb",
+        "6bba_ab78413d",
+        "6bba_acd782a8",
+        "6bba_ae82a791",
+        "6bba_aeee7805",
+        "6bba_afb141ff",
+        "6bba_b1ae37b9",
+        "6bba_b204cac7",
+        "6bba_b329af44",
+        "6bba_bb9f20c3",
+        "6bba_bbb708ca",
+        "6bba_c27cba08",
+        "6bba_c328f2fd",
+        "6bba_cdcfe533",
+        "6bba_cf35214c",
+        "6bba_cff5865f",
+        "6bba_d0fc38b5",
+        "6bba_d2b9fc0c",
+        "6bba_d3da753b",
+        "6bba_d5eae175",
+        "6bba_d6ecebbb",
+        "6bba_debd7bfa",
+        "6bba_df673a83",
+        "6bba_e16ffc58",
+        "6bba_e5e44988",
+        "6bba_ebff6e76",
+        "6bba_ed9377fd",
+        "6bba_edf14583",
+        "6bba_eebc57a5",
+        "6bba_f17befbc",
+        "6bba_f1fde7e0",
+        "6bba_f20478e9",
+        "6bba_f4ae811c",
+        "6bba_fbc898dc",
+        "6bba_fc516dc6",
+        "6bba_fc5f39dc",
+        "6bba_fc83837d"
+      ],
+      "validation_datasets": [
+        "44b6_0c582fdc",
+        "44b6_18ced818",
+        "44b6_2f31fc2f",
+        "44b6_40c45f5a",
+        "44b6_587a1e22",
+        "44b6_71a4179f",
+        "44b6_81c256f0",
+        "44b6_90724892",
+        "44b6_9be80b04",
+        "44b6_abf82518",
+        "44b6_c8e2a523",
+        "44b6_d2f34f90",
+        "44b6_ddf577ad",
+        "44b6_e35b117d",
+        "6bba_062c8d37",
+        "6bba_0c7fa718",
+        "6bba_1d0d8384",
+        "6bba_2312ac41",
+        "6bba_2819ca14",
+        "6bba_372c8cb8",
+        "6bba_3fda6b25",
+        "6bba_4f99ce20",
+        "6bba_5a4d9360",
+        "6bba_5f89039d",
+        "6bba_67ebd073",
+        "6bba_705ec2c9",
+        "6bba_784a78c9",
+        "6bba_7b5d3b2c",
+        "6bba_87289e13",
+        "6bba_969618f6",
+        "6bba_a90a0b9c",
+        "6bba_af149c94",
+        "6bba_b693381b",
+        "6bba_c73a1d11",
+        "6bba_d1acb6ff",
+        "6bba_d82a4fc6",
+        "6bba_ebdf3b34",
+        "6bba_ef7b4f7e",
+        "6bba_f8ffd5e7",
+        "6bba_fe670320"
+      ],
+      "excluded_duplicate_public_ids": [
+        "44b6_0113de3b",
+        "44b6_0b24845f",
+        "6bba_05b6850b",
+        "6bba_05db0fb1"
+      ],
+      "calibration_script": "scripts/train_coordinate_corrector.py",
+      "match_radius_um": 10.0,
+      "min_source_matches": 3
+    },
+    "emitted_coordinate_policy": {
+      "by_route_prefix": {
+        "balanced_compact:6bba": {
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -2
+            ],
+            "tile_raw": [
+              1,
+              0,
+              0
+            ]
+          },
+          "max_abs_offset_zyx": [
+            4,
+            18,
+            18
+          ]
+        },
+        "balanced_dog_tight:6bba": {
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              2,
+              -1
+            ],
+            "tile_dog_abs": [
+              1,
+              2,
+              0
+            ],
+            "tile_dog_bright": [
+              1,
+              2,
+              -1
+            ],
+            "tile_dog_dark": [
+              -1,
+              7,
+              -5
+            ],
+            "tile_raw": [
+              1,
+              0,
+              0
+            ]
+          },
+          "max_abs_offset_zyx": [
+            4,
+            18,
+            18
+          ]
+        },
+        "balanced_midpoint:6bba": {
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              1,
+              0,
+              0
+            ]
+          },
+          "max_abs_offset_zyx": [
+            4,
+            18,
+            18
+          ]
+        }
+      }
+    },
+    "verdict": "negative: weak 6bba subset dropped from current score 0.546737497514 to 0.473980873148"
+  },
+  "template_probe": {
+    "small_template_71a_audit_path": "reports/general_model_cv_audit_fold0_auto_71a_small_template_probe_1clip.json",
+    "summary": {
+      "n": 1,
+      "edge_jaccard": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.0,
+      "adj_edge_jaccard": 0.0,
+      "n_adj": 1,
+      "score": 0.0
+    },
+    "graph": {
+      "datasets": 1,
+      "nodes": 448,
+      "edges": 273,
+      "dividing_nodes": 0,
+      "out_gt2": 0,
+      "merges": 0
+    },
+    "verdict": "negative: fold-safe small template policy drove 44b6_71a4179f to zero node/edge recall under production template route"
+  },
+  "candidate_recall_evidence": {
+    "6bba_1d0d8384_route_sweep": [
+      {
+        "dataset": "6bba_1d0d8384",
+        "route": "balanced_local",
+        "gt_nodes": 75,
+        "recall_7um": 0.5466666666666666,
+        "recall_10um": 0.72,
+        "median_nearest_um": 6.563169479370117,
+        "p90_nearest_um": 13.023054122924805
+      },
+      {
+        "dataset": "6bba_1d0d8384",
+        "route": "balanced_compact",
+        "gt_nodes": 75,
+        "recall_7um": 0.4533333333333333,
+        "recall_10um": 0.6266666666666667,
+        "median_nearest_um": 7.632744312286377,
+        "p90_nearest_um": 13.479777336120605
+      },
+      {
+        "dataset": "6bba_1d0d8384",
+        "route": "subtile_dog_compact",
+        "gt_nodes": 75,
+        "recall_7um": 0.4,
+        "recall_10um": 0.6666666666666666,
+        "median_nearest_um": 7.3125,
+        "p90_nearest_um": 21.65892219543457
+      },
+      {
+        "dataset": "6bba_1d0d8384",
+        "route": "balanced_midpoint",
+        "gt_nodes": 75,
+        "recall_7um": 0.37333333333333335,
+        "recall_10um": 0.56,
+        "median_nearest_um": 8.7979154586792,
+        "p90_nearest_um": 13.955025672912598
+      },
+      {
+        "dataset": "6bba_1d0d8384",
+        "route": "balanced_dog_compact",
+        "gt_nodes": 75,
+        "recall_7um": 0.36,
+        "recall_10um": 0.6,
+        "median_nearest_um": 8.295859336853027,
+        "p90_nearest_um": 13.064082145690918
+      }
+    ],
+    "6bba_0c7fa718_route_sweep": [
+      {
+        "dataset": "6bba_0c7fa718",
+        "route": "subtile_dog_compact",
+        "gt_nodes": 27,
+        "recall_7um": 0.5555555555555556,
+        "recall_10um": 0.7407407407407407,
+        "median_nearest_um": 6.625737190246582,
+        "p90_nearest_um": 12.363314628601074
+      },
+      {
+        "dataset": "6bba_0c7fa718",
+        "route": "balanced_dog_compact",
+        "gt_nodes": 27,
+        "recall_7um": 0.4074074074074074,
+        "recall_10um": 0.8518518518518519,
+        "median_nearest_um": 7.198768138885498,
+        "p90_nearest_um": 10.292256355285645
+      },
+      {
+        "dataset": "6bba_0c7fa718",
+        "route": "balanced_local",
+        "gt_nodes": 27,
+        "recall_7um": 0.3333333333333333,
+        "recall_10um": 0.7407407407407407,
+        "median_nearest_um": 8.83535385131836,
+        "p90_nearest_um": 11.348834037780762
+      },
+      {
+        "dataset": "6bba_0c7fa718",
+        "route": "score_coverage_compact",
+        "gt_nodes": 27,
+        "recall_7um": 0.2962962962962963,
+        "recall_10um": 0.7777777777777778,
+        "median_nearest_um": 8.012502670288086,
+        "p90_nearest_um": 11.172003746032715
+      },
+      {
+        "dataset": "6bba_0c7fa718",
+        "route": "balanced_midpoint",
+        "gt_nodes": 27,
+        "recall_7um": 0.25925925925925924,
+        "recall_10um": 0.6296296296296297,
+        "median_nearest_um": 9.272829055786133,
+        "p90_nearest_um": 11.889708518981934
+      }
+    ],
+    "6bba_062c8d37_balanced": [
+      {
+        "dataset": "6bba_062c8d37",
+        "route": "balanced_local",
+        "gt_nodes": 16,
+        "recall_7um": 0.625,
+        "recall_10um": 0.625,
+        "median_nearest_um": 4.910615921020508,
+        "p90_nearest_um": 15.6814603805542
+      },
+      {
+        "dataset": "6bba_062c8d37",
+        "route": "clean_point",
+        "gt_nodes": 16,
+        "recall_7um": 0.375,
+        "recall_10um": 0.5625,
+        "median_nearest_um": 8.944629669189453,
+        "p90_nearest_um": 14.41111946105957
+      },
+      {
+        "dataset": "6bba_062c8d37",
+        "route": "dense_fusion",
+        "gt_nodes": 16,
+        "recall_7um": 0.375,
+        "recall_10um": 0.5625,
+        "median_nearest_um": 8.800819396972656,
+        "p90_nearest_um": 14.402610778808594
+      }
+    ]
+  },
+  "conclusion": {
+    "primary_bottleneck": "raw candidate/localization coverage on sparse 6bba validation clips; simple source-family coordinate offsets and current template proposals do not recover enough edge TP without FP regressions",
+    "not_promoted": [
+      "6bba_used_routes_match10_coordinate_probe",
+      "template_point_small_policy_probe"
+    ],
+    "next_in_scope_direction": "build a stronger fold-safe candidate localizer/proposal admission model, likely using calibrated point/crop features or optimized template/local heatmap proposals before the solver; edge-only tuning is not the current bottleneck",
+    "goal_state": "G-01 remains active; locked score is below 0.85 and this report is evidence for AC-04/VG-05, not completion"
+  }
+}

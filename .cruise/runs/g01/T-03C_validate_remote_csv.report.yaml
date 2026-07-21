@@ -1,0 +1,20 @@
+kind: "cruise_app_server_worker_report"
+launch:
+  agent_type: "cruise_l3"
+  alias: "terra-H"
+  provider_model_fallback_allowed: false
+  recommended_level: 3
+  requested:
+    model: "gpt-5.6-terra"
+    reasoning_effort: "high"
+  resolution_source: "exact_catalog_match"
+  resolved:
+    model: "gpt-5.6-terra"
+    reasoning_effort: "high"
+model_output: "## T-03C attempt report\n\nStatus: `COMPLETED_WITH_T-04_GATE_BLOCK`\n\nObservations:\n- CSV schema/graph validation passed.\n- Exact candidate: `reports/kaggle_g01/kernel_output/submission.csv`\n- SHA-256: `2c45439aa299c27e42c2b2eef97a743e5db3761ef8602f88505186910b48031d`\n- Size: `5,158,919` bytes; rows: `101,374`\n- Coverage matches all four test datasets; `57,004` nodes, `44,370` edges.\n- Graph diagnostics: no missing endpoints, non-forward edges, duplicate edges, self-loops, merges, or out-degree >2; warnings: none.\n\nReadiness:\n- AC-03: `READY/PASS`\n- AC-04: `NOT_READY`\n- T-04: must not submit yet. If AC-04/E-04 gains independent passing evidence, submit `reports/kaggle_g01/kernel_output/submission.csv`.\n\nChanged paths:\n- `reports/kaggle_g01/remote_submission_validation_report.json`\n- `.cruise/runs/g01/T-03C_validate_remote_csv.report.yaml`\n\nEvidence:\n- Validator exited `0`; JSON and YAML reports parse successfully.\n- Dataset set was derived locally from `data/kaggle/raw/biohub-cell-tracking-during-development.zip`.\n\nResidual risks:\n- CSV validity does not prove Kaggle acceptance or score.\n- Required scorer-parity, focused-test, leakage, and regression evidence for AC-04/E-04 was not produced by this CSV-only packet.\n\nBlock reason:\n- T-04 remains blocked solely on missing AC-04/E-04 evidence; no network, browser, credential, package-install, CSV-modification, or Kaggle-submission action occurred."
+runtime:
+  status: "completed"
+  thread_id: "019f63ce-597a-7f63-8677-578fc8eaae3f"
+  turn_id: "019f63ce-640a-76a1-9276-c15a814c708f"
+schema_version: 1
+warnings: []

@@ -1,0 +1,66 @@
+{
+  "artifact": "v45-detector-parity-v1",
+  "checkpoint_sha256": "12f6881ee3620a831697ca098ff8f48e687a24225f4e048b538deec3562fe771",
+  "comparison": {
+    "dataset": "44b6_0113de3b",
+    "frames": [
+      {
+        "cpu_count": 220,
+        "extra_cpu_coordinates_zyx": [
+          [2, 36, 72],
+          [3, 224, 84],
+          [5, 244, 88],
+          [25, 4, 112],
+          [30, 252, 108],
+          [47, 252, 216],
+          [62, 140, 252]
+        ],
+        "extra_cpu_scores": [
+          0.9997432827949524,
+          0.9977858066558838,
+          0.9891908168792725,
+          0.9794768691062927,
+          0.9999179840087891,
+          0.9984633922576904,
+          0.9976387023925781
+        ],
+        "intersection_count": 213,
+        "missing_cpu_coordinates_zyx": [],
+        "pinned_t4_count": 213,
+        "t": 0
+      },
+      {
+        "cpu_count": 218,
+        "extra_cpu_coordinates_zyx": [[6, 248, 84]],
+        "extra_cpu_scores": [0.9882566332817078],
+        "intersection_count": 217,
+        "missing_cpu_coordinates_zyx": [],
+        "pinned_t4_count": 217,
+        "t": 1
+      }
+    ],
+    "mode": {
+      "pair_batch_size": 1,
+      "view_batch_size": 1
+    }
+  },
+  "conclusion": {
+    "accelerated_batching_causal": false,
+    "parity_status": "inconclusive_across_hardware",
+    "required_next_gate": "same_t4_sequential_vs_accelerated_and_pinned_raw_comparison"
+  },
+  "environments": {
+    "local": {
+      "cuda": null,
+      "device": "cpu",
+      "torch": "2.8.0"
+    },
+    "pinned_public_replay": {
+      "cuda": "12.8",
+      "device": "Tesla T4",
+      "torch": "2.10.0+cu128"
+    }
+  },
+  "pinned_raw_geff_source": "reports/g02/v45out.zip",
+  "schema_version": 1
+}

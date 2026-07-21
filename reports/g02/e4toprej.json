@@ -1,0 +1,45 @@
+{
+  "artifact": "g02-e4-topology-rejection-v1",
+  "decision": "rejected_no_promotion",
+  "candidate": {
+    "name": "scored_partial_sparse_topology",
+    "edge_artifact_sha256": "47e7b82d84a0554678f08cb873813585a1f91e55286011306106f2351e6123ce",
+    "parent_checkpoint_sha256": "1cff90475b819b5652310ccb73ba57e1dc20069885962a06a5e10a6060c04473",
+    "changes": "component-local source-no-link partial matching; detector, candidate gating, checkpoint, and image refinement unchanged"
+  },
+  "held_out_smoke": {
+    "identity": "train:44b6_24264f12",
+    "selection": "fold0,max_datasets=1,truncated_non_acceptance_smoke_test",
+    "baseline_score": 0.8380140874246439,
+    "candidate_score": 0.7633908852882025,
+    "delta": -0.0746232021364414,
+    "baseline_node_recall": 0.9956521739130435,
+    "candidate_node_recall": 0.9695652173913043,
+    "baseline_edge_tp": 207,
+    "candidate_edge_tp": 197,
+    "baseline_edge_fp": 23,
+    "candidate_edge_fp": 34,
+    "baseline_edge_fn": 14,
+    "candidate_edge_fn": 24,
+    "candidate_inference_seconds": 349.1068619999569
+  },
+  "topology_isolation_gate": {
+    "passed": false,
+    "baseline_gap_synthesized_nodes": 636,
+    "candidate_gap_synthesized_nodes": 452,
+    "baseline_division_added": 109,
+    "candidate_division_added": 108,
+    "baseline_output_nodes": 29571,
+    "candidate_output_nodes": 29477,
+    "candidate_complete_components": 3735,
+    "candidate_fallback_components": 15,
+    "candidate_scored_pairs": 75655,
+    "candidate_selected_adjacent_edges": 24375
+  },
+  "interpretation": [
+    "Source-normalized pair and no-link probabilities are conditional on each retained sparse candidate set, not calibrated absolute lineage-survival likelihoods.",
+    "Using those values as global dummy costs removed adjacent links, changed downstream gap and pruning behavior, and reduced matched-node recall.",
+    "The mode is opt-in and default legacy behavior remains unchanged; this mode must not be submitted, expanded to cross-validation, or used for router training."
+  ],
+  "next_action": "retain the frozen sparse baseline and investigate detector-hypothesis recall before any further topology or probability-learning trial"
+}

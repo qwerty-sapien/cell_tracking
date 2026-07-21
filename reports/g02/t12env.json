@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "artifact": "local-evaluator-environment-v1",
+  "interpreter": ".venv313/bin/python",
+  "imports": {
+    "numpy": "2.4.6",
+    "polars": "1.42.1",
+    "scipy": "1.18.0",
+    "torch": "2.13.0",
+    "tracksdata": "0.1.0rc6",
+    "zarr": "3.2.1"
+  },
+  "official_eval_import": "pass",
+  "rule_based_import": "pass",
+  "purpose": "V12 fold-safe local scoring"
+}

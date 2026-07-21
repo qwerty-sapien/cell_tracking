@@ -1,0 +1,36 @@
+[{"stream_name":"stderr","time":30.022813746,"data":"/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:435: UserWarning: \n"}
+,{"stream_name":"stderr","time":30.022889861,"data":"    Found GPU0 Tesla P100-PCIE-16GB which is of cuda capability 6.0.\n"}
+,{"stream_name":"stderr","time":30.022897638,"data":"    Minimum and Maximum cuda capability supported by this version of PyTorch is\n"}
+,{"stream_name":"stderr","time":30.022902095,"data":"    (7.0) - (12.0)\n"}
+,{"stream_name":"stderr","time":30.022906293,"data":"    \n"}
+,{"stream_name":"stderr","time":30.022910006,"data":"  queued_call()\n"}
+,{"stream_name":"stderr","time":30.022913573,"data":"/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:435: UserWarning: \n"}
+,{"stream_name":"stderr","time":30.02291718,"data":"    Please install PyTorch with a following CUDA\n"}
+,{"stream_name":"stderr","time":30.022921016,"data":"    configurations:  12.6 following instructions at\n"}
+,{"stream_name":"stderr","time":30.022924606,"data":"    https://pytorch.org/get-started/locally/\n"}
+,{"stream_name":"stderr","time":30.022928273,"data":"    \n"}
+,{"stream_name":"stderr","time":30.022931971,"data":"  queued_call()\n"}
+,{"stream_name":"stderr","time":30.023186787,"data":"/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:435: UserWarning: \n"}
+,{"stream_name":"stderr","time":30.023201471,"data":"Tesla P100-PCIE-16GB with CUDA capability sm_60 is not compatible with the current PyTorch installation.\n"}
+,{"stream_name":"stderr","time":30.023206306,"data":"The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.\n"}
+,{"stream_name":"stderr","time":30.023211038,"data":"If you want to use the Tesla P100-PCIE-16GB GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/\n"}
+,{"stream_name":"stderr","time":30.023216117,"data":"\n"}
+,{"stream_name":"stderr","time":30.023220077,"data":"  queued_call()\n"}
+,{"stream_name":"stderr","time":30.023929845,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":30.023948147,"data":"  File \"/kaggle/working/e4src/scripts/train_v45f.py\", line 390, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":30.024224821,"data":"    raise SystemExit(main())\n"}
+,{"stream_name":"stderr","time":30.024232074,"data":"                     ^^^^^^\n"}
+,{"stream_name":"stderr","time":30.024236127,"data":"  File \"/kaggle/working/e4src/scripts/train_v45f.py\", line 360, in main\n"}
+,{"stream_name":"stderr","time":30.024581475,"data":"    device = _device(armed=args.armed)\n"}
+,{"stream_name":"stderr","time":30.024597778,"data":"             ^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":30.024603364,"data":"  File \"/kaggle/working/e4src/scripts/train_v45f.py\", line 95, in _device\n"}
+,{"stream_name":"stderr","time":30.024872241,"data":"    raise V45FastTrain(\n"}
+,{"stream_name":"stderr","time":30.024887254,"data":"V45FastTrain: armed V45 fast training requires CUDA capability \u003e= 7.0; received 6.0\n"}
+,{"stream_name":"stderr","time":30.77376358,"data":"LaunchError: scripts/run_bh.py failed with exit code 1\n"}
+,{"stream_name":"stderr","time":33.16995213,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":33.169983855,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":33.467711286,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":33.467743172,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":34.252271671,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":35.758524921,"data":"[NbConvertApp] Writing 604422 bytes to __results__.html\n"}
+]

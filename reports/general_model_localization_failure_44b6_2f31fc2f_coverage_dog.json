@@ -1,0 +1,444 @@
+{
+  "kind": "localization_failure_diagnostic",
+  "created_at_unix": 1783792085.349108,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "datasets": [
+    "44b6_2f31fc2f"
+  ],
+  "routes": [
+    "coverage_dog_compact"
+  ],
+  "clip_length": 3,
+  "radius_um": 7.0,
+  "dataset_reports": [
+    {
+      "dataset": "44b6_2f31fc2f",
+      "clip_start": 0,
+      "clip_end": 3,
+      "scale_zyx_um": [
+        1.625,
+        0.40625,
+        0.40625
+      ],
+      "radius_um": 7.0,
+      "gt_nodes_evaluated": 3,
+      "route_summaries": {
+        "coverage_dog_compact": {
+          "n": 3,
+          "recall_radius": 0.3333333333333333,
+          "recall_10um": 1.0,
+          "median_nearest_um": 7.803807735443115,
+          "p90_nearest_um": 8.35473918914795,
+          "mean_candidates_per_t": 220.0
+        }
+      },
+      "score_map_summaries": {
+        "dog_abs": {
+          "n": 3,
+          "recall_radius": 1.0,
+          "recall_10um": 1.0,
+          "median_nearest_um": 6.525341033935547,
+          "p90_nearest_um": 6.839618682861328
+        },
+        "dog_bright": {
+          "n": 3,
+          "recall_radius": 1.0,
+          "recall_10um": 1.0,
+          "median_nearest_um": 6.525341033935547,
+          "p90_nearest_um": 6.839618682861328
+        },
+        "dog_dark": {
+          "n": 3,
+          "recall_radius": 1.0,
+          "recall_10um": 1.0,
+          "median_nearest_um": 6.918188095092773,
+          "p90_nearest_um": 6.946741580963135
+        },
+        "local_contrast": {
+          "n": 3,
+          "recall_radius": 1.0,
+          "recall_10um": 1.0,
+          "median_nearest_um": 6.662995338439941,
+          "p90_nearest_um": 6.73190450668335
+        },
+        "norm": {
+          "n": 3,
+          "recall_radius": 1.0,
+          "recall_10um": 1.0,
+          "median_nearest_um": 6.550584316253662,
+          "p90_nearest_um": 6.640512943267822
+        },
+        "smoothed_norm": {
+          "n": 3,
+          "recall_radius": 1.0,
+          "recall_10um": 1.0,
+          "median_nearest_um": 6.918188095092773,
+          "p90_nearest_um": 6.946741580963135
+        }
+      },
+      "gt_rows": [
+        {
+          "node_id": 30000000020,
+          "t": 0,
+          "z": 19.0,
+          "y": 76.0,
+          "x": 245.0,
+          "routes": {
+            "coverage_dog_compact": {
+              "distance_um": 6.6132707595825195,
+              "delta_zyx_vox": [
+                4.0,
+                0.0,
+                -3.0
+              ],
+              "candidate": {
+                "node_id": 32,
+                "z": 23,
+                "y": 76,
+                "x": 242,
+                "score": 1.0,
+                "intensity": 1038.0,
+                "sources": [
+                  "cover_dog_dark@q0.7"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.46954622864723206,
+              "best_score": 0.5922106504440308,
+              "best_coord_zyx": [
+                21,
+                63,
+                251
+              ],
+              "distance_um": 6.662995338439941,
+              "delta_zyx_vox": [
+                2.0,
+                -13.0,
+                6.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 0.7626490592956543,
+              "best_score": 0.9262275099754333,
+              "best_coord_zyx": [
+                22,
+                65,
+                250
+              ],
+              "distance_um": 6.918188095092773,
+              "delta_zyx_vox": [
+                3.0,
+                -11.0,
+                5.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.5883575081825256,
+              "best_score": 0.9111148118972778,
+              "best_coord_zyx": [
+                21,
+                63,
+                251
+              ],
+              "distance_um": 6.662995338439941,
+              "delta_zyx_vox": [
+                2.0,
+                -13.0,
+                6.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 0.5129494667053223,
+              "best_score": 0.6799027919769287,
+              "best_coord_zyx": [
+                21,
+                63,
+                250
+              ],
+              "distance_um": 6.525341033935547,
+              "delta_zyx_vox": [
+                2.0,
+                -13.0,
+                5.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.3797816038131714,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                23,
+                76,
+                242
+              ],
+              "distance_um": 6.6132707595825195,
+              "delta_zyx_vox": [
+                4.0,
+                0.0,
+                -3.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 0.38701000809669495,
+              "best_score": 0.5971333980560303,
+              "best_coord_zyx": [
+                21,
+                63,
+                250
+              ],
+              "distance_um": 6.525341033935547,
+              "delta_zyx_vox": [
+                2.0,
+                -13.0,
+                5.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 31000000020,
+          "t": 1,
+          "z": 17.0,
+          "y": 73.0,
+          "x": 248.0,
+          "routes": {
+            "coverage_dog_compact": {
+              "distance_um": 8.492471694946289,
+              "delta_zyx_vox": [
+                -2.0,
+                -7.0,
+                -18.0
+              ],
+              "candidate": {
+                "node_id": 251,
+                "z": 15,
+                "y": 66,
+                "x": 230,
+                "score": 1.0,
+                "intensity": 767.0,
+                "sources": [
+                  "cover_dog_dark@q0.7"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.4753700792789459,
+              "best_score": 0.58347487449646,
+              "best_coord_zyx": [
+                20,
+                63,
+                252
+              ],
+              "distance_um": 6.550584316253662,
+              "delta_zyx_vox": [
+                3.0,
+                -10.0,
+                4.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 0.7826076149940491,
+              "best_score": 0.9250585436820984,
+              "best_coord_zyx": [
+                20,
+                62,
+                253
+              ],
+              "distance_um": 6.918188095092773,
+              "delta_zyx_vox": [
+                3.0,
+                -11.0,
+                5.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.5529517531394958,
+              "best_score": 0.8263927102088928,
+              "best_coord_zyx": [
+                19,
+                59,
+                252
+              ],
+              "distance_um": 6.749131679534912,
+              "delta_zyx_vox": [
+                2.0,
+                -14.0,
+                4.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 0.4891062080860138,
+              "best_score": 0.6807533502578735,
+              "best_coord_zyx": [
+                20,
+                62,
+                253
+              ],
+              "distance_um": 6.918188095092773,
+              "delta_zyx_vox": [
+                3.0,
+                -11.0,
+                5.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.2652454674243927,
+              "best_score": 0.9200083613395691,
+              "best_coord_zyx": [
+                16,
+                66,
+                233
+              ],
+              "distance_um": 6.918188095092773,
+              "delta_zyx_vox": [
+                -1.0,
+                -7.0,
+                -15.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 0.3590535819530487,
+              "best_score": 0.599486231803894,
+              "best_coord_zyx": [
+                20,
+                62,
+                253
+              ],
+              "distance_um": 6.918188095092773,
+              "delta_zyx_vox": [
+                3.0,
+                -11.0,
+                5.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 32000000020,
+          "t": 2,
+          "z": 15.0,
+          "y": 74.0,
+          "x": 247.0,
+          "routes": {
+            "coverage_dog_compact": {
+              "distance_um": 7.803807735443115,
+              "delta_zyx_vox": [
+                -2.0,
+                -4.0,
+                -17.0
+              ],
+              "candidate": {
+                "node_id": 615,
+                "z": 13,
+                "y": 70,
+                "x": 230,
+                "score": 1.0,
+                "intensity": 774.0,
+                "sources": [
+                  "cover_dog_dark@q0.7"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.5037612318992615,
+              "best_score": 0.5576316714286804,
+              "best_coord_zyx": [
+                12,
+                79,
+                254
+              ],
+              "distance_um": 5.998209476470947,
+              "delta_zyx_vox": [
+                -3.0,
+                5.0,
+                7.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 0.7882383465766907,
+              "best_score": 0.861864447593689,
+              "best_coord_zyx": [
+                18,
+                64,
+                254
+              ],
+              "distance_um": 6.9538798332214355,
+              "delta_zyx_vox": [
+                3.0,
+                -10.0,
+                7.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.7210841774940491,
+              "best_score": 0.9053510427474976,
+              "best_coord_zyx": [
+                12,
+                79,
+                250
+              ],
+              "distance_um": 5.420051097869873,
+              "delta_zyx_vox": [
+                -3.0,
+                5.0,
+                3.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 0.5848777890205383,
+              "best_score": 0.7485871315002441,
+              "best_coord_zyx": [
+                12,
+                79,
+                253
+              ],
+              "distance_um": 5.816614627838135,
+              "delta_zyx_vox": [
+                -3.0,
+                5.0,
+                6.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.3152522146701813,
+              "best_score": 0.9189212918281555,
+              "best_coord_zyx": [
+                13,
+                72,
+                232
+              ],
+              "distance_um": 6.9538798332214355,
+              "delta_zyx_vox": [
+                -2.0,
+                -2.0,
+                -15.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 0.47611361742019653,
+              "best_score": 0.682715654373169,
+              "best_coord_zyx": [
+                12,
+                79,
+                253
+              ],
+              "distance_um": 5.816614627838135,
+              "delta_zyx_vox": [
+                -3.0,
+                5.0,
+                6.0
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "runtime_sec": 24.772919178009033
+}

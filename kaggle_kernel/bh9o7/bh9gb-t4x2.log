@@ -1,0 +1,37 @@
+[{"stream_name":"stdout","time":24.362891921,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/zarr-3.2.1-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":24.399677326,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/numcodecs-0.15.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":24.43709659,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/donfig-0.8.1.post1-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":24.445285176,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/polars-1.42.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":24.464318706,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/tracksdata-0.1.0rc6.dev3+g980c2d30a-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":24.476518475,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/bidict-0.23.1-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":24.485482261,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/geff-1.2.0.1.1-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":24.495953505,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/ilpy-0.6.0-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":24.504365922,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/imagecodecs-2026.6.26-cp312-abi3-manylinux_2_28_x86_64.whl\n"}
+,{"stream_name":"stdout","time":24.597165996,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/rustworkx-0.18.0-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl\n"}
+,{"stream_name":"stdout","time":24.613450843,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/geff_spec-1.1.1-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":24.621419171,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/polars_runtime_32-1.42.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl\n"}
+,{"stream_name":"stdout","time":24.790878672,"data":"Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/pyscipopt-6.2.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl\n"}
+,{"stream_name":"stdout","time":24.851572008,"data":"Installing collected packages: zarr, tracksdata, rustworkx, pyscipopt, polars-runtime-32, polars, numcodecs, imagecodecs, ilpy, geff-spec, geff, donfig, bidict\n"}
+,{"stream_name":"stdout","time":25.825856735,"data":"  Attempting uninstall: polars-runtime-32\n"}
+,{"stream_name":"stdout","time":25.967478958,"data":"    Found existing installation: polars-runtime-32 1.35.2\n"}
+,{"stream_name":"stdout","time":25.971916453,"data":"    Uninstalling polars-runtime-32-1.35.2:\n"}
+,{"stream_name":"stdout","time":26.536559394,"data":"      Successfully uninstalled polars-runtime-32-1.35.2\n"}
+,{"stream_name":"stdout","time":27.677252056,"data":"  Attempting uninstall: polars\n"}
+,{"stream_name":"stdout","time":27.971598316,"data":"    Found existing installation: polars 1.35.2\n"}
+,{"stream_name":"stdout","time":27.99343261,"data":"    Uninstalling polars-1.35.2:\n"}
+,{"stream_name":"stdout","time":28.054190157,"data":"      Successfully uninstalled polars-1.35.2\n"}
+,{"stream_name":"stdout","time":29.759239648,"data":"Successfully installed bidict-0.23.1 donfig-0.8.1.post1 geff-1.2.0.1.1 geff-spec-1.1.1 ilpy-0.6.0 imagecodecs-2026.6.26 numcodecs-0.15.1 polars-1.42.0 polars-runtime-32-1.42.0 pyscipopt-6.2.1 rustworkx-0.18.0 tracksdata-0.1.0rc6.dev3+g980c2d30a zarr-3.2.1\n"}
+,{"stream_name":"stderr","time":29.759485467,"data":"WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.\n"}
+,{"stream_name":"stderr","time":1640.649469807,"data":"/usr/local/lib/python3.12/dist-packages/dask/array/image.py:7: FutureWarning: `find_available_plugins` is deprecated since version 0.25 and will be removed in version 0.27. The plugin infrastructure of `skimage.io` is deprecated. Instead, use `imageio` or other I/O packages directly.\n"}
+,{"stream_name":"stderr","time":1640.649534376,"data":"  from skimage.io import imread as sk_imread\n"}
+,{"stream_name":"stderr","time":1640.667518461,"data":"/usr/lib/python3.12/importlib/__init__.py:90: FutureWarning: `reset_plugins` is deprecated since version 0.25 and will be removed in version 0.27. The plugin infrastructure of `skimage.io` is deprecated. Instead, use `imageio` or other I/O packages directly.\n"}
+,{"stream_name":"stderr","time":1640.66754404,"data":"  return _bootstrap._gcd_import(name[level:], package, level)\n"}
+,{"stream_name":"stderr","time":1670.987091719,"data":"bh9gb: official aggregate score 0.8458354861904438 is not above 0.9; rejection evidence=/kaggle/working/bh9fail.json\n"}
+,{"stream_name":"stderr","time":1671.975269525,"data":"LaunchError: bh9gb exited 3\n"}
+,{"stream_name":"stderr","time":1674.804227205,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1674.804259381,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1675.07439259,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1675.074421268,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1675.865861143,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1677.457520642,"data":"[NbConvertApp] Writing 756635 bytes to __results__.html\n"}
+]

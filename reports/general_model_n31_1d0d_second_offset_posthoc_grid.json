@@ -1,0 +1,531 @@
+{
+  "kind": "n31_1d0d_second_offset_posthoc_grid",
+  "created_at_unix": 1783941129.8222332,
+  "dataset": "6bba_1d0d8384",
+  "current": {
+    "score": 0.46706974147076885,
+    "edge_jaccard": 0.48,
+    "node_recall": 0.52,
+    "edge_tp": 24.0,
+    "edge_fp": 1.0,
+    "edge_fn": 25.0,
+    "nodes": 682,
+    "edges": 420
+  },
+  "base_node_count": 333,
+  "base_edge_count": 202,
+  "top_rows": [
+    {
+      "offset_zyx": [
+        0,
+        -36,
+        30
+      ],
+      "score": 0.5466491708079736,
+      "edge_jaccard": 0.6,
+      "node_recall": 0.64,
+      "edge_tp": 30.0,
+      "edge_fp": 1.0,
+      "edge_fn": 19.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        0,
+        -36,
+        36
+      ],
+      "score": 0.5284275317810412,
+      "edge_jaccard": 0.58,
+      "node_recall": 0.6133333333333333,
+      "edge_tp": 29.0,
+      "edge_fp": 1.0,
+      "edge_fn": 20.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        3,
+        -36,
+        18
+      ],
+      "score": 0.5157067649131827,
+      "edge_jaccard": 0.5660377358490566,
+      "node_recall": 0.6933333333333334,
+      "edge_tp": 30.0,
+      "edge_fp": 4.0,
+      "edge_fn": 19.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        -3,
+        36,
+        -24
+      ],
+      "score": 0.5102058927541088,
+      "edge_jaccard": 0.56,
+      "node_recall": 0.6,
+      "edge_tp": 28.0,
+      "edge_fp": 1.0,
+      "edge_fn": 21.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        0,
+        -24,
+        0
+      ],
+      "score": 0.5102058927541088,
+      "edge_jaccard": 0.56,
+      "node_recall": 0.6133333333333333,
+      "edge_tp": 28.0,
+      "edge_fp": 1.0,
+      "edge_fn": 21.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        -3,
+        -36,
+        24
+      ],
+      "score": 0.5081033959433089,
+      "edge_jaccard": 0.5576923076923077,
+      "node_recall": 0.6533333333333333,
+      "edge_tp": 29.0,
+      "edge_fp": 3.0,
+      "edge_fn": 20.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        -3,
+        0,
+        12
+      ],
+      "score": 0.5002018556412832,
+      "edge_jaccard": 0.5490196078431373,
+      "node_recall": 0.6133333333333333,
+      "edge_tp": 28.0,
+      "edge_fp": 2.0,
+      "edge_fn": 21.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        3,
+        -36,
+        30
+      ],
+      "score": 0.5002018556412832,
+      "edge_jaccard": 0.5490196078431373,
+      "node_recall": 0.6133333333333333,
+      "edge_tp": 28.0,
+      "edge_fp": 2.0,
+      "edge_fn": 21.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        3,
+        -30,
+        36
+      ],
+      "score": 0.5002018556412832,
+      "edge_jaccard": 0.5490196078431373,
+      "node_recall": 0.6133333333333333,
+      "edge_tp": 28.0,
+      "edge_fp": 2.0,
+      "edge_fn": 21.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        -3,
+        -24,
+        24
+      ],
+      "score": 0.4919842537271763,
+      "edge_jaccard": 0.54,
+      "node_recall": 0.5866666666666667,
+      "edge_tp": 27.0,
+      "edge_fp": 1.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        -3,
+        -24,
+        30
+      ],
+      "score": 0.4919842537271763,
+      "edge_jaccard": 0.54,
+      "node_recall": 0.5866666666666667,
+      "edge_tp": 27.0,
+      "edge_fp": 1.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        -3,
+        -12,
+        36
+      ],
+      "score": 0.4919842537271763,
+      "edge_jaccard": 0.54,
+      "node_recall": 0.5866666666666667,
+      "edge_tp": 27.0,
+      "edge_fp": 1.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        0,
+        6,
+        -18
+      ],
+      "score": 0.4919842537271763,
+      "edge_jaccard": 0.54,
+      "node_recall": 0.5866666666666667,
+      "edge_tp": 27.0,
+      "edge_fp": 1.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        0,
+        12,
+        -24
+      ],
+      "score": 0.4919842537271763,
+      "edge_jaccard": 0.54,
+      "node_recall": 0.5866666666666667,
+      "edge_tp": 27.0,
+      "edge_fp": 1.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        0,
+        18,
+        -30
+      ],
+      "score": 0.4919842537271763,
+      "edge_jaccard": 0.54,
+      "node_recall": 0.5866666666666667,
+      "edge_tp": 27.0,
+      "edge_fp": 1.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        3,
+        -6,
+        18
+      ],
+      "score": 0.4919842537271763,
+      "edge_jaccard": 0.54,
+      "node_recall": 0.5866666666666667,
+      "edge_tp": 27.0,
+      "edge_fp": 1.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        3,
+        24,
+        -30
+      ],
+      "score": 0.4919842537271763,
+      "edge_jaccard": 0.54,
+      "node_recall": 0.5866666666666667,
+      "edge_tp": 27.0,
+      "edge_fp": 1.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        3,
+        30,
+        -12
+      ],
+      "score": 0.4919842537271763,
+      "edge_jaccard": 0.54,
+      "node_recall": 0.6,
+      "edge_tp": 27.0,
+      "edge_fp": 1.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        3,
+        36,
+        -12
+      ],
+      "score": 0.4919842537271763,
+      "edge_jaccard": 0.54,
+      "node_recall": 0.6,
+      "edge_tp": 27.0,
+      "edge_fp": 1.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        0,
+        -36,
+        0
+      ],
+      "score": 0.490582589186643,
+      "edge_jaccard": 0.5384615384615384,
+      "node_recall": 0.6266666666666667,
+      "edge_tp": 28.0,
+      "edge_fp": 3.0,
+      "edge_fn": 21.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        0,
+        -30,
+        30
+      ],
+      "score": 0.490582589186643,
+      "edge_jaccard": 0.5384615384615384,
+      "node_recall": 0.6266666666666667,
+      "edge_tp": 28.0,
+      "edge_fp": 3.0,
+      "edge_fn": 21.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        3,
+        -36,
+        12
+      ],
+      "score": 0.4892847516491123,
+      "edge_jaccard": 0.5370370370370371,
+      "node_recall": 0.68,
+      "edge_tp": 29.0,
+      "edge_fp": 5.0,
+      "edge_fn": 20.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        3,
+        -30,
+        12
+      ],
+      "score": 0.4892847516491123,
+      "edge_jaccard": 0.5370370370370371,
+      "node_recall": 0.68,
+      "edge_tp": 29.0,
+      "edge_fp": 5.0,
+      "edge_fn": 20.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        -3,
+        24,
+        -36
+      ],
+      "score": 0.4823375036540944,
+      "edge_jaccard": 0.5294117647058824,
+      "node_recall": 0.5866666666666667,
+      "edge_tp": 27.0,
+      "edge_fp": 2.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        0,
+        -30,
+        -6
+      ],
+      "score": 0.4823375036540944,
+      "edge_jaccard": 0.5294117647058824,
+      "node_recall": 0.6,
+      "edge_tp": 27.0,
+      "edge_fp": 2.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        0,
+        0,
+        24
+      ],
+      "score": 0.4823375036540944,
+      "edge_jaccard": 0.5294117647058824,
+      "node_recall": 0.6,
+      "edge_tp": 27.0,
+      "edge_fp": 2.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        3,
+        -6,
+        12
+      ],
+      "score": 0.4823375036540944,
+      "edge_jaccard": 0.5294117647058824,
+      "node_recall": 0.6,
+      "edge_tp": 27.0,
+      "edge_fp": 2.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        3,
+        18,
+        -12
+      ],
+      "score": 0.4823375036540944,
+      "edge_jaccard": 0.5294117647058824,
+      "node_recall": 0.6,
+      "edge_tp": 27.0,
+      "edge_fp": 2.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        3,
+        36,
+        -18
+      ],
+      "score": 0.4823375036540944,
+      "edge_jaccard": 0.5294117647058824,
+      "node_recall": 0.6,
+      "edge_tp": 27.0,
+      "edge_fp": 2.0,
+      "edge_fn": 22.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    },
+    {
+      "offset_zyx": [
+        -3,
+        0,
+        18
+      ],
+      "score": 0.4813263139189705,
+      "edge_jaccard": 0.5283018867924528,
+      "node_recall": 0.6266666666666667,
+      "edge_tp": 28.0,
+      "edge_fp": 4.0,
+      "edge_fn": 21.0,
+      "nodes": 1015,
+      "edges": 622,
+      "cloned_nodes": 333,
+      "cloned_edges": 202
+    }
+  ],
+  "all_rows_count": 506,
+  "runtime_sec": 55.36127996444702
+}

@@ -1,0 +1,49 @@
+{
+  "artifact": "g02-e4-rejection-v1",
+  "decision": "rejected_no_promotion",
+  "edge_artifact": {
+    "path": "submission_result/e4out2/e4out/edge.json",
+    "sha256": "47e7b82d84a0554678f08cb873813585a1f91e55286011306106f2351e6123ce",
+    "trainable_parameters": 578,
+    "fit_examples": 2714,
+    "validation_examples": 736,
+    "audit_exposed": false,
+    "held_out_exposed": false,
+    "test_exposed": false
+  },
+  "parent": {
+    "checkpoint_sha256": "1cff90475b819b5652310ccb73ba57e1dc20069885962a06a5e10a6060c04473",
+    "metrics_sha256": "5e7f605c10f61f560fbf13324727d4da86eff85ad32671cb5a6224096e42063b",
+    "completed_steps": 1000
+  },
+  "remote_run": {
+    "kernel": "onebitbrain/bh-e4f0",
+    "version": 2,
+    "accelerator": "NvidiaTeslaT4",
+    "elapsed_seconds": 2162.4548525620003,
+    "diagnostic_sha256": "29ff4d5dc9e26f3e765b2b99e30fd99b9470d27aadb647fadb7501c937d5c0fd",
+    "status": "completed"
+  },
+  "held_out_smoke": {
+    "identity": "train:44b6_24264f12",
+    "selection": "fold0,max_datasets=1,truncated_non_acceptance_smoke_test",
+    "baseline_score": 0.8380140874246439,
+    "candidate_score": 0.8339528955237622,
+    "delta": -0.0040611919008817,
+    "baseline_edge_tp": 207,
+    "candidate_edge_tp": 206,
+    "baseline_edge_fp": 23,
+    "candidate_edge_fp": 23,
+    "baseline_edge_fn": 14,
+    "candidate_edge_fn": 15,
+    "baseline_division_fp": 3,
+    "candidate_division_fp": 2,
+    "candidate_inference_seconds": 442.9591568748001
+  },
+  "interpretation": [
+    "The candidate did not clear the pre-registered same-video held-out gate and must not be submitted or expanded to cross-validation.",
+    "The residual objective improves matched sparse candidate-label loss but does not improve the competition graph metric on this unseen video.",
+    "Sparse labels excluded most detections as ambiguous, so the residual has weak coverage of the decision surface that changes graph topology."
+  ],
+  "next_action": "evaluate a non-training topology-constrained alternative before allocating additional remote compute"
+}

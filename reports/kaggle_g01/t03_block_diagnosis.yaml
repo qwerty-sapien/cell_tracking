@@ -1,0 +1,184 @@
+schema_version: 1
+artifact_kind: "t03_local_full_generation_block_diagnosis"
+task_id: "T-03R"
+title: "Diagnose blocked local full-test alpha generation"
+outcome: "BLOCKED_RECOMMEND_PLAN_REVISION"
+scope:
+  full_generation_attempts_this_packet: 0
+  model_behavior_changed: false
+  network_accessed: false
+  kaggle_submission: false
+  browser_or_chrome_opened: false
+  packages_installed: false
+  credentials_read_or_printed: false
+approved_artifact_verification:
+  origin_raw_prompt_sha256_expected: "cf050ce8f0385c4df44dab480f1f2cec4018aa4dcab54b4a189e16be56ff6aa3"
+  plan_sha256_expected: "c0b79fe571b0b8f713e47bbc9a3a000e35c3759760791250ec4d1266c668f7d1"
+  plan_sha256_observed: "c0b79fe571b0b8f713e47bbc9a3a000e35c3759760791250ec4d1266c668f7d1"
+  goal_sha256_expected: "b9f0de5196db299f2aa2a7d506075e7a6744017480c9c8505996d8254b21ae45"
+  goal_sha256_observed: "b9f0de5196db299f2aa2a7d506075e7a6744017480c9c8505996d8254b21ae45"
+prior_block_evidence:
+  report: ".cruise/runs/g01/T-03_generate_and_validate_full_alpha_submission.report.yaml"
+  full_attempts: 2
+  attempt_1: "Terminated after approximately 28 seconds with no stdout, CSV, metrics, or captured exit status."
+  attempt_2: "Terminated after approximately 10 seconds after startup diagnostics and before per-dataset result, CSV, metrics, or shell status footer."
+  candidate_csv: "reports/kaggle_g01/submission.csv"
+  candidate_exists: false
+test_data:
+  zip_path: "data/kaggle/raw/biohub-cell-tracking-during-development.zip"
+  bytes: 87393127165
+  mtime_utc: "2026-06-26T21:36:15Z"
+  available_disk: "208GiB"
+  selected_zarr: "test/44b6_0113de3b.zarr/0"
+  zarr_open: "PASS"
+  shape_tzyx: [100, 64, 256, 256]
+  dtype: "uint16"
+  chunks_tzyx: [1, 64, 256, 256]
+  attrs_keys: ["image_statistics", "multiscales"]
+  read_sample:
+    shape_yx: [4, 4]
+    dtype: "uint16"
+    sum: 1615
+checks:
+  source_tree_import_without_source_path:
+    status: "FAIL_EXPECTED_FOR_UNINSTALLED_SRC_LAYOUT"
+    observed: "ModuleNotFoundError: No module named 'celltrack_alpha'"
+    interpretation: "The repository package is not installed into .venv; this is not a runner defect because scripts/run_alpha_routed_zip.py explicitly inserts ROOT/src."
+  source_tree_import_with_runner_equivalent_source_path:
+    status: "PASS"
+    python: "3.14.6"
+    numpy: "2.4.6"
+    scipy: "1.18.0"
+    zarr: "3.2.1"
+    package_path: "/Users/agent/Desktop/cell_tracking/src/celltrack_alpha/__init__.py"
+  kaggle_package_import:
+    status: "PASS"
+    package_path: "/Users/agent/Desktop/cell_tracking/kaggle_kernel/celltrack_alpha/__init__.py"
+  alpha_package_parity_spot_check:
+    status: "PASS"
+    entrypoint_sha256: "29974d5d70976ab10e8e277abf1f0095bf5b7b1dc446bd1cbe63444a84d94a82"
+    source_pipeline_sha256: "b7366daf007ebd7aef3d802d28491f6ac8027335a9753056940fea3281426ea4"
+    kaggle_pipeline_sha256: "b7366daf007ebd7aef3d802d28491f6ac8027335a9753056940fea3281426ea4"
+  tiny_clip:
+    status: "PASS"
+    command_child_status: 0
+    wrapper_status: 1
+    wrapper_note: "macOS /usr/bin/time emitted 'time: sysctl kern.clockrate: Operation not permitted' after the child completed, so its non-zero status is not the alpha runner status."
+    dataset: "44b6_0113de3b"
+    clip: [0, 1]
+    route: "clean_point"
+    node_rows: 120
+    edge_rows: 0
+    runner_validation:
+      valid: true
+      errors: []
+      dataset_count: 1
+      row_type_counts:
+        node: 120
+    graph:
+      datasets: 1
+      nodes: 120
+      edges: 0
+      dividing_nodes: 0
+      out_gt2: 0
+      merges: 0
+    observed_runtime: "9.27 real seconds (8.35 user, 0.44 sys)"
+    output_csv: "reports/kaggle_g01/t03r_tiny_clip_smoke.csv"
+    output_csv_sha256: "b554a153e3f420ada1c29b29911ea7ae6f45df8c4e0f92eda146261a12310988"
+    metrics_json: "reports/kaggle_g01/t03r_tiny_clip_smoke_metrics.json"
+    metrics_json_sha256: "02a63862b48384a7d56df19760bd90be2d80882e957a1465ee3c644e780067de"
+resource_observations:
+  disk: "208GiB available; disk capacity is not the immediate observed blocker."
+  memory_before_tiny_clip:
+    pages_free: 4371
+    pages_stored_in_compressor: 3070266
+    pages_occupied_by_compressor: 621920
+    swapins: 4949899
+    swapouts: 6592808
+  memory_after_tiny_clip:
+    pages_free: 6942
+    pages_stored_in_compressor: 3129237
+    pages_occupied_by_compressor: 653588
+    swapins: 4950471
+    swapouts: 6592808
+  cpu_and_physical_memory_query: "Not available: sysctl hw.memsize/hw.ncpu returned Operation not permitted in this sandbox."
+failure_classification:
+  most_likely: "local_resource_or_timeout"
+  evidence_strength: "moderate"
+  rationale:
+    - "Both prior full attempts ended before a status footer or artifacts, while the identical source runner, Zarr access, and one-timepoint prediction complete successfully."
+    - "The tiny clip needs 9.27 seconds for one timepoint; a linear lower-bound extrapolation for 400 test timepoints is about 61.8 minutes before full-window linking/serialization overhead. This is an inference, not a measured full-run duration."
+    - "The host showed heavy memory compression and historical swap activity before and after the smoke check, which increases local-run risk but does not prove an OOM termination."
+  ruled_out_or_not_supported:
+    command_bug: "Not supported: the runner accepts the intended ZIP/test arguments and completes a one-dataset one-timepoint invocation."
+    package_defect: "Not supported: source and Kaggle package imports pass, and the checked pipeline hashes match the package parity manifest."
+    precise_os_cause: "Unknown: the two original full attempts did not capture exit status or a status footer."
+recommendation:
+  action: "plan_revision_to_use_kaggle_kernel_remote_generation"
+  contract_safe_next_action: >-
+    Do not start another local full generation under T-03. Revise the plan and
+    issue a separately authorized worker packet to execute the already-parity-
+    checked kaggle_kernel/alpha_submission.py in the Kaggle environment, then
+    obtain and locally validate its generated submission.csv before any scored
+    submission.
+  requires_user_or_plan_revision: true
+  reason: >-
+    This packet prohibits network/Kaggle access and a third local four-dataset,
+    100-timepoint attempt. Remote generation is outside both boundaries, while
+    the local smoke evidence supports the alpha code path.
+  bounded_local_remediation_possible_now: false
+  no_change_to_model_behavior_required: true
+diagnostic_commands:
+  - command: "shasum -a 256 .cruise/goal/PLAN.md .cruise/goal/GOAL.md"
+    output: |-
+      c0b79fe571b0b8f713e47bbc9a3a000e35c3759760791250ec4d1266c668f7d1  .cruise/goal/PLAN.md
+      b9f0de5196db299f2aa2a7d506075e7a6744017480c9c8505996d8254b21ae45  .cruise/goal/GOAL.md
+  - command: "df -h . data/kaggle/raw; vm_stat; sysctl -n hw.memsize; sysctl -n hw.ncpu; ls -lh data/kaggle/raw/biohub-cell-tracking-during-development.zip; stat -f 'bytes=%z mtime=%Sm' -t '%Y-%m-%dT%H:%M:%SZ' data/kaggle/raw/biohub-cell-tracking-during-development.zip"
+    output: |-
+      disk: /dev/disk3s5 926Gi total, 670Gi used, 208Gi available, 77% used (both paths).
+      vm_stat before smoke: free=4371; compressor_stored=3070266; compressor_occupied=621920; swapins=4949899; swapouts=6592808.
+      sysctl hw.memsize: Operation not permitted.
+      sysctl hw.ncpu: Operation not permitted.
+      ZIP: 81G display size; bytes=87393127165 mtime=2026-06-26T21:36:15Z.
+  - command: "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -B -c 'import sys, numpy, scipy, zarr; import celltrack_alpha; from celltrack_alpha import predict_dataset_window; ...'"
+    output: |-
+      ModuleNotFoundError: No module named 'celltrack_alpha'
+      exit_status=1
+  - command: "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src .venv/bin/python -B -c 'import sys, numpy, scipy, zarr; import celltrack_alpha; from celltrack_alpha import predict_dataset_window; ...'"
+    output: |-
+      imports_with_source_path=PASS
+      python=3.14.6
+      numpy=2.4.6
+      scipy=1.18.0
+      zarr=3.2.1
+      celltrack_alpha=/Users/agent/Desktop/cell_tracking/src/celltrack_alpha/__init__.py
+      import_exit_status=0
+  - command: "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -B - (ZipStore/Zarr open of test/44b6_0113de3b.zarr/0 and array[0,0,:4,:4])"
+    output: |-
+      {"attrs_keys": ["image_statistics", "multiscales"], "chunks": [1, 64, 256, 256], "dtype": "uint16", "sample_dtype": "uint16", "sample_shape": [4, 4], "sample_sum": 1615, "shape": [100, 64, 256, 256], "zarr_open": "PASS"}
+      exit_status=0
+  - command: "/usr/bin/time -l env PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -u -B scripts/run_alpha_routed_zip.py --zip data/kaggle/raw/biohub-cell-tracking-during-development.zip --split test --datasets 44b6_0113de3b --clip-start 0 --clip-length 1 --route auto --progress --run-id g01-t03r-tiny-44b6-0113-t0 --output reports/kaggle_g01/t03r_tiny_clip_smoke.csv --metrics-output reports/kaggle_g01/t03r_tiny_clip_smoke_metrics.json"
+    output: |-
+      alpha routed run_id=g01-t03r-tiny-44b6-0113-t0 split=test route=auto datasets=['44b6_0113de3b']
+      44b6_0113de3b: route=clean_point confidence=0.99 reason=low foreground/low motion/high signal
+      44b6_0113de3b: proposals t=1/1
+      44b6_0113de3b: route=clean_point nodes=120 edges=0 divisions=0
+      validation.valid=true; dataset_count=1; node rows=120; graph nodes=120, edges=0, out_gt2=0, merges=0.
+      Wrote reports/kaggle_g01/t03r_tiny_clip_smoke.csv
+      Wrote reports/kaggle_g01/t03r_tiny_clip_smoke_metrics.json
+      9.27 real 8.35 user 0.44 sys
+      time: sysctl kern.clockrate: Operation not permitted
+      tiny_clip_exit_status=1 (the time wrapper, after successful child output)
+  - command: "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=kaggle_kernel .venv/bin/python -B -c 'import celltrack_alpha; from celltrack_alpha import predict_dataset_window; ...'"
+    output: |-
+      kaggle_package_import=PASS
+      celltrack_alpha=/Users/agent/Desktop/cell_tracking/kaggle_kernel/celltrack_alpha/__init__.py
+      kaggle_package_import_exit_status=0
+changed_paths:
+  - "reports/kaggle_g01/t03_block_diagnosis.yaml"
+  - "reports/kaggle_g01/t03r_tiny_clip_smoke.csv"
+  - "reports/kaggle_g01/t03r_tiny_clip_smoke_metrics.json"
+residual_risks:
+  - "No full candidate CSV exists, so AC-03 and AC-04 remain NOT_READY."
+  - "The original full-run termination has no observed OS exit code; OOM versus tool timeout cannot be distinguished conclusively."
+  - "The tiny clip validates only one dataset and one timepoint; it does not establish full-test runtime, graph quality, or Kaggle compatibility."

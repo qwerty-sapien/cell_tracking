@@ -1,0 +1,3625 @@
+{
+  "kind": "localization_failure_diagnostic",
+  "created_at_unix": 1783912513.139485,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "datasets": [
+    "6bba_062c8d37"
+  ],
+  "routes": [
+    "balanced_midpoint",
+    "balanced_compact",
+    "clean_compact",
+    "dense_fusion",
+    "score_coverage_compact",
+    "refined_dog_compact"
+  ],
+  "clip_length": 3,
+  "radius_um": 7.0,
+  "dataset_reports": [
+    {
+      "dataset": "6bba_062c8d37",
+      "clip_start": 0,
+      "clip_end": 3,
+      "scale_zyx_um": [
+        1.625,
+        0.40625,
+        0.40625
+      ],
+      "radius_um": 7.0,
+      "gt_nodes_evaluated": 16,
+      "route_summaries": {
+        "balanced_midpoint": {
+          "n": 16,
+          "recall_radius": 0.4375,
+          "recall_10um": 0.4375,
+          "median_nearest_um": 11.813017845153809,
+          "p90_nearest_um": 17.259990692138672,
+          "mean_candidates_per_t": 120.0
+        },
+        "balanced_compact": {
+          "n": 16,
+          "recall_radius": 0.5,
+          "recall_10um": 0.5,
+          "median_nearest_um": 8.84135627746582,
+          "p90_nearest_um": 16.188648223876953,
+          "mean_candidates_per_t": 160.0
+        },
+        "clean_compact": {
+          "n": 16,
+          "recall_radius": 0.1875,
+          "recall_10um": 0.1875,
+          "median_nearest_um": 13.507352828979492,
+          "p90_nearest_um": 16.891082763671875,
+          "mean_candidates_per_t": 60.0
+        },
+        "dense_fusion": {
+          "n": 16,
+          "recall_radius": 0.375,
+          "recall_10um": 0.5625,
+          "median_nearest_um": 8.800819396972656,
+          "p90_nearest_um": 14.402610778808594,
+          "mean_candidates_per_t": 260.0
+        },
+        "score_coverage_compact": {
+          "n": 16,
+          "recall_radius": 0.5625,
+          "recall_10um": 0.6875,
+          "median_nearest_um": 5.8172407150268555,
+          "p90_nearest_um": 15.990323066711426,
+          "mean_candidates_per_t": 240.0
+        },
+        "refined_dog_compact": {
+          "n": 16,
+          "recall_radius": 0.875,
+          "recall_10um": 0.9375,
+          "median_nearest_um": 3.275195360183716,
+          "p90_nearest_um": 6.1608428955078125,
+          "mean_candidates_per_t": 260.0
+        }
+      },
+      "score_map_summaries": {
+        "dog_abs": {
+          "n": 16,
+          "recall_radius": 1.0,
+          "recall_10um": 1.0,
+          "median_nearest_um": 3.574875831604004,
+          "p90_nearest_um": 4.614112854003906
+        },
+        "dog_bright": {
+          "n": 16,
+          "recall_radius": 1.0,
+          "recall_10um": 1.0,
+          "median_nearest_um": 3.574875831604004,
+          "p90_nearest_um": 4.614112854003906
+        },
+        "dog_dark": {
+          "n": 16,
+          "recall_radius": 1.0,
+          "recall_10um": 1.0,
+          "median_nearest_um": 6.918188095092773,
+          "p90_nearest_um": 6.971634864807129
+        },
+        "local_contrast": {
+          "n": 16,
+          "recall_radius": 1.0,
+          "recall_10um": 1.0,
+          "median_nearest_um": 3.8695058822631836,
+          "p90_nearest_um": 6.531633377075195
+        },
+        "norm": {
+          "n": 16,
+          "recall_radius": 1.0,
+          "recall_10um": 1.0,
+          "median_nearest_um": 2.752711057662964,
+          "p90_nearest_um": 4.284969806671143
+        },
+        "smoothed_norm": {
+          "n": 16,
+          "recall_radius": 1.0,
+          "recall_10um": 1.0,
+          "median_nearest_um": 2.8726212978363037,
+          "p90_nearest_um": 4.348437309265137
+        }
+      },
+      "gt_rows": [
+        {
+          "node_id": 1000002,
+          "t": 0,
+          "z": 12.0,
+          "y": 221.0,
+          "x": 98.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 15.6814603805542,
+              "delta_zyx_vox": [
+                -3.0,
+                -35.0,
+                -11.0
+              ],
+              "candidate": {
+                "node_id": 23,
+                "z": 9,
+                "y": 186,
+                "x": 87,
+                "score": 1.0,
+                "intensity": 765.0,
+                "sources": [
+                  "tile_contrast@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 15.6814603805542,
+              "delta_zyx_vox": [
+                -3.0,
+                -35.0,
+                -11.0
+              ],
+              "candidate": {
+                "node_id": 27,
+                "z": 9,
+                "y": 186,
+                "x": 87,
+                "score": 1.0,
+                "intensity": 765.0,
+                "sources": [
+                  "tile_contrast@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 15.178752899169922,
+              "delta_zyx_vox": [
+                -2.0,
+                -36.0,
+                -6.0
+              ],
+              "candidate": {
+                "node_id": 7,
+                "z": 10,
+                "y": 185,
+                "x": 92,
+                "score": 1.0,
+                "intensity": 661.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 15.178752899169922,
+              "delta_zyx_vox": [
+                -2.0,
+                -36.0,
+                -6.0
+              ],
+              "candidate": {
+                "node_id": 7,
+                "z": 10,
+                "y": 185,
+                "x": 92,
+                "score": 1.0,
+                "intensity": 661.0,
+                "sources": [
+                  "dog_bright@q0.9986",
+                  "dog_bright@q0.9991",
+                  "dog_bright@q0.99955"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 10.123698234558105,
+              "delta_zyx_vox": [
+                6.0,
+                -3.0,
+                -6.0
+              ],
+              "candidate": {
+                "node_id": 98,
+                "z": 18,
+                "y": 218,
+                "x": 92,
+                "score": 1.0,
+                "intensity": 71.0,
+                "sources": [
+                  "cover_dog_dark@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 3.3003907203674316,
+              "delta_zyx_vox": [
+                -1.0,
+                1.0,
+                7.0
+              ],
+              "candidate": {
+                "node_id": 78,
+                "z": 11,
+                "y": 222,
+                "x": 105,
+                "score": 1.0,
+                "intensity": 634.0,
+                "sources": [
+                  "refine_local_score:dog_abs@r13",
+                  "refine_local_score:dog_bright@r13",
+                  "refine_local_score:local_contrast@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.522703230381012,
+              "best_score": 0.6272438764572144,
+              "best_coord_zyx": [
+                10,
+                222,
+                104
+              ],
+              "distance_um": 4.082761764526367,
+              "delta_zyx_vox": [
+                -2.0,
+                1.0,
+                6.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 0.7280076146125793,
+              "best_score": 0.789436936378479,
+              "best_coord_zyx": [
+                10,
+                222,
+                104
+              ],
+              "distance_um": 4.082761764526367,
+              "delta_zyx_vox": [
+                -2.0,
+                1.0,
+                6.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.5360921621322632,
+              "best_score": 0.7564591765403748,
+              "best_coord_zyx": [
+                10,
+                222,
+                104
+              ],
+              "distance_um": 4.082761764526367,
+              "delta_zyx_vox": [
+                -2.0,
+                1.0,
+                6.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 0.6322664618492126,
+              "best_score": 0.7301269769668579,
+              "best_coord_zyx": [
+                11,
+                221,
+                105
+              ],
+              "distance_um": 3.275292158126831,
+              "delta_zyx_vox": [
+                -1.0,
+                0.0,
+                7.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.44163990020751953,
+              "best_score": 0.9082919359207153,
+              "best_coord_zyx": [
+                10,
+                207,
+                92
+              ],
+              "distance_um": 6.989389419555664,
+              "delta_zyx_vox": [
+                -2.0,
+                -14.0,
+                -6.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 0.5800507068634033,
+              "best_score": 0.6918067336082458,
+              "best_coord_zyx": [
+                11,
+                221,
+                105
+              ],
+              "distance_um": 3.275292158126831,
+              "delta_zyx_vox": [
+                -1.0,
+                0.0,
+                7.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 1000003,
+          "t": 0,
+          "z": 13.0,
+          "y": 187.0,
+          "x": 185.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 4.162823677062988,
+              "delta_zyx_vox": [
+                -2.0,
+                5.0,
+                4.0
+              ],
+              "candidate": {
+                "node_id": 50,
+                "z": 11,
+                "y": 192,
+                "x": 189,
+                "score": 1.0,
+                "intensity": 489.0,
+                "sources": [
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 4.162823677062988,
+              "delta_zyx_vox": [
+                -2.0,
+                5.0,
+                4.0
+              ],
+              "candidate": {
+                "node_id": 58,
+                "z": 11,
+                "y": 192,
+                "x": 189,
+                "score": 1.0,
+                "intensity": 489.0,
+                "sources": [
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 12.80171012878418,
+              "delta_zyx_vox": [
+                -2.0,
+                -23.0,
+                20.0
+              ],
+              "candidate": {
+                "node_id": 3,
+                "z": 11,
+                "y": 164,
+                "x": 205,
+                "score": 1.0,
+                "intensity": 790.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 8.45351505279541,
+              "delta_zyx_vox": [
+                -3.0,
+                -17.0,
+                0.0
+              ],
+              "candidate": {
+                "node_id": 179,
+                "z": 10,
+                "y": 170,
+                "x": 185,
+                "score": 1.0,
+                "intensity": 78.0,
+                "sources": [
+                  "dog_dark@q0.9986"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 15.383953094482422,
+              "delta_zyx_vox": [
+                -7.0,
+                -17.0,
+                19.0
+              ],
+              "candidate": {
+                "node_id": 56,
+                "z": 6,
+                "y": 170,
+                "x": 204,
+                "score": 1.0,
+                "intensity": 134.0,
+                "sources": [
+                  "cover_dog_dark@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 14.987266540527344,
+              "delta_zyx_vox": [
+                -9.0,
+                1.0,
+                -8.0
+              ],
+              "candidate": {
+                "node_id": 56,
+                "z": 4,
+                "y": 188,
+                "x": 177,
+                "score": 1.0,
+                "intensity": 804.0,
+                "sources": [
+                  "refine_local_score:dog_abs@r13",
+                  "refine_local_score:dog_bright@r13",
+                  "refine_local_score:local_contrast@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.3638424575328827,
+              "best_score": 0.5677992105484009,
+              "best_coord_zyx": [
+                12,
+                191,
+                178
+              ],
+              "distance_um": 3.65625,
+              "delta_zyx_vox": [
+                -1.0,
+                4.0,
+                -7.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 0.5048781037330627,
+              "best_score": 0.696272611618042,
+              "best_coord_zyx": [
+                11,
+                191,
+                178
+              ],
+              "distance_um": 4.614112854003906,
+              "delta_zyx_vox": [
+                -2.0,
+                4.0,
+                -7.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.41846510767936707,
+              "best_score": 0.801188588142395,
+              "best_coord_zyx": [
+                12,
+                191,
+                178
+              ],
+              "distance_um": 3.65625,
+              "delta_zyx_vox": [
+                -1.0,
+                4.0,
+                -7.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 0.4408305287361145,
+              "best_score": 0.6339985728263855,
+              "best_coord_zyx": [
+                11,
+                191,
+                178
+              ],
+              "distance_um": 4.614112854003906,
+              "delta_zyx_vox": [
+                -2.0,
+                4.0,
+                -7.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.5335812568664551,
+              "best_score": 0.9195854663848877,
+              "best_coord_zyx": [
+                11,
+                172,
+                187
+              ],
+              "distance_um": 6.9538798332214355,
+              "delta_zyx_vox": [
+                -2.0,
+                -15.0,
+                2.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 0.36143210530281067,
+              "best_score": 0.5820288062095642,
+              "best_coord_zyx": [
+                11,
+                191,
+                178
+              ],
+              "distance_um": 4.614112854003906,
+              "delta_zyx_vox": [
+                -2.0,
+                4.0,
+                -7.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 1000008,
+          "t": 0,
+          "z": 27.0,
+          "y": 79.0,
+          "x": 204.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 12.717637062072754,
+              "delta_zyx_vox": [
+                2.0,
+                -4.0,
+                -30.0
+              ],
+              "candidate": {
+                "node_id": 10,
+                "z": 29,
+                "y": 75,
+                "x": 174,
+                "score": 1.0,
+                "intensity": 726.0,
+                "sources": [
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 12.717637062072754,
+              "delta_zyx_vox": [
+                2.0,
+                -4.0,
+                -30.0
+              ],
+              "candidate": {
+                "node_id": 13,
+                "z": 29,
+                "y": 75,
+                "x": 174,
+                "score": 1.0,
+                "intensity": 726.0,
+                "sources": [
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 18.603410720825195,
+              "delta_zyx_vox": [
+                -8.0,
+                32.0,
+                7.0
+              ],
+              "candidate": {
+                "node_id": 14,
+                "z": 19,
+                "y": 111,
+                "x": 211,
+                "score": 1.0,
+                "intensity": 757.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 1.1490485668182373,
+              "delta_zyx_vox": [
+                0.0,
+                2.0,
+                2.0
+              ],
+              "candidate": {
+                "node_id": 108,
+                "z": 27,
+                "y": 81,
+                "x": 206,
+                "score": 1.0,
+                "intensity": 794.0,
+                "sources": [
+                  "dog_bright@q0.9986",
+                  "dog_bright@q0.9991",
+                  "dog_bright@q0.99955"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 6.21442985534668,
+              "delta_zyx_vox": [
+                0.0,
+                -3.0,
+                -15.0
+              ],
+              "candidate": {
+                "node_id": 64,
+                "z": 27,
+                "y": 76,
+                "x": 189,
+                "score": 1.0,
+                "intensity": 82.0,
+                "sources": [
+                  "cover_dog_dark@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 1.4647551774978638,
+              "delta_zyx_vox": [
+                0.0,
+                -2.0,
+                -3.0
+              ],
+              "candidate": {
+                "node_id": 37,
+                "z": 27,
+                "y": 77,
+                "x": 201,
+                "score": 1.0,
+                "intensity": 750.0,
+                "sources": [
+                  "refine_local_score:dog_abs@r13",
+                  "refine_local_score:dog_bright@r13",
+                  "refine_local_score:local_contrast@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.8312006592750549,
+              "best_score": 0.8762966394424438,
+              "best_coord_zyx": [
+                28,
+                78,
+                204
+              ],
+              "distance_um": 1.6750116348266602,
+              "delta_zyx_vox": [
+                1.0,
+                -1.0,
+                0.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                27,
+                77,
+                203
+              ],
+              "distance_um": 0.9084026217460632,
+              "delta_zyx_vox": [
+                0.0,
+                -2.0,
+                -1.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                27,
+                77,
+                201
+              ],
+              "distance_um": 1.4647551774978638,
+              "delta_zyx_vox": [
+                0.0,
+                -2.0,
+                -3.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                27,
+                76,
+                202
+              ],
+              "distance_um": 1.4647551774978638,
+              "delta_zyx_vox": [
+                0.0,
+                -3.0,
+                -2.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                25,
+                73,
+                218
+              ],
+              "distance_um": 6.989389419555664,
+              "delta_zyx_vox": [
+                -2.0,
+                -6.0,
+                14.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                27,
+                76,
+                202
+              ],
+              "distance_um": 1.4647551774978638,
+              "delta_zyx_vox": [
+                0.0,
+                -3.0,
+                -2.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 1000010,
+          "t": 0,
+          "z": 34.0,
+          "y": 51.0,
+          "x": 232.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 2.071476697921753,
+              "delta_zyx_vox": [
+                -1.0,
+                -3.0,
+                1.0
+              ],
+              "candidate": {
+                "node_id": 11,
+                "z": 33,
+                "y": 48,
+                "x": 233,
+                "score": 1.0,
+                "intensity": 777.0,
+                "sources": [
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 0.9084026217460632,
+              "delta_zyx_vox": [
+                0.0,
+                -1.0,
+                -2.0
+              ],
+              "candidate": {
+                "node_id": 157,
+                "z": 34,
+                "y": 50,
+                "x": 230,
+                "score": 1.0,
+                "intensity": 822.0,
+                "sources": [
+                  "dog_bright@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 2.03125,
+              "delta_zyx_vox": [
+                1.0,
+                0.0,
+                -3.0
+              ],
+              "candidate": {
+                "node_id": 52,
+                "z": 35,
+                "y": 51,
+                "x": 229,
+                "score": 1.0,
+                "intensity": 845.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 1.8168052434921265,
+              "delta_zyx_vox": [
+                0.0,
+                2.0,
+                4.0
+              ],
+              "candidate": {
+                "node_id": 122,
+                "z": 34,
+                "y": 53,
+                "x": 236,
+                "score": 1.0,
+                "intensity": 908.0,
+                "sources": [
+                  "dog_bright@q0.9986",
+                  "dog_bright@q0.9991",
+                  "dog_bright@q0.99955"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 2.4375,
+              "delta_zyx_vox": [
+                -1.0,
+                -4.0,
+                2.0
+              ],
+              "candidate": {
+                "node_id": 33,
+                "z": 33,
+                "y": 47,
+                "x": 234,
+                "score": 1.0,
+                "intensity": 778.0,
+                "sources": [
+                  "cover_dog_abs@q0.68",
+                  "cover_dog_bright@q0.68",
+                  "cover_raw@q0.68",
+                  "cover_smooth@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 2.3688242435455322,
+              "delta_zyx_vox": [
+                -1.0,
+                -3.0,
+                3.0
+              ],
+              "candidate": {
+                "node_id": 27,
+                "z": 33,
+                "y": 48,
+                "x": 235,
+                "score": 1.0,
+                "intensity": 754.0,
+                "sources": [
+                  "refine_local_score:dog_abs@r13",
+                  "refine_local_score:dog_bright@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.910118579864502,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                35,
+                46,
+                231
+              ],
+              "distance_um": 2.632800817489624,
+              "delta_zyx_vox": [
+                1.0,
+                -5.0,
+                -1.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                33,
+                48,
+                233
+              ],
+              "distance_um": 2.071476697921753,
+              "delta_zyx_vox": [
+                -1.0,
+                -3.0,
+                1.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.9639679193496704,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                33,
+                50,
+                240
+              ],
+              "distance_um": 3.65625,
+              "delta_zyx_vox": [
+                -1.0,
+                -1.0,
+                8.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                33,
+                48,
+                235
+              ],
+              "distance_um": 2.3688242435455322,
+              "delta_zyx_vox": [
+                -1.0,
+                -3.0,
+                3.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.21652741730213165,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                32,
+                59,
+                224
+              ],
+              "distance_um": 5.629165172576904,
+              "delta_zyx_vox": [
+                -2.0,
+                8.0,
+                -8.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                33,
+                48,
+                235
+              ],
+              "distance_um": 2.3688242435455322,
+              "delta_zyx_vox": [
+                -1.0,
+                -3.0,
+                3.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 1000014,
+          "t": 0,
+          "z": 43.0,
+          "y": 70.0,
+          "x": 208.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 2.3688242435455322,
+              "delta_zyx_vox": [
+                -1.0,
+                3.0,
+                3.0
+              ],
+              "candidate": {
+                "node_id": 53,
+                "z": 42,
+                "y": 73,
+                "x": 211,
+                "score": 1.0,
+                "intensity": 421.0,
+                "sources": [
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 2.3688242435455322,
+              "delta_zyx_vox": [
+                -1.0,
+                3.0,
+                3.0
+              ],
+              "candidate": {
+                "node_id": 62,
+                "z": 42,
+                "y": 73,
+                "x": 211,
+                "score": 1.0,
+                "intensity": 421.0,
+                "sources": [
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 12.72412395477295,
+              "delta_zyx_vox": [
+                -4.0,
+                -25.0,
+                -10.0
+              ],
+              "candidate": {
+                "node_id": 48,
+                "z": 39,
+                "y": 45,
+                "x": 198,
+                "score": 1.0,
+                "intensity": 697.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 12.214552879333496,
+              "delta_zyx_vox": [
+                -6.0,
+                -18.0,
+                2.0
+              ],
+              "candidate": {
+                "node_id": 255,
+                "z": 37,
+                "y": 52,
+                "x": 210,
+                "score": 1.0,
+                "intensity": 66.0,
+                "sources": [
+                  "dog_dark@q0.9986"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 2.3688242435455322,
+              "delta_zyx_vox": [
+                -1.0,
+                3.0,
+                3.0
+              ],
+              "candidate": {
+                "node_id": 121,
+                "z": 42,
+                "y": 73,
+                "x": 211,
+                "score": 1.0,
+                "intensity": 421.0,
+                "sources": [
+                  "cover_smooth@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 2.9575445652008057,
+              "delta_zyx_vox": [
+                -1.0,
+                1.0,
+                -6.0
+              ],
+              "candidate": {
+                "node_id": 93,
+                "z": 42,
+                "y": 71,
+                "x": 202,
+                "score": 1.0,
+                "intensity": 451.0,
+                "sources": [
+                  "refine_local_score:local_contrast@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.3095223009586334,
+              "best_score": 0.4376358687877655,
+              "best_coord_zyx": [
+                42,
+                71,
+                202
+              ],
+              "distance_um": 2.9575445652008057,
+              "delta_zyx_vox": [
+                -1.0,
+                1.0,
+                -6.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 0.43043261766433716,
+              "best_score": 0.5304926037788391,
+              "best_coord_zyx": [
+                42,
+                73,
+                211
+              ],
+              "distance_um": 2.3688242435455322,
+              "delta_zyx_vox": [
+                -1.0,
+                3.0,
+                3.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.34336215257644653,
+              "best_score": 0.5841764211654663,
+              "best_coord_zyx": [
+                42,
+                71,
+                202
+              ],
+              "distance_um": 2.9575445652008057,
+              "delta_zyx_vox": [
+                -1.0,
+                1.0,
+                -6.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 0.3913578391075134,
+              "best_score": 0.5008009672164917,
+              "best_coord_zyx": [
+                41,
+                75,
+                211
+              ],
+              "distance_um": 4.021669864654541,
+              "delta_zyx_vox": [
+                -2.0,
+                5.0,
+                3.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.6297404170036316,
+              "best_score": 0.923007071018219,
+              "best_coord_zyx": [
+                40,
+                59,
+                203
+              ],
+              "distance_um": 6.918188095092773,
+              "delta_zyx_vox": [
+                -3.0,
+                -11.0,
+                -5.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 0.30493462085723877,
+              "best_score": 0.42991799116134644,
+              "best_coord_zyx": [
+                41,
+                75,
+                211
+              ],
+              "distance_um": 4.021669864654541,
+              "delta_zyx_vox": [
+                -2.0,
+                5.0,
+                3.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 2000019,
+          "t": 1,
+          "z": 13.0,
+          "y": 186.0,
+          "x": 179.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 16.695837020874023,
+              "delta_zyx_vox": [
+                2.0,
+                35.0,
+                20.0
+              ],
+              "candidate": {
+                "node_id": 232,
+                "z": 15,
+                "y": 221,
+                "x": 199,
+                "score": 1.0,
+                "intensity": 66.0,
+                "sources": [
+                  "tile_contrast@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 16.695837020874023,
+              "delta_zyx_vox": [
+                2.0,
+                35.0,
+                20.0
+              ],
+              "candidate": {
+                "node_id": 296,
+                "z": 15,
+                "y": 221,
+                "x": 199,
+                "score": 1.0,
+                "intensity": 66.0,
+                "sources": [
+                  "tile_contrast@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 12.949119567871094,
+              "delta_zyx_vox": [
+                -7.0,
+                -6.0,
+                -14.0
+              ],
+              "candidate": {
+                "node_id": 99,
+                "z": 6,
+                "y": 180,
+                "x": 165,
+                "score": 1.0,
+                "intensity": 704.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 8.463271141052246,
+              "delta_zyx_vox": [
+                -2.0,
+                -19.0,
+                3.0
+              ],
+              "candidate": {
+                "node_id": 419,
+                "z": 11,
+                "y": 167,
+                "x": 182,
+                "score": 1.0,
+                "intensity": 68.0,
+                "sources": [
+                  "dog_dark@q0.9986"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 16.59669303894043,
+              "delta_zyx_vox": [
+                3.0,
+                9.0,
+                -38.0
+              ],
+              "candidate": {
+                "node_id": 405,
+                "z": 16,
+                "y": 195,
+                "x": 141,
+                "score": 1.0,
+                "intensity": 70.0,
+                "sources": [
+                  "cover_raw@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 4.875,
+              "delta_zyx_vox": [
+                -1.0,
+                8.0,
+                8.0
+              ],
+              "candidate": {
+                "node_id": 362,
+                "z": 12,
+                "y": 194,
+                "x": 187,
+                "score": 1.0,
+                "intensity": 372.0,
+                "sources": [
+                  "refine_local_score:dog_abs@r13",
+                  "refine_local_score:dog_bright@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.522703230381012,
+              "best_score": 0.5708739161491394,
+              "best_coord_zyx": [
+                13,
+                184,
+                173
+              ],
+              "distance_um": 2.569350481033325,
+              "delta_zyx_vox": [
+                0.0,
+                -2.0,
+                -6.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 0.6933611631393433,
+              "best_score": 0.7350417375564575,
+              "best_coord_zyx": [
+                12,
+                188,
+                172
+              ],
+              "distance_um": 3.374565839767456,
+              "delta_zyx_vox": [
+                -1.0,
+                2.0,
+                -7.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.6283268332481384,
+              "best_score": 0.7634155750274658,
+              "best_coord_zyx": [
+                12,
+                186,
+                163
+              ],
+              "distance_um": 6.700046539306641,
+              "delta_zyx_vox": [
+                -1.0,
+                0.0,
+                -16.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 0.6091046333312988,
+              "best_score": 0.678700864315033,
+              "best_coord_zyx": [
+                13,
+                185,
+                170
+              ],
+              "distance_um": 3.6787502765655518,
+              "delta_zyx_vox": [
+                0.0,
+                -1.0,
+                -9.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.3854973018169403,
+              "best_score": 0.9376174807548523,
+              "best_coord_zyx": [
+                11,
+                171,
+                181
+              ],
+              "distance_um": 6.9538798332214355,
+              "delta_zyx_vox": [
+                -2.0,
+                -15.0,
+                2.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 0.5542235374450684,
+              "best_score": 0.6335909962654114,
+              "best_coord_zyx": [
+                13,
+                185,
+                170
+              ],
+              "distance_um": 3.6787502765655518,
+              "delta_zyx_vox": [
+                0.0,
+                -1.0,
+                -9.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 2000020,
+          "t": 1,
+          "z": 12.0,
+          "y": 216.0,
+          "x": 95.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 14.815598487854004,
+              "delta_zyx_vox": [
+                -3.0,
+                -31.0,
+                -15.0
+              ],
+              "candidate": {
+                "node_id": 150,
+                "z": 9,
+                "y": 185,
+                "x": 80,
+                "score": 1.0,
+                "intensity": 715.0,
+                "sources": [
+                  "tile_contrast@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 14.815598487854004,
+              "delta_zyx_vox": [
+                -3.0,
+                -31.0,
+                -15.0
+              ],
+              "candidate": {
+                "node_id": 190,
+                "z": 9,
+                "y": 185,
+                "x": 80,
+                "score": 1.0,
+                "intensity": 715.0,
+                "sources": [
+                  "tile_contrast@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 14.265103340148926,
+              "delta_zyx_vox": [
+                -1.0,
+                -31.0,
+                -16.0
+              ],
+              "candidate": {
+                "node_id": 63,
+                "z": 11,
+                "y": 185,
+                "x": 79,
+                "score": 1.0,
+                "intensity": 679.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 14.265103340148926,
+              "delta_zyx_vox": [
+                -1.0,
+                -31.0,
+                -16.0
+              ],
+              "candidate": {
+                "node_id": 263,
+                "z": 11,
+                "y": 185,
+                "x": 79,
+                "score": 1.0,
+                "intensity": 679.0,
+                "sources": [
+                  "dog_bright@q0.9986",
+                  "dog_bright@q0.9991",
+                  "dog_bright@q0.99955"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 14.815598487854004,
+              "delta_zyx_vox": [
+                -3.0,
+                -31.0,
+                -15.0
+              ],
+              "candidate": {
+                "node_id": 244,
+                "z": 9,
+                "y": 185,
+                "x": 80,
+                "score": 1.0,
+                "intensity": 715.0,
+                "sources": [
+                  "cover_contrast@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 7.446685314178467,
+              "delta_zyx_vox": [
+                1.0,
+                8.0,
+                16.0
+              ],
+              "candidate": {
+                "node_id": 377,
+                "z": 13,
+                "y": 224,
+                "x": 111,
+                "score": 1.0,
+                "intensity": 228.0,
+                "sources": [
+                  "refine_local_score:dog_abs@r13",
+                  "refine_local_score:dog_bright@r13",
+                  "refine_local_score:local_contrast@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.5257779955863953,
+              "best_score": 0.6877135038375854,
+              "best_coord_zyx": [
+                11,
+                218,
+                104
+              ],
+              "distance_um": 4.082761764526367,
+              "delta_zyx_vox": [
+                -1.0,
+                2.0,
+                9.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 0.7452132105827332,
+              "best_score": 0.8898131847381592,
+              "best_coord_zyx": [
+                11,
+                219,
+                102
+              ],
+              "distance_um": 3.494694709777832,
+              "delta_zyx_vox": [
+                -1.0,
+                3.0,
+                7.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.5366262793540955,
+              "best_score": 0.9240221977233887,
+              "best_coord_zyx": [
+                11,
+                219,
+                106
+              ],
+              "distance_um": 4.908737659454346,
+              "delta_zyx_vox": [
+                -1.0,
+                3.0,
+                11.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 0.6543164849281311,
+              "best_score": 0.8320670127868652,
+              "best_coord_zyx": [
+                11,
+                219,
+                103
+              ],
+              "distance_um": 3.832554817199707,
+              "delta_zyx_vox": [
+                -1.0,
+                3.0,
+                8.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.4469912052154541,
+              "best_score": 0.9631015658378601,
+              "best_coord_zyx": [
+                10,
+                205,
+                85
+              ],
+              "distance_um": 6.8582892417907715,
+              "delta_zyx_vox": [
+                -2.0,
+                -11.0,
+                -10.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 0.6057830452919006,
+              "best_score": 0.8084895014762878,
+              "best_coord_zyx": [
+                11,
+                219,
+                103
+              ],
+              "distance_um": 3.832554817199707,
+              "delta_zyx_vox": [
+                -1.0,
+                3.0,
+                8.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 2000027,
+          "t": 1,
+          "z": 29.0,
+          "y": 75.0,
+          "x": 200.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 10.908398628234863,
+              "delta_zyx_vox": [
+                6.0,
+                1.0,
+                12.0
+              ],
+              "candidate": {
+                "node_id": 187,
+                "z": 35,
+                "y": 76,
+                "x": 212,
+                "score": 1.0,
+                "intensity": 148.0,
+                "sources": [
+                  "tile_contrast@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 1.9902104139328003,
+              "delta_zyx_vox": [
+                -1.0,
+                -2.0,
+                -2.0
+              ],
+              "candidate": {
+                "node_id": 309,
+                "z": 28,
+                "y": 73,
+                "x": 198,
+                "score": 1.0,
+                "intensity": 712.0,
+                "sources": [
+                  "dog_bright@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 19.16707992553711,
+              "delta_zyx_vox": [
+                8.0,
+                -29.0,
+                19.0
+              ],
+              "candidate": {
+                "node_id": 108,
+                "z": 37,
+                "y": 46,
+                "x": 219,
+                "score": 1.0,
+                "intensity": 922.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 1.4647551774978638,
+              "delta_zyx_vox": [
+                0.0,
+                3.0,
+                2.0
+              ],
+              "candidate": {
+                "node_id": 368,
+                "z": 29,
+                "y": 78,
+                "x": 202,
+                "score": 1.0,
+                "intensity": 614.0,
+                "sources": [
+                  "dog_bright@q0.9986",
+                  "dog_bright@q0.9991",
+                  "dog_bright@q0.99955"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 7.0832109451293945,
+              "delta_zyx_vox": [
+                -1.0,
+                -12.0,
+                12.0
+              ],
+              "candidate": {
+                "node_id": 296,
+                "z": 28,
+                "y": 63,
+                "x": 212,
+                "score": 1.0,
+                "intensity": 75.0,
+                "sources": [
+                  "cover_dog_dark@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 2.03125,
+              "delta_zyx_vox": [
+                0.0,
+                -4.0,
+                -3.0
+              ],
+              "candidate": {
+                "node_id": 290,
+                "z": 29,
+                "y": 71,
+                "x": 197,
+                "score": 1.0,
+                "intensity": 761.0,
+                "sources": [
+                  "refine_local_score:dog_abs@r13",
+                  "refine_local_score:dog_bright@r13",
+                  "refine_local_score:local_contrast@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.8455493450164795,
+              "best_score": 0.9306167364120483,
+              "best_coord_zyx": [
+                29,
+                73,
+                200
+              ],
+              "distance_um": 0.8125,
+              "delta_zyx_vox": [
+                0.0,
+                -2.0,
+                0.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                28,
+                73,
+                199
+              ],
+              "distance_um": 1.8616713285446167,
+              "delta_zyx_vox": [
+                -1.0,
+                -2.0,
+                -1.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                27,
+                78,
+                202
+              ],
+              "distance_um": 3.5648293495178223,
+              "delta_zyx_vox": [
+                -2.0,
+                3.0,
+                2.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                28,
+                72,
+                199
+              ],
+              "distance_um": 2.071476697921753,
+              "delta_zyx_vox": [
+                -1.0,
+                -3.0,
+                -1.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                26,
+                76,
+                212
+              ],
+              "distance_um": 6.90625,
+              "delta_zyx_vox": [
+                -3.0,
+                1.0,
+                12.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                28,
+                72,
+                199
+              ],
+              "distance_um": 2.071476697921753,
+              "delta_zyx_vox": [
+                -1.0,
+                -3.0,
+                -1.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 2000028,
+          "t": 1,
+          "z": 35.0,
+          "y": 48.0,
+          "x": 226.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 3.8540258407592773,
+              "delta_zyx_vox": [
+                -2.0,
+                1.0,
+                5.0
+              ],
+              "candidate": {
+                "node_id": 137,
+                "z": 33,
+                "y": 49,
+                "x": 231,
+                "score": 1.0,
+                "intensity": 728.0,
+                "sources": [
+                  "tile_contrast@q0.75",
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 3.8540258407592773,
+              "delta_zyx_vox": [
+                -2.0,
+                1.0,
+                5.0
+              ],
+              "candidate": {
+                "node_id": 177,
+                "z": 33,
+                "y": 49,
+                "x": 231,
+                "score": 1.0,
+                "intensity": 728.0,
+                "sources": [
+                  "tile_contrast@q0.75",
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 3.374565839767456,
+              "delta_zyx_vox": [
+                1.0,
+                -7.0,
+                -2.0
+              ],
+              "candidate": {
+                "node_id": 107,
+                "z": 36,
+                "y": 41,
+                "x": 224,
+                "score": 1.0,
+                "intensity": 763.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 1.4647551774978638,
+              "delta_zyx_vox": [
+                0.0,
+                3.0,
+                2.0
+              ],
+              "candidate": {
+                "node_id": 381,
+                "z": 35,
+                "y": 51,
+                "x": 228,
+                "score": 1.0,
+                "intensity": 829.0,
+                "sources": [
+                  "dog_bright@q0.9986",
+                  "dog_bright@q0.9991",
+                  "dog_bright@q0.99955"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 3.471001625061035,
+              "delta_zyx_vox": [
+                -2.0,
+                0.0,
+                3.0
+              ],
+              "candidate": {
+                "node_id": 284,
+                "z": 33,
+                "y": 48,
+                "x": 229,
+                "score": 1.0,
+                "intensity": 657.0,
+                "sources": [
+                  "cover_dog_abs@q0.68",
+                  "cover_dog_bright@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 3.471001625061035,
+              "delta_zyx_vox": [
+                -2.0,
+                0.0,
+                3.0
+              ],
+              "candidate": {
+                "node_id": 303,
+                "z": 33,
+                "y": 48,
+                "x": 229,
+                "score": 1.0,
+                "intensity": 657.0,
+                "sources": [
+                  "refine_local_score:dog_abs@r13",
+                  "refine_local_score:dog_bright@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.970588207244873,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                35,
+                44,
+                227
+              ],
+              "distance_um": 1.6750116348266602,
+              "delta_zyx_vox": [
+                0.0,
+                -4.0,
+                1.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                33,
+                49,
+                231
+              ],
+              "distance_um": 3.8540258407592773,
+              "delta_zyx_vox": [
+                -2.0,
+                1.0,
+                5.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                33,
+                52,
+                231
+              ],
+              "distance_um": 4.162823677062988,
+              "delta_zyx_vox": [
+                -2.0,
+                4.0,
+                5.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                33,
+                48,
+                229
+              ],
+              "distance_um": 3.471001625061035,
+              "delta_zyx_vox": [
+                -2.0,
+                0.0,
+                3.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.26035070419311523,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                33,
+                55,
+                219
+              ],
+              "distance_um": 5.170718193054199,
+              "delta_zyx_vox": [
+                -2.0,
+                7.0,
+                -7.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                33,
+                48,
+                229
+              ],
+              "distance_um": 3.471001625061035,
+              "delta_zyx_vox": [
+                -2.0,
+                0.0,
+                3.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 2000032,
+          "t": 1,
+          "z": 44.0,
+          "y": 68.0,
+          "x": 202.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 5.658407688140869,
+              "delta_zyx_vox": [
+                -3.0,
+                7.0,
+                -1.0
+              ],
+              "candidate": {
+                "node_id": 174,
+                "z": 41,
+                "y": 75,
+                "x": 201,
+                "score": 1.0,
+                "intensity": 438.0,
+                "sources": [
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 5.658407688140869,
+              "delta_zyx_vox": [
+                -3.0,
+                7.0,
+                -1.0
+              ],
+              "candidate": {
+                "node_id": 217,
+                "z": 41,
+                "y": 75,
+                "x": 201,
+                "score": 1.0,
+                "intensity": 438.0,
+                "sources": [
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 13.461533546447754,
+              "delta_zyx_vox": [
+                -5.0,
+                -23.0,
+                -13.0
+              ],
+              "candidate": {
+                "node_id": 110,
+                "z": 39,
+                "y": 45,
+                "x": 189,
+                "score": 1.0,
+                "intensity": 687.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 12.46201229095459,
+              "delta_zyx_vox": [
+                -6.0,
+                -19.0,
+                2.0
+              ],
+              "candidate": {
+                "node_id": 509,
+                "z": 38,
+                "y": 49,
+                "x": 204,
+                "score": 1.0,
+                "intensity": 73.0,
+                "sources": [
+                  "dog_dark@q0.9986"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 5.170718193054199,
+              "delta_zyx_vox": [
+                3.0,
+                -3.0,
+                3.0
+              ],
+              "candidate": {
+                "node_id": 338,
+                "z": 47,
+                "y": 65,
+                "x": 205,
+                "score": 1.0,
+                "intensity": 141.0,
+                "sources": [
+                  "cover_dog_dark@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 4.241374492645264,
+              "delta_zyx_vox": [
+                -2.0,
+                3.0,
+                6.0
+              ],
+              "candidate": {
+                "node_id": 352,
+                "z": 42,
+                "y": 71,
+                "x": 208,
+                "score": 1.0,
+                "intensity": 454.0,
+                "sources": [
+                  "refine_local_score:local_contrast@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.32387101650238037,
+              "best_score": 0.44378530979156494,
+              "best_coord_zyx": [
+                41,
+                74,
+                202
+              ],
+              "distance_um": 5.45041561126709,
+              "delta_zyx_vox": [
+                -3.0,
+                6.0,
+                0.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 0.4389892518520355,
+              "best_score": 0.5728565454483032,
+              "best_coord_zyx": [
+                41,
+                75,
+                201
+              ],
+              "distance_um": 5.658407688140869,
+              "delta_zyx_vox": [
+                -3.0,
+                7.0,
+                -1.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.3674730062484741,
+              "best_score": 0.6302545070648193,
+              "best_coord_zyx": [
+                42,
+                71,
+                208
+              ],
+              "distance_um": 4.241374492645264,
+              "delta_zyx_vox": [
+                -2.0,
+                3.0,
+                6.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 0.36841338872909546,
+              "best_score": 0.5603278279304504,
+              "best_coord_zyx": [
+                41,
+                74,
+                203
+              ],
+              "distance_um": 5.465534687042236,
+              "delta_zyx_vox": [
+                -3.0,
+                6.0,
+                1.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.6176165342330933,
+              "best_score": 0.8930929899215698,
+              "best_coord_zyx": [
+                41,
+                56,
+                200
+              ],
+              "distance_um": 6.94200325012207,
+              "delta_zyx_vox": [
+                -3.0,
+                -12.0,
+                -2.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 0.2797395586967468,
+              "best_score": 0.49859851598739624,
+              "best_coord_zyx": [
+                41,
+                74,
+                203
+              ],
+              "distance_um": 5.465534687042236,
+              "delta_zyx_vox": [
+                -3.0,
+                6.0,
+                1.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 3000037,
+          "t": 2,
+          "z": 13.0,
+          "y": 214.0,
+          "x": 89.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 16.695837020874023,
+              "delta_zyx_vox": [
+                -2.0,
+                -35.0,
+                -20.0
+              ],
+              "candidate": {
+                "node_id": 246,
+                "z": 11,
+                "y": 179,
+                "x": 69,
+                "score": 1.0,
+                "intensity": 719.0,
+                "sources": [
+                  "tile_contrast@q0.75",
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 15.6814603805542,
+              "delta_zyx_vox": [
+                3.0,
+                35.0,
+                11.0
+              ],
+              "candidate": {
+                "node_id": 393,
+                "z": 16,
+                "y": 249,
+                "x": 100,
+                "score": 1.0,
+                "intensity": 86.0,
+                "sources": [
+                  "tile_contrast@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 14.557134628295898,
+              "delta_zyx_vox": [
+                -2.0,
+                -32.0,
+                -14.0
+              ],
+              "candidate": {
+                "node_id": 132,
+                "z": 11,
+                "y": 182,
+                "x": 75,
+                "score": 1.0,
+                "intensity": 658.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 14.540118217468262,
+              "delta_zyx_vox": [
+                -2.0,
+                -31.0,
+                -16.0
+              ],
+              "candidate": {
+                "node_id": 534,
+                "z": 11,
+                "y": 183,
+                "x": 73,
+                "score": 1.0,
+                "intensity": 698.0,
+                "sources": [
+                  "dog_bright@q0.9986",
+                  "dog_bright@q0.9991",
+                  "dog_bright@q0.99955"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 5.420051097869873,
+              "delta_zyx_vox": [
+                3.0,
+                5.0,
+                -3.0
+              ],
+              "candidate": {
+                "node_id": 564,
+                "z": 16,
+                "y": 219,
+                "x": 86,
+                "score": 1.0,
+                "intensity": 144.0,
+                "sources": [
+                  "cover_dog_dark@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 2.8726212978363037,
+              "delta_zyx_vox": [
+                -1.0,
+                3.0,
+                5.0
+              ],
+              "candidate": {
+                "node_id": 607,
+                "z": 12,
+                "y": 217,
+                "x": 94,
+                "score": 1.0,
+                "intensity": 687.0,
+                "sources": [
+                  "refine_local_score:dog_abs@r13",
+                  "refine_local_score:dog_bright@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.5186036229133606,
+              "best_score": 0.7266600131988525,
+              "best_coord_zyx": [
+                12,
+                217,
+                95
+              ],
+              "distance_um": 3.1729140281677246,
+              "delta_zyx_vox": [
+                -1.0,
+                3.0,
+                6.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 0.7497876286506653,
+              "best_score": 0.9583405256271362,
+              "best_coord_zyx": [
+                11,
+                217,
+                94
+              ],
+              "distance_um": 4.021669864654541,
+              "delta_zyx_vox": [
+                -2.0,
+                3.0,
+                5.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.5112632513046265,
+              "best_score": 0.9453536868095398,
+              "best_coord_zyx": [
+                11,
+                216,
+                83
+              ],
+              "distance_um": 4.142953395843506,
+              "delta_zyx_vox": [
+                -2.0,
+                2.0,
+                -6.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 0.6664327383041382,
+              "best_score": 0.885633111000061,
+              "best_coord_zyx": [
+                11,
+                218,
+                96
+              ],
+              "distance_um": 4.614112854003906,
+              "delta_zyx_vox": [
+                -2.0,
+                4.0,
+                7.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.4821930229663849,
+              "best_score": 0.910161018371582,
+              "best_coord_zyx": [
+                10,
+                204,
+                82
+              ],
+              "distance_um": 6.9538798332214355,
+              "delta_zyx_vox": [
+                -3.0,
+                -10.0,
+                -7.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 0.617912769317627,
+              "best_score": 0.8689975738525391,
+              "best_coord_zyx": [
+                11,
+                218,
+                96
+              ],
+              "distance_um": 4.614112854003906,
+              "delta_zyx_vox": [
+                -2.0,
+                4.0,
+                7.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 3000038,
+          "t": 2,
+          "z": 14.0,
+          "y": 182.0,
+          "x": 172.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 17.824146270751953,
+              "delta_zyx_vox": [
+                -10.0,
+                -1.0,
+                -18.0
+              ],
+              "candidate": {
+                "node_id": 268,
+                "z": 4,
+                "y": 181,
+                "x": 154,
+                "score": 1.0,
+                "intensity": 852.0,
+                "sources": [
+                  "tile_contrast@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 15.09698486328125,
+              "delta_zyx_vox": [
+                -9.0,
+                2.0,
+                -9.0
+              ],
+              "candidate": {
+                "node_id": 476,
+                "z": 5,
+                "y": 184,
+                "x": 163,
+                "score": 1.0,
+                "intensity": 869.0,
+                "sources": [
+                  "dog_bright@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 14.380331993103027,
+              "delta_zyx_vox": [
+                -8.0,
+                2.0,
+                -15.0
+              ],
+              "candidate": {
+                "node_id": 160,
+                "z": 6,
+                "y": 184,
+                "x": 157,
+                "score": 1.0,
+                "intensity": 650.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 9.138367652893066,
+              "delta_zyx_vox": [
+                -3.0,
+                -19.0,
+                -1.0
+              ],
+              "candidate": {
+                "node_id": 681,
+                "z": 11,
+                "y": 163,
+                "x": 171,
+                "score": 1.0,
+                "intensity": 78.0,
+                "sources": [
+                  "dog_dark@q0.9986"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 4.142953395843506,
+              "delta_zyx_vox": [
+                2.0,
+                -6.0,
+                2.0
+              ],
+              "candidate": {
+                "node_id": 719,
+                "z": 16,
+                "y": 176,
+                "x": 174,
+                "score": 1.0,
+                "intensity": 269.0,
+                "sources": [
+                  "cover_dog_dark@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 4.3184967041015625,
+              "delta_zyx_vox": [
+                -1.0,
+                4.0,
+                -9.0
+              ],
+              "candidate": {
+                "node_id": 620,
+                "z": 13,
+                "y": 186,
+                "x": 163,
+                "score": 1.0,
+                "intensity": 518.0,
+                "sources": [
+                  "refine_local_score:dog_abs@r13",
+                  "refine_local_score:dog_bright@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.4837567210197449,
+              "best_score": 0.5565252304077148,
+              "best_coord_zyx": [
+                13,
+                187,
+                163
+              ],
+              "distance_um": 4.487177848815918,
+              "delta_zyx_vox": [
+                -1.0,
+                5.0,
+                -9.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 0.683428168296814,
+              "best_score": 0.7221711874008179,
+              "best_coord_zyx": [
+                14,
+                181,
+                165
+              ],
+              "distance_um": 2.8726212978363037,
+              "delta_zyx_vox": [
+                0.0,
+                -1.0,
+                -7.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.5448055267333984,
+              "best_score": 0.7820301651954651,
+              "best_coord_zyx": [
+                14,
+                180,
+                156
+              ],
+              "distance_um": 6.550584316253662,
+              "delta_zyx_vox": [
+                0.0,
+                -2.0,
+                -16.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 0.5863866806030273,
+              "best_score": 0.6841145157814026,
+              "best_coord_zyx": [
+                13,
+                186,
+                163
+              ],
+              "distance_um": 4.3184967041015625,
+              "delta_zyx_vox": [
+                -1.0,
+                4.0,
+                -9.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.41830867528915405,
+              "best_score": 0.9213719367980957,
+              "best_coord_zyx": [
+                12,
+                167,
+                170
+              ],
+              "distance_um": 6.9538798332214355,
+              "delta_zyx_vox": [
+                -2.0,
+                -15.0,
+                -2.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 0.526223361492157,
+              "best_score": 0.6381664872169495,
+              "best_coord_zyx": [
+                13,
+                186,
+                163
+              ],
+              "distance_um": 4.3184967041015625,
+              "delta_zyx_vox": [
+                -1.0,
+                4.0,
+                -9.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 3000040,
+          "t": 2,
+          "z": 14.0,
+          "y": 170.0,
+          "x": 252.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 23.386735916137695,
+              "delta_zyx_vox": [
+                -1.0,
+                57.0,
+                -7.0
+              ],
+              "candidate": {
+                "node_id": 358,
+                "z": 13,
+                "y": 227,
+                "x": 245,
+                "score": 1.0,
+                "intensity": 61.0,
+                "sources": [
+                  "tile_contrast@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 24.620895385742188,
+              "delta_zyx_vox": [
+                0.0,
+                -48.0,
+                -37.0
+              ],
+              "candidate": {
+                "node_id": 331,
+                "z": 14,
+                "y": 122,
+                "x": 215,
+                "score": 1.0,
+                "intensity": 756.0,
+                "sources": [
+                  "tile_contrast@q0.75",
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 13.61998176574707,
+              "delta_zyx_vox": [
+                -7.0,
+                -18.0,
+                -4.0
+              ],
+              "candidate": {
+                "node_id": 161,
+                "z": 7,
+                "y": 152,
+                "x": 248,
+                "score": 1.0,
+                "intensity": 753.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 13.363093376159668,
+              "delta_zyx_vox": [
+                -7.0,
+                -17.0,
+                3.0
+              ],
+              "candidate": {
+                "node_id": 587,
+                "z": 7,
+                "y": 153,
+                "x": 255,
+                "score": 1.0,
+                "intensity": 805.0,
+                "sources": [
+                  "dog_bright@q0.9986",
+                  "dog_bright@q0.9991",
+                  "dog_bright@q0.99955"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 16.90703010559082,
+              "delta_zyx_vox": [
+                3.0,
+                -38.0,
+                -12.0
+              ],
+              "candidate": {
+                "node_id": 646,
+                "z": 17,
+                "y": 132,
+                "x": 240,
+                "score": 1.0,
+                "intensity": 88.0,
+                "sources": [
+                  "cover_raw@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 3.25,
+              "delta_zyx_vox": [
+                0.0,
+                8.0,
+                0.0
+              ],
+              "candidate": {
+                "node_id": 654,
+                "z": 14,
+                "y": 178,
+                "x": 252,
+                "score": 1.0,
+                "intensity": 174.0,
+                "sources": [
+                  "refine_local_score:dog_abs@r13",
+                  "refine_local_score:dog_bright@r13",
+                  "refine_local_score:local_contrast@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.3115721344947815,
+              "best_score": 0.3382197618484497,
+              "best_coord_zyx": [
+                14,
+                171,
+                254
+              ],
+              "distance_um": 0.9084026217460632,
+              "delta_zyx_vox": [
+                0.0,
+                1.0,
+                2.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 0.3941695988178253,
+              "best_score": 0.4360401928424835,
+              "best_coord_zyx": [
+                14,
+                171,
+                255
+              ],
+              "distance_um": 1.2846752405166626,
+              "delta_zyx_vox": [
+                0.0,
+                1.0,
+                3.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.5414381623268127,
+              "best_score": 0.572009265422821,
+              "best_coord_zyx": [
+                14,
+                173,
+                254
+              ],
+              "distance_um": 1.4647551774978638,
+              "delta_zyx_vox": [
+                0.0,
+                3.0,
+                2.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 0.40752851963043213,
+              "best_score": 0.4514445960521698,
+              "best_coord_zyx": [
+                14,
+                171,
+                255
+              ],
+              "distance_um": 1.2846752405166626,
+              "delta_zyx_vox": [
+                0.0,
+                1.0,
+                3.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.4405290484428406,
+              "best_score": 0.8681821823120117,
+              "best_coord_zyx": [
+                11,
+                159,
+                255
+              ],
+              "distance_um": 6.724634170532227,
+              "delta_zyx_vox": [
+                -3.0,
+                -11.0,
+                3.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 0.3213489055633545,
+              "best_score": 0.3716529309749603,
+              "best_coord_zyx": [
+                14,
+                171,
+                255
+              ],
+              "distance_um": 1.2846752405166626,
+              "delta_zyx_vox": [
+                0.0,
+                1.0,
+                3.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 3000045,
+          "t": 2,
+          "z": 30.0,
+          "y": 74.0,
+          "x": 193.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 13.025365829467773,
+              "delta_zyx_vox": [
+                2.0,
+                -8.0,
+                -30.0
+              ],
+              "candidate": {
+                "node_id": 255,
+                "z": 32,
+                "y": 66,
+                "x": 163,
+                "score": 1.0,
+                "intensity": 774.0,
+                "sources": [
+                  "tile_contrast@q0.75",
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 11.170028686523438,
+              "delta_zyx_vox": [
+                2.0,
+                -4.0,
+                -26.0
+              ],
+              "candidate": {
+                "node_id": 480,
+                "z": 32,
+                "y": 70,
+                "x": 167,
+                "score": 1.0,
+                "intensity": 655.0,
+                "sources": [
+                  "dog_bright@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 13.55317211151123,
+              "delta_zyx_vox": [
+                -4.0,
+                -4.0,
+                29.0
+              ],
+              "candidate": {
+                "node_id": 144,
+                "z": 26,
+                "y": 70,
+                "x": 222,
+                "score": 1.0,
+                "intensity": 600.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 0.5745242834091187,
+              "delta_zyx_vox": [
+                0.0,
+                -1.0,
+                -1.0
+              ],
+              "candidate": {
+                "node_id": 635,
+                "z": 30,
+                "y": 73,
+                "x": 192,
+                "score": 1.0,
+                "intensity": 839.0,
+                "sources": [
+                  "dog_bright@q0.9986",
+                  "dog_bright@q0.9991",
+                  "dog_bright@q0.99955"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 9.484002113342285,
+              "delta_zyx_vox": [
+                2.0,
+                -16.0,
+                15.0
+              ],
+              "candidate": {
+                "node_id": 549,
+                "z": 32,
+                "y": 58,
+                "x": 208,
+                "score": 1.0,
+                "intensity": 91.0,
+                "sources": [
+                  "cover_dog_dark@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 2.601269245147705,
+              "delta_zyx_vox": [
+                -1.0,
+                -5.0,
+                0.0
+              ],
+              "candidate": {
+                "node_id": 552,
+                "z": 29,
+                "y": 69,
+                "x": 193,
+                "score": 1.0,
+                "intensity": 723.0,
+                "sources": [
+                  "refine_local_score:dog_abs@r13",
+                  "refine_local_score:dog_bright@r13",
+                  "refine_local_score:local_contrast@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.7891793847084045,
+              "best_score": 0.8875706195831299,
+              "best_coord_zyx": [
+                30,
+                70,
+                193
+              ],
+              "distance_um": 1.625,
+              "delta_zyx_vox": [
+                0.0,
+                -4.0,
+                0.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                29,
+                70,
+                191
+              ],
+              "distance_um": 2.4375,
+              "delta_zyx_vox": [
+                -1.0,
+                -4.0,
+                -2.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                28,
+                72,
+                195
+              ],
+              "distance_um": 3.447145462036133,
+              "delta_zyx_vox": [
+                -2.0,
+                -2.0,
+                2.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                28,
+                72,
+                193
+              ],
+              "distance_um": 3.3500232696533203,
+              "delta_zyx_vox": [
+                -2.0,
+                -2.0,
+                0.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.011061480268836021,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                28,
+                64,
+                204
+              ],
+              "distance_um": 6.8582892417907715,
+              "delta_zyx_vox": [
+                -2.0,
+                -10.0,
+                11.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                28,
+                72,
+                193
+              ],
+              "distance_um": 3.3500232696533203,
+              "delta_zyx_vox": [
+                -2.0,
+                -2.0,
+                0.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 3000046,
+          "t": 2,
+          "z": 35.0,
+          "y": 46.0,
+          "x": 218.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 1.6750116348266602,
+              "delta_zyx_vox": [
+                -1.0,
+                -1.0,
+                0.0
+              ],
+              "candidate": {
+                "node_id": 256,
+                "z": 34,
+                "y": 45,
+                "x": 218,
+                "score": 1.0,
+                "intensity": 663.0,
+                "sources": [
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 1.6750116348266602,
+              "delta_zyx_vox": [
+                -1.0,
+                -1.0,
+                0.0
+              ],
+              "candidate": {
+                "node_id": 341,
+                "z": 34,
+                "y": 45,
+                "x": 218,
+                "score": 1.0,
+                "intensity": 663.0,
+                "sources": [
+                  "tile_contrast@q0.75",
+                  "tile_raw@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 4.3375630378723145,
+              "delta_zyx_vox": [
+                2.0,
+                -7.0,
+                -1.0
+              ],
+              "candidate": {
+                "node_id": 174,
+                "z": 37,
+                "y": 39,
+                "x": 217,
+                "score": 1.0,
+                "intensity": 890.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 1.7235727310180664,
+              "delta_zyx_vox": [
+                -1.0,
+                -1.0,
+                1.0
+              ],
+              "candidate": {
+                "node_id": 637,
+                "z": 34,
+                "y": 45,
+                "x": 219,
+                "score": 1.0,
+                "intensity": 705.0,
+                "sources": [
+                  "dog_bright@q0.9986",
+                  "dog_bright@q0.9991",
+                  "dog_bright@q0.99955"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 1.6750116348266602,
+              "delta_zyx_vox": [
+                -1.0,
+                -1.0,
+                0.0
+              ],
+              "candidate": {
+                "node_id": 518,
+                "z": 34,
+                "y": 45,
+                "x": 218,
+                "score": 1.0,
+                "intensity": 663.0,
+                "sources": [
+                  "cover_dog_abs@q0.68",
+                  "cover_dog_bright@q0.68",
+                  "cover_smooth@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 2.187723159790039,
+              "delta_zyx_vox": [
+                -1.0,
+                -2.0,
+                3.0
+              ],
+              "candidate": {
+                "node_id": 560,
+                "z": 34,
+                "y": 44,
+                "x": 221,
+                "score": 1.0,
+                "intensity": 725.0,
+                "sources": [
+                  "refine_local_score:dog_abs@r13",
+                  "refine_local_score:dog_bright@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.9162680506706238,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                35,
+                44,
+                220
+              ],
+              "distance_um": 1.1490485668182373,
+              "delta_zyx_vox": [
+                0.0,
+                -2.0,
+                2.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                34,
+                45,
+                218
+              ],
+              "distance_um": 1.6750116348266602,
+              "delta_zyx_vox": [
+                -1.0,
+                -1.0,
+                0.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.9887202978134155,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                34,
+                46,
+                226
+              ],
+              "distance_um": 3.633610486984253,
+              "delta_zyx_vox": [
+                -1.0,
+                0.0,
+                8.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                34,
+                44,
+                221
+              ],
+              "distance_um": 2.187723159790039,
+              "delta_zyx_vox": [
+                -1.0,
+                -2.0,
+                3.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.03566455841064453,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                33,
+                54,
+                210
+              ],
+              "distance_um": 5.629165172576904,
+              "delta_zyx_vox": [
+                -2.0,
+                8.0,
+                -8.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 1.0,
+              "best_score": 1.0,
+              "best_coord_zyx": [
+                34,
+                44,
+                221
+              ],
+              "distance_um": 2.187723159790039,
+              "delta_zyx_vox": [
+                -1.0,
+                -2.0,
+                3.0
+              ]
+            }
+          }
+        },
+        {
+          "node_id": 3000050,
+          "t": 2,
+          "z": 44.0,
+          "y": 64.0,
+          "x": 196.0,
+          "routes": {
+            "balanced_midpoint": {
+              "distance_um": 6.512682914733887,
+              "delta_zyx_vox": [
+                -3.0,
+                7.0,
+                8.0
+              ],
+              "candidate": {
+                "node_id": 290,
+                "z": 41,
+                "y": 71,
+                "x": 204,
+                "score": 1.0,
+                "intensity": 414.0,
+                "sources": [
+                  "tile_contrast@q0.75"
+                ]
+              }
+            },
+            "balanced_compact": {
+              "distance_um": 6.512682914733887,
+              "delta_zyx_vox": [
+                -3.0,
+                7.0,
+                8.0
+              ],
+              "candidate": {
+                "node_id": 378,
+                "z": 41,
+                "y": 71,
+                "x": 204,
+                "score": 1.0,
+                "intensity": 414.0,
+                "sources": [
+                  "tile_contrast@q0.75"
+                ]
+              }
+            },
+            "clean_compact": {
+              "distance_um": 12.442131996154785,
+              "delta_zyx_vox": [
+                -3.0,
+                -25.0,
+                -13.0
+              ],
+              "candidate": {
+                "node_id": 169,
+                "z": 41,
+                "y": 39,
+                "x": 183,
+                "score": 1.0,
+                "intensity": 648.0,
+                "sources": [
+                  "dog_bright@q0.9994"
+                ]
+              }
+            },
+            "dense_fusion": {
+              "distance_um": 12.904434204101562,
+              "delta_zyx_vox": [
+                -3.0,
+                -24.0,
+                -17.0
+              ],
+              "candidate": {
+                "node_id": 601,
+                "z": 41,
+                "y": 40,
+                "x": 179,
+                "score": 1.0,
+                "intensity": 769.0,
+                "sources": [
+                  "dog_bright@q0.9986",
+                  "dog_bright@q0.9991",
+                  "dog_bright@q0.99955"
+                ]
+              }
+            },
+            "score_coverage_compact": {
+              "distance_um": 4.241374492645264,
+              "delta_zyx_vox": [
+                -2.0,
+                6.0,
+                3.0
+              ],
+              "candidate": {
+                "node_id": 599,
+                "z": 42,
+                "y": 70,
+                "x": 199,
+                "score": 1.0,
+                "intensity": 420.0,
+                "sources": [
+                  "cover_dog_abs@q0.68",
+                  "cover_dog_bright@q0.68"
+                ]
+              }
+            },
+            "refined_dog_compact": {
+              "distance_um": 4.241374492645264,
+              "delta_zyx_vox": [
+                -2.0,
+                6.0,
+                3.0
+              ],
+              "candidate": {
+                "node_id": 633,
+                "z": 42,
+                "y": 70,
+                "x": 199,
+                "score": 1.0,
+                "intensity": 420.0,
+                "sources": [
+                  "refine_local_score:dog_abs@r13",
+                  "refine_local_score:dog_bright@r13"
+                ]
+              }
+            }
+          },
+          "score_maps": {
+            "norm": {
+              "score_at_gt_round": 0.3843406140804291,
+              "best_score": 0.46428346633911133,
+              "best_coord_zyx": [
+                44,
+                65,
+                189
+              ],
+              "distance_um": 2.8726212978363037,
+              "delta_zyx_vox": [
+                0.0,
+                1.0,
+                -7.0
+              ]
+            },
+            "smoothed_norm": {
+              "score_at_gt_round": 0.5473828315734863,
+              "best_score": 0.5783649682998657,
+              "best_coord_zyx": [
+                44,
+                65,
+                189
+              ],
+              "distance_um": 2.8726212978363037,
+              "delta_zyx_vox": [
+                0.0,
+                1.0,
+                -7.0
+              ]
+            },
+            "local_contrast": {
+              "score_at_gt_round": 0.45037856698036194,
+              "best_score": 0.6566271185874939,
+              "best_coord_zyx": [
+                41,
+                71,
+                204
+              ],
+              "distance_um": 6.512682914733887,
+              "delta_zyx_vox": [
+                -3.0,
+                7.0,
+                8.0
+              ]
+            },
+            "dog_bright": {
+              "score_at_gt_round": 0.46294814348220825,
+              "best_score": 0.5310028791427612,
+              "best_coord_zyx": [
+                42,
+                70,
+                199
+              ],
+              "distance_um": 4.241374492645264,
+              "delta_zyx_vox": [
+                -2.0,
+                6.0,
+                3.0
+              ]
+            },
+            "dog_dark": {
+              "score_at_gt_round": 0.48854804039001465,
+              "best_score": 0.9411377906799316,
+              "best_coord_zyx": [
+                41,
+                53,
+                191
+              ],
+              "distance_um": 6.918188095092773,
+              "delta_zyx_vox": [
+                -3.0,
+                -11.0,
+                -5.0
+              ]
+            },
+            "dog_abs": {
+              "score_at_gt_round": 0.3848297595977783,
+              "best_score": 0.4627835750579834,
+              "best_coord_zyx": [
+                42,
+                70,
+                199
+              ],
+              "distance_um": 4.241374492645264,
+              "delta_zyx_vox": [
+                -2.0,
+                6.0,
+                3.0
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "runtime_sec": 129.6118881702423
+}

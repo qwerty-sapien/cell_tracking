@@ -1,0 +1,628 @@
+{
+  "kind": "general_route_cv_audit",
+  "created_at_unix": 1783954528.222314,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "split_manifest_sha256": "b02e489391b2f093b79a2416f94e84223702b9744ae61cdda11ed9485b66baae",
+  "fold_id": "0",
+  "datasets": [
+    "6bba_062c8d37",
+    "6bba_2819ca14",
+    "6bba_2312ac41"
+  ],
+  "route_arg": "auto",
+  "clip_length": 3,
+  "offsets_json": null,
+  "offset_calibration_fold_id": null,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "scoring_calibration_fold_id": "0",
+  "official_metric": {
+    "available": true,
+    "missing": [],
+    "note": "Install optional dependencies to replace approximate CV with official metrics."
+  },
+  "summary": {
+    "n": 3,
+    "edge_jaccard": 0.8166666666666667,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.8211320191158901,
+    "adj_edge_jaccard": 0.757924528728117,
+    "n_adj": 3,
+    "score": 0.757924528728117
+  },
+  "summary_by_prefix": {
+    "6bba": {
+      "n": 3,
+      "official_summary": {
+        "n": 3,
+        "edge_jaccard": 0.8166666666666667,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.8211320191158901,
+        "adj_edge_jaccard": 0.757924528728117,
+        "n_adj": 3,
+        "score": 0.757924528728117
+      },
+      "mean_node_recall": 0.8211320191158901,
+      "mean_nodes": 402.6666666666667,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 0
+    }
+  },
+  "summary_by_route": {
+    "balanced_midpoint": {
+      "n": 3,
+      "official_summary": {
+        "n": 3,
+        "edge_jaccard": 0.8166666666666667,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.8211320191158901,
+        "adj_edge_jaccard": 0.757924528728117,
+        "n_adj": 3,
+        "score": 0.757924528728117
+      },
+      "mean_node_recall": 0.8211320191158901,
+      "mean_nodes": 402.6666666666667,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 0
+    }
+  },
+  "rows": [
+    {
+      "dataset": "6bba_062c8d37",
+      "prefix": "6bba",
+      "fold_id": "0",
+      "route": "balanced_midpoint",
+      "route_confidence": 0.6749999999999999,
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 16,
+      "gt_edges": 10,
+      "num_pred_nodes": 312.0,
+      "num_pred_edges": 168,
+      "graph": {
+        "datasets": 1,
+        "nodes": 312,
+        "edges": 168,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "runtime_sec": 46.58313488960266,
+      "metric_source": "official",
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "profile": {
+        "dataset": "6bba_062c8d37",
+        "t_start": 0,
+        "t_end": 3,
+        "sampled_timepoints": [
+          0,
+          1,
+          2
+        ],
+        "foreground_fraction": 0.01402584711710612,
+        "bright_candidate_density": 400.0,
+        "dark_candidate_density": 400.0,
+        "both_candidate_density": 400.0,
+        "median_nn_um": 0.40625,
+        "temporal_delta": 0.01861886028200388,
+        "division_motif_rate": 0.665,
+        "intensity_p999": 756.248000000002,
+        "estimated_total_nodes": 6030.0
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "refined_candidate_admission": {
+        "enabled": true,
+        "source_route": "refined_dog_compact",
+        "max_per_t": 8,
+        "min_dist_um": 1.0,
+        "score_scale": 0.65,
+        "base_nodes": 360,
+        "refined_nodes": 780,
+        "refined_local_nodes": 780,
+        "admitted_nodes": 24,
+        "base_by_t": [
+          120,
+          120,
+          120
+        ],
+        "refined_local_by_t": [
+          260,
+          260,
+          260
+        ],
+        "admitted_by_t": [
+          8,
+          8,
+          8
+        ]
+      },
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": {
+        "enabled": true,
+        "before_edges": 62,
+        "after_edges": 62,
+        "replacements": 1,
+        "max_distance_um": 3.0,
+        "max_cost": 0.42,
+        "max_target_rank": 3,
+        "min_temporal_count": 2.0,
+        "replaced_edges": [
+          {
+            "removed_source_id": 174,
+            "removed_target_id": 290,
+            "added_source_id": 712,
+            "added_target_id": 290,
+            "added_distance_um": 2.6012692214570947,
+            "added_cost": 0.3902197775591699,
+            "added_target_rank": 3.0
+          }
+        ]
+      },
+      "short_edge_pruning": null,
+      "localmax_refinement": null,
+      "free_edge_admission": null,
+      "duplicate_endpoint_rescue": null,
+      "motion_endpoint_admission": null,
+      "localmax_clone_layers": null,
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            0,
+            24,
+            18
+          ],
+          [
+            -3,
+            42,
+            -12
+          ]
+        ],
+        "layers": 2,
+        "base_nodes": 115,
+        "base_edges": 62,
+        "cloned_nodes": 197,
+        "cloned_edges": 106,
+        "clipped_nodes": 33,
+        "skipped_clipped_nodes": 33,
+        "mean_abs_offset_zyx": [
+          1.309645,
+          31.857868,
+          15.380711
+        ]
+      },
+      "endpoint_backward_clones": null,
+      "output_offset_zyx": [
+        0,
+        0,
+        0
+      ],
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 384,
+        "after_nodes": 115,
+        "edges": 62
+      },
+      "edge_tp": 8.0,
+      "edge_fp": 0.0,
+      "edge_fn": 2.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8125,
+      "total_node_ratio": 0.7247097844112769,
+      "edge_jaccard": 0.8,
+      "adj_edge_jaccard": 0.7420232172470979,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "prefix": "6bba",
+      "fold_id": "0",
+      "route": "balanced_midpoint",
+      "route_confidence": 0.75,
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 31,
+      "gt_edges": 20,
+      "num_pred_nodes": 299.0,
+      "num_pred_edges": 173,
+      "graph": {
+        "datasets": 1,
+        "nodes": 299,
+        "edges": 173,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "runtime_sec": 30.388922691345215,
+      "metric_source": "official",
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "profile": {
+        "dataset": "6bba_2819ca14",
+        "t_start": 0,
+        "t_end": 3,
+        "sampled_timepoints": [
+          0,
+          1,
+          2
+        ],
+        "foreground_fraction": 0.04692975680033366,
+        "bright_candidate_density": 400.0,
+        "dark_candidate_density": 400.0,
+        "both_candidate_density": 400.0,
+        "median_nn_um": 0.40625,
+        "temporal_delta": 0.026527170091867447,
+        "division_motif_rate": 0.5375,
+        "intensity_p999": 669.7020000000011,
+        "estimated_total_nodes": 5534.0
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_2819ca14",
+        "before_nodes": 360,
+        "corrected_nodes": 323,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          -3,
+          1,
+          -2
+        ],
+        "center_offsets_zyx": [
+          [
+            -3,
+            1,
+            -2
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 160,
+        "refined_nodes": 160,
+        "mean_abs_offset_zyx": [
+          0.94375,
+          2.08125,
+          2.49375
+        ]
+      },
+      "free_edge_admission": null,
+      "duplicate_endpoint_rescue": null,
+      "motion_endpoint_admission": null,
+      "localmax_clone_layers": null,
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "endpoint_backward_clones": null,
+      "output_offset_zyx": [
+        0,
+        0,
+        0
+      ],
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 160,
+        "edges": 92
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8064516129032258,
+      "total_node_ratio": 0.8009878327912299,
+      "edge_jaccard": 0.8,
+      "adj_edge_jaccard": 0.7359209733767016,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2312ac41",
+      "prefix": "6bba",
+      "fold_id": "0",
+      "route": "balanced_midpoint",
+      "route_confidence": 0.65,
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 45,
+      "gt_edges": 30,
+      "num_pred_nodes": 597.0,
+      "num_pred_edges": 365,
+      "graph": {
+        "datasets": 1,
+        "nodes": 597,
+        "edges": 365,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "runtime_sec": 38.3324408531189,
+      "metric_source": "official",
+      "route_reason": "high-foreground 6bba field; midpoint balanced route controls node penalty; division-like close-pair motifs",
+      "profile": {
+        "dataset": "6bba_2312ac41",
+        "t_start": 0,
+        "t_end": 3,
+        "sampled_timepoints": [
+          0,
+          1,
+          2
+        ],
+        "foreground_fraction": 0.2648943265279134,
+        "bright_candidate_density": 400.0,
+        "dark_candidate_density": 400.0,
+        "both_candidate_density": 400.0,
+        "median_nn_um": 0.40625,
+        "temporal_delta": 0.02832863386720419,
+        "division_motif_rate": 0.90625,
+        "intensity_p999": 1003.6736666666675,
+        "estimated_total_nodes": 11950.0
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_2312ac41",
+        "before_nodes": 360,
+        "corrected_nodes": 310,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          1,
+          -5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            -5,
+            -5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 225,
+        "refined_nodes": 225,
+        "mean_abs_offset_zyx": [
+          0.44,
+          3.168889,
+          3.702222
+        ]
+      },
+      "free_edge_admission": null,
+      "duplicate_endpoint_rescue": null,
+      "motion_endpoint_admission": null,
+      "localmax_clone_layers": null,
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            -24,
+            -18
+          ],
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 2,
+        "base_nodes": 225,
+        "base_edges": 137,
+        "cloned_nodes": 364,
+        "cloned_edges": 220,
+        "clipped_nodes": 86,
+        "skipped_clipped_nodes": 86,
+        "mean_abs_offset_zyx": [
+          3.0,
+          35.868132,
+          23.934066
+        ]
+      },
+      "endpoint_backward_clones": null,
+      "output_offset_zyx": [
+        0,
+        0,
+        0
+      ],
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 225,
+        "edges": 137
+      },
+      "edge_tp": 25.0,
+      "edge_fp": 0.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8444444444444444,
+      "total_node_ratio": 0.6652719665271967,
+      "edge_jaccard": 0.8333333333333334,
+      "adj_edge_jaccard": 0.7778940027894004,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 358.5
+    }
+  ],
+  "dataset_reports": [
+    {
+      "dataset": "6bba_062c8d37",
+      "clip_start": 0,
+      "clip_end": 3,
+      "route": "balanced_midpoint",
+      "score": 0.7420232172470979,
+      "edge_jaccard": 0.8,
+      "node_recall": 0.8125,
+      "runtime_sec": 46.58313488960266
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "clip_start": 0,
+      "clip_end": 3,
+      "route": "balanced_midpoint",
+      "score": 0.7359209733767016,
+      "edge_jaccard": 0.8,
+      "node_recall": 0.8064516129032258,
+      "runtime_sec": 30.388922691345215
+    },
+    {
+      "dataset": "6bba_2312ac41",
+      "clip_start": 0,
+      "clip_end": 3,
+      "route": "balanced_midpoint",
+      "score": 0.7778940027894004,
+      "edge_jaccard": 0.8333333333333334,
+      "node_recall": 0.8444444444444444,
+      "runtime_sec": 38.3324408531189
+    }
+  ],
+  "submission_validation": {
+    "valid": true,
+    "errors": [],
+    "row_type_counts": {
+      "node": 1208,
+      "edge": 706
+    },
+    "dataset_count": 3
+  },
+  "submission_graph": {
+    "datasets": 3,
+    "nodes": 1208,
+    "edges": 706,
+    "dividing_nodes": 0,
+    "out_gt2": 0,
+    "merges": 0
+  },
+  "submission_output": null,
+  "runtime_sec": 115.40281295776367
+}

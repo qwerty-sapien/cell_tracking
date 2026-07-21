@@ -1,0 +1,768 @@
+{
+  "kind": "final_edge_label_table",
+  "created_at_unix": 1783983857.656078,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "fold_id": "0",
+  "datasets": [
+    "6bba_062c8d37"
+  ],
+  "route_arg": "auto",
+  "clip_length": 3,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "summary": {
+    "n": 1,
+    "edge_jaccard": 0.8,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.8125,
+    "adj_edge_jaccard": 0.7813819789939194,
+    "n_adj": 1,
+    "score": 0.7813819789939194
+  },
+  "reports": [
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 16,
+      "gt_edges": 10,
+      "num_pred_nodes": 223,
+      "num_pred_edges": 119,
+      "graph": {
+        "datasets": 1,
+        "nodes": 223,
+        "edges": 119,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "metrics": {
+        "edge_tp": 8.0,
+        "edge_fp": 0.0,
+        "edge_fn": 2.0,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "num_pred_nodes": 223.0,
+        "node_recall": 0.8125,
+        "total_node_ratio": 0.2327252625760088,
+        "edge_jaccard": 0.8,
+        "adj_edge_jaccard": 0.7813819789939194,
+        "division_jaccard": NaN,
+        "estimated_number_of_nodes": 180.9
+      },
+      "diagnostics": {
+        "num_nodes": 223,
+        "num_edges": 119,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 0.956053811659193,
+        "mean_edge_score": 0.8155604347437434,
+        "route": "balanced_midpoint",
+        "route_confidence": 0.6749999999999999,
+        "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+        "node_emission": {
+          "policy": "edge_endpoint_nodes",
+          "before_nodes": 384,
+          "after_nodes": 115,
+          "edges": 62
+        },
+        "num_edge_candidates": 89,
+        "num_selected_forks": 0,
+        "coordinate_correction": {
+          "route": "balanced_midpoint",
+          "dataset": "6bba_062c8d37",
+          "before_nodes": 360,
+          "corrected_nodes": 303,
+          "mean_abs_offset_zyx": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "policy": {
+            "max_abs_offset_zyx": [
+              3,
+              16,
+              16
+            ],
+            "source_offsets_zyx": {
+              "tile_contrast": [
+                0,
+                0,
+                -1
+              ],
+              "tile_raw": [
+                0,
+                0,
+                1
+              ]
+            }
+          }
+        },
+        "node_pruning": null,
+        "refined_candidate_admission": {
+          "enabled": true,
+          "source_route": "refined_dog_compact",
+          "max_per_t": 8,
+          "min_dist_um": 1.0,
+          "score_scale": 0.65,
+          "base_nodes": 360,
+          "refined_nodes": 780,
+          "refined_local_nodes": 780,
+          "admitted_nodes": 24,
+          "base_by_t": [
+            120,
+            120,
+            120
+          ],
+          "refined_local_by_t": [
+            260,
+            260,
+            260
+          ],
+          "admitted_by_t": [
+            8,
+            8,
+            8
+          ]
+        },
+        "edge_scoring": null,
+        "refined_chain_conflict_rescue": {
+          "enabled": true,
+          "before_edges": 62,
+          "after_edges": 62,
+          "replacements": 1,
+          "max_distance_um": 3.0,
+          "max_cost": 0.42,
+          "max_target_rank": 3,
+          "min_temporal_count": 2.0,
+          "replaced_edges": [
+            {
+              "removed_source_id": 174,
+              "removed_target_id": 290,
+              "added_source_id": 712,
+              "added_target_id": 290,
+              "added_distance_um": 2.6012692214570947,
+              "added_cost": 0.3902197775591699,
+              "added_target_rank": 3.0
+            }
+          ]
+        },
+        "short_edge_pruning": null,
+        "localmax_refinement": null,
+        "free_edge_admission": null,
+        "duplicate_endpoint_rescue": null,
+        "motion_endpoint_admission": null,
+        "localmax_clone_layers": null,
+        "offset_clone_layers": {
+          "enabled": true,
+          "skip_clipped": true,
+          "offsets_zyx": [
+            [
+              0,
+              24,
+              18
+            ],
+            [
+              -3,
+              42,
+              -12
+            ]
+          ],
+          "layers": 2,
+          "base_nodes": 115,
+          "base_edges": 62,
+          "cloned_nodes": 197,
+          "cloned_edges": 106,
+          "clipped_nodes": 33,
+          "skipped_clipped_nodes": 33,
+          "filter": {
+            "enabled": true,
+            "source_mode": "any",
+            "min_component_timepoints": 0,
+            "component_max_x": 192,
+            "layers": [
+              {
+                "enabled": true,
+                "source_mode": "any",
+                "min_component_timepoints": 0,
+                "component_max_x": 192,
+                "before_nodes": 111,
+                "before_edges": 60,
+                "candidate_kept_nodes": 68,
+                "kept_nodes": 68,
+                "kept_edges": 36,
+                "dropped_by_source": 0,
+                "dropped_by_timepoints": 0,
+                "dropped_by_x": 43,
+                "layer": 0
+              },
+              {
+                "enabled": true,
+                "source_mode": "any",
+                "min_component_timepoints": 0,
+                "component_max_x": 192,
+                "before_nodes": 86,
+                "before_edges": 46,
+                "candidate_kept_nodes": 70,
+                "kept_nodes": 70,
+                "kept_edges": 37,
+                "dropped_by_source": 0,
+                "dropped_by_timepoints": 0,
+                "dropped_by_x": 16,
+                "layer": 1
+              }
+            ]
+          },
+          "mean_abs_offset_zyx": [
+            1.309645,
+            31.857868,
+            15.380711
+          ]
+        },
+        "endpoint_backward_clones": null,
+        "endpoint_forward_clones": null,
+        "localmax_clone_target_rewire": null,
+        "component_pruning": {
+          "enabled": true,
+          "min_edges": 0,
+          "min_x": 16,
+          "max_x": null,
+          "x_offset_only": false,
+          "drop_one_edge_offset": false,
+          "before_nodes": 253,
+          "before_edges": 135,
+          "components": 118,
+          "removed_components": 14,
+          "removed_nodes": 30,
+          "removed_edges": 16,
+          "removal_reasons": {
+            "min_x": 14
+          },
+          "after_nodes": 223,
+          "after_edges": 119
+        },
+        "final_node_pruning": {
+          "enabled": true,
+          "before_nodes": 223,
+          "after_nodes": 223,
+          "removed_nodes": 0,
+          "edges": 119
+        },
+        "output_offset_zyx": [
+          0,
+          0,
+          0
+        ],
+        "profile": {
+          "dataset": "6bba_062c8d37",
+          "t_start": 0,
+          "t_end": 3,
+          "sampled_timepoints": [
+            0,
+            1,
+            2
+          ],
+          "foreground_fraction": 0.01402584711710612,
+          "bright_candidate_density": 400.0,
+          "dark_candidate_density": 400.0,
+          "both_candidate_density": 400.0,
+          "median_nn_um": 0.40625,
+          "temporal_delta": 0.01861886028200388,
+          "division_motif_rate": 0.665,
+          "intensity_p999": 756.248000000002,
+          "estimated_total_nodes": 6030.0
+        },
+        "route_config": {
+          "label": "balanced_midpoint",
+          "detector_sources": [
+            "tile_raw",
+            "tile_contrast",
+            "dog_bright",
+            "dog_dark"
+          ],
+          "threshold_quantiles": [
+            0.75,
+            0.95,
+            0.9985
+          ],
+          "min_distance_um": 2.0,
+          "fusion_radius_um": 1.8,
+          "max_points_per_t": 120,
+          "max_link_um": 3.5,
+          "max_gap": 1,
+          "gap_link_um": 10.0,
+          "max_neighbors": 1,
+          "edge_cost_threshold": 0.55,
+          "birth_cost": 0.1,
+          "death_cost": 0.38,
+          "node_score_weight": 0.22,
+          "density_cost_weight": 0.05,
+          "appearance_cost_weight": 0.0,
+          "gap_motion_cost_weight": 0.25,
+          "enable_divisions": false,
+          "division_cost_threshold": 0.82,
+          "division_requires_unlinked_parent": true,
+          "division_requires_child_future": false,
+          "division_child_max_um": 9.0,
+          "division_child_min_sep_um": 2.0,
+          "division_child_max_sep_um": 11.0,
+          "division_allow_link_steal": false,
+          "division_steal_max_distance_um": 7.0,
+          "division_steal_source_max_um": 5.0,
+          "enable_second_choice_edge_rescue": false,
+          "edge_rescue_short_max_um": 2.2,
+          "edge_rescue_long_min_um": 6.0,
+          "edge_rescue_long_max_um": 7.1,
+          "edge_rescue_margin_min_um": 4.5,
+          "edge_rescue_intensity_ratio": 1.02,
+          "edge_rescue_alt_cost_max": 0.45,
+          "enable_localmax_refinement": false,
+          "localmax_refine_radius_um": 2.5,
+          "localmax_refine_sources": [
+            "dog_abs"
+          ],
+          "localmax_refine_center_offset_zyx": [
+            0,
+            0,
+            0
+          ],
+          "localmax_refine_center_offsets_zyx": [],
+          "enable_localmax_clone_layers": false,
+          "localmax_clone_radius_um": 2.5,
+          "localmax_clone_sources": [
+            "dog_abs"
+          ],
+          "localmax_clone_center_offsets_zyx": [],
+          "enable_localmax_clone_target_rewire": false,
+          "localmax_clone_rewire_target_radius_um": 4.0,
+          "localmax_clone_rewire_source_radius_um": 4.0,
+          "enable_offset_clone_layers": true,
+          "offset_clone_offsets_zyx": [
+            [
+              0,
+              24,
+              18
+            ],
+            [
+              -3,
+              42,
+              -12
+            ]
+          ],
+          "offset_clone_skip_clipped": true,
+          "offset_clone_filter_source_mode": "any",
+          "offset_clone_filter_min_component_timepoints": 0,
+          "offset_clone_filter_component_max_x": 192,
+          "enable_endpoint_forward_clones": false,
+          "endpoint_forward_radius_um": 3.0,
+          "endpoint_forward_sources": [
+            "smooth"
+          ],
+          "endpoint_forward_max_per_t": 16,
+          "endpoint_forward_requires_history": false,
+          "enable_endpoint_backward_clones": false,
+          "endpoint_backward_max_edge_um": 6.0,
+          "endpoint_backward_min_edge_um": 0.0,
+          "endpoint_backward_duplicate_um": 5.5,
+          "endpoint_backward_max_per_t": 1,
+          "endpoint_backward_axis_mode": "x_preferred",
+          "enable_refined_candidate_admission": true,
+          "refined_candidate_admission_route": "refined_dog_compact",
+          "refined_candidate_admission_max_per_t": 8,
+          "refined_candidate_admission_min_dist_um": 1.0,
+          "refined_candidate_admission_score_scale": 0.65,
+          "enable_refined_chain_conflict_rescue": true,
+          "refined_chain_conflict_max_distance_um": 3.0,
+          "refined_chain_conflict_max_cost": 0.42,
+          "refined_chain_conflict_max_target_rank": 3,
+          "refined_chain_conflict_min_temporal_count": 2.0,
+          "enable_short_edge_pruning": false,
+          "short_edge_prune_min_distance_um": 0.0,
+          "enable_free_edge_admission": false,
+          "free_edge_admission_max_cost": 0.55,
+          "free_edge_admission_min_distance_um": 0.0,
+          "free_edge_admission_max_distance_um": 4.5,
+          "free_edge_admission_require_mutual_nearest": true,
+          "free_edge_admission_max_source_candidates": 1,
+          "free_edge_admission_max_target_candidates": 1,
+          "free_edge_admission_max_edges": 32,
+          "enable_duplicate_endpoint_rescue": false,
+          "duplicate_endpoint_rescue_max_um": 2.0,
+          "duplicate_endpoint_rescue_min_cost": 0.0,
+          "duplicate_endpoint_rescue_max_cost": 0.45,
+          "duplicate_endpoint_rescue_max_distance_um": 4.5,
+          "duplicate_endpoint_rescue_max_swaps": 4,
+          "enable_component_pruning": true,
+          "component_prune_min_edges": 0,
+          "component_prune_min_x": 16,
+          "component_prune_max_x": null,
+          "component_prune_x_offset_only": false,
+          "component_prune_drop_one_edge_offset": false,
+          "enable_motion_endpoint_admission": false,
+          "motion_endpoint_pred_max_um": 7.5,
+          "motion_endpoint_source_max_um": 10.0,
+          "motion_endpoint_max_edges_per_t": 4,
+          "motion_endpoint_target_source_mode": "zshift",
+          "motion_endpoint_rank_mode": "source_order",
+          "motion_endpoint_requires_history": true,
+          "output_offset_zyx": [
+            0,
+            0,
+            0
+          ],
+          "prefix_output_offsets_zyx": [],
+          "notes": "Balanced route with lower node budget and endpoint-tuned strict links for 6bba clips where edge FPs/node penalty dominate. Low-x component pruning is enabled for this very-low-foreground 6bba midpoint profile. Tighter midpoint links, calibrated assignment penalties, bounded refined-candidate admission, refined-chain conflict rescue, and an x-filtered translated-family offset clone are enabled for this very-low-foreground low-estimated 6bba profile."
+        }
+      },
+      "matched_nodes": 13,
+      "valid_like_edges": 8,
+      "tp_like_edges": 8,
+      "fp_like_edges": 0,
+      "valid_edges": [
+        {
+          "source_id": 11,
+          "target_id": 137,
+          "source_gt": 1000010,
+          "target_gt": 2000028,
+          "tp": true,
+          "both_matched": true,
+          "source_t": 0,
+          "target_t": 1,
+          "source_zyx": [
+            33,
+            48,
+            234
+          ],
+          "target_zyx": [
+            33,
+            49,
+            231
+          ],
+          "source_match_um": 2.1877232028983924,
+          "target_match_um": 3.8540258983302125,
+          "source_sources": "tile_raw@q0.75",
+          "target_sources": "tile_contrast@q0.75|tile_raw@q0.75",
+          "source_family": "base",
+          "target_family": "base",
+          "component_nodes": 3,
+          "component_edges": 2,
+          "component_timepoints": [
+            0,
+            1,
+            2
+          ],
+          "component_families": [
+            "base"
+          ],
+          "component_min_x": 225,
+          "component_max_x": 234,
+          "component_min_y": 46,
+          "component_max_y": 49,
+          "component_min_z": 33,
+          "component_max_z": 34
+        },
+        {
+          "source_id": 53,
+          "target_id": 712,
+          "source_gt": 1000014,
+          "target_gt": 2000032,
+          "tp": true,
+          "both_matched": true,
+          "source_t": 0,
+          "target_t": 1,
+          "source_zyx": [
+            42,
+            73,
+            212
+          ],
+          "target_zyx": [
+            42,
+            71,
+            208
+          ],
+          "source_match_um": 2.6012692214570947,
+          "target_match_um": 4.241374519244911,
+          "source_sources": "tile_raw@q0.75",
+          "target_sources": "refine_local_score:local_contrast@r13",
+          "source_family": "base",
+          "target_family": "base",
+          "component_nodes": 3,
+          "component_edges": 2,
+          "component_timepoints": [
+            0,
+            1,
+            2
+          ],
+          "component_families": [
+            "base"
+          ],
+          "component_min_x": 203,
+          "component_max_x": 212,
+          "component_min_y": 71,
+          "component_max_y": 73,
+          "component_min_z": 41,
+          "component_max_z": 42
+        },
+        {
+          "source_id": 137,
+          "target_id": 272,
+          "source_gt": 2000028,
+          "target_gt": 3000046,
+          "tp": true,
+          "both_matched": true,
+          "source_t": 1,
+          "target_t": 2,
+          "source_zyx": [
+            33,
+            49,
+            231
+          ],
+          "target_zyx": [
+            34,
+            46,
+            225
+          ],
+          "source_match_um": 3.8540258983302125,
+          "target_match_um": 3.2752922102462856,
+          "source_sources": "tile_contrast@q0.75|tile_raw@q0.75",
+          "target_sources": "tile_contrast@q0.75",
+          "source_family": "base",
+          "target_family": "base",
+          "component_nodes": 3,
+          "component_edges": 2,
+          "component_timepoints": [
+            0,
+            1,
+            2
+          ],
+          "component_families": [
+            "base"
+          ],
+          "component_min_x": 225,
+          "component_max_x": 234,
+          "component_min_y": 46,
+          "component_max_y": 49,
+          "component_min_z": 33,
+          "component_max_z": 34
+        },
+        {
+          "source_id": 391,
+          "target_id": 649,
+          "source_gt": 1000008,
+          "target_gt": 2000027,
+          "tp": true,
+          "both_matched": true,
+          "source_t": 0,
+          "target_t": 1,
+          "source_zyx": [
+            28,
+            76,
+            198
+          ],
+          "target_zyx": [
+            28,
+            75,
+            195
+          ],
+          "source_match_um": 3.1729139308370784,
+          "target_match_um": 2.6012692214570947,
+          "source_sources": "refine_local_score:dog_abs@r13|refine_local_score:dog_bright@r13|refine_local_score:local_contrast@r13",
+          "target_sources": "refine_local_score:local_contrast@r13",
+          "source_family": "base",
+          "target_family": "base",
+          "component_nodes": 3,
+          "component_edges": 2,
+          "component_timepoints": [
+            0,
+            1,
+            2
+          ],
+          "component_families": [
+            "base"
+          ],
+          "component_min_x": 192,
+          "component_max_x": 198,
+          "component_min_y": 73,
+          "component_max_y": 76,
+          "component_min_z": 28,
+          "component_max_z": 28
+        },
+        {
+          "source_id": 649,
+          "target_id": 913,
+          "source_gt": 2000027,
+          "target_gt": 3000045,
+          "tp": true,
+          "both_matched": true,
+          "source_t": 1,
+          "target_t": 2,
+          "source_zyx": [
+            28,
+            75,
+            195
+          ],
+          "target_zyx": [
+            28,
+            73,
+            192
+          ],
+          "source_match_um": 2.6012692214570947,
+          "target_match_um": 3.300390601883359,
+          "source_sources": "refine_local_score:local_contrast@r13",
+          "target_sources": "refine_local_score:dog_abs@r13|refine_local_score:dog_bright@r13",
+          "source_family": "base",
+          "target_family": "base",
+          "component_nodes": 3,
+          "component_edges": 2,
+          "component_timepoints": [
+            0,
+            1,
+            2
+          ],
+          "component_families": [
+            "base"
+          ],
+          "component_min_x": 192,
+          "component_max_x": 198,
+          "component_min_y": 73,
+          "component_max_y": 76,
+          "component_min_z": 28,
+          "component_max_z": 28
+        },
+        {
+          "source_id": 712,
+          "target_id": 290,
+          "source_gt": 2000032,
+          "target_gt": 3000050,
+          "tp": true,
+          "both_matched": true,
+          "source_t": 1,
+          "target_t": 2,
+          "source_zyx": [
+            42,
+            71,
+            208
+          ],
+          "target_zyx": [
+            41,
+            71,
+            203
+          ],
+          "source_match_um": 4.241374519244911,
+          "target_match_um": 6.319766856854769,
+          "source_sources": "refine_local_score:local_contrast@r13",
+          "target_sources": "tile_contrast@q0.75",
+          "source_family": "base",
+          "target_family": "base",
+          "component_nodes": 3,
+          "component_edges": 2,
+          "component_timepoints": [
+            0,
+            1,
+            2
+          ],
+          "component_families": [
+            "base"
+          ],
+          "component_min_x": 203,
+          "component_max_x": 212,
+          "component_min_y": 71,
+          "component_max_y": 73,
+          "component_min_z": 41,
+          "component_max_z": 42
+        },
+        {
+          "source_id": 1013,
+          "target_id": 1019,
+          "source_gt": 1000002,
+          "target_gt": 2000020,
+          "tp": true,
+          "both_matched": true,
+          "source_t": 0,
+          "target_t": 1,
+          "source_zyx": [
+            10,
+            206,
+            100
+          ],
+          "target_zyx": [
+            10,
+            208,
+            96
+          ],
+          "source_match_um": 6.953879874753374,
+          "target_match_um": 4.614113030962723,
+          "source_sources": "refine_local_score:dog_abs@r13|refine_local_score:dog_bright@r13|refine_local_score:local_contrast@r13|offset_clone_0",
+          "target_sources": "tile_raw@q0.75|offset_clone_0",
+          "source_family": "offset_clone",
+          "target_family": "offset_clone",
+          "component_nodes": 2,
+          "component_edges": 1,
+          "component_timepoints": [
+            0,
+            1
+          ],
+          "component_families": [
+            "offset_clone"
+          ],
+          "component_min_x": 96,
+          "component_max_x": 100,
+          "component_min_y": 206,
+          "component_max_y": 208,
+          "component_min_z": 10,
+          "component_max_z": 10
+        },
+        {
+          "source_id": 1098,
+          "target_id": 1138,
+          "source_gt": 1000003,
+          "target_gt": 2000019,
+          "tp": true,
+          "both_matched": true,
+          "source_t": 0,
+          "target_t": 1,
+          "source_zyx": [
+            13,
+            174,
+            180
+          ],
+          "target_zyx": [
+            13,
+            169,
+            178
+          ],
+          "source_match_um": 5.658407737606049,
+          "target_match_um": 6.9181882111576005,
+          "source_sources": "tile_contrast@q0.75|offset_clone_1",
+          "target_sources": "tile_contrast@q0.75|offset_clone_1",
+          "source_family": "offset_clone",
+          "target_family": "offset_clone",
+          "component_nodes": 2,
+          "component_edges": 1,
+          "component_timepoints": [
+            0,
+            1
+          ],
+          "component_families": [
+            "offset_clone"
+          ],
+          "component_min_x": 178,
+          "component_max_x": 180,
+          "component_min_y": 169,
+          "component_max_y": 174,
+          "component_min_z": 13,
+          "component_max_z": 13
+        }
+      ],
+      "likely_fp_edges": []
+    }
+  ],
+  "runtime_sec": 45.19649577140808
+}

@@ -1,0 +1,5225 @@
+{
+  "kind": "offset_clone_filter_variant_probe",
+  "created_at_unix": 1783959159.361035,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "split_manifest_sha256": "b02e489391b2f093b79a2416f94e84223702b9744ae61cdda11ed9485b66baae",
+  "fold_id": "0",
+  "datasets": [
+    "6bba_372c8cb8"
+  ],
+  "route_arg": "auto",
+  "clip_length": 3,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "summary": {
+    "n": 81,
+    "edge_jaccard": 0.739477503628447,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.8497942386831275,
+    "adj_edge_jaccard": 0.6561336344825499,
+    "n_adj": 81,
+    "score": 0.6561336344825499
+  },
+  "dataset_reports": [
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "current_score": 0.6120878261573821,
+      "current_edge_jaccard": 0.7647058823529411,
+      "best_variant": "contrast_only_full3t_component_x_le_16",
+      "best_score": 0.697406101024657,
+      "best_edge_jaccard": 0.7647058823529411,
+      "best_node_recall": 0.875,
+      "best_nodes": 396,
+      "best_edges": 238,
+      "delta_score": 0.08531827486727495
+    }
+  ],
+  "rows": [
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "current",
+      "spec": {
+        "name": "current"
+      },
+      "num_pred_nodes": 631.0,
+      "num_pred_edges": 378,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 245,
+        "dropped_offset_nodes": 0,
+        "kept_nodes_after_endpoint_filter": 631,
+        "kept_edges": 378
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 631,
+        "edges": 378,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.9957745810188483,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6120878261573821,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "no_offset",
+      "spec": {
+        "name": "no_offset",
+        "drop_all_offsets": true
+      },
+      "num_pred_nodes": 390.0,
+      "num_pred_edges": 234,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 245,
+        "kept_nodes_after_endpoint_filter": 390,
+        "kept_edges": 234
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 390,
+        "edges": 234,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.8515880928642644,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5919560645793712,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "mode_contrast_only",
+      "spec": {
+        "name": "mode_contrast_only",
+        "source_mode": "contrast_only"
+      },
+      "num_pred_nodes": 488.0,
+      "num_pred_edges": 289,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 109,
+        "dropped_offset_nodes": 136,
+        "kept_nodes_after_endpoint_filter": 488,
+        "kept_edges": 289
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 488,
+        "edges": 289,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.316858946968618,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.664004904055341,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "mode_raw_only",
+      "spec": {
+        "name": "mode_raw_only",
+        "source_mode": "raw_only"
+      },
+      "num_pred_nodes": 455.0,
+      "num_pred_edges": 274,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 80,
+        "dropped_offset_nodes": 165,
+        "kept_nodes_after_endpoint_filter": 455,
+        "kept_edges": 274
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 455,
+        "edges": 274,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 12.0,
+      "edge_fp": 1.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8333333333333334,
+      "total_node_ratio": 1.1601861083416418,
+      "edge_jaccard": 0.7058823529411765,
+      "adj_edge_jaccard": 0.62398686294059,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "mode_raw_contrast",
+      "spec": {
+        "name": "mode_raw_contrast",
+        "source_mode": "raw_contrast"
+      },
+      "num_pred_nodes": 431.0,
+      "num_pred_edges": 257,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 56,
+        "dropped_offset_nodes": 189,
+        "kept_nodes_after_endpoint_filter": 431,
+        "kept_edges": 257
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 431,
+        "edges": 257,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 1.0462422257038408,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5793607971603397,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "mode_contrast_any",
+      "spec": {
+        "name": "mode_contrast_any",
+        "source_mode": "contrast_any"
+      },
+      "num_pred_nodes": 542.0,
+      "num_pred_edges": 322,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 165,
+        "dropped_offset_nodes": 80,
+        "kept_nodes_after_endpoint_filter": 542,
+        "kept_edges": 322
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 542,
+        "edges": 322,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.57323268290367,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6443998536603075,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "mode_raw_any",
+      "spec": {
+        "name": "mode_raw_any",
+        "source_mode": "raw_any"
+      },
+      "num_pred_nodes": 512.0,
+      "num_pred_edges": 309,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 136,
+        "dropped_offset_nodes": 109,
+        "kept_nodes_after_endpoint_filter": 512,
+        "kept_edges": 309
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 512,
+        "edges": 309,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 12.0,
+      "edge_fp": 2.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.4308028296064188,
+      "edge_jaccard": 0.6666666666666666,
+      "adj_edge_jaccard": 0.5712798113595721,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_16",
+      "spec": {
+        "name": "x_le_16",
+        "x_le": 16
+      },
+      "num_pred_nodes": 420.0,
+      "num_pred_edges": 252,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 32,
+        "dropped_offset_nodes": 213,
+        "kept_nodes_after_endpoint_filter": 420,
+        "kept_edges": 252
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 420,
+        "edges": 252,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9940179461615155,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6886927452935311,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_16",
+      "spec": {
+        "name": "component_x_le_16",
+        "component_x_le": 16
+      },
+      "num_pred_nodes": 420.0,
+      "num_pred_edges": 252,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 31,
+        "dropped_offset_nodes": 214,
+        "kept_nodes_after_endpoint_filter": 420,
+        "kept_edges": 252
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 420,
+        "edges": 252,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9940179461615155,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6886927452935311,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_16",
+      "spec": {
+        "name": "full3t_x_le_16",
+        "full_3t": true,
+        "x_le": 16
+      },
+      "num_pred_nodes": 408.0,
+      "num_pred_edges": 246,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 19,
+        "dropped_offset_nodes": 226,
+        "kept_nodes_after_endpoint_filter": 408,
+        "kept_edges": 246
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 408,
+        "edges": 246,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.937046004842615,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.693049423159094,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_16",
+      "spec": {
+        "name": "full3t_component_x_le_16",
+        "full_3t": true,
+        "component_x_le": 16
+      },
+      "num_pred_nodes": 408.0,
+      "num_pred_edges": 246,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 18,
+        "dropped_offset_nodes": 227,
+        "kept_nodes_after_endpoint_filter": 408,
+        "kept_edges": 246
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 408,
+        "edges": 246,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.937046004842615,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.693049423159094,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_24",
+      "spec": {
+        "name": "x_le_24",
+        "x_le": 24
+      },
+      "num_pred_nodes": 437.0,
+      "num_pred_edges": 262,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 49,
+        "dropped_offset_nodes": 196,
+        "kept_nodes_after_endpoint_filter": 437,
+        "kept_edges": 262
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 437,
+        "edges": 262,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.074728196363291,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6825207849839835,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_24",
+      "spec": {
+        "name": "component_x_le_24",
+        "component_x_le": 24
+      },
+      "num_pred_nodes": 435.0,
+      "num_pred_edges": 261,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 46,
+        "dropped_offset_nodes": 199,
+        "kept_nodes_after_endpoint_filter": 435,
+        "kept_edges": 261
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 435,
+        "edges": 261,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.065232872810141,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6832468979615773,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_24",
+      "spec": {
+        "name": "full3t_x_le_24",
+        "full_3t": true,
+        "x_le": 24
+      },
+      "num_pred_nodes": 419.0,
+      "num_pred_edges": 253,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 30,
+        "dropped_offset_nodes": 215,
+        "kept_nodes_after_endpoint_filter": 419,
+        "kept_edges": 253
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 419,
+        "edges": 253,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9892702843849405,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6890558017823281,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_24",
+      "spec": {
+        "name": "full3t_component_x_le_24",
+        "full_3t": true,
+        "component_x_le": 24
+      },
+      "num_pred_nodes": 417.0,
+      "num_pred_edges": 252,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 27,
+        "dropped_offset_nodes": 218,
+        "kept_nodes_after_endpoint_filter": 417,
+        "kept_edges": 252
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 417,
+        "edges": 252,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9797749608317904,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6897819147599218,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_32",
+      "spec": {
+        "name": "x_le_32",
+        "x_le": 32
+      },
+      "num_pred_nodes": 457.0,
+      "num_pred_edges": 274,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 70,
+        "dropped_offset_nodes": 175,
+        "kept_nodes_after_endpoint_filter": 457,
+        "kept_edges": 274
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 457,
+        "edges": 274,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.169681431894792,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6752596552080452,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_32",
+      "spec": {
+        "name": "component_x_le_32",
+        "component_x_le": 32
+      },
+      "num_pred_nodes": 457.0,
+      "num_pred_edges": 274,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 68,
+        "dropped_offset_nodes": 177,
+        "kept_nodes_after_endpoint_filter": 457,
+        "kept_edges": 274
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 457,
+        "edges": 274,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.169681431894792,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6752596552080452,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_32",
+      "spec": {
+        "name": "full3t_x_le_32",
+        "full_3t": true,
+        "x_le": 32
+      },
+      "num_pred_nodes": 429.0,
+      "num_pred_edges": 260,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 39,
+        "dropped_offset_nodes": 206,
+        "kept_nodes_after_endpoint_filter": 429,
+        "kept_edges": 260
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 429,
+        "edges": 260,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.0367469021506908,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6854252368943589,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_32",
+      "spec": {
+        "name": "full3t_component_x_le_32",
+        "full_3t": true,
+        "component_x_le": 32
+      },
+      "num_pred_nodes": 429.0,
+      "num_pred_edges": 260,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 39,
+        "dropped_offset_nodes": 206,
+        "kept_nodes_after_endpoint_filter": 429,
+        "kept_edges": 260
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 429,
+        "edges": 260,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.0367469021506908,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6854252368943589,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_48",
+      "spec": {
+        "name": "x_le_48",
+        "x_le": 48
+      },
+      "num_pred_nodes": 484.0,
+      "num_pred_edges": 289,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 97,
+        "dropped_offset_nodes": 148,
+        "kept_nodes_after_endpoint_filter": 484,
+        "kept_edges": 289
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 484,
+        "edges": 289,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.2978682998623179,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6654571300105285,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_48",
+      "spec": {
+        "name": "component_x_le_48",
+        "component_x_le": 48
+      },
+      "num_pred_nodes": 484.0,
+      "num_pred_edges": 289,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 95,
+        "dropped_offset_nodes": 150,
+        "kept_nodes_after_endpoint_filter": 484,
+        "kept_edges": 289
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 484,
+        "edges": 289,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.2978682998623179,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6654571300105285,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_48",
+      "spec": {
+        "name": "full3t_x_le_48",
+        "full_3t": true,
+        "x_le": 48
+      },
+      "num_pred_nodes": 438.0,
+      "num_pred_edges": 266,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 49,
+        "dropped_offset_nodes": 196,
+        "kept_nodes_after_endpoint_filter": 438,
+        "kept_edges": 266
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 438,
+        "edges": 266,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.0794758581398662,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6821577284951866,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_48",
+      "spec": {
+        "name": "full3t_component_x_le_48",
+        "full_3t": true,
+        "component_x_le": 48
+      },
+      "num_pred_nodes": 438.0,
+      "num_pred_edges": 266,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 48,
+        "dropped_offset_nodes": 197,
+        "kept_nodes_after_endpoint_filter": 438,
+        "kept_edges": 266
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 438,
+        "edges": 266,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.0794758581398662,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6821577284951866,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_64",
+      "spec": {
+        "name": "x_le_64",
+        "x_le": 64
+      },
+      "num_pred_nodes": 493.0,
+      "num_pred_edges": 294,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 104,
+        "dropped_offset_nodes": 141,
+        "kept_nodes_after_endpoint_filter": 493,
+        "kept_edges": 294
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 493,
+        "edges": 294,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.3405972558514931,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6621896216113563,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_64",
+      "spec": {
+        "name": "component_x_le_64",
+        "component_x_le": 64
+      },
+      "num_pred_nodes": 493.0,
+      "num_pred_edges": 294,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 104,
+        "dropped_offset_nodes": 141,
+        "kept_nodes_after_endpoint_filter": 493,
+        "kept_edges": 294
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 493,
+        "edges": 294,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.3405972558514931,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6621896216113563,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_64",
+      "spec": {
+        "name": "full3t_x_le_64",
+        "full_3t": true,
+        "x_le": 64
+      },
+      "num_pred_nodes": 441.0,
+      "num_pred_edges": 268,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 51,
+        "dropped_offset_nodes": 194,
+        "kept_nodes_after_endpoint_filter": 441,
+        "kept_edges": 268
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 441,
+        "edges": 268,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.0937188434695913,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6810685590287959,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_64",
+      "spec": {
+        "name": "full3t_component_x_le_64",
+        "full_3t": true,
+        "component_x_le": 64
+      },
+      "num_pred_nodes": 441.0,
+      "num_pred_edges": 268,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 51,
+        "dropped_offset_nodes": 194,
+        "kept_nodes_after_endpoint_filter": 441,
+        "kept_edges": 268
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 441,
+        "edges": 268,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.0937188434695913,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6810685590287959,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_96",
+      "spec": {
+        "name": "x_le_96",
+        "x_le": 96
+      },
+      "num_pred_nodes": 537.0,
+      "num_pred_edges": 321,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 151,
+        "dropped_offset_nodes": 94,
+        "kept_nodes_after_endpoint_filter": 537,
+        "kept_edges": 321
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 537,
+        "edges": 321,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.5494943740207947,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6462151361042922,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_96",
+      "spec": {
+        "name": "component_x_le_96",
+        "component_x_le": 96
+      },
+      "num_pred_nodes": 535.0,
+      "num_pred_edges": 320,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 147,
+        "dropped_offset_nodes": 98,
+        "kept_nodes_after_endpoint_filter": 535,
+        "kept_edges": 320
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 535,
+        "edges": 320,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.5399990504676448,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6469412490818859,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_96",
+      "spec": {
+        "name": "full3t_x_le_96",
+        "full_3t": true,
+        "x_le": 96
+      },
+      "num_pred_nodes": 473.0,
+      "num_pred_edges": 289,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 85,
+        "dropped_offset_nodes": 160,
+        "kept_nodes_after_endpoint_filter": 473,
+        "kept_edges": 289
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 473,
+        "edges": 289,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.2456440203199926,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6694507513872946,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_96",
+      "spec": {
+        "name": "full3t_component_x_le_96",
+        "full_3t": true,
+        "component_x_le": 96
+      },
+      "num_pred_nodes": 471.0,
+      "num_pred_edges": 288,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 81,
+        "dropped_offset_nodes": 164,
+        "kept_nodes_after_endpoint_filter": 471,
+        "kept_edges": 288
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 471,
+        "edges": 288,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.2361486967668425,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6701768643648884,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_128",
+      "spec": {
+        "name": "x_le_128",
+        "x_le": 128
+      },
+      "num_pred_nodes": 567.0,
+      "num_pred_edges": 340,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 180,
+        "dropped_offset_nodes": 65,
+        "kept_nodes_after_endpoint_filter": 567,
+        "kept_edges": 340
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 567,
+        "edges": 340,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.691924227318046,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6353234414403847,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_128",
+      "spec": {
+        "name": "component_x_le_128",
+        "component_x_le": 128
+      },
+      "num_pred_nodes": 567.0,
+      "num_pred_edges": 340,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 180,
+        "dropped_offset_nodes": 65,
+        "kept_nodes_after_endpoint_filter": 567,
+        "kept_edges": 340
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 567,
+        "edges": 340,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.691924227318046,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6353234414403847,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_128",
+      "spec": {
+        "name": "full3t_x_le_128",
+        "full_3t": true,
+        "x_le": 128
+      },
+      "num_pred_nodes": 495.0,
+      "num_pred_edges": 304,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 105,
+        "dropped_offset_nodes": 140,
+        "kept_nodes_after_endpoint_filter": 495,
+        "kept_edges": 304
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 495,
+        "edges": 304,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.3500925794046432,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6614635086337625,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_128",
+      "spec": {
+        "name": "full3t_component_x_le_128",
+        "full_3t": true,
+        "component_x_le": 128
+      },
+      "num_pred_nodes": 495.0,
+      "num_pred_edges": 304,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 105,
+        "dropped_offset_nodes": 140,
+        "kept_nodes_after_endpoint_filter": 495,
+        "kept_edges": 304
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 495,
+        "edges": 304,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.3500925794046432,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6614635086337625,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_192",
+      "spec": {
+        "name": "x_le_192",
+        "x_le": 192
+      },
+      "num_pred_nodes": 619.0,
+      "num_pred_edges": 371,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 234,
+        "dropped_offset_nodes": 11,
+        "kept_nodes_after_endpoint_filter": 619,
+        "kept_edges": 371
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 619,
+        "edges": 371,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.9388026396999478,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6164445040229452,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_192",
+      "spec": {
+        "name": "component_x_le_192",
+        "component_x_le": 192
+      },
+      "num_pred_nodes": 617.0,
+      "num_pred_edges": 370,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 231,
+        "dropped_offset_nodes": 14,
+        "kept_nodes_after_endpoint_filter": 617,
+        "kept_edges": 370
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 617,
+        "edges": 370,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.9293073161467977,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.617170617000539,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_192",
+      "spec": {
+        "name": "full3t_x_le_192",
+        "full_3t": true,
+        "x_le": 192
+      },
+      "num_pred_nodes": 527.0,
+      "num_pred_edges": 325,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 137,
+        "dropped_offset_nodes": 108,
+        "kept_nodes_after_endpoint_filter": 527,
+        "kept_edges": 325
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 527,
+        "edges": 325,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.5020177562550445,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6498457009922612,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_192",
+      "spec": {
+        "name": "full3t_component_x_le_192",
+        "full_3t": true,
+        "component_x_le": 192
+      },
+      "num_pred_nodes": 525.0,
+      "num_pred_edges": 324,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 135,
+        "dropped_offset_nodes": 110,
+        "kept_nodes_after_endpoint_filter": 525,
+        "kept_edges": 324
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 525,
+        "edges": 324,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.4925224327018944,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6505718139698551,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_x_le_16",
+      "spec": {
+        "name": "contrast_only_x_le_16",
+        "source_mode": "contrast_only",
+        "x_le": 16
+      },
+      "num_pred_nodes": 400.0,
+      "num_pred_edges": 240,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 11,
+        "dropped_offset_nodes": 234,
+        "kept_nodes_after_endpoint_filter": 400,
+        "kept_edges": 240
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 400,
+        "edges": 240,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8990647106300148,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6959538750694694,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_full3t_component_x_le_16",
+      "spec": {
+        "name": "contrast_only_full3t_component_x_le_16",
+        "source_mode": "contrast_only",
+        "full_3t": true,
+        "component_x_le": 16
+      },
+      "num_pred_nodes": 396.0,
+      "num_pred_edges": 238,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 7,
+        "dropped_offset_nodes": 238,
+        "kept_nodes_after_endpoint_filter": 396,
+        "kept_edges": 238
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 396,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8800740635237146,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.697406101024657,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_x_le_24",
+      "spec": {
+        "name": "contrast_only_x_le_24",
+        "source_mode": "contrast_only",
+        "x_le": 24
+      },
+      "num_pred_nodes": 406.0,
+      "num_pred_edges": 243,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 18,
+        "dropped_offset_nodes": 227,
+        "kept_nodes_after_endpoint_filter": 406,
+        "kept_edges": 243
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 406,
+        "edges": 243,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9275506812894649,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.693775536136688,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_full3t_component_x_le_24",
+      "spec": {
+        "name": "contrast_only_full3t_component_x_le_24",
+        "source_mode": "contrast_only",
+        "full_3t": true,
+        "component_x_le": 24
+      },
+      "num_pred_nodes": 396.0,
+      "num_pred_edges": 238,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 8,
+        "dropped_offset_nodes": 237,
+        "kept_nodes_after_endpoint_filter": 396,
+        "kept_edges": 238
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 396,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8800740635237146,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.697406101024657,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_x_le_32",
+      "spec": {
+        "name": "contrast_only_x_le_32",
+        "source_mode": "contrast_only",
+        "x_le": 32
+      },
+      "num_pred_nodes": 414.0,
+      "num_pred_edges": 247,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 28,
+        "dropped_offset_nodes": 217,
+        "kept_nodes_after_endpoint_filter": 414,
+        "kept_edges": 247
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 414,
+        "edges": 247,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9655319755020653,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6908710842263126,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_full3t_component_x_le_32",
+      "spec": {
+        "name": "contrast_only_full3t_component_x_le_32",
+        "source_mode": "contrast_only",
+        "full_3t": true,
+        "component_x_le": 32
+      },
+      "num_pred_nodes": 396.0,
+      "num_pred_edges": 238,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 9,
+        "dropped_offset_nodes": 236,
+        "kept_nodes_after_endpoint_filter": 396,
+        "kept_edges": 238
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 396,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8800740635237146,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.697406101024657,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_x_le_48",
+      "spec": {
+        "name": "contrast_only_x_le_48",
+        "source_mode": "contrast_only",
+        "x_le": 48
+      },
+      "num_pred_nodes": 428.0,
+      "num_pred_edges": 255,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 46,
+        "dropped_offset_nodes": 199,
+        "kept_nodes_after_endpoint_filter": 428,
+        "kept_edges": 255
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 428,
+        "edges": 255,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.0319992403741158,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6857882933831557,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_full3t_component_x_le_48",
+      "spec": {
+        "name": "contrast_only_full3t_component_x_le_48",
+        "source_mode": "contrast_only",
+        "full_3t": true,
+        "component_x_le": 48
+      },
+      "num_pred_nodes": 402.0,
+      "num_pred_edges": 242,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 15,
+        "dropped_offset_nodes": 230,
+        "kept_nodes_after_endpoint_filter": 402,
+        "kept_edges": 242
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 402,
+        "edges": 242,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9085600341831648,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6952277620918756,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_x_le_64",
+      "spec": {
+        "name": "contrast_only_x_le_64",
+        "source_mode": "contrast_only",
+        "x_le": 64
+      },
+      "num_pred_nodes": 434.0,
+      "num_pred_edges": 258,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 51,
+        "dropped_offset_nodes": 194,
+        "kept_nodes_after_endpoint_filter": 434,
+        "kept_edges": 258
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 434,
+        "edges": 258,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.060485211033566,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6836099544503743,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_full3t_component_x_le_64",
+      "spec": {
+        "name": "contrast_only_full3t_component_x_le_64",
+        "source_mode": "contrast_only",
+        "full_3t": true,
+        "component_x_le": 64
+      },
+      "num_pred_nodes": 402.0,
+      "num_pred_edges": 242,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 15,
+        "dropped_offset_nodes": 230,
+        "kept_nodes_after_endpoint_filter": 402,
+        "kept_edges": 242
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 402,
+        "edges": 242,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9085600341831648,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6952277620918756,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_x_le_96",
+      "spec": {
+        "name": "contrast_only_x_le_96",
+        "source_mode": "contrast_only",
+        "x_le": 96
+      },
+      "num_pred_nodes": 454.0,
+      "num_pred_edges": 269,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 74,
+        "dropped_offset_nodes": 171,
+        "kept_nodes_after_endpoint_filter": 454,
+        "kept_edges": 269
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 454,
+        "edges": 269,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.1554384465650667,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.676348824674436,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_full3t_component_x_le_96",
+      "spec": {
+        "name": "contrast_only_full3t_component_x_le_96",
+        "source_mode": "contrast_only",
+        "full_3t": true,
+        "component_x_le": 96
+      },
+      "num_pred_nodes": 412.0,
+      "num_pred_edges": 248,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 25,
+        "dropped_offset_nodes": 220,
+        "kept_nodes_after_endpoint_filter": 412,
+        "kept_edges": 248
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 412,
+        "edges": 248,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9560366519489152,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6915971972039064,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_x_le_128",
+      "spec": {
+        "name": "contrast_only_x_le_128",
+        "source_mode": "contrast_only",
+        "x_le": 128
+      },
+      "num_pred_nodes": 470.0,
+      "num_pred_edges": 279,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 89,
+        "dropped_offset_nodes": 156,
+        "kept_nodes_after_endpoint_filter": 470,
+        "kept_edges": 279
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 470,
+        "edges": 279,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.2314010349902673,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6705399208536854,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_full3t_component_x_le_128",
+      "spec": {
+        "name": "contrast_only_full3t_component_x_le_128",
+        "source_mode": "contrast_only",
+        "full_3t": true,
+        "component_x_le": 128
+      },
+      "num_pred_nodes": 424.0,
+      "num_pred_edges": 256,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 37,
+        "dropped_offset_nodes": 208,
+        "kept_nodes_after_endpoint_filter": 424,
+        "kept_edges": 256
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 424,
+        "edges": 256,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.0130085932678157,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6872405193383435,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_x_le_16",
+      "spec": {
+        "name": "contrast_any_x_le_16",
+        "source_mode": "contrast_any",
+        "x_le": 16
+      },
+      "num_pred_nodes": 403.0,
+      "num_pred_edges": 242,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 18,
+        "dropped_offset_nodes": 227,
+        "kept_nodes_after_endpoint_filter": 403,
+        "kept_edges": 242
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 403,
+        "edges": 242,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9133076959597398,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6948647056030787,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_full3t_component_x_le_16",
+      "spec": {
+        "name": "contrast_any_full3t_component_x_le_16",
+        "source_mode": "contrast_any",
+        "full_3t": true,
+        "component_x_le": 16
+      },
+      "num_pred_nodes": 399.0,
+      "num_pred_edges": 240,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 10,
+        "dropped_offset_nodes": 235,
+        "kept_nodes_after_endpoint_filter": 399,
+        "kept_edges": 240
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 399,
+        "edges": 240,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8943170488534398,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6963169315582662,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_x_le_24",
+      "spec": {
+        "name": "contrast_any_x_le_24",
+        "source_mode": "contrast_any",
+        "x_le": 24
+      },
+      "num_pred_nodes": 414.0,
+      "num_pred_edges": 248,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 30,
+        "dropped_offset_nodes": 215,
+        "kept_nodes_after_endpoint_filter": 414,
+        "kept_edges": 248
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 414,
+        "edges": 248,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9655319755020653,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6908710842263126,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_full3t_component_x_le_24",
+      "spec": {
+        "name": "contrast_any_full3t_component_x_le_24",
+        "source_mode": "contrast_any",
+        "full_3t": true,
+        "component_x_le": 24
+      },
+      "num_pred_nodes": 404.0,
+      "num_pred_edges": 243,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 16,
+        "dropped_offset_nodes": 229,
+        "kept_nodes_after_endpoint_filter": 404,
+        "kept_edges": 243
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 404,
+        "edges": 243,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9180553577363149,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6945016491142818,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_x_le_32",
+      "spec": {
+        "name": "contrast_any_x_le_32",
+        "source_mode": "contrast_any",
+        "x_le": 32
+      },
+      "num_pred_nodes": 427.0,
+      "num_pred_edges": 255,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 43,
+        "dropped_offset_nodes": 202,
+        "kept_nodes_after_endpoint_filter": 427,
+        "kept_edges": 255
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 427,
+        "edges": 255,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.0272515785975407,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6861513498719527,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_full3t_component_x_le_32",
+      "spec": {
+        "name": "contrast_any_full3t_component_x_le_32",
+        "source_mode": "contrast_any",
+        "full_3t": true,
+        "component_x_le": 32
+      },
+      "num_pred_nodes": 409.0,
+      "num_pred_edges": 246,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 21,
+        "dropped_offset_nodes": 224,
+        "kept_nodes_after_endpoint_filter": 409,
+        "kept_edges": 246
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 409,
+        "edges": 246,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9417936666191901,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6926863666702971,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_x_le_48",
+      "spec": {
+        "name": "contrast_any_x_le_48",
+        "source_mode": "contrast_any",
+        "x_le": 48
+      },
+      "num_pred_nodes": 445.0,
+      "num_pred_edges": 265,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 63,
+        "dropped_offset_nodes": 182,
+        "kept_nodes_after_endpoint_filter": 445,
+        "kept_edges": 265
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 445,
+        "edges": 265,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.1127094905758914,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6796163330736082,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_full3t_component_x_le_48",
+      "spec": {
+        "name": "contrast_any_full3t_component_x_le_48",
+        "source_mode": "contrast_any",
+        "full_3t": true,
+        "component_x_le": 48
+      },
+      "num_pred_nodes": 415.0,
+      "num_pred_edges": 250,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 27,
+        "dropped_offset_nodes": 218,
+        "kept_nodes_after_endpoint_filter": 415,
+        "kept_edges": 250
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 415,
+        "edges": 250,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9702796372786403,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6905080277375157,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_x_le_64",
+      "spec": {
+        "name": "contrast_any_x_le_64",
+        "source_mode": "contrast_any",
+        "x_le": 64
+      },
+      "num_pred_nodes": 451.0,
+      "num_pred_edges": 268,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 68,
+        "dropped_offset_nodes": 177,
+        "kept_nodes_after_endpoint_filter": 451,
+        "kept_edges": 268
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 451,
+        "edges": 268,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.1411954612353417,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6774379941408268,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_full3t_component_x_le_64",
+      "spec": {
+        "name": "contrast_any_full3t_component_x_le_64",
+        "source_mode": "contrast_any",
+        "full_3t": true,
+        "component_x_le": 64
+      },
+      "num_pred_nodes": 415.0,
+      "num_pred_edges": 250,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 27,
+        "dropped_offset_nodes": 218,
+        "kept_nodes_after_endpoint_filter": 415,
+        "kept_edges": 250
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 415,
+        "edges": 250,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.9702796372786403,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6905080277375157,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_x_le_96",
+      "spec": {
+        "name": "contrast_any_x_le_96",
+        "source_mode": "contrast_any",
+        "x_le": 96
+      },
+      "num_pred_nodes": 477.0,
+      "num_pred_edges": 283,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 97,
+        "dropped_offset_nodes": 148,
+        "kept_nodes_after_endpoint_filter": 477,
+        "kept_edges": 283
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 477,
+        "edges": 283,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.2646346674262925,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.667998525432107,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_full3t_component_x_le_96",
+      "spec": {
+        "name": "contrast_any_full3t_component_x_le_96",
+        "source_mode": "contrast_any",
+        "full_3t": true,
+        "component_x_le": 96
+      },
+      "num_pred_nodes": 431.0,
+      "num_pred_edges": 260,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 43,
+        "dropped_offset_nodes": 202,
+        "kept_nodes_after_endpoint_filter": 431,
+        "kept_edges": 260
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 431,
+        "edges": 260,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.0462422257038408,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6846991239167651,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_x_le_128",
+      "spec": {
+        "name": "contrast_any_x_le_128",
+        "source_mode": "contrast_any",
+        "x_le": 128
+      },
+      "num_pred_nodes": 501.0,
+      "num_pred_edges": 298,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 120,
+        "dropped_offset_nodes": 125,
+        "kept_nodes_after_endpoint_filter": 501,
+        "kept_edges": 298
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 501,
+        "edges": 298,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.3785785500640935,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.659285169700981,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_full3t_component_x_le_128",
+      "spec": {
+        "name": "contrast_any_full3t_component_x_le_128",
+        "source_mode": "contrast_any",
+        "full_3t": true,
+        "component_x_le": 128
+      },
+      "num_pred_nodes": 449.0,
+      "num_pred_edges": 272,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 61,
+        "dropped_offset_nodes": 184,
+        "kept_nodes_after_endpoint_filter": 449,
+        "kept_edges": 272
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 449,
+        "edges": 272,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 1.1317001376821916,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6781641071184206,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_x_le_16",
+      "spec": {
+        "name": "raw_contrast_x_le_16",
+        "source_mode": "raw_contrast",
+        "x_le": 16
+      },
+      "num_pred_nodes": 390.0,
+      "num_pred_edges": 234,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 7,
+        "dropped_offset_nodes": 238,
+        "kept_nodes_after_endpoint_filter": 390,
+        "kept_edges": 234
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 390,
+        "edges": 234,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.8515880928642644,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5919560645793712,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_full3t_component_x_le_16",
+      "spec": {
+        "name": "raw_contrast_full3t_component_x_le_16",
+        "source_mode": "raw_contrast",
+        "full_3t": true,
+        "component_x_le": 16
+      },
+      "num_pred_nodes": 390.0,
+      "num_pred_edges": 234,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 3,
+        "dropped_offset_nodes": 242,
+        "kept_nodes_after_endpoint_filter": 390,
+        "kept_edges": 234
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 390,
+        "edges": 234,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.8515880928642644,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5919560645793712,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_x_le_24",
+      "spec": {
+        "name": "raw_contrast_x_le_24",
+        "source_mode": "raw_contrast",
+        "x_le": 24
+      },
+      "num_pred_nodes": 394.0,
+      "num_pred_edges": 236,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 12,
+        "dropped_offset_nodes": 233,
+        "kept_nodes_after_endpoint_filter": 394,
+        "kept_edges": 236
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 394,
+        "edges": 236,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.8705787399705646,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5907272580019047,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_full3t_component_x_le_24",
+      "spec": {
+        "name": "raw_contrast_full3t_component_x_le_24",
+        "source_mode": "raw_contrast",
+        "full_3t": true,
+        "component_x_le": 24
+      },
+      "num_pred_nodes": 394.0,
+      "num_pred_edges": 236,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 8,
+        "dropped_offset_nodes": 237,
+        "kept_nodes_after_endpoint_filter": 394,
+        "kept_edges": 236
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 394,
+        "edges": 236,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.8705787399705646,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5907272580019047,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_x_le_32",
+      "spec": {
+        "name": "raw_contrast_x_le_32",
+        "source_mode": "raw_contrast",
+        "x_le": 32
+      },
+      "num_pred_nodes": 398.0,
+      "num_pred_edges": 238,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 15,
+        "dropped_offset_nodes": 230,
+        "kept_nodes_after_endpoint_filter": 398,
+        "kept_edges": 238
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 398,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.8895693870768647,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5894984514244381,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_full3t_component_x_le_32",
+      "spec": {
+        "name": "raw_contrast_full3t_component_x_le_32",
+        "source_mode": "raw_contrast",
+        "full_3t": true,
+        "component_x_le": 32
+      },
+      "num_pred_nodes": 398.0,
+      "num_pred_edges": 238,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 12,
+        "dropped_offset_nodes": 233,
+        "kept_nodes_after_endpoint_filter": 398,
+        "kept_edges": 238
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 398,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.8895693870768647,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5894984514244381,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_x_le_48",
+      "spec": {
+        "name": "raw_contrast_x_le_48",
+        "source_mode": "raw_contrast",
+        "x_le": 48
+      },
+      "num_pred_nodes": 398.0,
+      "num_pred_edges": 238,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 17,
+        "dropped_offset_nodes": 228,
+        "kept_nodes_after_endpoint_filter": 398,
+        "kept_edges": 238
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 398,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.8895693870768647,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5894984514244381,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_full3t_component_x_le_48",
+      "spec": {
+        "name": "raw_contrast_full3t_component_x_le_48",
+        "source_mode": "raw_contrast",
+        "full_3t": true,
+        "component_x_le": 48
+      },
+      "num_pred_nodes": 398.0,
+      "num_pred_edges": 238,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 12,
+        "dropped_offset_nodes": 233,
+        "kept_nodes_after_endpoint_filter": 398,
+        "kept_edges": 238
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 398,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.8895693870768647,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5894984514244381,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_x_le_64",
+      "spec": {
+        "name": "raw_contrast_x_le_64",
+        "source_mode": "raw_contrast",
+        "x_le": 64
+      },
+      "num_pred_nodes": 398.0,
+      "num_pred_edges": 238,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 17,
+        "dropped_offset_nodes": 228,
+        "kept_nodes_after_endpoint_filter": 398,
+        "kept_edges": 238
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 398,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.8895693870768647,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5894984514244381,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_full3t_component_x_le_64",
+      "spec": {
+        "name": "raw_contrast_full3t_component_x_le_64",
+        "source_mode": "raw_contrast",
+        "full_3t": true,
+        "component_x_le": 64
+      },
+      "num_pred_nodes": 398.0,
+      "num_pred_edges": 238,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 12,
+        "dropped_offset_nodes": 233,
+        "kept_nodes_after_endpoint_filter": 398,
+        "kept_edges": 238
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 398,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.8895693870768647,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5894984514244381,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_x_le_96",
+      "spec": {
+        "name": "raw_contrast_x_le_96",
+        "source_mode": "raw_contrast",
+        "x_le": 96
+      },
+      "num_pred_nodes": 402.0,
+      "num_pred_edges": 240,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 23,
+        "dropped_offset_nodes": 222,
+        "kept_nodes_after_endpoint_filter": 402,
+        "kept_edges": 240
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 402,
+        "edges": 240,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.9085600341831648,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5882696448469718,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_full3t_component_x_le_96",
+      "spec": {
+        "name": "raw_contrast_full3t_component_x_le_96",
+        "source_mode": "raw_contrast",
+        "full_3t": true,
+        "component_x_le": 96
+      },
+      "num_pred_nodes": 402.0,
+      "num_pred_edges": 240,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 18,
+        "dropped_offset_nodes": 227,
+        "kept_nodes_after_endpoint_filter": 402,
+        "kept_edges": 240
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 402,
+        "edges": 240,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.9085600341831648,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5882696448469718,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_x_le_128",
+      "spec": {
+        "name": "raw_contrast_x_le_128",
+        "source_mode": "raw_contrast",
+        "x_le": 128
+      },
+      "num_pred_nodes": 410.0,
+      "num_pred_edges": 245,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 31,
+        "dropped_offset_nodes": 214,
+        "kept_nodes_after_endpoint_filter": 410,
+        "kept_edges": 245
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 410,
+        "edges": 245,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.9465413283957651,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5858120316920388,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_full3t_component_x_le_128",
+      "spec": {
+        "name": "raw_contrast_full3t_component_x_le_128",
+        "source_mode": "raw_contrast",
+        "full_3t": true,
+        "component_x_le": 128
+      },
+      "num_pred_nodes": 408.0,
+      "num_pred_edges": 244,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 24,
+        "dropped_offset_nodes": 221,
+        "kept_nodes_after_endpoint_filter": 408,
+        "kept_edges": 244
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 408,
+        "edges": 244,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.937046004842615,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.586426434980772,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    }
+  ],
+  "runtime_sec": 34.386173725128174
+}

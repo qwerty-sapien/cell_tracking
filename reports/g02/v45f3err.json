@@ -1,0 +1,17 @@
+{
+  "artifact": "v45f-private-trial-v3",
+  "category": "kaggle-cuda-architecture",
+  "effect": "private-kaggle-kernel-only",
+  "kernel_ref": "onebitbrain/bh-v45f3",
+  "kernel_version": 1,
+  "observed_error": "torch.AcceleratorError: CUDA error: no kernel image is available for execution on the device",
+  "observed_hardware": "Tesla P100-PCIE-16GB, CUDA capability sm_60",
+  "observed_stage": "model.to(cuda) after dependency repair, source extraction, support validation, and checkpoint construction; before image reads or optimization",
+  "remediation": {
+    "artifact": "v45f-private-trial-v4",
+    "kernel_ref": "onebitbrain/bh-v45f4",
+    "method": "request NvidiaTeslaT4 with Kaggle CLI --accelerator and reject armed CUDA capability below 7.0 before model loading"
+  },
+  "scored_submission": false,
+  "training_started": false
+}

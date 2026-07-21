@@ -7,7 +7,7 @@ from dataclasses import replace
 from typing import Any
 
 import numpy as np
-from scipy.ndimage import gaussian_filter, maximum_filter
+from scipy.ndimage import correlate, gaussian_filter, maximum_filter
 from scipy.spatial import cKDTree
 
 from celltrack_baseline.rule_based import BaselineConfig, dog_response, normalize_volume, parse_scale
@@ -166,6 +166,264 @@ def _hmax_peaks(
     ]
 
 
+def _tile_shape_voxels(
+    score_shape: tuple[int, int, int],
+    scale_zyx: tuple[float, float, float],
+) -> tuple[int, int, int]:
+    # Around 26 um per side. This gives a spatially balanced fallback without
+    # needing dataset-specific priors and keeps tile counts bounded for 64x256x256.
+    target_um = 26.0
+    return tuple(
+        max(1, min(int(size), int(math.ceil(target_um / float(scale)))))
+        for size, scale in zip(score_shape, scale_zyx, strict=True)
+    )
+
+
+def _stratified_local_peaks(
+    score: np.ndarray,
+    source: str,
+    threshold_quantile: float,
+    scale_zyx: tuple[float, float, float],
+    min_distance_um: float,
+    max_points: int,
+    coverage_first: bool = False,
+) -> list[dict[str, Any]]:
+    """Select local maxima with a per-3D-tile quota.
+
+    Standard global top-k peak selection fails when sparse labels mark moderate
+    cells near a frame edge or in dim regions. This source keeps the strongest
+    local maxima per spatial tile, so every region can contribute candidates.
+    """
+
+    if max_points <= 0:
+        return []
+    local = maximum_filter(score, size=_nms_size(scale_zyx, min_distance_um), mode="nearest")
+    threshold = float(np.quantile(score, threshold_quantile))
+    mask = (score >= threshold) & (score == local)
+    coords = np.argwhere(mask)
+    if len(coords) == 0:
+        return []
+    values = score[coords[:, 0], coords[:, 1], coords[:, 2]]
+    tile_shape = np.asarray(_tile_shape_voxels(score.shape, scale_zyx), dtype=np.int64)
+    tile_ids = coords // tile_shape
+    n_tiles = max(1, len({tuple(int(v) for v in row) for row in tile_ids}))
+    per_tile = max(1, int(math.ceil(max_points / n_tiles)))
+    by_tile: dict[tuple[int, int, int], list[int]] = {}
+    for index, tile in enumerate(tile_ids):
+        by_tile.setdefault(tuple(int(v) for v in tile), []).append(index)
+
+    for tile in sorted(by_tile):
+        by_tile[tile].sort(key=lambda idx: (-float(values[idx]), int(coords[idx, 0]), int(coords[idx, 1]), int(coords[idx, 2])))
+
+    selected: list[int] = []
+    coverage_rank: dict[int, int] = {}
+    if coverage_first:
+        max_rank = max(len(indices) for indices in by_tile.values())
+        for rank in range(max_rank):
+            for tile in sorted(by_tile):
+                indices = by_tile[tile]
+                if rank >= len(indices):
+                    continue
+                idx = indices[rank]
+                selected.append(idx)
+                coverage_rank[idx] = rank
+                if len(selected) >= max_points:
+                    break
+            if len(selected) >= max_points:
+                break
+    else:
+        for tile in sorted(by_tile):
+            selected.extend(by_tile[tile][:per_tile])
+        selected.sort(key=lambda idx: (-float(values[idx]), int(coords[idx, 0]), int(coords[idx, 1]), int(coords[idx, 2])))
+        selected = selected[:max_points]
+        coverage_rank = {idx: 0 for idx in selected}
+
+    def _priority_score(idx: int) -> float:
+        if coverage_first:
+            return float(1.10 - 0.001 * coverage_rank.get(idx, 0) + 0.000001 * np.clip(values[idx], 0.0, 1.0))
+        return float(1.0 + 0.05 * np.clip(values[idx], 0.0, 1.0))
+
+    return [
+        {
+            "coord": tuple(int(v) for v in coords[idx]),
+            # Give balanced peaks source priority during fusion. They are not
+            # confidence-calibrated; downstream node score clips to [0, 1].
+            "score": _priority_score(idx),
+            "source": f"{source}@q{threshold_quantile}",
+        }
+        for idx in selected
+    ]
+
+
+def _subtile_top_peaks(
+    score: np.ndarray,
+    source: str,
+    threshold_quantile: float,
+    scale_zyx: tuple[float, float, float],
+    max_points: int,
+    target_um: float = 13.0,
+) -> list[dict[str, Any]]:
+    if max_points <= 0:
+        return []
+    threshold = float(np.quantile(score, threshold_quantile))
+    tile_shape = tuple(
+        max(1, min(int(size), int(math.ceil(float(target_um) / float(scale)))))
+        for size, scale in zip(score.shape, scale_zyx, strict=True)
+    )
+    raw: list[dict[str, Any]] = []
+    z_size, y_size, x_size = score.shape
+    for z0 in range(0, z_size, tile_shape[0]):
+        for y0 in range(0, y_size, tile_shape[1]):
+            for x0 in range(0, x_size, tile_shape[2]):
+                patch = score[
+                    z0 : min(z_size, z0 + tile_shape[0]),
+                    y0 : min(y_size, y0 + tile_shape[1]),
+                    x0 : min(x_size, x0 + tile_shape[2]),
+                ]
+                if patch.size == 0:
+                    continue
+                local_index = int(np.argmax(patch))
+                value = float(patch.reshape(-1)[local_index])
+                if value < threshold:
+                    continue
+                dz, dy, dx = np.unravel_index(local_index, patch.shape)
+                raw.append(
+                    {
+                        "coord": (int(z0 + dz), int(y0 + dy), int(x0 + dx)),
+                        "score": float(1.12 + 0.000001 * np.clip(value, 0.0, 1.0)),
+                        "source": f"{source}@q{threshold_quantile}",
+                    }
+                )
+    raw.sort(key=lambda row: (-float(row["score"]), int(row["coord"][0]), int(row["coord"][1]), int(row["coord"][2])))
+    return raw[:max_points]
+
+
+def _best_score_coord_in_radius(
+    score: np.ndarray,
+    center_zyx: tuple[int, int, int],
+    scale_zyx: tuple[float, float, float],
+    radius_um: float,
+) -> tuple[tuple[int, int, int], float] | None:
+    center = np.asarray(center_zyx, dtype=np.int64)
+    radii = np.asarray([max(1, int(math.ceil(radius_um / float(scale)))) for scale in scale_zyx], dtype=np.int64)
+    lows = np.maximum(center - radii, 0)
+    highs = np.minimum(center + radii + 1, np.asarray(score.shape, dtype=np.int64))
+    patch = score[lows[0] : highs[0], lows[1] : highs[1], lows[2] : highs[2]]
+    if patch.size == 0:
+        return None
+    local_coords = np.indices(patch.shape).reshape(3, -1).T + lows[None, :]
+    delta = (local_coords.astype(np.float32) - center.astype(np.float32)[None, :]) * np.asarray(scale_zyx, dtype=np.float32)
+    inside = np.sqrt(np.sum(delta * delta, axis=1)) <= float(radius_um)
+    if not np.any(inside):
+        return None
+    values = patch.reshape(-1)[inside]
+    coords = local_coords[inside]
+    best_idx = int(np.argmax(values))
+    coord = tuple(int(v) for v in coords[best_idx])
+    return coord, float(values[best_idx])
+
+
+def _refined_local_score_peaks(
+    seed_nodes: list[CandidateNode],
+    score_maps: dict[str, np.ndarray],
+    scale_zyx: tuple[float, float, float],
+    radius_um: float = 13.0,
+) -> list[dict[str, Any]]:
+    raw: list[dict[str, Any]] = []
+    for node in seed_nodes:
+        for name, score in score_maps.items():
+            best = _best_score_coord_in_radius(score, node.coord_zyx, scale_zyx, radius_um)
+            if best is None:
+                continue
+            coord, value = best
+            raw.append(
+                {
+                    "coord": coord,
+                    "score": float(1.16 + 0.000001 * np.clip(value, 0.0, 1.0)),
+                    "source": f"refine_local_score:{name}@r{radius_um:g}",
+                }
+            )
+    return raw
+
+
+def _high_quantiles(config: RouteConfig, floor: float = 0.995) -> tuple[float, ...]:
+    high = tuple(float(q) for q in config.threshold_quantiles if float(q) >= floor)
+    return high or (float(max(config.threshold_quantiles)),)
+
+
+def _shifted_peak_rows(
+    rows: list[dict[str, Any]],
+    offset_zyx: tuple[int, int, int],
+    source: str,
+    score_base: float,
+    volume_shape: tuple[int, int, int],
+) -> list[dict[str, Any]]:
+    dz, dy, dx = (int(v) for v in offset_zyx)
+    z_max, y_max, x_max = (int(v) for v in volume_shape)
+    shifted: list[dict[str, Any]] = []
+    for row in rows:
+        z, y, x = (int(v) for v in row["coord"])
+        coord = (
+            min(max(z + dz, 0), z_max - 1),
+            min(max(y + dy, 0), y_max - 1),
+            min(max(x + dx, 0), x_max - 1),
+        )
+        shifted.append(
+            {
+                "coord": coord,
+                "score": float(score_base + 0.000001 * np.clip(float(row["score"]), 0.0, 1.0)),
+                "source": f"{source}:{row['source']}",
+            }
+        )
+    return shifted
+
+
+def _template_score_peaks(
+    norm: np.ndarray,
+    proposal_policy: dict[str, Any] | None,
+    scale_zyx: tuple[float, float, float],
+    config: RouteConfig,
+) -> list[dict[str, Any]]:
+    if not proposal_policy:
+        return []
+    templates = proposal_policy.get("templates", [])
+    if not isinstance(templates, list):
+        return []
+    raw: list[dict[str, Any]] = []
+    for template in templates:
+        if not isinstance(template, dict):
+            continue
+        try:
+            kernel = np.asarray(template.get("kernel"), dtype=np.float32)
+        except (TypeError, ValueError):
+            continue
+        if kernel.ndim != 3 or kernel.size == 0 or not np.all(np.isfinite(kernel)):
+            continue
+        kernel = kernel - float(np.mean(kernel))
+        norm_factor = float(np.sqrt(np.sum(kernel * kernel)))
+        if norm_factor <= 1e-6:
+            continue
+        kernel = kernel / norm_factor
+        response = correlate(norm.astype(np.float32, copy=False), kernel, mode="nearest")
+        response = _robust_unit(response)
+        quantiles = tuple(float(value) for value in template.get("score_quantiles", [max(config.threshold_quantiles)]))
+        max_points = int(template.get("max_points", config.max_points_per_t))
+        min_distance_um = float(template.get("min_distance_um", config.min_distance_um))
+        source = str(template.get("source", f"template_score:{template.get('name', 'template')}"))
+        peaks = _extract_peaks(
+            response,
+            source,
+            quantiles,
+            scale_zyx,
+            min_distance_um,
+            max_points,
+        )
+        for row in peaks:
+            row["score"] = float(1.18 + 0.000001 * np.clip(float(row["score"]), 0.0, 1.0))
+        raw.extend(peaks)
+    return raw
+
+
 def _fuse_raw_candidates(
     raw: list[dict[str, Any]],
     dataset: str,
@@ -237,6 +495,7 @@ def detect_candidates_one_timepoint(
     scale_zyx: tuple[float, float, float],
     config: RouteConfig,
     next_node_id: int,
+    proposal_policy: dict[str, Any] | None = None,
 ) -> tuple[list[CandidateNode], int]:
     """Generate fused candidates for one 3D timepoint."""
 
@@ -245,12 +504,34 @@ def detect_candidates_one_timepoint(
     norm = normalize_volume(volume, attrs, baseline)
     raw: list[dict[str, Any]] = []
 
+    if "template_score" in config.detector_sources:
+        raw.extend(_template_score_peaks(norm, proposal_policy, scale_zyx, config))
     if "dog_bright" in config.detector_sources:
         score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="bright")))
         raw.extend(_extract_peaks(score, "dog_bright", config.threshold_quantiles, scale_zyx, config.min_distance_um, config.max_points_per_t))
     if "dog_dark" in config.detector_sources:
         score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="dark")))
         raw.extend(_extract_peaks(score, "dog_dark", config.threshold_quantiles, scale_zyx, config.min_distance_um, config.max_points_per_t))
+    if "zshift_dog_dark_m5" in config.detector_sources:
+        score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="dark")))
+        shifted_cap = max(8, int(config.max_points_per_t) // 4)
+        rows = _extract_peaks(score, "dog_dark", _high_quantiles(config), scale_zyx, config.min_distance_um, shifted_cap)
+        raw.extend(_shifted_peak_rows(rows, (-5, 0, 0), "zshift_dog_dark_m5", 1.07, volume.shape))
+    if "zshift_dog_bright_m3" in config.detector_sources:
+        score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="bright")))
+        shifted_cap = max(8, int(config.max_points_per_t) // 4)
+        rows = _extract_peaks(score, "dog_bright", _high_quantiles(config), scale_zyx, config.min_distance_um, shifted_cap)
+        raw.extend(_shifted_peak_rows(rows, (-3, 0, 0), "zshift_dog_bright_m3", 1.06, volume.shape))
+    if "zshift_dog_dark_m5_mid" in config.detector_sources:
+        score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="dark")))
+        shifted_cap = max(8, int(config.max_points_per_t) // 6)
+        rows = _extract_peaks(score, "dog_dark", _high_quantiles(config), scale_zyx, config.min_distance_um, shifted_cap)
+        raw.extend(_shifted_peak_rows(rows, (-5, 0, 0), "zshift_dog_dark_m5_mid", 1.035, volume.shape))
+    if "zshift_dog_bright_m3_mid" in config.detector_sources:
+        score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="bright")))
+        shifted_cap = max(8, int(config.max_points_per_t) // 6)
+        rows = _extract_peaks(score, "dog_bright", _high_quantiles(config), scale_zyx, config.min_distance_um, shifted_cap)
+        raw.extend(_shifted_peak_rows(rows, (-3, 0, 0), "zshift_dog_bright_m3_mid", 1.03, volume.shape))
     if "dog_abs" in config.detector_sources:
         score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="both")))
         raw.extend(_extract_peaks(score, "dog_abs", config.threshold_quantiles, scale_zyx, config.min_distance_um, config.max_points_per_t))
@@ -258,12 +539,69 @@ def detect_candidates_one_timepoint(
         local_sigma = _sigma_voxels(2.5, scale_zyx)
         score = _robust_unit(norm - gaussian_filter(norm, local_sigma, mode="nearest"))
         raw.extend(_extract_peaks(score, "local_contrast", config.threshold_quantiles, scale_zyx, config.min_distance_um, config.max_points_per_t))
+    if "tile_raw" in config.detector_sources:
+        score = _robust_unit(gaussian_filter(norm, _sigma_voxels(0.7, scale_zyx), mode="nearest"))
+        raw.extend(_stratified_local_peaks(score, "tile_raw", min(config.threshold_quantiles), scale_zyx, config.min_distance_um, config.max_points_per_t))
+    if "tile_contrast" in config.detector_sources:
+        local_sigma = _sigma_voxels(2.5, scale_zyx)
+        score = _robust_unit(norm - gaussian_filter(norm, local_sigma, mode="nearest"))
+        raw.extend(_stratified_local_peaks(score, "tile_contrast", min(config.threshold_quantiles), scale_zyx, config.min_distance_um, config.max_points_per_t))
+    if "tile_dog_bright" in config.detector_sources:
+        score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="bright")))
+        raw.extend(_stratified_local_peaks(score, "tile_dog_bright", min(config.threshold_quantiles), scale_zyx, config.min_distance_um, config.max_points_per_t))
+    if "tile_dog_dark" in config.detector_sources:
+        score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="dark")))
+        raw.extend(_stratified_local_peaks(score, "tile_dog_dark", min(config.threshold_quantiles), scale_zyx, config.min_distance_um, config.max_points_per_t))
+    if "tile_dog_abs" in config.detector_sources:
+        score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="both")))
+        raw.extend(_stratified_local_peaks(score, "tile_dog_abs", min(config.threshold_quantiles), scale_zyx, config.min_distance_um, config.max_points_per_t))
+    if "cover_contrast" in config.detector_sources:
+        local_sigma = _sigma_voxels(2.5, scale_zyx)
+        score = _robust_unit(norm - gaussian_filter(norm, local_sigma, mode="nearest"))
+        raw.extend(_stratified_local_peaks(score, "cover_contrast", min(config.threshold_quantiles), scale_zyx, config.min_distance_um, config.max_points_per_t, coverage_first=True))
+    if "cover_raw" in config.detector_sources:
+        score = _robust_unit(norm)
+        raw.extend(_stratified_local_peaks(score, "cover_raw", min(config.threshold_quantiles), scale_zyx, config.min_distance_um, config.max_points_per_t, coverage_first=True))
+    if "cover_smooth" in config.detector_sources:
+        score = _robust_unit(gaussian_filter(norm, _sigma_voxels(0.7, scale_zyx), mode="nearest"))
+        raw.extend(_stratified_local_peaks(score, "cover_smooth", min(config.threshold_quantiles), scale_zyx, config.min_distance_um, config.max_points_per_t, coverage_first=True))
+    if "cover_dog_bright" in config.detector_sources:
+        score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="bright")))
+        raw.extend(_stratified_local_peaks(score, "cover_dog_bright", min(config.threshold_quantiles), scale_zyx, config.min_distance_um, config.max_points_per_t, coverage_first=True))
+    if "cover_dog_dark" in config.detector_sources:
+        score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="dark")))
+        raw.extend(_stratified_local_peaks(score, "cover_dog_dark", min(config.threshold_quantiles), scale_zyx, config.min_distance_um, config.max_points_per_t, coverage_first=True))
+    if "cover_dog_abs" in config.detector_sources:
+        score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="both")))
+        raw.extend(_stratified_local_peaks(score, "cover_dog_abs", min(config.threshold_quantiles), scale_zyx, config.min_distance_um, config.max_points_per_t, coverage_first=True))
+    if "subtile_contrast" in config.detector_sources:
+        local_sigma = _sigma_voxels(2.5, scale_zyx)
+        score = _robust_unit(norm - gaussian_filter(norm, local_sigma, mode="nearest"))
+        raw.extend(_subtile_top_peaks(score, "subtile_contrast", min(config.threshold_quantiles), scale_zyx, config.max_points_per_t))
+    if "subtile_dog_bright" in config.detector_sources:
+        score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="bright")))
+        raw.extend(_subtile_top_peaks(score, "subtile_dog_bright", min(config.threshold_quantiles), scale_zyx, config.max_points_per_t))
+    if "subtile_dog_dark" in config.detector_sources:
+        score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="dark")))
+        raw.extend(_subtile_top_peaks(score, "subtile_dog_dark", min(config.threshold_quantiles), scale_zyx, config.max_points_per_t))
+    if "subtile_dog_abs" in config.detector_sources:
+        score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="both")))
+        raw.extend(_subtile_top_peaks(score, "subtile_dog_abs", min(config.threshold_quantiles), scale_zyx, config.max_points_per_t))
     if "hmax" in config.detector_sources:
         score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="both")))
         raw.extend(_hmax_peaks(score, h=0.12, source="hmax", max_points=config.max_points_per_t))
     if "components" in config.detector_sources:
         score = _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="both")))
         raw.extend(_component_centroids(score, quantile=min(config.threshold_quantiles), max_points=config.max_points_per_t // 2))
+    if "refine_local_score" in config.detector_sources and raw:
+        seed_nodes, _ = _fuse_raw_candidates(raw, dataset, t, scale_zyx, config, 1, volume)
+        local_sigma = _sigma_voxels(2.5, scale_zyx)
+        refine_maps = {
+            "local_contrast": _robust_unit(norm - gaussian_filter(norm, local_sigma, mode="nearest")),
+            "dog_bright": _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="bright"))),
+            "dog_abs": _robust_unit(dog_response(norm, scale_zyx, replace(baseline, polarity="both"))),
+        }
+        raw.extend(_refined_local_score_peaks(seed_nodes, refine_maps, scale_zyx))
 
     return _fuse_raw_candidates(raw, dataset, t, scale_zyx, config, next_node_id, volume)
 
@@ -294,6 +632,7 @@ def generate_candidates(
     start: int = 0,
     end: int | None = None,
     progress: bool = False,
+    proposal_policy: dict[str, Any] | None = None,
 ) -> tuple[list[list[CandidateNode]], list[CandidateNode]]:
     """Generate candidates for a dataset/window."""
 
@@ -316,6 +655,7 @@ def generate_candidates(
             scale_zyx=scale_zyx,
             config=config,
             next_node_id=next_node_id,
+            proposal_policy=proposal_policy,
         )
         nodes_by_t.append(nodes)
         all_nodes.extend(nodes)

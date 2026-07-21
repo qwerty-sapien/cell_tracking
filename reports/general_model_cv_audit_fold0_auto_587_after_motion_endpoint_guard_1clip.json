@@ -1,0 +1,184 @@
+{
+  "kind": "general_route_cv_audit",
+  "created_at_unix": 1783921018.036306,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "split_manifest_sha256": "b02e489391b2f093b79a2416f94e84223702b9744ae61cdda11ed9485b66baae",
+  "fold_id": "0",
+  "datasets": [
+    "44b6_587a1e22"
+  ],
+  "route_arg": "auto",
+  "clip_length": 3,
+  "offsets_json": null,
+  "offset_calibration_fold_id": null,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "scoring_calibration_fold_id": "0",
+  "official_metric": {
+    "available": true,
+    "missing": [],
+    "note": "Install optional dependencies to replace approximate CV with official metrics."
+  },
+  "summary": {
+    "n": 1,
+    "edge_jaccard": 0.5,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.6666666666666666,
+    "adj_edge_jaccard": 0.536307915678815,
+    "n_adj": 1,
+    "score": 0.536307915678815
+  },
+  "summary_by_prefix": {
+    "44b6": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 0.5,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.6666666666666666,
+        "adj_edge_jaccard": 0.536307915678815,
+        "n_adj": 1,
+        "score": 0.536307915678815
+      },
+      "mean_node_recall": 0.6666666666666666,
+      "mean_nodes": 149.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 0
+    }
+  },
+  "summary_by_route": {
+    "balanced_axial_compact": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 0.5,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.6666666666666666,
+        "adj_edge_jaccard": 0.536307915678815,
+        "n_adj": 1,
+        "score": 0.536307915678815
+      },
+      "mean_node_recall": 0.6666666666666666,
+      "mean_nodes": 149.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 0
+    }
+  },
+  "rows": [
+    {
+      "dataset": "44b6_587a1e22",
+      "prefix": "44b6",
+      "fold_id": "0",
+      "route": "balanced_axial_compact",
+      "route_confidence": 0.7000000000000001,
+      "clip_start": 5,
+      "clip_end": 8,
+      "gt_nodes": 3,
+      "gt_edges": 2,
+      "num_pred_nodes": 149.0,
+      "num_pred_edges": 78,
+      "graph": {
+        "datasets": 1,
+        "nodes": 149,
+        "edges": 78,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "runtime_sec": 28.496187925338745,
+      "metric_source": "official",
+      "route_reason": "crowded/high foreground; compact spatially balanced localizer preferred; low-foreground high-motif 44b6 field; balanced axial rescue fills z-localization gaps; division-like close-pair motifs",
+      "profile": {
+        "dataset": "44b6_587a1e22",
+        "t_start": 5,
+        "t_end": 8,
+        "sampled_timepoints": [
+          5,
+          6,
+          7
+        ],
+        "foreground_fraction": 0.06650010744730632,
+        "bright_candidate_density": 400.0,
+        "dark_candidate_density": 400.0,
+        "both_candidate_density": 400.0,
+        "median_nn_um": 0.40625,
+        "temporal_delta": 0.021499479189515114,
+        "division_motif_rate": 0.9125,
+        "intensity_p999": 1362.9146666666686,
+        "estimated_total_nodes": 18137.0
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": null,
+      "free_edge_admission": null,
+      "motion_endpoint_admission": null,
+      "output_offset_zyx": [
+        0,
+        0,
+        0
+      ],
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 540,
+        "after_nodes": 149,
+        "edges": 78
+      },
+      "edge_tp": 1.0,
+      "edge_fp": 0.0,
+      "edge_fn": 1.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6666666666666666,
+      "total_node_ratio": -0.7261583135762989,
+      "edge_jaccard": 0.5,
+      "adj_edge_jaccard": 0.536307915678815,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 544.11
+    }
+  ],
+  "dataset_reports": [
+    {
+      "dataset": "44b6_587a1e22",
+      "clip_start": 5,
+      "clip_end": 8,
+      "route": "balanced_axial_compact",
+      "score": 0.536307915678815,
+      "edge_jaccard": 0.5,
+      "node_recall": 0.6666666666666666,
+      "runtime_sec": 28.496187925338745
+    }
+  ],
+  "submission_validation": {
+    "valid": true,
+    "errors": [],
+    "row_type_counts": {
+      "node": 149,
+      "edge": 78
+    },
+    "dataset_count": 1
+  },
+  "submission_graph": {
+    "datasets": 1,
+    "nodes": 149,
+    "edges": 78,
+    "dividing_nodes": 0,
+    "out_gt2": 0,
+    "merges": 0
+  },
+  "submission_output": "reports/general_model_cv_audit_fold0_auto_587_after_motion_endpoint_guard_1clip_submission.csv",
+  "runtime_sec": 28.575047969818115
+}

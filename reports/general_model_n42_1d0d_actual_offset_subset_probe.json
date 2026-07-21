@@ -1,0 +1,594 @@
+{
+  "kind": "offset_clone_variant_probe",
+  "created_at_unix": 1783958138.4541252,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "fold_id": "0",
+  "datasets": [
+    "6bba_1d0d8384"
+  ],
+  "route": "auto",
+  "clip_length": 3,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "variants": [
+    {
+      "name": "current",
+      "offsets_zyx": null
+    },
+    {
+      "name": "subset134",
+      "offsets_zyx": [
+        [
+          0,
+          -36,
+          30
+        ],
+        [
+          -3,
+          48,
+          -24
+        ],
+        [
+          -11,
+          -19,
+          -22
+        ]
+      ]
+    },
+    {
+      "name": "subset0134",
+      "offsets_zyx": [
+        [
+          0,
+          20,
+          17
+        ],
+        [
+          0,
+          -36,
+          30
+        ],
+        [
+          -3,
+          48,
+          -24
+        ],
+        [
+          -11,
+          -19,
+          -22
+        ]
+      ]
+    },
+    {
+      "name": "subset1234",
+      "offsets_zyx": [
+        [
+          0,
+          -36,
+          30
+        ],
+        [
+          -3,
+          36,
+          -24
+        ],
+        [
+          -3,
+          48,
+          -24
+        ],
+        [
+          -11,
+          -19,
+          -22
+        ]
+      ]
+    }
+  ],
+  "skip_clipped": true,
+  "rows": [
+    {
+      "dataset": "6bba_1d0d8384",
+      "variant": "current",
+      "route": "balanced_compact",
+      "clip_start": 0,
+      "clip_end": 3,
+      "offsets_zyx": null,
+      "skip_clipped": null,
+      "num_pred_nodes": 1431.0,
+      "num_pred_edges": 860,
+      "graph": {},
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            0,
+            20,
+            17
+          ],
+          [
+            0,
+            -36,
+            30
+          ],
+          [
+            -3,
+            36,
+            -24
+          ],
+          [
+            -3,
+            48,
+            -24
+          ],
+          [
+            -11,
+            -19,
+            -22
+          ]
+        ],
+        "layers": 5,
+        "base_nodes": 333,
+        "base_edges": 202,
+        "cloned_nodes": 1072,
+        "cloned_edges": 632,
+        "clipped_nodes": 593,
+        "skipped_clipped_nodes": 593,
+        "mean_abs_offset_zyx": [
+          2.545709,
+          30.99347,
+          23.157649
+        ]
+      },
+      "endpoint_forward_clones": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 3.0,
+        "max_per_t": 16,
+        "requires_history": false,
+        "base_nodes": 1405,
+        "base_edges": 834,
+        "cloned_nodes": 26,
+        "cloned_edges": 26,
+        "new_per_t": {
+          "1": 10,
+          "2": 16
+        },
+        "mean_abs_offset_zyx": [
+          0.769231,
+          2.076923,
+          3.615385
+        ]
+      },
+      "edge_tp": 38.0,
+      "edge_fp": 2.0,
+      "edge_fn": 11.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8266666666666667,
+      "total_node_ratio": 1.6634652967781562,
+      "edge_jaccard": 0.7450980392156863,
+      "adj_edge_jaccard": 0.6211535661224119,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 537.27
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "variant": "subset134",
+      "route": "balanced_compact",
+      "clip_start": 0,
+      "clip_end": 3,
+      "offsets_zyx": [
+        [
+          0,
+          -36,
+          30
+        ],
+        [
+          -3,
+          48,
+          -24
+        ],
+        [
+          -11,
+          -19,
+          -22
+        ]
+      ],
+      "skip_clipped": true,
+      "num_pred_nodes": 939.0,
+      "num_pred_edges": 567,
+      "graph": {},
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            0,
+            -36,
+            30
+          ],
+          [
+            -3,
+            48,
+            -24
+          ],
+          [
+            -11,
+            -19,
+            -22
+          ]
+        ],
+        "layers": 3,
+        "base_nodes": 333,
+        "base_edges": 202,
+        "cloned_nodes": 585,
+        "cloned_edges": 344,
+        "clipped_nodes": 414,
+        "skipped_clipped_nodes": 414,
+        "mean_abs_offset_zyx": [
+          3.74188,
+          35.222222,
+          26.129915
+        ]
+      },
+      "endpoint_forward_clones": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 3.0,
+        "max_per_t": 16,
+        "requires_history": false,
+        "base_nodes": 918,
+        "base_edges": 546,
+        "cloned_nodes": 21,
+        "cloned_edges": 21,
+        "new_per_t": {
+          "1": 5,
+          "2": 16
+        },
+        "mean_abs_offset_zyx": [
+          0.809524,
+          1.761905,
+          3.380952
+        ]
+      },
+      "edge_tp": 35.0,
+      "edge_fp": 2.0,
+      "edge_fn": 14.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.7466666666666667,
+      "total_node_ratio": 0.7477246077391256,
+      "edge_jaccard": 0.6862745098039216,
+      "adj_edge_jaccard": 0.6349600759394718,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 537.27
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "variant": "subset0134",
+      "route": "balanced_compact",
+      "clip_start": 0,
+      "clip_end": 3,
+      "offsets_zyx": [
+        [
+          0,
+          20,
+          17
+        ],
+        [
+          0,
+          -36,
+          30
+        ],
+        [
+          -3,
+          48,
+          -24
+        ],
+        [
+          -11,
+          -19,
+          -22
+        ]
+      ],
+      "skip_clipped": true,
+      "num_pred_nodes": 1247.0,
+      "num_pred_edges": 753,
+      "graph": {},
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            0,
+            20,
+            17
+          ],
+          [
+            0,
+            -36,
+            30
+          ],
+          [
+            -3,
+            48,
+            -24
+          ],
+          [
+            -11,
+            -19,
+            -22
+          ]
+        ],
+        "layers": 4,
+        "base_nodes": 333,
+        "base_edges": 202,
+        "cloned_nodes": 892,
+        "cloned_edges": 529,
+        "clipped_nodes": 440,
+        "skipped_clipped_nodes": 440,
+        "mean_abs_offset_zyx": [
+          2.454036,
+          29.983184,
+          22.987668
+        ]
+      },
+      "endpoint_forward_clones": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 3.0,
+        "max_per_t": 16,
+        "requires_history": false,
+        "base_nodes": 1225,
+        "base_edges": 731,
+        "cloned_nodes": 22,
+        "cloned_edges": 22,
+        "new_per_t": {
+          "1": 6,
+          "2": 16
+        },
+        "mean_abs_offset_zyx": [
+          0.818182,
+          1.818182,
+          3.409091
+        ]
+      },
+      "edge_tp": 37.0,
+      "edge_fp": 2.0,
+      "edge_fn": 12.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8,
+      "total_node_ratio": 1.3209931691700636,
+      "edge_jaccard": 0.7254901960784313,
+      "adj_edge_jaccard": 0.6296534367464856,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 537.27
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "variant": "subset1234",
+      "route": "balanced_compact",
+      "clip_start": 0,
+      "clip_end": 3,
+      "offsets_zyx": [
+        [
+          0,
+          -36,
+          30
+        ],
+        [
+          -3,
+          36,
+          -24
+        ],
+        [
+          -3,
+          48,
+          -24
+        ],
+        [
+          -11,
+          -19,
+          -22
+        ]
+      ],
+      "skip_clipped": true,
+      "num_pred_nodes": 1123.0,
+      "num_pred_edges": 674,
+      "graph": {},
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            0,
+            -36,
+            30
+          ],
+          [
+            -3,
+            36,
+            -24
+          ],
+          [
+            -3,
+            48,
+            -24
+          ],
+          [
+            -11,
+            -19,
+            -22
+          ]
+        ],
+        "layers": 4,
+        "base_nodes": 333,
+        "base_edges": 202,
+        "cloned_nodes": 765,
+        "cloned_edges": 447,
+        "clipped_nodes": 567,
+        "skipped_clipped_nodes": 567,
+        "mean_abs_offset_zyx": [
+          3.56732,
+          35.405229,
+          25.628758
+        ]
+      },
+      "endpoint_forward_clones": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 3.0,
+        "max_per_t": 16,
+        "requires_history": false,
+        "base_nodes": 1098,
+        "base_edges": 649,
+        "cloned_nodes": 25,
+        "cloned_edges": 25,
+        "new_per_t": {
+          "1": 9,
+          "2": 16
+        },
+        "mean_abs_offset_zyx": [
+          0.76,
+          2.04,
+          3.6
+        ]
+      },
+      "edge_tp": 36.0,
+      "edge_fp": 2.0,
+      "edge_fn": 13.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.7866666666666666,
+      "total_node_ratio": 1.0901967353472184,
+      "edge_jaccard": 0.7058823529411765,
+      "adj_edge_jaccard": 0.6289272892696082,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 537.27
+    }
+  ],
+  "summary": {
+    "n": 4,
+    "edge_jaccard": 0.7156862745098039,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.79,
+    "adj_edge_jaccard": 0.6286735920194942,
+    "n_adj": 4,
+    "score": 0.6286735920194942
+  },
+  "best": {
+    "dataset": "6bba_1d0d8384",
+    "variant": "subset134",
+    "route": "balanced_compact",
+    "clip_start": 0,
+    "clip_end": 3,
+    "offsets_zyx": [
+      [
+        0,
+        -36,
+        30
+      ],
+      [
+        -3,
+        48,
+        -24
+      ],
+      [
+        -11,
+        -19,
+        -22
+      ]
+    ],
+    "skip_clipped": true,
+    "num_pred_nodes": 939.0,
+    "num_pred_edges": 567,
+    "graph": {},
+    "offset_clone_layers": {
+      "enabled": true,
+      "skip_clipped": true,
+      "offsets_zyx": [
+        [
+          0,
+          -36,
+          30
+        ],
+        [
+          -3,
+          48,
+          -24
+        ],
+        [
+          -11,
+          -19,
+          -22
+        ]
+      ],
+      "layers": 3,
+      "base_nodes": 333,
+      "base_edges": 202,
+      "cloned_nodes": 585,
+      "cloned_edges": 344,
+      "clipped_nodes": 414,
+      "skipped_clipped_nodes": 414,
+      "mean_abs_offset_zyx": [
+        3.74188,
+        35.222222,
+        26.129915
+      ]
+    },
+    "endpoint_forward_clones": {
+      "enabled": true,
+      "sources": [
+        "smooth"
+      ],
+      "radius_um": 3.0,
+      "max_per_t": 16,
+      "requires_history": false,
+      "base_nodes": 918,
+      "base_edges": 546,
+      "cloned_nodes": 21,
+      "cloned_edges": 21,
+      "new_per_t": {
+        "1": 5,
+        "2": 16
+      },
+      "mean_abs_offset_zyx": [
+        0.809524,
+        1.761905,
+        3.380952
+      ]
+    },
+    "edge_tp": 35.0,
+    "edge_fp": 2.0,
+    "edge_fn": 14.0,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.7466666666666667,
+    "total_node_ratio": 0.7477246077391256,
+    "edge_jaccard": 0.6862745098039216,
+    "adj_edge_jaccard": 0.6349600759394718,
+    "division_jaccard": NaN,
+    "estimated_number_of_nodes": 537.27
+  },
+  "runtime_sec": 216.17482709884644
+}

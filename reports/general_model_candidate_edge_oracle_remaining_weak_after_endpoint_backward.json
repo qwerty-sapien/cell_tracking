@@ -1,0 +1,3611 @@
+{
+  "kind": "candidate_edge_oracle_diagnostic",
+  "created_at_unix": 1783923478.710743,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "fold_id": "0",
+  "datasets": [
+    "44b6_40c45f5a",
+    "44b6_587a1e22",
+    "44b6_71a4179f",
+    "6bba_062c8d37",
+    "6bba_0c7fa718",
+    "6bba_2312ac41",
+    "6bba_2819ca14",
+    "6bba_372c8cb8"
+  ],
+  "route_arg": "auto",
+  "clip_length": 3,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "reports": [
+    {
+      "dataset": "44b6_40c45f5a",
+      "route": "hybrid_rescue_compact",
+      "route_reason": "crowded/high foreground; compact spatially balanced localizer preferred; high-signal high-motif 44b6 field; hybrid rescue recovers extra true edges; division-like close-pair motifs; high estimated total node count",
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 6,
+      "gt_edges": 4,
+      "candidate_nodes": 660,
+      "edge_candidates": 158,
+      "selected_edges": 116,
+      "emitted_nodes": 204,
+      "matched_emitted_nodes": 3,
+      "matched_raw_candidate_nodes": 3,
+      "selected_gt_edge_tp": 2,
+      "selected_gt_edge_pairs": [
+        [
+          141000000027,
+          142000000027
+        ],
+        [
+          142000000027,
+          143000000027
+        ]
+      ],
+      "missed_gt_edges": [
+        [
+          141000000026,
+          142000000026
+        ],
+        [
+          142000000026,
+          143000000026
+        ]
+      ],
+      "raw_candidate_gt_edge_pairs": [
+        [
+          141000000027,
+          142000000027
+        ],
+        [
+          142000000027,
+          143000000027
+        ]
+      ],
+      "raw_candidate_gt_edge_hit_count": 2,
+      "raw_candidate_gt_edge_hits": [
+        {
+          "selected": false,
+          "emitted_source": false,
+          "emitted_target": true,
+          "source_id": 39,
+          "target_id": 244,
+          "gt_source_id": 141000000027,
+          "gt_target_id": 142000000027,
+          "distance_um": 1.284675299443404,
+          "cost": -0.042949914444741666,
+          "score": 0.9146514542360615,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.03,
+            "appearance_delta": 0.005432098764537926,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 2.0,
+            "target_in_rank_norm": 0.5,
+            "target_in_candidate_count": 3.0,
+            "target_distance_to_best_um": 0.4721752994434041,
+            "target_best_margin_um": 0.4721752994434041,
+            "target_is_nearest": 0.0,
+            "mutual_nearest": 0.0,
+            "min_best_margin_um": 0.4721752994434041,
+            "candidate_ambiguity": 1.0986122886681098,
+            "source_best_distance_um": 1.284675299443404,
+            "target_best_distance_um": 0.8125
+          },
+          "conflicts": [
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 244,
+          "target_id": 481,
+          "gt_source_id": 142000000027,
+          "gt_target_id": 143000000027,
+          "distance_um": 3.0671202393287422,
+          "cost": 0.4603200683796406,
+          "score": 0.5887304806509771,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.024,
+            "appearance_delta": 0.018169694946129404,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 3.0671202393287422,
+            "target_best_distance_um": 3.0671202393287422
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        }
+      ],
+      "raw_candidate_gt_edge_conflicts": {
+        "target_in_used": 2,
+        "source_out_used": 1
+      },
+      "unselected_emitted_gt_edge_hits": [],
+      "unselected_emitted_gt_edge_hit_count": 0,
+      "unselected_emitted_conflicts": {},
+      "selected_valid_edge_approx": 2,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 660,
+        "after_nodes": 204,
+        "edges": 116
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": null,
+      "free_edge_admission": null,
+      "motion_endpoint_admission": null,
+      "localmax_clone_layers": null,
+      "endpoint_backward_clones": null,
+      "endpoint_forward_clones": null,
+      "forks": 0
+    },
+    {
+      "dataset": "44b6_587a1e22",
+      "route": "balanced_axial_compact",
+      "route_reason": "crowded/high foreground; compact spatially balanced localizer preferred; low-foreground high-motif 44b6 field; balanced axial rescue fills z-localization gaps; division-like close-pair motifs",
+      "clip_start": 5,
+      "clip_end": 8,
+      "gt_nodes": 3,
+      "gt_edges": 2,
+      "candidate_nodes": 540,
+      "edge_candidates": 200,
+      "selected_edges": 78,
+      "emitted_nodes": 149,
+      "matched_emitted_nodes": 2,
+      "matched_raw_candidate_nodes": 2,
+      "selected_gt_edge_tp": 1,
+      "selected_gt_edge_pairs": [
+        [
+          8000000061,
+          9000000061
+        ]
+      ],
+      "missed_gt_edges": [
+        [
+          7000000061,
+          8000000061
+        ]
+      ],
+      "raw_candidate_gt_edge_pairs": [
+        [
+          8000000061,
+          9000000061
+        ]
+      ],
+      "raw_candidate_gt_edge_hit_count": 1,
+      "raw_candidate_gt_edge_hits": [
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 183,
+          "target_id": 363,
+          "gt_source_id": 8000000061,
+          "gt_target_id": 9000000061,
+          "distance_um": 1.6750116604071745,
+          "cost": 0.15333722013572487,
+          "score": 0.8301444172344176,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.035,
+            "appearance_delta": 0.03192660549287097,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 1.6750116604071745,
+            "target_best_distance_um": 1.6750116604071745
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        }
+      ],
+      "raw_candidate_gt_edge_conflicts": {
+        "source_out_used": 1,
+        "target_in_used": 1
+      },
+      "unselected_emitted_gt_edge_hits": [],
+      "unselected_emitted_gt_edge_hit_count": 0,
+      "unselected_emitted_conflicts": {},
+      "selected_valid_edge_approx": 1,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 540,
+        "after_nodes": 149,
+        "edges": 78
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": null,
+      "free_edge_admission": null,
+      "motion_endpoint_admission": null,
+      "localmax_clone_layers": null,
+      "endpoint_backward_clones": null,
+      "endpoint_forward_clones": null,
+      "forks": 0
+    },
+    {
+      "dataset": "44b6_71a4179f",
+      "route": "template_point_compact",
+      "route_reason": "crowded/high foreground; compact spatially balanced localizer preferred; moderate-foreground high-estimated 44b6 field; template point proposals recover sparse GT edges; division-like close-pair motifs; high estimated total node count",
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 6,
+      "gt_edges": 4,
+      "candidate_nodes": 660,
+      "edge_candidates": 293,
+      "selected_edges": 232,
+      "emitted_nodes": 384,
+      "matched_emitted_nodes": 4,
+      "matched_raw_candidate_nodes": 5,
+      "selected_gt_edge_tp": 2,
+      "selected_gt_edge_pairs": [
+        [
+          271000000031,
+          272000000031
+        ],
+        [
+          272000000032,
+          273000000032
+        ]
+      ],
+      "missed_gt_edges": [
+        [
+          271000000032,
+          272000000032
+        ],
+        [
+          272000000031,
+          273000000031
+        ]
+      ],
+      "raw_candidate_gt_edge_pairs": [
+        [
+          271000000031,
+          272000000031
+        ],
+        [
+          272000000032,
+          273000000032
+        ]
+      ],
+      "raw_candidate_gt_edge_hit_count": 2,
+      "raw_candidate_gt_edge_hits": [
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 180,
+          "target_id": 418,
+          "gt_source_id": 271000000031,
+          "gt_target_id": 272000000031,
+          "distance_um": 2.03125,
+          "cost": 0.24708333333333338,
+          "score": 0.7705937136510052,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.01,
+            "appearance_delta": 0.013689253930975614,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 2.03125,
+            "target_best_distance_um": 2.03125
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 438,
+          "target_id": 651,
+          "gt_source_id": 272000000032,
+          "gt_target_id": 273000000032,
+          "distance_um": 0.0,
+          "cost": -0.44,
+          "score": 0.9812934900456455,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.008441558438817677,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 0.0,
+            "target_best_distance_um": 0.0
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        }
+      ],
+      "raw_candidate_gt_edge_conflicts": {
+        "source_out_used": 2,
+        "target_in_used": 2
+      },
+      "unselected_emitted_gt_edge_hits": [],
+      "unselected_emitted_gt_edge_hit_count": 0,
+      "unselected_emitted_conflicts": {},
+      "selected_valid_edge_approx": 2,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 660,
+        "after_nodes": 384,
+        "edges": 232
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": null,
+      "free_edge_admission": null,
+      "motion_endpoint_admission": null,
+      "localmax_clone_layers": null,
+      "endpoint_backward_clones": null,
+      "endpoint_forward_clones": null,
+      "forks": 0
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 16,
+      "gt_edges": 10,
+      "candidate_nodes": 384,
+      "edge_candidates": 89,
+      "selected_edges": 62,
+      "emitted_nodes": 115,
+      "matched_emitted_nodes": 9,
+      "matched_raw_candidate_nodes": 10,
+      "selected_gt_edge_tp": 6,
+      "selected_gt_edge_pairs": [
+        [
+          1000008,
+          2000027
+        ],
+        [
+          1000010,
+          2000028
+        ],
+        [
+          1000014,
+          2000032
+        ],
+        [
+          2000027,
+          3000045
+        ],
+        [
+          2000028,
+          3000046
+        ],
+        [
+          2000032,
+          3000050
+        ]
+      ],
+      "missed_gt_edges": [
+        [
+          1000002,
+          2000020
+        ],
+        [
+          1000003,
+          2000019
+        ],
+        [
+          2000019,
+          3000038
+        ],
+        [
+          2000020,
+          3000037
+        ]
+      ],
+      "raw_candidate_gt_edge_pairs": [
+        [
+          1000010,
+          2000028
+        ],
+        [
+          1000014,
+          2000032
+        ],
+        [
+          2000032,
+          3000050
+        ]
+      ],
+      "raw_candidate_gt_edge_hit_count": 3,
+      "raw_candidate_gt_edge_hits": [
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 11,
+          "target_id": 137,
+          "gt_source_id": 1000010,
+          "gt_target_id": 2000028,
+          "distance_um": 1.284675299443404,
+          "cost": -0.06794991444474169,
+          "score": 0.9221410729480444,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.01886792451558765,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 1.9906169108028815,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 1.9906169108028815,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 1.284675299443404,
+            "target_best_distance_um": 1.284675299443404
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 53,
+          "target_id": 712,
+          "gt_source_id": 1000014,
+          "gt_target_id": 2000032,
+          "distance_um": 1.8168052317185792,
+          "cost": 0.17108720906245123,
+          "score": 0.8198971994364996,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 0.65,
+            "density_penalty": 0.015000000000000003,
+            "appearance_delta": 0.040091637983858376,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 1.8168052317185792,
+            "target_best_distance_um": 1.8168052317185792
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 712,
+          "target_id": 290,
+          "gt_source_id": 2000032,
+          "gt_target_id": 3000050,
+          "distance_um": 2.6012692214570947,
+          "cost": 0.3902197775591699,
+          "score": 0.6545547095097123,
+          "features": {
+            "source_score": 0.65,
+            "target_score": 1.0,
+            "density_penalty": 0.01,
+            "appearance_delta": 0.044879171409805324,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 3.0,
+            "target_in_rank_norm": 1.0,
+            "target_in_candidate_count": 3.0,
+            "target_distance_to_best_um": 0.9262575610499202,
+            "target_best_margin_um": 0.9262575610499202,
+            "target_is_nearest": 0.0,
+            "mutual_nearest": 0.0,
+            "min_best_margin_um": 0.9262575610499202,
+            "candidate_ambiguity": 1.0986122886681098,
+            "source_best_distance_um": 2.6012692214570947,
+            "target_best_distance_um": 1.6750116604071745
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        }
+      ],
+      "raw_candidate_gt_edge_conflicts": {
+        "source_out_used": 3,
+        "target_in_used": 3
+      },
+      "unselected_emitted_gt_edge_hits": [],
+      "unselected_emitted_gt_edge_hit_count": 0,
+      "unselected_emitted_conflicts": {},
+      "selected_valid_edge_approx": 6,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 384,
+        "after_nodes": 115,
+        "edges": 62
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "refined_candidate_admission": {
+        "enabled": true,
+        "source_route": "refined_dog_compact",
+        "max_per_t": 8,
+        "min_dist_um": 1.0,
+        "score_scale": 0.65,
+        "base_nodes": 360,
+        "refined_nodes": 780,
+        "refined_local_nodes": 780,
+        "admitted_nodes": 24,
+        "base_by_t": [
+          120,
+          120,
+          120
+        ],
+        "refined_local_by_t": [
+          260,
+          260,
+          260
+        ],
+        "admitted_by_t": [
+          8,
+          8,
+          8
+        ]
+      },
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": {
+        "enabled": true,
+        "before_edges": 62,
+        "after_edges": 62,
+        "replacements": 1,
+        "max_distance_um": 3.0,
+        "max_cost": 0.42,
+        "max_target_rank": 3,
+        "min_temporal_count": 2.0,
+        "replaced_edges": [
+          {
+            "removed_source_id": 174,
+            "removed_target_id": 290,
+            "added_source_id": 712,
+            "added_target_id": 290,
+            "added_distance_um": 2.6012692214570947,
+            "added_cost": 0.3902197775591699,
+            "added_target_rank": 3.0
+          }
+        ]
+      },
+      "short_edge_pruning": null,
+      "localmax_refinement": null,
+      "free_edge_admission": null,
+      "motion_endpoint_admission": null,
+      "localmax_clone_layers": null,
+      "endpoint_backward_clones": null,
+      "endpoint_forward_clones": null,
+      "forks": 0
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_tight",
+      "route_reason": "high-foreground 6bba field; midpoint balanced route controls node penalty; moderate-foreground high-signal 6bba field; tight balanced DoG links reduce edge FPs; division-like close-pair motifs",
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 27,
+      "gt_edges": 18,
+      "candidate_nodes": 570,
+      "edge_candidates": 373,
+      "selected_edges": 192,
+      "emitted_nodes": 330,
+      "matched_emitted_nodes": 23,
+      "matched_raw_candidate_nodes": 24,
+      "selected_gt_edge_tp": 12,
+      "selected_gt_edge_pairs": [
+        [
+          1000002,
+          2000044
+        ],
+        [
+          1000004,
+          2000035
+        ],
+        [
+          1000007,
+          2000038
+        ],
+        [
+          1000012,
+          2000043
+        ],
+        [
+          1000017,
+          2000050
+        ],
+        [
+          2000038,
+          3000067
+        ],
+        [
+          2000043,
+          3000072
+        ],
+        [
+          2000044,
+          3000073
+        ],
+        [
+          2000050,
+          3000079
+        ],
+        [
+          2000052,
+          3000081
+        ],
+        [
+          2000054,
+          3000087
+        ],
+        [
+          2000058,
+          3000089
+        ]
+      ],
+      "missed_gt_edges": [
+        [
+          1000011,
+          2000039
+        ],
+        [
+          1000019,
+          2000052
+        ],
+        [
+          1000020,
+          2000054
+        ],
+        [
+          1000021,
+          2000058
+        ],
+        [
+          2000035,
+          3000065
+        ],
+        [
+          2000039,
+          3000071
+        ]
+      ],
+      "raw_candidate_gt_edge_pairs": [
+        [
+          1000002,
+          2000044
+        ],
+        [
+          1000007,
+          2000038
+        ],
+        [
+          1000012,
+          2000043
+        ],
+        [
+          1000017,
+          2000050
+        ],
+        [
+          1000021,
+          2000058
+        ],
+        [
+          2000038,
+          3000067
+        ],
+        [
+          2000043,
+          3000072
+        ],
+        [
+          2000044,
+          3000073
+        ],
+        [
+          2000052,
+          3000081
+        ],
+        [
+          2000054,
+          3000087
+        ],
+        [
+          2000058,
+          3000089
+        ]
+      ],
+      "raw_candidate_gt_edge_hit_count": 11,
+      "raw_candidate_gt_edge_hits": [
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 13,
+          "target_id": 250,
+          "gt_source_id": 1000002,
+          "gt_target_id": 2000044,
+          "distance_um": 3.300390601883359,
+          "cost": 0.29842013375185755,
+          "score": 0.7322992451505344,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.06503796630404822,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 3.300390601883359,
+            "target_best_distance_um": 3.300390601883359
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 75,
+          "target_id": 255,
+          "gt_source_id": 1000007,
+          "gt_target_id": 2000038,
+          "distance_um": 3.72334275215162,
+          "cost": 0.38740950047813777,
+          "score": 0.6570920334780287,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.017505470453134404,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 3.72334275215162,
+            "target_best_distance_um": 3.72334275215162
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 98,
+          "target_id": 312,
+          "gt_source_id": 1000017,
+          "gt_target_id": 2000050,
+          "distance_um": 2.569350598886808,
+          "cost": 0.13096679975262399,
+          "score": 0.842391770902233,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.07918149462669863,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 2.569350598886808,
+            "target_best_distance_um": 2.569350598886808
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 118,
+          "target_id": 298,
+          "gt_source_id": 1000012,
+          "gt_target_id": 2000043,
+          "distance_um": 4.318496736423452,
+          "cost": 0.5246659414274337,
+          "score": 0.5253124011234157,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.07099391477130125,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 4.318496736423452,
+            "target_best_distance_um": 4.318496736423452
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 142,
+          "target_id": 343,
+          "gt_source_id": 1000021,
+          "gt_target_id": 2000058,
+          "distance_um": 1.625,
+          "cost": -0.06888888888888889,
+          "score": 0.9224103076265698,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.01,
+            "appearance_delta": 0.08260869556238186,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 1.5479139308370784,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 1.5479139308370784,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 1.625,
+            "target_best_distance_um": 1.625
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 250,
+          "target_id": 454,
+          "gt_source_id": 2000044,
+          "gt_target_id": 3000073,
+          "distance_um": 2.0714766773970688,
+          "cost": 0.020328150532681943,
+          "score": 0.8927062709296004,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.043478260853545225,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 2.0714766773970688,
+            "target_best_distance_um": 2.0714766773970688
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 255,
+          "target_id": 468,
+          "gt_source_id": 2000038,
+          "gt_target_id": 3000067,
+          "distance_um": 2.9575446425202108,
+          "cost": 0.21723214278226904,
+          "score": 0.7910178064585504,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.05601816803330122,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 2.9575446425202108,
+            "target_best_distance_um": 2.9575446425202108
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 274,
+          "target_id": 411,
+          "gt_source_id": 2000052,
+          "gt_target_id": 3000081,
+          "distance_um": 1.6750116604071745,
+          "cost": -0.05277518657618341,
+          "score": 0.917669883555467,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.015000000000000003,
+            "appearance_delta": 0.08846960164005468,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 1.6995542839032936,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 2.407750310673187,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 1.6995542839032936,
+            "candidate_ambiguity": 1.0986122886681098,
+            "source_best_distance_um": 1.6750116604071745,
+            "target_best_distance_um": 1.6750116604071745
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 298,
+          "target_id": 505,
+          "gt_source_id": 2000043,
+          "gt_target_id": 3000072,
+          "distance_um": 2.7252078475778685,
+          "cost": 0.17060174390619304,
+          "score": 0.8201837676987838,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.12579957349371024,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 2.7252078475778685,
+            "target_best_distance_um": 2.7252078475778685
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 318,
+          "target_id": 456,
+          "gt_source_id": 2000054,
+          "gt_target_id": 3000087,
+          "distance_um": 1.284675299443404,
+          "cost": -0.149516600123688,
+          "score": 0.9425712465477891,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.19138276543517896,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 1.284675299443404,
+            "target_best_distance_um": 1.284675299443404
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 343,
+          "target_id": 519,
+          "gt_source_id": 2000058,
+          "gt_target_id": 3000089,
+          "distance_um": 1.625,
+          "cost": -0.05888888888888888,
+          "score": 0.9194987191481886,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.02,
+            "appearance_delta": 0.004716981126512994,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 2.207554834897995,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 0.5627232028983924,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 0.5627232028983924,
+            "candidate_ambiguity": 1.0986122886681098,
+            "source_best_distance_um": 1.625,
+            "target_best_distance_um": 1.625
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        }
+      ],
+      "raw_candidate_gt_edge_conflicts": {
+        "source_out_used": 11,
+        "target_in_used": 11
+      },
+      "unselected_emitted_gt_edge_hits": [
+        {
+          "source_id": 142,
+          "target_id": 311,
+          "gt_source_id": 1000021,
+          "gt_target_id": 2000058,
+          "distance_um": 3.1729139308370784,
+          "cost": 0.27009198463046186,
+          "score": 0.7539204612533384,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.25504861611439894,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 2.0,
+            "source_out_rank_norm": 1.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 1.5479139308370784,
+            "source_best_margin_um": 1.5479139308370784,
+            "source_is_nearest": 0.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 0.0,
+            "min_best_margin_um": 1.5479139308370784,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 1.625,
+            "target_best_distance_um": 3.1729139308370784
+          },
+          "conflicts": [
+            "source_out_used"
+          ]
+        },
+        {
+          "source_id": 365,
+          "target_id": 550,
+          "gt_source_id": 2000035,
+          "gt_target_id": 3000065,
+          "distance_um": 3.2752922102462856,
+          "cost": 0.32284271338806353,
+          "score": 0.7127195618247837,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.035,
+            "appearance_delta": 0.04277743334073855,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 1.118973406725451,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 2.0,
+            "target_in_rank_norm": 1.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 1.600280549839111,
+            "target_best_margin_um": 1.600280549839111,
+            "target_is_nearest": 0.0,
+            "mutual_nearest": 0.0,
+            "min_best_margin_um": 1.118973406725451,
+            "candidate_ambiguity": 1.0986122886681098,
+            "source_best_distance_um": 3.2752922102462856,
+            "target_best_distance_um": 1.6750116604071745
+          },
+          "conflicts": [
+            "target_in_used"
+          ]
+        }
+      ],
+      "unselected_emitted_gt_edge_hit_count": 2,
+      "unselected_emitted_conflicts": {
+        "source_out_used": 1,
+        "target_in_used": 1
+      },
+      "selected_valid_edge_approx": 15,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 570,
+        "after_nodes": 330,
+        "edges": 192
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": {
+        "enabled": true,
+        "min_distance_um": 1.25,
+        "before_edges": 197,
+        "after_edges": 171,
+        "dropped_edges": 26,
+        "dropped_by_kind": {
+          "continuation": 26
+        },
+        "min_dropped_distance_um": 0.0,
+        "max_dropped_distance_um": 1.21875
+      },
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          3,
+          6,
+          -6
+        ],
+        "center_offsets_zyx": [
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            3,
+            6,
+            -6
+          ]
+        ],
+        "iterations": 2,
+        "endpoint_nodes": 302,
+        "refined_nodes": 302,
+        "mean_abs_offset_zyx": [
+          1.665563,
+          5.639073,
+          4.682119
+        ]
+      },
+      "free_edge_admission": {
+        "enabled": true,
+        "before_edges": 171,
+        "after_edges": 192,
+        "admitted_edges": 21,
+        "max_cost": 0.55,
+        "min_distance_um": 1.25,
+        "max_distance_um": 4.5,
+        "require_mutual_nearest": true,
+        "max_source_candidates": 1,
+        "max_target_candidates": 1,
+        "max_edges": 32,
+        "admitted": [
+          {
+            "source_id": 131,
+            "target_id": 322,
+            "distance_um": 3.6336104634371584,
+            "cost": 0.36746899187492404,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 88,
+            "target_id": 275,
+            "distance_um": 3.6336104634371584,
+            "cost": 0.37246899187492405,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 50,
+            "target_id": 236,
+            "distance_um": 3.65625,
+            "cost": 0.3725,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 120,
+            "target_id": 331,
+            "distance_um": 3.65625,
+            "cost": 0.3725,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 128,
+            "target_id": 317,
+            "distance_um": 3.6336104634371584,
+            "cost": 0.37746899187492405,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 334,
+            "target_id": 536,
+            "distance_um": 3.65625,
+            "cost": 0.3775,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 205,
+            "target_id": 396,
+            "distance_um": 3.6336104634371584,
+            "cost": 0.38246899187492406,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 29,
+            "target_id": 218,
+            "distance_um": 3.72334275215162,
+            "cost": 0.38740950047813777,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 75,
+            "target_id": 255,
+            "distance_um": 3.72334275215162,
+            "cost": 0.38740950047813777,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 259,
+            "target_id": 452,
+            "distance_um": 3.6336104634371584,
+            "cost": 0.38746899187492406,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 358,
+            "target_id": 548,
+            "distance_um": 3.65625,
+            "cost": 0.3875,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 110,
+            "target_id": 287,
+            "distance_um": 3.7454399357752353,
+            "cost": 0.39731998572783006,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 212,
+            "target_id": 406,
+            "distance_um": 3.72334275215162,
+            "cost": 0.3974095004781378,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 103,
+            "target_id": 210,
+            "distance_um": 3.832554834897995,
+            "cost": 0.43167885219955454,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 267,
+            "target_id": 459,
+            "distance_um": 3.9804208320226646,
+            "cost": 0.44453796267170326,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 248,
+            "target_id": 448,
+            "distance_um": 3.9804208320226646,
+            "cost": 0.44953796267170326,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 245,
+            "target_id": 383,
+            "distance_um": 4.0827619710803615,
+            "cost": 0.4722804380178581,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 149,
+            "target_id": 349,
+            "distance_um": 4.0625,
+            "cost": 0.4727777777777778,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 193,
+            "target_id": 384,
+            "distance_um": 4.182599744775969,
+            "cost": 0.48946660995021524,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 118,
+            "target_id": 298,
+            "distance_um": 4.318496736423452,
+            "cost": 0.5246659414274337,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          },
+          {
+            "source_id": 287,
+            "target_id": 467,
+            "distance_um": 4.394265616971737,
+            "cost": 0.5415034704381636,
+            "source_out_candidate_count": 1.0,
+            "target_in_candidate_count": 1.0
+          }
+        ]
+      },
+      "motion_endpoint_admission": null,
+      "localmax_clone_layers": null,
+      "endpoint_backward_clones": null,
+      "endpoint_forward_clones": null,
+      "forks": 0
+    },
+    {
+      "dataset": "6bba_2312ac41",
+      "route": "balanced_midpoint",
+      "route_reason": "high-foreground 6bba field; midpoint balanced route controls node penalty; division-like close-pair motifs",
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 45,
+      "gt_edges": 30,
+      "candidate_nodes": 360,
+      "edge_candidates": 224,
+      "selected_edges": 145,
+      "emitted_nodes": 233,
+      "matched_emitted_nodes": 24,
+      "matched_raw_candidate_nodes": 29,
+      "selected_gt_edge_tp": 16,
+      "selected_gt_edge_pairs": [
+        [
+          1000003,
+          2000023
+        ],
+        [
+          1000004,
+          2000024
+        ],
+        [
+          1000010,
+          2000030
+        ],
+        [
+          1000013,
+          2000035
+        ],
+        [
+          1000015,
+          2000033
+        ],
+        [
+          1000016,
+          2000036
+        ],
+        [
+          1000017,
+          2000037
+        ],
+        [
+          1000018,
+          2000038
+        ],
+        [
+          2000023,
+          3000043
+        ],
+        [
+          2000024,
+          3000044
+        ],
+        [
+          2000030,
+          3000050
+        ],
+        [
+          2000033,
+          3000052
+        ],
+        [
+          2000035,
+          3000054
+        ],
+        [
+          2000036,
+          3000055
+        ],
+        [
+          2000037,
+          3000056
+        ],
+        [
+          2000038,
+          3000058
+        ]
+      ],
+      "missed_gt_edges": [
+        [
+          1000002,
+          2000022
+        ],
+        [
+          1000005,
+          2000025
+        ],
+        [
+          1000006,
+          2000026
+        ],
+        [
+          1000009,
+          2000029
+        ],
+        [
+          1000012,
+          2000032
+        ],
+        [
+          1000014,
+          2000034
+        ],
+        [
+          1000019,
+          2000039
+        ],
+        [
+          2000022,
+          3000042
+        ],
+        [
+          2000025,
+          3000045
+        ],
+        [
+          2000026,
+          3000046
+        ],
+        [
+          2000029,
+          3000049
+        ],
+        [
+          2000032,
+          3000051
+        ],
+        [
+          2000034,
+          3000053
+        ],
+        [
+          2000039,
+          3000059
+        ]
+      ],
+      "raw_candidate_gt_edge_pairs": [
+        [
+          1000003,
+          2000023
+        ],
+        [
+          1000004,
+          2000024
+        ],
+        [
+          1000010,
+          2000030
+        ],
+        [
+          1000013,
+          2000035
+        ],
+        [
+          1000015,
+          2000033
+        ],
+        [
+          1000016,
+          2000036
+        ],
+        [
+          1000018,
+          2000038
+        ],
+        [
+          2000023,
+          3000043
+        ],
+        [
+          2000024,
+          3000044
+        ],
+        [
+          2000030,
+          3000050
+        ],
+        [
+          2000033,
+          3000052
+        ],
+        [
+          2000035,
+          3000054
+        ],
+        [
+          2000036,
+          3000055
+        ],
+        [
+          2000038,
+          3000058
+        ]
+      ],
+      "raw_candidate_gt_edge_hit_count": 14,
+      "raw_candidate_gt_edge_hits": [
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 42,
+          "target_id": 180,
+          "gt_source_id": 1000016,
+          "gt_target_id": 2000036,
+          "distance_um": 0.5745242597140698,
+          "cost": -0.33424595671432167,
+          "score": 0.9717219502285538,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.01,
+            "appearance_delta": 0.04190919671600163,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 3.6668502595308405,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 3.48797574028593,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 3.48797574028593,
+            "candidate_ambiguity": 1.0986122886681098,
+            "source_best_distance_um": 0.5745242597140698,
+            "target_best_distance_um": 0.5745242597140698
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 85,
+          "target_id": 190,
+          "gt_source_id": 1000018,
+          "gt_target_id": 2000038,
+          "distance_um": 3.5648292823780494,
+          "cost": 0.1591382137296749,
+          "score": 0.8268474395254172,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.011194029843784807,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 3.5648292823780494,
+            "target_best_distance_um": 3.5648292823780494
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 93,
+          "target_id": 215,
+          "gt_source_id": 1000004,
+          "gt_target_id": 2000024,
+          "distance_um": 5.138701197773616,
+          "cost": 0.4214501996289361,
+          "score": 0.6257903482404856,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.030303030280633383,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 2.0,
+            "source_out_rank_norm": 1.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 0.3147497249144626,
+            "source_best_margin_um": 0.3147497249144626,
+            "source_is_nearest": 0.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 0.0,
+            "min_best_margin_um": 0.3147497249144626,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 4.823951472859154,
+            "target_best_distance_um": 5.138701197773616
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 96,
+          "target_id": 208,
+          "gt_source_id": 1000013,
+          "gt_target_id": 2000035,
+          "distance_um": 2.4375,
+          "cost": -0.028749999999999998,
+          "score": 0.9101117367460411,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.053097345093586025,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 2.603929918683786,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 2.603929918683786,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 2.4375,
+            "target_best_distance_um": 2.4375
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 103,
+          "target_id": 178,
+          "gt_source_id": 1000015,
+          "gt_target_id": 2000033,
+          "distance_um": 1.625,
+          "cost": -0.16416666666666668,
+          "score": 0.9456622699447262,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.031073446305739088,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 3.900597394173774,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 3.900597394173774,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 1.625,
+            "target_best_distance_um": 1.625
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 108,
+          "target_id": 213,
+          "gt_source_id": 1000003,
+          "gt_target_id": 2000023,
+          "distance_um": 1.7235727791422095,
+          "cost": -0.14773787014296508,
+          "score": 0.9421848960774386,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.03675344560738633,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 0.6101557960138646,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 0.6101557960138646,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 1.7235727791422095,
+            "target_best_distance_um": 1.7235727791422095
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 120,
+          "target_id": 209,
+          "gt_source_id": 1000010,
+          "gt_target_id": 2000030,
+          "distance_um": 3.8540258983302125,
+          "cost": 0.21733764972170205,
+          "score": 0.7909480330570631,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.015000000000000003,
+            "appearance_delta": 0.07484220011285644,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 2.0,
+            "source_out_rank_norm": 1.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 0.28919661595216306,
+            "source_best_margin_um": 0.28919661595216306,
+            "source_is_nearest": 0.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 1.1874040203535734,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 0.0,
+            "min_best_margin_um": 0.28919661595216306,
+            "candidate_ambiguity": 1.0986122886681098,
+            "source_best_distance_um": 3.5648292823780494,
+            "target_best_distance_um": 3.8540258983302125
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 178,
+          "target_id": 316,
+          "gt_source_id": 2000033,
+          "gt_target_id": 3000052,
+          "distance_um": 3.1729139308370784,
+          "cost": 0.09881898847284637,
+          "score": 0.858723017750794,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.01,
+            "appearance_delta": 0.014593467675751585,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 0.8487558871614103,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 0.8487558871614103,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 3.1729139308370784,
+            "target_best_distance_um": 3.1729139308370784
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": false,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 180,
+          "target_id": 304,
+          "gt_source_id": 2000036,
+          "gt_target_id": 3000055,
+          "distance_um": 4.5420130792964475,
+          "cost": 0.3320021798827412,
+          "score": 0.7051598730448194,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.015000000000000003,
+            "appearance_delta": 0.04023323612814388,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 2.0,
+            "source_out_rank_norm": 1.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 3.257337779853043,
+            "source_best_margin_um": 3.257337779853043,
+            "source_is_nearest": 0.0,
+            "target_in_rank": 2.0,
+            "target_in_rank_norm": 1.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 2.818440300154238,
+            "target_best_margin_um": 2.818440300154238,
+            "target_is_nearest": 0.0,
+            "mutual_nearest": 0.0,
+            "min_best_margin_um": 2.818440300154238,
+            "candidate_ambiguity": 1.0986122886681098,
+            "source_best_distance_um": 1.284675299443404,
+            "target_best_distance_um": 1.7235727791422095
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 190,
+          "target_id": 290,
+          "gt_source_id": 2000038,
+          "gt_target_id": 3000058,
+          "distance_um": 2.0714766773970688,
+          "cost": -0.08475388710048853,
+          "score": 0.9268320946654731,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.01,
+            "appearance_delta": 0.013349514555006362,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 0.11624652550132364,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 3.4690346370034355,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 0.11624652550132364,
+            "candidate_ambiguity": 1.0986122886681098,
+            "source_best_distance_um": 2.0714766773970688,
+            "target_best_distance_um": 2.0714766773970688
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 208,
+          "target_id": 307,
+          "gt_source_id": 2000035,
+          "gt_target_id": 3000054,
+          "distance_um": 3.447145558284419,
+          "cost": 0.13952425971406984,
+          "score": 0.8377937073679279,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.0828516377117202,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 3.447145558284419,
+            "target_best_distance_um": 3.447145558284419
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 209,
+          "target_id": 345,
+          "gt_source_id": 2000030,
+          "gt_target_id": 3000050,
+          "distance_um": 2.9575446425202108,
+          "cost": 0.06792410708670177,
+          "score": 0.8730615320020443,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.015000000000000003,
+            "appearance_delta": 0.04469763361551478,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 2.0,
+            "source_out_rank_norm": 1.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 0.14296208022078538,
+            "source_best_margin_um": 0.14296208022078538,
+            "source_is_nearest": 0.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 0.0,
+            "min_best_margin_um": 0.14296208022078538,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 2.8145825622994254,
+            "target_best_distance_um": 2.9575446425202108
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 213,
+          "target_id": 332,
+          "gt_source_id": 2000023,
+          "gt_target_id": 3000043,
+          "distance_um": 1.6750116604071745,
+          "cost": -0.15083138993213757,
+          "score": 0.9428552667484185,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.01,
+            "appearance_delta": 0.018840579696492332,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 1.8898176219708749,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 2.70043474538961,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 1.8898176219708749,
+            "candidate_ambiguity": 1.0986122886681098,
+            "source_best_distance_um": 1.6750116604071745,
+            "target_best_distance_um": 1.6750116604071745
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 215,
+          "target_id": 336,
+          "gt_source_id": 2000024,
+          "gt_target_id": 3000044,
+          "distance_um": 1.6750116604071745,
+          "cost": -0.15583138993213758,
+          "score": 0.9439233552278014,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.019425019409926168,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 2.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 3.745039365644148,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 3.745039365644148,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 1.6750116604071745,
+            "target_best_distance_um": 1.6750116604071745
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        }
+      ],
+      "raw_candidate_gt_edge_conflicts": {
+        "source_out_used": 14,
+        "target_in_used": 14
+      },
+      "unselected_emitted_gt_edge_hits": [],
+      "unselected_emitted_gt_edge_hit_count": 0,
+      "unselected_emitted_conflicts": {},
+      "selected_valid_edge_approx": 16,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 225,
+        "edges": 137
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_2312ac41",
+        "before_nodes": 360,
+        "corrected_nodes": 310,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          1,
+          -5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            -5,
+            -5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 225,
+        "refined_nodes": 225,
+        "mean_abs_offset_zyx": [
+          0.44,
+          3.168889,
+          3.702222
+        ]
+      },
+      "free_edge_admission": null,
+      "motion_endpoint_admission": null,
+      "localmax_clone_layers": null,
+      "endpoint_backward_clones": null,
+      "endpoint_forward_clones": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 2.5,
+        "max_per_t": 8,
+        "requires_history": false,
+        "base_nodes": 225,
+        "base_edges": 137,
+        "cloned_nodes": 8,
+        "cloned_edges": 8,
+        "new_per_t": {
+          "2": 8
+        },
+        "mean_abs_offset_zyx": [
+          0.125,
+          2.375,
+          2.75
+        ]
+      },
+      "forks": 0
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 31,
+      "gt_edges": 20,
+      "candidate_nodes": 360,
+      "edge_candidates": 133,
+      "selected_edges": 96,
+      "emitted_nodes": 164,
+      "matched_emitted_nodes": 20,
+      "matched_raw_candidate_nodes": 22,
+      "selected_gt_edge_tp": 13,
+      "selected_gt_edge_pairs": [
+        [
+          1000001,
+          2000016
+        ],
+        [
+          1000002,
+          2000017
+        ],
+        [
+          1000003,
+          2000018
+        ],
+        [
+          1000007,
+          2000022
+        ],
+        [
+          1000011,
+          2000026
+        ],
+        [
+          1000013,
+          2000027
+        ],
+        [
+          2000016,
+          3000033
+        ],
+        [
+          2000017,
+          3000034
+        ],
+        [
+          2000018,
+          3000035
+        ],
+        [
+          2000022,
+          3000039
+        ],
+        [
+          2000023,
+          3000038
+        ],
+        [
+          2000026,
+          3000041
+        ],
+        [
+          2000027,
+          3000044
+        ]
+      ],
+      "missed_gt_edges": [
+        [
+          1000010,
+          2000025
+        ],
+        [
+          1000012,
+          2000028
+        ],
+        [
+          1000014,
+          2000029
+        ],
+        [
+          2000015,
+          3000030
+        ],
+        [
+          2000025,
+          3000042
+        ],
+        [
+          2000028,
+          3000043
+        ],
+        [
+          2000029,
+          3000045
+        ]
+      ],
+      "raw_candidate_gt_edge_pairs": [
+        [
+          1000001,
+          2000016
+        ],
+        [
+          1000002,
+          2000017
+        ],
+        [
+          1000007,
+          2000022
+        ],
+        [
+          1000011,
+          2000026
+        ],
+        [
+          1000013,
+          2000027
+        ],
+        [
+          2000022,
+          3000039
+        ],
+        [
+          2000026,
+          3000041
+        ],
+        [
+          2000027,
+          3000044
+        ]
+      ],
+      "raw_candidate_gt_edge_hit_count": 8,
+      "raw_candidate_gt_edge_hits": [
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 39,
+          "target_id": 166,
+          "gt_source_id": 1000002,
+          "gt_target_id": 2000017,
+          "distance_um": 4.667457150312148,
+          "cost": 0.3579095250520247,
+          "score": 0.6831664332850642,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.02,
+            "appearance_delta": 0.007788161987703923,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 4.667457150312148,
+            "target_best_distance_um": 4.667457150312148
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 44,
+          "target_id": 121,
+          "gt_source_id": 1000001,
+          "gt_target_id": 2000016,
+          "distance_um": 2.03125,
+          "cost": -0.09145833333333331,
+          "score": 0.9286300374165597,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.01,
+            "appearance_delta": 0.06157443487016801,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 0.8413712985703494,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 0.8413712985703494,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 2.03125,
+            "target_best_distance_um": 2.03125
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 47,
+          "target_id": 181,
+          "gt_source_id": 1000011,
+          "gt_target_id": 2000026,
+          "distance_um": 2.4375,
+          "cost": -0.028749999999999998,
+          "score": 0.9101117367460411,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.036231884025152275,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 1.3950548348979952,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 1.3950548348979952,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 2.4375,
+            "target_best_distance_um": 2.4375
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 51,
+          "target_id": 175,
+          "gt_source_id": 1000013,
+          "gt_target_id": 2000027,
+          "distance_um": 2.9295104113144914,
+          "cost": 0.04825173521908188,
+          "score": 0.8815293513465613,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.0008936550483524083,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 2.9295104113144914,
+            "target_best_distance_um": 2.9295104113144914
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 65,
+          "target_id": 185,
+          "gt_source_id": 1000007,
+          "gt_target_id": 2000022,
+          "distance_um": 3.65625,
+          "cost": 0.169375,
+          "score": 0.8209063233378503,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.04285714280612245,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 3.65625,
+            "target_best_distance_um": 3.65625
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 175,
+          "target_id": 292,
+          "gt_source_id": 2000027,
+          "gt_target_id": 3000044,
+          "distance_um": 2.0714766773970688,
+          "cost": -0.09475388710048854,
+          "score": 0.9294987844828286,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.016710642025760208,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 2.0714766773970688,
+            "target_best_distance_um": 2.0714766773970688
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 181,
+          "target_id": 295,
+          "gt_source_id": 2000026,
+          "gt_target_id": 3000041,
+          "distance_um": 2.03125,
+          "cost": -0.10145833333333332,
+          "score": 0.9312360608009809,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.04316546758708141,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 2.03125,
+            "target_best_distance_um": 2.03125
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 185,
+          "target_id": 309,
+          "gt_source_id": 2000022,
+          "gt_target_id": 3000039,
+          "distance_um": 3.2752922102462856,
+          "cost": 0.1058820350410476,
+          "score": 0.8552606651237973,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.008055235894067623,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 3.2752922102462856,
+            "target_best_distance_um": 3.2752922102462856
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        }
+      ],
+      "raw_candidate_gt_edge_conflicts": {
+        "source_out_used": 8,
+        "target_in_used": 8
+      },
+      "unselected_emitted_gt_edge_hits": [],
+      "unselected_emitted_gt_edge_hit_count": 0,
+      "unselected_emitted_conflicts": {},
+      "selected_valid_edge_approx": 14,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 160,
+        "edges": 92
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_2819ca14",
+        "before_nodes": 360,
+        "corrected_nodes": 323,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          -3,
+          1,
+          -2
+        ],
+        "center_offsets_zyx": [
+          [
+            -3,
+            1,
+            -2
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 160,
+        "refined_nodes": 160,
+        "mean_abs_offset_zyx": [
+          0.94375,
+          2.08125,
+          2.49375
+        ]
+      },
+      "free_edge_admission": null,
+      "motion_endpoint_admission": null,
+      "localmax_clone_layers": null,
+      "endpoint_backward_clones": null,
+      "endpoint_forward_clones": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 2.5,
+        "max_per_t": 4,
+        "requires_history": false,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 4,
+        "cloned_edges": 4,
+        "new_per_t": {
+          "2": 4
+        },
+        "mean_abs_offset_zyx": [
+          0.75,
+          1.25,
+          3.5
+        ]
+      },
+      "forks": 0
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground high-motif 6bba field; midpoint route adds true edges despite node penalty",
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 24,
+      "gt_edges": 16,
+      "candidate_nodes": 360,
+      "edge_candidates": 141,
+      "selected_edges": 234,
+      "emitted_nodes": 390,
+      "matched_emitted_nodes": 18,
+      "matched_raw_candidate_nodes": 18,
+      "selected_gt_edge_tp": 11,
+      "selected_gt_edge_pairs": [
+        [
+          1000001,
+          2000016
+        ],
+        [
+          1000002,
+          2000017
+        ],
+        [
+          1000006,
+          2000020
+        ],
+        [
+          1000008,
+          2000023
+        ],
+        [
+          1000013,
+          2000027
+        ],
+        [
+          2000016,
+          3000030
+        ],
+        [
+          2000017,
+          3000031
+        ],
+        [
+          2000020,
+          3000034
+        ],
+        [
+          2000023,
+          3000037
+        ],
+        [
+          2000027,
+          3000041
+        ],
+        [
+          2000028,
+          3000042
+        ]
+      ],
+      "missed_gt_edges": [
+        [
+          1000003,
+          2000018
+        ],
+        [
+          1000007,
+          2000021
+        ],
+        [
+          1000014,
+          2000028
+        ],
+        [
+          2000018,
+          3000032
+        ],
+        [
+          2000021,
+          3000035
+        ]
+      ],
+      "raw_candidate_gt_edge_pairs": [
+        [
+          1000001,
+          2000016
+        ],
+        [
+          1000006,
+          2000020
+        ],
+        [
+          1000008,
+          2000023
+        ],
+        [
+          1000013,
+          2000027
+        ],
+        [
+          1000014,
+          2000028
+        ],
+        [
+          2000023,
+          3000037
+        ],
+        [
+          2000027,
+          3000041
+        ],
+        [
+          2000028,
+          3000042
+        ]
+      ],
+      "raw_candidate_gt_edge_hit_count": 8,
+      "raw_candidate_gt_edge_hits": [
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 15,
+          "target_id": 138,
+          "gt_source_id": 1000008,
+          "gt_target_id": 2000023,
+          "distance_um": 0.5745242597140698,
+          "cost": -0.32509514805718603,
+          "score": 0.9706985963087251,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.0184229918803073,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 0.5745242597140698,
+            "target_best_distance_um": 0.5745242597140698
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 17,
+          "target_id": 140,
+          "gt_source_id": 1000013,
+          "gt_target_id": 2000027,
+          "distance_um": 2.1877232028983924,
+          "cost": 0.007544640579678463,
+          "score": 0.897506542033142,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.01,
+            "appearance_delta": 0.014104372345483515,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 2.1877232028983924,
+            "target_best_distance_um": 2.1877232028983924
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 48,
+          "target_id": 177,
+          "gt_source_id": 1000014,
+          "gt_target_id": 2000028,
+          "distance_um": 1.9902104160113323,
+          "cost": -0.03195791679773352,
+          "score": 0.9111559649460577,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.01,
+            "appearance_delta": 0.0,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 1.9902104160113323,
+            "target_best_distance_um": 1.9902104160113323
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 50,
+          "target_id": 175,
+          "gt_source_id": 1000001,
+          "gt_target_id": 2000016,
+          "distance_um": 2.1877232028983924,
+          "cost": 0.012544640579678468,
+          "score": 0.89565208972853,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.015000000000000003,
+            "appearance_delta": 0.011257035636719478,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 2.1877232028983924,
+            "target_best_distance_um": 2.1877232028983924
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 57,
+          "target_id": 186,
+          "gt_source_id": 1000006,
+          "gt_target_id": 2000020,
+          "distance_um": 1.86167137607581,
+          "cost": -0.06766572478483801,
+          "score": 0.9220594180099871,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.018536585347769183,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 1.86167137607581,
+            "target_best_distance_um": 1.86167137607581
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 138,
+          "target_id": 276,
+          "gt_source_id": 2000023,
+          "gt_target_id": 3000037,
+          "distance_um": 0.9084026158592896,
+          "cost": -0.25831947682814205,
+          "score": 0.9620675568280331,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.07800312006396012,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 0.9084026158592896,
+            "target_best_distance_um": 0.9084026158592896
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 140,
+          "target_id": 255,
+          "gt_source_id": 2000027,
+          "gt_target_id": 3000041,
+          "distance_um": 2.03125,
+          "cost": -0.028749999999999998,
+          "score": 0.9101117367460411,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.0612546125009191,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 0.5700192214570947,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 0.5700192214570947,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 2.03125,
+            "target_best_distance_um": 2.03125
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": false,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 177,
+          "target_id": 296,
+          "gt_source_id": 2000028,
+          "gt_target_id": 3000042,
+          "distance_um": 3.8540258983302125,
+          "cost": 0.33580517966604245,
+          "score": 0.7019873149973629,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.07646474669665865,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 2.0,
+            "target_in_rank_norm": 1.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 2.5693505988868086,
+            "target_best_margin_um": 2.5693505988868086,
+            "target_is_nearest": 0.0,
+            "mutual_nearest": 0.0,
+            "min_best_margin_um": 2.5693505988868086,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 3.8540258983302125,
+            "target_best_distance_um": 1.284675299443404
+          },
+          "conflicts": [
+            "target_in_used"
+          ]
+        }
+      ],
+      "raw_candidate_gt_edge_conflicts": {
+        "source_out_used": 7,
+        "target_in_used": 8
+      },
+      "unselected_emitted_gt_edge_hits": [],
+      "unselected_emitted_gt_edge_hit_count": 0,
+      "unselected_emitted_conflicts": {},
+      "selected_valid_edge_approx": 12,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 195,
+        "edges": 117
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_372c8cb8",
+        "before_nodes": 360,
+        "corrected_nodes": 312,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          1,
+          -1,
+          4
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            -1,
+            4
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 195,
+        "refined_nodes": 195,
+        "mean_abs_offset_zyx": [
+          0.615385,
+          1.692308,
+          3.420513
+        ]
+      },
+      "free_edge_admission": null,
+      "motion_endpoint_admission": null,
+      "localmax_clone_layers": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offsets_zyx": [
+          [
+            -3,
+            -2,
+            -5
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 195,
+        "base_edges": 117,
+        "cloned_nodes": 195,
+        "cloned_edges": 117,
+        "mean_abs_offset_zyx": [
+          1.092308,
+          1.902564,
+          3.379487
+        ]
+      },
+      "endpoint_backward_clones": null,
+      "endpoint_forward_clones": null,
+      "forks": 0
+    }
+  ],
+  "runtime_sec": 242.1415617465973
+}

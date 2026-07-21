@@ -1,0 +1,95 @@
+{
+  "artifact": "biohub-v45-d4-ab-preflight.v1",
+  "status": "completed_rejected_runtime",
+  "prepared_at": "2026-07-19",
+  "kernel": {
+    "id": "onebitbrain/biohub-v45abnb",
+    "private": true,
+    "gpu_required": true,
+    "machine_shape": "NvidiaTeslaT4",
+    "session_timeout_seconds": 900,
+    "internet": false,
+    "submission_generation": false,
+    "package_dir": "kaggle_kernel/ab45p2",
+    "aggregate_bytes": 139597,
+    "package_manifest_sha256": "10ff151a5a206c2187c3b26138312b58da59987913893d40d3d28f90bd2705ce",
+    "entrypoint_sha256": "9f5e1bdb02929b04688637c3c80a5704996e93e8210a67ca6fab613ee157eb2b",
+    "notebook_dir": "kaggle_kernel/ab45n2",
+    "notebook_bytes": 187243,
+    "notebook_sha256": "897e34f49321109ddec76409fe3106fd254a76e3140ff6891eabc5e0224a216d",
+    "notebook_metadata_sha256": "d7321beedc0218d869eff7bc7caaaad480ccc7e89a626b74c590ee22956779f4"
+  },
+  "scope": {
+    "dataset": "44b6_0113de3b",
+    "frames": [0, 1],
+    "registered_shape_tzyx": [100, 64, 256, 256],
+    "inference_shape_btzyx": [1, 2, 64, 64, 64],
+    "view_batch_sizes": [1, 4],
+    "full_video_inference": false,
+    "full_test_inference": false,
+    "score_calculation": false,
+    "submission_csv": false
+  },
+  "budget": {
+    "maximum_runtime_minutes": 15,
+    "maximum_gpu_hours": 0.25,
+    "maximum_charge_usd": 0.1,
+    "daily_development_budget_usd": 8.0,
+    "monthly_development_budget_usd": 80.0
+  },
+  "promotion": {
+    "requires": [
+      "v45ab.json ok=true",
+      "feature_bitwise_equal=true",
+      "every logit_bitwise_equal=true",
+      "detection_signatures_equal=true",
+      "speedup_wall>=1.1",
+      "no dependency repair failure"
+    ],
+    "does_not_authorize": [
+      "production view batching",
+      "local-score gate update",
+      "Kaggle competition submission"
+    ],
+    "next_required_evidence": "A successful A/B can only nominate a score-preserving candidate for a separate frozen local-score regression gate."
+  },
+  "prior_launches": [
+    {
+      "kernel": "onebitbrain/biohub-v45ab",
+      "version": 1,
+      "status": "failed_before_package_launcher",
+      "error": "ModuleNotFoundError: No module named 'bh45'",
+      "root_cause": "Kaggle script kernels upload only the declared code file, not local sidecar package files.",
+      "repair": "Embed the verified package in a standard notebook and reconstruct it under /kaggle/working before invoking ab45.py.",
+      "gpu_work_observed": false,
+      "scored_submission": false
+    },
+    {
+      "kernel": "onebitbrain/biohub-v45ab",
+      "status": "rejected_before_version_creation",
+      "error": "You cannot change the editor type of a kernel",
+      "root_cause": "Kaggle prohibits changing an existing kernel from script to notebook.",
+      "repair": "Use the new private 14-character notebook slug onebitbrain/biohub-v45abnb.",
+      "gpu_work_observed": false,
+      "scored_submission": false
+    },
+    {
+      "kernel": "onebitbrain/biohub-v45abnb",
+      "version": 1,
+      "status": "failed_after_support_validation_before_inference",
+      "error": "AcceleratorError: CUDA error: no kernel image is available for execution on the device",
+      "root_cause": "Kaggle assigned Tesla P100 (sm_60), while its preinstalled PyTorch 2.10 CUDA wheel supports sm_70 and newer only.",
+      "repair": "Request NvidiaTeslaT4 explicitly via the Kaggle CLI accelerator override; keep the same package, weights, source archive, and 900-second cap.",
+      "gpu_work_observed": false,
+      "scored_submission": false
+    },
+    {
+      "kernel": "onebitbrain/biohub-v45abnb",
+      "version": 2,
+      "status": "completed",
+      "result": "exactly_equal=true; speedup_wall=1.005065781878697; speedup_cuda=1.0050987901921271; peak_memory_multiple=3.601368268502624",
+      "decision": "rejected_as_runtime_optimization",
+      "scored_submission": false
+    }
+  ]
+}

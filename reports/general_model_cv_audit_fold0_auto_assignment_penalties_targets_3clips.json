@@ -1,0 +1,494 @@
+{
+  "kind": "general_route_cv_audit",
+  "created_at_unix": 1783903769.58945,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "split_manifest_sha256": "b02e489391b2f093b79a2416f94e84223702b9744ae61cdda11ed9485b66baae",
+  "fold_id": "0",
+  "datasets": [
+    "6bba_1d0d8384",
+    "6bba_0c7fa718",
+    "6bba_062c8d37"
+  ],
+  "route_arg": "auto",
+  "clip_length": 3,
+  "offsets_json": null,
+  "offset_calibration_fold_id": null,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "scoring_calibration_fold_id": "0",
+  "official_metric": {
+    "available": true,
+    "missing": [],
+    "note": "Install optional dependencies to replace approximate CV with official metrics."
+  },
+  "summary": {
+    "n": 3,
+    "edge_jaccard": 0.38461538461538464,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.42228395061728397,
+    "adj_edge_jaccard": 0.3988443422860974,
+    "n_adj": 3,
+    "score": 0.3988443422860974
+  },
+  "summary_by_prefix": {
+    "6bba": {
+      "n": 3,
+      "official_summary": {
+        "n": 3,
+        "edge_jaccard": 0.38461538461538464,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.42228395061728397,
+        "adj_edge_jaccard": 0.3988443422860974,
+        "n_adj": 3,
+        "score": 0.3988443422860974
+      },
+      "mean_node_recall": 0.42228395061728397,
+      "mean_nodes": 238.66666666666666,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 2
+    }
+  },
+  "summary_by_route": {
+    "balanced_compact": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 0.3673469387755102,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.37333333333333335,
+        "adj_edge_jaccard": 0.3813134656956199,
+        "n_adj": 1,
+        "score": 0.3813134656956199
+      },
+      "mean_node_recall": 0.37333333333333335,
+      "mean_nodes": 333.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 1
+    },
+    "balanced_dog_tight": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 0.42105263157894735,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.5185185185185185,
+        "adj_edge_jaccard": 0.4342651500546237,
+        "n_adj": 1,
+        "score": 0.4342651500546237
+      },
+      "mean_node_recall": 0.5185185185185185,
+      "mean_nodes": 281.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 0
+    },
+    "balanced_midpoint": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 0.4,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.375,
+        "adj_edge_jaccard": 0.4174461028192371,
+        "n_adj": 1,
+        "score": 0.4174461028192371
+      },
+      "mean_node_recall": 0.375,
+      "mean_nodes": 102.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 1
+    }
+  },
+  "rows": [
+    {
+      "dataset": "6bba_1d0d8384",
+      "prefix": "6bba",
+      "fold_id": "0",
+      "route": "balanced_compact",
+      "route_confidence": 0.99,
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 75,
+      "gt_edges": 49,
+      "num_pred_nodes": 333.0,
+      "num_pred_edges": 202,
+      "graph": {
+        "datasets": 1,
+        "nodes": 333,
+        "edges": 202,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "runtime_sec": 24.970764875411987,
+      "metric_source": "official",
+      "route_reason": "moderate-low foreground 6bba field; second-choice edge rescue corrects stationary duplicate links; crowded/high foreground; compact spatially balanced localizer preferred; division-like close-pair motifs",
+      "profile": {
+        "dataset": "6bba_1d0d8384",
+        "t_start": 0,
+        "t_end": 3,
+        "sampled_timepoints": [
+          0,
+          1,
+          2
+        ],
+        "foreground_fraction": 0.06469233830769856,
+        "bright_candidate_density": 400.0,
+        "dark_candidate_density": 400.0,
+        "both_candidate_density": 400.0,
+        "median_nn_um": 0.40625,
+        "temporal_delta": 0.013994392473250628,
+        "division_motif_rate": 0.905,
+        "intensity_p999": 1316.248000000002,
+        "estimated_total_nodes": 17909.0
+      },
+      "coordinate_correction": {
+        "route": "balanced_compact",
+        "dataset": "6bba_1d0d8384",
+        "before_nodes": 480,
+        "corrected_nodes": 200,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          1,
+          2,
+          5
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            2,
+            5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 333,
+        "refined_nodes": 333,
+        "mean_abs_offset_zyx": [
+          0.90991,
+          2.003003,
+          3.918919
+        ]
+      },
+      "output_offset_zyx": [
+        0,
+        0,
+        0
+      ],
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 480,
+        "after_nodes": 333,
+        "edges": 202
+      },
+      "edge_tp": 18.0,
+      "edge_fp": 0.0,
+      "edge_fn": 31.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.37333333333333335,
+      "total_node_ratio": -0.38019989949187555,
+      "edge_jaccard": 0.3673469387755102,
+      "adj_edge_jaccard": 0.3813134656956199,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 537.27
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "prefix": "6bba",
+      "fold_id": "0",
+      "route": "balanced_dog_tight",
+      "route_confidence": 0.6,
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 27,
+      "gt_edges": 18,
+      "num_pred_nodes": 281.0,
+      "num_pred_edges": 158,
+      "graph": {
+        "datasets": 1,
+        "nodes": 281,
+        "edges": 158,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "runtime_sec": 35.67320013046265,
+      "metric_source": "official",
+      "route_reason": "high-foreground 6bba field; midpoint balanced route controls node penalty; moderate-foreground high-signal 6bba field; tight balanced DoG links reduce edge FPs; division-like close-pair motifs",
+      "profile": {
+        "dataset": "6bba_0c7fa718",
+        "t_start": 0,
+        "t_end": 3,
+        "sampled_timepoints": [
+          0,
+          1,
+          2
+        ],
+        "foreground_fraction": 0.13039851188659668,
+        "bright_candidate_density": 400.0,
+        "dark_candidate_density": 400.0,
+        "both_candidate_density": 400.0,
+        "median_nn_um": 0.40625,
+        "temporal_delta": 0.02554939780384302,
+        "division_motif_rate": 0.7725,
+        "intensity_p999": 1579.659000000005,
+        "estimated_total_nodes": 13650.0
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          3,
+          6,
+          -6
+        ],
+        "center_offsets_zyx": [
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            3,
+            6,
+            -6
+          ]
+        ],
+        "iterations": 2,
+        "endpoint_nodes": 281,
+        "refined_nodes": 281,
+        "mean_abs_offset_zyx": [
+          1.580071,
+          5.747331,
+          4.996441
+        ]
+      },
+      "output_offset_zyx": [
+        0,
+        0,
+        0
+      ],
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 570,
+        "after_nodes": 281,
+        "edges": 158
+      },
+      "edge_tp": 8.0,
+      "edge_fp": 1.0,
+      "edge_fn": 10.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.5185185185185185,
+      "total_node_ratio": -0.3137973137973138,
+      "edge_jaccard": 0.42105263157894735,
+      "adj_edge_jaccard": 0.4342651500546237,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "prefix": "6bba",
+      "fold_id": "0",
+      "route": "balanced_midpoint",
+      "route_confidence": 0.6749999999999999,
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 16,
+      "gt_edges": 10,
+      "num_pred_nodes": 102.0,
+      "num_pred_edges": 56,
+      "graph": {
+        "datasets": 1,
+        "nodes": 102,
+        "edges": 56,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "runtime_sec": 20.294601917266846,
+      "metric_source": "official",
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "profile": {
+        "dataset": "6bba_062c8d37",
+        "t_start": 0,
+        "t_end": 3,
+        "sampled_timepoints": [
+          0,
+          1,
+          2
+        ],
+        "foreground_fraction": 0.01402584711710612,
+        "bright_candidate_density": 400.0,
+        "dark_candidate_density": 400.0,
+        "both_candidate_density": 400.0,
+        "median_nn_um": 0.40625,
+        "temporal_delta": 0.01861886028200388,
+        "division_motif_rate": 0.665,
+        "intensity_p999": 756.248000000002,
+        "estimated_total_nodes": 6030.0
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "output_offset_zyx": [
+        0,
+        0,
+        0
+      ],
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 102,
+        "edges": 56
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.4361525704809287,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4174461028192371,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    }
+  ],
+  "dataset_reports": [
+    {
+      "dataset": "6bba_1d0d8384",
+      "clip_start": 0,
+      "clip_end": 3,
+      "route": "balanced_compact",
+      "score": 0.3813134656956199,
+      "edge_jaccard": 0.3673469387755102,
+      "node_recall": 0.37333333333333335,
+      "runtime_sec": 24.970764875411987
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "clip_start": 0,
+      "clip_end": 3,
+      "route": "balanced_dog_tight",
+      "score": 0.4342651500546237,
+      "edge_jaccard": 0.42105263157894735,
+      "node_recall": 0.5185185185185185,
+      "runtime_sec": 35.67320013046265
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "clip_start": 0,
+      "clip_end": 3,
+      "route": "balanced_midpoint",
+      "score": 0.4174461028192371,
+      "edge_jaccard": 0.4,
+      "node_recall": 0.375,
+      "runtime_sec": 20.294601917266846
+    }
+  ],
+  "submission_validation": {
+    "valid": true,
+    "errors": [],
+    "row_type_counts": {
+      "node": 716,
+      "edge": 416
+    },
+    "dataset_count": 3
+  },
+  "submission_graph": {
+    "datasets": 3,
+    "nodes": 716,
+    "edges": 416,
+    "dividing_nodes": 0,
+    "out_gt2": 0,
+    "merges": 0
+  },
+  "submission_output": "reports/general_model_cv_audit_fold0_auto_assignment_penalties_targets_3clips_submission.csv",
+  "runtime_sec": 81.03968715667725
+}

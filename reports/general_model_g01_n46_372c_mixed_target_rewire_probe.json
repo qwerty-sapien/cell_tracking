@@ -1,0 +1,2049 @@
+{
+  "kind": "localmax_clone_mixed_target_rewire_probe",
+  "created_at_unix": 1783962892.428543,
+  "dataset": "6bba_372c8cb8",
+  "rows": [
+    {
+      "variant": "current",
+      "target_radius_um": null,
+      "source_radius_um": null,
+      "num_pred_nodes": 396.0,
+      "num_pred_edges": 238,
+      "replacements": [],
+      "graph": {
+        "datasets": 1,
+        "nodes": 396,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8800740635237146,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.697406101024657,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t2.0_s3.5",
+      "target_radius_um": 2.0,
+      "source_radius_um": 3.5,
+      "num_pred_nodes": 396.0,
+      "num_pred_edges": 238,
+      "replacements": [],
+      "graph": {
+        "datasets": 1,
+        "nodes": 396,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8800740635237146,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.697406101024657,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t2.0_s4.0",
+      "target_radius_um": 2.0,
+      "source_radius_um": 4.0,
+      "num_pred_nodes": 395.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 395,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8753264017471396,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.697769157513454,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t2.0_s5.0",
+      "target_radius_um": 2.0,
+      "source_radius_um": 5.0,
+      "num_pred_nodes": 395.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 395,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8753264017471396,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.697769157513454,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t2.0_s6.0",
+      "target_radius_um": 2.0,
+      "source_radius_um": 6.0,
+      "num_pred_nodes": 395.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 395,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8753264017471396,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.697769157513454,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t3.0_s3.5",
+      "target_radius_um": 3.0,
+      "source_radius_um": 3.5,
+      "num_pred_nodes": 393.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 393,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8658310781939895,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6984952704910479,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t3.0_s4.0",
+      "target_radius_um": 3.0,
+      "source_radius_um": 4.0,
+      "num_pred_nodes": 392.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        },
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 392,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8610834164174145,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6988583269798447,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t3.0_s5.0",
+      "target_radius_um": 3.0,
+      "source_radius_um": 5.0,
+      "num_pred_nodes": 392.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        },
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 392,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8610834164174145,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6988583269798447,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t3.0_s6.0",
+      "target_radius_um": 3.0,
+      "source_radius_um": 6.0,
+      "num_pred_nodes": 392.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        },
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 392,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8610834164174145,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6988583269798447,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t4.0_s3.5",
+      "target_radius_um": 4.0,
+      "source_radius_um": 3.5,
+      "num_pred_nodes": 392.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        },
+        {
+          "old_source": 389,
+          "old_target": 462,
+          "new_target": 187,
+          "old_target_zyx": [
+            59,
+            164,
+            144
+          ],
+          "new_target_zyx": [
+            61,
+            162,
+            145
+          ],
+          "target_distance_um": 3.374565944310468,
+          "source_distance_um": 3.494694639736067
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 392,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 0.0,
+      "edge_fn": 2.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8610834164174145,
+      "edge_jaccard": 0.875,
+      "adj_edge_jaccard": 0.7996552010634763,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t4.0_s4.0",
+      "target_radius_um": 4.0,
+      "source_radius_um": 4.0,
+      "num_pred_nodes": 391.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        },
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        },
+        {
+          "old_source": 389,
+          "old_target": 462,
+          "new_target": 187,
+          "old_target_zyx": [
+            59,
+            164,
+            144
+          ],
+          "new_target_zyx": [
+            61,
+            162,
+            145
+          ],
+          "target_distance_um": 3.374565944310468,
+          "source_distance_um": 3.494694639736067
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 391,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 0.0,
+      "edge_fn": 2.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8563357546408394,
+      "edge_jaccard": 0.875,
+      "adj_edge_jaccard": 0.8000706214689265,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t4.0_s5.0",
+      "target_radius_um": 4.0,
+      "source_radius_um": 5.0,
+      "num_pred_nodes": 391.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        },
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        },
+        {
+          "old_source": 389,
+          "old_target": 462,
+          "new_target": 187,
+          "old_target_zyx": [
+            59,
+            164,
+            144
+          ],
+          "new_target_zyx": [
+            61,
+            162,
+            145
+          ],
+          "target_distance_um": 3.374565944310468,
+          "source_distance_um": 3.494694639736067
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 391,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 0.0,
+      "edge_fn": 2.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8563357546408394,
+      "edge_jaccard": 0.875,
+      "adj_edge_jaccard": 0.8000706214689265,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t4.0_s6.0",
+      "target_radius_um": 4.0,
+      "source_radius_um": 6.0,
+      "num_pred_nodes": 391.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        },
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        },
+        {
+          "old_source": 389,
+          "old_target": 462,
+          "new_target": 187,
+          "old_target_zyx": [
+            59,
+            164,
+            144
+          ],
+          "new_target_zyx": [
+            61,
+            162,
+            145
+          ],
+          "target_distance_um": 3.374565944310468,
+          "source_distance_um": 3.494694639736067
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 391,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 0.0,
+      "edge_fn": 2.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8563357546408394,
+      "edge_jaccard": 0.875,
+      "adj_edge_jaccard": 0.8000706214689265,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t5.0_s3.5",
+      "target_radius_um": 5.0,
+      "source_radius_um": 3.5,
+      "num_pred_nodes": 392.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        },
+        {
+          "old_source": 389,
+          "old_target": 462,
+          "new_target": 187,
+          "old_target_zyx": [
+            59,
+            164,
+            144
+          ],
+          "new_target_zyx": [
+            61,
+            162,
+            145
+          ],
+          "target_distance_um": 3.374565944310468,
+          "source_distance_um": 3.494694639736067
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 392,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 0.0,
+      "edge_fn": 2.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8610834164174145,
+      "edge_jaccard": 0.875,
+      "adj_edge_jaccard": 0.7996552010634763,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t5.0_s4.0",
+      "target_radius_um": 5.0,
+      "source_radius_um": 4.0,
+      "num_pred_nodes": 391.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        },
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        },
+        {
+          "old_source": 389,
+          "old_target": 462,
+          "new_target": 187,
+          "old_target_zyx": [
+            59,
+            164,
+            144
+          ],
+          "new_target_zyx": [
+            61,
+            162,
+            145
+          ],
+          "target_distance_um": 3.374565944310468,
+          "source_distance_um": 3.494694639736067
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 391,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 0.0,
+      "edge_fn": 2.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8563357546408394,
+      "edge_jaccard": 0.875,
+      "adj_edge_jaccard": 0.8000706214689265,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t5.0_s5.0",
+      "target_radius_um": 5.0,
+      "source_radius_um": 5.0,
+      "num_pred_nodes": 391.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        },
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        },
+        {
+          "old_source": 389,
+          "old_target": 462,
+          "new_target": 187,
+          "old_target_zyx": [
+            59,
+            164,
+            144
+          ],
+          "new_target_zyx": [
+            61,
+            162,
+            145
+          ],
+          "target_distance_um": 3.374565944310468,
+          "source_distance_um": 3.494694639736067
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 391,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 0.0,
+      "edge_fn": 2.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8563357546408394,
+      "edge_jaccard": 0.875,
+      "adj_edge_jaccard": 0.8000706214689265,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t5.0_s6.0",
+      "target_radius_um": 5.0,
+      "source_radius_um": 6.0,
+      "num_pred_nodes": 391.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        },
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        },
+        {
+          "old_source": 389,
+          "old_target": 462,
+          "new_target": 187,
+          "old_target_zyx": [
+            59,
+            164,
+            144
+          ],
+          "new_target_zyx": [
+            61,
+            162,
+            145
+          ],
+          "target_distance_um": 3.374565944310468,
+          "source_distance_um": 3.494694639736067
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 391,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 0.0,
+      "edge_fn": 2.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8563357546408394,
+      "edge_jaccard": 0.875,
+      "adj_edge_jaccard": 0.8000706214689265,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t6.0_s3.5",
+      "target_radius_um": 6.0,
+      "source_radius_um": 3.5,
+      "num_pred_nodes": 392.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        },
+        {
+          "old_source": 389,
+          "old_target": 462,
+          "new_target": 187,
+          "old_target_zyx": [
+            59,
+            164,
+            144
+          ],
+          "new_target_zyx": [
+            61,
+            162,
+            145
+          ],
+          "target_distance_um": 3.374565944310468,
+          "source_distance_um": 3.494694639736067
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 392,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 0.0,
+      "edge_fn": 2.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8610834164174145,
+      "edge_jaccard": 0.875,
+      "adj_edge_jaccard": 0.7996552010634763,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t6.0_s4.0",
+      "target_radius_um": 6.0,
+      "source_radius_um": 4.0,
+      "num_pred_nodes": 391.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        },
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        },
+        {
+          "old_source": 389,
+          "old_target": 462,
+          "new_target": 187,
+          "old_target_zyx": [
+            59,
+            164,
+            144
+          ],
+          "new_target_zyx": [
+            61,
+            162,
+            145
+          ],
+          "target_distance_um": 3.374565944310468,
+          "source_distance_um": 3.494694639736067
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 391,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 0.0,
+      "edge_fn": 2.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8563357546408394,
+      "edge_jaccard": 0.875,
+      "adj_edge_jaccard": 0.8000706214689265,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t6.0_s5.0",
+      "target_radius_um": 6.0,
+      "source_radius_um": 5.0,
+      "num_pred_nodes": 391.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        },
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        },
+        {
+          "old_source": 389,
+          "old_target": 462,
+          "new_target": 187,
+          "old_target_zyx": [
+            59,
+            164,
+            144
+          ],
+          "new_target_zyx": [
+            61,
+            162,
+            145
+          ],
+          "target_distance_um": 3.374565944310468,
+          "source_distance_um": 3.494694639736067
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 391,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 0.0,
+      "edge_fn": 2.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8563357546408394,
+      "edge_jaccard": 0.875,
+      "adj_edge_jaccard": 0.8000706214689265,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    {
+      "variant": "rewire_t6.0_s6.0",
+      "target_radius_um": 6.0,
+      "source_radius_um": 6.0,
+      "num_pred_nodes": 390.0,
+      "num_pred_edges": 238,
+      "replacements": [
+        {
+          "old_source": 356,
+          "old_target": 438,
+          "new_target": 130,
+          "old_target_zyx": [
+            33,
+            101,
+            66
+          ],
+          "new_target_zyx": [
+            34,
+            103,
+            68
+          ],
+          "target_distance_um": 1.9902104160113323,
+          "source_distance_um": 3.5648292823780494
+        },
+        {
+          "old_source": 357,
+          "old_target": 421,
+          "new_target": 156,
+          "old_target_zyx": [
+            40,
+            192,
+            220
+          ],
+          "new_target_zyx": [
+            40,
+            195,
+            224
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 1.1490485194281397
+        },
+        {
+          "old_source": 369,
+          "old_target": 433,
+          "new_target": 122,
+          "old_target_zyx": [
+            17,
+            247,
+            129
+          ],
+          "new_target_zyx": [
+            17,
+            250,
+            133
+          ],
+          "target_distance_um": 2.03125,
+          "source_distance_um": 3.1729139308370784
+        },
+        {
+          "old_source": 384,
+          "old_target": 415,
+          "new_target": 126,
+          "old_target_zyx": [
+            25,
+            124,
+            42
+          ],
+          "new_target_zyx": [
+            26,
+            126,
+            45
+          ],
+          "target_distance_um": 2.1877232028983924,
+          "source_distance_um": 1.6750116604071745
+        },
+        {
+          "old_source": 389,
+          "old_target": 462,
+          "new_target": 187,
+          "old_target_zyx": [
+            59,
+            164,
+            144
+          ],
+          "new_target_zyx": [
+            61,
+            162,
+            145
+          ],
+          "target_distance_um": 3.374565944310468,
+          "source_distance_um": 3.494694639736067
+        },
+        {
+          "old_source": 397,
+          "old_target": 465,
+          "new_target": 172,
+          "old_target_zyx": [
+            51,
+            148,
+            91
+          ],
+          "new_target_zyx": [
+            53,
+            153,
+            101
+          ],
+          "target_distance_um": 5.58501412822743,
+          "source_distance_um": 5.154734625807618
+        }
+      ],
+      "graph": {
+        "datasets": 1,
+        "nodes": 390,
+        "edges": 238,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 0.0,
+      "edge_fn": 2.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 0.8515880928642644,
+      "edge_jaccard": 0.875,
+      "adj_edge_jaccard": 0.8004860418743769,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    }
+  ],
+  "best": {
+    "variant": "rewire_t6.0_s6.0",
+    "target_radius_um": 6.0,
+    "source_radius_um": 6.0,
+    "num_pred_nodes": 390.0,
+    "num_pred_edges": 238,
+    "replacements": [
+      {
+        "old_source": 356,
+        "old_target": 438,
+        "new_target": 130,
+        "old_target_zyx": [
+          33,
+          101,
+          66
+        ],
+        "new_target_zyx": [
+          34,
+          103,
+          68
+        ],
+        "target_distance_um": 1.9902104160113323,
+        "source_distance_um": 3.5648292823780494
+      },
+      {
+        "old_source": 357,
+        "old_target": 421,
+        "new_target": 156,
+        "old_target_zyx": [
+          40,
+          192,
+          220
+        ],
+        "new_target_zyx": [
+          40,
+          195,
+          224
+        ],
+        "target_distance_um": 2.03125,
+        "source_distance_um": 1.1490485194281397
+      },
+      {
+        "old_source": 369,
+        "old_target": 433,
+        "new_target": 122,
+        "old_target_zyx": [
+          17,
+          247,
+          129
+        ],
+        "new_target_zyx": [
+          17,
+          250,
+          133
+        ],
+        "target_distance_um": 2.03125,
+        "source_distance_um": 3.1729139308370784
+      },
+      {
+        "old_source": 384,
+        "old_target": 415,
+        "new_target": 126,
+        "old_target_zyx": [
+          25,
+          124,
+          42
+        ],
+        "new_target_zyx": [
+          26,
+          126,
+          45
+        ],
+        "target_distance_um": 2.1877232028983924,
+        "source_distance_um": 1.6750116604071745
+      },
+      {
+        "old_source": 389,
+        "old_target": 462,
+        "new_target": 187,
+        "old_target_zyx": [
+          59,
+          164,
+          144
+        ],
+        "new_target_zyx": [
+          61,
+          162,
+          145
+        ],
+        "target_distance_um": 3.374565944310468,
+        "source_distance_um": 3.494694639736067
+      },
+      {
+        "old_source": 397,
+        "old_target": 465,
+        "new_target": 172,
+        "old_target_zyx": [
+          51,
+          148,
+          91
+        ],
+        "new_target_zyx": [
+          53,
+          153,
+          101
+        ],
+        "target_distance_um": 5.58501412822743,
+        "source_distance_um": 5.154734625807618
+      }
+    ],
+    "graph": {
+      "datasets": 1,
+      "nodes": 390,
+      "edges": 238,
+      "dividing_nodes": 0,
+      "out_gt2": 0,
+      "merges": 0
+    },
+    "edge_tp": 14.0,
+    "edge_fp": 0.0,
+    "edge_fn": 2.0,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.875,
+    "total_node_ratio": 0.8515880928642644,
+    "edge_jaccard": 0.875,
+    "adj_edge_jaccard": 0.8004860418743769,
+    "division_jaccard": NaN,
+    "estimated_number_of_nodes": 210.63
+  },
+  "summary": {
+    "n": 21,
+    "edge_jaccard": 0.8260869565217391,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.875,
+    "adj_edge_jaccard": 0.7548246220620403,
+    "n_adj": 21,
+    "score": 0.7548246220620403
+  }
+}

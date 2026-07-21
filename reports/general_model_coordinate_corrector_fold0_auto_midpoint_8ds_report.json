@@ -1,0 +1,22 @@
+{
+  "kind": "coordinate_corrector_merge_report",
+  "inputs": [
+    "reports/general_model_coordinate_corrector_fold0_routes4_8ds.json",
+    "reports/general_model_coordinate_corrector_fold0_balanced_strict_edges_8ds.json"
+  ],
+  "output": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds.json",
+  "policies": [
+    "balanced_compact:44b6",
+    "balanced_compact:6bba",
+    "balanced_midpoint:44b6",
+    "balanced_midpoint:6bba",
+    "balanced_tight_link:44b6",
+    "balanced_tight_link:6bba",
+    "clean_compact:44b6",
+    "clean_compact:6bba",
+    "coverage_dog_compact:44b6",
+    "coverage_dog_compact:6bba",
+    "dense_fusion:44b6",
+    "dense_fusion:6bba"
+  ]
+}

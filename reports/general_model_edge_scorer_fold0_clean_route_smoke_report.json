@@ -1,0 +1,55 @@
+{
+  "kind": "edge_scorer_training_report",
+  "created_at_unix": 1783789418.7643478,
+  "output": "reports/general_model_edge_scorer_fold0_clean_route_smoke.json",
+  "output_sha256": "26efb659dff13b68e5ca22a9a8afc933c89554d80817ac0ef9c1e7d7c6101bca",
+  "edge_csv": "data/derived/edge_scorer/candidate_edges_fold0_clean_point_2ds.csv",
+  "features": [
+    "feature__distance_norm",
+    "feature__edge_cost",
+    "feature__edge_score",
+    "feature__mean_density",
+    "feature__intensity_delta",
+    "feature__source_has_tile",
+    "feature__target_has_tile",
+    "feature__source_has_dog",
+    "feature__target_has_dog"
+  ],
+  "group_by": "route",
+  "min_positive_recall": 1.0,
+  "drop_below_min_score": false,
+  "base_cost_weight": 0.25,
+  "probability_cost_weight": 0.75,
+  "model_reports": [
+    {
+      "section": "by_route",
+      "key": "clean_point",
+      "status": "trained",
+      "rows": 252,
+      "positive_rows": 4,
+      "negative_rows": 248,
+      "threshold_metrics": {
+        "threshold": -3.270569220713515,
+        "tp": 4.0,
+        "fp": 2.0,
+        "fn": 0.0,
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "f2": 0.9090909090909091,
+        "predicted_positive": 6.0
+      },
+      "weights": {
+        "distance_norm": 0.26183088224466555,
+        "edge_cost": -0.2640649109953104,
+        "edge_score": 0.7671219233436163,
+        "mean_density": -0.09589539092377622,
+        "intensity_delta": -0.5444073056382036,
+        "source_has_tile": 0.0,
+        "target_has_tile": 0.0,
+        "source_has_dog": 0.0,
+        "target_has_dog": 0.0
+      },
+      "bias": -3.914626441093305
+    }
+  ]
+}

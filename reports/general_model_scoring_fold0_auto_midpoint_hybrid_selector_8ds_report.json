@@ -1,0 +1,34 @@
+{
+  "kind": "hybrid_selector_scoring_merge_report",
+  "output": "reports/general_model_scoring_fold0_auto_midpoint_hybrid_selector_8ds.json",
+  "inputs": [
+    "reports/general_model_coordinate_corrector_fold0_auto_midpoint_hybrid_8ds.json",
+    "reports/general_model_candidate_pruner_fold0_hybrid_rescue_8ds.json",
+    "reports/general_model_edge_scorer_fold0_hybrid_rescue_8ds.json"
+  ],
+  "fold_id": "0",
+  "coordinate_policies": [
+    "balanced_compact:44b6",
+    "balanced_compact:6bba",
+    "balanced_midpoint:44b6",
+    "balanced_midpoint:6bba",
+    "balanced_tight_link:44b6",
+    "balanced_tight_link:6bba",
+    "clean_compact:44b6",
+    "clean_compact:6bba",
+    "coverage_dog_compact:44b6",
+    "coverage_dog_compact:6bba",
+    "dense_fusion:44b6",
+    "dense_fusion:6bba",
+    "hybrid_rescue_compact:44b6",
+    "hybrid_rescue_compact:6bba"
+  ],
+  "node_policies": [
+    "hybrid_rescue_compact:44b6",
+    "hybrid_rescue_compact:6bba"
+  ],
+  "edge_policies": [
+    "hybrid_rescue_compact:44b6",
+    "hybrid_rescue_compact:6bba"
+  ]
+}

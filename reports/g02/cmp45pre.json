@@ -1,0 +1,66 @@
+{
+  "artifact": "biohub-v45-compile-preflight.v1",
+  "status": "completed_rejected_runtime",
+  "prepared_at": "2026-07-19",
+  "kernel": {
+    "id": "onebitbrain/biohub-v45cmp",
+    "private": true,
+    "machine_shape": "NvidiaTeslaT4",
+    "session_timeout_seconds": 900,
+    "internet": false,
+    "submission_generation": false,
+    "package_dir": "kaggle_kernel/cmp45p",
+    "package_bytes": 141276,
+    "package_manifest_sha256": "2374c0563f285b11178dd650739df71e8653ac385395ee803178ad8b17b1c043",
+    "notebook_dir": "kaggle_kernel/cmp45n",
+    "notebook_bytes": 189504,
+    "notebook_sha256": "8eef652fe47dfa1e96d0c990e73cd3d81f0ed64fa51774f48a6c33abcb67bb24",
+    "notebook_metadata_sha256": "a753018b06f45bae78cbd1ffe8a5488921e3a02ab5e89d05234d743d2920f1f5"
+  },
+  "scope": {
+    "dataset": "44b6_0113de3b",
+    "frames": [0, 1],
+    "input_shape_btzyx": [1, 2, 64, 64, 64],
+    "teacher": "unchanged V45 checkpoint sha256 12f6881ee3620a831697ca098ff8f48e687a24225f4e048b538deec3562fe771",
+    "candidate": "torch.compile(model.encode, backend=inductor, mode=reduce-overhead, fullgraph=true, dynamic=false)",
+    "training": false,
+    "full_test_inference": false,
+    "scoring": false,
+    "submission_csv": false
+  },
+  "budget": {
+    "maximum_runtime_minutes": 15,
+    "maximum_gpu_hours": 0.25,
+    "maximum_charge_usd": 0.1
+  },
+  "evidence_basis": {
+    "prior_batch_ab": "reports/g02/ab45run.json rejected view batching: exact but only 1.005x faster with 3.6x peak memory.",
+    "primary_documentation": "https://docs.pytorch.org/docs/stable/generated/torch.compile",
+    "decision_logic": "The model has a fixed two-frame grid. Compiling only the unchanged encoder minimizes surface area; fullgraph rejects graph breaks rather than silently measuring partial compilation."
+  },
+  "promotion": {
+    "requires": [
+      "v45ab.json ok=true",
+      "fullgraph compilation succeeds",
+      "feature_bitwise_equal=true",
+      "every logit_bitwise_equal=true",
+      "detection_signatures_equal=true",
+      "speedup_wall>=1.1",
+      "cold compile time is separately reported"
+    ],
+    "does_not_authorize": [
+      "production compiler enablement",
+      "local-score gate update",
+      "Kaggle competition submission"
+    ]
+  },
+  "result": {
+    "kernel_version": 1,
+    "status": "failed_by_numerical_gate",
+    "cold_compile_seconds": 35.30427731899999,
+    "speedup_wall": 1.0260075541580782,
+    "max_abs_difference": 1.33514404296875e-05,
+    "detection_signatures_equal": false,
+    "decision": "rejected_as_quality_preserving_optimization"
+  }
+}

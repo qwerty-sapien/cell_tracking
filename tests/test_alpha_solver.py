@@ -360,6 +360,148 @@ class AlphaSolverTests(unittest.TestCase):
             )
             self.assertEqual(pairs(selected), expected)
 
+    def test_division_rescue_can_steal_child_from_near_duplicate_source(self) -> None:
+        nodes_by_t = [
+            [node(1, 0, y=10), node(2, 0, y=8)],
+            [node(3, 1, y=14), node(4, 1, y=6)],
+            [node(5, 2, y=15), node(6, 2, y=5)],
+        ]
+        candidates = [
+            edge(1, 3, 1, 0.10),
+            edge(1, 4, 1, 0.40),
+            edge(2, 4, 1, 0.05),
+            edge(3, 5, 1, 0.10),
+            edge(4, 6, 1, 0.10),
+        ]
+
+        selected, forks = select_edges(
+            nodes_by_t,
+            candidates,
+            (1.0, 1.0, 1.0),
+            config(
+                edge_cost_threshold=0.5,
+                enable_divisions=True,
+                division_requires_unlinked_parent=False,
+                division_requires_child_future=True,
+                division_allow_link_steal=True,
+                division_child_max_um=5.0,
+                division_steal_max_distance_um=5.0,
+                division_steal_source_max_um=3.0,
+                division_child_max_sep_um=10.0,
+            ),
+        )
+
+        self.assertEqual(pairs(selected), [(1, 3), (1, 4), (3, 5), (4, 6)])
+        self.assertEqual(len(forks), 1)
+        self.assertEqual(forks[0].parent_id, 1)
+
+    def test_division_rescue_does_not_steal_from_far_source(self) -> None:
+        nodes_by_t = [
+            [node(1, 0, y=10), node(2, 0, y=0)],
+            [node(3, 1, y=14), node(4, 1, y=6)],
+            [node(5, 2, y=15), node(6, 2, y=5)],
+        ]
+        candidates = [
+            edge(1, 3, 1, 0.10),
+            edge(1, 4, 1, 0.40),
+            edge(2, 4, 1, 0.05),
+            edge(3, 5, 1, 0.10),
+            edge(4, 6, 1, 0.10),
+        ]
+
+        selected, forks = select_edges(
+            nodes_by_t,
+            candidates,
+            (1.0, 1.0, 1.0),
+            config(
+                edge_cost_threshold=0.5,
+                enable_divisions=True,
+                division_requires_unlinked_parent=False,
+                division_requires_child_future=True,
+                division_allow_link_steal=True,
+                division_child_max_um=5.0,
+                division_steal_max_distance_um=5.0,
+                division_steal_source_max_um=3.0,
+                division_child_max_sep_um=10.0,
+            ),
+        )
+
+        self.assertEqual(pairs(selected), [(1, 3), (2, 4), (3, 5), (4, 6)])
+        self.assertEqual(forks, [])
+
+    def test_second_choice_edge_rescue_replaces_short_duplicate_link(self) -> None:
+        n0 = node(1, 0, y=10, intensity=100.0)
+        short = node(2, 1, y=11, intensity=100.0)
+        long = node(3, 1, y=16, intensity=130.0)
+        nodes_by_t = [[n0], [short, long]]
+        candidates = [
+            CandidateEdge(
+                source_id=1,
+                target_id=2,
+                dt=1,
+                distance_um=1.0,
+                cost=0.10,
+                score=0.90,
+                features={"source_out_rank": 1.0, "target_in_rank": 1.0},
+            ),
+            CandidateEdge(
+                source_id=1,
+                target_id=3,
+                dt=1,
+                distance_um=6.0,
+                cost=0.40,
+                score=0.60,
+                features={"source_out_rank": 2.0, "target_in_rank": 1.0},
+            ),
+        ]
+
+        selected, forks = select_edges(
+            nodes_by_t,
+            candidates,
+            (1.0, 1.0, 1.0),
+            config(
+                edge_cost_threshold=0.5,
+                enable_second_choice_edge_rescue=True,
+                edge_rescue_short_max_um=2.2,
+                edge_rescue_long_min_um=5.5,
+                edge_rescue_long_max_um=7.1,
+                edge_rescue_margin_min_um=4.5,
+                edge_rescue_intensity_ratio=1.02,
+                edge_rescue_alt_cost_max=0.45,
+            ),
+        )
+
+        self.assertEqual(pairs(selected), [(1, 3)])
+        self.assertEqual(forks, [])
+
+    def test_second_choice_edge_rescue_requires_brighter_target(self) -> None:
+        n0 = node(1, 0, y=10, intensity=100.0)
+        short = node(2, 1, y=11, intensity=100.0)
+        dim_long = node(3, 1, y=16, intensity=90.0)
+        nodes_by_t = [[n0], [short, dim_long]]
+        candidates = [
+            CandidateEdge(1, 2, 1, 1.0, 0.10, 0.90, features={"source_out_rank": 1.0, "target_in_rank": 1.0}),
+            CandidateEdge(1, 3, 1, 6.0, 0.40, 0.60, features={"source_out_rank": 2.0, "target_in_rank": 1.0}),
+        ]
+
+        selected, _ = select_edges(
+            nodes_by_t,
+            candidates,
+            (1.0, 1.0, 1.0),
+            config(
+                edge_cost_threshold=0.5,
+                enable_second_choice_edge_rescue=True,
+                edge_rescue_short_max_um=2.2,
+                edge_rescue_long_min_um=5.5,
+                edge_rescue_long_max_um=7.1,
+                edge_rescue_margin_min_um=4.5,
+                edge_rescue_intensity_ratio=1.02,
+                edge_rescue_alt_cost_max=0.45,
+            ),
+        )
+
+        self.assertEqual(pairs(selected), [(1, 2)])
+
     def test_physical_scale_controls_candidate_gate(self) -> None:
         nodes_by_t = [[node(1, 0, z=0)], [node(2, 1, z=2)]]
         gated = build_edge_candidates(
@@ -376,6 +518,28 @@ class AlphaSolverTests(unittest.TestCase):
         self.assertEqual(gated, [])
         self.assertEqual(len(feasible), 1)
         self.assertAlmostEqual(feasible[0].distance_um, 4.0)
+
+    def test_edge_candidates_include_association_context_features(self) -> None:
+        nodes_by_t = [
+            [node(1, 0, y=0), node(2, 0, y=5)],
+            [node(3, 1, y=1), node(4, 1, y=4)],
+        ]
+
+        candidates = build_edge_candidates(
+            nodes_by_t,
+            (1.0, 1.0, 1.0),
+            config(max_link_um=10.0, max_neighbors=2),
+        )
+        by_pair = {(edge.source_id, edge.target_id): edge for edge in candidates}
+
+        self.assertEqual(by_pair[(1, 3)].features["source_out_rank"], 1.0)
+        self.assertEqual(by_pair[(1, 3)].features["target_in_rank"], 1.0)
+        self.assertEqual(by_pair[(1, 3)].features["mutual_nearest"], 1.0)
+        self.assertEqual(by_pair[(1, 4)].features["source_out_rank"], 2.0)
+        self.assertGreater(by_pair[(1, 4)].features["candidate_ambiguity"], 0.0)
+        self.assertEqual(by_pair[(2, 4)].features["mutual_nearest"], 1.0)
+        self.assertIn("min_best_margin_um", by_pair[(2, 3)].features)
+
 
     def test_appearance_cost_is_explicitly_opt_in(self) -> None:
         nodes_by_t = [[node(1, 0, intensity=0.0)], [node(2, 1, intensity=100.0)]]
@@ -404,6 +568,10 @@ class AlphaSolverTests(unittest.TestCase):
             ("max_neighbors", {"max_neighbors": 0}),
             ("birth_cost", {"birth_cost": -1.0}),
             ("appearance_cost_weight", {"appearance_cost_weight": -0.1}),
+            ("division_steal_max_distance_um", {"division_steal_max_distance_um": -0.1}),
+            ("division_steal_source_max_um", {"division_steal_source_max_um": -0.1}),
+            ("edge_rescue_short_max_um", {"edge_rescue_short_max_um": -0.1}),
+            ("edge_rescue_long_min_um", {"edge_rescue_long_min_um": -0.1}),
         ]
         for name, override in invalid_configs:
             with self.subTest(name=name):
@@ -414,6 +582,13 @@ class AlphaSolverTests(unittest.TestCase):
                         (1.0, 1.0, 1.0),
                         config(**override),
                     )
+        with self.assertRaisesRegex(ValueError, "edge_rescue_long_min_um"):
+            select_edges(
+                nodes_by_t,
+                [],
+                (1.0, 1.0, 1.0),
+                config(edge_rescue_long_min_um=8.0, edge_rescue_long_max_um=7.0),
+            )
         with self.assertRaisesRegex(ValueError, "endpoint is missing"):
             select_edges(
                 nodes_by_t,

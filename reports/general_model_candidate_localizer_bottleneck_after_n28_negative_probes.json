@@ -1,0 +1,39 @@
+{
+  "kind": "general_model_candidate_localizer_bottleneck_report",
+  "created_at": "2026-07-13T18:16:16+08:00",
+  "status": "n28_negative_probes_recorded_no_promotion",
+  "goal": "G-01 score >= 0.85",
+  "current_locked_audit": "reports/general_model_cv_audit_fold0_auto_dogtight_second_choice_12ds_12clips.json",
+  "current_locked_score": 0.6147087683938162,
+  "current_locked_edge_jaccard": 0.6111111111111112,
+  "current_locked_node_recall": 0.8080149840700916,
+  "d07_decision": "stick_to_A_clean_compact",
+  "new_diagnostic_tooling": {
+    "script": "scripts/diagnose_candidate_edge_oracle.py",
+    "change": "candidate-edge oracle now includes post-emission offset clone layers before matching submitted edges"
+  },
+  "negative_probes": [
+    {
+      "name": "1d0d_second_choice_short_window",
+      "path": "reports/general_model_n28_1d0d_second_choice_short_probe.json",
+      "baseline_score": 0.46706974147076885,
+      "best_nonbaseline_score": 0.4388318649439414,
+      "conclusion": "Relaxing second-choice rescue into short windows loses true edges and is not promoted."
+    },
+    {
+      "name": "midpoint_localmax_clone_extension",
+      "path": "reports/general_model_n28_midpoint_localmax_clone_probe.json",
+      "baseline_score": 0.5955552706875297,
+      "best_nonbaseline_score": 0.5906016836443904,
+      "conclusion": "Extending the 372c clone layer to 062c/2312/2819 increases node penalty and/or false edges without enough TP gain."
+    },
+    {
+      "name": "44b6_71_template_backward_clone",
+      "path": "reports/general_model_n28_44b6_71_template_backward_probe.json",
+      "baseline_score": 0.8106695426072568,
+      "best_nonbaseline_score": 0.8106326084387189,
+      "conclusion": "Backward extrapolation adds clones but does not recover the remaining GT edge; current remains best."
+    }
+  ],
+  "next_recommended_direction": "Move away from generic post-hoc clone spreading; remaining score gap is mostly sparse-label localization/lineage coverage on 6bba. Next low-compute branch should use fold-safe candidate-generation/routing evidence or a tiny point/edge scorer, not broader clones."
+}

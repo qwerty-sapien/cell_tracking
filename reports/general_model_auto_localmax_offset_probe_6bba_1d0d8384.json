@@ -1,0 +1,554 @@
+{
+  "kind": "auto_localmax_offset_probe",
+  "dataset": "6bba_1d0d8384",
+  "offsets": [
+    [
+      1,
+      2,
+      5
+    ],
+    [
+      0,
+      2,
+      5
+    ],
+    [
+      2,
+      2,
+      5
+    ],
+    [
+      1,
+      1,
+      5
+    ],
+    [
+      1,
+      3,
+      5
+    ],
+    [
+      1,
+      2,
+      4
+    ],
+    [
+      1,
+      2,
+      6
+    ],
+    [
+      0,
+      1,
+      4
+    ],
+    [
+      2,
+      3,
+      6
+    ],
+    [
+      0,
+      0,
+      0
+    ]
+  ],
+  "rows": [
+    {
+      "dataset": "6bba_1d0d8384",
+      "offset_zyx": [
+        1,
+        2,
+        5
+      ],
+      "route": "balanced_compact",
+      "score": NaN,
+      "edge_jaccard": 0.3673469387755102,
+      "node_recall": 0.37333333333333335,
+      "edge_tp": 18.0,
+      "edge_fp": 0.0,
+      "edge_fn": 31.0,
+      "nodes": 342,
+      "edges": 207,
+      "runtime_sec": 27.209566116333008,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          1,
+          2,
+          5
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            2,
+            5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 342,
+        "refined_nodes": 342,
+        "mean_abs_offset_zyx": [
+          0.912281,
+          2.017544,
+          3.897661
+        ]
+      }
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "offset_zyx": [
+        0,
+        2,
+        5
+      ],
+      "route": "balanced_compact",
+      "score": NaN,
+      "edge_jaccard": 0.3137254901960784,
+      "node_recall": 0.3466666666666667,
+      "edge_tp": 16.0,
+      "edge_fp": 2.0,
+      "edge_fn": 33.0,
+      "nodes": 342,
+      "edges": 207,
+      "runtime_sec": 24.909711122512817,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          0,
+          2,
+          5
+        ],
+        "center_offsets_zyx": [
+          [
+            0,
+            2,
+            5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 342,
+        "refined_nodes": 342,
+        "mean_abs_offset_zyx": [
+          0.27193,
+          2.090643,
+          4.327485
+        ]
+      }
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "offset_zyx": [
+        2,
+        2,
+        5
+      ],
+      "route": "balanced_compact",
+      "score": NaN,
+      "edge_jaccard": 0.3333333333333333,
+      "node_recall": 0.37333333333333335,
+      "edge_tp": 17.0,
+      "edge_fp": 2.0,
+      "edge_fn": 32.0,
+      "nodes": 342,
+      "edges": 207,
+      "runtime_sec": 26.706436157226562,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          2,
+          2,
+          5
+        ],
+        "center_offsets_zyx": [
+          [
+            2,
+            2,
+            5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 342,
+        "refined_nodes": 342,
+        "mean_abs_offset_zyx": [
+          1.122807,
+          2.128655,
+          3.792398
+        ]
+      }
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "offset_zyx": [
+        1,
+        1,
+        5
+      ],
+      "route": "balanced_compact",
+      "score": NaN,
+      "edge_jaccard": 0.3333333333333333,
+      "node_recall": 0.37333333333333335,
+      "edge_tp": 17.0,
+      "edge_fp": 2.0,
+      "edge_fn": 32.0,
+      "nodes": 342,
+      "edges": 207,
+      "runtime_sec": 24.74561095237732,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          1,
+          1,
+          5
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            1,
+            5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 342,
+        "refined_nodes": 342,
+        "mean_abs_offset_zyx": [
+          0.909357,
+          1.570175,
+          3.97076
+        ]
+      }
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "offset_zyx": [
+        1,
+        3,
+        5
+      ],
+      "route": "balanced_compact",
+      "score": NaN,
+      "edge_jaccard": 0.2830188679245283,
+      "node_recall": 0.36,
+      "edge_tp": 15.0,
+      "edge_fp": 4.0,
+      "edge_fn": 34.0,
+      "nodes": 342,
+      "edges": 207,
+      "runtime_sec": 26.554489135742188,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          1,
+          3,
+          5
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            3,
+            5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 342,
+        "refined_nodes": 342,
+        "mean_abs_offset_zyx": [
+          0.900585,
+          2.406433,
+          3.777778
+        ]
+      }
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "offset_zyx": [
+        1,
+        2,
+        4
+      ],
+      "route": "balanced_compact",
+      "score": NaN,
+      "edge_jaccard": 0.34,
+      "node_recall": 0.36,
+      "edge_tp": 17.0,
+      "edge_fp": 1.0,
+      "edge_fn": 32.0,
+      "nodes": 342,
+      "edges": 207,
+      "runtime_sec": 24.814402103424072,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          1,
+          2,
+          4
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            2,
+            4
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 342,
+        "refined_nodes": 342,
+        "mean_abs_offset_zyx": [
+          0.918129,
+          2.046784,
+          3.578947
+        ]
+      }
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "offset_zyx": [
+        1,
+        2,
+        6
+      ],
+      "route": "balanced_compact",
+      "score": NaN,
+      "edge_jaccard": 0.34,
+      "node_recall": 0.36,
+      "edge_tp": 17.0,
+      "edge_fp": 1.0,
+      "edge_fn": 32.0,
+      "nodes": 342,
+      "edges": 207,
+      "runtime_sec": 24.836995124816895,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          1,
+          2,
+          6
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            2,
+            6
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 342,
+        "refined_nodes": 342,
+        "mean_abs_offset_zyx": [
+          0.885965,
+          2.0,
+          4.140351
+        ]
+      }
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "offset_zyx": [
+        0,
+        1,
+        4
+      ],
+      "route": "balanced_compact",
+      "score": NaN,
+      "edge_jaccard": 0.23214285714285715,
+      "node_recall": 0.3333333333333333,
+      "edge_tp": 13.0,
+      "edge_fp": 7.0,
+      "edge_fn": 36.0,
+      "nodes": 342,
+      "edges": 207,
+      "runtime_sec": 24.72223210334778,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          0,
+          1,
+          4
+        ],
+        "center_offsets_zyx": [
+          [
+            0,
+            1,
+            4
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 342,
+        "refined_nodes": 342,
+        "mean_abs_offset_zyx": [
+          0.298246,
+          1.663743,
+          3.859649
+        ]
+      }
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "offset_zyx": [
+        2,
+        3,
+        6
+      ],
+      "route": "balanced_compact",
+      "score": NaN,
+      "edge_jaccard": 0.25925925925925924,
+      "node_recall": 0.3466666666666667,
+      "edge_tp": 14.0,
+      "edge_fp": 5.0,
+      "edge_fn": 35.0,
+      "nodes": 342,
+      "edges": 207,
+      "runtime_sec": 24.87775182723999,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          2,
+          3,
+          6
+        ],
+        "center_offsets_zyx": [
+          [
+            2,
+            3,
+            6
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 342,
+        "refined_nodes": 341,
+        "mean_abs_offset_zyx": [
+          1.105572,
+          2.366569,
+          3.961877
+        ]
+      }
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "offset_zyx": [
+        0,
+        0,
+        0
+      ],
+      "route": "balanced_compact",
+      "score": NaN,
+      "edge_jaccard": 0.25,
+      "node_recall": 0.36,
+      "edge_tp": 14.0,
+      "edge_fp": 7.0,
+      "edge_fn": 35.0,
+      "nodes": 342,
+      "edges": 207,
+      "runtime_sec": 25.028481006622314,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          0,
+          0,
+          0
+        ],
+        "center_offsets_zyx": [
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 342,
+        "refined_nodes": 308,
+        "mean_abs_offset_zyx": [
+          0.38961,
+          1.675325,
+          1.444805
+        ]
+      }
+    }
+  ],
+  "best": {
+    "dataset": "6bba_1d0d8384",
+    "offset_zyx": [
+      1,
+      2,
+      5
+    ],
+    "route": "balanced_compact",
+    "score": NaN,
+    "edge_jaccard": 0.3673469387755102,
+    "node_recall": 0.37333333333333335,
+    "edge_tp": 18.0,
+    "edge_fp": 0.0,
+    "edge_fn": 31.0,
+    "nodes": 342,
+    "edges": 207,
+    "runtime_sec": 27.209566116333008,
+    "localmax_refinement": {
+      "enabled": true,
+      "sources": [
+        "dog_abs"
+      ],
+      "radius_um": 2.5,
+      "center_offset_zyx": [
+        1,
+        2,
+        5
+      ],
+      "center_offsets_zyx": [
+        [
+          1,
+          2,
+          5
+        ]
+      ],
+      "iterations": 1,
+      "endpoint_nodes": 342,
+      "refined_nodes": 342,
+      "mean_abs_offset_zyx": [
+        0.912281,
+        2.017544,
+        3.897661
+      ]
+    }
+  },
+  "runtime_sec": 254.48387694358826
+}

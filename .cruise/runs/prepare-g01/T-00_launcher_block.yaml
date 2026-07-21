@@ -1,0 +1,19 @@
+schema_version: 1
+task_id: T-00
+kind: cruise_worker_launcher_block
+timestamp: "2026-07-14"
+origin: .cruise/goal/ORIGIN.yaml
+packet: .cruise/runs/prepare-g01/T-00_repo_submission_probe.packet.yaml
+report: .cruise/runs/prepare-g01/T-00_repo_submission_probe.report.yaml
+attempts:
+  - attempt: 1
+    command: "cruise worker --level 3 -C /Users/agent/Desktop/cell_tracking --packet /Users/agent/Desktop/cell_tracking/.cruise/runs/prepare-g01/T-00_repo_submission_probe.packet.yaml --report /Users/agent/Desktop/cell_tracking/.cruise/runs/prepare-g01/T-00_repo_submission_probe.report.yaml"
+    sandbox_permissions: use_default
+    result: BLOCK
+    evidence: "stream disconnected before completion: error sending request for url (https://chatgpt.com/backend-api/codex/responses)"
+  - attempt: 2
+    command: "cruise worker --level 3 -C /Users/agent/Desktop/cell_tracking --packet /Users/agent/Desktop/cell_tracking/.cruise/runs/prepare-g01/T-00_repo_submission_probe.packet.yaml --report /Users/agent/Desktop/cell_tracking/.cruise/runs/prepare-g01/T-00_repo_submission_probe.report.yaml"
+    sandbox_permissions: require_escalated
+    result: BLOCK
+    evidence: "Rejected by auto-review: host-level retry would send repository-derived packet contents and likely additional local evidence to an external ChatGPT/Codex service without explicit user authorization."
+blocked_condition: "Cruise Goal preparation requires an explicit user decision on external Codex worker data transfer before the bounded worker can run."

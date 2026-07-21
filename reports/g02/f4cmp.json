@@ -1,0 +1,68 @@
+{
+  "artifact": "g02_v45_fast_one_view_control_comparison_v1",
+  "decision": "trained_head_rejected",
+  "scope": {
+    "fold": 0,
+    "held_out_video": "train:44b6_24264f12",
+    "audit_used": false,
+    "fit_used_during_inference": false,
+    "test_used": false,
+    "scorer_run_label": "truncated_non_acceptance_smoke_test",
+    "dense_nxn_association": false,
+    "topology": "legacy rule-v45 sparse fallback"
+  },
+  "one_view_zero_control": {
+    "checkpoint": "reports/g02/v45z/checkpoint.pt",
+    "checkpoint_sha256": "f237c6f77a869d616e36152a8ef8a98b280b85963f17f7502d0694f161470d35",
+    "metrics": "reports/g02/v45z/metrics.json",
+    "metrics_sha256": "7a27804cb0a351ae3d3acce9035f941bf05b9a76937c15a0e6e4a7a2b40530be",
+    "evaluation": "reports/g02/f4z1/report.json",
+    "evaluation_sha256": "bdfa9bd5f3f358f0e9d62ea6dab2169eaa47d6378f596c69ac4c356df3dcd705",
+    "score": "reports/g02/f4z1/score1.json",
+    "score_sha256": "a72c5d0e337e934dc6c8c1ba9628d525c6e90be2e82f6410e49e9f902407f505",
+    "completed_steps": 0,
+    "correction_and_auxiliary_exactly_zero": true,
+    "inference_seconds": 298.0405218331143,
+    "combined_score": 0.8317922622700756,
+    "edge_jaccard": 0.8429752066115702,
+    "node_recall": 0.9782608695652174,
+    "division_fp": 2
+  },
+  "trained_one_view_head": {
+    "checkpoint": "reports/g02/v45f4.pt",
+    "checkpoint_sha256": "1cff90475b819b5652310ccb73ba57e1dc20069885962a06a5e10a6060c04473",
+    "metrics": "reports/g02/v45f4met.json",
+    "metrics_sha256": "1d67a099377dde39c04985982be1d427b3b4d3c7abcb6b4d0fa07d79c944b4b5",
+    "evaluation": "reports/g02/f4e2/report.json",
+    "evaluation_sha256": "ae0876b7cbb0c6adb6ca0652c2b08344b8ae05ac715bf79740be5778725d21b2",
+    "score": "reports/g02/f4e2/score1.json",
+    "score_sha256": "ddb2c5d0c92b922c484c2bb6c360081765a0271479dccc3b9298e63bf4f9819e",
+    "completed_steps": 1000,
+    "head_parameter_count": 1254,
+    "inference_seconds": 265.8783729169518,
+    "combined_score": 0.8292484796867599,
+    "edge_jaccard": 0.8395061728395061,
+    "node_recall": 0.9782608695652174,
+    "division_fp": 2
+  },
+  "released_eight_view_incumbent": {
+    "report": "reports/g02/f4ascr.json",
+    "sha256": "6cec6c64fc0b00a82e41764f8104bc579335279982ed3c98c62241bc5e2a9834",
+    "combined_score": 0.8380140874246439,
+    "edge_jaccard": 0.8483606557377049,
+    "node_recall": 0.9956521739130435
+  },
+  "deltas": {
+    "trained_minus_zero_combined_score": -0.002543782583315655,
+    "trained_minus_zero_edge_jaccard": -0.0034690347720640994,
+    "trained_minus_zero_node_recall": 0.0,
+    "zero_one_view_minus_eight_view_incumbent_combined_score": -0.006221825154568261,
+    "zero_one_view_minus_eight_view_incumbent_node_recall": -0.017391304347826098
+  },
+  "inference": [
+    "With the view count, detector, sparse solver, held-out video, and score semantics fixed, 1,000-step compact-head training lowers the combined score by 0.002544 and edge Jaccard by 0.003469 relative to an exactly zero head.",
+    "The trained and zero heads have identical node recall, so the observed harm is association/topology quality rather than recovered sparse-centre coverage.",
+    "The remaining gap from the zero one-view control to the released eight-view fallback is larger than the training effect, showing that view-ensemble removal is the main source of lost local quality in this experiment.",
+    "Do not extend, retrain, cross-validate, audit, package, or submit this center-correcting one-view head. Any later learned auxiliary must preserve released D4 detections exactly and prove improvement against this zero-head control before larger evaluation."
+  ]
+}

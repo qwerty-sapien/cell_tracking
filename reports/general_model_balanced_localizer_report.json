@@ -1,0 +1,158 @@
+{
+  "candidate_recall_rows": [
+    {
+      "dataset": "44b6_0c582fdc",
+      "gt_nodes": 3,
+      "gt_timepoints": 3,
+      "mean_candidates_per_gt_t": 120.0,
+      "median_nearest_um": 22.633630752563477,
+      "p90_nearest_um": 23.920812606811523,
+      "recall_10um": 0.0,
+      "recall_7um": 0.0,
+      "route": "clean_point",
+      "runtime_sec": 12.373337745666504
+    },
+    {
+      "dataset": "44b6_0c582fdc",
+      "gt_nodes": 3,
+      "gt_timepoints": 3,
+      "mean_candidates_per_gt_t": 260.0,
+      "median_nearest_um": 0.5745242834091187,
+      "p90_nearest_um": 1.981887698173523,
+      "recall_10um": 1.0,
+      "recall_7um": 1.0,
+      "route": "balanced_local",
+      "runtime_sec": 19.13374090194702
+    },
+    {
+      "dataset": "44b6_0c582fdc",
+      "gt_nodes": 3,
+      "gt_timepoints": 3,
+      "mean_candidates_per_gt_t": 260.0,
+      "median_nearest_um": 22.633630752563477,
+      "p90_nearest_um": 23.73200035095215,
+      "recall_10um": 0.0,
+      "recall_7um": 0.0,
+      "route": "dense_fusion",
+      "runtime_sec": 46.4916729927063
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "gt_nodes": 16,
+      "gt_timepoints": 3,
+      "mean_candidates_per_gt_t": 120.0,
+      "median_nearest_um": 8.944629669189453,
+      "p90_nearest_um": 14.41111946105957,
+      "recall_10um": 0.5625,
+      "recall_7um": 0.375,
+      "route": "clean_point",
+      "runtime_sec": 12.913766860961914
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "gt_nodes": 16,
+      "gt_timepoints": 3,
+      "mean_candidates_per_gt_t": 260.0,
+      "median_nearest_um": 4.910615921020508,
+      "p90_nearest_um": 15.6814603805542,
+      "recall_10um": 0.625,
+      "recall_7um": 0.625,
+      "route": "balanced_local",
+      "runtime_sec": 18.845792293548584
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "gt_nodes": 16,
+      "gt_timepoints": 3,
+      "mean_candidates_per_gt_t": 260.0,
+      "median_nearest_um": 8.800819396972656,
+      "p90_nearest_um": 14.402610778808594,
+      "recall_10um": 0.5625,
+      "recall_7um": 0.375,
+      "route": "dense_fusion",
+      "runtime_sec": 44.44419836997986
+    }
+  ],
+  "created_at": "2026-07-12T00:45:00+08:00",
+  "implemented": {
+    "proposal_sources": [
+      "tile_raw",
+      "tile_contrast"
+    ],
+    "router_policy": "balanced_compact for crowded/high-foreground profiles; clean_point remains for low-foreground saturated fields until edge scoring can handle extra candidates.",
+    "routes": [
+      "balanced_local",
+      "balanced_compact"
+    ]
+  },
+  "interpretation": [
+    "Spatially balanced local peaks fix the sampled 44b6 candidate-localization failure: recall@7um improved from 0.0 to 1.0.",
+    "The same source improves 6bba candidate recall, but over-prediction and edge confusion lower official adjusted score without a stronger edge/node selector.",
+    "Auto routing therefore enables balanced_compact only for crowded/high-foreground cases where sampled official score improved; low-foreground saturated 6bba remains clean_point until N7/N8 scoring work.",
+    "The next in-scope step is to build candidate graph labels/features so high-recall candidates can be pruned/scored instead of all emitted as nodes."
+  ],
+  "official_metric_smokes": {
+    "metric_44b6_balanced_compact": {
+      "adj_edge_jaccard": 1.0427712998068532,
+      "clip_end": 23,
+      "clip_start": 20,
+      "dataset": "44b6_0c582fdc",
+      "edge_jaccard": 1.0,
+      "edges": 209,
+      "metric_source": "official",
+      "node_recall": 1.0,
+      "nodes": 480,
+      "route": "balanced_compact",
+      "score": 1.0427712998068532,
+      "valid_graph": true
+    },
+    "metric_44b6_balanced_local": {
+      "adj_edge_jaccard": 1.0070033621861363,
+      "clip_end": 23,
+      "clip_start": 20,
+      "dataset": "44b6_0c582fdc",
+      "edge_jaccard": 1.0,
+      "edges": 334,
+      "metric_source": "official",
+      "node_recall": 1.0,
+      "nodes": 780,
+      "route": "balanced_local",
+      "score": 1.0070033621861363,
+      "valid_graph": true
+    },
+    "metric_6bba_balanced_local": {
+      "adj_edge_jaccard": 0.07431361709968676,
+      "clip_end": 3,
+      "clip_start": 0,
+      "dataset": "6bba_062c8d37",
+      "edge_jaccard": 0.1111111111111111,
+      "edges": 284,
+      "metric_source": "official",
+      "node_recall": 0.625,
+      "nodes": 780,
+      "route": "balanced_local",
+      "score": 0.07431361709968676,
+      "valid_graph": true
+    },
+    "metric_6bba_clean_baseline": {
+      "adj_edge_jaccard": 0.12871357498223168,
+      "clip_end": 3,
+      "clip_start": 0,
+      "dataset": "6bba_062c8d37",
+      "edge_jaccard": 0.14285714285714285,
+      "edges": 195,
+      "metric_source": "official",
+      "node_recall": 0.375,
+      "nodes": 360,
+      "route": "clean_point",
+      "score": 0.12871357498223168,
+      "valid_graph": true
+    }
+  },
+  "scope": "N4/N5 balanced localizer implementation and small locked fold-0 diagnostics; not final CV.",
+  "verification": {
+    "py_compile": "passed over src/scripts/tests",
+    "scorer_parity": "reports/general_model_scorer_parity.json overall_pass=true",
+    "unittest": "52 tests passed"
+  }
+}

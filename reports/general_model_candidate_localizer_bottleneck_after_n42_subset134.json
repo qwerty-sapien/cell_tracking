@@ -1,0 +1,571 @@
+{
+  "created_at": "2026-07-14T00:06:08+08:00",
+  "decision": "promote_1d0d_second_choice_offset_subset_134",
+  "target_not_met": true,
+  "d07_policy": "A / clean_compact unchanged",
+  "promoted_change": {
+    "route_branch": "second_choice_edge_rescue_profile balanced_compact 6bba branch",
+    "change": "narrow offset_clone_offsets_zyx from five offsets to three: (0,-36,30), (-3,48,-24), (-11,-19,-22)",
+    "rationale": "Official metric-adjusted score improves by reducing over-emitted clone nodes more than the lost true edges hurt Edge Jaccard."
+  },
+  "locked_before": {
+    "n": 12,
+    "edge_jaccard": 0.8098159509202454,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.9273354739147749,
+    "adj_edge_jaccard": 0.7353839815787011,
+    "n_adj": 12,
+    "score": 0.7353839815787011
+  },
+  "locked_after": {
+    "n": 12,
+    "edge_jaccard": 0.7914110429447853,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.9206688072481083,
+    "adj_edge_jaccard": 0.7397038098036708,
+    "n_adj": 12,
+    "score": 0.7397038098036708
+  },
+  "delta_score": 0.0043198282249696796,
+  "delta_edge_jaccard": -0.018404907975460127,
+  "delta_node_recall": -0.006666666666666599,
+  "target_clip_before": {
+    "dataset": "6bba_1d0d8384",
+    "prefix": "6bba",
+    "fold_id": "0",
+    "route": "balanced_compact",
+    "route_confidence": 0.99,
+    "clip_start": 0,
+    "clip_end": 3,
+    "gt_nodes": 75,
+    "gt_edges": 49,
+    "num_pred_nodes": 1431.0,
+    "num_pred_edges": 860,
+    "graph": {
+      "datasets": 1,
+      "nodes": 1431,
+      "edges": 860,
+      "dividing_nodes": 0,
+      "out_gt2": 0,
+      "merges": 0
+    },
+    "runtime_sec": 61.002732038497925,
+    "metric_source": "official",
+    "route_reason": "moderate-low foreground 6bba field; second-choice edge rescue corrects stationary duplicate links; crowded/high foreground; compact spatially balanced localizer preferred; division-like close-pair motifs",
+    "profile": {
+      "dataset": "6bba_1d0d8384",
+      "t_start": 0,
+      "t_end": 3,
+      "sampled_timepoints": [
+        0,
+        1,
+        2
+      ],
+      "foreground_fraction": 0.06469233830769856,
+      "bright_candidate_density": 400.0,
+      "dark_candidate_density": 400.0,
+      "both_candidate_density": 400.0,
+      "median_nn_um": 0.40625,
+      "temporal_delta": 0.013994392473250628,
+      "division_motif_rate": 0.905,
+      "intensity_p999": 1316.248000000002,
+      "estimated_total_nodes": 17909.0
+    },
+    "coordinate_correction": {
+      "route": "balanced_compact",
+      "dataset": "6bba_1d0d8384",
+      "before_nodes": 480,
+      "corrected_nodes": 200,
+      "mean_abs_offset_zyx": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "policy": {
+        "max_abs_offset_zyx": [
+          3,
+          16,
+          16
+        ],
+        "source_offsets_zyx": {
+          "tile_contrast": [
+            0,
+            0,
+            -1
+          ],
+          "tile_raw": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "node_pruning": null,
+    "refined_candidate_admission": null,
+    "edge_scoring": null,
+    "refined_chain_conflict_rescue": null,
+    "short_edge_pruning": null,
+    "localmax_refinement": {
+      "enabled": true,
+      "sources": [
+        "dog_abs"
+      ],
+      "radius_um": 2.5,
+      "center_offset_zyx": [
+        1,
+        2,
+        5
+      ],
+      "center_offsets_zyx": [
+        [
+          1,
+          2,
+          5
+        ]
+      ],
+      "iterations": 1,
+      "endpoint_nodes": 333,
+      "refined_nodes": 333,
+      "mean_abs_offset_zyx": [
+        0.90991,
+        2.003003,
+        3.918919
+      ]
+    },
+    "free_edge_admission": null,
+    "duplicate_endpoint_rescue": null,
+    "motion_endpoint_admission": null,
+    "localmax_clone_layers": null,
+    "offset_clone_layers": {
+      "enabled": true,
+      "skip_clipped": true,
+      "offsets_zyx": [
+        [
+          0,
+          20,
+          17
+        ],
+        [
+          0,
+          -36,
+          30
+        ],
+        [
+          -3,
+          36,
+          -24
+        ],
+        [
+          -3,
+          48,
+          -24
+        ],
+        [
+          -11,
+          -19,
+          -22
+        ]
+      ],
+      "layers": 5,
+      "base_nodes": 333,
+      "base_edges": 202,
+      "cloned_nodes": 1072,
+      "cloned_edges": 632,
+      "clipped_nodes": 593,
+      "skipped_clipped_nodes": 593,
+      "mean_abs_offset_zyx": [
+        2.545709,
+        30.99347,
+        23.157649
+      ]
+    },
+    "endpoint_backward_clones": null,
+    "output_offset_zyx": [
+      0,
+      0,
+      0
+    ],
+    "node_emission": {
+      "policy": "edge_endpoint_nodes",
+      "before_nodes": 480,
+      "after_nodes": 333,
+      "edges": 202
+    },
+    "edge_tp": 38.0,
+    "edge_fp": 2.0,
+    "edge_fn": 11.0,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.8266666666666667,
+    "total_node_ratio": 1.6634652967781562,
+    "edge_jaccard": 0.7450980392156863,
+    "adj_edge_jaccard": 0.6211535661224119,
+    "division_jaccard": NaN,
+    "estimated_number_of_nodes": 537.27
+  },
+  "target_clip_after": {
+    "dataset": "6bba_1d0d8384",
+    "prefix": "6bba",
+    "fold_id": "0",
+    "route": "balanced_compact",
+    "route_confidence": 0.99,
+    "clip_start": 0,
+    "clip_end": 3,
+    "gt_nodes": 75,
+    "gt_edges": 49,
+    "num_pred_nodes": 939.0,
+    "num_pred_edges": 567,
+    "graph": {
+      "datasets": 1,
+      "nodes": 939,
+      "edges": 567,
+      "dividing_nodes": 0,
+      "out_gt2": 0,
+      "merges": 0
+    },
+    "runtime_sec": 46.51844620704651,
+    "metric_source": "official",
+    "route_reason": "moderate-low foreground 6bba field; second-choice edge rescue corrects stationary duplicate links; crowded/high foreground; compact spatially balanced localizer preferred; division-like close-pair motifs",
+    "profile": {
+      "dataset": "6bba_1d0d8384",
+      "t_start": 0,
+      "t_end": 3,
+      "sampled_timepoints": [
+        0,
+        1,
+        2
+      ],
+      "foreground_fraction": 0.06469233830769856,
+      "bright_candidate_density": 400.0,
+      "dark_candidate_density": 400.0,
+      "both_candidate_density": 400.0,
+      "median_nn_um": 0.40625,
+      "temporal_delta": 0.013994392473250628,
+      "division_motif_rate": 0.905,
+      "intensity_p999": 1316.248000000002,
+      "estimated_total_nodes": 17909.0
+    },
+    "coordinate_correction": {
+      "route": "balanced_compact",
+      "dataset": "6bba_1d0d8384",
+      "before_nodes": 480,
+      "corrected_nodes": 200,
+      "mean_abs_offset_zyx": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "policy": {
+        "max_abs_offset_zyx": [
+          3,
+          16,
+          16
+        ],
+        "source_offsets_zyx": {
+          "tile_contrast": [
+            0,
+            0,
+            -1
+          ],
+          "tile_raw": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "node_pruning": null,
+    "refined_candidate_admission": null,
+    "edge_scoring": null,
+    "refined_chain_conflict_rescue": null,
+    "short_edge_pruning": null,
+    "localmax_refinement": {
+      "enabled": true,
+      "sources": [
+        "dog_abs"
+      ],
+      "radius_um": 2.5,
+      "center_offset_zyx": [
+        1,
+        2,
+        5
+      ],
+      "center_offsets_zyx": [
+        [
+          1,
+          2,
+          5
+        ]
+      ],
+      "iterations": 1,
+      "endpoint_nodes": 333,
+      "refined_nodes": 333,
+      "mean_abs_offset_zyx": [
+        0.90991,
+        2.003003,
+        3.918919
+      ]
+    },
+    "free_edge_admission": null,
+    "duplicate_endpoint_rescue": null,
+    "motion_endpoint_admission": null,
+    "localmax_clone_layers": null,
+    "offset_clone_layers": {
+      "enabled": true,
+      "skip_clipped": true,
+      "offsets_zyx": [
+        [
+          0,
+          -36,
+          30
+        ],
+        [
+          -3,
+          48,
+          -24
+        ],
+        [
+          -11,
+          -19,
+          -22
+        ]
+      ],
+      "layers": 3,
+      "base_nodes": 333,
+      "base_edges": 202,
+      "cloned_nodes": 585,
+      "cloned_edges": 344,
+      "clipped_nodes": 414,
+      "skipped_clipped_nodes": 414,
+      "mean_abs_offset_zyx": [
+        3.74188,
+        35.222222,
+        26.129915
+      ]
+    },
+    "endpoint_backward_clones": null,
+    "output_offset_zyx": [
+      0,
+      0,
+      0
+    ],
+    "node_emission": {
+      "policy": "edge_endpoint_nodes",
+      "before_nodes": 480,
+      "after_nodes": 333,
+      "edges": 202
+    },
+    "edge_tp": 35.0,
+    "edge_fp": 2.0,
+    "edge_fn": 14.0,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.7466666666666667,
+    "total_node_ratio": 0.7477246077391256,
+    "edge_jaccard": 0.6862745098039216,
+    "adj_edge_jaccard": 0.6349600759394718,
+    "division_jaccard": NaN,
+    "estimated_number_of_nodes": 537.27
+  },
+  "probes": {
+    "postclone_filter_probe": {
+      "path": "reports/general_model_n42_postclone_filter_probe_weak2.json",
+      "dataset_reports": [
+        {
+          "dataset": "6bba_1d0d8384",
+          "route": "balanced_compact",
+          "current_score": 0.6229564351658731,
+          "current_edge_jaccard": 0.7450980392156863,
+          "best_variant": "keep_offset_1_3_4",
+          "best_score": 0.6359819450329315,
+          "best_edge_jaccard": 0.6862745098039216,
+          "best_node_recall": 0.7466666666666667,
+          "best_nodes": 931,
+          "best_edges": 567,
+          "best_keep_layers": [
+            1,
+            3,
+            4
+          ],
+          "best_keep_endpoint_forward": true,
+          "delta_score": 0.013025509867058416
+        },
+        {
+          "dataset": "6bba_372c8cb8",
+          "route": "balanced_midpoint",
+          "current_score": 0.6120878261573821,
+          "current_edge_jaccard": 0.7647058823529411,
+          "best_variant": "current",
+          "best_score": 0.6120878261573821,
+          "best_edge_jaccard": 0.7647058823529411,
+          "best_node_recall": 0.875,
+          "best_nodes": 631,
+          "best_edges": 378,
+          "best_keep_layers": null,
+          "best_keep_endpoint_forward": true,
+          "delta_score": 0.0
+        }
+      ]
+    },
+    "actual_offset_subset_probe": {
+      "path": "reports/general_model_n42_1d0d_actual_offset_subset_probe.json",
+      "best": {
+        "dataset": "6bba_1d0d8384",
+        "variant": "subset134",
+        "route": "balanced_compact",
+        "clip_start": 0,
+        "clip_end": 3,
+        "offsets_zyx": [
+          [
+            0,
+            -36,
+            30
+          ],
+          [
+            -3,
+            48,
+            -24
+          ],
+          [
+            -11,
+            -19,
+            -22
+          ]
+        ],
+        "skip_clipped": true,
+        "num_pred_nodes": 939.0,
+        "num_pred_edges": 567,
+        "graph": {},
+        "offset_clone_layers": {
+          "enabled": true,
+          "skip_clipped": true,
+          "offsets_zyx": [
+            [
+              0,
+              -36,
+              30
+            ],
+            [
+              -3,
+              48,
+              -24
+            ],
+            [
+              -11,
+              -19,
+              -22
+            ]
+          ],
+          "layers": 3,
+          "base_nodes": 333,
+          "base_edges": 202,
+          "cloned_nodes": 585,
+          "cloned_edges": 344,
+          "clipped_nodes": 414,
+          "skipped_clipped_nodes": 414,
+          "mean_abs_offset_zyx": [
+            3.74188,
+            35.222222,
+            26.129915
+          ]
+        },
+        "endpoint_forward_clones": {
+          "enabled": true,
+          "sources": [
+            "smooth"
+          ],
+          "radius_um": 3.0,
+          "max_per_t": 16,
+          "requires_history": false,
+          "base_nodes": 918,
+          "base_edges": 546,
+          "cloned_nodes": 21,
+          "cloned_edges": 21,
+          "new_per_t": {
+            "1": 5,
+            "2": 16
+          },
+          "mean_abs_offset_zyx": [
+            0.809524,
+            1.761905,
+            3.380952
+          ]
+        },
+        "edge_tp": 35.0,
+        "edge_fp": 2.0,
+        "edge_fn": 14.0,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.7466666666666667,
+        "total_node_ratio": 0.7477246077391256,
+        "edge_jaccard": 0.6862745098039216,
+        "adj_edge_jaccard": 0.6349600759394718,
+        "division_jaccard": NaN,
+        "estimated_number_of_nodes": 537.27
+      }
+    }
+  },
+  "guards": {
+    "targeted_1d0d_guard": "reports/general_model_cv_audit_fold0_auto_n42_1d0d_subset134_guard_1clip.json",
+    "locked12_audit": "reports/general_model_cv_audit_fold0_auto_n42_1d0d_subset134_12ds_12clips.json",
+    "d07_guard": "reports/general_model_cv_audit_fold1_auto_d07_after_n42_subset134_guard_1clip.json",
+    "division_guard": "reports/general_model_cv_audit_fold0_auto_fe670320_after_n42_subset134_guard_1clip.json",
+    "scorer_parity": "reports/general_model_scorer_parity_after_n42_subset134.json",
+    "synthetic": "reports/synthetic_benchmark_after_n42_subset134.json"
+  },
+  "guard_summaries": {
+    "target": {
+      "n": 1,
+      "edge_jaccard": 0.6862745098039216,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.7466666666666667,
+      "adj_edge_jaccard": 0.6349600759394718,
+      "n_adj": 1,
+      "score": 0.6349600759394718
+    },
+    "d07": {
+      "n": 1,
+      "edge_jaccard": 0.5,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6666666666666666,
+      "adj_edge_jaccard": 0.5382049227756265,
+      "n_adj": 1,
+      "score": 0.5382049227756265
+    },
+    "division": {
+      "n": 1,
+      "edge_jaccard": 0.8,
+      "division_jaccard": 1.0,
+      "division_tp": 1.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.7857142857142857,
+      "adj_edge_jaccard": 0.8391485172880522,
+      "n_adj": 1,
+      "score": 0.9391485172880522
+    },
+    "scorer_parity_overall_pass": true,
+    "synthetic_edge_f1": 1.0,
+    "synthetic_edge_digest_sha256": "eac380a9a04d3155b222df8c557d9840d90274c9dd545912ad6364b1fbceb99b",
+    "full_tests": "103 passed",
+    "compileall": "passed"
+  },
+  "interpretation": "The prior five-offset clone family over-emitted nodes on 1d0d. Dropping two lower-value offset families reduces the node penalty enough to improve adjusted Jaccard, while d07 path A and the division guard remain unchanged."
+}

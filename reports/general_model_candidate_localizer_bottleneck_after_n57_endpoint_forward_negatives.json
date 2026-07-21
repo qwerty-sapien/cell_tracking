@@ -1,0 +1,71 @@
+{
+  "kind": "candidate_localizer_bottleneck_decision",
+  "iteration": "N57",
+  "decision": "no_production_promotion",
+  "baseline": {
+    "locked12_report": "reports/general_model_cv_audit_fold0_auto_n54_2819_rawonly_filter_12ds_12clips.json",
+    "locked12_score": 0.8100058174064654,
+    "locked12_edge_jaccard": 0.8385093167701864,
+    "locked12_node_recall": 0.9352830047789725
+  },
+  "changes_kept": [
+    {
+      "path": "scripts/probe_endpoint_forward_variants.py",
+      "reason": "Reusable parity probe for topology-aware endpoint-forward clone variants with official local scorer."
+    },
+    {
+      "path": "scripts/audit_general_route_cv.py",
+      "reason": "Audit rows now include endpoint_forward_clones diagnostics, matching existing endpoint_backward_clones visibility."
+    }
+  ],
+  "probe_reports": {
+    "062c_endpoint_forward_corrected": "reports/general_model_g01_n57_062c_endpoint_forward_probe_corrected.json",
+    "1d0d_endpoint_forward_corrected": "reports/general_model_g01_n57_1d0d_endpoint_forward_probe_corrected.json",
+    "1d0d_endpoint_forward_localcontrast": "reports/general_model_g01_n57_1d0d_endpoint_forward_localcontrast_probe.json",
+    "1d0d_postclone_filter": "reports/general_model_g01_n57_1d0d_postclone_filter_after_n54.json",
+    "1d0d_audit_with_endpoint_forward_diag": "reports/general_model_g01_n57_current_1d0d_fresh_audit_with_endpoint_forward_diag.json"
+  },
+  "results": [
+    {
+      "dataset": "6bba_062c8d37",
+      "probe": "endpoint_forward_corrected",
+      "best_variant": "current",
+      "best_score": 0.7813819789939194,
+      "best_edge_jaccard": 0.8,
+      "best_node_recall": 0.8125,
+      "interpretation": "Smooth/raw/dog endpoint-forward clones did not recover the two residual missed edges; they preserved edge TP but added nodes/edges and lowered adjusted score."
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "probe": "endpoint_forward_cap_source",
+      "best_variant": "current",
+      "best_score": 0.6871475794293372,
+      "best_edge_jaccard": 0.74,
+      "best_node_recall": 0.76,
+      "interpretation": "Reducing the endpoint-forward cap or changing to raw/dog maps lost true edges; the current 16 smooth forward clones remain best."
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "probe": "endpoint_forward_localcontrast",
+      "best_variant": "current",
+      "best_score": 0.6871475794293372,
+      "best_edge_jaccard": 0.74,
+      "best_node_recall": 0.76,
+      "interpretation": "Local-contrast and dog-bright endpoint-forward variants tied current at the same graph score; dog-dark regressed."
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "probe": "postclone_filter",
+      "best_variant": "current",
+      "best_score": 0.6871475794293372,
+      "best_edge_jaccard": 0.74,
+      "best_node_recall": 0.76,
+      "interpretation": "Dropping endpoint-forward clones or offset-layer subsets did not improve the adjusted score; simple post-clone pruning is exhausted for this row."
+    }
+  ],
+  "next_direction": {
+    "primary": "Do not keep probing global endpoint-forward sources/caps or post-clone layer deletion on 062c/1d0d.",
+    "recommended": "Move to topology-aware candidate insertion or a constrained edge-swap/reranker that uses raw candidate conflicts and endpoint lineage context.",
+    "d07_policy": "Keep d07 on route A/clean_compact; no N57 route change touches d07."
+  }
+}

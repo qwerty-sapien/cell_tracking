@@ -1,0 +1,968 @@
+{
+  "kind": "route_link_param_probe",
+  "created_at_unix": 1783896129.0040581,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "fold_id": "0",
+  "datasets": [
+    "6bba_0c7fa718"
+  ],
+  "route": "balanced_dog_tight",
+  "clip_length": 3,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "grid": {
+    "max_link_um": [
+      3.5,
+      4.0,
+      4.5
+    ],
+    "max_neighbors": [
+      1,
+      2
+    ],
+    "edge_cost_threshold": [
+      0.35,
+      0.45
+    ]
+  },
+  "summary": {
+    "n": 12,
+    "edge_jaccard": 0.26693227091633465,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.48148148148148145,
+    "adj_edge_jaccard": 0.2766054220237487,
+    "n_adj": 12,
+    "score": 0.2766054220237487
+  },
+  "dataset_reports": [
+    {
+      "dataset": "6bba_0c7fa718",
+      "best_score": 0.4102075702075702,
+      "best_edge_jaccard": 0.4,
+      "best_node_recall": 0.5555555555555556,
+      "best_max_link_um": 4.5,
+      "best_max_neighbors": 2,
+      "best_edge_cost_threshold": 0.45,
+      "best_nodes": 305.0,
+      "best_edges": 174
+    }
+  ],
+  "rows": [
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_tight",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.35,
+      "num_pred_nodes": 197.0,
+      "num_pred_edges": 104,
+      "num_edge_candidates": 182,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 570,
+        "after_nodes": 197,
+        "edges": 104
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          3,
+          5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            3,
+            5,
+            -5
+          ]
+        ],
+        "iterations": 2,
+        "endpoint_nodes": 197,
+        "refined_nodes": 197,
+        "mean_abs_offset_zyx": [
+          1.598985,
+          5.751269,
+          4.852792
+        ]
+      },
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 197,
+        "num_edges": 104,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8273348260420804
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 3.0,
+      "edge_fn": 14.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.4074074074074074,
+      "total_node_ratio": -0.518925518925519,
+      "edge_jaccard": 0.19047619047619047,
+      "adj_edge_jaccard": 0.20036048607477178,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_tight",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.45,
+      "num_pred_nodes": 231.0,
+      "num_pred_edges": 126,
+      "num_edge_candidates": 182,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 570,
+        "after_nodes": 231,
+        "edges": 126
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          3,
+          5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            3,
+            5,
+            -5
+          ]
+        ],
+        "iterations": 2,
+        "endpoint_nodes": 231,
+        "refined_nodes": 231,
+        "mean_abs_offset_zyx": [
+          1.588745,
+          5.692641,
+          4.852814
+        ]
+      },
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 231,
+        "num_edges": 126,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7970147556604458
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 3.0,
+      "edge_fn": 14.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.4074074074074074,
+      "total_node_ratio": -0.4358974358974359,
+      "edge_jaccard": 0.19047619047619047,
+      "adj_edge_jaccard": 0.1987789987789988,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_tight",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 2,
+      "edge_cost_threshold": 0.35,
+      "num_pred_nodes": 198.0,
+      "num_pred_edges": 105,
+      "num_edge_candidates": 241,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 570,
+        "after_nodes": 198,
+        "edges": 105
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          3,
+          5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            3,
+            5,
+            -5
+          ]
+        ],
+        "iterations": 2,
+        "endpoint_nodes": 198,
+        "refined_nodes": 198,
+        "mean_abs_offset_zyx": [
+          1.59596,
+          5.747475,
+          4.853535
+        ]
+      },
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 198,
+        "num_edges": 105,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8272596936367167
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 3.0,
+      "edge_fn": 14.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.4074074074074074,
+      "total_node_ratio": -0.5164835164835165,
+      "edge_jaccard": 0.19047619047619047,
+      "adj_edge_jaccard": 0.20031397174254317,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_tight",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 2,
+      "edge_cost_threshold": 0.45,
+      "num_pred_nodes": 234.0,
+      "num_pred_edges": 129,
+      "num_edge_candidates": 241,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 570,
+        "after_nodes": 234,
+        "edges": 129
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          3,
+          5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            3,
+            5,
+            -5
+          ]
+        ],
+        "iterations": 2,
+        "endpoint_nodes": 234,
+        "refined_nodes": 234,
+        "mean_abs_offset_zyx": [
+          1.58547,
+          5.683761,
+          4.84188
+        ]
+      },
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 234,
+        "num_edges": 129,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7950067525480528
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 3.0,
+      "edge_fn": 14.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.4074074074074074,
+      "total_node_ratio": -0.42857142857142855,
+      "edge_jaccard": 0.19047619047619047,
+      "adj_edge_jaccard": 0.19863945578231293,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_tight",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 4.0,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.35,
+      "num_pred_nodes": 234.0,
+      "num_pred_edges": 128,
+      "num_edge_candidates": 210,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 570,
+        "after_nodes": 234,
+        "edges": 128
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          3,
+          5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            3,
+            5,
+            -5
+          ]
+        ],
+        "iterations": 2,
+        "endpoint_nodes": 234,
+        "refined_nodes": 234,
+        "mean_abs_offset_zyx": [
+          1.589744,
+          5.688034,
+          4.858974
+        ]
+      },
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 234,
+        "num_edges": 128,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8410464001961035
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 3.0,
+      "edge_fn": 14.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.4074074074074074,
+      "total_node_ratio": -0.42857142857142855,
+      "edge_jaccard": 0.19047619047619047,
+      "adj_edge_jaccard": 0.19863945578231293,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_tight",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 4.0,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.45,
+      "num_pred_nodes": 270.0,
+      "num_pred_edges": 150,
+      "num_edge_candidates": 210,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 570,
+        "after_nodes": 270,
+        "edges": 150
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          3,
+          5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            3,
+            5,
+            -5
+          ]
+        ],
+        "iterations": 2,
+        "endpoint_nodes": 270,
+        "refined_nodes": 270,
+        "mean_abs_offset_zyx": [
+          1.596296,
+          5.651852,
+          4.907407
+        ]
+      },
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 270,
+        "num_edges": 150,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8129564622035085
+      },
+      "edge_tp": 7.0,
+      "edge_fp": 3.0,
+      "edge_fn": 11.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.5555555555555556,
+      "total_node_ratio": -0.34065934065934067,
+      "edge_jaccard": 0.3333333333333333,
+      "adj_edge_jaccard": 0.3446886446886447,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_tight",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 4.0,
+      "max_neighbors": 2,
+      "edge_cost_threshold": 0.35,
+      "num_pred_nodes": 237.0,
+      "num_pred_edges": 131,
+      "num_edge_candidates": 287,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 570,
+        "after_nodes": 237,
+        "edges": 131
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          3,
+          5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            3,
+            5,
+            -5
+          ]
+        ],
+        "iterations": 2,
+        "endpoint_nodes": 237,
+        "refined_nodes": 237,
+        "mean_abs_offset_zyx": [
+          1.586498,
+          5.679325,
+          4.848101
+        ]
+      },
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 237,
+        "num_edges": 131,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8396373541072625
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 3.0,
+      "edge_fn": 14.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.4074074074074074,
+      "total_node_ratio": -0.42124542124542125,
+      "edge_jaccard": 0.19047619047619047,
+      "adj_edge_jaccard": 0.19849991278562706,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_tight",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 4.0,
+      "max_neighbors": 2,
+      "edge_cost_threshold": 0.45,
+      "num_pred_nodes": 278.0,
+      "num_pred_edges": 156,
+      "num_edge_candidates": 287,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 570,
+        "after_nodes": 278,
+        "edges": 156
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          3,
+          5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            3,
+            5,
+            -5
+          ]
+        ],
+        "iterations": 2,
+        "endpoint_nodes": 278,
+        "refined_nodes": 278,
+        "mean_abs_offset_zyx": [
+          1.593525,
+          5.622302,
+          4.902878
+        ]
+      },
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 278,
+        "num_edges": 156,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8098894125676936
+      },
+      "edge_tp": 7.0,
+      "edge_fp": 3.0,
+      "edge_fn": 11.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.5555555555555556,
+      "total_node_ratio": -0.32112332112332115,
+      "edge_jaccard": 0.3333333333333333,
+      "adj_edge_jaccard": 0.3440374440374441,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_tight",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 4.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.35,
+      "num_pred_nodes": 270.0,
+      "num_pred_edges": 150,
+      "num_edge_candidates": 240,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 570,
+        "after_nodes": 270,
+        "edges": 150
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          3,
+          5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            3,
+            5,
+            -5
+          ]
+        ],
+        "iterations": 2,
+        "endpoint_nodes": 270,
+        "refined_nodes": 270,
+        "mean_abs_offset_zyx": [
+          1.596296,
+          5.651852,
+          4.907407
+        ]
+      },
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 270,
+        "num_edges": 150,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8506445099770652
+      },
+      "edge_tp": 7.0,
+      "edge_fp": 3.0,
+      "edge_fn": 11.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.5555555555555556,
+      "total_node_ratio": -0.34065934065934067,
+      "edge_jaccard": 0.3333333333333333,
+      "adj_edge_jaccard": 0.3446886446886447,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_tight",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 4.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.45,
+      "num_pred_nodes": 294.0,
+      "num_pred_edges": 165,
+      "num_edge_candidates": 240,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 570,
+        "after_nodes": 294,
+        "edges": 165
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          3,
+          5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            3,
+            5,
+            -5
+          ]
+        ],
+        "iterations": 2,
+        "endpoint_nodes": 294,
+        "refined_nodes": 294,
+        "mean_abs_offset_zyx": [
+          1.591837,
+          5.632653,
+          4.945578
+        ]
+      },
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 294,
+        "num_edges": 165,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8319947684209965
+      },
+      "edge_tp": 7.0,
+      "edge_fp": 3.0,
+      "edge_fn": 11.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.5555555555555556,
+      "total_node_ratio": -0.28205128205128205,
+      "edge_jaccard": 0.3333333333333333,
+      "adj_edge_jaccard": 0.3427350427350427,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_tight",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 4.5,
+      "max_neighbors": 2,
+      "edge_cost_threshold": 0.35,
+      "num_pred_nodes": 278.0,
+      "num_pred_edges": 156,
+      "num_edge_candidates": 339,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 570,
+        "after_nodes": 278,
+        "edges": 156
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          3,
+          5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            3,
+            5,
+            -5
+          ]
+        ],
+        "iterations": 2,
+        "endpoint_nodes": 278,
+        "refined_nodes": 278,
+        "mean_abs_offset_zyx": [
+          1.593525,
+          5.622302,
+          4.902878
+        ]
+      },
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 278,
+        "num_edges": 156,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8482933298084193
+      },
+      "edge_tp": 7.0,
+      "edge_fp": 3.0,
+      "edge_fn": 11.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.5555555555555556,
+      "total_node_ratio": -0.32112332112332115,
+      "edge_jaccard": 0.3333333333333333,
+      "adj_edge_jaccard": 0.3440374440374441,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_tight",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 4.5,
+      "max_neighbors": 2,
+      "edge_cost_threshold": 0.45,
+      "num_pred_nodes": 305.0,
+      "num_pred_edges": 174,
+      "num_edge_candidates": 339,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 570,
+        "after_nodes": 305,
+        "edges": 174
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          3,
+          5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            3,
+            5,
+            -5
+          ]
+        ],
+        "iterations": 2,
+        "endpoint_nodes": 305,
+        "refined_nodes": 305,
+        "mean_abs_offset_zyx": [
+          1.593443,
+          5.613115,
+          4.940984
+        ]
+      },
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 305,
+        "num_edges": 174,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8276842869952538
+      },
+      "edge_tp": 8.0,
+      "edge_fp": 2.0,
+      "edge_fn": 10.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.5555555555555556,
+      "total_node_ratio": -0.25518925518925517,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4102075702075702,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    }
+  ],
+  "runtime_sec": 61.95183205604553
+}

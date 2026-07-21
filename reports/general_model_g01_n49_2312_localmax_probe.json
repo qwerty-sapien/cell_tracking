@@ -1,0 +1,417 @@
+{
+  "kind": "localmax_refinement_probe",
+  "dataset": "6bba_2312ac41",
+  "rows": [
+    {
+      "variant": "current",
+      "radius": null,
+      "sources": null,
+      "offsets": null,
+      "nodes": 597,
+      "edges": 365,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          1,
+          -5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            -5,
+            -5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 225,
+        "refined_nodes": 225,
+        "mean_abs_offset_zyx": [
+          0.44,
+          3.168889,
+          3.702222
+        ]
+      },
+      "edge_tp": 25.0,
+      "edge_fp": 0.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 597.0,
+      "node_recall": 0.8444444444444444,
+      "total_node_ratio": 0.6652719665271967,
+      "edge_jaccard": 0.8333333333333334,
+      "adj_edge_jaccard": 0.7778940027894004,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 358.5
+    },
+    {
+      "variant": "r3p0",
+      "radius": 3.0,
+      "sources": null,
+      "offsets": null,
+      "nodes": 597,
+      "edges": 365,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 3.0,
+        "center_offset_zyx": [
+          1,
+          -5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            -5,
+            -5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 225,
+        "refined_nodes": 225,
+        "mean_abs_offset_zyx": [
+          0.568889,
+          3.702222,
+          4.511111
+        ]
+      },
+      "edge_tp": 22.0,
+      "edge_fp": 5.0,
+      "edge_fn": 8.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 597.0,
+      "node_recall": 0.8444444444444444,
+      "total_node_ratio": 0.6652719665271967,
+      "edge_jaccard": 0.6285714285714286,
+      "adj_edge_jaccard": 0.5867543335325762,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 358.5
+    },
+    {
+      "variant": "r3p5",
+      "radius": 3.5,
+      "sources": null,
+      "offsets": null,
+      "nodes": 594,
+      "edges": 363,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 3.5,
+        "center_offset_zyx": [
+          1,
+          -5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            -5,
+            -5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 225,
+        "refined_nodes": 225,
+        "mean_abs_offset_zyx": [
+          0.777778,
+          4.142222,
+          4.968889
+        ]
+      },
+      "edge_tp": 23.0,
+      "edge_fp": 3.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 594.0,
+      "node_recall": 0.8444444444444444,
+      "total_node_ratio": 0.6569037656903766,
+      "edge_jaccard": 0.696969696969697,
+      "adj_edge_jaccard": 0.6511854951185496,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 358.5
+    },
+    {
+      "variant": "r4p0",
+      "radius": 4.0,
+      "sources": null,
+      "offsets": null,
+      "nodes": 594,
+      "edges": 363,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 4.0,
+        "center_offset_zyx": [
+          1,
+          -5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            -5,
+            -5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 225,
+        "refined_nodes": 225,
+        "mean_abs_offset_zyx": [
+          0.982222,
+          4.448889,
+          5.257778
+        ]
+      },
+      "edge_tp": 21.0,
+      "edge_fp": 7.0,
+      "edge_fn": 9.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 594.0,
+      "node_recall": 0.8444444444444444,
+      "total_node_ratio": 0.6569037656903766,
+      "edge_jaccard": 0.5675675675675675,
+      "adj_edge_jaccard": 0.5302838403256813,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 358.5
+    },
+    {
+      "variant": "r3p5_lc",
+      "radius": 3.5,
+      "sources": [
+        "local_contrast"
+      ],
+      "offsets": null,
+      "nodes": 597,
+      "edges": 365,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "local_contrast"
+        ],
+        "radius_um": 3.5,
+        "center_offset_zyx": [
+          1,
+          -5,
+          -5
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            -5,
+            -5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 225,
+        "refined_nodes": 225,
+        "mean_abs_offset_zyx": [
+          0.76,
+          4.408889,
+          4.528889
+        ]
+      },
+      "edge_tp": 20.0,
+      "edge_fp": 10.0,
+      "edge_fn": 10.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 597.0,
+      "node_recall": 0.8666666666666667,
+      "total_node_ratio": 0.6652719665271967,
+      "edge_jaccard": 0.5,
+      "adj_edge_jaccard": 0.46673640167364017,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 358.5
+    },
+    {
+      "variant": "offset_0",
+      "radius": 2.5,
+      "sources": null,
+      "offsets": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "nodes": 600,
+      "edges": 367,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          0,
+          0,
+          0
+        ],
+        "center_offsets_zyx": [
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 225,
+        "refined_nodes": 220,
+        "mean_abs_offset_zyx": [
+          0.586364,
+          1.604545,
+          1.622727
+        ]
+      },
+      "edge_tp": 21.0,
+      "edge_fp": 8.0,
+      "edge_fn": 9.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 600.0,
+      "node_recall": 0.8666666666666667,
+      "total_node_ratio": 0.6736401673640168,
+      "edge_jaccard": 0.5526315789473685,
+      "adj_edge_jaccard": 0.5154040960140939,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 358.5
+    },
+    {
+      "variant": "offset_small",
+      "radius": 2.5,
+      "sources": null,
+      "offsets": [
+        [
+          0,
+          -2,
+          -2
+        ]
+      ],
+      "nodes": 597,
+      "edges": 366,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          0,
+          -2,
+          -2
+        ],
+        "center_offsets_zyx": [
+          [
+            0,
+            -2,
+            -2
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 225,
+        "refined_nodes": 224,
+        "mean_abs_offset_zyx": [
+          0.553571,
+          2.125,
+          2.696429
+        ]
+      },
+      "edge_tp": 24.0,
+      "edge_fp": 2.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 597.0,
+      "node_recall": 0.8444444444444444,
+      "total_node_ratio": 0.6652719665271967,
+      "edge_jaccard": 0.75,
+      "adj_edge_jaccard": 0.7001046025104602,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 358.5
+    }
+  ],
+  "summary": {
+    "n": 7,
+    "edge_jaccard": 0.636734693877551,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.8507936507936508,
+    "adj_edge_jaccard": 0.5944530783024508,
+    "n_adj": 7,
+    "score": 0.5944530783024508
+  },
+  "best": {
+    "variant": "current",
+    "radius": null,
+    "sources": null,
+    "offsets": null,
+    "nodes": 597,
+    "edges": 365,
+    "localmax_refinement": {
+      "enabled": true,
+      "sources": [
+        "dog_abs"
+      ],
+      "radius_um": 2.5,
+      "center_offset_zyx": [
+        1,
+        -5,
+        -5
+      ],
+      "center_offsets_zyx": [
+        [
+          1,
+          -5,
+          -5
+        ]
+      ],
+      "iterations": 1,
+      "endpoint_nodes": 225,
+      "refined_nodes": 225,
+      "mean_abs_offset_zyx": [
+        0.44,
+        3.168889,
+        3.702222
+      ]
+    },
+    "edge_tp": 25.0,
+    "edge_fp": 0.0,
+    "edge_fn": 5.0,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "num_pred_nodes": 597.0,
+    "node_recall": 0.8444444444444444,
+    "total_node_ratio": 0.6652719665271967,
+    "edge_jaccard": 0.8333333333333334,
+    "adj_edge_jaccard": 0.7778940027894004,
+    "division_jaccard": NaN,
+    "estimated_number_of_nodes": 358.5
+  },
+  "runtime_sec": 249.77927899360657
+}

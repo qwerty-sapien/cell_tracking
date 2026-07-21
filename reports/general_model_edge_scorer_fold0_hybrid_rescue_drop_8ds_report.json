@@ -1,0 +1,103 @@
+{
+  "kind": "edge_scorer_training_report",
+  "created_at_unix": 1783865750.7224598,
+  "output": "reports/general_model_edge_scorer_fold0_hybrid_rescue_drop_8ds.json",
+  "output_sha256": "7f91a708d4c6d31f06350cbc0905ff4f41d416cfd2183172405d770bdf1eb021",
+  "edge_csv": "data/derived/edge_scorer/candidate_edges_fold0_hybrid_rescue_compact_8ds.csv",
+  "features": [
+    "feature__distance_norm",
+    "feature__edge_cost",
+    "feature__edge_score",
+    "feature__mean_density",
+    "feature__intensity_delta",
+    "feature__source_has_tile",
+    "feature__target_has_tile",
+    "feature__source_has_cover",
+    "feature__target_has_cover",
+    "feature__source_has_dog",
+    "feature__target_has_dog",
+    "feature__source_cover_only",
+    "feature__target_cover_only",
+    "feature__source_rescue_source_count",
+    "feature__target_rescue_source_count"
+  ],
+  "group_by": "route_prefix",
+  "min_positive_recall": 1.0,
+  "drop_below_min_score": true,
+  "base_cost_weight": 0.35,
+  "probability_cost_weight": 0.65,
+  "model_reports": [
+    {
+      "section": "by_route_prefix",
+      "key": "hybrid_rescue_compact:44b6",
+      "status": "trained",
+      "rows": 141,
+      "positive_rows": 5,
+      "negative_rows": 136,
+      "threshold_metrics": {
+        "threshold": -2.5077903172477853,
+        "tp": 5.0,
+        "fp": 15.0,
+        "fn": 0.0,
+        "precision": 0.25,
+        "recall": 1.0,
+        "f2": 0.625,
+        "predicted_positive": 20.0
+      },
+      "weights": {
+        "distance_norm": -0.8203923033169808,
+        "edge_cost": -0.8593429265325685,
+        "edge_score": 0.9239157140903146,
+        "mean_density": -0.7030800097826466,
+        "intensity_delta": -0.9487939045381774,
+        "source_has_tile": 0.0,
+        "target_has_tile": 0.0,
+        "source_has_cover": 0.0,
+        "target_has_cover": 0.0,
+        "source_has_dog": 0.4914664957487731,
+        "target_has_dog": -0.3771685814574,
+        "source_cover_only": 0.0,
+        "target_cover_only": 0.0,
+        "source_rescue_source_count": 0.9154593344957896,
+        "target_rescue_source_count": -0.3271401306358446
+      },
+      "bias": -3.619069484597575
+    },
+    {
+      "section": "by_route_prefix",
+      "key": "hybrid_rescue_compact:6bba",
+      "status": "trained",
+      "rows": 246,
+      "positive_rows": 19,
+      "negative_rows": 227,
+      "threshold_metrics": {
+        "threshold": -3.35681355928173,
+        "tp": 19.0,
+        "fp": 176.0,
+        "fn": 0.0,
+        "precision": 0.09743589743589744,
+        "recall": 1.0,
+        "f2": 0.3505535055350554,
+        "predicted_positive": 195.0
+      },
+      "weights": {
+        "distance_norm": -0.3255329305814294,
+        "edge_cost": -0.32178155378137785,
+        "edge_score": 1.3378907675300014,
+        "mean_density": 0.022525289073125992,
+        "intensity_delta": -1.2801388808718042,
+        "source_has_tile": 0.0,
+        "target_has_tile": 0.0,
+        "source_has_cover": 0.0,
+        "target_has_cover": 0.0,
+        "source_has_dog": -0.7642798472308568,
+        "target_has_dog": 0.24116452456650173,
+        "source_cover_only": 0.0,
+        "target_cover_only": 0.0,
+        "source_rescue_source_count": 0.49823051940609286,
+        "target_rescue_source_count": 0.6510933602084261
+      },
+      "bias": -4.211875774742699
+    }
+  ]
+}

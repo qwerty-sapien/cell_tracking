@@ -1,0 +1,232 @@
+{
+  "kind": "general_route_cv_audit",
+  "created_at_unix": 1783927538.9229598,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "split_manifest_sha256": "b02e489391b2f093b79a2416f94e84223702b9744ae61cdda11ed9485b66baae",
+  "fold_id": "0",
+  "datasets": [
+    "44b6_2f31fc2f"
+  ],
+  "route_arg": "auto",
+  "clip_length": 3,
+  "offsets_json": null,
+  "offset_calibration_fold_id": null,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "scoring_calibration_fold_id": "0",
+  "official_metric": {
+    "available": true,
+    "missing": [],
+    "note": "Install optional dependencies to replace approximate CV with official metrics."
+  },
+  "summary": {
+    "n": 1,
+    "edge_jaccard": 1.0,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 1.0,
+    "adj_edge_jaccard": 1.0655285620485884,
+    "n_adj": 1,
+    "score": 1.0655285620485884
+  },
+  "summary_by_prefix": {
+    "44b6": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 1.0,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 1.0,
+        "adj_edge_jaccard": 1.0655285620485884,
+        "n_adj": 1,
+        "score": 1.0655285620485884
+      },
+      "mean_node_recall": 1.0,
+      "mean_nodes": 252.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 0
+    }
+  },
+  "summary_by_route": {
+    "balanced_axial_compact": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 1.0,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 1.0,
+        "adj_edge_jaccard": 1.0655285620485884,
+        "n_adj": 1,
+        "score": 1.0655285620485884
+      },
+      "mean_node_recall": 1.0,
+      "mean_nodes": 252.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 0
+    }
+  },
+  "rows": [
+    {
+      "dataset": "44b6_2f31fc2f",
+      "prefix": "44b6",
+      "fold_id": "0",
+      "route": "balanced_axial_compact",
+      "route_confidence": 0.7000000000000001,
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 3,
+      "gt_edges": 2,
+      "num_pred_nodes": 252.0,
+      "num_pred_edges": 143,
+      "graph": {
+        "datasets": 1,
+        "nodes": 252,
+        "edges": 143,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "runtime_sec": 30.84732484817505,
+      "metric_source": "official",
+      "route_reason": "crowded/high foreground; compact spatially balanced localizer preferred; low-foreground high-motif 44b6 field; balanced axial rescue fills z-localization gaps; division-like close-pair motifs",
+      "profile": {
+        "dataset": "44b6_2f31fc2f",
+        "t_start": 0,
+        "t_end": 3,
+        "sampled_timepoints": [
+          0,
+          1,
+          2
+        ],
+        "foreground_fraction": 0.07054773966471355,
+        "bright_candidate_density": 400.0,
+        "dark_candidate_density": 400.0,
+        "both_candidate_density": 400.0,
+        "median_nn_um": 0.40625,
+        "temporal_delta": 0.01057770662009716,
+        "division_motif_rate": 0.9525,
+        "intensity_p999": 1721.262333333334,
+        "estimated_total_nodes": 24368.0
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": null,
+      "free_edge_admission": null,
+      "duplicate_endpoint_rescue": null,
+      "motion_endpoint_admission": {
+        "enabled": true,
+        "before_edges": 140,
+        "after_edges": 143,
+        "admitted_edges": 3,
+        "pred_max_um": 7.5,
+        "source_max_um": 10.0,
+        "max_edges_per_t": 4,
+        "target_source_mode": "zshift",
+        "rank_mode": "source_order",
+        "requires_history": true,
+        "per_t": {
+          "2": 3
+        },
+        "admitted": [
+          {
+            "source_id": 203,
+            "target_id": 496,
+            "t": 2,
+            "pred_distance_um": 6.625736987309412,
+            "source_distance_um": 6.600781203766718,
+            "target_sources": [
+              "zshift_dog_bright_m3_mid:dog_bright@q0.9985"
+            ]
+          },
+          {
+            "source_id": 219,
+            "target_id": 453,
+            "t": 2,
+            "pred_distance_um": 5.887121803139459,
+            "source_distance_um": 6.423376497217021,
+            "target_sources": [
+              "zshift_dog_dark_m5_mid:dog_dark@q0.9985"
+            ]
+          },
+          {
+            "source_id": 284,
+            "target_id": 448,
+            "t": 2,
+            "pred_distance_um": 7.468815376282908,
+            "source_distance_um": 8.946728190377755,
+            "target_sources": [
+              "zshift_dog_dark_m5_mid:dog_dark@q0.9985"
+            ]
+          }
+        ]
+      },
+      "endpoint_backward_clones": null,
+      "output_offset_zyx": [
+        0,
+        0,
+        0
+      ],
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 540,
+        "after_nodes": 252,
+        "edges": 143
+      },
+      "edge_tp": 2.0,
+      "edge_fp": 0.0,
+      "edge_fn": 0.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 1.0,
+      "total_node_ratio": -0.6552856204858831,
+      "edge_jaccard": 1.0,
+      "adj_edge_jaccard": 1.0655285620485884,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 731.04
+    }
+  ],
+  "dataset_reports": [
+    {
+      "dataset": "44b6_2f31fc2f",
+      "clip_start": 0,
+      "clip_end": 3,
+      "route": "balanced_axial_compact",
+      "score": 1.0655285620485884,
+      "edge_jaccard": 1.0,
+      "node_recall": 1.0,
+      "runtime_sec": 30.84732484817505
+    }
+  ],
+  "submission_validation": {
+    "valid": true,
+    "errors": [],
+    "row_type_counts": {
+      "node": 252,
+      "edge": 143
+    },
+    "dataset_count": 1
+  },
+  "submission_graph": {
+    "datasets": 1,
+    "nodes": 252,
+    "edges": 143,
+    "dividing_nodes": 0,
+    "out_gt2": 0,
+    "merges": 0
+  },
+  "submission_output": null,
+  "runtime_sec": 30.926619052886963
+}

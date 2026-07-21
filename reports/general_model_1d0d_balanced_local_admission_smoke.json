@@ -1,0 +1,952 @@
+{
+  "kind": "balanced_local_admission_smoke",
+  "created_at_unix": 1783915044.623001,
+  "dataset": "6bba_1d0d8384",
+  "route": "balanced_compact",
+  "route_reason": "moderate-low foreground 6bba field; second-choice edge rescue corrects stationary duplicate links; crowded/high foreground; compact spatially balanced localizer preferred; division-like close-pair motifs",
+  "profile": {
+    "dataset": "6bba_1d0d8384",
+    "t_start": 0,
+    "t_end": 3,
+    "sampled_timepoints": [
+      0,
+      1,
+      2
+    ],
+    "foreground_fraction": 0.06469233830769856,
+    "bright_candidate_density": 400.0,
+    "dark_candidate_density": 400.0,
+    "both_candidate_density": 400.0,
+    "median_nn_um": 0.40625,
+    "temporal_delta": 0.013994392473250628,
+    "division_motif_rate": 0.905,
+    "intensity_p999": 1316.248000000002,
+    "estimated_total_nodes": 17909.0
+  },
+  "clip_start": 0,
+  "clip_end": 3,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "base": {
+    "variant": "current",
+    "edge_tp": 20.0,
+    "edge_fp": 0.0,
+    "edge_fn": 29.0,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "num_pred_nodes": 349.0,
+    "node_recall": 0.4,
+    "total_node_ratio": NaN,
+    "edge_jaccard": 0.40816326530612246,
+    "adj_edge_jaccard": NaN,
+    "division_jaccard": NaN,
+    "estimated_number_of_nodes": NaN,
+    "graph": {
+      "num_nodes": 349,
+      "num_edges": 218,
+      "num_dividing_nodes": 0,
+      "num_out_gt2": 0,
+      "num_merges": 0,
+      "mean_node_score": 1.0,
+      "mean_edge_score": 0.9171096128357193
+    },
+    "diag": {
+      "edge_candidates": 378,
+      "forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 480,
+        "after_nodes": 333,
+        "edges": 202
+      },
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          1,
+          2,
+          5
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            2,
+            5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 333,
+        "refined_nodes": 333,
+        "mean_abs_offset_zyx": [
+          0.90991,
+          2.003003,
+          3.918919
+        ]
+      },
+      "endpoint_forward_clones": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 3.0,
+        "max_per_t": 16,
+        "requires_history": false,
+        "base_nodes": 333,
+        "base_edges": 202,
+        "cloned_nodes": 16,
+        "cloned_edges": 16,
+        "new_per_t": {
+          "2": 16
+        },
+        "mean_abs_offset_zyx": [
+          0.8125,
+          1.375,
+          3.1875
+        ]
+      }
+    }
+  },
+  "best": {
+    "variant": "balanced_local_all_sep1_cap8_score0.65",
+    "mode": "all",
+    "min_dist_um": 1.0,
+    "max_per_t": 8,
+    "score_scale": 0.65,
+    "admitted_by_t": [
+      8,
+      8,
+      8
+    ],
+    "admitted_nodes": 24,
+    "graph": {
+      "num_nodes": 382,
+      "num_edges": 239,
+      "num_dividing_nodes": 0,
+      "num_out_gt2": 0,
+      "num_merges": 0,
+      "mean_node_score": 0.9798429319371728,
+      "mean_edge_score": 0.9126106310801323
+    },
+    "diag": {
+      "edge_candidates": 517,
+      "forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 504,
+        "after_nodes": 366,
+        "edges": 223
+      },
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          1,
+          2,
+          5
+        ],
+        "center_offsets_zyx": [
+          [
+            1,
+            2,
+            5
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 366,
+        "refined_nodes": 293,
+        "mean_abs_offset_zyx": [
+          0.464164,
+          1.389078,
+          2.221843
+        ]
+      },
+      "endpoint_forward_clones": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 3.0,
+        "max_per_t": 16,
+        "requires_history": false,
+        "base_nodes": 366,
+        "base_edges": 223,
+        "cloned_nodes": 16,
+        "cloned_edges": 16,
+        "new_per_t": {
+          "2": 16
+        },
+        "mean_abs_offset_zyx": [
+          0.8125,
+          1.4375,
+          3.75
+        ]
+      }
+    },
+    "edge_tp": 13.0,
+    "edge_fp": 11.0,
+    "edge_fn": 36.0,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "num_pred_nodes": 382.0,
+    "node_recall": 0.38666666666666666,
+    "total_node_ratio": NaN,
+    "edge_jaccard": 0.21666666666666667,
+    "adj_edge_jaccard": NaN,
+    "division_jaccard": NaN,
+    "estimated_number_of_nodes": NaN
+  },
+  "rows": [
+    {
+      "variant": "balanced_local_all_sep1_cap8_score0.65",
+      "mode": "all",
+      "min_dist_um": 1.0,
+      "max_per_t": 8,
+      "score_scale": 0.65,
+      "admitted_by_t": [
+        8,
+        8,
+        8
+      ],
+      "admitted_nodes": 24,
+      "graph": {
+        "num_nodes": 382,
+        "num_edges": 239,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 0.9798429319371728,
+        "mean_edge_score": 0.9126106310801323
+      },
+      "diag": {
+        "edge_candidates": 517,
+        "forks": 0,
+        "node_emission": {
+          "policy": "edge_endpoint_nodes",
+          "before_nodes": 504,
+          "after_nodes": 366,
+          "edges": 223
+        },
+        "localmax_refinement": {
+          "enabled": true,
+          "sources": [
+            "dog_abs"
+          ],
+          "radius_um": 2.5,
+          "center_offset_zyx": [
+            1,
+            2,
+            5
+          ],
+          "center_offsets_zyx": [
+            [
+              1,
+              2,
+              5
+            ]
+          ],
+          "iterations": 1,
+          "endpoint_nodes": 366,
+          "refined_nodes": 293,
+          "mean_abs_offset_zyx": [
+            0.464164,
+            1.389078,
+            2.221843
+          ]
+        },
+        "endpoint_forward_clones": {
+          "enabled": true,
+          "sources": [
+            "smooth"
+          ],
+          "radius_um": 3.0,
+          "max_per_t": 16,
+          "requires_history": false,
+          "base_nodes": 366,
+          "base_edges": 223,
+          "cloned_nodes": 16,
+          "cloned_edges": 16,
+          "new_per_t": {
+            "2": 16
+          },
+          "mean_abs_offset_zyx": [
+            0.8125,
+            1.4375,
+            3.75
+          ]
+        }
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 11.0,
+      "edge_fn": 36.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 382.0,
+      "node_recall": 0.38666666666666666,
+      "total_node_ratio": NaN,
+      "edge_jaccard": 0.21666666666666667,
+      "adj_edge_jaccard": NaN,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": NaN
+    },
+    {
+      "variant": "balanced_local_all_sep2_cap8_score0.65",
+      "mode": "all",
+      "min_dist_um": 2.0,
+      "max_per_t": 8,
+      "score_scale": 0.65,
+      "admitted_by_t": [
+        8,
+        8,
+        8
+      ],
+      "admitted_nodes": 24,
+      "graph": {
+        "num_nodes": 373,
+        "num_edges": 235,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 0.9793565683646113,
+        "mean_edge_score": 0.9190404095224106
+      },
+      "diag": {
+        "edge_candidates": 497,
+        "forks": 0,
+        "node_emission": {
+          "policy": "edge_endpoint_nodes",
+          "before_nodes": 504,
+          "after_nodes": 357,
+          "edges": 219
+        },
+        "localmax_refinement": {
+          "enabled": true,
+          "sources": [
+            "dog_abs"
+          ],
+          "radius_um": 2.5,
+          "center_offset_zyx": [
+            1,
+            2,
+            5
+          ],
+          "center_offsets_zyx": [
+            [
+              1,
+              2,
+              5
+            ]
+          ],
+          "iterations": 1,
+          "endpoint_nodes": 357,
+          "refined_nodes": 79,
+          "mean_abs_offset_zyx": [
+            0.746835,
+            2.139241,
+            2.607595
+          ]
+        },
+        "endpoint_forward_clones": {
+          "enabled": true,
+          "sources": [
+            "smooth"
+          ],
+          "radius_um": 3.0,
+          "max_per_t": 16,
+          "requires_history": false,
+          "base_nodes": 357,
+          "base_edges": 219,
+          "cloned_nodes": 16,
+          "cloned_edges": 16,
+          "new_per_t": {
+            "2": 16
+          },
+          "mean_abs_offset_zyx": [
+            0.6875,
+            1.25,
+            3.625
+          ]
+        }
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 12.0,
+      "edge_fn": 36.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 373.0,
+      "node_recall": 0.38666666666666666,
+      "total_node_ratio": NaN,
+      "edge_jaccard": 0.21311475409836064,
+      "adj_edge_jaccard": NaN,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": NaN
+    },
+    {
+      "variant": "balanced_local_tile_sep1_cap8_score0.65",
+      "mode": "tile",
+      "min_dist_um": 1.0,
+      "max_per_t": 8,
+      "score_scale": 0.65,
+      "admitted_by_t": [
+        8,
+        8,
+        8
+      ],
+      "admitted_nodes": 24,
+      "graph": {
+        "num_nodes": 369,
+        "num_edges": 232,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 0.9819783197831979,
+        "mean_edge_score": 0.9208063393865802
+      },
+      "diag": {
+        "edge_candidates": 491,
+        "forks": 0,
+        "node_emission": {
+          "policy": "edge_endpoint_nodes",
+          "before_nodes": 504,
+          "after_nodes": 353,
+          "edges": 216
+        },
+        "localmax_refinement": {
+          "enabled": true,
+          "sources": [
+            "dog_abs"
+          ],
+          "radius_um": 2.5,
+          "center_offset_zyx": [
+            1,
+            2,
+            5
+          ],
+          "center_offsets_zyx": [
+            [
+              1,
+              2,
+              5
+            ]
+          ],
+          "iterations": 1,
+          "endpoint_nodes": 353,
+          "refined_nodes": 48,
+          "mean_abs_offset_zyx": [
+            0.791667,
+            2.375,
+            2.708333
+          ]
+        },
+        "endpoint_forward_clones": {
+          "enabled": true,
+          "sources": [
+            "smooth"
+          ],
+          "radius_um": 3.0,
+          "max_per_t": 16,
+          "requires_history": false,
+          "base_nodes": 353,
+          "base_edges": 216,
+          "cloned_nodes": 16,
+          "cloned_edges": 16,
+          "new_per_t": {
+            "2": 16
+          },
+          "mean_abs_offset_zyx": [
+            0.6875,
+            1.3125,
+            3.6875
+          ]
+        }
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 9.0,
+      "edge_fn": 35.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 369.0,
+      "node_recall": 0.38666666666666666,
+      "total_node_ratio": NaN,
+      "edge_jaccard": 0.2413793103448276,
+      "adj_edge_jaccard": NaN,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": NaN
+    },
+    {
+      "variant": "balanced_local_tile_sep2_cap8_score0.65",
+      "mode": "tile",
+      "min_dist_um": 2.0,
+      "max_per_t": 8,
+      "score_scale": 0.65,
+      "admitted_by_t": [
+        8,
+        8,
+        8
+      ],
+      "admitted_nodes": 24,
+      "graph": {
+        "num_nodes": 368,
+        "num_edges": 232,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 0.981929347826087,
+        "mean_edge_score": 0.9165546345142431
+      },
+      "diag": {
+        "edge_candidates": 487,
+        "forks": 0,
+        "node_emission": {
+          "policy": "edge_endpoint_nodes",
+          "before_nodes": 504,
+          "after_nodes": 352,
+          "edges": 216
+        },
+        "localmax_refinement": {
+          "enabled": true,
+          "sources": [
+            "dog_abs"
+          ],
+          "radius_um": 2.5,
+          "center_offset_zyx": [
+            1,
+            2,
+            5
+          ],
+          "center_offsets_zyx": [
+            [
+              1,
+              2,
+              5
+            ]
+          ],
+          "iterations": 1,
+          "endpoint_nodes": 352,
+          "refined_nodes": 41,
+          "mean_abs_offset_zyx": [
+            0.878049,
+            2.097561,
+            2.609756
+          ]
+        },
+        "endpoint_forward_clones": {
+          "enabled": true,
+          "sources": [
+            "smooth"
+          ],
+          "radius_um": 3.0,
+          "max_per_t": 16,
+          "requires_history": false,
+          "base_nodes": 352,
+          "base_edges": 216,
+          "cloned_nodes": 16,
+          "cloned_edges": 16,
+          "new_per_t": {
+            "2": 16
+          },
+          "mean_abs_offset_zyx": [
+            0.625,
+            1.25,
+            3.875
+          ]
+        }
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 12.0,
+      "edge_fn": 36.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 368.0,
+      "node_recall": 0.4,
+      "total_node_ratio": NaN,
+      "edge_jaccard": 0.21311475409836064,
+      "adj_edge_jaccard": NaN,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": NaN
+    },
+    {
+      "variant": "balanced_local_contrast_sep1_cap8_score0.65",
+      "mode": "contrast",
+      "min_dist_um": 1.0,
+      "max_per_t": 8,
+      "score_scale": 0.65,
+      "admitted_by_t": [
+        8,
+        8,
+        8
+      ],
+      "admitted_nodes": 24,
+      "graph": {
+        "num_nodes": 362,
+        "num_edges": 227,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 0.9854972375690608,
+        "mean_edge_score": 0.9182157187859983
+      },
+      "diag": {
+        "edge_candidates": 458,
+        "forks": 0,
+        "node_emission": {
+          "policy": "edge_endpoint_nodes",
+          "before_nodes": 504,
+          "after_nodes": 346,
+          "edges": 211
+        },
+        "localmax_refinement": {
+          "enabled": true,
+          "sources": [
+            "dog_abs"
+          ],
+          "radius_um": 2.5,
+          "center_offset_zyx": [
+            1,
+            2,
+            5
+          ],
+          "center_offsets_zyx": [
+            [
+              1,
+              2,
+              5
+            ]
+          ],
+          "iterations": 1,
+          "endpoint_nodes": 346,
+          "refined_nodes": 32,
+          "mean_abs_offset_zyx": [
+            0.8125,
+            1.6875,
+            3.125
+          ]
+        },
+        "endpoint_forward_clones": {
+          "enabled": true,
+          "sources": [
+            "smooth"
+          ],
+          "radius_um": 3.0,
+          "max_per_t": 16,
+          "requires_history": false,
+          "base_nodes": 346,
+          "base_edges": 211,
+          "cloned_nodes": 16,
+          "cloned_edges": 16,
+          "new_per_t": {
+            "2": 16
+          },
+          "mean_abs_offset_zyx": [
+            0.625,
+            1.25,
+            3.875
+          ]
+        }
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 6.0,
+      "edge_fn": 33.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 362.0,
+      "node_recall": 0.4,
+      "total_node_ratio": NaN,
+      "edge_jaccard": 0.2909090909090909,
+      "adj_edge_jaccard": NaN,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": NaN
+    },
+    {
+      "variant": "balanced_local_contrast_sep2_cap8_score0.65",
+      "mode": "contrast",
+      "min_dist_um": 2.0,
+      "max_per_t": 8,
+      "score_scale": 0.65,
+      "admitted_by_t": [
+        8,
+        8,
+        8
+      ],
+      "admitted_nodes": 24,
+      "graph": {
+        "num_nodes": 360,
+        "num_edges": 226,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 0.9844444444444443,
+        "mean_edge_score": 0.9205948570339172
+      },
+      "diag": {
+        "edge_candidates": 455,
+        "forks": 0,
+        "node_emission": {
+          "policy": "edge_endpoint_nodes",
+          "before_nodes": 504,
+          "after_nodes": 344,
+          "edges": 210
+        },
+        "localmax_refinement": {
+          "enabled": true,
+          "sources": [
+            "dog_abs"
+          ],
+          "radius_um": 2.5,
+          "center_offset_zyx": [
+            1,
+            2,
+            5
+          ],
+          "center_offsets_zyx": [
+            [
+              1,
+              2,
+              5
+            ]
+          ],
+          "iterations": 1,
+          "endpoint_nodes": 344,
+          "refined_nodes": 26,
+          "mean_abs_offset_zyx": [
+            0.884615,
+            2.038462,
+            3.192308
+          ]
+        },
+        "endpoint_forward_clones": {
+          "enabled": true,
+          "sources": [
+            "smooth"
+          ],
+          "radius_um": 3.0,
+          "max_per_t": 16,
+          "requires_history": false,
+          "base_nodes": 344,
+          "base_edges": 210,
+          "cloned_nodes": 16,
+          "cloned_edges": 16,
+          "new_per_t": {
+            "2": 16
+          },
+          "mean_abs_offset_zyx": [
+            0.625,
+            1.25,
+            3.875
+          ]
+        }
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 6.0,
+      "edge_fn": 33.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 360.0,
+      "node_recall": 0.41333333333333333,
+      "total_node_ratio": NaN,
+      "edge_jaccard": 0.2909090909090909,
+      "adj_edge_jaccard": NaN,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": NaN
+    },
+    {
+      "variant": "balanced_local_all_sep1_cap16_score0.65",
+      "mode": "all",
+      "min_dist_um": 1.0,
+      "max_per_t": 16,
+      "score_scale": 0.65,
+      "admitted_by_t": [
+        16,
+        16,
+        16
+      ],
+      "admitted_nodes": 48,
+      "graph": {
+        "num_nodes": 388,
+        "num_edges": 244,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 0.964819587628866,
+        "mean_edge_score": 0.9170744466522982
+      },
+      "diag": {
+        "edge_candidates": 606,
+        "forks": 0,
+        "node_emission": {
+          "policy": "edge_endpoint_nodes",
+          "before_nodes": 528,
+          "after_nodes": 372,
+          "edges": 228
+        },
+        "localmax_refinement": {
+          "enabled": true,
+          "sources": [
+            "dog_abs"
+          ],
+          "radius_um": 2.5,
+          "center_offset_zyx": [
+            1,
+            2,
+            5
+          ],
+          "center_offsets_zyx": [
+            [
+              1,
+              2,
+              5
+            ]
+          ],
+          "iterations": 1,
+          "endpoint_nodes": 372,
+          "refined_nodes": 48,
+          "mean_abs_offset_zyx": [
+            1.0,
+            2.25,
+            3.291667
+          ]
+        },
+        "endpoint_forward_clones": {
+          "enabled": true,
+          "sources": [
+            "smooth"
+          ],
+          "radius_um": 3.0,
+          "max_per_t": 16,
+          "requires_history": false,
+          "base_nodes": 372,
+          "base_edges": 228,
+          "cloned_nodes": 16,
+          "cloned_edges": 16,
+          "new_per_t": {
+            "2": 16
+          },
+          "mean_abs_offset_zyx": [
+            0.625,
+            1.375,
+            3.9375
+          ]
+        }
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 10.0,
+      "edge_fn": 35.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 388.0,
+      "node_recall": 0.41333333333333333,
+      "total_node_ratio": NaN,
+      "edge_jaccard": 0.23728813559322035,
+      "adj_edge_jaccard": NaN,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": NaN
+    },
+    {
+      "variant": "balanced_local_all_sep2_cap16_score0.65",
+      "mode": "all",
+      "min_dist_um": 2.0,
+      "max_per_t": 16,
+      "score_scale": 0.65,
+      "admitted_by_t": [
+        16,
+        16,
+        16
+      ],
+      "admitted_nodes": 48,
+      "graph": {
+        "num_nodes": 388,
+        "num_edges": 245,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 0.9666237113402062,
+        "mean_edge_score": 0.9165436942711525
+      },
+      "diag": {
+        "edge_candidates": 605,
+        "forks": 0,
+        "node_emission": {
+          "policy": "edge_endpoint_nodes",
+          "before_nodes": 528,
+          "after_nodes": 372,
+          "edges": 229
+        },
+        "localmax_refinement": {
+          "enabled": true,
+          "sources": [
+            "dog_abs"
+          ],
+          "radius_um": 2.5,
+          "center_offset_zyx": [
+            1,
+            2,
+            5
+          ],
+          "center_offsets_zyx": [
+            [
+              1,
+              2,
+              5
+            ]
+          ],
+          "iterations": 1,
+          "endpoint_nodes": 372,
+          "refined_nodes": 43,
+          "mean_abs_offset_zyx": [
+            1.023256,
+            2.27907,
+            3.418605
+          ]
+        },
+        "endpoint_forward_clones": {
+          "enabled": true,
+          "sources": [
+            "smooth"
+          ],
+          "radius_um": 3.0,
+          "max_per_t": 16,
+          "requires_history": false,
+          "base_nodes": 372,
+          "base_edges": 229,
+          "cloned_nodes": 16,
+          "cloned_edges": 16,
+          "new_per_t": {
+            "2": 16
+          },
+          "mean_abs_offset_zyx": [
+            0.625,
+            1.375,
+            3.9375
+          ]
+        }
+      },
+      "edge_tp": 14.0,
+      "edge_fp": 11.0,
+      "edge_fn": 35.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 388.0,
+      "node_recall": 0.41333333333333333,
+      "total_node_ratio": NaN,
+      "edge_jaccard": 0.23333333333333334,
+      "adj_edge_jaccard": NaN,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": NaN
+    }
+  ],
+  "runtime_sec": 46.913517236709595
+}

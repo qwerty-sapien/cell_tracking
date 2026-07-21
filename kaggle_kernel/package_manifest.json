@@ -1,0 +1,97 @@
+{
+  "artifact_kind": "kaggle_alpha_package",
+  "baseline_dependency": {
+    "not_submission_entrypoint": true,
+    "package": "celltrack_baseline",
+    "role": "shared image primitives and CSV schema utilities only"
+  },
+  "entrypoint": "alpha_submission.py",
+  "entrypoint_import": "from celltrack_alpha import predict_dataset_window",
+  "excluded_entrypoints": [
+    "rule_based_submission.py"
+  ],
+  "identity_inputs": {
+    "bundled_modules": [
+      "celltrack_baseline",
+      "celltrack_baseline.rule_based",
+      "celltrack_alpha.types",
+      "celltrack_alpha.localization",
+      "celltrack_alpha.scoring",
+      "celltrack_alpha.solver",
+      "celltrack_alpha.proposals",
+      "celltrack_alpha.routing",
+      "celltrack_alpha.pipeline",
+      "celltrack_alpha"
+    ],
+    "config_sha256": "d8ace028571682fa720b0d79095dd24e7ea1244afbf02b81cc98478f10a36142",
+    "entrypoint": "alpha_submission.py",
+    "entrypoint_sha256": "e84e0c836eae3c8ba28f4e2e04c3c9cd16c115ef30a72062b688a259fe0a994a",
+    "files": [
+      {
+        "package_sha256": "a8691babaec09c52999e2c5a2ae39571fad1eeeb7c399891e32b5b98a95294e7",
+        "path": "celltrack_alpha/__init__.py",
+        "source_sha256": "a8691babaec09c52999e2c5a2ae39571fad1eeeb7c399891e32b5b98a95294e7"
+      },
+      {
+        "package_sha256": "ded8119a77ab448d2c814d7a556ed8c6fae26c1f56d0825862bfe041e0a3961c",
+        "path": "celltrack_alpha/types.py",
+        "source_sha256": "ded8119a77ab448d2c814d7a556ed8c6fae26c1f56d0825862bfe041e0a3961c"
+      },
+      {
+        "package_sha256": "10b2d06600f998716ce229072cb0770056d8f7a5b22df5ff2f22e3d41f07f3df",
+        "path": "celltrack_alpha/proposals.py",
+        "source_sha256": "10b2d06600f998716ce229072cb0770056d8f7a5b22df5ff2f22e3d41f07f3df"
+      },
+      {
+        "package_sha256": "b7366daf007ebd7aef3d802d28491f6ac8027335a9753056940fea3281426ea4",
+        "path": "celltrack_alpha/pipeline.py",
+        "source_sha256": "b7366daf007ebd7aef3d802d28491f6ac8027335a9753056940fea3281426ea4"
+      },
+      {
+        "package_sha256": "26995e1616c1523e15d1dcc6cdc3ec581e04014f725a999da344c77824313e28",
+        "path": "celltrack_alpha/routing.py",
+        "source_sha256": "26995e1616c1523e15d1dcc6cdc3ec581e04014f725a999da344c77824313e28"
+      },
+      {
+        "package_sha256": "634142f91c19715987ce58ecddfd442e66efc15ea00093ee617c585934da0b96",
+        "path": "celltrack_alpha/scoring.py",
+        "source_sha256": "634142f91c19715987ce58ecddfd442e66efc15ea00093ee617c585934da0b96"
+      },
+      {
+        "package_sha256": "fca35152124c7b95ece0275fbd9d0d5da6dc7fadf3f6df98731661f45cdb9527",
+        "path": "celltrack_alpha/solver.py",
+        "source_sha256": "fca35152124c7b95ece0275fbd9d0d5da6dc7fadf3f6df98731661f45cdb9527"
+      },
+      {
+        "package_sha256": "29517a38c58a3b2e9ed0b92d7c0a8fe2cf078ae470e9b1cc66551f7ffbdaf37a",
+        "path": "celltrack_alpha/localization.py",
+        "source_sha256": "29517a38c58a3b2e9ed0b92d7c0a8fe2cf078ae470e9b1cc66551f7ffbdaf37a"
+      },
+      {
+        "package_sha256": "05c273317807ad9405a462823d0f467b50bd8cca6528c2b0c63920949df41bd9",
+        "path": "celltrack_baseline/__init__.py",
+        "source_sha256": "05c273317807ad9405a462823d0f467b50bd8cca6528c2b0c63920949df41bd9"
+      },
+      {
+        "package_sha256": "2f0efa6a5a703ffc3b9337bb5bb7f4e947b526565c37b090830b18bea1a2bad9",
+        "path": "celltrack_baseline/rule_based.py",
+        "source_sha256": "2f0efa6a5a703ffc3b9337bb5bb7f4e947b526565c37b090830b18bea1a2bad9"
+      }
+    ],
+    "metadata_sha256": "abe508aef5f58463eaf824039b2ed8e711cf3c826ddfcb82c1cb8d9e8b07d2cb"
+  },
+  "network_or_kaggle_actions": false,
+  "package_identity_sha256": "dbce3da9babc1478ad0707f58aa775a48950e121a3cacf5ccb0cdd0b566ab5a9",
+  "route_config": {
+    "allow_division_route": false,
+    "calibration_policy": "No fold-specific calibration is applied to Kaggle test data.",
+    "model_package": "celltrack_alpha",
+    "output_offset_override": null,
+    "route": "auto",
+    "scoring_calibration": null,
+    "submission_split": "test"
+  },
+  "row_independent_identity": true,
+  "schema_version": 1,
+  "submission_rows_included": false
+}

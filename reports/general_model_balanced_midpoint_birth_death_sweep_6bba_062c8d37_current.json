@@ -1,0 +1,2879 @@
+{
+  "kind": "route_link_param_probe",
+  "created_at_unix": 1783903527.0036922,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "fold_id": "0",
+  "datasets": [
+    "6bba_062c8d37"
+  ],
+  "route": "balanced_midpoint",
+  "use_auto_route_config": true,
+  "clip_length": 3,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "grid": {
+    "max_link_um": [
+      3.5
+    ],
+    "max_neighbors": [
+      1
+    ],
+    "edge_cost_threshold": [
+      0.55
+    ],
+    "birth_cost": [
+      null,
+      0.1,
+      0.18,
+      0.275,
+      0.38,
+      0.55
+    ],
+    "death_cost": [
+      null,
+      0.1,
+      0.18,
+      0.275,
+      0.38,
+      0.55
+    ]
+  },
+  "summary": {
+    "n": 36,
+    "edge_jaccard": 0.3638888888888889,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.3524305555555556,
+    "adj_edge_jaccard": 0.3785714943799521,
+    "n_adj": 36,
+    "score": 0.3785714943799521
+  },
+  "dataset_reports": [
+    {
+      "dataset": "6bba_062c8d37",
+      "best_score": 0.4174461028192371,
+      "best_edge_jaccard": 0.4,
+      "best_node_recall": 0.375,
+      "best_max_link_um": 3.5,
+      "best_max_neighbors": 1,
+      "best_edge_cost_threshold": 0.55,
+      "best_birth_cost": 0.1,
+      "best_death_cost": 0.38,
+      "best_nodes": 102.0,
+      "best_edges": 56
+    }
+  ],
+  "rows": [
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": null,
+      "death_cost": null,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": null,
+      "death_cost": 0.1,
+      "num_pred_nodes": 85.0,
+      "num_pred_edges": 46,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 85,
+        "edges": 46
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 85,
+        "num_edges": 46,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8454937994237225
+      },
+      "edge_tp": 3.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.3125,
+      "total_node_ratio": -0.5301271420674406,
+      "edge_jaccard": 0.3,
+      "adj_edge_jaccard": 0.3159038142620232,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": null,
+      "death_cost": 0.18,
+      "num_pred_nodes": 100.0,
+      "num_pred_edges": 54,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 100,
+        "edges": 54
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 100,
+        "num_edges": 54,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8145413182816147
+      },
+      "edge_tp": 3.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.3125,
+      "total_node_ratio": -0.44720840243228305,
+      "edge_jaccard": 0.3,
+      "adj_edge_jaccard": 0.31341625207296847,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": null,
+      "death_cost": 0.275,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": null,
+      "death_cost": 0.38,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": null,
+      "death_cost": 0.55,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.1,
+      "death_cost": null,
+      "num_pred_nodes": 85.0,
+      "num_pred_edges": 46,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 85,
+        "edges": 46
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 85,
+        "num_edges": 46,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8454937994237225
+      },
+      "edge_tp": 3.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.3125,
+      "total_node_ratio": -0.5301271420674406,
+      "edge_jaccard": 0.3,
+      "adj_edge_jaccard": 0.3159038142620232,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.1,
+      "death_cost": 0.1,
+      "num_pred_nodes": 63.0,
+      "num_pred_edges": 33,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 63,
+        "edges": 33
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 63,
+        "num_edges": 33,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8918464101979016
+      },
+      "edge_tp": 2.0,
+      "edge_fp": 0.0,
+      "edge_fn": 8.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.25,
+      "total_node_ratio": -0.6517412935323383,
+      "edge_jaccard": 0.2,
+      "adj_edge_jaccard": 0.21303482587064676,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.1,
+      "death_cost": 0.18,
+      "num_pred_nodes": 72.0,
+      "num_pred_edges": 38,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 72,
+        "edges": 38
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 72,
+        "num_edges": 38,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8758266906696782
+      },
+      "edge_tp": 3.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.3125,
+      "total_node_ratio": -0.6019900497512438,
+      "edge_jaccard": 0.3,
+      "adj_edge_jaccard": 0.3180597014925373,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.1,
+      "death_cost": 0.275,
+      "num_pred_nodes": 85.0,
+      "num_pred_edges": 46,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 85,
+        "edges": 46
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 85,
+        "num_edges": 46,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8454937994237225
+      },
+      "edge_tp": 3.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.3125,
+      "total_node_ratio": -0.5301271420674406,
+      "edge_jaccard": 0.3,
+      "adj_edge_jaccard": 0.3159038142620232,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.1,
+      "death_cost": 0.38,
+      "num_pred_nodes": 102.0,
+      "num_pred_edges": 56,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 102,
+        "edges": 56
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 102,
+        "num_edges": 56,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8060868287721638
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.4361525704809287,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4174461028192371,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.1,
+      "death_cost": 0.55,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.18,
+      "death_cost": null,
+      "num_pred_nodes": 100.0,
+      "num_pred_edges": 54,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 100,
+        "edges": 54
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 100,
+        "num_edges": 54,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8145413182816147
+      },
+      "edge_tp": 3.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.3125,
+      "total_node_ratio": -0.44720840243228305,
+      "edge_jaccard": 0.3,
+      "adj_edge_jaccard": 0.31341625207296847,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.18,
+      "death_cost": 0.1,
+      "num_pred_nodes": 72.0,
+      "num_pred_edges": 38,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 72,
+        "edges": 38
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 72,
+        "num_edges": 38,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8758266906696782
+      },
+      "edge_tp": 3.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.3125,
+      "total_node_ratio": -0.6019900497512438,
+      "edge_jaccard": 0.3,
+      "adj_edge_jaccard": 0.3180597014925373,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.18,
+      "death_cost": 0.18,
+      "num_pred_nodes": 82.0,
+      "num_pred_edges": 44,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 82,
+        "edges": 44
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 82,
+        "num_edges": 44,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8534525557698521
+      },
+      "edge_tp": 3.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.3125,
+      "total_node_ratio": -0.5467108899944721,
+      "edge_jaccard": 0.3,
+      "adj_edge_jaccard": 0.3164013266998342,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.18,
+      "death_cost": 0.275,
+      "num_pred_nodes": 100.0,
+      "num_pred_edges": 54,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 100,
+        "edges": 54
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 100,
+        "num_edges": 54,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8145413182816147
+      },
+      "edge_tp": 3.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.3125,
+      "total_node_ratio": -0.44720840243228305,
+      "edge_jaccard": 0.3,
+      "adj_edge_jaccard": 0.31341625207296847,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.18,
+      "death_cost": 0.38,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.18,
+      "death_cost": 0.55,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.275,
+      "death_cost": null,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.275,
+      "death_cost": 0.1,
+      "num_pred_nodes": 85.0,
+      "num_pred_edges": 46,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 85,
+        "edges": 46
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 85,
+        "num_edges": 46,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8454937994237225
+      },
+      "edge_tp": 3.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.3125,
+      "total_node_ratio": -0.5301271420674406,
+      "edge_jaccard": 0.3,
+      "adj_edge_jaccard": 0.3159038142620232,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.275,
+      "death_cost": 0.18,
+      "num_pred_nodes": 100.0,
+      "num_pred_edges": 54,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 100,
+        "edges": 54
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 100,
+        "num_edges": 54,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8145413182816147
+      },
+      "edge_tp": 3.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.3125,
+      "total_node_ratio": -0.44720840243228305,
+      "edge_jaccard": 0.3,
+      "adj_edge_jaccard": 0.31341625207296847,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.275,
+      "death_cost": 0.275,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.275,
+      "death_cost": 0.38,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.275,
+      "death_cost": 0.55,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.38,
+      "death_cost": null,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.38,
+      "death_cost": 0.1,
+      "num_pred_nodes": 102.0,
+      "num_pred_edges": 56,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 102,
+        "edges": 56
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 102,
+        "num_edges": 56,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.8060868287721638
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.4361525704809287,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4174461028192371,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.38,
+      "death_cost": 0.18,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.38,
+      "death_cost": 0.275,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.38,
+      "death_cost": 0.38,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.38,
+      "death_cost": 0.55,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.55,
+      "death_cost": null,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.55,
+      "death_cost": 0.1,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.55,
+      "death_cost": 0.18,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.55,
+      "death_cost": 0.275,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.55,
+      "death_cost": 0.38,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "use_auto_route_config": true,
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "max_link_um": 3.5,
+      "max_neighbors": 1,
+      "edge_cost_threshold": 0.55,
+      "birth_cost": 0.55,
+      "death_cost": 0.55,
+      "num_pred_nodes": 117.0,
+      "num_pred_edges": 65,
+      "num_edge_candidates": 71,
+      "num_selected_forks": 0,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 117,
+        "edges": 65
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": null,
+      "localmax_clone_layers": null,
+      "graph": {
+        "num_nodes": 117,
+        "num_edges": 65,
+        "num_dividing_nodes": 0,
+        "num_out_gt2": 0,
+        "num_merges": 0,
+        "mean_node_score": 1.0,
+        "mean_edge_score": 0.7691614129489047
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 0.0,
+      "edge_fn": 6.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.375,
+      "total_node_ratio": -0.35323383084577115,
+      "edge_jaccard": 0.4,
+      "adj_edge_jaccard": 0.4141293532338309,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    }
+  ],
+  "runtime_sec": 20.6575767993927
+}

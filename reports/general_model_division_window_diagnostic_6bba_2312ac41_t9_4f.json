@@ -1,0 +1,499 @@
+{
+  "clip_end": 13,
+  "clip_start": 9,
+  "dataset": "6bba_2312ac41",
+  "gt_clip_edges": 44,
+  "gt_clip_nodes": 59,
+  "predictions": [
+    {
+      "csv": "reports/general_model_division_window_auto_6bba_2312ac41_t9_4f_submission.csv",
+      "division_scores": {
+        "22": 0
+      },
+      "gt_division_reports": [
+        {
+          "components": [],
+          "gt_child_info": [
+            {
+              "node_id": 43,
+              "t": 11,
+              "x": 149.0,
+              "y": 199.0,
+              "z": 36.0
+            },
+            {
+              "node_id": 36,
+              "t": 11,
+              "x": 137.0,
+              "y": 210.0,
+              "z": 45.0
+            }
+          ],
+          "gt_children": [
+            43,
+            36
+          ],
+          "gt_div_info": {
+            "node_id": 22,
+            "t": 10,
+            "x": 141.0,
+            "y": 209.0,
+            "z": 40.0
+          },
+          "gt_div_node": 22,
+          "matched_node_count": 0,
+          "score": 0
+        }
+      ],
+      "label": "auto_balanced_midpoint",
+      "matched_pred_divisions_count": 0,
+      "metrics": {
+        "adj_edge_jaccard": 0.45079169743211095,
+        "division_fn": 1.0,
+        "division_fp": 0.0,
+        "division_jaccard": 0.0,
+        "division_tp": 0.0,
+        "edge_fn": 21.0,
+        "edge_fp": 7.0,
+        "edge_jaccard": 0.45098039215686275,
+        "edge_tp": 23.0,
+        "estimated_number_of_nodes": 478.0,
+        "node_recall": 0.7627118644067796,
+        "num_pred_nodes": 480.0,
+        "total_node_ratio": 0.0041841004184100415
+      },
+      "pred_dividing_node_count": 0,
+      "pred_dividing_nodes_sample": [],
+      "pred_edges": 225,
+      "pred_nodes": 480
+    },
+    {
+      "csv": "reports/general_model_division_window_divlikely_6bba_2312ac41_t9_4f_submission.csv",
+      "division_scores": {
+        "22": 0
+      },
+      "gt_division_reports": [
+        {
+          "components": [],
+          "gt_child_info": [
+            {
+              "node_id": 43,
+              "t": 11,
+              "x": 149.0,
+              "y": 199.0,
+              "z": 36.0
+            },
+            {
+              "node_id": 36,
+              "t": 11,
+              "x": 137.0,
+              "y": 210.0,
+              "z": 45.0
+            }
+          ],
+          "gt_children": [
+            43,
+            36
+          ],
+          "gt_div_info": {
+            "node_id": 22,
+            "t": 10,
+            "x": 141.0,
+            "y": 209.0,
+            "z": 40.0
+          },
+          "gt_div_node": 22,
+          "matched_node_count": 0,
+          "score": 0
+        }
+      ],
+      "label": "division_likely",
+      "matched_pred_divisions_count": 1,
+      "metrics": {
+        "adj_edge_jaccard": 0.016965343017289018,
+        "division_fn": 1.0,
+        "division_fp": 1.0,
+        "division_jaccard": 0.0,
+        "division_tp": 0.0,
+        "edge_fn": 43.0,
+        "edge_fp": 9.0,
+        "edge_jaccard": 0.018867924528301886,
+        "edge_tp": 1.0,
+        "estimated_number_of_nodes": 478.0,
+        "node_recall": 0.15254237288135594,
+        "num_pred_nodes": 960.0,
+        "total_node_ratio": 1.00836820083682
+      },
+      "pred_dividing_node_count": 68,
+      "pred_dividing_nodes_sample": [
+        {
+          "children": [
+            249,
+            241
+          ],
+          "node_id": 6,
+          "out_degree": 2,
+          "t": 9,
+          "x": 163.0,
+          "y": 151.0,
+          "z": 29.0
+        },
+        {
+          "children": [
+            246,
+            245
+          ],
+          "node_id": 12,
+          "out_degree": 2,
+          "t": 9,
+          "x": 162.0,
+          "y": 153.0,
+          "z": 25.0
+        },
+        {
+          "children": [
+            254,
+            247
+          ],
+          "node_id": 14,
+          "out_degree": 2,
+          "t": 9,
+          "x": 159.0,
+          "y": 148.0,
+          "z": 26.0
+        },
+        {
+          "children": [
+            260,
+            253
+          ],
+          "node_id": 17,
+          "out_degree": 2,
+          "t": 9,
+          "x": 159.0,
+          "y": 149.0,
+          "z": 28.0
+        },
+        {
+          "children": [
+            280,
+            264
+          ],
+          "node_id": 20,
+          "out_degree": 2,
+          "t": 9,
+          "x": 162.0,
+          "y": 153.0,
+          "z": 39.0
+        },
+        {
+          "children": [
+            374,
+            285
+          ],
+          "node_id": 37,
+          "out_degree": 2,
+          "t": 9,
+          "x": 212.0,
+          "y": 224.0,
+          "z": 9.0
+        },
+        {
+          "children": [
+            378,
+            286
+          ],
+          "node_id": 38,
+          "out_degree": 2,
+          "t": 9,
+          "x": 212.0,
+          "y": 193.0,
+          "z": 9.0
+        },
+        {
+          "children": [
+            427,
+            282
+          ],
+          "node_id": 39,
+          "out_degree": 2,
+          "t": 9,
+          "x": 209.0,
+          "y": 225.0,
+          "z": 7.0
+        },
+        {
+          "children": [
+            298,
+            289
+          ],
+          "node_id": 50,
+          "out_degree": 2,
+          "t": 9,
+          "x": 205.0,
+          "y": 223.0,
+          "z": 6.0
+        },
+        {
+          "children": [
+            387,
+            306
+          ],
+          "node_id": 54,
+          "out_degree": 2,
+          "t": 9,
+          "x": 221.0,
+          "y": 121.0,
+          "z": 21.0
+        },
+        {
+          "children": [
+            390,
+            303
+          ],
+          "node_id": 61,
+          "out_degree": 2,
+          "t": 9,
+          "x": 186.0,
+          "y": 226.0,
+          "z": 12.0
+        },
+        {
+          "children": [
+            460,
+            336
+          ],
+          "node_id": 86,
+          "out_degree": 2,
+          "t": 9,
+          "x": 108.0,
+          "y": 192.0,
+          "z": 62.0
+        },
+        {
+          "children": [
+            337,
+            335
+          ],
+          "node_id": 87,
+          "out_degree": 2,
+          "t": 9,
+          "x": 143.0,
+          "y": 113.0,
+          "z": 62.0
+        },
+        {
+          "children": [
+            458,
+            332
+          ],
+          "node_id": 90,
+          "out_degree": 2,
+          "t": 9,
+          "x": 145.0,
+          "y": 105.0,
+          "z": 62.0
+        },
+        {
+          "children": [
+            457,
+            334
+          ],
+          "node_id": 91,
+          "out_degree": 2,
+          "t": 9,
+          "x": 141.0,
+          "y": 109.0,
+          "z": 63.0
+        },
+        {
+          "children": [
+            357,
+            269
+          ],
+          "node_id": 107,
+          "out_degree": 2,
+          "t": 9,
+          "x": 91.0,
+          "y": 230.0,
+          "z": 44.0
+        },
+        {
+          "children": [
+            471,
+            469
+          ],
+          "node_id": 147,
+          "out_degree": 2,
+          "t": 9,
+          "x": 156.0,
+          "y": 246.0,
+          "z": 24.0
+        },
+        {
+          "children": [
+            422,
+            401
+          ],
+          "node_id": 165,
+          "out_degree": 2,
+          "t": 9,
+          "x": 249.0,
+          "y": 115.0,
+          "z": 7.0
+        },
+        {
+          "children": [
+            423,
+            417
+          ],
+          "node_id": 166,
+          "out_degree": 2,
+          "t": 9,
+          "x": 255.0,
+          "y": 114.0,
+          "z": 7.0
+        },
+        {
+          "children": [
+            416,
+            415
+          ],
+          "node_id": 175,
+          "out_degree": 2,
+          "t": 9,
+          "x": 212.0,
+          "y": 210.0,
+          "z": 0.0
+        },
+        {
+          "children": [
+            419,
+            411
+          ],
+          "node_id": 177,
+          "out_degree": 2,
+          "t": 9,
+          "x": 205.0,
+          "y": 204.0,
+          "z": 4.0
+        },
+        {
+          "children": [
+            409,
+            284
+          ],
+          "node_id": 178,
+          "out_degree": 2,
+          "t": 9,
+          "x": 255.0,
+          "y": 146.0,
+          "z": 6.0
+        },
+        {
+          "children": [
+            446,
+            431
+          ],
+          "node_id": 199,
+          "out_degree": 2,
+          "t": 9,
+          "x": 106.0,
+          "y": 252.0,
+          "z": 46.0
+        },
+        {
+          "children": [
+            466,
+            321
+          ],
+          "node_id": 220,
+          "out_degree": 2,
+          "t": 9,
+          "x": 142.0,
+          "y": 99.0,
+          "z": 55.0
+        },
+        {
+          "children": [
+            454,
+            452
+          ],
+          "node_id": 225,
+          "out_degree": 2,
+          "t": 9,
+          "x": 91.0,
+          "y": 191.0,
+          "z": 58.0
+        },
+        {
+          "children": [
+            492,
+            491
+          ],
+          "node_id": 241,
+          "out_degree": 2,
+          "t": 10,
+          "x": 161.0,
+          "y": 142.0,
+          "z": 27.0
+        },
+        {
+          "children": [
+            546,
+            535
+          ],
+          "node_id": 243,
+          "out_degree": 2,
+          "t": 10,
+          "x": 193.0,
+          "y": 207.0,
+          "z": 21.0
+        },
+        {
+          "children": [
+            539,
+            532
+          ],
+          "node_id": 244,
+          "out_degree": 2,
+          "t": 10,
+          "x": 196.0,
+          "y": 207.0,
+          "z": 25.0
+        },
+        {
+          "children": [
+            490,
+            484
+          ],
+          "node_id": 251,
+          "out_degree": 2,
+          "t": 10,
+          "x": 159.0,
+          "y": 214.0,
+          "z": 33.0
+        },
+        {
+          "children": [
+            509,
+            503
+          ],
+          "node_id": 261,
+          "out_degree": 2,
+          "t": 10,
+          "x": 94.0,
+          "y": 224.0,
+          "z": 41.0
+        }
+      ],
+      "pred_edges": 664,
+      "pred_nodes": 960
+    }
+  ],
+  "scale_zyx": [
+    1.625,
+    0.40625,
+    0.40625
+  ]
+}

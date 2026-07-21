@@ -1,0 +1,40 @@
+{
+  "rows": [
+    {
+      "dataset": "44b6_2f31fc2f",
+      "route": "refined_dog_compact",
+      "gt_timepoints": 3,
+      "gt_nodes": 3,
+      "mean_candidates_per_gt_t": 260.0,
+      "recall_7um": 0.0,
+      "recall_10um": 0.6666666666666666,
+      "median_nearest_um": 9.926143646240234,
+      "p90_nearest_um": 10.814229965209961,
+      "runtime_sec": 20.24299716949463
+    },
+    {
+      "dataset": "44b6_2f31fc2f",
+      "route": "coverage_dog_compact",
+      "gt_timepoints": 3,
+      "gt_nodes": 3,
+      "mean_candidates_per_gt_t": 220.0,
+      "recall_7um": 0.3333333333333333,
+      "recall_10um": 1.0,
+      "median_nearest_um": 7.803807735443115,
+      "p90_nearest_um": 8.35473918914795,
+      "runtime_sec": 14.924946069717407
+    },
+    {
+      "dataset": "44b6_2f31fc2f",
+      "route": "dense_fusion",
+      "gt_timepoints": 3,
+      "gt_nodes": 3,
+      "mean_candidates_per_gt_t": 260.0,
+      "recall_7um": 0.3333333333333333,
+      "recall_10um": 1.0,
+      "median_nearest_um": 8.175623893737793,
+      "p90_nearest_um": 9.52265453338623,
+      "runtime_sec": 44.078351736068726
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "artifact": "t03-private-run-v5",
+  "browser_evidence": {
+    "displayed_accelerator": "GPU T4 x2",
+    "displayed_runtime_seconds": 724.5,
+    "displayed_state": "Failed",
+    "displayed_version": 5,
+    "private": true,
+    "script_version_id": 335940697,
+    "url": "https://www.kaggle.com/code/onebitbrain/biohub-t03-f0?scriptVersionId=335940697"
+  },
+  "candidate_changed": false,
+  "effects": {
+    "dataset_created": false,
+    "public": false,
+    "scored_submission": false
+  },
+  "final": {
+    "error": "TargetError: node coordinate is outside the image",
+    "failure_phase": "sparse target construction for a later training window",
+    "mixed_precision_failure_recurred": false,
+    "optimizer_steps_evidenced": 0,
+    "status": "failed_during_training_target_construction"
+  },
+  "output_evidence": {
+    "checkpoint_present": false,
+    "metrics_present": false,
+    "prelaunch_present": true,
+    "reason_no_atomic_training_output": "checkpoint and metrics are written only after the bounded loop exits"
+  },
+  "package": {
+    "notebook_bytes": 99424,
+    "notebook_sha256": "d8e8e9ff073ca1b8b6aa4eadf58d3d2ff1f744912a1129c6cd6218a9a71d2c94",
+    "package_index_sha256": "d374ff3ca96d6f3fb62c8648b714fffb651cf2a0fe2770b3ffe966ef39977816",
+    "source_bytes": 92999,
+    "source_sha256": "e17ac2c2d381a8f177fff4fb6b62e46658074d35ed7eeea8af56fc3db9aee02a",
+    "test_sha256": "60b6344624a4e63fe39c09fc3d3c6c69dfe0faeb25a941825abd3d538540bf8e"
+  },
+  "recorded_at": "2026-07-17T12:30:00Z",
+  "remediation_evidence": {
+    "dependency_and_argument_preflight_passed": true,
+    "full_fp32_backward_passed_prior_failure_boundary": true,
+    "inferred_root_cause": "rounding a valid raw boundary centroid after downsampling can produce an index equal to the downsampled dimension"
+  },
+  "schema_version": 1
+}

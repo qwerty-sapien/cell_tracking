@@ -1,0 +1,83 @@
+{
+  "dataset": "44b6_2f31fc2f",
+  "route": "axial_rescue_compact",
+  "status": "stopped_after_negative_rows",
+  "reason": "Interrupted after max_neighbors=12 still produced zero edge TP; remaining wider rows were redundant for this turn.",
+  "rows": [
+    {
+      "max_neighbors": 8,
+      "edge_cost_threshold": 0.88,
+      "score": 0.0,
+      "edge_jaccard": 0.0,
+      "node_recall": 1.0,
+      "edge_tp": 0.0,
+      "edge_fp": 2.0,
+      "edge_fn": 2.0,
+      "nodes": 660,
+      "edges": 289,
+      "edge_candidates": 1973,
+      "runtime_sec": 25.571925163269043,
+      "merges": 0
+    },
+    {
+      "max_neighbors": 8,
+      "edge_cost_threshold": 0.95,
+      "score": 0.0,
+      "edge_jaccard": 0.0,
+      "node_recall": 1.0,
+      "edge_tp": 0.0,
+      "edge_fp": 2.0,
+      "edge_fn": 2.0,
+      "nodes": 660,
+      "edges": 289,
+      "edge_candidates": 1973,
+      "runtime_sec": 25.387022018432617,
+      "merges": 0
+    },
+    {
+      "max_neighbors": 8,
+      "edge_cost_threshold": 1.05,
+      "score": 0.0,
+      "edge_jaccard": 0.0,
+      "node_recall": 1.0,
+      "edge_tp": 0.0,
+      "edge_fp": 2.0,
+      "edge_fn": 2.0,
+      "nodes": 660,
+      "edges": 289,
+      "edge_candidates": 1973,
+      "runtime_sec": 26.103902101516724,
+      "merges": 0
+    },
+    {
+      "max_neighbors": 12,
+      "edge_cost_threshold": 0.88,
+      "score": 0.0,
+      "edge_jaccard": 0.0,
+      "node_recall": 1.0,
+      "edge_tp": 0.0,
+      "edge_fp": 2.0,
+      "edge_fn": 2.0,
+      "nodes": 660,
+      "edges": 292,
+      "edge_candidates": 2612,
+      "runtime_sec": 27.123785972595215,
+      "merges": 0
+    },
+    {
+      "max_neighbors": 12,
+      "edge_cost_threshold": 0.95,
+      "score": 0.0,
+      "edge_jaccard": 0.0,
+      "node_recall": 1.0,
+      "edge_tp": 0.0,
+      "edge_fp": 2.0,
+      "edge_fn": 2.0,
+      "nodes": 660,
+      "edges": 292,
+      "edge_candidates": 2612,
+      "runtime_sec": 25.993354082107544,
+      "merges": 0
+    }
+  ]
+}

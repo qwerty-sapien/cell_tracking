@@ -1,0 +1,6359 @@
+{
+  "kind": "offset_clone_filter_variant_probe",
+  "created_at_unix": 1783960664.732784,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "split_manifest_sha256": "b02e489391b2f093b79a2416f94e84223702b9744ae61cdda11ed9485b66baae",
+  "fold_id": "0",
+  "datasets": [
+    "6bba_2819ca14"
+  ],
+  "route_arg": "auto",
+  "clip_length": 3,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "summary": {
+    "n": 81,
+    "edge_jaccard": 0.6802469135802469,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.6766228594185584,
+    "adj_edge_jaccard": 0.6746790287054514,
+    "n_adj": 81,
+    "score": 0.6746790287054514
+  },
+  "dataset_reports": [
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "current_score": 0.7364028430309602,
+      "current_edge_jaccard": 0.8,
+      "best_variant": "x_le_64",
+      "best_score": 0.7884447656908806,
+      "best_edge_jaccard": 0.8,
+      "best_node_recall": 0.8064516129032258,
+      "best_nodes": 190,
+      "best_edges": 110,
+      "delta_score": 0.05204192265992047
+    }
+  ],
+  "rows": [
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "current",
+      "spec": {
+        "name": "current"
+      },
+      "num_pred_nodes": 298.0,
+      "num_pred_edges": 173,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 135,
+        "dropped_offset_nodes": 0,
+        "kept_nodes_after_endpoint_filter": 298,
+        "kept_edges": 173
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 298,
+        "edges": 173,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8064516129032258,
+      "total_node_ratio": 0.7949644621129983,
+      "edge_jaccard": 0.8,
+      "adj_edge_jaccard": 0.7364028430309602,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "no_offset",
+      "spec": {
+        "name": "no_offset",
+        "drop_all_offsets": true
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "mode_contrast_only",
+      "spec": {
+        "name": "mode_contrast_only",
+        "source_mode": "contrast_only"
+      },
+      "num_pred_nodes": 212.0,
+      "num_pred_edges": 121,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 55,
+        "dropped_offset_nodes": 80,
+        "kept_nodes_after_endpoint_filter": 212,
+        "kept_edges": 121
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 212,
+        "edges": 121,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.27695458378508603,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6319979520539695,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "mode_raw_only",
+      "spec": {
+        "name": "mode_raw_only",
+        "source_mode": "raw_only"
+      },
+      "num_pred_nodes": 216.0,
+      "num_pred_edges": 126,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 63,
+        "dropped_offset_nodes": 72,
+        "kept_nodes_after_endpoint_filter": 216,
+        "kept_edges": 126
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 216,
+        "edges": 126,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8064516129032258,
+      "total_node_ratio": 0.3010480664980122,
+      "edge_jaccard": 0.8,
+      "adj_edge_jaccard": 0.7759161546801591,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "mode_raw_contrast",
+      "spec": {
+        "name": "mode_raw_contrast",
+        "source_mode": "raw_contrast"
+      },
+      "num_pred_nodes": 168.0,
+      "num_pred_edges": 98,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 17,
+        "dropped_offset_nodes": 118,
+        "kept_nodes_after_endpoint_filter": 168,
+        "kept_edges": 98
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 168,
+        "edges": 98,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.011926273942898384,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6492247921937117,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "mode_contrast_any",
+      "spec": {
+        "name": "mode_contrast_any",
+        "source_mode": "contrast_any"
+      },
+      "num_pred_nodes": 223.0,
+      "num_pred_edges": 127,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 72,
+        "dropped_offset_nodes": 63,
+        "kept_nodes_after_endpoint_filter": 223,
+        "kept_edges": 127
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 223,
+        "edges": 127,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.34321166124563296,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6276912420190339,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "mode_raw_any",
+      "spec": {
+        "name": "mode_raw_any",
+        "source_mode": "raw_any"
+      },
+      "num_pred_nodes": 237.0,
+      "num_pred_edges": 139,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 80,
+        "dropped_offset_nodes": 55,
+        "kept_nodes_after_endpoint_filter": 237,
+        "kept_edges": 139
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 237,
+        "edges": 139,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8064516129032258,
+      "total_node_ratio": 0.4275388507408745,
+      "edge_jaccard": 0.8,
+      "adj_edge_jaccard": 0.7657968919407301,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_16",
+      "spec": {
+        "name": "x_le_16",
+        "x_le": 16
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_16",
+      "spec": {
+        "name": "component_x_le_16",
+        "component_x_le": 16
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_16",
+      "spec": {
+        "name": "full3t_x_le_16",
+        "full_3t": true,
+        "x_le": 16
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_16",
+      "spec": {
+        "name": "full3t_component_x_le_16",
+        "full_3t": true,
+        "component_x_le": 16
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_24",
+      "spec": {
+        "name": "x_le_24",
+        "x_le": 24
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_24",
+      "spec": {
+        "name": "component_x_le_24",
+        "component_x_le": 24
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_24",
+      "spec": {
+        "name": "full3t_x_le_24",
+        "full_3t": true,
+        "x_le": 24
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_24",
+      "spec": {
+        "name": "full3t_component_x_le_24",
+        "full_3t": true,
+        "component_x_le": 24
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_32",
+      "spec": {
+        "name": "x_le_32",
+        "x_le": 32
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_32",
+      "spec": {
+        "name": "component_x_le_32",
+        "component_x_le": 32
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_32",
+      "spec": {
+        "name": "full3t_x_le_32",
+        "full_3t": true,
+        "x_le": 32
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_32",
+      "spec": {
+        "name": "full3t_component_x_le_32",
+        "full_3t": true,
+        "component_x_le": 32
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_48",
+      "spec": {
+        "name": "x_le_48",
+        "x_le": 48
+      },
+      "num_pred_nodes": 170.0,
+      "num_pred_edges": 99,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 10,
+        "dropped_offset_nodes": 125,
+        "kept_nodes_after_endpoint_filter": 170,
+        "kept_edges": 99
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 170,
+        "edges": 99,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.02397301529936146,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6484417540055415,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_48",
+      "spec": {
+        "name": "component_x_le_48",
+        "component_x_le": 48
+      },
+      "num_pred_nodes": 170.0,
+      "num_pred_edges": 99,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 6,
+        "dropped_offset_nodes": 129,
+        "kept_nodes_after_endpoint_filter": 170,
+        "kept_edges": 99
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 170,
+        "edges": 99,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.02397301529936146,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6484417540055415,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_48",
+      "spec": {
+        "name": "full3t_x_le_48",
+        "full_3t": true,
+        "x_le": 48
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 1,
+        "dropped_offset_nodes": 134,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_48",
+      "spec": {
+        "name": "full3t_component_x_le_48",
+        "full_3t": true,
+        "component_x_le": 48
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_64",
+      "spec": {
+        "name": "x_le_64",
+        "x_le": 64
+      },
+      "num_pred_nodes": 190.0,
+      "num_pred_edges": 110,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 29,
+        "dropped_offset_nodes": 106,
+        "kept_nodes_after_endpoint_filter": 190,
+        "kept_edges": 110
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 190,
+        "edges": 110,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8064516129032258,
+      "total_node_ratio": 0.14444042886399222,
+      "edge_jaccard": 0.8,
+      "adj_edge_jaccard": 0.7884447656908806,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_64",
+      "spec": {
+        "name": "component_x_le_64",
+        "component_x_le": 64
+      },
+      "num_pred_nodes": 190.0,
+      "num_pred_edges": 110,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 27,
+        "dropped_offset_nodes": 108,
+        "kept_nodes_after_endpoint_filter": 190,
+        "kept_edges": 110
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 190,
+        "edges": 110,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8064516129032258,
+      "total_node_ratio": 0.14444042886399222,
+      "edge_jaccard": 0.8,
+      "adj_edge_jaccard": 0.7884447656908806,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_64",
+      "spec": {
+        "name": "full3t_x_le_64",
+        "full_3t": true,
+        "x_le": 64
+      },
+      "num_pred_nodes": 170.0,
+      "num_pred_edges": 100,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 6,
+        "dropped_offset_nodes": 129,
+        "kept_nodes_after_endpoint_filter": 170,
+        "kept_edges": 100
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 170,
+        "edges": 100,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 15.0,
+      "edge_fp": 0.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.7419354838709677,
+      "total_node_ratio": 0.02397301529936146,
+      "edge_jaccard": 0.75,
+      "adj_edge_jaccard": 0.748202023852548,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_64",
+      "spec": {
+        "name": "full3t_component_x_le_64",
+        "full_3t": true,
+        "component_x_le": 64
+      },
+      "num_pred_nodes": 170.0,
+      "num_pred_edges": 100,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 6,
+        "dropped_offset_nodes": 129,
+        "kept_nodes_after_endpoint_filter": 170,
+        "kept_edges": 100
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 170,
+        "edges": 100,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 15.0,
+      "edge_fp": 0.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.7419354838709677,
+      "total_node_ratio": 0.02397301529936146,
+      "edge_jaccard": 0.75,
+      "adj_edge_jaccard": 0.748202023852548,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_96",
+      "spec": {
+        "name": "x_le_96",
+        "x_le": 96
+      },
+      "num_pred_nodes": 204.0,
+      "num_pred_edges": 118,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 41,
+        "dropped_offset_nodes": 94,
+        "kept_nodes_after_endpoint_filter": 204,
+        "kept_edges": 118
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 204,
+        "edges": 118,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8064516129032258,
+      "total_node_ratio": 0.22876761835923376,
+      "edge_jaccard": 0.8,
+      "adj_edge_jaccard": 0.7816985905312613,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_96",
+      "spec": {
+        "name": "component_x_le_96",
+        "component_x_le": 96
+      },
+      "num_pred_nodes": 202.0,
+      "num_pred_edges": 117,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 39,
+        "dropped_offset_nodes": 96,
+        "kept_nodes_after_endpoint_filter": 202,
+        "kept_edges": 117
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 202,
+        "edges": 117,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8064516129032258,
+      "total_node_ratio": 0.21672087700277068,
+      "edge_jaccard": 0.8,
+      "adj_edge_jaccard": 0.7826623298397783,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_96",
+      "spec": {
+        "name": "full3t_x_le_96",
+        "full_3t": true,
+        "x_le": 96
+      },
+      "num_pred_nodes": 178.0,
+      "num_pred_edges": 105,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 14,
+        "dropped_offset_nodes": 121,
+        "kept_nodes_after_endpoint_filter": 178,
+        "kept_edges": 105
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 178,
+        "edges": 105,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 15.0,
+      "edge_fp": 0.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.7419354838709677,
+      "total_node_ratio": 0.07215998072521376,
+      "edge_jaccard": 0.75,
+      "adj_edge_jaccard": 0.744588001445609,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_96",
+      "spec": {
+        "name": "full3t_component_x_le_96",
+        "full_3t": true,
+        "component_x_le": 96
+      },
+      "num_pred_nodes": 176.0,
+      "num_pred_edges": 104,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 12,
+        "dropped_offset_nodes": 123,
+        "kept_nodes_after_endpoint_filter": 176,
+        "kept_edges": 104
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 176,
+        "edges": 104,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 15.0,
+      "edge_fp": 0.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.7419354838709677,
+      "total_node_ratio": 0.06011323936875069,
+      "edge_jaccard": 0.75,
+      "adj_edge_jaccard": 0.7454915070473437,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_128",
+      "spec": {
+        "name": "x_le_128",
+        "x_le": 128
+      },
+      "num_pred_nodes": 217.0,
+      "num_pred_edges": 126,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 54,
+        "dropped_offset_nodes": 81,
+        "kept_nodes_after_endpoint_filter": 217,
+        "kept_edges": 126
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 217,
+        "edges": 126,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8064516129032258,
+      "total_node_ratio": 0.30707143717624374,
+      "edge_jaccard": 0.8,
+      "adj_edge_jaccard": 0.7754342850259005,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_128",
+      "spec": {
+        "name": "component_x_le_128",
+        "component_x_le": 128
+      },
+      "num_pred_nodes": 217.0,
+      "num_pred_edges": 126,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 54,
+        "dropped_offset_nodes": 81,
+        "kept_nodes_after_endpoint_filter": 217,
+        "kept_edges": 126
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 217,
+        "edges": 126,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8064516129032258,
+      "total_node_ratio": 0.30707143717624374,
+      "edge_jaccard": 0.8,
+      "adj_edge_jaccard": 0.7754342850259005,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_128",
+      "spec": {
+        "name": "full3t_x_le_128",
+        "full_3t": true,
+        "x_le": 128
+      },
+      "num_pred_nodes": 185.0,
+      "num_pred_edges": 110,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 21,
+        "dropped_offset_nodes": 114,
+        "kept_nodes_after_endpoint_filter": 185,
+        "kept_edges": 110
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 185,
+        "edges": 110,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 15.0,
+      "edge_fp": 0.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.7419354838709677,
+      "total_node_ratio": 0.11432357547283453,
+      "edge_jaccard": 0.75,
+      "adj_edge_jaccard": 0.7414257318395374,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_128",
+      "spec": {
+        "name": "full3t_component_x_le_128",
+        "full_3t": true,
+        "component_x_le": 128
+      },
+      "num_pred_nodes": 185.0,
+      "num_pred_edges": 110,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 21,
+        "dropped_offset_nodes": 114,
+        "kept_nodes_after_endpoint_filter": 185,
+        "kept_edges": 110
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 185,
+        "edges": 110,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 15.0,
+      "edge_fp": 0.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.7419354838709677,
+      "total_node_ratio": 0.11432357547283453,
+      "edge_jaccard": 0.75,
+      "adj_edge_jaccard": 0.7414257318395374,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "x_le_192",
+      "spec": {
+        "name": "x_le_192",
+        "x_le": 192
+      },
+      "num_pred_nodes": 272.0,
+      "num_pred_edges": 158,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 109,
+        "dropped_offset_nodes": 26,
+        "kept_nodes_after_endpoint_filter": 272,
+        "kept_edges": 158
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 272,
+        "edges": 158,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8064516129032258,
+      "total_node_ratio": 0.6383568244789783,
+      "edge_jaccard": 0.8,
+      "adj_edge_jaccard": 0.7489314540416818,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "component_x_le_192",
+      "spec": {
+        "name": "component_x_le_192",
+        "component_x_le": 192
+      },
+      "num_pred_nodes": 272.0,
+      "num_pred_edges": 158,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 109,
+        "dropped_offset_nodes": 26,
+        "kept_nodes_after_endpoint_filter": 272,
+        "kept_edges": 158
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 272,
+        "edges": 158,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.8064516129032258,
+      "total_node_ratio": 0.6383568244789783,
+      "edge_jaccard": 0.8,
+      "adj_edge_jaccard": 0.7489314540416818,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_x_le_192",
+      "spec": {
+        "name": "full3t_x_le_192",
+        "full_3t": true,
+        "x_le": 192
+      },
+      "num_pred_nodes": 212.0,
+      "num_pred_edges": 128,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 48,
+        "dropped_offset_nodes": 87,
+        "kept_nodes_after_endpoint_filter": 212,
+        "kept_edges": 128
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 212,
+        "edges": 128,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 15.0,
+      "edge_fp": 0.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.7419354838709677,
+      "total_node_ratio": 0.27695458378508603,
+      "edge_jaccard": 0.75,
+      "adj_edge_jaccard": 0.7292284062161185,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "full3t_component_x_le_192",
+      "spec": {
+        "name": "full3t_component_x_le_192",
+        "full_3t": true,
+        "component_x_le": 192
+      },
+      "num_pred_nodes": 212.0,
+      "num_pred_edges": 128,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 48,
+        "dropped_offset_nodes": 87,
+        "kept_nodes_after_endpoint_filter": 212,
+        "kept_edges": 128
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 212,
+        "edges": 128,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 15.0,
+      "edge_fp": 0.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.7419354838709677,
+      "total_node_ratio": 0.27695458378508603,
+      "edge_jaccard": 0.75,
+      "adj_edge_jaccard": 0.7292284062161185,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_x_le_16",
+      "spec": {
+        "name": "contrast_only_x_le_16",
+        "source_mode": "contrast_only",
+        "x_le": 16
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_full3t_component_x_le_16",
+      "spec": {
+        "name": "contrast_only_full3t_component_x_le_16",
+        "source_mode": "contrast_only",
+        "full_3t": true,
+        "component_x_le": 16
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_x_le_24",
+      "spec": {
+        "name": "contrast_only_x_le_24",
+        "source_mode": "contrast_only",
+        "x_le": 24
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_full3t_component_x_le_24",
+      "spec": {
+        "name": "contrast_only_full3t_component_x_le_24",
+        "source_mode": "contrast_only",
+        "full_3t": true,
+        "component_x_le": 24
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_x_le_32",
+      "spec": {
+        "name": "contrast_only_x_le_32",
+        "source_mode": "contrast_only",
+        "x_le": 32
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_full3t_component_x_le_32",
+      "spec": {
+        "name": "contrast_only_full3t_component_x_le_32",
+        "source_mode": "contrast_only",
+        "full_3t": true,
+        "component_x_le": 32
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_x_le_48",
+      "spec": {
+        "name": "contrast_only_x_le_48",
+        "source_mode": "contrast_only",
+        "x_le": 48
+      },
+      "num_pred_nodes": 168.0,
+      "num_pred_edges": 98,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 6,
+        "dropped_offset_nodes": 129,
+        "kept_nodes_after_endpoint_filter": 168,
+        "kept_edges": 98
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 168,
+        "edges": 98,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.011926273942898384,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6492247921937117,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_full3t_component_x_le_48",
+      "spec": {
+        "name": "contrast_only_full3t_component_x_le_48",
+        "source_mode": "contrast_only",
+        "full_3t": true,
+        "component_x_le": 48
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_x_le_64",
+      "spec": {
+        "name": "contrast_only_x_le_64",
+        "source_mode": "contrast_only",
+        "x_le": 64
+      },
+      "num_pred_nodes": 175.0,
+      "num_pred_edges": 102,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 14,
+        "dropped_offset_nodes": 121,
+        "kept_nodes_after_endpoint_filter": 175,
+        "kept_edges": 102
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 175,
+        "edges": 102,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.05408986869051915,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6464841585351163,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_full3t_component_x_le_64",
+      "spec": {
+        "name": "contrast_only_full3t_component_x_le_64",
+        "source_mode": "contrast_only",
+        "full_3t": true,
+        "component_x_le": 64
+      },
+      "num_pred_nodes": 167.0,
+      "num_pred_edges": 98,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 3,
+        "dropped_offset_nodes": 132,
+        "kept_nodes_after_endpoint_filter": 167,
+        "kept_edges": 98
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 167,
+        "edges": 98,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.005902903264666846,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6496163112877966,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_x_le_96",
+      "spec": {
+        "name": "contrast_only_x_le_96",
+        "source_mode": "contrast_only",
+        "x_le": 96
+      },
+      "num_pred_nodes": 177.0,
+      "num_pred_edges": 103,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 16,
+        "dropped_offset_nodes": 119,
+        "kept_nodes_after_endpoint_filter": 177,
+        "kept_edges": 103
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 177,
+        "edges": 103,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.06613661004698222,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6457011203469462,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_full3t_component_x_le_96",
+      "spec": {
+        "name": "contrast_only_full3t_component_x_le_96",
+        "source_mode": "contrast_only",
+        "full_3t": true,
+        "component_x_le": 96
+      },
+      "num_pred_nodes": 167.0,
+      "num_pred_edges": 98,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 3,
+        "dropped_offset_nodes": 132,
+        "kept_nodes_after_endpoint_filter": 167,
+        "kept_edges": 98
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 167,
+        "edges": 98,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.005902903264666846,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6496163112877966,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_x_le_128",
+      "spec": {
+        "name": "contrast_only_x_le_128",
+        "source_mode": "contrast_only",
+        "x_le": 128
+      },
+      "num_pred_nodes": 181.0,
+      "num_pred_edges": 105,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 21,
+        "dropped_offset_nodes": 114,
+        "kept_nodes_after_endpoint_filter": 181,
+        "kept_edges": 105
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 181,
+        "edges": 105,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.09023009275990838,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.644135043970606,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_only_full3t_component_x_le_128",
+      "spec": {
+        "name": "contrast_only_full3t_component_x_le_128",
+        "source_mode": "contrast_only",
+        "full_3t": true,
+        "component_x_le": 128
+      },
+      "num_pred_nodes": 167.0,
+      "num_pred_edges": 98,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 4,
+        "dropped_offset_nodes": 131,
+        "kept_nodes_after_endpoint_filter": 167,
+        "kept_edges": 98
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 167,
+        "edges": 98,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.005902903264666846,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6496163112877966,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_x_le_16",
+      "spec": {
+        "name": "contrast_any_x_le_16",
+        "source_mode": "contrast_any",
+        "x_le": 16
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_full3t_component_x_le_16",
+      "spec": {
+        "name": "contrast_any_full3t_component_x_le_16",
+        "source_mode": "contrast_any",
+        "full_3t": true,
+        "component_x_le": 16
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_x_le_24",
+      "spec": {
+        "name": "contrast_any_x_le_24",
+        "source_mode": "contrast_any",
+        "x_le": 24
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_full3t_component_x_le_24",
+      "spec": {
+        "name": "contrast_any_full3t_component_x_le_24",
+        "source_mode": "contrast_any",
+        "full_3t": true,
+        "component_x_le": 24
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_x_le_32",
+      "spec": {
+        "name": "contrast_any_x_le_32",
+        "source_mode": "contrast_any",
+        "x_le": 32
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_full3t_component_x_le_32",
+      "spec": {
+        "name": "contrast_any_full3t_component_x_le_32",
+        "source_mode": "contrast_any",
+        "full_3t": true,
+        "component_x_le": 32
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_x_le_48",
+      "spec": {
+        "name": "contrast_any_x_le_48",
+        "source_mode": "contrast_any",
+        "x_le": 48
+      },
+      "num_pred_nodes": 168.0,
+      "num_pred_edges": 98,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 7,
+        "dropped_offset_nodes": 128,
+        "kept_nodes_after_endpoint_filter": 168,
+        "kept_edges": 98
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 168,
+        "edges": 98,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.011926273942898384,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6492247921937117,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_full3t_component_x_le_48",
+      "spec": {
+        "name": "contrast_any_full3t_component_x_le_48",
+        "source_mode": "contrast_any",
+        "full_3t": true,
+        "component_x_le": 48
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_x_le_64",
+      "spec": {
+        "name": "contrast_any_x_le_64",
+        "source_mode": "contrast_any",
+        "x_le": 64
+      },
+      "num_pred_nodes": 177.0,
+      "num_pred_edges": 103,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 17,
+        "dropped_offset_nodes": 118,
+        "kept_nodes_after_endpoint_filter": 177,
+        "kept_edges": 103
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 177,
+        "edges": 103,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.06613661004698222,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6457011203469462,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_full3t_component_x_le_64",
+      "spec": {
+        "name": "contrast_any_full3t_component_x_le_64",
+        "source_mode": "contrast_any",
+        "full_3t": true,
+        "component_x_le": 64
+      },
+      "num_pred_nodes": 167.0,
+      "num_pred_edges": 98,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 3,
+        "dropped_offset_nodes": 132,
+        "kept_nodes_after_endpoint_filter": 167,
+        "kept_edges": 98
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 167,
+        "edges": 98,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.005902903264666846,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6496163112877966,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_x_le_96",
+      "spec": {
+        "name": "contrast_any_x_le_96",
+        "source_mode": "contrast_any",
+        "x_le": 96
+      },
+      "num_pred_nodes": 181.0,
+      "num_pred_edges": 105,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 21,
+        "dropped_offset_nodes": 114,
+        "kept_nodes_after_endpoint_filter": 181,
+        "kept_edges": 105
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 181,
+        "edges": 105,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.09023009275990838,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.644135043970606,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_full3t_component_x_le_96",
+      "spec": {
+        "name": "contrast_any_full3t_component_x_le_96",
+        "source_mode": "contrast_any",
+        "full_3t": true,
+        "component_x_le": 96
+      },
+      "num_pred_nodes": 167.0,
+      "num_pred_edges": 98,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 3,
+        "dropped_offset_nodes": 132,
+        "kept_nodes_after_endpoint_filter": 167,
+        "kept_edges": 98
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 167,
+        "edges": 98,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.005902903264666846,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6496163112877966,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_x_le_128",
+      "spec": {
+        "name": "contrast_any_x_le_128",
+        "source_mode": "contrast_any",
+        "x_le": 128
+      },
+      "num_pred_nodes": 185.0,
+      "num_pred_edges": 107,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 26,
+        "dropped_offset_nodes": 109,
+        "kept_nodes_after_endpoint_filter": 185,
+        "kept_edges": 107
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 185,
+        "edges": 107,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.11432357547283453,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6425689675942657,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "contrast_any_full3t_component_x_le_128",
+      "spec": {
+        "name": "contrast_any_full3t_component_x_le_128",
+        "source_mode": "contrast_any",
+        "full_3t": true,
+        "component_x_le": 128
+      },
+      "num_pred_nodes": 167.0,
+      "num_pred_edges": 98,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 5,
+        "dropped_offset_nodes": 130,
+        "kept_nodes_after_endpoint_filter": 167,
+        "kept_edges": 98
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 167,
+        "edges": 98,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.005902903264666846,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6496163112877966,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_x_le_16",
+      "spec": {
+        "name": "raw_contrast_x_le_16",
+        "source_mode": "raw_contrast",
+        "x_le": 16
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_full3t_component_x_le_16",
+      "spec": {
+        "name": "raw_contrast_full3t_component_x_le_16",
+        "source_mode": "raw_contrast",
+        "full_3t": true,
+        "component_x_le": 16
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_x_le_24",
+      "spec": {
+        "name": "raw_contrast_x_le_24",
+        "source_mode": "raw_contrast",
+        "x_le": 24
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_full3t_component_x_le_24",
+      "spec": {
+        "name": "raw_contrast_full3t_component_x_le_24",
+        "source_mode": "raw_contrast",
+        "full_3t": true,
+        "component_x_le": 24
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_x_le_32",
+      "spec": {
+        "name": "raw_contrast_x_le_32",
+        "source_mode": "raw_contrast",
+        "x_le": 32
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_full3t_component_x_le_32",
+      "spec": {
+        "name": "raw_contrast_full3t_component_x_le_32",
+        "source_mode": "raw_contrast",
+        "full_3t": true,
+        "component_x_le": 32
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_x_le_48",
+      "spec": {
+        "name": "raw_contrast_x_le_48",
+        "source_mode": "raw_contrast",
+        "x_le": 48
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 1,
+        "dropped_offset_nodes": 134,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_full3t_component_x_le_48",
+      "spec": {
+        "name": "raw_contrast_full3t_component_x_le_48",
+        "source_mode": "raw_contrast",
+        "full_3t": true,
+        "component_x_le": 48
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_x_le_64",
+      "spec": {
+        "name": "raw_contrast_x_le_64",
+        "source_mode": "raw_contrast",
+        "x_le": 64
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 3,
+        "dropped_offset_nodes": 132,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_full3t_component_x_le_64",
+      "spec": {
+        "name": "raw_contrast_full3t_component_x_le_64",
+        "source_mode": "raw_contrast",
+        "full_3t": true,
+        "component_x_le": 64
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_x_le_96",
+      "spec": {
+        "name": "raw_contrast_x_le_96",
+        "source_mode": "raw_contrast",
+        "x_le": 96
+      },
+      "num_pred_nodes": 166.0,
+      "num_pred_edges": 97,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 5,
+        "dropped_offset_nodes": 130,
+        "kept_nodes_after_endpoint_filter": 166,
+        "kept_edges": 97
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 166,
+        "edges": 97,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.00012046741356469239,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6500078303818817,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_full3t_component_x_le_96",
+      "spec": {
+        "name": "raw_contrast_full3t_component_x_le_96",
+        "source_mode": "raw_contrast",
+        "full_3t": true,
+        "component_x_le": 96
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 0,
+        "dropped_offset_nodes": 135,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_x_le_128",
+      "spec": {
+        "name": "raw_contrast_x_le_128",
+        "source_mode": "raw_contrast",
+        "x_le": 128
+      },
+      "num_pred_nodes": 166.0,
+      "num_pred_edges": 97,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 5,
+        "dropped_offset_nodes": 130,
+        "kept_nodes_after_endpoint_filter": 166,
+        "kept_edges": 97
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 166,
+        "edges": 97,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.00012046741356469239,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6500078303818817,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "variant": "raw_contrast_full3t_component_x_le_128",
+      "spec": {
+        "name": "raw_contrast_full3t_component_x_le_128",
+        "source_mode": "raw_contrast",
+        "full_3t": true,
+        "component_x_le": 128
+      },
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "filter_stats": {
+        "kept_offset_nodes_before_endpoint_filter": 1,
+        "dropped_offset_nodes": 134,
+        "kept_nodes_after_endpoint_filter": 164,
+        "kept_edges": 96
+      },
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            6,
+            -24
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 135,
+        "cloned_edges": 77,
+        "clipped_nodes": 25,
+        "skipped_clipped_nodes": 25,
+        "filter": {
+          "enabled": false,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": null,
+          "layers": [
+            {
+              "enabled": false,
+              "kept_nodes": 135,
+              "kept_edges": 77,
+              "layer": 0
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          3.0,
+          6.0,
+          24.0
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    }
+  ],
+  "runtime_sec": 29.072804927825928
+}

@@ -1,0 +1,58 @@
+{
+  "artifact": "t03-private-trial-v4-authorization",
+  "authorization": {
+    "approved_by_user": true,
+    "concurrency": 1,
+    "iterative_private_retries": true,
+    "maximum_charge_usd_per_run": 0.3,
+    "maximum_hours_per_run": 0.75,
+    "private_only": true,
+    "public_effects": false,
+    "scored_submission": false,
+    "user_instruction": "keep retrying while closing each observed error class before the next run"
+  },
+  "candidate": {
+    "batch_size": 1,
+    "division_enabled": false,
+    "epochs": 1,
+    "fit_fraction": 0.1,
+    "fold": 0,
+    "learning_rate": 1e-05,
+    "max_steps": 1000,
+    "scenario": "universal",
+    "seed": 17,
+    "sparse_negative_weight": 0.001,
+    "unfreeze": 0
+  },
+  "candidate_changed": false,
+  "failure_closure": {
+    "argument_contract_checked_in_parser_and_training_entry": true,
+    "checkpoint_and_config_checked_before_prelaunch": true,
+    "cuda_checked_before_prelaunch": true,
+    "data_root_checked_before_prelaunch": true,
+    "dependency_imports_checked_before_prelaunch": 9,
+    "manual_exact_wheel_extraction": true,
+    "native_extension_imports_checked_before_prelaunch": 4,
+    "pip": false,
+    "support_wheels": 9
+  },
+  "package": {
+    "notebook_bytes": 99125,
+    "notebook_sha256": "1f56227b14fb889d1633382363ccd91539fad1602a75316d6fbc3c975c612f8a",
+    "package_index_sha256": "79681c5180eed8101c6f482ba4921a8e8cf487fac0493e7a7d7e0df99c4e3746",
+    "packer_sha256": "c1f18e608bf3ecd712a4f27179d7d943d246c3afdd00e15f84e9dee94b0f05c8",
+    "source_bytes": 92712,
+    "source_sha256": "6ffa3a4cbfaf9ee4e7f6722216bcc9f15332f897c7627bfdaed3a4658ed6ae27",
+    "test_sha256": "2c3e2de90d4a774dfd416eee71845c52f8bfde1e026e06fb44b8b7c41de2c9b5"
+  },
+  "recorded_at": "2026-07-17T11:49:10Z",
+  "schema_version": 1,
+  "status": "authorized_not_launched",
+  "verification": {
+    "dry_fold0_repeat_sha256": "c77700a59e65c96a6f72c3b7839014d2344bafc114b19a888239a20bae6aae2d",
+    "focused_tests_failed": 0,
+    "focused_tests_passed": 12,
+    "package_check": "pass",
+    "real_support_pack_extraction": "pass"
+  }
+}

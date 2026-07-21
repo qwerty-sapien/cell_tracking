@@ -1,0 +1,16 @@
+{
+  "artifact": "v45f-private-trial-v2",
+  "category": "training-archive-package-init",
+  "effect": "private-kaggle-kernel-only",
+  "kernel_ref": "onebitbrain/bh-v45f2",
+  "kernel_version": 1,
+  "observed_error": "ModuleNotFoundError: No module named 'celltrack_alpha.pipeline'",
+  "observed_stage": "trainer import after dependency repair and source extraction; before model load, image reads, or optimization",
+  "remediation": {
+    "artifact": "v45f-private-trial-v3",
+    "kernel_ref": "onebitbrain/bh-v45f3",
+    "method": "ship a minimal fit-only celltrack_alpha initializer and require an isolated archived-trainer import test"
+  },
+  "scored_submission": false,
+  "training_started": false
+}

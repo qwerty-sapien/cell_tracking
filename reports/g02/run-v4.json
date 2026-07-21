@@ -1,0 +1,49 @@
+{
+  "artifact": "t03-private-run-v4",
+  "browser_evidence": {
+    "displayed_accelerator": "GPU T4 x2",
+    "displayed_runtime_seconds": 343.5,
+    "displayed_state": "Failed",
+    "displayed_version": 4,
+    "private": true,
+    "script_version_id": 335937314,
+    "url": "https://www.kaggle.com/code/onebitbrain/biohub-t03-f0?scriptVersionId=335937314"
+  },
+  "candidate_changed": false,
+  "effects": {
+    "dataset_created": false,
+    "public": false,
+    "scored_submission": false
+  },
+  "final": {
+    "error": "LaunchError: nonfinite gradient",
+    "failure_phase": "first training batch after backward and gradient unscale, before optimizer step",
+    "optimizer_steps": 0,
+    "status": "failed_during_first_training_step"
+  },
+  "output_evidence": {
+    "checkpoint_present": false,
+    "metrics_present": false,
+    "prelaunch_present": true,
+    "prelaunch_status": "armed",
+    "ready_sha256": "a36d58b804cb25a8ef16fb278f5eaea1ebdd1e5f52a58546dcded2f904b7ae9b"
+  },
+  "package": {
+    "notebook_bytes": 99125,
+    "notebook_sha256": "1f56227b14fb889d1633382363ccd91539fad1602a75316d6fbc3c975c612f8a",
+    "package_index_sha256": "79681c5180eed8101c6f482ba4921a8e8cf487fac0493e7a7d7e0df99c4e3746",
+    "source_bytes": 92712,
+    "source_sha256": "6ffa3a4cbfaf9ee4e7f6722216bcc9f15332f897c7627bfdaed3a4658ed6ae27",
+    "test_sha256": "2c3e2de90d4a774dfd416eee71845c52f8bfde1e026e06fb44b8b7c41de2c9b5"
+  },
+  "recorded_at": "2026-07-17T12:05:31Z",
+  "runtime_preflight": {
+    "dependency_distributions": 9,
+    "dependency_preflight": true,
+    "manual_exact_wheel_extraction": true,
+    "native_imports": 4,
+    "numpy": "2.0.2",
+    "torch": "2.10.0+cu128"
+  },
+  "schema_version": 1
+}

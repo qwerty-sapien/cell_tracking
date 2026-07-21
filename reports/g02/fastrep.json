@@ -1,0 +1,131 @@
+{
+  "artifact": "g02_fast_runtime_implementation_report",
+  "schema_version": 1,
+  "scope": {
+    "kaggle_run_performed": false,
+    "submission_performed": false,
+    "runtime_target_seconds": 7200,
+    "runtime_target_status": "implemented_and_enforced_not_kaggle_measured"
+  },
+  "inspected": {
+    "public_notebook": {
+      "path": "/private/tmp/biohubnb/biohub-another-approach.ipynb",
+      "bytes": 130314,
+      "sha256": "5786660348d3b803045fdb4b7be20d74012407638bdfefadca6700514447dc0b",
+      "observed": "single prediction subprocess, learned UNet/node-transformer path, detection TTA, GEFF materialization, optional ILP, then CSV conversion"
+    },
+    "tracking_support": {
+      "path": "external/Tracking_Support/ARTIFACT_MANIFEST.json",
+      "bytes": 4376,
+      "sha256": "bc20f1f04cfb682af3b27a836ce9a57f44a2fe27508dc59039200b2a23188103",
+      "observed": "released temporal UNet architecture and native Zarr reader; released transformer emits frame-pair N-by-N logits"
+    },
+    "alpha_submission": {
+      "path": "kaggle_kernel/alpha_submission.py",
+      "bytes": 332208,
+      "sha256": "50cb4221a436b6b822719b104285b1ded31d63d25e6d7d493d907792dcb7054c",
+      "observed": "current routed submission iterates test Zarr images serially and accumulates predictions before writing"
+    },
+    "registry": {
+      "path": "reports/g02/dataset_registry_v1.json",
+      "bytes": 12302304,
+      "sha256": "21f3b3f8bad0324474d4065dda87a89ca2ea6cc770349c426b9399faa6982158",
+      "videos": 203,
+      "train": 199,
+      "test": 4,
+      "image_chunks": 20300,
+      "shape": [100, 64, 256, 256]
+    },
+    "checkpoint": {
+      "path": "reports/g02/t03-v6.pt",
+      "bytes": 6375639,
+      "sha256": "712646e9e263da018239dc46e927905708d31405c0b1774d20a260d85f480987",
+      "restore_verified": true,
+      "model_tensors": 98,
+      "model_parameters": 1527270,
+      "forward_smoke_shape": [1, 2, 6, 8, 8, 8],
+      "forward_smoke_finite": true
+    },
+    "runtime_artifacts": {
+      "run_v6_sha256": "0bf5aeac239e657e7728247134350feda33bc56f94cdeb0362101eb88a6e04e4",
+      "v6_score_sha256": "7215650ce7e44157c518683510091b28c3ad67b8c966ac6edb046fd6b31d7ca1",
+      "observed": "checkpoint training completed on Kaggle T4x2; the existing score is a one-dataset diagnostic and does not establish a 203-dataset inference runtime"
+    }
+  },
+  "implementation": {
+    "entrypoint": "kaggle_kernel/gpuinfer.py",
+    "package": "kaggle_kernel/fastsrc.zip",
+    "packer": "scripts/packfast.py",
+    "tests": "tests/test_gpuinf.py",
+    "features": {
+      "persistent_model_per_worker": true,
+      "production_gpu_shards": 2,
+      "default_pair_batch": 4,
+      "native_zarr_frame_reads": true,
+      "downsample_zyx": [1, 4, 4],
+      "mixed_precision_requires_per_gpu_fp32_determinism_and_fp16_peak_parity": true,
+      "mixed_precision_fallback": "fp32",
+      "max_points_per_frame": 512,
+      "neighbor_cap": 4,
+      "max_candidates_per_pair": 4096,
+      "dense_nxn": false,
+      "linker": "physical grid hash plus bounded one-to-one greedy selection",
+      "per_dataset_fragments": true,
+      "streaming_final_merge": true,
+      "stage_timings": ["zarr_open", "read", "transfer_infer", "nms", "link", "write", "parity", "total"],
+      "benchmark_denied_reads": ["GEFF", "annotation", "scorer", "split manifest"],
+      "coverage_assertions": ["registered identities", "Zarr shape", "Zarr chunk grid", "logical frame/chunk reads", "completed fragments"],
+      "deadline_enforced_seconds": 7200
+    }
+  },
+  "package_evidence": {
+    "source_bytes": 66050,
+    "compressed_bytes": 15333,
+    "limit_bytes": 1000000,
+    "members": ["__main__.py", "fastreg.json"],
+    "entrypoint_sha256": "cd904774f435f44ba783b0998de0a3f3448c9d7de77af1440997a23290fef680",
+    "registry_sha256": "55a2b289c4c16e93a234eca1d89688de6ad41eb3715acba13aea64067acf7f37",
+    "package_sha256": "2c5671699ca741dfc1b99d3fc8fb28d4da4e1e0ddfc942c5204be23b43aeb2ff"
+  },
+  "verification": {
+    "focused_tests": {
+      "passed": 5,
+      "failed": 0,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/private/tmp/torchlib /usr/local/bin/python3.13 -B -m unittest tests.test_gpuinf -v"
+    },
+    "checkpoint_restore_and_forward": {
+      "passed": true,
+      "device": "cpu",
+      "output_finite": true
+    },
+    "zipapp_help": {
+      "passed": true,
+      "command": "python3 -B kaggle_kernel/fastsrc.zip --help"
+    },
+    "tiny_dry_run": {
+      "passed": true,
+      "mode": "benchmark",
+      "device": "cpu",
+      "datasets": 1,
+      "frames": 2,
+      "mock_model": true,
+      "native_zarr": true,
+      "packaged_zipapp_worker": true,
+      "denied_read_attempts": 0,
+      "dense_nxn": false
+    }
+  },
+  "commands": {
+    "build_package": "python3 -B scripts/packfast.py",
+    "kaggle_submit_entrypoint": "python fastsrc.zip --mode submit --root /kaggle/input/biohub-cell-tracking-during-development --checkpoint /kaggle/input/CKPT/t03-v6.pt",
+    "kaggle_203_benchmark": "python fastsrc.zip --mode benchmark --root /kaggle/input/biohub-cell-tracking-during-development --checkpoint /kaggle/input/CKPT/t03-v6.pt",
+    "local_tiny_pattern": "python kaggle_kernel/gpuinfer.py --mode benchmark --root ROOT --registry FASTREG --out OUT --dry-run --mock --gpus cpu --max-datasets 1 --max-frames 2"
+  },
+  "changed_files": [
+    "kaggle_kernel/gpuinfer.py",
+    "kaggle_kernel/fastsrc.zip",
+    "scripts/packfast.py",
+    "tests/test_gpuinf.py",
+    "reports/g02/fastrep.json"
+  ]
+}

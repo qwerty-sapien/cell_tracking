@@ -1,0 +1,53 @@
+{
+  "artifact": "v45-batched-eight-preflight.v1",
+  "status": "cancelled_prelaunch_redundant",
+  "prepared_at": "2026-07-18T23:28:21Z",
+  "proposed_private_diagnostic": {
+    "kernel": "onebitbrain/bh-v45b8",
+    "package_identity_sha256": "8d8c8d1cae2d47b3a311e51d3907b5884e5ea587778e84241910d043f57ba0a6",
+    "package_manifest_sha256": "4773d3d5c25ff3061c90e23f4cc90eca9bb7482026a8876880350f63b41d3274",
+    "config_sha256": "b4d71d7e99831949c71012195b7883f453f8298b53af4acadbf8b5399d69463d",
+    "notebook_sha256": "51c83b4c2ccc35a78124bbdbdf90140f286b8b3940bb8b780bf32d46080d434c",
+    "private": true,
+    "internet": false,
+    "submission_generation": false,
+    "machine_shape": "NvidiaTeslaT4",
+    "deadline_seconds": 900,
+    "variants": [
+      {"name": "v8b1", "views": 8, "view_batch_size": 1},
+      {"name": "v8b8", "views": 8, "view_batch_size": 8}
+    ]
+  },
+  "local_preflight": {
+    "command": "PYTHONPATH=.:src:external/Tracking_Support/repo/src .venv313/bin/python -m unittest tests.test_mkvs45 tests.test_bhm.TemporalApiTests tests.test_bhm.ArtifactTests",
+    "result": "10 tests passed",
+    "assertions": [
+      "D4 layout, ordered accumulation, and view-zero feature retention are exact for rectangular batch layouts.",
+      "The locked checkpoint preserves logits, peak coordinates, detections, IDs, and pair contexts for CPU serial versus eight-view batching."
+    ]
+  },
+  "prior_target_gpu_evidence": {
+    "report": "reports/g02/ab45run.json",
+    "kernel": "onebitbrain/biohub-v45abnb",
+    "version": 2,
+    "checkpoint_sha256": "12f6881ee3620a831697ca098ff8f48e687a24225f4e048b538deec3562fe771",
+    "hardware": "NvidiaTeslaT4",
+    "scope": "one exact V45 two-frame 64x64x64 input, serial versus four-view batch",
+    "numerical_equivalence": "exactly_equal=true",
+    "speedup_wall": 1.005065781878697,
+    "peak_memory_multiple": 3.601368268502624,
+    "prior_decision": "rejected_as_runtime_optimization"
+  },
+  "decision": {
+    "launch": false,
+    "reason": "The existing target-hardware A/B already establishes that batching V45 views is numerically safe but materially increases memory for an immaterial speed gain. Eight-view batching would increase peak batch pressure without a new evidence-based speed hypothesis.",
+    "retain": "Eager sequential eight-view V45 remains the detector quality reference.",
+    "next_direction": "Train and validate a one-pass checkpoint-derived detector/embedding head before considering a lower-inference-cost production route."
+  },
+  "effects": {
+    "kaggle_version_created": false,
+    "gpu_trial_started": false,
+    "scored_submission": false,
+    "spend_usd": 0.0
+  }
+}

@@ -1,0 +1,2142 @@
+{
+  "datasets": [
+    "44b6_2f31fc2f",
+    "44b6_71a4179f"
+  ],
+  "kind": "endpoint_motion_clone_probe",
+  "rows": [
+    {
+      "adj_edge_jaccard": 0.5329694681549573,
+      "dataset": "44b6_2f31fc2f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 1.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 1.0,
+      "edges": 140,
+      "estimated_number_of_nodes": 731.04,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 140,
+        "merges": 0,
+        "nodes": 249,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 249,
+      "num_pred_nodes": 249.0,
+      "route": "balanced_axial_compact",
+      "total_node_ratio": -0.6593893630991464,
+      "variant": "current"
+    },
+    {
+      "added": 1,
+      "added_detail": [
+        [
+          186,
+          527,
+          2,
+          46,
+          135,
+          255
+        ]
+      ],
+      "adj_edge_jaccard": 0.5329010724447363,
+      "dataset": "44b6_2f31fc2f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 1.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 1.0,
+      "edges": 141,
+      "estimated_number_of_nodes": 731.04,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 141,
+        "merges": 0,
+        "nodes": 250,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 250,
+      "num_pred_nodes": 250.0,
+      "per_t": {
+        "2": 1
+      },
+      "route": "balanced_axial_compact",
+      "total_node_ratio": -0.6580214488947254,
+      "variant": "motion_hist0_cap1"
+    },
+    {
+      "added": 2,
+      "added_detail": [
+        [
+          186,
+          527,
+          2,
+          46,
+          135,
+          255
+        ],
+        [
+          188,
+          528,
+          2,
+          46,
+          136,
+          255
+        ]
+      ],
+      "adj_edge_jaccard": 0.5328326767345152,
+      "dataset": "44b6_2f31fc2f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 1.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 1.0,
+      "edges": 142,
+      "estimated_number_of_nodes": 731.04,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 142,
+        "merges": 0,
+        "nodes": 251,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 251,
+      "num_pred_nodes": 251.0,
+      "per_t": {
+        "2": 2
+      },
+      "route": "balanced_axial_compact",
+      "total_node_ratio": -0.6566535346903042,
+      "variant": "motion_hist0_cap2"
+    },
+    {
+      "added": 4,
+      "added_detail": [
+        [
+          186,
+          527,
+          2,
+          46,
+          135,
+          255
+        ],
+        [
+          188,
+          528,
+          2,
+          46,
+          136,
+          255
+        ],
+        [
+          191,
+          529,
+          2,
+          0,
+          37,
+          253
+        ],
+        [
+          192,
+          530,
+          2,
+          1,
+          38,
+          251
+        ]
+      ],
+      "adj_edge_jaccard": 0.5326958853140731,
+      "dataset": "44b6_2f31fc2f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 1.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 1.0,
+      "edges": 144,
+      "estimated_number_of_nodes": 731.04,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 144,
+        "merges": 0,
+        "nodes": 253,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 253,
+      "num_pred_nodes": 253.0,
+      "per_t": {
+        "2": 4
+      },
+      "route": "balanced_axial_compact",
+      "total_node_ratio": -0.6539177062814621,
+      "variant": "motion_hist0_cap4"
+    },
+    {
+      "added": 8,
+      "added_detail": [
+        [
+          186,
+          527,
+          2,
+          46,
+          135,
+          255
+        ],
+        [
+          188,
+          528,
+          2,
+          46,
+          136,
+          255
+        ],
+        [
+          191,
+          529,
+          2,
+          0,
+          37,
+          253
+        ],
+        [
+          192,
+          530,
+          2,
+          1,
+          38,
+          251
+        ],
+        [
+          203,
+          531,
+          2,
+          32,
+          19,
+          214
+        ],
+        [
+          210,
+          532,
+          2,
+          48,
+          17,
+          191
+        ],
+        [
+          211,
+          533,
+          2,
+          48,
+          22,
+          190
+        ],
+        [
+          219,
+          534,
+          2,
+          15,
+          0,
+          213
+        ]
+      ],
+      "adj_edge_jaccard": 0.5324223024731889,
+      "dataset": "44b6_2f31fc2f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 1.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 1.0,
+      "edges": 148,
+      "estimated_number_of_nodes": 731.04,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 148,
+        "merges": 0,
+        "nodes": 257,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 257,
+      "num_pred_nodes": 257.0,
+      "per_t": {
+        "2": 8
+      },
+      "route": "balanced_axial_compact",
+      "total_node_ratio": -0.6484460494637776,
+      "variant": "motion_hist0_cap8"
+    },
+    {
+      "added": 16,
+      "added_detail": [
+        [
+          186,
+          527,
+          2,
+          46,
+          135,
+          255
+        ],
+        [
+          188,
+          528,
+          2,
+          46,
+          136,
+          255
+        ],
+        [
+          191,
+          529,
+          2,
+          0,
+          37,
+          253
+        ],
+        [
+          192,
+          530,
+          2,
+          1,
+          38,
+          251
+        ],
+        [
+          203,
+          531,
+          2,
+          32,
+          19,
+          214
+        ],
+        [
+          210,
+          532,
+          2,
+          48,
+          17,
+          191
+        ],
+        [
+          211,
+          533,
+          2,
+          48,
+          22,
+          190
+        ],
+        [
+          219,
+          534,
+          2,
+          15,
+          0,
+          213
+        ],
+        [
+          224,
+          535,
+          2,
+          8,
+          81,
+          255
+        ],
+        [
+          225,
+          536,
+          2,
+          5,
+          26,
+          199
+        ],
+        [
+          228,
+          537,
+          2,
+          5,
+          0,
+          224
+        ],
+        [
+          229,
+          538,
+          2,
+          62,
+          174,
+          255
+        ]
+      ],
+      "adj_edge_jaccard": 0.5318751367914204,
+      "dataset": "44b6_2f31fc2f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 1.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 1.0,
+      "edges": 156,
+      "estimated_number_of_nodes": 731.04,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 156,
+        "merges": 0,
+        "nodes": 265,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 265,
+      "num_pred_nodes": 265.0,
+      "per_t": {
+        "2": 16
+      },
+      "route": "balanced_axial_compact",
+      "total_node_ratio": -0.6375027358284088,
+      "variant": "motion_hist0_cap16"
+    },
+    {
+      "added": 32,
+      "added_detail": [
+        [
+          186,
+          527,
+          2,
+          46,
+          135,
+          255
+        ],
+        [
+          188,
+          528,
+          2,
+          46,
+          136,
+          255
+        ],
+        [
+          191,
+          529,
+          2,
+          0,
+          37,
+          253
+        ],
+        [
+          192,
+          530,
+          2,
+          1,
+          38,
+          251
+        ],
+        [
+          203,
+          531,
+          2,
+          32,
+          19,
+          214
+        ],
+        [
+          210,
+          532,
+          2,
+          48,
+          17,
+          191
+        ],
+        [
+          211,
+          533,
+          2,
+          48,
+          22,
+          190
+        ],
+        [
+          219,
+          534,
+          2,
+          15,
+          0,
+          213
+        ],
+        [
+          224,
+          535,
+          2,
+          8,
+          81,
+          255
+        ],
+        [
+          225,
+          536,
+          2,
+          5,
+          26,
+          199
+        ],
+        [
+          228,
+          537,
+          2,
+          5,
+          0,
+          224
+        ],
+        [
+          229,
+          538,
+          2,
+          62,
+          174,
+          255
+        ]
+      ],
+      "adj_edge_jaccard": 0.5307808054278835,
+      "dataset": "44b6_2f31fc2f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 1.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 1.0,
+      "edges": 172,
+      "estimated_number_of_nodes": 731.04,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 172,
+        "merges": 0,
+        "nodes": 281,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 281,
+      "num_pred_nodes": 281.0,
+      "per_t": {
+        "2": 32
+      },
+      "route": "balanced_axial_compact",
+      "total_node_ratio": -0.6156161085576712,
+      "variant": "motion_hist0_cap32"
+    },
+    {
+      "added": 1,
+      "added_detail": [
+        [
+          186,
+          527,
+          2,
+          46,
+          135,
+          255
+        ]
+      ],
+      "adj_edge_jaccard": 0.5329010724447363,
+      "dataset": "44b6_2f31fc2f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 1.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 1.0,
+      "edges": 141,
+      "estimated_number_of_nodes": 731.04,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 141,
+        "merges": 0,
+        "nodes": 250,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 250,
+      "num_pred_nodes": 250.0,
+      "per_t": {
+        "2": 1
+      },
+      "route": "balanced_axial_compact",
+      "total_node_ratio": -0.6580214488947254,
+      "variant": "motion_hist1_cap1"
+    },
+    {
+      "added": 2,
+      "added_detail": [
+        [
+          186,
+          527,
+          2,
+          46,
+          135,
+          255
+        ],
+        [
+          188,
+          528,
+          2,
+          46,
+          136,
+          255
+        ]
+      ],
+      "adj_edge_jaccard": 0.5328326767345152,
+      "dataset": "44b6_2f31fc2f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 1.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 1.0,
+      "edges": 142,
+      "estimated_number_of_nodes": 731.04,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 142,
+        "merges": 0,
+        "nodes": 251,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 251,
+      "num_pred_nodes": 251.0,
+      "per_t": {
+        "2": 2
+      },
+      "route": "balanced_axial_compact",
+      "total_node_ratio": -0.6566535346903042,
+      "variant": "motion_hist1_cap2"
+    },
+    {
+      "added": 4,
+      "added_detail": [
+        [
+          186,
+          527,
+          2,
+          46,
+          135,
+          255
+        ],
+        [
+          188,
+          528,
+          2,
+          46,
+          136,
+          255
+        ],
+        [
+          191,
+          529,
+          2,
+          0,
+          37,
+          253
+        ],
+        [
+          192,
+          530,
+          2,
+          1,
+          38,
+          251
+        ]
+      ],
+      "adj_edge_jaccard": 0.5326958853140731,
+      "dataset": "44b6_2f31fc2f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 1.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 1.0,
+      "edges": 144,
+      "estimated_number_of_nodes": 731.04,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 144,
+        "merges": 0,
+        "nodes": 253,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 253,
+      "num_pred_nodes": 253.0,
+      "per_t": {
+        "2": 4
+      },
+      "route": "balanced_axial_compact",
+      "total_node_ratio": -0.6539177062814621,
+      "variant": "motion_hist1_cap4"
+    },
+    {
+      "added": 8,
+      "added_detail": [
+        [
+          186,
+          527,
+          2,
+          46,
+          135,
+          255
+        ],
+        [
+          188,
+          528,
+          2,
+          46,
+          136,
+          255
+        ],
+        [
+          191,
+          529,
+          2,
+          0,
+          37,
+          253
+        ],
+        [
+          192,
+          530,
+          2,
+          1,
+          38,
+          251
+        ],
+        [
+          203,
+          531,
+          2,
+          32,
+          19,
+          214
+        ],
+        [
+          210,
+          532,
+          2,
+          48,
+          17,
+          191
+        ],
+        [
+          211,
+          533,
+          2,
+          48,
+          22,
+          190
+        ],
+        [
+          219,
+          534,
+          2,
+          15,
+          0,
+          213
+        ]
+      ],
+      "adj_edge_jaccard": 0.5324223024731889,
+      "dataset": "44b6_2f31fc2f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 1.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 1.0,
+      "edges": 148,
+      "estimated_number_of_nodes": 731.04,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 148,
+        "merges": 0,
+        "nodes": 257,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 257,
+      "num_pred_nodes": 257.0,
+      "per_t": {
+        "2": 8
+      },
+      "route": "balanced_axial_compact",
+      "total_node_ratio": -0.6484460494637776,
+      "variant": "motion_hist1_cap8"
+    },
+    {
+      "added": 16,
+      "added_detail": [
+        [
+          186,
+          527,
+          2,
+          46,
+          135,
+          255
+        ],
+        [
+          188,
+          528,
+          2,
+          46,
+          136,
+          255
+        ],
+        [
+          191,
+          529,
+          2,
+          0,
+          37,
+          253
+        ],
+        [
+          192,
+          530,
+          2,
+          1,
+          38,
+          251
+        ],
+        [
+          203,
+          531,
+          2,
+          32,
+          19,
+          214
+        ],
+        [
+          210,
+          532,
+          2,
+          48,
+          17,
+          191
+        ],
+        [
+          211,
+          533,
+          2,
+          48,
+          22,
+          190
+        ],
+        [
+          219,
+          534,
+          2,
+          15,
+          0,
+          213
+        ],
+        [
+          224,
+          535,
+          2,
+          8,
+          81,
+          255
+        ],
+        [
+          225,
+          536,
+          2,
+          5,
+          26,
+          199
+        ],
+        [
+          228,
+          537,
+          2,
+          5,
+          0,
+          224
+        ],
+        [
+          229,
+          538,
+          2,
+          62,
+          174,
+          255
+        ]
+      ],
+      "adj_edge_jaccard": 0.5318751367914204,
+      "dataset": "44b6_2f31fc2f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 1.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 1.0,
+      "edges": 156,
+      "estimated_number_of_nodes": 731.04,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 156,
+        "merges": 0,
+        "nodes": 265,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 265,
+      "num_pred_nodes": 265.0,
+      "per_t": {
+        "2": 16
+      },
+      "route": "balanced_axial_compact",
+      "total_node_ratio": -0.6375027358284088,
+      "variant": "motion_hist1_cap16"
+    },
+    {
+      "added": 32,
+      "added_detail": [
+        [
+          186,
+          527,
+          2,
+          46,
+          135,
+          255
+        ],
+        [
+          188,
+          528,
+          2,
+          46,
+          136,
+          255
+        ],
+        [
+          191,
+          529,
+          2,
+          0,
+          37,
+          253
+        ],
+        [
+          192,
+          530,
+          2,
+          1,
+          38,
+          251
+        ],
+        [
+          203,
+          531,
+          2,
+          32,
+          19,
+          214
+        ],
+        [
+          210,
+          532,
+          2,
+          48,
+          17,
+          191
+        ],
+        [
+          211,
+          533,
+          2,
+          48,
+          22,
+          190
+        ],
+        [
+          219,
+          534,
+          2,
+          15,
+          0,
+          213
+        ],
+        [
+          224,
+          535,
+          2,
+          8,
+          81,
+          255
+        ],
+        [
+          225,
+          536,
+          2,
+          5,
+          26,
+          199
+        ],
+        [
+          228,
+          537,
+          2,
+          5,
+          0,
+          224
+        ],
+        [
+          229,
+          538,
+          2,
+          62,
+          174,
+          255
+        ]
+      ],
+      "adj_edge_jaccard": 0.5307808054278835,
+      "dataset": "44b6_2f31fc2f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 1.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 1.0,
+      "edges": 172,
+      "estimated_number_of_nodes": 731.04,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 172,
+        "merges": 0,
+        "nodes": 281,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 281,
+      "num_pred_nodes": 281.0,
+      "per_t": {
+        "2": 32
+      },
+      "route": "balanced_axial_compact",
+      "total_node_ratio": -0.6156161085576712,
+      "variant": "motion_hist1_cap32"
+    },
+    {
+      "adj_edge_jaccard": 0.5405448528542726,
+      "dataset": "44b6_71a4179f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 2.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 2.0,
+      "edges": 232,
+      "estimated_number_of_nodes": 2030.64,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 232,
+        "merges": 0,
+        "nodes": 384,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 384,
+      "num_pred_nodes": 384.0,
+      "route": "template_point_compact",
+      "total_node_ratio": -0.8108970570854509,
+      "variant": "current"
+    },
+    {
+      "added": 1,
+      "added_detail": [
+        [
+          225,
+          657,
+          2,
+          46,
+          146,
+          198
+        ]
+      ],
+      "adj_edge_jaccard": 0.5405202300752472,
+      "dataset": "44b6_71a4179f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 2.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 2.0,
+      "edges": 233,
+      "estimated_number_of_nodes": 2030.64,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 233,
+        "merges": 0,
+        "nodes": 385,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 385,
+      "num_pred_nodes": 385.0,
+      "per_t": {
+        "2": 1
+      },
+      "route": "template_point_compact",
+      "total_node_ratio": -0.8104046015049443,
+      "variant": "motion_hist0_cap1"
+    },
+    {
+      "added": 2,
+      "added_detail": [
+        [
+          225,
+          657,
+          2,
+          46,
+          146,
+          198
+        ],
+        [
+          227,
+          658,
+          2,
+          47,
+          222,
+          52
+        ]
+      ],
+      "adj_edge_jaccard": 0.5404956072962219,
+      "dataset": "44b6_71a4179f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 2.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 2.0,
+      "edges": 234,
+      "estimated_number_of_nodes": 2030.64,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 234,
+        "merges": 0,
+        "nodes": 386,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 386,
+      "num_pred_nodes": 386.0,
+      "per_t": {
+        "2": 2
+      },
+      "route": "template_point_compact",
+      "total_node_ratio": -0.8099121459244376,
+      "variant": "motion_hist0_cap2"
+    },
+    {
+      "added": 4,
+      "added_detail": [
+        [
+          225,
+          657,
+          2,
+          46,
+          146,
+          198
+        ],
+        [
+          227,
+          658,
+          2,
+          47,
+          222,
+          52
+        ],
+        [
+          233,
+          659,
+          2,
+          51,
+          113,
+          235
+        ],
+        [
+          235,
+          660,
+          2,
+          53,
+          250,
+          61
+        ]
+      ],
+      "adj_edge_jaccard": 0.5404463617381712,
+      "dataset": "44b6_71a4179f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 2.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 2.0,
+      "edges": 236,
+      "estimated_number_of_nodes": 2030.64,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 236,
+        "merges": 0,
+        "nodes": 388,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 388,
+      "num_pred_nodes": 388.0,
+      "per_t": {
+        "2": 4
+      },
+      "route": "template_point_compact",
+      "total_node_ratio": -0.8089272347634243,
+      "variant": "motion_hist0_cap4"
+    },
+    {
+      "added": 8,
+      "added_detail": [
+        [
+          225,
+          657,
+          2,
+          46,
+          146,
+          198
+        ],
+        [
+          227,
+          658,
+          2,
+          47,
+          222,
+          52
+        ],
+        [
+          233,
+          659,
+          2,
+          51,
+          113,
+          235
+        ],
+        [
+          235,
+          660,
+          2,
+          53,
+          250,
+          61
+        ],
+        [
+          238,
+          661,
+          2,
+          53,
+          163,
+          44
+        ],
+        [
+          252,
+          662,
+          2,
+          40,
+          246,
+          239
+        ],
+        [
+          260,
+          663,
+          2,
+          49,
+          24,
+          185
+        ],
+        [
+          262,
+          664,
+          2,
+          48,
+          116,
+          76
+        ]
+      ],
+      "adj_edge_jaccard": 0.5403478706220699,
+      "dataset": "44b6_71a4179f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 2.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 2.0,
+      "edges": 240,
+      "estimated_number_of_nodes": 2030.64,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 240,
+        "merges": 0,
+        "nodes": 392,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 392,
+      "num_pred_nodes": 392.0,
+      "per_t": {
+        "2": 8
+      },
+      "route": "template_point_compact",
+      "total_node_ratio": -0.8069574124413978,
+      "variant": "motion_hist0_cap8"
+    },
+    {
+      "added": 16,
+      "added_detail": [
+        [
+          225,
+          657,
+          2,
+          46,
+          146,
+          198
+        ],
+        [
+          227,
+          658,
+          2,
+          47,
+          222,
+          52
+        ],
+        [
+          233,
+          659,
+          2,
+          51,
+          113,
+          235
+        ],
+        [
+          235,
+          660,
+          2,
+          53,
+          250,
+          61
+        ],
+        [
+          238,
+          661,
+          2,
+          53,
+          163,
+          44
+        ],
+        [
+          252,
+          662,
+          2,
+          40,
+          246,
+          239
+        ],
+        [
+          260,
+          663,
+          2,
+          49,
+          24,
+          185
+        ],
+        [
+          262,
+          664,
+          2,
+          48,
+          116,
+          76
+        ],
+        [
+          272,
+          665,
+          2,
+          51,
+          186,
+          109
+        ],
+        [
+          280,
+          666,
+          2,
+          60,
+          56,
+          255
+        ],
+        [
+          287,
+          667,
+          2,
+          57,
+          240,
+          56
+        ],
+        [
+          290,
+          668,
+          2,
+          35,
+          15,
+          77
+        ]
+      ],
+      "adj_edge_jaccard": 0.5401508883898672,
+      "dataset": "44b6_71a4179f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 2.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 2.0,
+      "edges": 248,
+      "estimated_number_of_nodes": 2030.64,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 248,
+        "merges": 0,
+        "nodes": 400,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 400,
+      "num_pred_nodes": 400.0,
+      "per_t": {
+        "2": 16
+      },
+      "route": "template_point_compact",
+      "total_node_ratio": -0.8030177677973447,
+      "variant": "motion_hist0_cap16"
+    },
+    {
+      "added": 32,
+      "added_detail": [
+        [
+          225,
+          657,
+          2,
+          46,
+          146,
+          198
+        ],
+        [
+          227,
+          658,
+          2,
+          47,
+          222,
+          52
+        ],
+        [
+          233,
+          659,
+          2,
+          51,
+          113,
+          235
+        ],
+        [
+          235,
+          660,
+          2,
+          53,
+          250,
+          61
+        ],
+        [
+          238,
+          661,
+          2,
+          53,
+          163,
+          44
+        ],
+        [
+          252,
+          662,
+          2,
+          40,
+          246,
+          239
+        ],
+        [
+          260,
+          663,
+          2,
+          49,
+          24,
+          185
+        ],
+        [
+          262,
+          664,
+          2,
+          48,
+          116,
+          76
+        ],
+        [
+          272,
+          665,
+          2,
+          51,
+          186,
+          109
+        ],
+        [
+          280,
+          666,
+          2,
+          60,
+          56,
+          255
+        ],
+        [
+          287,
+          667,
+          2,
+          57,
+          240,
+          56
+        ],
+        [
+          290,
+          668,
+          2,
+          35,
+          15,
+          77
+        ]
+      ],
+      "adj_edge_jaccard": 0.5397569239254619,
+      "dataset": "44b6_71a4179f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 2.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 2.0,
+      "edges": 264,
+      "estimated_number_of_nodes": 2030.64,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 264,
+        "merges": 0,
+        "nodes": 416,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 416,
+      "num_pred_nodes": 416.0,
+      "per_t": {
+        "2": 32
+      },
+      "route": "template_point_compact",
+      "total_node_ratio": -0.7951384785092385,
+      "variant": "motion_hist0_cap32"
+    },
+    {
+      "added": 1,
+      "added_detail": [
+        [
+          225,
+          657,
+          2,
+          46,
+          146,
+          198
+        ]
+      ],
+      "adj_edge_jaccard": 0.5405202300752472,
+      "dataset": "44b6_71a4179f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 2.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 2.0,
+      "edges": 233,
+      "estimated_number_of_nodes": 2030.64,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 233,
+        "merges": 0,
+        "nodes": 385,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 385,
+      "num_pred_nodes": 385.0,
+      "per_t": {
+        "2": 1
+      },
+      "route": "template_point_compact",
+      "total_node_ratio": -0.8104046015049443,
+      "variant": "motion_hist1_cap1"
+    },
+    {
+      "added": 2,
+      "added_detail": [
+        [
+          225,
+          657,
+          2,
+          46,
+          146,
+          198
+        ],
+        [
+          227,
+          658,
+          2,
+          47,
+          222,
+          52
+        ]
+      ],
+      "adj_edge_jaccard": 0.5404956072962219,
+      "dataset": "44b6_71a4179f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 2.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 2.0,
+      "edges": 234,
+      "estimated_number_of_nodes": 2030.64,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 234,
+        "merges": 0,
+        "nodes": 386,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 386,
+      "num_pred_nodes": 386.0,
+      "per_t": {
+        "2": 2
+      },
+      "route": "template_point_compact",
+      "total_node_ratio": -0.8099121459244376,
+      "variant": "motion_hist1_cap2"
+    },
+    {
+      "added": 4,
+      "added_detail": [
+        [
+          225,
+          657,
+          2,
+          46,
+          146,
+          198
+        ],
+        [
+          227,
+          658,
+          2,
+          47,
+          222,
+          52
+        ],
+        [
+          233,
+          659,
+          2,
+          51,
+          113,
+          235
+        ],
+        [
+          235,
+          660,
+          2,
+          53,
+          250,
+          61
+        ]
+      ],
+      "adj_edge_jaccard": 0.5404463617381712,
+      "dataset": "44b6_71a4179f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 2.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 2.0,
+      "edges": 236,
+      "estimated_number_of_nodes": 2030.64,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 236,
+        "merges": 0,
+        "nodes": 388,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 388,
+      "num_pred_nodes": 388.0,
+      "per_t": {
+        "2": 4
+      },
+      "route": "template_point_compact",
+      "total_node_ratio": -0.8089272347634243,
+      "variant": "motion_hist1_cap4"
+    },
+    {
+      "added": 8,
+      "added_detail": [
+        [
+          225,
+          657,
+          2,
+          46,
+          146,
+          198
+        ],
+        [
+          227,
+          658,
+          2,
+          47,
+          222,
+          52
+        ],
+        [
+          233,
+          659,
+          2,
+          51,
+          113,
+          235
+        ],
+        [
+          235,
+          660,
+          2,
+          53,
+          250,
+          61
+        ],
+        [
+          238,
+          661,
+          2,
+          53,
+          163,
+          44
+        ],
+        [
+          252,
+          662,
+          2,
+          40,
+          246,
+          239
+        ],
+        [
+          260,
+          663,
+          2,
+          49,
+          24,
+          185
+        ],
+        [
+          262,
+          664,
+          2,
+          48,
+          116,
+          76
+        ]
+      ],
+      "adj_edge_jaccard": 0.5403478706220699,
+      "dataset": "44b6_71a4179f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 2.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 2.0,
+      "edges": 240,
+      "estimated_number_of_nodes": 2030.64,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 240,
+        "merges": 0,
+        "nodes": 392,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 392,
+      "num_pred_nodes": 392.0,
+      "per_t": {
+        "2": 8
+      },
+      "route": "template_point_compact",
+      "total_node_ratio": -0.8069574124413978,
+      "variant": "motion_hist1_cap8"
+    },
+    {
+      "added": 16,
+      "added_detail": [
+        [
+          225,
+          657,
+          2,
+          46,
+          146,
+          198
+        ],
+        [
+          227,
+          658,
+          2,
+          47,
+          222,
+          52
+        ],
+        [
+          233,
+          659,
+          2,
+          51,
+          113,
+          235
+        ],
+        [
+          235,
+          660,
+          2,
+          53,
+          250,
+          61
+        ],
+        [
+          238,
+          661,
+          2,
+          53,
+          163,
+          44
+        ],
+        [
+          252,
+          662,
+          2,
+          40,
+          246,
+          239
+        ],
+        [
+          260,
+          663,
+          2,
+          49,
+          24,
+          185
+        ],
+        [
+          262,
+          664,
+          2,
+          48,
+          116,
+          76
+        ],
+        [
+          272,
+          665,
+          2,
+          51,
+          186,
+          109
+        ],
+        [
+          280,
+          666,
+          2,
+          60,
+          56,
+          255
+        ],
+        [
+          287,
+          667,
+          2,
+          57,
+          240,
+          56
+        ],
+        [
+          290,
+          668,
+          2,
+          35,
+          15,
+          77
+        ]
+      ],
+      "adj_edge_jaccard": 0.5401508883898672,
+      "dataset": "44b6_71a4179f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 2.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 2.0,
+      "edges": 248,
+      "estimated_number_of_nodes": 2030.64,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 248,
+        "merges": 0,
+        "nodes": 400,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 400,
+      "num_pred_nodes": 400.0,
+      "per_t": {
+        "2": 16
+      },
+      "route": "template_point_compact",
+      "total_node_ratio": -0.8030177677973447,
+      "variant": "motion_hist1_cap16"
+    },
+    {
+      "added": 32,
+      "added_detail": [
+        [
+          225,
+          657,
+          2,
+          46,
+          146,
+          198
+        ],
+        [
+          227,
+          658,
+          2,
+          47,
+          222,
+          52
+        ],
+        [
+          233,
+          659,
+          2,
+          51,
+          113,
+          235
+        ],
+        [
+          235,
+          660,
+          2,
+          53,
+          250,
+          61
+        ],
+        [
+          238,
+          661,
+          2,
+          53,
+          163,
+          44
+        ],
+        [
+          252,
+          662,
+          2,
+          40,
+          246,
+          239
+        ],
+        [
+          260,
+          663,
+          2,
+          49,
+          24,
+          185
+        ],
+        [
+          262,
+          664,
+          2,
+          48,
+          116,
+          76
+        ],
+        [
+          272,
+          665,
+          2,
+          51,
+          186,
+          109
+        ],
+        [
+          280,
+          666,
+          2,
+          60,
+          56,
+          255
+        ],
+        [
+          287,
+          667,
+          2,
+          57,
+          240,
+          56
+        ],
+        [
+          290,
+          668,
+          2,
+          35,
+          15,
+          77
+        ]
+      ],
+      "adj_edge_jaccard": 0.5397569239254619,
+      "dataset": "44b6_71a4179f",
+      "division_fn": 0.0,
+      "division_fp": 0.0,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "edge_fn": 2.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5,
+      "edge_tp": 2.0,
+      "edges": 264,
+      "estimated_number_of_nodes": 2030.64,
+      "graph": {
+        "datasets": 1,
+        "dividing_nodes": 0,
+        "edges": 264,
+        "merges": 0,
+        "nodes": 416,
+        "out_gt2": 0
+      },
+      "node_recall": 0.6666666666666666,
+      "nodes": 416,
+      "num_pred_nodes": 416.0,
+      "per_t": {
+        "2": 32
+      },
+      "route": "template_point_compact",
+      "total_node_ratio": -0.7951384785092385,
+      "variant": "motion_hist1_cap32"
+    }
+  ],
+  "runtime_sec": 52.979840993881226,
+  "summary": {
+    "adj_edge_jaccard": 0.5376396528313665,
+    "division_fn": 0.0,
+    "division_fp": 0.0,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "edge_jaccard": 0.5,
+    "n": 26,
+    "n_adj": 26,
+    "node_recall": 0.6666666666666666,
+    "score": 0.5376396528313665
+  }
+}

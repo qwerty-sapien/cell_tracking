@@ -1,0 +1,338 @@
+{
+  "kind": "offset_clone_probe",
+  "created_at_unix": 1783933392.518767,
+  "variant": "cal_nearest_xy",
+  "offsets_zyx": [
+    [
+      0,
+      20,
+      17
+    ]
+  ],
+  "calibration_source": "reports/general_model_6bba_calibration_pair_offset_scan_first24.json",
+  "datasets": [
+    "6bba_062c8d37",
+    "6bba_0c7fa718",
+    "6bba_1d0d8384",
+    "6bba_2312ac41",
+    "6bba_2819ca14",
+    "6bba_372c8cb8"
+  ],
+  "rows": [
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "runtime_sec": 44.56232023239136,
+      "nodes": 230,
+      "edges": 124,
+      "graph": {
+        "datasets": 1,
+        "nodes": 230,
+        "edges": 124,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "offset_clone_layers": {
+        "enabled": true,
+        "offsets_zyx": [
+          [
+            0,
+            20,
+            17
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 115,
+        "base_edges": 62,
+        "cloned_nodes": 115,
+        "cloned_edges": 62,
+        "clipped_nodes": 2,
+        "mean_abs_offset_zyx": [
+          0.0,
+          20.0,
+          16.834783
+        ]
+      },
+      "edge_tp": 6.0,
+      "edge_fp": 1.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 230.0,
+      "node_recall": 0.625,
+      "total_node_ratio": 0.271420674405749,
+      "edge_jaccard": 0.5454545454545454,
+      "adj_edge_jaccard": 0.53064978139605,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_tight",
+      "runtime_sec": 51.561200857162476,
+      "nodes": 652,
+      "edges": 384,
+      "graph": {
+        "datasets": 1,
+        "nodes": 652,
+        "edges": 384,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "offset_clone_layers": {
+        "enabled": true,
+        "offsets_zyx": [
+          [
+            0,
+            20,
+            17
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 326,
+        "base_edges": 192,
+        "cloned_nodes": 326,
+        "cloned_edges": 192,
+        "clipped_nodes": 55,
+        "mean_abs_offset_zyx": [
+          0.0,
+          18.907975,
+          16.720859
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 4.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 652.0,
+      "node_recall": 0.9259259259259259,
+      "total_node_ratio": 0.5921855921855922,
+      "edge_jaccard": 0.5909090909090909,
+      "adj_edge_jaccard": 0.5559163059163059,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "route": "balanced_compact",
+      "runtime_sec": 39.092530727386475,
+      "nodes": 682,
+      "edges": 420,
+      "graph": {
+        "datasets": 1,
+        "nodes": 682,
+        "edges": 420,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "offset_clone_layers": {
+        "enabled": true,
+        "offsets_zyx": [
+          [
+            0,
+            20,
+            17
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 333,
+        "base_edges": 202,
+        "cloned_nodes": 333,
+        "cloned_edges": 202,
+        "clipped_nodes": 26,
+        "mean_abs_offset_zyx": [
+          0.0,
+          19.243243,
+          16.867868
+        ]
+      },
+      "edge_tp": 24.0,
+      "edge_fp": 1.0,
+      "edge_fn": 25.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 682.0,
+      "node_recall": 0.52,
+      "total_node_ratio": 0.26938038602564823,
+      "edge_jaccard": 0.48,
+      "adj_edge_jaccard": 0.46706974147076885,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 537.27
+    },
+    {
+      "dataset": "6bba_2312ac41",
+      "route": "balanced_midpoint",
+      "runtime_sec": 32.18796515464783,
+      "nodes": 458,
+      "edges": 282,
+      "graph": {
+        "datasets": 1,
+        "nodes": 458,
+        "edges": 282,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "offset_clone_layers": {
+        "enabled": true,
+        "offsets_zyx": [
+          [
+            0,
+            20,
+            17
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 225,
+        "base_edges": 137,
+        "cloned_nodes": 225,
+        "cloned_edges": 137,
+        "clipped_nodes": 30,
+        "mean_abs_offset_zyx": [
+          0.0,
+          18.906667,
+          16.88
+        ]
+      },
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 14.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 458.0,
+      "node_recall": 0.5333333333333333,
+      "total_node_ratio": 0.2775453277545328,
+      "edge_jaccard": 0.5333333333333333,
+      "adj_edge_jaccard": 0.5185309158530916,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 358.5
+    },
+    {
+      "dataset": "6bba_2819ca14",
+      "route": "balanced_midpoint",
+      "runtime_sec": 28.852317810058594,
+      "nodes": 324,
+      "edges": 188,
+      "graph": {
+        "datasets": 1,
+        "nodes": 324,
+        "edges": 188,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "offset_clone_layers": {
+        "enabled": true,
+        "offsets_zyx": [
+          [
+            0,
+            20,
+            17
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 160,
+        "cloned_edges": 92,
+        "clipped_nodes": 25,
+        "mean_abs_offset_zyx": [
+          0.0,
+          19.40625,
+          16.125
+        ]
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 324.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": 0.9515720997470183,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.5881478135164439,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    },
+    {
+      "dataset": "6bba_372c8cb8",
+      "route": "balanced_midpoint",
+      "runtime_sec": 37.73895883560181,
+      "nodes": 780,
+      "edges": 468,
+      "graph": {
+        "datasets": 1,
+        "nodes": 780,
+        "edges": 468,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "offset_clone_layers": {
+        "enabled": true,
+        "offsets_zyx": [
+          [
+            0,
+            20,
+            17
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 390,
+        "cloned_edges": 234,
+        "clipped_nodes": 40,
+        "mean_abs_offset_zyx": [
+          0.0,
+          18.920513,
+          16.907692
+        ]
+      },
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "num_pred_nodes": 780.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 2.7031761857285286,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.47214742327638937,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    }
+  ],
+  "summary": {
+    "n": 6,
+    "edge_jaccard": 0.5533333333333333,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.6665700915969733,
+    "adj_edge_jaccard": 0.511774555604493,
+    "n_adj": 6,
+    "score": 0.511774555604493
+  },
+  "graph": {
+    "datasets": 6,
+    "nodes": 3126,
+    "edges": 1866,
+    "dividing_nodes": 0,
+    "out_gt2": 0,
+    "merges": 0
+  },
+  "runtime_sec": 234.12750267982483
+}

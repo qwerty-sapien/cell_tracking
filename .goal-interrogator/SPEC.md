@@ -1,9 +1,9 @@
 # Specification: Low-Compute General Cell Tracking Improvement
 
-- Planning state: Draft
+- Planning state: Prepared (inactive)
 - Mode: New
 - Current Goal slice: G-01
-- Last reconciled: 2026-07-11
+- Last reconciled: 2026-07-12
 - Repository evidence baseline: unborn `main`; no commit/tree identity. Relevant untracked evidence hashes recorded below; `.env` and `gurobi.lic` were not read. Kaggle ZIP path `data/kaggle/raw/biohub-cell-tracking-during-development.zip`, size `87393127165` bytes, mtime `Jun 26 21:36:15 2026`. Official external checkout `016845facc82e7f5f0c7a37f8da2a9432f51076b`.
 
 ## Outcome
@@ -61,7 +61,7 @@ Develop and verify a non-duplicate/general Biohub cell-tracking route that targe
 | R-07 | Implementation must preserve current alpha modular boundaries while removing/disabling duplicate-copy routing from the general model path. | Constraint | `celltrack_alpha` architecture; D-02 | D-02 | Accepted |
 | R-08 | The main path must stay local/Kaggle-free and low-compute; an independent Python 3.11/3.12 environment path may test Ultrack/official-baseline compatibility; paid GPU and Kaggle submission remain unapproved. | Constraint | User budget intent; D-05 | D-05 | Accepted |
 | R-09 | Literature and Kaggle claims must separate observed local evidence, live-source evidence, and unavailable/private leaderboard evidence. | Deliverable | Kaggle fetch limitations; bioRxiv/BioStudies API results | None | Accepted |
-| R-10 | The result must be reproducible from recorded code/config/data identities despite the unborn Git state and untracked workspace. | Invariant | `doc_cell_tracking/EVALUATION.md`; git status | D-07 | Proposed |
+| R-10 | The result must be reproducible from recorded code/config/data identities despite the unborn Git state and untracked workspace. | Invariant | `doc_cell_tracking/EVALUATION.md`; git status | D-07 | Accepted |
 | R-11 | The local scorer/evaluation path must match Kaggle competition scoring semantics closely enough for iterative local testing. | Constraint | User scorer-parity instruction; official metric source | D-08 | Accepted |
 
 ## Acceptance Criteria
@@ -110,7 +110,6 @@ Develop and verify a non-duplicate/general Biohub cell-tracking route that targe
 
 | Item | Decision Link | Validation or Reopening Trigger | Owner |
 | --- | --- | --- | --- |
-| Per-run manifest with secret exclusion remains the recommended reproducibility baseline, but it is not locked yet. | D-07 | User locks D-07 or chooses commit-bound reproducibility. | User |
 | Concrete package-install or environment-creation commands for the optional Python 3.11/3.12 branch still require execution-time approval. | D-05 | Executor reaches optional branch setup. | Execution owner / User |
 
 ## Traceability Summary
@@ -118,5 +117,5 @@ Develop and verify a non-duplicate/general Biohub cell-tracking route that targe
 - Requirements without acceptance criteria: None.
 - Acceptance criteria without deterministic evidence yet: AC-01, AC-04, AC-05, AC-07, AC-09, and AC-10 are execution evidence and remain pending by design.
 - Locked decisions not reflected in requirements: None.
-- Open blocker before `Prepared (inactive)`: D-07 reproducibility baseline remains Proposed.
+- Open blocker before `Prepared (inactive)`: None. The plan is prepared but inactive until the user explicitly activates implementation.
 - Deferred work: paid GPU/external training and Kaggle submission/leaderboard operation remain future slices or later approvals.

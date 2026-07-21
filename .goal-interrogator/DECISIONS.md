@@ -1,7 +1,7 @@
 # Decision Ledger
 
-- Planning state: Draft
-- Last reconciled: 2026-07-11
+- Planning state: Prepared (inactive)
+- Last reconciled: 2026-07-12
 - Next decision ID: D-09
 
 ## Status Index
@@ -14,7 +14,7 @@
 | D-04 | Primary Direction And Hybrid Branches | Locked | R-04, R-06, AC-04, AC-05, G-01 | - |
 | D-05 | Compute And Environment Boundary | Locked | R-08, AC-07, G-01 | - |
 | D-06 | Division Work Gate | Locked | R-06, AC-05, G-01 | - |
-| D-07 | Reproducibility Baseline | Proposed | R-10, AC-09, G-01 | - |
+| D-07 | Reproducibility Baseline | Locked | R-10, AC-09, G-01 | - |
 | D-08 | Kaggle Scorer Parity | Locked | R-02, R-11, AC-02, AC-10, G-01 | - |
 
 ## D-01 - Success Target And CV Protocol
@@ -133,19 +133,19 @@
 
 ## D-07 - Reproducibility Baseline
 
-- **Status:** Proposed
+- **Status:** Locked
 - **Question:** How should execution handle the unborn Git state and untracked workspace?
 - **Context and evidence:** `git status` shows no commits and all files untracked, including `.env`, data, source, reports, scripts, and `gurobi.lic`. Relevant evidence hashes were captured for this draft, but no immutable repo commit exists.
 - **Options considered:**
   - **A - Require a per-run manifest of relevant file hashes and exclude secrets (recommended):** Does not force a commit but preserves reproducibility.
   - **B - Require a Git commit before activation:** Stronger identity but may be outside current workflow.
   - **C - Use path names and timestamps only:** Too weak for an optimization/research goal.
-- **Decision or temporary assumption:** Recommended A; not locked.
+- **Decision or temporary assumption:** Require a per-run manifest of relevant source, config, data, output, dependency, and command identities, with `.env`, `gurobi.lic`, and secret values explicitly excluded. A Git commit is not required for activation.
 - **Rationale:** The goal can proceed safely without a commit if every evidence-producing file/config/output is hashed and secrets are excluded.
 - **Consequences:** PLAN includes baseline and final manifest nodes.
 - **Affected IDs and artifacts:** R-10, AC-09, PLAN N0/N10, GOAL.
 - **Approval owner:** User.
-- **Approval record:** Pending.
+- **Approval record:** 2026-07-12 user selected A: "Done, i think stick to A for d07".
 - **Reopening trigger:** User wants commit-bound reproducibility or repo becomes committed before activation.
 - **Supersedes:** None.
 - **Superseded by:** None.

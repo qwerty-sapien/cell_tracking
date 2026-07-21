@@ -1,0 +1,227 @@
+{
+  "kind": "6bba_small_template_injection_probe",
+  "created_at_unix": 1783931291.338325,
+  "status": "not_promoted_negative_partial",
+  "datasets": [
+    "6bba_1d0d8384",
+    "6bba_2312ac41",
+    "6bba_062c8d37"
+  ],
+  "clip_length": 3,
+  "template_policy": "reports/general_model_scoring_fold0_6bba_small_template_inject_cap8.json",
+  "interrupted_variants": [
+    "small_template_cap16",
+    "small_template_cap32"
+  ],
+  "full_template_status": "interrupted_compute_negative_before_first_row",
+  "variant_summaries": [
+    {
+      "variant": "current",
+      "summary": {
+        "n": 3,
+        "edge_jaccard": 0.47191011235955055,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.4986111111111111,
+        "adj_edge_jaccard": 0.48853398654667846,
+        "n_adj": 3,
+        "score": 0.48853398654667846
+      },
+      "rows": [
+        {
+          "variant": "current",
+          "dataset": "6bba_062c8d37",
+          "route": "balanced_midpoint",
+          "metrics": {
+            "num_pred_nodes": 115.0,
+            "edge_tp": 6.0,
+            "edge_fp": 0.0,
+            "edge_fn": 4.0,
+            "division_tp": 0.0,
+            "division_fp": 0.0,
+            "division_fn": 0.0,
+            "node_recall": 0.5625,
+            "total_node_ratio": -0.3642896627971255,
+            "edge_jaccard": 0.6,
+            "adj_edge_jaccard": 0.6218573797678275,
+            "division_jaccard": NaN,
+            "estimated_number_of_nodes": 180.9
+          },
+          "score": 0.6218573797678275,
+          "edge_jaccard": 0.6,
+          "node_recall": 0.5625,
+          "edge_tp": 6.0,
+          "edge_fp": 0.0,
+          "edge_fn": 4.0,
+          "nodes": 115.0,
+          "edges": 62,
+          "runtime_sec": 42.04035305976868
+        },
+        {
+          "variant": "current",
+          "dataset": "6bba_1d0d8384",
+          "route": "balanced_compact",
+          "metrics": {
+            "num_pred_nodes": 349.0,
+            "edge_tp": 20.0,
+            "edge_fp": 0.0,
+            "edge_fn": 29.0,
+            "division_tp": 0.0,
+            "division_fp": 0.0,
+            "division_fn": 0.0,
+            "node_recall": 0.4,
+            "total_node_ratio": -0.3504197144824762,
+            "edge_jaccard": 0.40816326530612246,
+            "adj_edge_jaccard": 0.4224661107952032,
+            "division_jaccard": NaN,
+            "estimated_number_of_nodes": 537.27
+          },
+          "score": 0.4224661107952032,
+          "edge_jaccard": 0.40816326530612246,
+          "node_recall": 0.4,
+          "edge_tp": 20.0,
+          "edge_fp": 0.0,
+          "edge_fn": 29.0,
+          "nodes": 349.0,
+          "edges": 218,
+          "runtime_sec": 28.44767189025879
+        },
+        {
+          "variant": "current",
+          "dataset": "6bba_2312ac41",
+          "route": "balanced_midpoint",
+          "metrics": {
+            "num_pred_nodes": 233.0,
+            "edge_tp": 16.0,
+            "edge_fp": 0.0,
+            "edge_fn": 14.0,
+            "division_tp": 0.0,
+            "division_fp": 0.0,
+            "division_fn": 0.0,
+            "node_recall": 0.5333333333333333,
+            "total_node_ratio": -0.3500697350069735,
+            "edge_jaccard": 0.5333333333333333,
+            "adj_edge_jaccard": 0.5520037192003718,
+            "division_jaccard": NaN,
+            "estimated_number_of_nodes": 358.5
+          },
+          "score": 0.5520037192003718,
+          "edge_jaccard": 0.5333333333333333,
+          "node_recall": 0.5333333333333333,
+          "edge_tp": 16.0,
+          "edge_fp": 0.0,
+          "edge_fn": 14.0,
+          "nodes": 233.0,
+          "edges": 145,
+          "runtime_sec": 26.993696928024292
+        }
+      ]
+    },
+    {
+      "variant": "small_template_cap8",
+      "summary": {
+        "n": 3,
+        "edge_jaccard": 0.4444444444444444,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.49120370370370364,
+        "adj_edge_jaccard": 0.45961767761102607,
+        "n_adj": 3,
+        "score": 0.45961767761102607
+      },
+      "rows": [
+        {
+          "variant": "small_template_cap8",
+          "dataset": "6bba_1d0d8384",
+          "route": "balanced_compact",
+          "score": 0.4224661107952032,
+          "edge_jaccard": 0.40816326530612246,
+          "node_recall": 0.4,
+          "edge_tp": 20.0,
+          "edge_fp": 0.0,
+          "edge_fn": 29.0,
+          "nodes": 349,
+          "edges": 218,
+          "runtime_sec": 36.14104986190796,
+          "metrics": {
+            "edge_tp": 20.0,
+            "edge_fp": 0.0,
+            "edge_fn": 29.0,
+            "division_tp": 0.0,
+            "division_fp": 0.0,
+            "division_fn": 0.0,
+            "num_pred_nodes": 349.0,
+            "node_recall": 0.4,
+            "edge_jaccard": 0.40816326530612246,
+            "adj_edge_jaccard": 0.4224661107952032,
+            "division_jaccard": NaN
+          }
+        },
+        {
+          "variant": "small_template_cap8",
+          "dataset": "6bba_2312ac41",
+          "route": "balanced_midpoint",
+          "score": 0.4665406937508435,
+          "edge_jaccard": 0.45161290322580644,
+          "node_recall": 0.5111111111111111,
+          "edge_tp": 14.0,
+          "edge_fp": 1.0,
+          "edge_fn": 16.0,
+          "nodes": 240,
+          "edges": 146,
+          "runtime_sec": 33.29506993293762,
+          "metrics": {
+            "edge_tp": 14.0,
+            "edge_fp": 1.0,
+            "edge_fn": 16.0,
+            "division_tp": 0.0,
+            "division_fp": 0.0,
+            "division_fn": 0.0,
+            "num_pred_nodes": 240.0,
+            "node_recall": 0.5111111111111111,
+            "edge_jaccard": 0.45161290322580644,
+            "adj_edge_jaccard": 0.4665406937508435,
+            "division_jaccard": NaN
+          }
+        },
+        {
+          "variant": "small_template_cap8",
+          "dataset": "6bba_062c8d37",
+          "route": "balanced_midpoint",
+          "score": 0.6201990049751244,
+          "edge_jaccard": 0.6,
+          "node_recall": 0.5625,
+          "edge_tp": 6.0,
+          "edge_fp": 0.0,
+          "edge_fn": 4.0,
+          "nodes": 120,
+          "edges": 65,
+          "runtime_sec": 50.67513394355774,
+          "metrics": {
+            "edge_tp": 6.0,
+            "edge_fp": 0.0,
+            "edge_fn": 4.0,
+            "division_tp": 0.0,
+            "division_fp": 0.0,
+            "division_fn": 0.0,
+            "num_pred_nodes": 120.0,
+            "node_recall": 0.5625,
+            "edge_jaccard": 0.6,
+            "adj_edge_jaccard": 0.6201990049751244,
+            "division_jaccard": NaN
+          }
+        }
+      ]
+    }
+  ],
+  "conclusion": {
+    "current_score": 0.48853398654667846,
+    "small_template_cap8_score": 0.45961767761102607,
+    "promotable": false,
+    "reason": "small template injection is neutral on 1d0d, regresses 2312, slightly regresses 062c, and adds template-correlation runtime; higher caps were interrupted as unlikely/promotability-negative after cap8."
+  }
+}

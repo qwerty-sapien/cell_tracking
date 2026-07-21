@@ -1,6 +1,6 @@
 # Goal G-01 - Leakage-Safe General Model Improvement
 
-- Contract state: Draft
+- Contract state: Prepared (inactive)
 - Prepared from repository baseline: unborn `main`; no commit/tree. Relevant hashes are in `SPEC.md`; `.env` and `gurobi.lic` excluded.
 - Integration owner: Serialized integration owner
 - T1 verification coordinator: Read-only coordinator
@@ -12,17 +12,17 @@ The repository contains a low-compute, non-duplicate/general Biohub tracking rou
 ## Current Slice
 
 - **G-01 result:** Improve and verify the general route while deleting or disabling duplicate-GEFF copy behavior from general-model execution and score evidence.
-- **Included IDs:** R-01 through R-11; AC-01 through AC-10; D-01 through D-06 and D-08 locked; D-07 pending.
+- **Included IDs:** R-01 through R-11; AC-01 through AC-10; D-01 through D-08 locked.
 - **Transition value:** This slice retires the main uncertainty: whether the current alpha stack can reach the target with metric-aware localization, optional multi-hypothesis proposals, and low-compute edge/division scoring before paying for larger training.
 
 ## Approved Artifact References
 
-These are not approved yet. Before activation, read the finalized versions:
+These artifacts are prepared but inactive. Before activation, read the finalized versions:
 
-1. `.goal-interrogator/SPEC.md` - Draft; approval pending.
-2. `.goal-interrogator/DECISIONS.md` - Draft; D-01 through D-06 and D-08 locked, D-07 pending.
-3. `.goal-interrogator/ROADMAP.md` - Draft; current slice G-01.
-4. `.goal-interrogator/PLAN.md` - Draft; DAG blocked until decisions are locked.
+1. `.goal-interrogator/SPEC.md` - Prepared (inactive).
+2. `.goal-interrogator/DECISIONS.md` - Prepared (inactive); D-01 through D-08 locked.
+3. `.goal-interrogator/ROADMAP.md` - Prepared (inactive); current slice G-01.
+4. `.goal-interrogator/PLAN.md` - Prepared (inactive); DAG coverage passes.
 
 If a referenced artifact is missing, stale, or inconsistent, stop before implementation.
 
@@ -63,7 +63,7 @@ Confirm repository baseline and unrelated changes before editing.
 - **R-03 / D-02 locked:** Duplicate-copy routing must be deleted or disabled from the general model path and cannot be score evidence.
 - **R-05 / D-03 locked:** Held-out/test-derived offsets are forbidden; calibration must be fold-safe and provenance-recorded.
 - **R-08 / D-05 locked:** Main path stays local/Kaggle-free; a separate Python 3.11/3.12 branch may test optional compatibility; paid compute, Kaggle submission, Runpod, and secret reads remain unapproved.
-- **R-10 / D-07 pending:** Reproducibility requires file/config/data/output identities and secret exclusion.
+- **R-10 / D-07 locked:** Reproducibility requires a per-run manifest of file/config/data/output/dependency/command identities and secret exclusion; no Git commit is required.
 - **R-11 / D-08 locked:** Local iterative scorer must match Kaggle competition scoring semantics.
 
 Do not weaken an acceptance criterion, fixture, expected output, split policy, or leakage gate to obtain a pass.
@@ -146,7 +146,7 @@ Activation approval does not expand this table.
 
 Stop and report `Blocked` without improvising when:
 
-- D-07 is not resolved before execution.
+- The prepared artifact bundle is missing, stale, or inconsistent before execution.
 - A required artifact or repository premise is missing or stale.
 - The official scorer cannot run, scorer parity fails, and no locked waiver exists.
 - Duplicate-copy route remains reachable from the general model path, or held-out-label-derived offset appears in general score evidence.

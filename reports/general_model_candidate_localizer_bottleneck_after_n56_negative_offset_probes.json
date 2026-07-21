@@ -1,0 +1,169 @@
+{
+  "kind": "g01_n56_negative_offset_probe_decision",
+  "created_at_unix": 1783977686,
+  "status": "not_promoted",
+  "decision": "do_not_promote_current_state_exact_or_highx_residual_offsets",
+  "accepted_baseline_report": "reports/general_model_cv_audit_fold0_auto_n54_2819_rawonly_filter_12ds_12clips.json",
+  "accepted_baseline_score": 0.8100058174064654,
+  "probe_utility_change": {
+    "script": "scripts/probe_offset_clone_variants.py",
+    "change": "added optional offset-clone filter overrides for source mode, minimum component timepoints, and component max-x so route variants can be tested without production routing edits"
+  },
+  "probe_reports": {
+    "1d0d_xnone_highx_offsets": "reports/general_model_g01_n56_1d0d_xnone_highx_offsets_probe.json",
+    "2312_exact_residual_offsets": "reports/general_model_g01_n56_2312_exact_residual_offsets_after_n54_probe.json",
+    "062c_exact_t2_offsets": "reports/general_model_g01_n56_062c_exact_t2_offsets_after_n54_probe.json"
+  },
+  "results": [
+    {
+      "dataset": "6bba_1d0d8384",
+      "baseline": {
+        "score": 0.6871475794293372,
+        "edge_jaccard": 0.74,
+        "edge_tp": 37,
+        "edge_fp": 1,
+        "edge_fn": 12,
+        "nodes": 921,
+        "edges": 614
+      },
+      "tested_variants": [
+        {
+          "name": "base_xnone",
+          "score": 0.6764043776871964,
+          "edge_jaccard": 0.74,
+          "edge_tp": 37,
+          "edge_fp": 1,
+          "edge_fn": 12,
+          "nodes": 999,
+          "interpretation": "relaxing the component max-x cap added nodes without true-edge recovery"
+        },
+        {
+          "name": "add_4_2_18",
+          "score": 0.6495463733318443,
+          "edge_jaccard": 0.74,
+          "edge_tp": 37,
+          "edge_fp": 1,
+          "edge_fn": 12,
+          "nodes": 1194
+        },
+        {
+          "name": "add_4_3_20",
+          "score": 0.6495463733318443,
+          "edge_jaccard": 0.74,
+          "edge_tp": 37,
+          "edge_fp": 1,
+          "edge_fn": 12,
+          "nodes": 1194
+        },
+        {
+          "name": "add_highx_chain",
+          "score": 0.5958303646211401,
+          "edge_jaccard": 0.74,
+          "edge_tp": 37,
+          "edge_fp": 1,
+          "edge_fn": 12,
+          "nodes": 1584
+        }
+      ],
+      "conclusion": "High-x endpoint offsets and x-cap relaxation do not recover TP under current 1d0d topology; they only increase node penalty."
+    },
+    {
+      "dataset": "6bba_2312ac41",
+      "baseline": {
+        "score": 0.7841701534170153,
+        "edge_jaccard": 0.8333333333333334,
+        "edge_tp": 25,
+        "edge_fp": 0,
+        "edge_fn": 5,
+        "nodes": 570,
+        "edges": 349
+      },
+      "tested_variants": [
+        {
+          "name": "add_A1",
+          "score": 0.74721059972106,
+          "edge_jaccard": 0.8333333333333334,
+          "edge_tp": 25,
+          "edge_fp": 0,
+          "edge_fn": 5,
+          "nodes": 729
+        },
+        {
+          "name": "add_A2",
+          "score": 0.74721059972106,
+          "edge_jaccard": 0.8333333333333334,
+          "edge_tp": 25,
+          "edge_fp": 0,
+          "edge_fn": 5,
+          "nodes": 729
+        },
+        {
+          "name": "add_B1",
+          "score": 0.5574736003187886,
+          "edge_jaccard": 0.6285714285714286,
+          "edge_tp": 22,
+          "edge_fp": 5,
+          "edge_fn": 8,
+          "nodes": 764
+        },
+        {
+          "name": "add_B2",
+          "score": 0.6657949790794979,
+          "edge_jaccard": 0.75,
+          "edge_tp": 24,
+          "edge_fp": 2,
+          "edge_fn": 6,
+          "nodes": 761
+        }
+      ],
+      "conclusion": "Exact A-family offsets are pure node inflation; exact B-family offsets damage edge topology."
+    },
+    {
+      "dataset": "6bba_062c8d37",
+      "baseline": {
+        "score": 0.7813819789939194,
+        "edge_jaccard": 0.8,
+        "edge_tp": 8,
+        "edge_fp": 0,
+        "edge_fn": 2,
+        "node_recall": 0.8125,
+        "nodes": 223,
+        "edges": 119
+      },
+      "tested_variants": [
+        {
+          "name": "add_A",
+          "score": 0.630514096185738,
+          "edge_jaccard": 0.6666666666666666,
+          "edge_tp": 8,
+          "edge_fp": 2,
+          "edge_fn": 2,
+          "node_recall": 0.9375,
+          "nodes": 279
+        },
+        {
+          "name": "add_B",
+          "score": 0.6878335594753505,
+          "edge_jaccard": 0.7272727272727273,
+          "edge_tp": 8,
+          "edge_fp": 1,
+          "edge_fn": 2,
+          "node_recall": 0.875,
+          "nodes": 279
+        },
+        {
+          "name": "add_AB",
+          "score": 0.6098765432098765,
+          "edge_jaccard": 0.6666666666666666,
+          "edge_tp": 8,
+          "edge_fp": 2,
+          "edge_fn": 2,
+          "node_recall": 0.9375,
+          "nodes": 335
+        }
+      ],
+      "conclusion": "Exact t=2 terminal offsets improve node recall but do not recover true edges; copied-edge topology creates false-positive links."
+    }
+  ],
+  "next_direction": "Remaining gains should shift from broad copied offset layers to a topology-aware candidate generator or learned/lightweight edge reranker that can place endpoints and select their parent edge jointly. The immediate low-compute target is 1d0d, but current evidence says simple offset clones are exhausted."
+}

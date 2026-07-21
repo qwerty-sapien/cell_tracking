@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "artifact": "t04-v12-heldout-diagnostic",
+  "scope": "fold0-heldout-two-video-rung",
+  "audit_used": false,
+  "test_used": false,
+  "models": {
+    "v6": {
+      "checkpoint_sha256": "712646e9e263da018239dc46e927905708d31405c0b1774d20a260d85f480987",
+      "detection_threshold": 0.5,
+      "score": 0.8320255362214531,
+      "adjusted_edge_jaccard": 0.8320255362214531,
+      "edge_jaccard": 1.0,
+      "node_recall": 1.0,
+      "score_report": "reports/g02/v6s5.json"
+    },
+    "t04v12": {
+      "checkpoint_sha256": "4bda79c0a6f4e9f3a571ac6a4954b8654161c64ac8977b72c28c70d36c7869be",
+      "detection_threshold": 0.5,
+      "score": 0.5603938135505699,
+      "adjusted_edge_jaccard": 0.5603938135505699,
+      "edge_jaccard": 0.6666666666666666,
+      "node_recall": 1.0,
+      "score_report": "reports/g02/t12score.json"
+    },
+    "t04v12_threshold_07": {
+      "detection_threshold": 0.7,
+      "score": 0.5633522977020871,
+      "adjusted_edge_jaccard": 0.5633522977020871,
+      "edge_jaccard": 0.6666666666666666,
+      "node_recall": 1.0,
+      "elapsed_seconds": 13.54,
+      "score_report": "reports/g02/t12s7.json"
+    }
+  },
+  "comparison": {
+    "same_fold": 0,
+    "same_scope": "cv",
+    "same_datasets": ["44b6_24264f12", "6bba_0c7fa718"],
+    "same_clip_length": 2,
+    "same_sparse_linker": true,
+    "same_detector_threshold_for_primary_comparison": 0.5,
+    "t04v12_minus_v6_score": -0.2716317226708832,
+    "promotion": "rejected",
+    "reason": "The compact edge-only V12 objective worsened the frozen held-out rung materially; no threshold rescue was observed."
+  },
+  "core_provenance": {
+    "released_checkpoint_sha256": "347915de9c33883cb2ee69832a8e4552c88b1ec692d0fbfe956422467d3d4235",
+    "v12_released_backbone_tensors_changed": 0,
+    "v12_released_detector_tensors_changed": 0,
+    "v6_released_backbone_buffers_changed": 30,
+    "v6_released_detector_tensors_changed": 2,
+    "inference": "V12 leaves the center proposal logits equal to the released detector. Its trained auxiliary motion head is insufficient to recover V6 edge quality on this rung."
+  },
+  "next_policy": {
+    "no_more_t04_loss_only_training": true,
+    "division_activation_allowed": false,
+    "reason": "The edge-only rung is below the locked 0.90 division gate."
+  }
+}

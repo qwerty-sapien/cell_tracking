@@ -19,6 +19,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from celltrack_alpha import default_route_configs, predict_dataset_window  # noqa: E402
+from celltrack_alpha.localization import load_offset_calibration, offset_for_dataset  # noqa: E402
+from celltrack_alpha.scoring import load_scoring_calibration  # noqa: E402
 from celltrack_alpha.evaluation import (  # noqa: E402
     approximate_division_metrics,
     optional_official_metric_status,
@@ -58,7 +60,24 @@ def parse_args() -> argparse.Namespace:
         "--offsets-json",
         type=Path,
         default=None,
-        help="Optional calibration JSON with dataset_offsets/prefix_offsets to override route output offsets.",
+        help="Optional fold-safe calibration JSON with dataset_offsets/prefix_offsets to override route output offsets.",
+    )
+    parser.add_argument(
+        "--scoring-json",
+        type=Path,
+        default=None,
+        help="Optional fold-safe candidate scoring/pruning calibration JSON.",
+    )
+    parser.add_argument(
+        "--cv-fold",
+        default=None,
+        help="Expected fold ID for --offsets-json provenance validation.",
+    )
+    parser.add_argument(
+        "--split-manifest",
+        type=Path,
+        default=Path("reports/general_model_split_manifest.json"),
+        help="Locked split manifest used to validate offset calibration provenance.",
     )
     parser.add_argument("--run-id", default=None)
     parser.add_argument("--output", type=Path, default=Path("reports/alpha_routed_submission.csv"))
@@ -128,23 +147,6 @@ def assert_every_dataset_present(rows: list[dict[str, Any]], datasets: list[str]
     return [dataset for dataset in datasets if dataset not in present]
 
 
-def load_offset_calibration(path: Path | None) -> dict[str, Any]:
-    if path is None:
-        return {}
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
-def offset_for_dataset(dataset: str, calibration: dict[str, Any]) -> tuple[int, int, int] | None:
-    dataset_offsets = calibration.get("dataset_offsets", {})
-    if dataset in dataset_offsets:
-        return tuple(int(v) for v in dataset_offsets[dataset]["offset_zyx"])
-    prefix_offsets = calibration.get("prefix_offsets", {})
-    for prefix, row in prefix_offsets.items():
-        if dataset.startswith(str(prefix)):
-            return tuple(int(v) for v in row["offset_zyx"])
-    return None
-
-
 def main() -> int:
     args = parse_args()
     run_id = args.run_id or time.strftime("%Y%m%d-%H%M%S")
@@ -160,7 +162,16 @@ def main() -> int:
     print(f"alpha routed run_id={run_id} split={args.split} route={args.route} datasets={datasets}")
     official_status = optional_official_metric_status()
     print(json.dumps({"official_metric": official_status}, indent=2))
-    offset_calibration = load_offset_calibration(args.offsets_json)
+    offset_calibration = load_offset_calibration(
+        args.offsets_json,
+        split_manifest_path=args.split_manifest,
+        expected_fold_id=args.cv_fold,
+    )
+    scoring_calibration = load_scoring_calibration(
+        args.scoring_json,
+        split_manifest_path=args.split_manifest,
+        expected_fold_id=args.cv_fold,
+    )
 
     predictions: list[tuple[str, list[dict[str, Any]], list[dict[str, int]]]] = []
     metric_rows: list[dict[str, Any]] = []
@@ -187,6 +198,7 @@ def main() -> int:
                 allow_division_route=args.allow_division_route,
                 output_offset_override=offset_for_dataset(dataset, offset_calibration),
                 estimated_total_nodes=estimated_total,
+                scoring_calibration=scoring_calibration,
                 progress=args.progress,
             )
             predictions.append((dataset, result.nodes, result.edges))
@@ -253,6 +265,7 @@ def main() -> int:
                                 allow_division_route=True,
                                 output_offset_override=offset_for_dataset(dataset, offset_calibration),
                                 estimated_total_nodes=estimated_total,
+                                scoring_calibration=scoring_calibration,
                                 progress=False,
                             )
                         compare_metrics = approximate_sparse_metrics(

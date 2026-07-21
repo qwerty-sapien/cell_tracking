@@ -1,0 +1,18 @@
+[{"stream_name":"stderr","time":2.727078509,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":2.727182053,"data":"  File \"/kaggle/src/script.py\", line 64, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":2.727535507,"data":"    CONFIG = json.loads((ROOT / \"alpha_submission_config.json\").read_text(encoding=\"utf-8\"))\n"}
+,{"stream_name":"stderr","time":2.727741618,"data":"                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":2.727768942,"data":"  File \"/usr/lib/python3.12/pathlib.py\", line 1027, in read_text\n"}
+,{"stream_name":"stderr","time":2.730146831,"data":"    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n"}
+,{"stream_name":"stderr","time":2.730237013,"data":"         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":2.73027659,"data":"  File \"/usr/lib/python3.12/pathlib.py\", line 1013, in open\n"}
+,{"stream_name":"stderr","time":2.73062843,"data":"    return io.open(self, mode, buffering, encoding, errors, newline)\n"}
+,{"stream_name":"stderr","time":2.7307442760000002,"data":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":2.730784803,"data":"FileNotFoundError: [Errno 2] No such file or directory: '/kaggle/src/alpha_submission_config.json'\n"}
+,{"stream_name":"stderr","time":5.794866194,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":5.794905545,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":6.207726406,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":6.207757798,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":8.282387299,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":9.959812161,"data":"[NbConvertApp] Writing 999519 bytes to __results__.html\n"}
+]

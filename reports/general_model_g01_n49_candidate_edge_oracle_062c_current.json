@@ -1,0 +1,910 @@
+{
+  "kind": "candidate_edge_oracle_diagnostic",
+  "created_at_unix": 1783967255.1620219,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "fold_id": "0",
+  "datasets": [
+    "6bba_062c8d37"
+  ],
+  "route_arg": "auto",
+  "clip_length": 3,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "reports": [
+    {
+      "dataset": "6bba_062c8d37",
+      "route": "balanced_midpoint",
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 16,
+      "gt_edges": 10,
+      "candidate_nodes": 384,
+      "edge_candidates": 89,
+      "selected_edges": 135,
+      "emitted_nodes": 253,
+      "matched_emitted_nodes": 13,
+      "matched_raw_candidate_nodes": 10,
+      "matched_emitted_source_counts": {
+        "base": 9,
+        "offset_clone": 4
+      },
+      "matched_gt_nodes": [
+        {
+          "node_id": 1000002,
+          "t": 0,
+          "z": 12.0,
+          "y": 221.0,
+          "x": 98.0,
+          "pred_node_id": 1013,
+          "pred_zyx": [
+            10,
+            206,
+            100
+          ],
+          "source_family": "offset_clone",
+          "sources": [
+            "refine_local_score:dog_abs@r13",
+            "refine_local_score:dog_bright@r13",
+            "refine_local_score:local_contrast@r13",
+            "offset_clone_0"
+          ],
+          "nearest_emitted": {
+            "node_id": 1013,
+            "z": 10,
+            "y": 206,
+            "x": 100,
+            "distance_um": 6.953879874753374,
+            "delta_zyx_vox": [
+              -2.0,
+              -15.0,
+              2.0
+            ],
+            "source_family": "offset_clone",
+            "sources": [
+              "refine_local_score:dog_abs@r13",
+              "refine_local_score:dog_bright@r13",
+              "refine_local_score:local_contrast@r13",
+              "offset_clone_0"
+            ]
+          }
+        },
+        {
+          "node_id": 1000003,
+          "t": 0,
+          "z": 13.0,
+          "y": 187.0,
+          "x": 185.0,
+          "pred_node_id": 1098,
+          "pred_zyx": [
+            13,
+            174,
+            180
+          ],
+          "source_family": "offset_clone",
+          "sources": [
+            "tile_contrast@q0.75",
+            "offset_clone_1"
+          ],
+          "nearest_emitted": {
+            "node_id": 1098,
+            "z": 13,
+            "y": 174,
+            "x": 180,
+            "distance_um": 5.658407737606049,
+            "delta_zyx_vox": [
+              0.0,
+              -13.0,
+              -5.0
+            ],
+            "source_family": "offset_clone",
+            "sources": [
+              "tile_contrast@q0.75",
+              "offset_clone_1"
+            ]
+          }
+        },
+        {
+          "node_id": 1000008,
+          "t": 0,
+          "z": 27.0,
+          "y": 79.0,
+          "x": 204.0,
+          "pred_node_id": 391,
+          "pred_zyx": [
+            28,
+            76,
+            198
+          ],
+          "source_family": "base",
+          "sources": [
+            "refine_local_score:dog_abs@r13",
+            "refine_local_score:dog_bright@r13",
+            "refine_local_score:local_contrast@r13"
+          ],
+          "nearest_emitted": {
+            "node_id": 391,
+            "z": 28,
+            "y": 76,
+            "x": 198,
+            "distance_um": 3.1729139308370784,
+            "delta_zyx_vox": [
+              1.0,
+              -3.0,
+              -6.0
+            ],
+            "source_family": "base",
+            "sources": [
+              "refine_local_score:dog_abs@r13",
+              "refine_local_score:dog_bright@r13",
+              "refine_local_score:local_contrast@r13"
+            ]
+          }
+        },
+        {
+          "node_id": 1000010,
+          "t": 0,
+          "z": 34.0,
+          "y": 51.0,
+          "x": 232.0,
+          "pred_node_id": 11,
+          "pred_zyx": [
+            33,
+            48,
+            234
+          ],
+          "source_family": "base",
+          "sources": [
+            "tile_raw@q0.75"
+          ],
+          "nearest_emitted": {
+            "node_id": 11,
+            "z": 33,
+            "y": 48,
+            "x": 234,
+            "distance_um": 2.1877232028983924,
+            "delta_zyx_vox": [
+              -1.0,
+              -3.0,
+              2.0
+            ],
+            "source_family": "base",
+            "sources": [
+              "tile_raw@q0.75"
+            ]
+          }
+        },
+        {
+          "node_id": 1000014,
+          "t": 0,
+          "z": 43.0,
+          "y": 70.0,
+          "x": 208.0,
+          "pred_node_id": 53,
+          "pred_zyx": [
+            42,
+            73,
+            212
+          ],
+          "source_family": "base",
+          "sources": [
+            "tile_raw@q0.75"
+          ],
+          "nearest_emitted": {
+            "node_id": 53,
+            "z": 42,
+            "y": 73,
+            "x": 212,
+            "distance_um": 2.6012692214570947,
+            "delta_zyx_vox": [
+              -1.0,
+              3.0,
+              4.0
+            ],
+            "source_family": "base",
+            "sources": [
+              "tile_raw@q0.75"
+            ]
+          }
+        },
+        {
+          "node_id": 2000019,
+          "t": 1,
+          "z": 13.0,
+          "y": 186.0,
+          "x": 179.0,
+          "pred_node_id": 1138,
+          "pred_zyx": [
+            13,
+            169,
+            178
+          ],
+          "source_family": "offset_clone",
+          "sources": [
+            "tile_contrast@q0.75",
+            "offset_clone_1"
+          ],
+          "nearest_emitted": {
+            "node_id": 1138,
+            "z": 13,
+            "y": 169,
+            "x": 178,
+            "distance_um": 6.9181882111576005,
+            "delta_zyx_vox": [
+              0.0,
+              -17.0,
+              -1.0
+            ],
+            "source_family": "offset_clone",
+            "sources": [
+              "tile_contrast@q0.75",
+              "offset_clone_1"
+            ]
+          }
+        },
+        {
+          "node_id": 2000020,
+          "t": 1,
+          "z": 12.0,
+          "y": 216.0,
+          "x": 95.0,
+          "pred_node_id": 1019,
+          "pred_zyx": [
+            10,
+            208,
+            96
+          ],
+          "source_family": "offset_clone",
+          "sources": [
+            "tile_raw@q0.75",
+            "offset_clone_0"
+          ],
+          "nearest_emitted": {
+            "node_id": 1019,
+            "z": 10,
+            "y": 208,
+            "x": 96,
+            "distance_um": 4.614113030962723,
+            "delta_zyx_vox": [
+              -2.0,
+              -8.0,
+              1.0
+            ],
+            "source_family": "offset_clone",
+            "sources": [
+              "tile_raw@q0.75",
+              "offset_clone_0"
+            ]
+          }
+        },
+        {
+          "node_id": 2000027,
+          "t": 1,
+          "z": 29.0,
+          "y": 75.0,
+          "x": 200.0,
+          "pred_node_id": 649,
+          "pred_zyx": [
+            28,
+            75,
+            195
+          ],
+          "source_family": "base",
+          "sources": [
+            "refine_local_score:local_contrast@r13"
+          ],
+          "nearest_emitted": {
+            "node_id": 649,
+            "z": 28,
+            "y": 75,
+            "x": 195,
+            "distance_um": 2.6012692214570947,
+            "delta_zyx_vox": [
+              -1.0,
+              0.0,
+              -5.0
+            ],
+            "source_family": "base",
+            "sources": [
+              "refine_local_score:local_contrast@r13"
+            ]
+          }
+        },
+        {
+          "node_id": 2000028,
+          "t": 1,
+          "z": 35.0,
+          "y": 48.0,
+          "x": 226.0,
+          "pred_node_id": 137,
+          "pred_zyx": [
+            33,
+            49,
+            231
+          ],
+          "source_family": "base",
+          "sources": [
+            "tile_contrast@q0.75",
+            "tile_raw@q0.75"
+          ],
+          "nearest_emitted": {
+            "node_id": 137,
+            "z": 33,
+            "y": 49,
+            "x": 231,
+            "distance_um": 3.8540258983302125,
+            "delta_zyx_vox": [
+              -2.0,
+              1.0,
+              5.0
+            ],
+            "source_family": "base",
+            "sources": [
+              "tile_contrast@q0.75",
+              "tile_raw@q0.75"
+            ]
+          }
+        },
+        {
+          "node_id": 2000032,
+          "t": 1,
+          "z": 44.0,
+          "y": 68.0,
+          "x": 202.0,
+          "pred_node_id": 712,
+          "pred_zyx": [
+            42,
+            71,
+            208
+          ],
+          "source_family": "base",
+          "sources": [
+            "refine_local_score:local_contrast@r13"
+          ],
+          "nearest_emitted": {
+            "node_id": 712,
+            "z": 42,
+            "y": 71,
+            "x": 208,
+            "distance_um": 4.241374519244911,
+            "delta_zyx_vox": [
+              -2.0,
+              3.0,
+              6.0
+            ],
+            "source_family": "base",
+            "sources": [
+              "refine_local_score:local_contrast@r13"
+            ]
+          }
+        },
+        {
+          "node_id": 3000045,
+          "t": 2,
+          "z": 30.0,
+          "y": 74.0,
+          "x": 193.0,
+          "pred_node_id": 913,
+          "pred_zyx": [
+            28,
+            73,
+            192
+          ],
+          "source_family": "base",
+          "sources": [
+            "refine_local_score:dog_abs@r13",
+            "refine_local_score:dog_bright@r13"
+          ],
+          "nearest_emitted": {
+            "node_id": 913,
+            "z": 28,
+            "y": 73,
+            "x": 192,
+            "distance_um": 3.300390601883359,
+            "delta_zyx_vox": [
+              -2.0,
+              -1.0,
+              -1.0
+            ],
+            "source_family": "base",
+            "sources": [
+              "refine_local_score:dog_abs@r13",
+              "refine_local_score:dog_bright@r13"
+            ]
+          }
+        },
+        {
+          "node_id": 3000046,
+          "t": 2,
+          "z": 35.0,
+          "y": 46.0,
+          "x": 218.0,
+          "pred_node_id": 272,
+          "pred_zyx": [
+            34,
+            46,
+            225
+          ],
+          "source_family": "base",
+          "sources": [
+            "tile_contrast@q0.75"
+          ],
+          "nearest_emitted": {
+            "node_id": 272,
+            "z": 34,
+            "y": 46,
+            "x": 225,
+            "distance_um": 3.2752922102462856,
+            "delta_zyx_vox": [
+              -1.0,
+              0.0,
+              7.0
+            ],
+            "source_family": "base",
+            "sources": [
+              "tile_contrast@q0.75"
+            ]
+          }
+        },
+        {
+          "node_id": 3000050,
+          "t": 2,
+          "z": 44.0,
+          "y": 64.0,
+          "x": 196.0,
+          "pred_node_id": 290,
+          "pred_zyx": [
+            41,
+            71,
+            203
+          ],
+          "source_family": "base",
+          "sources": [
+            "tile_contrast@q0.75"
+          ],
+          "nearest_emitted": {
+            "node_id": 290,
+            "z": 41,
+            "y": 71,
+            "x": 203,
+            "distance_um": 6.319766856854769,
+            "delta_zyx_vox": [
+              -3.0,
+              7.0,
+              7.0
+            ],
+            "source_family": "base",
+            "sources": [
+              "tile_contrast@q0.75"
+            ]
+          }
+        }
+      ],
+      "unmatched_gt_nodes": [
+        {
+          "node_id": 3000037,
+          "t": 2,
+          "z": 13.0,
+          "y": 214.0,
+          "x": 89.0,
+          "nearest_emitted": {
+            "node_id": 241,
+            "z": 0,
+            "y": 224,
+            "x": 97,
+            "distance_um": 21.756195238368313,
+            "delta_zyx_vox": [
+              -13.0,
+              10.0,
+              8.0
+            ],
+            "source_family": "base",
+            "sources": [
+              "tile_contrast@q0.75",
+              "tile_raw@q0.75"
+            ]
+          }
+        },
+        {
+          "node_id": 3000038,
+          "t": 2,
+          "z": 14.0,
+          "y": 182.0,
+          "x": 172.0,
+          "nearest_emitted": {
+            "node_id": 243,
+            "z": 3,
+            "y": 184,
+            "x": 157,
+            "distance_um": 18.902633951714243,
+            "delta_zyx_vox": [
+              -11.0,
+              2.0,
+              -15.0
+            ],
+            "source_family": "base",
+            "sources": [
+              "tile_raw@q0.75"
+            ]
+          }
+        },
+        {
+          "node_id": 3000040,
+          "t": 2,
+          "z": 14.0,
+          "y": 170.0,
+          "x": 252.0,
+          "nearest_emitted": {
+            "node_id": 248,
+            "z": 14,
+            "y": 122,
+            "x": 215,
+            "distance_um": 24.62089512106536,
+            "delta_zyx_vox": [
+              0.0,
+              -48.0,
+              -37.0
+            ],
+            "source_family": "base",
+            "sources": [
+              "tile_contrast@q0.75",
+              "tile_raw@q0.75"
+            ]
+          }
+        }
+      ],
+      "selected_gt_edge_tp": 8,
+      "selected_gt_edge_pairs": [
+        [
+          1000002,
+          2000020
+        ],
+        [
+          1000003,
+          2000019
+        ],
+        [
+          1000008,
+          2000027
+        ],
+        [
+          1000010,
+          2000028
+        ],
+        [
+          1000014,
+          2000032
+        ],
+        [
+          2000027,
+          3000045
+        ],
+        [
+          2000028,
+          3000046
+        ],
+        [
+          2000032,
+          3000050
+        ]
+      ],
+      "missed_gt_edges": [
+        [
+          2000019,
+          3000038
+        ],
+        [
+          2000020,
+          3000037
+        ]
+      ],
+      "raw_candidate_gt_edge_pairs": [
+        [
+          1000010,
+          2000028
+        ],
+        [
+          1000014,
+          2000032
+        ],
+        [
+          2000032,
+          3000050
+        ]
+      ],
+      "raw_candidate_gt_edge_hit_count": 3,
+      "raw_candidate_gt_edge_hits": [
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 11,
+          "target_id": 137,
+          "gt_source_id": 1000010,
+          "gt_target_id": 2000028,
+          "distance_um": 1.284675299443404,
+          "cost": -0.06794991444474169,
+          "score": 0.9221410729480444,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.005,
+            "appearance_delta": 0.01886792451558765,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 2.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 1.9906169108028815,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 1.9906169108028815,
+            "candidate_ambiguity": 0.6931471805599453,
+            "source_best_distance_um": 1.284675299443404,
+            "target_best_distance_um": 1.284675299443404
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 53,
+          "target_id": 712,
+          "gt_source_id": 1000014,
+          "gt_target_id": 2000032,
+          "distance_um": 1.8168052317185792,
+          "cost": 0.17108720906245123,
+          "score": 0.8198971994364996,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 0.65,
+            "density_penalty": 0.015000000000000003,
+            "appearance_delta": 0.040091637983858376,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 1.8168052317185792,
+            "target_best_distance_um": 1.8168052317185792
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 712,
+          "target_id": 290,
+          "gt_source_id": 2000032,
+          "gt_target_id": 3000050,
+          "distance_um": 2.6012692214570947,
+          "cost": 0.3902197775591699,
+          "score": 0.6545547095097123,
+          "features": {
+            "source_score": 0.65,
+            "target_score": 1.0,
+            "density_penalty": 0.01,
+            "appearance_delta": 0.044879171409805324,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 3.0,
+            "target_in_rank_norm": 1.0,
+            "target_in_candidate_count": 3.0,
+            "target_distance_to_best_um": 0.9262575610499202,
+            "target_best_margin_um": 0.9262575610499202,
+            "target_is_nearest": 0.0,
+            "mutual_nearest": 0.0,
+            "min_best_margin_um": 0.9262575610499202,
+            "candidate_ambiguity": 1.0986122886681098,
+            "source_best_distance_um": 2.6012692214570947,
+            "target_best_distance_um": 1.6750116604071745
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        }
+      ],
+      "raw_candidate_gt_edge_conflicts": {
+        "source_out_used": 3,
+        "target_in_used": 3
+      },
+      "unselected_emitted_gt_edge_hits": [],
+      "unselected_emitted_gt_edge_hit_count": 0,
+      "unselected_emitted_conflicts": {},
+      "selected_valid_edge_approx": 8,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 384,
+        "after_nodes": 115,
+        "edges": 62
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "refined_candidate_admission": {
+        "enabled": true,
+        "source_route": "refined_dog_compact",
+        "max_per_t": 8,
+        "min_dist_um": 1.0,
+        "score_scale": 0.65,
+        "base_nodes": 360,
+        "refined_nodes": 780,
+        "refined_local_nodes": 780,
+        "admitted_nodes": 24,
+        "base_by_t": [
+          120,
+          120,
+          120
+        ],
+        "refined_local_by_t": [
+          260,
+          260,
+          260
+        ],
+        "admitted_by_t": [
+          8,
+          8,
+          8
+        ]
+      },
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": {
+        "enabled": true,
+        "before_edges": 62,
+        "after_edges": 62,
+        "replacements": 1,
+        "max_distance_um": 3.0,
+        "max_cost": 0.42,
+        "max_target_rank": 3,
+        "min_temporal_count": 2.0,
+        "replaced_edges": [
+          {
+            "removed_source_id": 174,
+            "removed_target_id": 290,
+            "added_source_id": 712,
+            "added_target_id": 290,
+            "added_distance_um": 2.6012692214570947,
+            "added_cost": 0.3902197775591699,
+            "added_target_rank": 3.0
+          }
+        ]
+      },
+      "short_edge_pruning": null,
+      "localmax_refinement": null,
+      "free_edge_admission": null,
+      "duplicate_endpoint_rescue": null,
+      "motion_endpoint_admission": null,
+      "localmax_clone_layers": null,
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            0,
+            24,
+            18
+          ],
+          [
+            -3,
+            42,
+            -12
+          ]
+        ],
+        "layers": 2,
+        "base_nodes": 115,
+        "base_edges": 62,
+        "cloned_nodes": 197,
+        "cloned_edges": 106,
+        "clipped_nodes": 33,
+        "skipped_clipped_nodes": 33,
+        "filter": {
+          "enabled": true,
+          "source_mode": "any",
+          "min_component_timepoints": 0,
+          "component_max_x": 192,
+          "layers": [
+            {
+              "enabled": true,
+              "source_mode": "any",
+              "min_component_timepoints": 0,
+              "component_max_x": 192,
+              "before_nodes": 111,
+              "before_edges": 60,
+              "candidate_kept_nodes": 68,
+              "kept_nodes": 68,
+              "kept_edges": 36,
+              "dropped_by_source": 0,
+              "dropped_by_timepoints": 0,
+              "dropped_by_x": 43,
+              "layer": 0
+            },
+            {
+              "enabled": true,
+              "source_mode": "any",
+              "min_component_timepoints": 0,
+              "component_max_x": 192,
+              "before_nodes": 86,
+              "before_edges": 46,
+              "candidate_kept_nodes": 70,
+              "kept_nodes": 70,
+              "kept_edges": 37,
+              "dropped_by_source": 0,
+              "dropped_by_timepoints": 0,
+              "dropped_by_x": 16,
+              "layer": 1
+            }
+          ]
+        },
+        "mean_abs_offset_zyx": [
+          1.309645,
+          31.857868,
+          15.380711
+        ]
+      },
+      "endpoint_backward_clones": null,
+      "endpoint_forward_clones": null,
+      "localmax_clone_target_rewire": null,
+      "forks": 0
+    }
+  ],
+  "runtime_sec": 47.1523277759552
+}

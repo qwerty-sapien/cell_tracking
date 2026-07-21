@@ -11,7 +11,13 @@ import numpy as np
 from scipy.optimize import linear_sum_assignment
 from scipy.spatial import cKDTree
 
-from .types import CandidateEdge, CandidateFork, CandidateNode, RouteConfig
+from .types import (
+    CandidateEdge,
+    CandidateFork,
+    CandidateNode,
+    RouteConfig,
+    validate_route_config,
+)
 
 
 def _edge_radius(config: RouteConfig, dt: int) -> float:
@@ -30,36 +36,7 @@ def _validated_scale(scale_zyx: tuple[float, float, float]) -> np.ndarray:
 
 
 def _validate_config(config: RouteConfig) -> None:
-    numeric_nonnegative = {
-        "edge_cost_threshold": config.edge_cost_threshold,
-        "node_score_weight": config.node_score_weight,
-        "density_cost_weight": config.density_cost_weight,
-        "appearance_cost_weight": config.appearance_cost_weight,
-        "gap_motion_cost_weight": config.gap_motion_cost_weight,
-    }
-    for name, value in numeric_nonnegative.items():
-        if not np.isfinite(value) or value < 0.0:
-            raise ValueError(f"{name} must be finite and non-negative, got {value!r}")
-    for name, value in (("max_link_um", config.max_link_um), ("gap_link_um", config.gap_link_um)):
-        if not np.isfinite(value) or value <= 0.0:
-            raise ValueError(f"{name} must be positive and finite, got {value!r}")
-    if (
-        isinstance(config.max_gap, bool)
-        or int(config.max_gap) != config.max_gap
-        or int(config.max_gap) < 1
-    ):
-        raise ValueError(f"max_gap must be a positive integer, got {config.max_gap!r}")
-    if (
-        isinstance(config.max_neighbors, bool)
-        or int(config.max_neighbors) != config.max_neighbors
-        or int(config.max_neighbors) < 1
-    ):
-        raise ValueError(
-            f"max_neighbors must be a positive integer, got {config.max_neighbors!r}"
-        )
-    for name, value in (("birth_cost", config.birth_cost), ("death_cost", config.death_cost)):
-        if value is not None and (not np.isfinite(value) or value < 0.0):
-            raise ValueError(f"{name} must be finite and non-negative when set, got {value!r}")
+    validate_route_config(config)
 
 
 def _symmetric_relative_difference(a: float, b: float) -> float:
@@ -93,6 +70,82 @@ def _validate_edge_candidates(
             raise ValueError(f"candidate edge {pair} has non-finite cost")
         if not np.isfinite(edge.score) or not 0.0 <= edge.score <= 1.0:
             raise ValueError(f"candidate edge {pair} score must be finite and in [0, 1]")
+
+
+def _annotate_edge_context(edges: list[CandidateEdge]) -> None:
+    """Populate deterministic local association-context features in place."""
+
+    by_source: dict[tuple[int, int], list[CandidateEdge]] = defaultdict(list)
+    by_target: dict[tuple[int, int], list[CandidateEdge]] = defaultdict(list)
+    for edge in edges:
+        by_source[(int(edge.source_id), int(edge.dt))].append(edge)
+        by_target[(int(edge.target_id), int(edge.dt))].append(edge)
+
+    source_rank: dict[tuple[int, int], tuple[int, int, float, float, float]] = {}
+    for group_edges in by_source.values():
+        ranked = sorted(group_edges, key=lambda e: (float(e.distance_um), float(e.cost), int(e.target_id)))
+        best = float(ranked[0].distance_um)
+        second = float(ranked[1].distance_um) if len(ranked) > 1 else best
+        for rank, edge in enumerate(ranked, start=1):
+            distance = float(edge.distance_um)
+            if rank == 1:
+                margin = max(0.0, second - distance) if len(ranked) > 1 else float("inf")
+            else:
+                margin = max(0.0, distance - best)
+            source_rank[(int(edge.source_id), int(edge.target_id))] = (
+                rank,
+                len(ranked),
+                distance - best,
+                margin,
+                best,
+            )
+
+    target_rank: dict[tuple[int, int], tuple[int, int, float, float, float]] = {}
+    for group_edges in by_target.values():
+        ranked = sorted(group_edges, key=lambda e: (float(e.distance_um), float(e.cost), int(e.source_id)))
+        best = float(ranked[0].distance_um)
+        second = float(ranked[1].distance_um) if len(ranked) > 1 else best
+        for rank, edge in enumerate(ranked, start=1):
+            distance = float(edge.distance_um)
+            if rank == 1:
+                margin = max(0.0, second - distance) if len(ranked) > 1 else float("inf")
+            else:
+                margin = max(0.0, distance - best)
+            target_rank[(int(edge.source_id), int(edge.target_id))] = (
+                rank,
+                len(ranked),
+                distance - best,
+                margin,
+                best,
+            )
+
+    for edge in edges:
+        pair = (int(edge.source_id), int(edge.target_id))
+        s_rank, s_count, s_delta, s_margin, s_best = source_rank.get(pair, (1, 1, 0.0, float("inf"), float(edge.distance_um)))
+        t_rank, t_count, t_delta, t_margin, t_best = target_rank.get(pair, (1, 1, 0.0, float("inf"), float(edge.distance_um)))
+        finite_source_margin = s_margin if np.isfinite(s_margin) else 999.0
+        finite_target_margin = t_margin if np.isfinite(t_margin) else 999.0
+        edge.features.update(
+            {
+                "source_out_rank": float(s_rank),
+                "source_out_rank_norm": float((s_rank - 1) / max(1, s_count - 1)),
+                "source_out_candidate_count": float(s_count),
+                "source_distance_to_best_um": float(s_delta),
+                "source_best_margin_um": float(finite_source_margin),
+                "source_is_nearest": float(s_rank == 1),
+                "target_in_rank": float(t_rank),
+                "target_in_rank_norm": float((t_rank - 1) / max(1, t_count - 1)),
+                "target_in_candidate_count": float(t_count),
+                "target_distance_to_best_um": float(t_delta),
+                "target_best_margin_um": float(finite_target_margin),
+                "target_is_nearest": float(t_rank == 1),
+                "mutual_nearest": float(s_rank == 1 and t_rank == 1),
+                "min_best_margin_um": float(min(finite_source_margin, finite_target_margin)),
+                "candidate_ambiguity": float(np.log1p(max(0, s_count - 1) + max(0, t_count - 1))),
+                "source_best_distance_um": float(s_best),
+                "target_best_distance_um": float(t_best),
+            }
+        )
 
 
 def build_edge_candidates(
@@ -167,6 +220,7 @@ def build_edge_candidates(
                             },
                         )
                     )
+    _annotate_edge_context(edges)
     return edges
 
 
@@ -359,6 +413,94 @@ def _with_gap_motion_cost(
     return replace(edge, cost=adjusted_cost, score=adjusted_score, features=features)
 
 
+def _rescue_second_choice_edges(
+    selected: list[CandidateEdge],
+    edge_candidates: list[CandidateEdge],
+    nodes_by_id: dict[int, CandidateNode],
+    config: RouteConfig,
+) -> list[CandidateEdge]:
+    """Replace short stationary-looking links with a constrained unique second choice."""
+
+    if not config.enable_second_choice_edge_rescue:
+        return selected
+
+    selected_pairs = {(int(edge.source_id), int(edge.target_id)) for edge in selected}
+    indeg: Counter[int] = Counter(int(edge.target_id) for edge in selected)
+    outdeg: Counter[int] = Counter(int(edge.source_id) for edge in selected)
+    by_source: dict[int, list[CandidateEdge]] = defaultdict(list)
+    for edge in edge_candidates:
+        if int(edge.dt) == 1:
+            by_source[int(edge.source_id)].append(edge)
+
+    remove_pairs: set[tuple[int, int]] = set()
+    add_edges: list[CandidateEdge] = []
+    used_alt_targets: set[int] = set()
+    for current_edge in sorted(
+        (edge for edge in selected if int(edge.dt) == 1),
+        key=lambda edge: (int(edge.source_id), int(edge.target_id)),
+    ):
+        source_id = int(current_edge.source_id)
+        current_target_id = int(current_edge.target_id)
+        if outdeg[source_id] != 1 or indeg[current_target_id] != 1:
+            continue
+        if float(current_edge.distance_um) > float(config.edge_rescue_short_max_um):
+            continue
+        current_target = nodes_by_id[current_target_id]
+        alternatives: list[CandidateEdge] = []
+        for alt in by_source.get(source_id, []):
+            alt_target_id = int(alt.target_id)
+            if (source_id, alt_target_id) in selected_pairs:
+                continue
+            if alt_target_id in used_alt_targets or indeg[alt_target_id] != 0:
+                continue
+            if not (
+                float(config.edge_rescue_long_min_um)
+                <= float(alt.distance_um)
+                <= float(config.edge_rescue_long_max_um)
+            ):
+                continue
+            if float(alt.distance_um) - float(current_edge.distance_um) < float(config.edge_rescue_margin_min_um):
+                continue
+            if float(alt.cost) > float(config.edge_rescue_alt_cost_max):
+                continue
+            if float(alt.features.get("source_out_rank", 999.0)) > 2.0:
+                continue
+            if float(alt.features.get("target_in_rank", 999.0)) > 1.0:
+                continue
+            alt_target = nodes_by_id[alt_target_id]
+            if float(alt_target.intensity) < float(current_target.intensity) * float(config.edge_rescue_intensity_ratio):
+                continue
+            alternatives.append(alt)
+        if not alternatives:
+            continue
+        replacement = min(
+            alternatives,
+            key=lambda edge: (float(edge.cost), float(edge.distance_um), int(edge.target_id)),
+        )
+        remove_pairs.add((source_id, current_target_id))
+        add_edges.append(replacement)
+        used_alt_targets.add(int(replacement.target_id))
+
+    if not add_edges:
+        return selected
+
+    rescued = [
+        edge
+        for edge in selected
+        if (int(edge.source_id), int(edge.target_id)) not in remove_pairs
+    ]
+    rescued.extend(add_edges)
+    rescued.sort(
+        key=lambda edge: (
+            nodes_by_id[int(edge.source_id)].t,
+            nodes_by_id[int(edge.target_id)].t,
+            int(edge.source_id),
+            int(edge.target_id),
+        )
+    )
+    return rescued
+
+
 def validate_lineage_graph(
     nodes: list[CandidateNode],
     edges: list[CandidateEdge],
@@ -520,6 +662,13 @@ def select_edges(
             indeg[edge.target_id] += 1
             outdeg[edge.source_id] += 1
 
+    selected = _rescue_second_choice_edges(
+        selected, edge_candidates, nodes_by_id, config
+    )
+    selected_pairs = {(int(edge.source_id), int(edge.target_id)) for edge in selected}
+    indeg = Counter(int(edge.target_id) for edge in selected)
+    outdeg = Counter(int(edge.source_id) for edge in selected)
+
     forks: list[CandidateFork] = []
     if not config.enable_divisions:
         selected.sort(
@@ -544,9 +693,73 @@ def select_edges(
                 future_support.add(edge.source_id)
 
     children_by_parent: dict[int, list[int]] = defaultdict(list)
+    candidate_by_pair: dict[tuple[int, int], CandidateEdge] = {}
     for edge in edge_candidates:
-        if edge.dt == 1 and edge.distance_um <= config.division_child_max_um:
+        if edge.dt != 1:
+            continue
+        pair = (int(edge.source_id), int(edge.target_id))
+        previous = candidate_by_pair.get(pair)
+        if previous is None or _edge_order_key(edge) < _edge_order_key(previous):
+            candidate_by_pair[pair] = edge
+        if edge.distance_um <= config.division_child_max_um:
             children_by_parent[edge.source_id].append(edge.target_id)
+
+    selected_source_by_target: dict[int, int] = {
+        int(edge.target_id): int(edge.source_id)
+        for edge in selected
+        if int(edge.dt) == 1
+    }
+
+    def _node_distance_um(a: CandidateNode, b: CandidateNode) -> float:
+        return float(
+            np.linalg.norm(
+                (np.asarray(a.coord_zyx, dtype=np.float64) - np.asarray(b.coord_zyx, dtype=np.float64))
+                * scale
+            )
+        )
+
+    def _stealable_source(parent_id: int, child_id: int) -> int | None:
+        if not config.division_allow_link_steal:
+            return None
+        current_source_id = selected_source_by_target.get(int(child_id))
+        if current_source_id is None or current_source_id == int(parent_id):
+            return None
+        if outdeg[current_source_id] != 1:
+            return None
+        parent = nodes_by_id[int(parent_id)]
+        current_source = nodes_by_id[current_source_id]
+        if int(current_source.t) != int(parent.t):
+            return None
+        candidate_edge = candidate_by_pair.get((int(parent_id), int(child_id)))
+        if candidate_edge is None:
+            return None
+        if float(candidate_edge.distance_um) > float(config.division_steal_max_distance_um):
+            return None
+        if _node_distance_um(parent, current_source) > float(config.division_steal_source_max_um):
+            return None
+        return current_source_id
+
+    def _remove_selected_pair(source_id: int, target_id: int) -> None:
+        pair = (int(source_id), int(target_id))
+        for index, edge in enumerate(selected):
+            if (int(edge.source_id), int(edge.target_id)) == pair:
+                del selected[index]
+                break
+        else:
+            raise ValueError(f"selected edge {pair} is missing during division rescue")
+        selected_pairs.remove(pair)
+        indeg[pair[1]] -= 1
+        if indeg[pair[1]] <= 0:
+            del indeg[pair[1]]
+        outdeg[pair[0]] -= 1
+        if outdeg[pair[0]] <= 0:
+            del outdeg[pair[0]]
+        selected_source_by_target.pop(pair[1], None)
+
+    def _child_available_for_fork(parent_id: int, child_id: int, existing_children: list[int]) -> bool:
+        if child_id in existing_children or indeg[child_id] == 0:
+            return True
+        return _stealable_source(parent_id, child_id) is not None
 
     for parent_id in sorted(children_by_parent):
         child_ids = sorted(set(children_by_parent[parent_id]))
@@ -560,7 +773,14 @@ def select_edges(
             continue
         if config.division_requires_unlinked_parent and existing_children:
             continue
+        if config.division_allow_link_steal and not existing_children:
+            continue
         candidates = [cid for cid in child_ids if cid not in existing_children]
+        if config.division_allow_link_steal:
+            candidates = [
+                cid for cid in candidates
+                if _stealable_source(parent_id, cid) is not None
+            ]
         if existing_children and not config.division_requires_unlinked_parent:
             pairs = [(existing_children[0], cid) for cid in candidates]
         else:
@@ -576,9 +796,9 @@ def select_edges(
                     continue
                 if nodes_by_id[child_b_id].t < max_t and child_b_id not in future_support:
                     continue
-            if indeg[child_a_id] >= 1 and child_a_id not in existing_children:
+            if not _child_available_for_fork(parent_id, child_a_id, existing_children):
                 continue
-            if indeg[child_b_id] >= 1 and child_b_id not in existing_children:
+            if not _child_available_for_fork(parent_id, child_b_id, existing_children):
                 continue
             fork = _valid_fork(parent, nodes_by_id[child_a_id], nodes_by_id[child_b_id], scale_zyx, config)
             if fork is not None:
@@ -598,10 +818,15 @@ def select_edges(
             pair = (fork.parent_id, child_id)
             if pair in selected_pairs:
                 continue
-            if indeg[child_id] >= 1 or outdeg[fork.parent_id] >= 2:
+            steal_source = _stealable_source(fork.parent_id, child_id)
+            if indeg[child_id] >= 1:
+                if steal_source is None:
+                    continue
+                _remove_selected_pair(steal_source, child_id)
+            if outdeg[fork.parent_id] >= 2:
                 continue
             child = nodes_by_id[child_id]
-            dist = float(np.linalg.norm((np.asarray(parent.coord_zyx) - np.asarray(child.coord_zyx)) * np.asarray(scale_zyx)))
+            dist = _node_distance_um(parent, child)
             selected.append(
                 CandidateEdge(
                     source_id=fork.parent_id,
@@ -614,6 +839,7 @@ def select_edges(
                 )
             )
             selected_pairs.add(pair)
+            selected_source_by_target[child_id] = fork.parent_id
             indeg[child_id] += 1
             outdeg[fork.parent_id] += 1
         if outdeg[fork.parent_id] == 2:

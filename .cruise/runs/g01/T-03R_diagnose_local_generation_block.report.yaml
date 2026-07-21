@@ -1,0 +1,20 @@
+kind: "cruise_app_server_worker_report"
+launch:
+  agent_type: "cruise_l3"
+  alias: "terra-H"
+  provider_model_fallback_allowed: false
+  recommended_level: 3
+  requested:
+    model: "gpt-5.6-terra"
+    reasoning_effort: "high"
+  resolution_source: "exact_catalog_match"
+  resolved:
+    model: "gpt-5.6-terra"
+    reasoning_effort: "high"
+model_output: "Outcome: BLOCKED_RECOMMEND_PLAN_REVISION.\n\n- Full generation was not retried (packet boundary). Prior two full attempts remain exit-status-unknown.\n- ZIP/Zarr access passes; source and packaged alpha imports pass.\n- One dataset, one-timepoint smoke prediction passes: 120 nodes, valid CSV/graph, 9.27s runtime.\n- Most likely failure class: local resource/timeout (moderate evidence); not a demonstrated command or package defect.\n- Contract-safe next action: revise plan and authorize remote Kaggle-kernel generation, then validate its CSV locally. This requires a new/updated packet.\n\nChanged paths:\n\n- [diagnosis report](/Users/agent/Desktop/cell_tracking/reports/kaggle_g01/t03_block_diagnosis.yaml)\n- [tiny smoke CSV](/Users/agent/Desktop/cell_tracking/reports/kaggle_g01/t03r_tiny_clip_smoke.csv)\n- [tiny smoke metrics](/Users/agent/Desktop/cell_tracking/reports/kaggle_g01/t03r_tiny_clip_smoke_metrics.json)\n\nEvidence: diagnosis YAML parses successfully; SHA-256 `21c2ab3fbf6400444a3dd27cd497bedccf9abf3ae0df318a4483107c6f4b32b8`. It contains exact commands and captured outputs.\n\nResidual risks: no full submission CSV exists; the original full-run termination lacks an OS exit code, so OOM versus runner timeout remains unproven."
+runtime:
+  status: "completed"
+  thread_id: "019f6217-0920-7123-89c3-afb4ae3b9eab"
+  turn_id: "019f6217-20b8-7e93-846b-edbfd6b246dd"
+schema_version: 1
+warnings: []

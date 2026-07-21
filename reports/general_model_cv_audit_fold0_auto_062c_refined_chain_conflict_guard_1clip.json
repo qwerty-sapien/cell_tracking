@@ -1,0 +1,256 @@
+{
+  "kind": "general_route_cv_audit",
+  "created_at_unix": 1783918078.145719,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "split_manifest_sha256": "b02e489391b2f093b79a2416f94e84223702b9744ae61cdda11ed9485b66baae",
+  "fold_id": "0",
+  "datasets": [
+    "6bba_062c8d37"
+  ],
+  "route_arg": "auto",
+  "clip_length": 3,
+  "offsets_json": null,
+  "offset_calibration_fold_id": null,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "scoring_calibration_fold_id": "0",
+  "official_metric": {
+    "available": true,
+    "missing": [],
+    "note": "Install optional dependencies to replace approximate CV with official metrics."
+  },
+  "summary": {
+    "n": 1,
+    "edge_jaccard": 0.6,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.5625,
+    "adj_edge_jaccard": 0.6218573797678275,
+    "n_adj": 1,
+    "score": 0.6218573797678275
+  },
+  "summary_by_prefix": {
+    "6bba": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 0.6,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.5625,
+        "adj_edge_jaccard": 0.6218573797678275,
+        "n_adj": 1,
+        "score": 0.6218573797678275
+      },
+      "mean_node_recall": 0.5625,
+      "mean_nodes": 115.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 0
+    }
+  },
+  "summary_by_route": {
+    "balanced_midpoint": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 0.6,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.5625,
+        "adj_edge_jaccard": 0.6218573797678275,
+        "n_adj": 1,
+        "score": 0.6218573797678275
+      },
+      "mean_node_recall": 0.5625,
+      "mean_nodes": 115.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 0
+    }
+  },
+  "rows": [
+    {
+      "dataset": "6bba_062c8d37",
+      "prefix": "6bba",
+      "fold_id": "0",
+      "route": "balanced_midpoint",
+      "route_confidence": 0.6749999999999999,
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 16,
+      "gt_edges": 10,
+      "num_pred_nodes": 115.0,
+      "num_pred_edges": 62,
+      "graph": {
+        "datasets": 1,
+        "nodes": 115,
+        "edges": 62,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "runtime_sec": 39.523784160614014,
+      "metric_source": "official",
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty; very-low-foreground low-estimated 6bba field; midpoint links recover true edges without submitting extra isolated nodes",
+      "profile": {
+        "dataset": "6bba_062c8d37",
+        "t_start": 0,
+        "t_end": 3,
+        "sampled_timepoints": [
+          0,
+          1,
+          2
+        ],
+        "foreground_fraction": 0.01402584711710612,
+        "bright_candidate_density": 400.0,
+        "dark_candidate_density": 400.0,
+        "both_candidate_density": 400.0,
+        "median_nn_um": 0.40625,
+        "temporal_delta": 0.01861886028200388,
+        "division_motif_rate": 0.665,
+        "intensity_p999": 756.248000000002,
+        "estimated_total_nodes": 6030.0
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 360,
+        "corrected_nodes": 303,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "refined_candidate_admission": {
+        "enabled": true,
+        "source_route": "refined_dog_compact",
+        "max_per_t": 8,
+        "min_dist_um": 1.0,
+        "score_scale": 0.65,
+        "base_nodes": 360,
+        "refined_nodes": 780,
+        "refined_local_nodes": 780,
+        "admitted_nodes": 24,
+        "base_by_t": [
+          120,
+          120,
+          120
+        ],
+        "refined_local_by_t": [
+          260,
+          260,
+          260
+        ],
+        "admitted_by_t": [
+          8,
+          8,
+          8
+        ]
+      },
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": {
+        "enabled": true,
+        "before_edges": 62,
+        "after_edges": 62,
+        "replacements": 1,
+        "max_distance_um": 3.0,
+        "max_cost": 0.42,
+        "max_target_rank": 3,
+        "min_temporal_count": 2.0,
+        "replaced_edges": [
+          {
+            "removed_source_id": 174,
+            "removed_target_id": 290,
+            "added_source_id": 712,
+            "added_target_id": 290,
+            "added_distance_um": 2.6012692214570947,
+            "added_cost": 0.3902197775591699,
+            "added_target_rank": 3.0
+          }
+        ]
+      },
+      "short_edge_pruning": null,
+      "localmax_refinement": null,
+      "output_offset_zyx": [
+        0,
+        0,
+        0
+      ],
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 384,
+        "after_nodes": 115,
+        "edges": 62
+      },
+      "edge_tp": 6.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.5625,
+      "total_node_ratio": -0.3642896627971255,
+      "edge_jaccard": 0.6,
+      "adj_edge_jaccard": 0.6218573797678275,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    }
+  ],
+  "dataset_reports": [
+    {
+      "dataset": "6bba_062c8d37",
+      "clip_start": 0,
+      "clip_end": 3,
+      "route": "balanced_midpoint",
+      "score": 0.6218573797678275,
+      "edge_jaccard": 0.6,
+      "node_recall": 0.5625,
+      "runtime_sec": 39.523784160614014
+    }
+  ],
+  "submission_validation": {
+    "valid": true,
+    "errors": [],
+    "row_type_counts": {
+      "node": 115,
+      "edge": 62
+    },
+    "dataset_count": 1
+  },
+  "submission_graph": {
+    "datasets": 1,
+    "nodes": 115,
+    "edges": 62,
+    "dividing_nodes": 0,
+    "out_gt2": 0,
+    "merges": 0
+  },
+  "submission_output": "reports/general_model_cv_audit_fold0_auto_062c_refined_chain_conflict_guard_1clip_submission.csv",
+  "runtime_sec": 39.60178899765015
+}

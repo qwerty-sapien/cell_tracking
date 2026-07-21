@@ -1,0 +1,110 @@
+{
+  "candidate_csv": "/Users/agent/Desktop/cell_tracking/reports/kaggle_g01/kernel_output/submission.csv",
+  "candidate_csv_bytes": 5158919,
+  "candidate_csv_sha256": "2c45439aa299c27e42c2b2eef97a743e5db3761ef8602f88505186910b48031d",
+  "competition": "biohub-cell-tracking-during-development",
+  "created_at_unix": 1784099666.868495,
+  "d04_scored_submissions_used_delta": 0,
+  "dry_run": false,
+  "errors": [],
+  "history_after": {
+    "command_result": {
+      "command": "/Users/agent/Desktop/cell_tracking/.venv/bin/python -m kaggle competitions submissions -c biohub-cell-tracking-during-development --format json",
+      "duration_seconds": 1.589,
+      "exit_status": 0,
+      "output": "No submissions found\n"
+    },
+    "parsed": null
+  },
+  "history_before": {
+    "command_result": {
+      "command": "/Users/agent/Desktop/cell_tracking/.venv/bin/python -m kaggle competitions submissions -c biohub-cell-tracking-during-development --format json",
+      "duration_seconds": 0.947,
+      "exit_status": 0,
+      "output": "No submissions found\n"
+    },
+    "parsed": null
+  },
+  "message": "G-01 T-04 alpha file package 8335c7d validated CSV 2c45439a",
+  "mode": "file",
+  "next_required_action": "Accept/join the competition for submissions in the logged-in Kaggle web UI, or otherwise grant this Kaggle API account submit permission, then rerun this script.",
+  "pre_submit_gate": {
+    "candidate_csv": "reports/kaggle_g01/kernel_output/submission.csv",
+    "candidate_csv_sha256": "2c45439aa299c27e42c2b2eef97a743e5db3761ef8602f88505186910b48031d",
+    "path": "/Users/agent/Desktop/cell_tracking/reports/kaggle_g01/pre_submit_gate_report.json",
+    "ready_for_t04_scored_submission": true,
+    "sha256_matches_current_csv": true,
+    "status": "PASS",
+    "valid": true
+  },
+  "schema_version": 1,
+  "scored_submission_created": false,
+  "status": "blocked_kaggle_file_submission_permission_403",
+  "submit_result": {
+    "classification": "blocked_kaggle_file_submission_permission_403",
+    "command": "/Users/agent/Desktop/cell_tracking/.venv/bin/python -m kaggle competitions submit -c biohub-cell-tracking-during-development -f /Users/agent/Desktop/cell_tracking/reports/kaggle_g01/kernel_output/submission.csv -m 'G-01 T-04 alpha file package 8335c7d validated CSV 2c45439a'",
+    "duration_seconds": 4.285,
+    "exit_status": 1,
+    "output": "\n  0%|          | 0.00/4.92M [00:00<?, ?B/s]\n 10%|\u2588         | 512k/4.92M [00:00<00:04, 1.13MB/s]\n 12%|\u2588\u258f        | 624k/4.92M [00:00<00:05, 843kB/s] \n 17%|\u2588\u258b        | 832k/4.92M [00:00<00:05, 800kB/s]\n 84%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258d | 4.12M/4.92M [00:01<00:00, 6.59MB/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4.92M/4.92M [00:02<00:00, 2.06MB/s]\n403 Client Error: Forbidden for url: https://api.kaggle.com/v1/competitions.CompetitionApiService/CreateSubmission\n"
+  },
+  "task_id": "T-04",
+  "validation": {
+    "command_result": {
+      "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 /Users/agent/Desktop/cell_tracking/scripts/validate_remote_submission_csv.py --csv /Users/agent/Desktop/cell_tracking/reports/kaggle_g01/kernel_output/submission.csv --zip /Users/agent/Desktop/cell_tracking/data/kaggle/raw/biohub-cell-tracking-during-development.zip --output /Users/agent/Desktop/cell_tracking/reports/kaggle_g01/t04_pre_submit_validation_report.json",
+      "duration_seconds": 0.715,
+      "exit_status": 0,
+      "output": "{\n  \"csv\": \"/Users/agent/Desktop/cell_tracking/reports/kaggle_g01/kernel_output/submission.csv\",\n  \"csv_bytes\": 5158919,\n  \"csv_exists\": true,\n  \"csv_sha256\": \"2c45439aa299c27e42c2b2eef97a743e5db3761ef8602f88505186910b48031d\",\n  \"expected_dataset_source\": \"zip\",\n  \"expected_zip\": \"/Users/agent/Desktop/cell_tracking/data/kaggle/raw/biohub-cell-tracking-during-development.zip\",\n  \"ready_for_scored_submission\": true,\n  \"schema_version\": 1,\n  \"validation\": {\n    \"dataset_count\": 4,\n    \"datasets_without_nodes_count\": 0,\n    \"dividing_nodes\": 0,\n    \"edge_count\": 44370,\n    \"errors\": [],\n    \"expected_dataset_count\": 4,\n    \"merges\": 0,\n    \"missing_dataset_count\": 0,\n    \"node_count\": 57004,\n    \"out_gt2\": 0,\n    \"per_dataset\": {\n      \"44b6_0113de3b\": {\n        \"edges\": 9995,\n        \"nodes\": 11507,\n        \"rows\": 21502\n      },\n      \"44b6_0b24845f\": {\n        \"edges\": 9683,\n        \"nodes\": 13040,\n        \"rows\": 22723\n      },\n      \"6bba_05b6850b\": {\n        \"edges\": 4952,\n        \"nodes\": 5774,\n        \"rows\": 10726\n      },\n      \"6bba_05db0fb1\": {\n        \"edges\": 19740,\n        \"nodes\": 26683,\n        \"rows\": 46423\n      }\n    },\n    \"row_count\": 101374,\n    \"row_type_counts\": {\n      \"edge\": 44370,\n      \"node\": 57004\n    },\n    \"valid\": true,\n    \"warnings\": []\n  }\n}\n"
+    },
+    "report": {
+      "csv": "/Users/agent/Desktop/cell_tracking/reports/kaggle_g01/kernel_output/submission.csv",
+      "csv_bytes": 5158919,
+      "csv_exists": true,
+      "csv_sha256": "2c45439aa299c27e42c2b2eef97a743e5db3761ef8602f88505186910b48031d",
+      "expected_dataset_source": "zip",
+      "expected_zip": "/Users/agent/Desktop/cell_tracking/data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+      "ready_for_scored_submission": true,
+      "schema_version": 1,
+      "validation": {
+        "dataset_count": 4,
+        "datasets_without_nodes_count": 0,
+        "dividing_nodes": 0,
+        "edge_count": 44370,
+        "errors": [],
+        "expected_dataset_count": 4,
+        "merges": 0,
+        "missing_dataset_count": 0,
+        "node_count": 57004,
+        "out_gt2": 0,
+        "per_dataset": {
+          "44b6_0113de3b": {
+            "edges": 9995,
+            "nodes": 11507,
+            "rows": 21502
+          },
+          "44b6_0b24845f": {
+            "edges": 9683,
+            "nodes": 13040,
+            "rows": 22723
+          },
+          "6bba_05b6850b": {
+            "edges": 4952,
+            "nodes": 5774,
+            "rows": 10726
+          },
+          "6bba_05db0fb1": {
+            "edges": 19740,
+            "nodes": 26683,
+            "rows": 46423
+          }
+        },
+        "row_count": 101374,
+        "row_type_counts": {
+          "edge": 44370,
+          "node": 57004
+        },
+        "valid": true,
+        "warnings": []
+      }
+    }
+  }
+}

@@ -1,0 +1,513 @@
+{
+  "kind": "general_route_cv_audit",
+  "created_at_unix": 1783870522.782018,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "split_manifest_sha256": "b02e489391b2f093b79a2416f94e84223702b9744ae61cdda11ed9485b66baae",
+  "fold_id": "0",
+  "datasets": [
+    "6bba_062c8d37",
+    "6bba_0c7fa718",
+    "6bba_1d0d8384",
+    "6bba_2312ac41"
+  ],
+  "route_arg": "auto",
+  "clip_length": 3,
+  "offsets_json": null,
+  "offset_calibration_fold_id": null,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds.json",
+  "scoring_calibration_fold_id": "0",
+  "official_metric": {
+    "available": true,
+    "missing": [],
+    "note": "Install optional dependencies to replace approximate CV with official metrics."
+  },
+  "summary": {
+    "n": 4,
+    "edge_jaccard": 0.2459016393442623,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.4231712962962963,
+    "adj_edge_jaccard": 0.2464493283245121,
+    "n_adj": 4,
+    "score": 0.2464493283245121
+  },
+  "summary_by_prefix": {
+    "6bba": {
+      "n": 4,
+      "official_summary": {
+        "n": 4,
+        "edge_jaccard": 0.2459016393442623,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.4231712962962963,
+        "adj_edge_jaccard": 0.2464493283245121,
+        "n_adj": 4,
+        "score": 0.2464493283245121
+      },
+      "mean_node_recall": 0.42317129629629635,
+      "mean_nodes": 397.5,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 3
+    }
+  },
+  "summary_by_route": {
+    "balanced_compact": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 0.2692307692307692,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.4533333333333333,
+        "adj_edge_jaccard": 0.2721006198001005,
+        "n_adj": 1,
+        "score": 0.2721006198001005
+      },
+      "mean_node_recall": 0.4533333333333333,
+      "mean_nodes": 480.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 1
+    },
+    "balanced_dog_compact": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 0.08,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.4074074074074074,
+        "adj_edge_jaccard": 0.07686446886446886,
+        "n_adj": 1,
+        "score": 0.07686446886446886
+      },
+      "mean_node_recall": 0.4074074074074074,
+      "mean_nodes": 570.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 1
+    },
+    "balanced_midpoint": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 0.34285714285714286,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.6444444444444445,
+        "adj_edge_jaccard": 0.34271368798565455,
+        "n_adj": 1,
+        "score": 0.34271368798565455
+      },
+      "mean_node_recall": 0.6444444444444445,
+      "mean_nodes": 360.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 0
+    },
+    "clean_compact": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 0.2,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.1875,
+        "adj_edge_jaccard": 0.2000995024875622,
+        "n_adj": 1,
+        "score": 0.2000995024875622
+      },
+      "mean_node_recall": 0.1875,
+      "mean_nodes": 180.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 1
+    }
+  },
+  "rows": [
+    {
+      "dataset": "6bba_062c8d37",
+      "prefix": "6bba",
+      "fold_id": "0",
+      "route": "clean_compact",
+      "route_confidence": 0.99,
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 16,
+      "gt_edges": 10,
+      "num_pred_nodes": 180.0,
+      "num_pred_edges": 98,
+      "graph": {
+        "datasets": 1,
+        "nodes": 180,
+        "edges": 98,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "runtime_sec": 17.473169326782227,
+      "metric_source": "official",
+      "route_reason": "very low foreground saturated 6bba-like field; compact clean route controls node penalty",
+      "profile": {
+        "dataset": "6bba_062c8d37",
+        "t_start": 0,
+        "t_end": 3,
+        "sampled_timepoints": [
+          0,
+          1,
+          2
+        ],
+        "foreground_fraction": 0.01402584711710612,
+        "bright_candidate_density": 400.0,
+        "dark_candidate_density": 400.0,
+        "both_candidate_density": 400.0,
+        "median_nn_um": 0.40625,
+        "temporal_delta": 0.01861886028200388,
+        "division_motif_rate": 0.665,
+        "intensity_p999": 756.248000000002,
+        "estimated_total_nodes": 6030.0
+      },
+      "coordinate_correction": {
+        "route": "clean_compact",
+        "dataset": "6bba_062c8d37",
+        "before_nodes": 180,
+        "corrected_nodes": 180,
+        "mean_abs_offset_zyx": [
+          0.9944444298744202,
+          2.0,
+          0.0
+        ],
+        "policy": {
+          "source_offsets_zyx": {
+            "dog_bright": [
+              1,
+              2,
+              0
+            ]
+          },
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ]
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "edge_tp": 2.0,
+      "edge_fp": 0.0,
+      "edge_fn": 8.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.1875,
+      "total_node_ratio": -0.004975124378109484,
+      "edge_jaccard": 0.2,
+      "adj_edge_jaccard": 0.20009950248756223,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 180.9
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "prefix": "6bba",
+      "fold_id": "0",
+      "route": "balanced_dog_compact",
+      "route_confidence": 0.6,
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 27,
+      "gt_edges": 18,
+      "num_pred_nodes": 570.0,
+      "num_pred_edges": 269,
+      "graph": {
+        "datasets": 1,
+        "nodes": 570,
+        "edges": 269,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "runtime_sec": 32.64641094207764,
+      "metric_source": "official",
+      "route_reason": "high-foreground 6bba field; midpoint balanced route controls node penalty; moderate-foreground high-signal 6bba field; balanced DoG route recovers extra true edges; division-like close-pair motifs",
+      "profile": {
+        "dataset": "6bba_0c7fa718",
+        "t_start": 0,
+        "t_end": 3,
+        "sampled_timepoints": [
+          0,
+          1,
+          2
+        ],
+        "foreground_fraction": 0.13039851188659668,
+        "bright_candidate_density": 400.0,
+        "dark_candidate_density": 400.0,
+        "both_candidate_density": 400.0,
+        "median_nn_um": 0.40625,
+        "temporal_delta": 0.02554939780384302,
+        "division_motif_rate": 0.7725,
+        "intensity_p999": 1579.659000000005,
+        "estimated_total_nodes": 13650.0
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "edge_scoring": null,
+      "edge_tp": 2.0,
+      "edge_fp": 7.0,
+      "edge_fn": 16.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.4074074074074074,
+      "total_node_ratio": 0.39194139194139194,
+      "edge_jaccard": 0.08,
+      "adj_edge_jaccard": 0.07686446886446886,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 409.5
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "prefix": "6bba",
+      "fold_id": "0",
+      "route": "balanced_compact",
+      "route_confidence": 0.6499999999999999,
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 75,
+      "gt_edges": 49,
+      "num_pred_nodes": 480.0,
+      "num_pred_edges": 207,
+      "graph": {
+        "datasets": 1,
+        "nodes": 480,
+        "edges": 207,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "runtime_sec": 21.775330066680908,
+      "metric_source": "official",
+      "route_reason": "crowded/high foreground; compact spatially balanced localizer preferred; division-like close-pair motifs",
+      "profile": {
+        "dataset": "6bba_1d0d8384",
+        "t_start": 0,
+        "t_end": 3,
+        "sampled_timepoints": [
+          0,
+          1,
+          2
+        ],
+        "foreground_fraction": 0.06469233830769856,
+        "bright_candidate_density": 400.0,
+        "dark_candidate_density": 400.0,
+        "both_candidate_density": 400.0,
+        "median_nn_um": 0.40625,
+        "temporal_delta": 0.013994392473250628,
+        "division_motif_rate": 0.905,
+        "intensity_p999": 1316.248000000002,
+        "estimated_total_nodes": 17909.0
+      },
+      "coordinate_correction": {
+        "route": "balanced_compact",
+        "dataset": "6bba_1d0d8384",
+        "before_nodes": 480,
+        "corrected_nodes": 200,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              0
+            ]
+          },
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ]
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "edge_tp": 14.0,
+      "edge_fp": 3.0,
+      "edge_fn": 35.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.4533333333333333,
+      "total_node_ratio": -0.10659444971801885,
+      "edge_jaccard": 0.2692307692307692,
+      "adj_edge_jaccard": 0.2721006198001005,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 537.27
+    },
+    {
+      "dataset": "6bba_2312ac41",
+      "prefix": "6bba",
+      "fold_id": "0",
+      "route": "balanced_midpoint",
+      "route_confidence": 0.65,
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 45,
+      "gt_edges": 30,
+      "num_pred_nodes": 360.0,
+      "num_pred_edges": 155,
+      "graph": {
+        "datasets": 1,
+        "nodes": 360,
+        "edges": 155,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "runtime_sec": 19.474531888961792,
+      "metric_source": "official",
+      "route_reason": "high-foreground 6bba field; midpoint balanced route controls node penalty; division-like close-pair motifs",
+      "profile": {
+        "dataset": "6bba_2312ac41",
+        "t_start": 0,
+        "t_end": 3,
+        "sampled_timepoints": [
+          0,
+          1,
+          2
+        ],
+        "foreground_fraction": 0.2648943265279134,
+        "bright_candidate_density": 400.0,
+        "dark_candidate_density": 400.0,
+        "both_candidate_density": 400.0,
+        "median_nn_um": 0.40625,
+        "temporal_delta": 0.02832863386720419,
+        "division_motif_rate": 0.90625,
+        "intensity_p999": 1003.6736666666675,
+        "estimated_total_nodes": 11950.0
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_2312ac41",
+        "before_nodes": 360,
+        "corrected_nodes": 310,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          },
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ]
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "edge_tp": 12.0,
+      "edge_fp": 5.0,
+      "edge_fn": 18.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6444444444444445,
+      "total_node_ratio": 0.0041841004184100415,
+      "edge_jaccard": 0.34285714285714286,
+      "adj_edge_jaccard": 0.34271368798565455,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 358.5
+    }
+  ],
+  "dataset_reports": [
+    {
+      "dataset": "6bba_062c8d37",
+      "clip_start": 0,
+      "clip_end": 3,
+      "route": "clean_compact",
+      "score": 0.20009950248756223,
+      "edge_jaccard": 0.2,
+      "node_recall": 0.1875,
+      "runtime_sec": 17.473169326782227
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "clip_start": 0,
+      "clip_end": 3,
+      "route": "balanced_dog_compact",
+      "score": 0.07686446886446886,
+      "edge_jaccard": 0.08,
+      "node_recall": 0.4074074074074074,
+      "runtime_sec": 32.64641094207764
+    },
+    {
+      "dataset": "6bba_1d0d8384",
+      "clip_start": 0,
+      "clip_end": 3,
+      "route": "balanced_compact",
+      "score": 0.2721006198001005,
+      "edge_jaccard": 0.2692307692307692,
+      "node_recall": 0.4533333333333333,
+      "runtime_sec": 21.775330066680908
+    },
+    {
+      "dataset": "6bba_2312ac41",
+      "clip_start": 0,
+      "clip_end": 3,
+      "route": "balanced_midpoint",
+      "score": 0.34271368798565455,
+      "edge_jaccard": 0.34285714285714286,
+      "node_recall": 0.6444444444444445,
+      "runtime_sec": 19.474531888961792
+    }
+  ],
+  "submission_validation": {
+    "valid": true,
+    "errors": [],
+    "row_type_counts": {
+      "node": 1590,
+      "edge": 729
+    },
+    "dataset_count": 4
+  },
+  "submission_graph": {
+    "datasets": 4,
+    "nodes": 1590,
+    "edges": 729,
+    "dividing_nodes": 0,
+    "out_gt2": 0,
+    "merges": 0
+  },
+  "submission_output": "reports/general_model_auto_balanced_dog_6bba_4ds_submission.csv",
+  "runtime_sec": 91.4873206615448
+}

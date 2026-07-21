@@ -1,8 +1,8 @@
 # Plan: G-01 - Leakage-Safe General Model Improvement
 
-- Planning state: Draft
+- Planning state: Prepared (inactive)
 - Repository evidence baseline: unborn `main`; no commit/tree. Relevant hashes are recorded in SPEC. External official checkout `016845facc82e7f5f0c7a37f8da2a9432f51076b`.
-- Source artifacts: `SPEC.md`, `DECISIONS.md`, `ROADMAP.md`, and this `PLAN.md` are Draft; D-01 through D-06 and D-08 are locked, D-07 remains Proposed, and no approval-bound final digests exist yet.
+- Source artifacts: `SPEC.md`, `DECISIONS.md`, `ROADMAP.md`, and this `PLAN.md` are Prepared (inactive); D-01 through D-08 are locked. Implementation is not authorized until explicit activation.
 - Integration owner: Serialized integration owner.
 - Independent planning: Complete. Three read-only reconnaissance lanes and two read-only planning passes ran through subagents. One implementation planner incorrectly disclosed reduced assurance despite subagent execution; synthesis treats it as an independent read-only proposal but does not adopt that reduced-assurance statement.
 
@@ -27,7 +27,7 @@
 - Architecture/risk proposal strengths: Strong leakage controls, duplicate-route quarantine, offset leakage gate, environment/compute boundaries, and official score protocol.
 - Critic findings applied by main interrogator: Current plan makes duplicate and offset leakage blocking gates, prioritizes localization before solver/division, treats Ultrack/deep branches as optional, and requires official held-out evidence.
 - Rejected alternatives: Using duplicate public-ZIP score as success evidence; global prefix offsets without fold-safe provenance; making Ultrack or deep training a blocking first step; using public leaderboard as the only target before local CV is defined.
-- Remaining uncertainty: D-07 remains Proposed. This PLAN stays Draft until the reproducibility baseline is locked or safely revised.
+- Remaining uncertainty: None in the planning decisions. This PLAN is prepared but inactive until explicit activation.
 
 ## Initial Inputs
 
@@ -545,7 +545,7 @@
 | R-07 / AC-06 / D-02 | N1, N3, N4, N9, N10, T1 | Graph validation and duplicate-disable report | VG-02, VG-07 | Covered |
 | R-08 / AC-07 / D-05 | N6, N8, N10, T1 | Compute and side-effect ledger | VG-08 | Covered |
 | R-09 / AC-08 | N10, T1 | Source ledger | VG-09 | Covered |
-| R-10 / AC-09 / D-07 | N0, N7, N10, T1 | Reproduction manifest | VG-10 | Covered but D-07 unresolved |
+| R-10 / AC-09 / D-07 | N0, N7, N10, T1 | Reproduction manifest | VG-10 | Covered |
 | R-11 / AC-10 / D-08 | N2, N10, T1 | Scorer parity report | VG-11 | Covered |
 
 ## DAG Validation
@@ -554,7 +554,7 @@
 - Existing dependencies: PASS - all dependency references exist.
 - Acyclic graph: PASS - topological order `N0 -> N1 -> N2 -> N3 -> N4 -> N5 -> N6/N7 -> N8 -> N9 -> N10 -> T1`.
 - Ancestor-provided inputs: PASS - every node consumes initial inputs or ancestor outputs.
-- Requirement/criterion/decision coverage: BLOCK - D-07 remains Proposed.
+- Requirement/criterion/decision coverage: PASS - D-01 through D-08 are locked and all R/AC IDs are covered.
 - Non-overlapping write ownership: PASS for planned serialized handoffs; N10 integration owner serializes shared scopes.
 - External-effect approvals: PASS - D-05 locks local/Kaggle-free main path plus optional separate Python 3.11/3.12 branch; paid GPU, Kaggle submission, Runpod, secret reads, and unbounded full-ZIP jobs remain prohibited without later approval.
 - Current-slice-only scope: PASS - G-02/G-03 excluded.

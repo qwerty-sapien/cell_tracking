@@ -1,0 +1,52 @@
+{
+  "csv": "reports/kaggle_g01/kernel_output/submission.csv",
+  "csv_bytes": null,
+  "csv_exists": false,
+  "csv_sha256": null,
+  "expected_dataset_source": "zip",
+  "expected_zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "ready_for_scored_submission": false,
+  "schema_version": 1,
+  "validation": {
+    "dataset_count": 0,
+    "datasets_without_nodes_count": 4,
+    "dividing_nodes": 0,
+    "edge_count": 0,
+    "errors": [
+      "CSV does not exist: reports/kaggle_g01/kernel_output/submission.csv",
+      "datasets missing from submission rows: ['44b6_0113de3b', '44b6_0b24845f', '6bba_05b6850b', '6bba_05db0fb1']",
+      "datasets without node rows: ['44b6_0113de3b', '44b6_0b24845f', '6bba_05b6850b', '6bba_05db0fb1']"
+    ],
+    "expected_dataset_count": 4,
+    "merges": 0,
+    "missing_dataset_count": 4,
+    "node_count": 0,
+    "out_gt2": 0,
+    "per_dataset": {
+      "44b6_0113de3b": {
+        "edges": 0,
+        "nodes": 0,
+        "rows": 0
+      },
+      "44b6_0b24845f": {
+        "edges": 0,
+        "nodes": 0,
+        "rows": 0
+      },
+      "6bba_05b6850b": {
+        "edges": 0,
+        "nodes": 0,
+        "rows": 0
+      },
+      "6bba_05db0fb1": {
+        "edges": 0,
+        "nodes": 0,
+        "rows": 0
+      }
+    },
+    "row_count": 0,
+    "row_type_counts": {},
+    "valid": false,
+    "warnings": []
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "kind": "candidate_edge_oracle_diagnostic",
+  "created_at_unix": 1783921600.543045,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "fold_id": "0",
+  "datasets": [
+    "44b6_18ced818"
+  ],
+  "route_arg": "auto",
+  "clip_length": 3,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "reports": [
+    {
+      "dataset": "44b6_18ced818",
+      "route": "balanced_compact",
+      "route_reason": "crowded/high foreground; compact spatially balanced localizer preferred; high-foreground low-motif 44b6 field; strict compact links control endpoint node penalty; division-like close-pair motifs; high estimated total node count",
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 3,
+      "gt_edges": 2,
+      "candidate_nodes": 480,
+      "edge_candidates": 121,
+      "selected_edges": 90,
+      "emitted_nodes": 167,
+      "matched_emitted_nodes": 2,
+      "matched_raw_candidate_nodes": 2,
+      "selected_gt_edge_tp": 1,
+      "selected_gt_edge_pairs": [
+        [
+          222000000006,
+          223000000006
+        ]
+      ],
+      "missed_gt_edges": [
+        [
+          221000000006,
+          222000000006
+        ]
+      ],
+      "raw_candidate_gt_edge_pairs": [
+        [
+          222000000006,
+          223000000006
+        ]
+      ],
+      "raw_candidate_gt_edge_hit_count": 1,
+      "raw_candidate_gt_edge_hits": [
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 276,
+          "target_id": 450,
+          "gt_source_id": 222000000006,
+          "gt_target_id": 223000000006,
+          "distance_um": 3.1729139308370784,
+          "cost": 0.46654683738202235,
+          "score": 0.5826867632246453,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.02002600779713238,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 3.1729139308370784,
+            "target_best_distance_um": 3.1729139308370784
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        }
+      ],
+      "raw_candidate_gt_edge_conflicts": {
+        "source_out_used": 1,
+        "target_in_used": 1
+      },
+      "unselected_emitted_gt_edge_hits": [],
+      "unselected_emitted_gt_edge_hit_count": 0,
+      "unselected_emitted_conflicts": {},
+      "selected_valid_edge_approx": 1,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 480,
+        "after_nodes": 167,
+        "edges": 90
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": null,
+      "free_edge_admission": null,
+      "motion_endpoint_admission": null,
+      "localmax_clone_layers": null,
+      "endpoint_forward_clones": null,
+      "forks": 0
+    }
+  ],
+  "runtime_sec": 21.046029090881348
+}

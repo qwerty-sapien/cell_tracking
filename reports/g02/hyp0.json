@@ -1,0 +1,18 @@
+{
+  "rows": [
+    {
+      "dataset": "44b6_24264f12",
+      "route": "balanced_dog_compact",
+      "gt_timepoints": 1,
+      "gt_nodes": 3,
+      "mean_candidates_per_gt_t": 190.0,
+      "recall_7um": 1.0,
+      "recall_10um": 1.0,
+      "median_nearest_um": 0.9084026217460632,
+      "p90_nearest_um": 1.8066805601119995,
+      "runtime_sec": 8.432960987091064
+    }
+  ],
+  "scoring_json": null,
+  "scoring_calibration_fold_id": null
+}

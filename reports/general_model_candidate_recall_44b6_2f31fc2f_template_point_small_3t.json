@@ -1,0 +1,18 @@
+{
+  "rows": [
+    {
+      "dataset": "44b6_2f31fc2f",
+      "route": "template_point_compact",
+      "gt_timepoints": 3,
+      "gt_nodes": 3,
+      "mean_candidates_per_gt_t": 220.0,
+      "recall_7um": 0.0,
+      "recall_10um": 0.3333333333333333,
+      "median_nearest_um": 11.272979736328125,
+      "p90_nearest_um": 13.023822784423828,
+      "runtime_sec": 30.527539014816284
+    }
+  ],
+  "scoring_json": "reports/general_model_template_proposal_fold0_template_point_small_8ds.json",
+  "scoring_calibration_fold_id": "0"
+}

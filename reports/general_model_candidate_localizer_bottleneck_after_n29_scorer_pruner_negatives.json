@@ -1,0 +1,115 @@
+{
+  "created_at": "2026-07-13T18:25:52+08:00",
+  "d07_policy": "A / clean_compact remains selected",
+  "decision": "do_not_promote_fold_safe_scorer_reweight_or_node_pruner",
+  "interpretation": [
+    "Current bottleneck is not a simple fold-safe node/edge scorer threshold problem.",
+    "Hard weak rows need candidate localization/lineage recovery while preserving existing node coverage.",
+    "Avoid generic pruning/reweighting branches unless coupled to a stronger proposal generator or a route-specific global-solver objective."
+  ],
+  "locked_audit": "reports/general_model_cv_audit_fold0_auto_dogtight_second_choice_12ds_12clips.json",
+  "locked_score_unchanged": 0.6147087683938162,
+  "next_low_compute_branch": "route-specific localization/lineage diagnostics on 6bba midpoint and balanced_compact rows; preserve d07 path A",
+  "probes": {
+    "edge_reweight_weak6": {
+      "path": "reports/general_model_n29_edge_reweight_weak6_current_router.json",
+      "reason": "regresses weak-6 summary score and damages high-performing dog-tight row",
+      "summary": {
+        "adj_edge_jaccard": 0.4536776449636495,
+        "division_fn": 0.0,
+        "division_fp": 0.0,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "edge_jaccard": 0.45454545454545453,
+        "n": 6,
+        "n_adj": 6,
+        "node_recall": 0.5901812027080844,
+        "score": 0.4536776449636495
+      }
+    },
+    "node_pruner_only_weak6": {
+      "path": "reports/general_model_n29_node_pruner_only_weak6_current_router.json",
+      "reason": "recall-preserving training policy is still too aggressive under production solver; node_recall collapses",
+      "summary": {
+        "adj_edge_jaccard": 0.2897072711614539,
+        "division_fn": 0.0,
+        "division_fp": 0.0,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "edge_jaccard": 0.27702702702702703,
+        "n": 6,
+        "n_adj": 6,
+        "node_recall": 0.35345031859816806,
+        "score": 0.2897072711614539
+      }
+    }
+  },
+  "weak6_current_from_locked_audit": {
+    "6bba_062c8d37": {
+      "adj_edge_jaccard": 0.6218573797678275,
+      "edge_fn": 4.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.6,
+      "edge_tp": 6.0,
+      "node_recall": 0.5625,
+      "num_pred_edges": 62,
+      "num_pred_nodes": 115.0,
+      "score": 0.6218573797678275
+    },
+    "6bba_0c7fa718": {
+      "adj_edge_jaccard": 0.7520467836257309,
+      "edge_fn": 4.0,
+      "edge_fp": 1.0,
+      "edge_jaccard": 0.7368421052631579,
+      "edge_tp": 14.0,
+      "node_recall": 0.8518518518518519,
+      "num_pred_edges": 192,
+      "num_pred_nodes": 325.0,
+      "score": 0.7520467836257309
+    },
+    "6bba_1d0d8384": {
+      "adj_edge_jaccard": 0.46706974147076885,
+      "edge_fn": 25.0,
+      "edge_fp": 1.0,
+      "edge_jaccard": 0.48,
+      "edge_tp": 24.0,
+      "node_recall": 0.52,
+      "num_pred_edges": 420,
+      "num_pred_nodes": 682.0,
+      "score": 0.46706974147076885
+    },
+    "6bba_2312ac41": {
+      "adj_edge_jaccard": 0.5520037192003718,
+      "edge_fn": 14.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.5333333333333333,
+      "edge_tp": 16.0,
+      "node_recall": 0.5333333333333333,
+      "num_pred_edges": 145,
+      "num_pred_nodes": 233.0,
+      "score": 0.5520037192003718
+    },
+    "6bba_2819ca14": {
+      "adj_edge_jaccard": 0.6507908685700519,
+      "edge_fn": 7.0,
+      "edge_fp": 0.0,
+      "edge_jaccard": 0.65,
+      "edge_tp": 13.0,
+      "node_recall": 0.6451612903225806,
+      "num_pred_edges": 96,
+      "num_pred_nodes": 164.0,
+      "score": 0.6507908685700519
+    },
+    "6bba_372c8cb8": {
+      "adj_edge_jaccard": 0.5919560645793712,
+      "edge_fn": 5.0,
+      "edge_fp": 1.0,
+      "edge_jaccard": 0.6470588235294118,
+      "edge_tp": 11.0,
+      "node_recall": 0.75,
+      "num_pred_edges": 234,
+      "num_pred_nodes": 390.0,
+      "score": 0.5919560645793712
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "rows": [
+    {
+      "dataset": "44b6_24264f12",
+      "route": "balanced_dog_compact",
+      "gt_timepoints": 5,
+      "gt_nodes": 15,
+      "mean_candidates_per_gt_t": 190.0,
+      "recall_7um": 1.0,
+      "recall_10um": 1.0,
+      "median_nearest_um": 2.03125,
+      "p90_nearest_um": 3.697410821914673,
+      "runtime_sec": 49.620301723480225
+    },
+    {
+      "dataset": "44b6_24264f12",
+      "route": "coverage_dog_compact",
+      "gt_timepoints": 5,
+      "gt_nodes": 15,
+      "mean_candidates_per_gt_t": 220.0,
+      "recall_7um": 0.8,
+      "recall_10um": 1.0,
+      "median_nearest_um": 2.9575445652008057,
+      "p90_nearest_um": 8.573038101196289,
+      "runtime_sec": 25.917149782180786
+    }
+  ],
+  "scoring_json": null,
+  "scoring_calibration_fold_id": null
+}

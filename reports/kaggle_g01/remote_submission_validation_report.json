@@ -1,0 +1,69 @@
+{
+  "csv": "reports/kaggle_g01/kernel_output/submission.csv",
+  "csv_bytes": 5158919,
+  "csv_exists": true,
+  "csv_sha256": "2c45439aa299c27e42c2b2eef97a743e5db3761ef8602f88505186910b48031d",
+  "expected_dataset_source": "zip",
+  "expected_zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "readiness": {
+    "ac_03": {
+      "ready": true,
+      "status": "PASS",
+      "summary": "The downloaded CSV passes the required schema, coverage, row-type, identifier, reference, and graph checks."
+    },
+    "ac_04": {
+      "ready": false,
+      "status": "NOT_READY",
+      "summary": "This CSV-only validation does not establish the separate scorer-parity, focused-test, leakage, and regression evidence required by E-04."
+    },
+    "t_04": {
+      "candidate_csv": "reports/kaggle_g01/kernel_output/submission.csv",
+      "ready_for_scored_submission": false,
+      "summary": "Do not submit until AC-04/E-04 has independent passing evidence."
+    }
+  },
+  "csv_schema_graph_ready_for_scored_submission": true,
+  "ready_for_scored_submission": false,
+  "schema_version": 1,
+  "validation": {
+    "dataset_count": 4,
+    "datasets_without_nodes_count": 0,
+    "dividing_nodes": 0,
+    "edge_count": 44370,
+    "errors": [],
+    "expected_dataset_count": 4,
+    "merges": 0,
+    "missing_dataset_count": 0,
+    "node_count": 57004,
+    "out_gt2": 0,
+    "per_dataset": {
+      "44b6_0113de3b": {
+        "edges": 9995,
+        "nodes": 11507,
+        "rows": 21502
+      },
+      "44b6_0b24845f": {
+        "edges": 9683,
+        "nodes": 13040,
+        "rows": 22723
+      },
+      "6bba_05b6850b": {
+        "edges": 4952,
+        "nodes": 5774,
+        "rows": 10726
+      },
+      "6bba_05db0fb1": {
+        "edges": 19740,
+        "nodes": 26683,
+        "rows": 46423
+      }
+    },
+    "row_count": 101374,
+    "row_type_counts": {
+      "edge": 44370,
+      "node": 57004
+    },
+    "valid": true,
+    "warnings": []
+  }
+}

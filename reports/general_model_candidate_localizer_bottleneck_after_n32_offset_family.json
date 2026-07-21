@@ -1,0 +1,204 @@
+{
+  "created_at": "2026-07-13T19:42:02+08:00",
+  "d07_policy": "A / clean_compact unchanged",
+  "decision": "promote_translated_offset_family_for_6bba_routes",
+  "delta_score": 0.04124426423687855,
+  "evidence": {
+    "actual_weak6_probe": "reports/general_model_n32_weak6_offset_actual_probe.json",
+    "d07_guard": "reports/general_model_cv_audit_fold1_auto_d07_offset_family_guard_1clip.json",
+    "division_guard": "reports/general_model_cv_audit_fold0_auto_fe670320_offset_family_guard_1clip.json",
+    "locked12_audit": "reports/general_model_cv_audit_fold0_auto_offset_family_12ds_12clips.json",
+    "posthoc_grid": "reports/general_model_n32_weak6_remaining_offset_posthoc_grid.json",
+    "scorer_parity": "reports/general_model_scorer_parity_after_offset_family.json",
+    "synthetic": "reports/synthetic_benchmark_after_offset_family.json"
+  },
+  "interpretation": [
+    "Translated offset clones recover multiple sparse-labeled lineage families across 6bba profile bins.",
+    "The route remains low-compute: no model training, no large inference model, and no change to graph constraints.",
+    "Score is materially improved but still below the 0.85 goal; remaining bottleneck is broader candidate localization/division coverage."
+  ],
+  "locked_after": {
+    "adj_edge_jaccard": 0.6805145848952641,
+    "division_fn": 0.0,
+    "division_fp": 0.0,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "edge_jaccard": 0.7160493827160493,
+    "n": 12,
+    "n_adj": 12,
+    "node_recall": 0.8659465850258861,
+    "score": 0.6805145848952641
+  },
+  "locked_before": {
+    "adj_edge_jaccard": 0.6392703206583855,
+    "division_fn": 0.0,
+    "division_fp": 0.0,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "edge_jaccard": 0.6481481481481481,
+    "n": 12,
+    "n_adj": 12,
+    "node_recall": 0.8180149840700915,
+    "score": 0.6392703206583855
+  },
+  "not_promoted": {
+    "balanced_midpoint_high_motif_372c_offset": "raw edge Jaccard improved but adjusted score regressed from node penalty"
+  },
+  "promoted_offsets": {
+    "balanced_compact_second_choice_6bba": [
+      [
+        0,
+        20,
+        17
+      ],
+      [
+        0,
+        -36,
+        30
+      ]
+    ],
+    "balanced_dog_tight_6bba": [
+      -3,
+      12,
+      -24
+    ],
+    "balanced_midpoint_high_foreground_6bba": [
+      3,
+      -24,
+      -18
+    ],
+    "balanced_midpoint_low_estimated_6bba": [
+      3,
+      6,
+      -24
+    ],
+    "balanced_midpoint_very_low_foreground_low_estimated_6bba": [
+      0,
+      24,
+      18
+    ]
+  },
+  "target_not_met": true,
+  "weak6_row_deltas": {
+    "6bba_062c8d37": {
+      "after": {
+        "edge_fn": 3.0,
+        "edge_fp": 0.0,
+        "edge_tp": 7.0,
+        "edges": 124,
+        "node_recall": 0.6875,
+        "nodes": 230.0,
+        "score": 0.6810005527915975
+      },
+      "before": {
+        "edge_fn": 4.0,
+        "edge_fp": 0.0,
+        "edge_tp": 6.0,
+        "edges": 62,
+        "node_recall": 0.5625,
+        "nodes": 115.0,
+        "score": 0.6218573797678275
+      }
+    },
+    "6bba_0c7fa718": {
+      "after": {
+        "edge_fn": 2.0,
+        "edge_fp": 1.0,
+        "edge_tp": 16.0,
+        "edges": 384,
+        "node_recall": 0.9629629629629629,
+        "nodes": 650.0,
+        "score": 0.7926482873851294
+      },
+      "before": {
+        "edge_fn": 4.0,
+        "edge_fp": 1.0,
+        "edge_tp": 14.0,
+        "edges": 192,
+        "node_recall": 0.8518518518518519,
+        "nodes": 325.0,
+        "score": 0.7520467836257309
+      }
+    },
+    "6bba_1d0d8384": {
+      "after": {
+        "edge_fn": 19.0,
+        "edge_fp": 1.0,
+        "edge_tp": 30.0,
+        "edges": 622,
+        "node_recall": 0.64,
+        "nodes": 1015.0,
+        "score": 0.5466491708079736
+      },
+      "before": {
+        "edge_fn": 19.0,
+        "edge_fp": 1.0,
+        "edge_tp": 30.0,
+        "edges": 622,
+        "node_recall": 0.64,
+        "nodes": 1015.0,
+        "score": 0.5466491708079736
+      }
+    },
+    "6bba_2312ac41": {
+      "after": {
+        "edge_fn": 9.0,
+        "edge_fp": 0.0,
+        "edge_tp": 21.0,
+        "edges": 282,
+        "node_recall": 0.7111111111111111,
+        "nodes": 458.0,
+        "score": 0.6805718270571827
+      },
+      "before": {
+        "edge_fn": 14.0,
+        "edge_fp": 0.0,
+        "edge_tp": 16.0,
+        "edges": 145,
+        "node_recall": 0.5333333333333333,
+        "nodes": 233.0,
+        "score": 0.5520037192003718
+      }
+    },
+    "6bba_2819ca14": {
+      "after": {
+        "edge_fn": 4.0,
+        "edge_fp": 0.0,
+        "edge_tp": 16.0,
+        "edges": 188,
+        "node_recall": 0.8064516129032258,
+        "nodes": 324.0,
+        "score": 0.7238742320202386
+      },
+      "before": {
+        "edge_fn": 7.0,
+        "edge_fp": 0.0,
+        "edge_tp": 13.0,
+        "edges": 96,
+        "node_recall": 0.6451612903225806,
+        "nodes": 164.0,
+        "score": 0.6507908685700519
+      }
+    },
+    "6bba_372c8cb8": {
+      "after": {
+        "edge_fn": 5.0,
+        "edge_fp": 1.0,
+        "edge_tp": 11.0,
+        "edges": 234,
+        "node_recall": 0.75,
+        "nodes": 390.0,
+        "score": 0.5919560645793712
+      },
+      "before": {
+        "edge_fn": 5.0,
+        "edge_fp": 1.0,
+        "edge_tp": 11.0,
+        "edges": 234,
+        "node_recall": 0.75,
+        "nodes": 390.0,
+        "score": 0.5919560645793712
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "code_file": "e4fit.py",
+  "competition_sources": [
+    "biohub-cell-tracking-during-development"
+  ],
+  "dataset_sources": [
+    "pilkwang/biohub-tracking-support-pack-50ep-v1"
+  ],
+  "enable_gpu": true,
+  "enable_internet": false,
+  "id": "onebitbrain/bh-e4f0",
+  "is_private": true,
+  "kernel_type": "script",
+  "language": "python",
+  "title": "bh-e4f0"
+}

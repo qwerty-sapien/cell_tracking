@@ -1,0 +1,744 @@
+{
+  "kind": "n30_midpoint_endpoint_cap_probe",
+  "created_at_unix": 1783941003.717091,
+  "datasets": [
+    "6bba_062c8d37",
+    "6bba_2312ac41",
+    "6bba_2819ca14",
+    "6bba_372c8cb8"
+  ],
+  "variants": [
+    "current",
+    "double_existing_endpoint",
+    "double_existing_radius3",
+    "add_high_motif_endpoint4",
+    "add_all_midpoint_endpoint4"
+  ],
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "rows": [
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "current",
+      "dataset": "6bba_062c8d37",
+      "score": 0.6218573797678275,
+      "adj_edge_jaccard": 0.6218573797678275,
+      "edge_jaccard": 0.6,
+      "node_recall": 0.5625,
+      "edge_tp": 6.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "nodes": 115,
+      "edges": 62,
+      "num_pred_nodes": 115.0,
+      "endpoint_forward": null
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "current",
+      "dataset": "6bba_2312ac41",
+      "score": 0.5520037192003718,
+      "adj_edge_jaccard": 0.5520037192003718,
+      "edge_jaccard": 0.5333333333333333,
+      "node_recall": 0.5333333333333333,
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 14.0,
+      "nodes": 233,
+      "edges": 145,
+      "num_pred_nodes": 233.0,
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 2.5,
+        "max_per_t": 8,
+        "requires_history": false,
+        "base_nodes": 225,
+        "base_edges": 137,
+        "cloned_nodes": 8,
+        "cloned_edges": 8,
+        "new_per_t": {
+          "2": 8
+        },
+        "mean_abs_offset_zyx": [
+          0.125,
+          2.375,
+          2.75
+        ]
+      }
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "current",
+      "dataset": "6bba_2819ca14",
+      "score": 0.6507908685700519,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "edge_jaccard": 0.65,
+      "node_recall": 0.6451612903225806,
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "nodes": 164,
+      "edges": 96,
+      "num_pred_nodes": 164.0,
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 2.5,
+        "max_per_t": 4,
+        "requires_history": false,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 4,
+        "cloned_edges": 4,
+        "new_per_t": {
+          "2": 4
+        },
+        "mean_abs_offset_zyx": [
+          0.75,
+          1.25,
+          3.5
+        ]
+      }
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "current",
+      "dataset": "6bba_372c8cb8",
+      "score": 0.5919560645793712,
+      "adj_edge_jaccard": 0.5919560645793712,
+      "edge_jaccard": 0.6470588235294118,
+      "node_recall": 0.75,
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "nodes": 390,
+      "edges": 234,
+      "num_pred_nodes": 390.0,
+      "endpoint_forward": null
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "double_existing_endpoint",
+      "dataset": "6bba_062c8d37",
+      "score": 0.6218573797678275,
+      "adj_edge_jaccard": 0.6218573797678275,
+      "edge_jaccard": 0.6,
+      "node_recall": 0.5625,
+      "edge_tp": 6.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "nodes": 115,
+      "edges": 62,
+      "num_pred_nodes": 115.0,
+      "endpoint_forward": null
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "double_existing_endpoint",
+      "dataset": "6bba_2312ac41",
+      "score": 0.5508135750813574,
+      "adj_edge_jaccard": 0.5508135750813574,
+      "edge_jaccard": 0.5333333333333333,
+      "node_recall": 0.5333333333333333,
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 14.0,
+      "nodes": 241,
+      "edges": 153,
+      "num_pred_nodes": 241.0,
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 2.5,
+        "max_per_t": 16,
+        "requires_history": false,
+        "base_nodes": 225,
+        "base_edges": 137,
+        "cloned_nodes": 16,
+        "cloned_edges": 16,
+        "new_per_t": {
+          "2": 16
+        },
+        "mean_abs_offset_zyx": [
+          0.5,
+          2.25,
+          2.5625
+        ]
+      }
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "double_existing_endpoint",
+      "dataset": "6bba_2819ca14",
+      "score": 0.6492247921937117,
+      "adj_edge_jaccard": 0.6492247921937117,
+      "edge_jaccard": 0.65,
+      "node_recall": 0.6451612903225806,
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "nodes": 168,
+      "edges": 100,
+      "num_pred_nodes": 168.0,
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 2.5,
+        "max_per_t": 8,
+        "requires_history": false,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 8,
+        "cloned_edges": 8,
+        "new_per_t": {
+          "2": 8
+        },
+        "mean_abs_offset_zyx": [
+          0.875,
+          3.0,
+          3.375
+        ]
+      }
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "double_existing_endpoint",
+      "dataset": "6bba_372c8cb8",
+      "score": 0.5919560645793712,
+      "adj_edge_jaccard": 0.5919560645793712,
+      "edge_jaccard": 0.6470588235294118,
+      "node_recall": 0.75,
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "nodes": 390,
+      "edges": 234,
+      "num_pred_nodes": 390.0,
+      "endpoint_forward": null
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "double_existing_radius3",
+      "dataset": "6bba_062c8d37",
+      "score": 0.6218573797678275,
+      "adj_edge_jaccard": 0.6218573797678275,
+      "edge_jaccard": 0.6,
+      "node_recall": 0.5625,
+      "edge_tp": 6.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "nodes": 115,
+      "edges": 62,
+      "num_pred_nodes": 115.0,
+      "endpoint_forward": null
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "double_existing_radius3",
+      "dataset": "6bba_2312ac41",
+      "score": 0.5508135750813574,
+      "adj_edge_jaccard": 0.5508135750813574,
+      "edge_jaccard": 0.5333333333333333,
+      "node_recall": 0.5333333333333333,
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 14.0,
+      "nodes": 241,
+      "edges": 153,
+      "num_pred_nodes": 241.0,
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 3.0,
+        "max_per_t": 16,
+        "requires_history": false,
+        "base_nodes": 225,
+        "base_edges": 137,
+        "cloned_nodes": 16,
+        "cloned_edges": 16,
+        "new_per_t": {
+          "2": 16
+        },
+        "mean_abs_offset_zyx": [
+          0.75,
+          2.9375,
+          3.25
+        ]
+      }
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "double_existing_radius3",
+      "dataset": "6bba_2819ca14",
+      "score": 0.6492247921937117,
+      "adj_edge_jaccard": 0.6492247921937117,
+      "edge_jaccard": 0.65,
+      "node_recall": 0.6451612903225806,
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "nodes": 168,
+      "edges": 100,
+      "num_pred_nodes": 168.0,
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 3.0,
+        "max_per_t": 8,
+        "requires_history": false,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 8,
+        "cloned_edges": 8,
+        "new_per_t": {
+          "2": 8
+        },
+        "mean_abs_offset_zyx": [
+          0.875,
+          2.5,
+          3.5
+        ]
+      }
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "double_existing_radius3",
+      "dataset": "6bba_372c8cb8",
+      "score": 0.5919560645793712,
+      "adj_edge_jaccard": 0.5919560645793712,
+      "edge_jaccard": 0.6470588235294118,
+      "node_recall": 0.75,
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "nodes": 390,
+      "edges": 234,
+      "num_pred_nodes": 390.0,
+      "endpoint_forward": null
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "add_high_motif_endpoint4",
+      "dataset": "6bba_062c8d37",
+      "score": 0.6218573797678275,
+      "adj_edge_jaccard": 0.6218573797678275,
+      "edge_jaccard": 0.6,
+      "node_recall": 0.5625,
+      "edge_tp": 6.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "nodes": 115,
+      "edges": 62,
+      "num_pred_nodes": 115.0,
+      "endpoint_forward": null
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "add_high_motif_endpoint4",
+      "dataset": "6bba_2312ac41",
+      "score": 0.5508135750813574,
+      "adj_edge_jaccard": 0.5508135750813574,
+      "edge_jaccard": 0.5333333333333333,
+      "node_recall": 0.5333333333333333,
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 14.0,
+      "nodes": 241,
+      "edges": 153,
+      "num_pred_nodes": 241.0,
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 2.5,
+        "max_per_t": 16,
+        "requires_history": false,
+        "base_nodes": 225,
+        "base_edges": 137,
+        "cloned_nodes": 16,
+        "cloned_edges": 16,
+        "new_per_t": {
+          "2": 16
+        },
+        "mean_abs_offset_zyx": [
+          0.5,
+          2.25,
+          2.5625
+        ]
+      }
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "add_high_motif_endpoint4",
+      "dataset": "6bba_2819ca14",
+      "score": 0.6492247921937117,
+      "adj_edge_jaccard": 0.6492247921937117,
+      "edge_jaccard": 0.65,
+      "node_recall": 0.6451612903225806,
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "nodes": 168,
+      "edges": 100,
+      "num_pred_nodes": 168.0,
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 2.5,
+        "max_per_t": 8,
+        "requires_history": false,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 8,
+        "cloned_edges": 8,
+        "new_per_t": {
+          "2": 8
+        },
+        "mean_abs_offset_zyx": [
+          0.875,
+          3.0,
+          3.375
+        ]
+      }
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "add_high_motif_endpoint4",
+      "dataset": "6bba_372c8cb8",
+      "score": 0.5907272580019047,
+      "adj_edge_jaccard": 0.5907272580019047,
+      "edge_jaccard": 0.6470588235294118,
+      "node_recall": 0.75,
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "nodes": 394,
+      "edges": 238,
+      "num_pred_nodes": 394.0,
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 2.5,
+        "max_per_t": 4,
+        "requires_history": false,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 4,
+        "cloned_edges": 4,
+        "new_per_t": {
+          "2": 4
+        },
+        "mean_abs_offset_zyx": [
+          1.0,
+          1.75,
+          4.25
+        ]
+      }
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "add_all_midpoint_endpoint4",
+      "dataset": "6bba_062c8d37",
+      "score": 0.6205306799336651,
+      "adj_edge_jaccard": 0.6205306799336651,
+      "edge_jaccard": 0.6,
+      "node_recall": 0.5625,
+      "edge_tp": 6.0,
+      "edge_fp": 0.0,
+      "edge_fn": 4.0,
+      "nodes": 119,
+      "edges": 66,
+      "num_pred_nodes": 119.0,
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 2.5,
+        "max_per_t": 4,
+        "requires_history": false,
+        "base_nodes": 115,
+        "base_edges": 62,
+        "cloned_nodes": 4,
+        "cloned_edges": 4,
+        "new_per_t": {
+          "2": 4
+        },
+        "mean_abs_offset_zyx": [
+          0.75,
+          2.25,
+          6.0
+        ]
+      }
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "add_all_midpoint_endpoint4",
+      "dataset": "6bba_2312ac41",
+      "score": 0.5508135750813574,
+      "adj_edge_jaccard": 0.5508135750813574,
+      "edge_jaccard": 0.5333333333333333,
+      "node_recall": 0.5333333333333333,
+      "edge_tp": 16.0,
+      "edge_fp": 0.0,
+      "edge_fn": 14.0,
+      "nodes": 241,
+      "edges": 153,
+      "num_pred_nodes": 241.0,
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 2.5,
+        "max_per_t": 16,
+        "requires_history": false,
+        "base_nodes": 225,
+        "base_edges": 137,
+        "cloned_nodes": 16,
+        "cloned_edges": 16,
+        "new_per_t": {
+          "2": 16
+        },
+        "mean_abs_offset_zyx": [
+          0.5,
+          2.25,
+          2.5625
+        ]
+      }
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "add_all_midpoint_endpoint4",
+      "dataset": "6bba_2819ca14",
+      "score": 0.6492247921937117,
+      "adj_edge_jaccard": 0.6492247921937117,
+      "edge_jaccard": 0.65,
+      "node_recall": 0.6451612903225806,
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "nodes": 168,
+      "edges": 100,
+      "num_pred_nodes": 168.0,
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 2.5,
+        "max_per_t": 8,
+        "requires_history": false,
+        "base_nodes": 160,
+        "base_edges": 92,
+        "cloned_nodes": 8,
+        "cloned_edges": 8,
+        "new_per_t": {
+          "2": 8
+        },
+        "mean_abs_offset_zyx": [
+          0.875,
+          3.0,
+          3.375
+        ]
+      }
+    },
+    {
+      "route": "balanced_midpoint",
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "division_jaccard": NaN,
+      "variant": "add_all_midpoint_endpoint4",
+      "dataset": "6bba_372c8cb8",
+      "score": 0.5907272580019047,
+      "adj_edge_jaccard": 0.5907272580019047,
+      "edge_jaccard": 0.6470588235294118,
+      "node_recall": 0.75,
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "nodes": 394,
+      "edges": 238,
+      "num_pred_nodes": 394.0,
+      "endpoint_forward": {
+        "enabled": true,
+        "sources": [
+          "smooth"
+        ],
+        "radius_um": 2.5,
+        "max_per_t": 4,
+        "requires_history": false,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 4,
+        "cloned_edges": 4,
+        "new_per_t": {
+          "2": 4
+        },
+        "mean_abs_offset_zyx": [
+          1.0,
+          1.75,
+          4.25
+        ]
+      }
+    }
+  ],
+  "summary_by_variant": {
+    "current": {
+      "n": 4,
+      "edge_jaccard": 0.5974025974025974,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6227486559139785,
+      "adj_edge_jaccard": 0.5955552706875297,
+      "n_adj": 4,
+      "score": 0.5955552706875297
+    },
+    "double_existing_endpoint": {
+      "n": 4,
+      "edge_jaccard": 0.5974025974025974,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6227486559139785,
+      "adj_edge_jaccard": 0.5946848050888641,
+      "n_adj": 4,
+      "score": 0.5946848050888641
+    },
+    "double_existing_radius3": {
+      "n": 4,
+      "edge_jaccard": 0.5974025974025974,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6227486559139785,
+      "adj_edge_jaccard": 0.5946848050888641,
+      "n_adj": 4,
+      "score": 0.5946848050888641
+    },
+    "add_high_motif_endpoint4": {
+      "n": 4,
+      "edge_jaccard": 0.5974025974025974,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6227486559139785,
+      "adj_edge_jaccard": 0.5944135101302027,
+      "n_adj": 4,
+      "score": 0.5944135101302027
+    },
+    "add_all_midpoint_endpoint4": {
+      "n": 4,
+      "edge_jaccard": 0.5974025974025974,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6227486559139785,
+      "adj_edge_jaccard": 0.5942412114504414,
+      "n_adj": 4,
+      "score": 0.5942412114504414
+    }
+  },
+  "decision": "not_promoted_negative",
+  "interpretation": "Endpoint-forward cap/radius expansion leaves edge TP/FP/FN unchanged on affected rows and only adds node/edge penalty."
+}

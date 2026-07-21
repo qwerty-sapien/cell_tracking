@@ -1,0 +1,126 @@
+{
+  "artifact": "g02_v3_runtime_decision",
+  "schema_version": 1,
+  "recorded_at": "2026-07-18T10:00:00+08:00",
+  "accuracy_gate": {
+    "historical_rule_based_score": 0.8713516075529171,
+    "claimed_prior_score_0_879_found": false,
+    "v6_tiny_rung_threshold_0_97": 0.9026157436461766,
+    "v6_stronger_fixed_rung_threshold_0_97": 0.7638937545,
+    "v3_full_199_official": {
+      "score": 0.6583106754265342,
+      "adjusted_edge_jaccard": 0.6583106754265342,
+      "raw_edge_jaccard": 0.6932300858233743,
+      "node_recall": 0.9537668943007103,
+      "division_jaccard": 0.0,
+      "division_fn": 151,
+      "datasets": 199,
+      "elapsed_seconds": 250.89588241581805
+    },
+    "decision": "regression_abort_training_batch",
+    "reason": "The apparent tiny-rung gain did not survive either the stronger fixed 2-dataset by 8-frame gate or the official full 199-video score. The fast model has useful recall but weak adjusted edges and no divisions."
+  },
+  "private_kaggle_runtime": {
+    "kernel": "onebitbrain/bh-fast203",
+    "version": 3,
+    "status": "complete",
+    "accelerator": "Tesla T4 x2",
+    "checkpoint_sha256": "712646e9e263da018239dc46e927905708d31405c0b1774d20a260d85f480987",
+    "package_sha256": "085c237f21c265108c49c0e7a632228b5119f9bda993fbad3850ec1fe09e350c",
+    "coverage": {
+      "datasets_expected": 203,
+      "datasets_completed": 203,
+      "train": 199,
+      "test": 4,
+      "frames_and_chunks_expected": 20300,
+      "frames_and_chunks_read": 20300,
+      "asserted": true
+    },
+    "runtime": {
+      "inference_seconds": 2404.34153951,
+      "inference_minutes": 40.07235899183333,
+      "kernel_end_to_end_seconds": 2668.352577726,
+      "kernel_end_to_end_minutes": 44.4725429621,
+      "target_minutes": 120,
+      "under_target": true,
+      "headroom_factor": 2.6982940935548783
+    },
+    "graph": {
+      "nodes": 5927387,
+      "edges": 4968747,
+      "rows": 10896134,
+      "benchmark_csv_bytes": 645665914,
+      "benchmark_csv_sha256": "e644d729441e0731bafbd22abc7f3b299a349f1309ce528a5cbea3989ee3b86e",
+      "zero_node_datasets": 0,
+      "zero_edge_datasets": 0,
+      "max_pair_candidates": 782,
+      "dense_nxn_allocated": false
+    },
+    "stage_seconds_summed_across_workers": {
+      "zarr_open": 2.196287052000571,
+      "read": 1093.7924209540392,
+      "transfer_infer": 1898.4849123460074,
+      "nms": 393.15996943002995,
+      "link": 156.04787415099236,
+      "write": 52.93438867101679,
+      "parity": 3.540338654999914
+    },
+    "precision": {
+      "cuda_0": "fp16_parity_pass",
+      "cuda_1": "fp32_fallback_after_peak_coordinate_mismatch",
+      "deterministic_fp32": true
+    },
+    "image_only": {
+      "geff": false,
+      "annotations": false,
+      "scorer": false,
+      "cv_split_manifest": false,
+      "denied_reads": 0
+    }
+  },
+  "v4_local_candidate": {
+    "remote_push": false,
+    "package_sha256": "3e3e96fbd5bfe82f716cf3e46e00cb83ec67da69747e687d021c0e412fbd9f08",
+    "source_sha256": "1bf50592c45f04af2bef9103717b8f317f3746640e7128817424bdbe209ba2da",
+    "wrapper_sha256": "8011b97dc0a83d06160bf829392543017eaac00d72a8684982665c536be3a8e9",
+    "focused_tests": 18,
+    "focused_tests_passed": 18,
+    "improvements": [
+      "case-insensitive OME-NGFF axes",
+      "bounded cKDTree candidate queries",
+      "end-to-end fail-closed deadline",
+      "exact frame-spatial chunk geometry",
+      "deterministic one-node empty-frame fallback",
+      "SciPy cKDTree preflight"
+    ],
+    "no_push_blockers": [
+      "sparse greedy assignment can lose a feasible higher-cardinality matching",
+      "cKDTree boundary ties are not canonically resolved before k truncation",
+      "nonzero inference exit can leave an already-written success stats file"
+    ],
+    "division_note": "V6 was trained with division loss disabled, so its division_logit is not promoted; division modeling must come from the public detector-transformer-ILP path or a separately validated head."
+  },
+  "evidence": {
+    "stats": {
+      "path": "reports/g02/stats-v3.json",
+      "sha256": "1acc6c0afaa1140d750e09a32ea77850505d8b527b905b1d4bba4364a57a4fc7"
+    },
+    "preflight": {
+      "path": "reports/g02/pre-v3.json",
+      "sha256": "62b013cf548976f14dbcd803a599577b3844dca533e0ea4220d34862da3f9644"
+    },
+    "kernel_log": {
+      "path": "reports/g02/fast-v3.log",
+      "sha256": "cff6646016d306118a3237b0aaba6252564d20e9a2f788cd899331f7c2bcb891"
+    },
+    "accuracy_diagnosis": {
+      "path": "reports/g02/v6diag.json",
+      "sha256": "7db20913ec135059c139e8cf7a27c86614a9377f73fa50703a01bc0564f7e3b6"
+    },
+    "full_199_official_score": {
+      "path": "reports/g02/v3-all.json",
+      "sha256": "6a39cbbd2362391bfcbb14a9310df8c44db316f31ee4f9baebdadf0de7a3cc7b"
+    }
+  },
+  "promotion_decision": "Runtime objective passed but full-distribution accuracy failed. Do not spend more compute on the regressed V6 detector or push V4 as a scoring candidate. Use the scored public V45 TemporalUNet graph as the accuracy parent; retain V6 only for confidence, routing features, and hard failure fallback, never add its unmatched detections by default."
+}

@@ -1,0 +1,66 @@
+{
+  "candidate_csv": "reports/kaggle_g01/kernel_output/submission.csv",
+  "candidate_csv_sha256": "2c45439aa299c27e42c2b2eef97a743e5db3761ef8602f88505186910b48031d",
+  "checks": {
+    "csv_expected_dataset_count": 4,
+    "csv_full_dataset_count": 4,
+    "csv_schema_graph_ready": true,
+    "csv_valid": true,
+    "cv_official_metric_available": true,
+    "cv_submission_validation_valid": true,
+    "leakage_duplicate_module_removed": true,
+    "leakage_duplicate_script_removed": true,
+    "leakage_full_unittest_result": "48 tests passed",
+    "leakage_py_compile_result": "passed",
+    "package_entrypoint": "alpha_submission.py",
+    "package_identity": "8335c7d79d77425cedde8fca4a0d4b28d4419b8d82719427ed9add9034bd5730",
+    "package_model": "celltrack_alpha",
+    "package_route": "auto",
+    "repro_manifest_kind": "general_model_reproducibility_manifest",
+    "scorer_metric_source": "official_wrapper",
+    "scorer_parity_edge_only_pass": true,
+    "scorer_parity_overall_pass": true
+  },
+  "created_at_unix": 1784086126.129906,
+  "evidence": {
+    "focused_d07_cv_guard": {
+      "path": "reports/general_model_cv_audit_fold1_auto_d07_stick_A_final_guard_1clip.json",
+      "sha256": "df0098be4b4ad1f9ddfb62d049fc56536538c3de85fbfe64c7c221620bd516ae"
+    },
+    "kernel_log": {
+      "path": "reports/kaggle_g01/kernel_output/biohub-celltrack-alpha.log",
+      "sha256": "04d4ba2c9d06ba359a5a255c520b8056c8bf16386c1ac7edcda3f1e61920e586"
+    },
+    "leakage_static_report": {
+      "path": "reports/general_model_leakage_static_report.json",
+      "sha256": "30f5d3a342263f69f1b9dee735d8abc9e46bf3f83c1f7f073fa9432534d54046"
+    },
+    "package_parity_manifest": {
+      "path": "reports/kaggle_g01/package_parity_manifest.json",
+      "sha256": "8f20868f73ea80b9a101e0787f70dc4ea21bd5a2e7e4e5687bfcaca7e7f83127"
+    },
+    "remote_submission_validation_report": {
+      "path": "reports/kaggle_g01/remote_submission_validation_report.json",
+      "sha256": "447778a19482b2fb2e8fafd938f138ed72314fc52283fd23acb363af5aecdc0b"
+    },
+    "reproducibility_manifest": {
+      "path": "reports/general_model_reproducibility_manifest.json",
+      "sha256": "d5a7c05e5ba53c30606c617fe3f43031f020abebd4356276d4440438d013d516"
+    },
+    "scorer_parity": {
+      "path": "reports/general_model_scorer_parity_after_d07_stick_A.json",
+      "sha256": "7a0ec090cca92b934827437a763630c2546c2de63fa34b17be1b9e70f3a00274"
+    },
+    "t03c_worker_report": {
+      "path": ".cruise/runs/g01/T-03C_validate_remote_csv.report.yaml",
+      "sha256": "78d31f38e81b7beb91f0b593be725c68b1c31ac674806e3bf76a445508868ab0"
+    }
+  },
+  "notes": [
+    "D-06 repairs were packaging/runtime only; model behavior/config remains the alpha auto route with no fold-specific calibration on test data.",
+    "T-03C intentionally scoped ready_for_scored_submission=false to CSV-only validation; this coordinator report aggregates the independent AC-04/E-04 evidence for T-04."
+  ],
+  "ready_for_t04_scored_submission": true,
+  "schema_version": 1,
+  "status": "PASS"
+}

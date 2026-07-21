@@ -1,0 +1,482 @@
+{
+  "kind": "balanced_midpoint_axial_variant_probe",
+  "dataset": "6bba_2312ac41",
+  "clip_start": 9,
+  "clip_end": 13,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "rows": [
+    {
+      "variant": "base",
+      "runtime_sec": 26.257835865020752,
+      "nodes": 480,
+      "edges": 225,
+      "edge_candidates": 346,
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_2312ac41",
+        "before_nodes": 480,
+        "corrected_nodes": 405,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "num_dividing_nodes": 0,
+      "config": {
+        "label": "balanced_midpoint",
+        "detector_sources": [
+          "tile_raw",
+          "tile_contrast",
+          "dog_bright",
+          "dog_dark"
+        ],
+        "threshold_quantiles": [
+          0.75,
+          0.95,
+          0.9985
+        ],
+        "min_distance_um": 2.0,
+        "fusion_radius_um": 1.8,
+        "max_points_per_t": 120,
+        "max_link_um": 5.5,
+        "max_gap": 1,
+        "gap_link_um": 10.0,
+        "max_neighbors": 2,
+        "edge_cost_threshold": 0.55,
+        "birth_cost": null,
+        "death_cost": null,
+        "node_score_weight": 0.22,
+        "density_cost_weight": 0.05,
+        "appearance_cost_weight": 0.0,
+        "gap_motion_cost_weight": 0.25,
+        "enable_divisions": false,
+        "division_cost_threshold": 0.82,
+        "division_requires_unlinked_parent": true,
+        "division_requires_child_future": false,
+        "division_child_max_um": 9.0,
+        "division_child_min_sep_um": 2.0,
+        "division_child_max_sep_um": 11.0,
+        "output_offset_zyx": [
+          0,
+          0,
+          0
+        ],
+        "prefix_output_offsets_zyx": [],
+        "notes": "Balanced route with lower node budget and tight links for high-foreground 6bba clips where edge FPs/node penalty dominate."
+      },
+      "edge_tp": 23.0,
+      "edge_fp": 7.0,
+      "edge_fn": 21.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 1.0,
+      "num_pred_nodes": 480.0,
+      "node_recall": 0.7627118644067796,
+      "total_node_ratio": 0.0041841004184100415,
+      "edge_jaccard": 0.45098039215686275,
+      "adj_edge_jaccard": 0.45079169743211095,
+      "division_jaccard": 0.0,
+      "estimated_number_of_nodes": 478.0
+    },
+    {
+      "variant": "axial_mid_120",
+      "runtime_sec": 34.78142189979553,
+      "nodes": 480,
+      "edges": 236,
+      "edge_candidates": 408,
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_2312ac41",
+        "before_nodes": 480,
+        "corrected_nodes": 328,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "num_dividing_nodes": 0,
+      "config": {
+        "label": "balanced_midpoint",
+        "detector_sources": [
+          "tile_raw",
+          "tile_contrast",
+          "dog_bright",
+          "dog_dark",
+          "zshift_dog_dark_m5_mid",
+          "zshift_dog_bright_m3_mid"
+        ],
+        "threshold_quantiles": [
+          0.75,
+          0.95,
+          0.9985
+        ],
+        "min_distance_um": 2.0,
+        "fusion_radius_um": 1.8,
+        "max_points_per_t": 120,
+        "max_link_um": 5.5,
+        "max_gap": 1,
+        "gap_link_um": 10.0,
+        "max_neighbors": 2,
+        "edge_cost_threshold": 0.55,
+        "birth_cost": null,
+        "death_cost": null,
+        "node_score_weight": 0.22,
+        "density_cost_weight": 0.05,
+        "appearance_cost_weight": 0.0,
+        "gap_motion_cost_weight": 0.25,
+        "enable_divisions": false,
+        "division_cost_threshold": 0.82,
+        "division_requires_unlinked_parent": true,
+        "division_requires_child_future": false,
+        "division_child_max_um": 9.0,
+        "division_child_min_sep_um": 2.0,
+        "division_child_max_sep_um": 11.0,
+        "output_offset_zyx": [
+          0,
+          0,
+          0
+        ],
+        "prefix_output_offsets_zyx": [],
+        "notes": "Balanced route with lower node budget and tight links for high-foreground 6bba clips where edge FPs/node penalty dominate. + axial mid diagnostic"
+      },
+      "edge_tp": 17.0,
+      "edge_fp": 6.0,
+      "edge_fn": 27.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 1.0,
+      "num_pred_nodes": 480.0,
+      "node_recall": 0.6610169491525424,
+      "total_node_ratio": 0.0041841004184100415,
+      "edge_jaccard": 0.34,
+      "adj_edge_jaccard": 0.3398577405857741,
+      "division_jaccard": 0.0,
+      "estimated_number_of_nodes": 478.0
+    },
+    {
+      "variant": "axial_mid_150",
+      "runtime_sec": 37.11114811897278,
+      "nodes": 600,
+      "edges": 283,
+      "edge_candidates": 529,
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_2312ac41",
+        "before_nodes": 600,
+        "corrected_nodes": 394,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "num_dividing_nodes": 0,
+      "config": {
+        "label": "balanced_midpoint",
+        "detector_sources": [
+          "tile_raw",
+          "tile_contrast",
+          "dog_bright",
+          "dog_dark",
+          "zshift_dog_dark_m5_mid",
+          "zshift_dog_bright_m3_mid"
+        ],
+        "threshold_quantiles": [
+          0.75,
+          0.95,
+          0.9985
+        ],
+        "min_distance_um": 2.0,
+        "fusion_radius_um": 1.8,
+        "max_points_per_t": 150,
+        "max_link_um": 5.5,
+        "max_gap": 1,
+        "gap_link_um": 10.0,
+        "max_neighbors": 2,
+        "edge_cost_threshold": 0.55,
+        "birth_cost": null,
+        "death_cost": null,
+        "node_score_weight": 0.22,
+        "density_cost_weight": 0.05,
+        "appearance_cost_weight": 0.0,
+        "gap_motion_cost_weight": 0.25,
+        "enable_divisions": false,
+        "division_cost_threshold": 0.82,
+        "division_requires_unlinked_parent": true,
+        "division_requires_child_future": false,
+        "division_child_max_um": 9.0,
+        "division_child_min_sep_um": 2.0,
+        "division_child_max_sep_um": 11.0,
+        "output_offset_zyx": [
+          0,
+          0,
+          0
+        ],
+        "prefix_output_offsets_zyx": [],
+        "notes": "Balanced route with lower node budget and tight links for high-foreground 6bba clips where edge FPs/node penalty dominate. + axial mid diagnostic"
+      },
+      "edge_tp": 18.0,
+      "edge_fp": 10.0,
+      "edge_fn": 26.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 1.0,
+      "num_pred_nodes": 600.0,
+      "node_recall": 0.7288135593220338,
+      "total_node_ratio": 0.25523012552301255,
+      "edge_jaccard": 0.3333333333333333,
+      "adj_edge_jaccard": 0.3248256624825662,
+      "division_jaccard": 0.0,
+      "estimated_number_of_nodes": 478.0
+    },
+    {
+      "variant": "axial_mid_180_fusion135",
+      "runtime_sec": 40.519253969192505,
+      "nodes": 720,
+      "edges": 337,
+      "edge_candidates": 698,
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_2312ac41",
+        "before_nodes": 720,
+        "corrected_nodes": 465,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "num_dividing_nodes": 0,
+      "config": {
+        "label": "balanced_midpoint",
+        "detector_sources": [
+          "tile_raw",
+          "tile_contrast",
+          "dog_bright",
+          "dog_dark",
+          "zshift_dog_dark_m5_mid",
+          "zshift_dog_bright_m3_mid"
+        ],
+        "threshold_quantiles": [
+          0.75,
+          0.95,
+          0.9985
+        ],
+        "min_distance_um": 2.0,
+        "fusion_radius_um": 1.35,
+        "max_points_per_t": 180,
+        "max_link_um": 5.5,
+        "max_gap": 1,
+        "gap_link_um": 10.0,
+        "max_neighbors": 2,
+        "edge_cost_threshold": 0.55,
+        "birth_cost": null,
+        "death_cost": null,
+        "node_score_weight": 0.22,
+        "density_cost_weight": 0.05,
+        "appearance_cost_weight": 0.0,
+        "gap_motion_cost_weight": 0.25,
+        "enable_divisions": false,
+        "division_cost_threshold": 0.82,
+        "division_requires_unlinked_parent": true,
+        "division_requires_child_future": false,
+        "division_child_max_um": 9.0,
+        "division_child_min_sep_um": 2.0,
+        "division_child_max_sep_um": 11.0,
+        "output_offset_zyx": [
+          0,
+          0,
+          0
+        ],
+        "prefix_output_offsets_zyx": [],
+        "notes": "Balanced route with lower node budget and tight links for high-foreground 6bba clips where edge FPs/node penalty dominate. + axial mid diagnostic"
+      },
+      "edge_tp": 18.0,
+      "edge_fp": 11.0,
+      "edge_fn": 26.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 1.0,
+      "num_pred_nodes": 720.0,
+      "node_recall": 0.7457627118644068,
+      "total_node_ratio": 0.5062761506276151,
+      "edge_jaccard": 0.32727272727272727,
+      "adj_edge_jaccard": 0.3107036896158235,
+      "division_jaccard": 0.0,
+      "estimated_number_of_nodes": 478.0
+    },
+    {
+      "variant": "axial_full_150_fusion135",
+      "runtime_sec": 37.74468016624451,
+      "nodes": 600,
+      "edges": 269,
+      "edge_candidates": 672,
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_2312ac41",
+        "before_nodes": 600,
+        "corrected_nodes": 277,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "num_dividing_nodes": 0,
+      "config": {
+        "label": "balanced_midpoint",
+        "detector_sources": [
+          "tile_raw",
+          "tile_contrast",
+          "dog_bright",
+          "dog_dark",
+          "zshift_dog_dark_m5",
+          "zshift_dog_bright_m3"
+        ],
+        "threshold_quantiles": [
+          0.75,
+          0.95,
+          0.9985
+        ],
+        "min_distance_um": 2.0,
+        "fusion_radius_um": 1.35,
+        "max_points_per_t": 150,
+        "max_link_um": 5.5,
+        "max_gap": 1,
+        "gap_link_um": 10.0,
+        "max_neighbors": 2,
+        "edge_cost_threshold": 0.55,
+        "birth_cost": null,
+        "death_cost": null,
+        "node_score_weight": 0.22,
+        "density_cost_weight": 0.05,
+        "appearance_cost_weight": 0.0,
+        "gap_motion_cost_weight": 0.25,
+        "enable_divisions": false,
+        "division_cost_threshold": 0.82,
+        "division_requires_unlinked_parent": true,
+        "division_requires_child_future": false,
+        "division_child_max_um": 9.0,
+        "division_child_min_sep_um": 2.0,
+        "division_child_max_sep_um": 11.0,
+        "output_offset_zyx": [
+          0,
+          0,
+          0
+        ],
+        "prefix_output_offsets_zyx": [],
+        "notes": "Balanced route with lower node budget and tight links for high-foreground 6bba clips where edge FPs/node penalty dominate. + axial full diagnostic"
+      },
+      "edge_tp": 4.0,
+      "edge_fp": 2.0,
+      "edge_fn": 40.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 1.0,
+      "num_pred_nodes": 600.0,
+      "node_recall": 0.23728813559322035,
+      "total_node_ratio": 0.25523012552301255,
+      "edge_jaccard": 0.08695652173913043,
+      "adj_edge_jaccard": 0.08473712934327815,
+      "division_jaccard": 0.0,
+      "estimated_number_of_nodes": 478.0
+    }
+  ]
+}

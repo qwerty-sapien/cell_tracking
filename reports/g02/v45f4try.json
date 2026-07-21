@@ -1,0 +1,54 @@
+{
+  "artifact": "v45f-private-trial-v4",
+  "authorization": {
+    "approved_by_user": true,
+    "maximum_charge_usd": 0.3,
+    "maximum_hours": 0.75,
+    "private_only": true,
+    "scored_submission": false
+  },
+  "immutable_inputs": {
+    "fit_projection_sha256": "c638e5b446fe688ce7698ca7d01759645a11bce03bef68eb2008f47505e3041d",
+    "package_manifest_sha256": "e444368e6c023a1e90513ecb8e0b7dbbc5b0ccec808b17c2b4e2a9ef4adbe4ef",
+    "runtime_bundle_sha256": "22666a92ba537c2e508d74cb4bdab12d642bed2d6026c7cfbcde2548d2263a8a"
+  },
+  "kaggle": {
+    "accelerator": "NvidiaTeslaT4",
+    "kernel_ref": "onebitbrain/bh-v45f4",
+    "kernel_version": 1,
+    "preflight": {
+      "archive_dry_run": "passed",
+      "cuda_sm60_rejected_before_model_load": true,
+      "v3_error_repaired": "explicit T4 accelerator request"
+    },
+    "pushed_at_utc": "2026-07-19T05:15:48Z",
+    "status_at_recording": "kernel_complete",
+    "url": "https://www.kaggle.com/code/onebitbrain/bh-v45f4"
+  },
+  "model": {
+    "division_emission": false,
+    "fit_source_count": 12,
+    "fold": 0,
+    "fraction": 0.1,
+    "head_parameter_count": 1254,
+    "student_views": [0],
+    "teacher": "exact-sequential-d4-8-logit-mean"
+  },
+  "scored_submission": false,
+  "result": {
+    "checkpoint": {
+      "bytes": 8661,
+      "local_path": "reports/g02/v45f4.pt",
+      "sha256": "1cff90475b819b5652310ccb73ba57e1dc20069885962a06a5e10a6060c04473"
+    },
+    "completed_steps": 1000,
+    "elapsed_training_seconds": 1830.108523886,
+    "metrics": {
+      "local_path": "reports/g02/v45f4met.json",
+      "sha256": "1d67a099377dde39c04985982be1d427b3b4d3c7abcb6b4d0fa07d79c944b4b5"
+    },
+    "status": "completed",
+    "training_started": true
+  },
+  "status": "kernel_complete"
+}

@@ -1,0 +1,234 @@
+{
+  "kind": "general_route_cv_audit",
+  "created_at_unix": 1783911713.351112,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "split_manifest_sha256": "b02e489391b2f093b79a2416f94e84223702b9744ae61cdda11ed9485b66baae",
+  "fold_id": "0",
+  "datasets": [
+    "6bba_2819ca14"
+  ],
+  "route_arg": "auto",
+  "clip_length": 3,
+  "offsets_json": null,
+  "offset_calibration_fold_id": null,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "scoring_calibration_fold_id": "0",
+  "official_metric": {
+    "available": true,
+    "missing": [],
+    "note": "Install optional dependencies to replace approximate CV with official metrics."
+  },
+  "summary": {
+    "n": 1,
+    "edge_jaccard": 0.65,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.6451612903225806,
+    "adj_edge_jaccard": 0.6507908685700519,
+    "n_adj": 1,
+    "score": 0.6507908685700519
+  },
+  "summary_by_prefix": {
+    "6bba": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 0.65,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.6451612903225806,
+        "adj_edge_jaccard": 0.6507908685700519,
+        "n_adj": 1,
+        "score": 0.6507908685700519
+      },
+      "mean_node_recall": 0.6451612903225806,
+      "mean_nodes": 164.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 0
+    }
+  },
+  "summary_by_route": {
+    "balanced_midpoint": {
+      "n": 1,
+      "official_summary": {
+        "n": 1,
+        "edge_jaccard": 0.65,
+        "division_jaccard": NaN,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "node_recall": 0.6451612903225806,
+        "adj_edge_jaccard": 0.6507908685700519,
+        "n_adj": 1,
+        "score": 0.6507908685700519
+      },
+      "mean_node_recall": 0.6451612903225806,
+      "mean_nodes": 164.0,
+      "zero_edge_jaccard": 0,
+      "node_recall_lt_0_5": 0
+    }
+  },
+  "rows": [
+    {
+      "dataset": "6bba_2819ca14",
+      "prefix": "6bba",
+      "fold_id": "0",
+      "route": "balanced_midpoint",
+      "route_confidence": 0.75,
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 31,
+      "gt_edges": 20,
+      "num_pred_nodes": 164.0,
+      "num_pred_edges": 96,
+      "graph": {
+        "datasets": 1,
+        "nodes": 164,
+        "edges": 96,
+        "dividing_nodes": 0,
+        "out_gt2": 0,
+        "merges": 0
+      },
+      "runtime_sec": 22.781713008880615,
+      "metric_source": "official",
+      "route_reason": "low foreground/low motion/high signal; low-estimated-node 6bba field; midpoint links improve edge precision under endpoint emission",
+      "profile": {
+        "dataset": "6bba_2819ca14",
+        "t_start": 0,
+        "t_end": 3,
+        "sampled_timepoints": [
+          0,
+          1,
+          2
+        ],
+        "foreground_fraction": 0.04692975680033366,
+        "bright_candidate_density": 400.0,
+        "dark_candidate_density": 400.0,
+        "both_candidate_density": 400.0,
+        "median_nn_um": 0.40625,
+        "temporal_delta": 0.026527170091867447,
+        "division_motif_rate": 0.5375,
+        "intensity_p999": 669.7020000000011,
+        "estimated_total_nodes": 5534.0
+      },
+      "coordinate_correction": {
+        "route": "balanced_midpoint",
+        "dataset": "6bba_2819ca14",
+        "before_nodes": 360,
+        "corrected_nodes": 323,
+        "mean_abs_offset_zyx": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "policy": {
+          "max_abs_offset_zyx": [
+            3,
+            16,
+            16
+          ],
+          "source_offsets_zyx": {
+            "tile_contrast": [
+              0,
+              0,
+              -1
+            ],
+            "tile_raw": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "node_pruning": null,
+      "edge_scoring": null,
+      "localmax_refinement": {
+        "enabled": true,
+        "sources": [
+          "dog_abs"
+        ],
+        "radius_um": 2.5,
+        "center_offset_zyx": [
+          -3,
+          1,
+          -2
+        ],
+        "center_offsets_zyx": [
+          [
+            -3,
+            1,
+            -2
+          ]
+        ],
+        "iterations": 1,
+        "endpoint_nodes": 160,
+        "refined_nodes": 160,
+        "mean_abs_offset_zyx": [
+          0.94375,
+          2.08125,
+          2.49375
+        ]
+      },
+      "output_offset_zyx": [
+        0,
+        0,
+        0
+      ],
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 360,
+        "after_nodes": 160,
+        "edges": 92
+      },
+      "edge_tp": 13.0,
+      "edge_fp": 0.0,
+      "edge_fn": 7.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6451612903225806,
+      "total_node_ratio": -0.012167208770027768,
+      "edge_jaccard": 0.65,
+      "adj_edge_jaccard": 0.6507908685700519,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 166.02
+    }
+  ],
+  "dataset_reports": [
+    {
+      "dataset": "6bba_2819ca14",
+      "clip_start": 0,
+      "clip_end": 3,
+      "route": "balanced_midpoint",
+      "score": 0.6507908685700519,
+      "edge_jaccard": 0.65,
+      "node_recall": 0.6451612903225806,
+      "runtime_sec": 22.781713008880615
+    }
+  ],
+  "submission_validation": {
+    "valid": true,
+    "errors": [],
+    "row_type_counts": {
+      "node": 164,
+      "edge": 96
+    },
+    "dataset_count": 1
+  },
+  "submission_graph": {
+    "datasets": 1,
+    "nodes": 164,
+    "edges": 96,
+    "dividing_nodes": 0,
+    "out_gt2": 0,
+    "merges": 0
+  },
+  "submission_output": "reports/general_model_cv_audit_fold0_auto_2819_endpoint_forward_guard_1clip_submission.csv",
+  "runtime_sec": 22.862258911132812
+}

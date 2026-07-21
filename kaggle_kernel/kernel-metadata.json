@@ -1,12 +1,12 @@
 {
-  "id": "onebitbrain/biohub-rule-based-dog-hungarian",
-  "title": "biohub-rule-based-dog-hungarian",
-  "code_file": "rule_based_submission.py",
+  "id": "onebitbrain/biohub-celltrack-alpha",
+  "title": "biohub-celltrack-alpha",
+  "code_file": "alpha_submission.py",
   "language": "python",
   "kernel_type": "script",
   "is_private": true,
   "enable_gpu": false,
-  "enable_internet": true,
+  "enable_internet": false,
   "competition_sources": [
     "biohub-cell-tracking-during-development"
   ]

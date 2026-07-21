@@ -1,0 +1,164 @@
+{
+  "created_at": "2026-07-13T22:47:11+08:00",
+  "decision": "promote_mid2_skip_clipped_offset_for_very_low_foreground_high_motif_midpoint",
+  "target_not_met": true,
+  "d07_policy": "A / clean_compact unchanged",
+  "promoted_change": {
+    "route_branch": "6bba very-low-foreground high-motif balanced_midpoint",
+    "added_offset_zyx": [
+      3,
+      48,
+      -30
+    ],
+    "offset_clone_skip_clipped": true
+  },
+  "locked_before": {
+    "n": 12,
+    "edge_jaccard": 0.7914110429447853,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.9030299183592194,
+    "adj_edge_jaccard": 0.7200857052740408,
+    "n_adj": 12,
+    "score": 0.7200857052740408
+  },
+  "locked_after": {
+    "n": 12,
+    "edge_jaccard": 0.803680981595092,
+    "division_jaccard": NaN,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 0.0,
+    "node_recall": 0.913446585025886,
+    "adj_edge_jaccard": 0.7220338777009611,
+    "n_adj": 12,
+    "score": 0.7220338777009611
+  },
+  "delta_score": 0.0019481724269202472,
+  "delta_edge_jaccard": 0.012269938650306789,
+  "delta_node_recall": 0.01041666666666663,
+  "probe": {
+    "broad_probe_path": "reports/general_model_n37_372c_offset_variant_probe.json",
+    "component_probe_path": "reports/general_model_n37_372c_mid_component_offset_probe.json",
+    "best": {
+      "dataset": "6bba_372c8cb8",
+      "variant": "mid2",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "offsets_zyx": [
+        [
+          3,
+          48,
+          -30
+        ]
+      ],
+      "skip_clipped": true,
+      "num_pred_nodes": 635.0,
+      "num_pred_edges": 378,
+      "graph": {},
+      "offset_clone_layers": {
+        "enabled": true,
+        "skip_clipped": true,
+        "offsets_zyx": [
+          [
+            3,
+            48,
+            -30
+          ]
+        ],
+        "layers": 1,
+        "base_nodes": 390,
+        "base_edges": 234,
+        "cloned_nodes": 245,
+        "cloned_edges": 144,
+        "clipped_nodes": 145,
+        "skipped_clipped_nodes": 145,
+        "mean_abs_offset_zyx": [
+          3.0,
+          48.0,
+          30.0
+        ]
+      },
+      "endpoint_forward_clones": null,
+      "edge_tp": 13.0,
+      "edge_fp": 1.0,
+      "edge_fn": 3.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.875,
+      "total_node_ratio": 2.0147652281251482,
+      "edge_jaccard": 0.7647058823529411,
+      "adj_edge_jaccard": 0.6106356002021945,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    },
+    "broad_best": {
+      "dataset": "6bba_372c8cb8",
+      "variant": "current",
+      "route": "balanced_midpoint",
+      "clip_start": 0,
+      "clip_end": 3,
+      "offsets_zyx": null,
+      "skip_clipped": null,
+      "num_pred_nodes": 390.0,
+      "num_pred_edges": 234,
+      "graph": {},
+      "offset_clone_layers": null,
+      "endpoint_forward_clones": null,
+      "edge_tp": 11.0,
+      "edge_fp": 1.0,
+      "edge_fn": 5.0,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.75,
+      "total_node_ratio": 0.8515880928642644,
+      "edge_jaccard": 0.6470588235294118,
+      "adj_edge_jaccard": 0.5919560645793712,
+      "division_jaccard": NaN,
+      "estimated_number_of_nodes": 210.63
+    }
+  },
+  "guards": {
+    "locked12_audit": "reports/general_model_cv_audit_fold0_auto_fifth_offset_mid2_12ds_12clips.json",
+    "targeted_372c_guard": "reports/general_model_cv_audit_fold0_auto_372c_mid2_offset_guard_1clip.json",
+    "d07_guard": "reports/general_model_cv_audit_fold1_auto_d07_fifth_offset_mid2_guard_1clip.json",
+    "division_guard": "reports/general_model_cv_audit_fold0_auto_fe670320_fifth_offset_mid2_guard_1clip.json",
+    "scorer_parity": "reports/general_model_scorer_parity_after_fifth_offset_mid2.json",
+    "synthetic": "reports/synthetic_benchmark_after_fifth_offset_mid2.json"
+  },
+  "guard_summaries": {
+    "d07": {
+      "n": 1,
+      "edge_jaccard": 0.5,
+      "division_jaccard": NaN,
+      "division_tp": 0.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.6666666666666666,
+      "adj_edge_jaccard": 0.5382049227756265,
+      "n_adj": 1,
+      "score": 0.5382049227756265
+    },
+    "division": {
+      "n": 1,
+      "edge_jaccard": 0.8,
+      "division_jaccard": 1.0,
+      "division_tp": 1.0,
+      "division_fp": 0.0,
+      "division_fn": 0.0,
+      "node_recall": 0.7857142857142857,
+      "adj_edge_jaccard": 0.8391485172880522,
+      "n_adj": 1,
+      "score": 0.9391485172880522
+    },
+    "scorer_parity_overall_pass": true,
+    "synthetic_edge_f1": 1.0,
+    "synthetic_edge_digest_sha256": "eac380a9a04d3155b222df8c557d9840d90274c9dd545912ad6364b1fbceb99b"
+  },
+  "interpretation": "The two-layer midpoint offset family was negative from node penalty, but the second component alone recovered two additional 372c true edges with a tolerable clipped-gated node increase; other locked routes were unchanged."
+}

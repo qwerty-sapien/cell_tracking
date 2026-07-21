@@ -1,0 +1,39 @@
+{
+  "dataset": "44b6_2f31fc2f",
+  "route": "subtile_dog_compact_param_probe",
+  "rows": [
+    {
+      "max_points_per_t": 260,
+      "mean_candidates_per_t": 260.0,
+      "recall_7um": 0.3333333333333333,
+      "recall_10um": 1.0,
+      "median_nearest_um": 8.175623893737793,
+      "p90_nearest_um": 8.429101943969727
+    },
+    {
+      "max_points_per_t": 360,
+      "mean_candidates_per_t": 360.0,
+      "recall_7um": 0.3333333333333333,
+      "recall_10um": 1.0,
+      "median_nearest_um": 8.175623893737793,
+      "p90_nearest_um": 8.429101943969727
+    },
+    {
+      "max_points_per_t": 520,
+      "mean_candidates_per_t": 520.0,
+      "recall_7um": 0.3333333333333333,
+      "recall_10um": 1.0,
+      "median_nearest_um": 8.175623893737793,
+      "p90_nearest_um": 8.429101943969727
+    },
+    {
+      "max_points_per_t": 760,
+      "mean_candidates_per_t": 760.0,
+      "recall_7um": 0.3333333333333333,
+      "recall_10um": 1.0,
+      "median_nearest_um": 8.175623893737793,
+      "p90_nearest_um": 8.429101943969727
+    }
+  ],
+  "runtime_sec": 40.33570408821106
+}

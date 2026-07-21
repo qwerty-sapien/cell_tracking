@@ -18,6 +18,7 @@ from zarr.storage import ZipStore
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from celltrack_alpha.localization import sha256_file  # noqa: E402
 from celltrack_alpha.proposals import detect_candidates_one_timepoint  # noqa: E402
 from celltrack_alpha.routing import default_route_configs  # noqa: E402
 from celltrack_baseline.rule_based import list_zip_datasets, parse_scale, read_geff_arrays  # noqa: E402
@@ -34,6 +35,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--route", default="clean_point", choices=tuple(sorted(default_route_configs())))
     parser.add_argument("--max-timepoints", type=int, default=12)
     parser.add_argument("--match-radius-um", type=float, default=14.0)
+    parser.add_argument("--split-manifest", type=Path, default=Path("reports/general_model_split_manifest.json"))
+    parser.add_argument("--fold-id", default=None, help="Fold whose calibration_train datasets may be used for a fold-safe output.")
     parser.add_argument("--output", type=Path, default=Path("reports/alpha_offset_calibration.json"))
     return parser.parse_args()
 
@@ -53,6 +56,27 @@ def default_datasets(zip_path: Path, max_per_prefix: int) -> list[str]:
         # only if users did not provide an explicit set. This stays deterministic.
         selected.extend(by_prefix[prefix][:max_per_prefix])
     return selected
+
+
+def _prefix_balanced_sample(datasets: list[str], max_per_prefix: int) -> list[str]:
+    by_prefix: dict[str, list[str]] = defaultdict(list)
+    for dataset in sorted(datasets):
+        by_prefix[dataset.split("_")[0]].append(dataset)
+    selected: list[str] = []
+    for prefix in sorted(by_prefix):
+        selected.extend(by_prefix[prefix][:max_per_prefix])
+    return selected
+
+
+def fold_safe_datasets(split_manifest_path: Path, fold_id: str, max_per_prefix: int) -> tuple[list[str], dict[str, Any], str]:
+    split_manifest = json.loads(split_manifest_path.read_text(encoding="utf-8"))
+    folds = split_manifest.get("folds", {})
+    fold = folds.get(str(fold_id))
+    if not isinstance(fold, dict):
+        raise ValueError(f"fold {fold_id!r} is not present in {split_manifest_path}")
+    calibration_train = [str(v) for v in fold.get("calibration_train", [])]
+    selected = _prefix_balanced_sample(calibration_train, max_per_prefix)
+    return selected, split_manifest, sha256_file(split_manifest_path)
 
 
 def sample_times(times: list[int], max_timepoints: int) -> list[int]:
@@ -134,7 +158,39 @@ def main() -> int:
     args = parse_args()
     configs = default_route_configs()
     config = configs[args.route]
-    datasets = parse_csv_strings(args.datasets) if args.datasets else default_datasets(args.zip, args.max_per_prefix)
+    split_manifest: dict[str, Any] | None = None
+    split_manifest_hash: str | None = None
+    if args.datasets:
+        datasets = parse_csv_strings(args.datasets)
+        if args.fold_id and args.split_manifest.exists():
+            split_manifest = json.loads(args.split_manifest.read_text(encoding="utf-8"))
+            split_manifest_hash = sha256_file(args.split_manifest)
+    elif args.fold_id:
+        datasets, split_manifest, split_manifest_hash = fold_safe_datasets(
+            args.split_manifest, str(args.fold_id), args.max_per_prefix
+        )
+    else:
+        datasets = default_datasets(args.zip, args.max_per_prefix)
+
+    excluded_duplicates = set()
+    calibration_train = set(datasets)
+    validation_datasets: set[str] = set()
+    if split_manifest is not None and args.fold_id is not None:
+        fold = split_manifest.get("folds", {}).get(str(args.fold_id), {})
+        calibration_train = set(str(v) for v in fold.get("calibration_train", []))
+        validation_datasets = set(str(v) for v in fold.get("validation", []))
+        excluded_duplicates = set(
+            str(v)
+            for v in split_manifest.get("excluded_from_general_score", {}).get(
+                "duplicate_public_ids", []
+            )
+        )
+        invalid = sorted(set(datasets) - calibration_train)
+        if invalid:
+            raise ValueError(f"calibration datasets are outside fold calibration_train: {invalid[:10]}")
+        dup = sorted(set(datasets) & excluded_duplicates)
+        if dup:
+            raise ValueError(f"calibration datasets include duplicate public IDs excluded from G-01: {dup}")
 
     dataset_matches: dict[str, list[dict[str, Any]]] = {}
     dataset_rows: dict[str, dict[str, Any]] = {}
@@ -204,12 +260,23 @@ def main() -> int:
     for prefix, row in prefix_offsets.items():
         row["prefix"] = prefix
 
+    provenance = {
+        "status": "fold_safe" if split_manifest is not None and args.fold_id is not None else "legacy_unverified",
+        "fold_id": str(args.fold_id) if args.fold_id is not None else None,
+        "split_manifest": str(args.split_manifest) if split_manifest is not None else None,
+        "split_manifest_sha256": split_manifest_hash,
+        "source_datasets": datasets,
+        "calibration_train": sorted(calibration_train) if split_manifest is not None else datasets,
+        "validation_datasets": sorted(validation_datasets),
+        "excluded_duplicate_public_ids": sorted(excluded_duplicates),
+    }
     payload = {
         "route": args.route,
         "match_radius_um": args.match_radius_um,
         "datasets": datasets,
         "dataset_offsets": dataset_rows,
         "prefix_offsets": prefix_offsets,
+        "provenance": provenance,
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(payload, indent=2), encoding="utf-8")

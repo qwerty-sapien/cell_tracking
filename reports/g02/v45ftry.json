@@ -1,0 +1,38 @@
+{
+  "artifact": "v45f-private-trial-v1",
+  "authorization": {
+    "approved_by_user": true,
+    "maximum_charge_usd": 0.3,
+    "maximum_hours": 0.75,
+    "private_only": true,
+    "scored_submission": false
+  },
+  "immutable_inputs": {
+    "archive_sha256": "2f9442b5766be58cf1d36a4500b1fc72ec3f3610d74b29c880f4723fbd24d182",
+    "checkpoint_sha256": "12f6881ee3620a831697ca098ff8f48e687a24225f4e048b538deec3562fe771",
+    "fit_projection_sha256": "c638e5b446fe688ce7698ca7d01759645a11bce03bef68eb2008f47505e3041d",
+    "package_manifest_sha256": "bb0e188104ad567c916bc2ac1fb44072a09e6af30bd72f3a13ed5a08a4df9a31",
+    "package_identity_sha256": "d0d823c4d8e8992dfa3611d24b080cd1e80b4bab1289f09c794e28227ae54f9e",
+    "train_config_sha256": "2495ae1fed91de205660618ee9d580b3b380988f31243efe1aecba5030015e50"
+  },
+  "kaggle": {
+    "kernel_ref": "onebitbrain/bh-v45fast",
+    "kernel_version": 1,
+    "pushed_at_utc": "2026-07-19T05:02:02Z",
+    "status_at_recording": "RUNNING",
+    "url": "https://www.kaggle.com/code/onebitbrain/bh-v45fast"
+  },
+  "model": {
+    "division_emission": false,
+    "fit_source_count": 12,
+    "fold": 0,
+    "fraction": 0.1,
+    "head_parameter_count": 1254,
+    "student_views": [
+      0
+    ],
+    "teacher": "exact-sequential-d4-8-logit-mean"
+  },
+  "network_or_submission_actions": false,
+  "status": "kernel_running"
+}

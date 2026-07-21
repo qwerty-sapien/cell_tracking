@@ -1,0 +1,325 @@
+{
+  "created_at": "2026-07-13T20:05:37+08:00",
+  "d07_policy": "A / clean_compact unchanged",
+  "decision": "promote_iterative_offset_clone_family_for_6bba_routes",
+  "delta_edge_jaccard": 0.05555555555555558,
+  "delta_node_recall": 0.02819444444444441,
+  "delta_score": 0.02667432924969404,
+  "evidence": {
+    "actual_weak6_probe": "reports/general_model_n33_weak6_iterative_offset_actual_probe.json",
+    "d07_guard": "reports/general_model_cv_audit_fold1_auto_d07_iterative_offset_guard_1clip.json",
+    "division_guard": "reports/general_model_cv_audit_fold0_auto_fe670320_iterative_offset_guard_1clip.json",
+    "locked12_audit": "reports/general_model_cv_audit_fold0_auto_iterative_offset_12ds_12clips.json",
+    "posthoc_grid": "reports/general_model_n33_weak6_iterative_offset_posthoc_grid.json",
+    "scorer_parity": "reports/general_model_scorer_parity_after_iterative_offset.json",
+    "synthetic": "reports/synthetic_benchmark_after_iterative_offset.json"
+  },
+  "guards": {
+    "d07_route": "clean_compact",
+    "d07_score": 0.5382049227756265,
+    "division_score": 0.9391485172880522,
+    "division_tp": 1.0,
+    "scorer_parity_overall_pass": true,
+    "synthetic_edge_digest_sha256": "eac380a9a04d3155b222df8c557d9840d90274c9dd545912ad6364b1fbceb99b"
+  },
+  "interpretation": [
+    "The N33 offsets improve localized sparse-label recovery on 062c, 1d0d, and 2312 without changing clean 44b6 routes or d07 routing.",
+    "The locked12 score improves materially but remains below the 0.85 target; 1d0d and 372c are now the dominant residual weak rows.",
+    "Further brute offset cloning is likely low-yield because several candidates improve raw edge Jaccard while losing adjusted score to node over-prediction."
+  ],
+  "locked_after": {
+    "adj_edge_jaccard": 0.7071889141449581,
+    "division_fn": 0.0,
+    "division_fp": 0.0,
+    "division_jaccard": "NaN",
+    "division_tp": 0.0,
+    "edge_jaccard": 0.7716049382716049,
+    "n": 12,
+    "n_adj": 12,
+    "node_recall": 0.8941410294703305,
+    "score": 0.7071889141449581
+  },
+  "locked_before": {
+    "adj_edge_jaccard": 0.6805145848952641,
+    "division_fn": 0.0,
+    "division_fp": 0.0,
+    "division_jaccard": "NaN",
+    "division_tp": 0.0,
+    "edge_jaccard": 0.7160493827160493,
+    "n": 12,
+    "n_adj": 12,
+    "node_recall": 0.8659465850258861,
+    "score": 0.6805145848952641
+  },
+  "not_promoted": {
+    "balanced_dog_tight_0c7_second_layer": "all tested second layers reduced adjusted score; keep single offset (-3,12,-24)",
+    "balanced_midpoint_2819_second_layer": "raw edge Jaccard improved but adjusted score regressed from node penalty",
+    "balanced_midpoint_high_motif_372c_second_layer": "raw edge Jaccard improved but adjusted score regressed from node penalty"
+  },
+  "promoted_offsets": {
+    "balanced_compact_second_choice_6bba": [
+      [
+        0,
+        20,
+        17
+      ],
+      [
+        0,
+        -36,
+        30
+      ],
+      [
+        -3,
+        36,
+        -24
+      ]
+    ],
+    "balanced_dog_tight_6bba": [
+      [
+        -3,
+        12,
+        -24
+      ]
+    ],
+    "balanced_midpoint_high_foreground_6bba": [
+      [
+        3,
+        -24,
+        -18
+      ],
+      [
+        3,
+        48,
+        -30
+      ]
+    ],
+    "balanced_midpoint_low_estimated_6bba": [
+      [
+        3,
+        6,
+        -24
+      ]
+    ],
+    "balanced_midpoint_very_low_foreground_low_estimated_6bba": [
+      [
+        0,
+        24,
+        18
+      ],
+      [
+        -3,
+        42,
+        -12
+      ]
+    ]
+  },
+  "target_not_met": true,
+  "weak6_actual_summary": {
+    "adj_edge_jaccard": 0.6745336672400828,
+    "division_fn": 0.0,
+    "division_fp": 0.0,
+    "division_jaccard": "NaN",
+    "division_tp": 0.0,
+    "edge_jaccard": 0.7534246575342466,
+    "n": 6,
+    "n_adj": 6,
+    "node_recall": 0.816059836718439,
+    "score": 0.6745336672400828
+  },
+  "weak6_row_deltas": {
+    "6bba_062c8d37": {
+      "after": {
+        "adj_edge_jaccard": 0.7274295190713101,
+        "edge_fn": 2.0,
+        "edge_fp": 0.0,
+        "edge_jaccard": 0.8,
+        "edge_tp": 8.0,
+        "edges": 186,
+        "node_recall": 0.8125,
+        "nodes": 345,
+        "score": 0.7274295190713101
+      },
+      "before": {
+        "edge_fn": 3.0,
+        "edge_fp": 0.0,
+        "edge_jaccard": 0.7,
+        "edge_tp": 7.0,
+        "edges": 124,
+        "node_recall": 0.6875,
+        "nodes": 230,
+        "score": 0.6810005527915975
+      },
+      "offsets_zyx": [
+        [
+          0,
+          24,
+          18
+        ],
+        [
+          -3,
+          42,
+          -12
+        ]
+      ]
+    },
+    "6bba_0c7fa718": {
+      "after": {
+        "adj_edge_jaccard": 0.7926482873851294,
+        "edge_fn": 2.0,
+        "edge_fp": 1.0,
+        "edge_jaccard": 0.8421052631578947,
+        "edge_tp": 16.0,
+        "edges": 384,
+        "node_recall": 0.9629629629629629,
+        "nodes": 650,
+        "score": 0.7926482873851294
+      },
+      "before": {
+        "edge_fn": 2.0,
+        "edge_fp": 1.0,
+        "edge_jaccard": 0.8421052631578947,
+        "edge_tp": 16.0,
+        "edges": 384,
+        "node_recall": 0.9629629629629629,
+        "nodes": 650,
+        "score": 0.7926482873851294
+      },
+      "offsets_zyx": [
+        [
+          -3,
+          12,
+          -24
+        ]
+      ]
+    },
+    "6bba_1d0d8384": {
+      "after": {
+        "adj_edge_jaccard": 0.5773893200811511,
+        "edge_fn": 15.0,
+        "edge_fp": 1.0,
+        "edge_jaccard": 0.68,
+        "edge_tp": 34.0,
+        "edges": 824,
+        "node_recall": 0.72,
+        "nodes": 1348,
+        "score": 0.5773893200811511
+      },
+      "before": {
+        "edge_fn": 19.0,
+        "edge_fp": 1.0,
+        "edge_jaccard": 0.6,
+        "edge_tp": 30.0,
+        "edges": 622,
+        "node_recall": 0.64,
+        "nodes": 1015,
+        "score": 0.5466491708079736
+      },
+      "offsets_zyx": [
+        [
+          0,
+          20,
+          17
+        ],
+        [
+          0,
+          -36,
+          30
+        ],
+        [
+          -3,
+          36,
+          -24
+        ]
+      ]
+    },
+    "6bba_2312ac41": {
+      "after": {
+        "adj_edge_jaccard": 0.7579033007903301,
+        "edge_fn": 5.0,
+        "edge_fp": 0.0,
+        "edge_jaccard": 0.8333333333333334,
+        "edge_tp": 25.0,
+        "edges": 419,
+        "node_recall": 0.8444444444444444,
+        "nodes": 683,
+        "score": 0.7579033007903301
+      },
+      "before": {
+        "edge_fn": 9.0,
+        "edge_fp": 0.0,
+        "edge_jaccard": 0.7,
+        "edge_tp": 21.0,
+        "edges": 282,
+        "node_recall": 0.7111111111111111,
+        "nodes": 458,
+        "score": 0.6805718270571827
+      },
+      "offsets_zyx": [
+        [
+          3,
+          -24,
+          -18
+        ],
+        [
+          3,
+          48,
+          -30
+        ]
+      ]
+    },
+    "6bba_2819ca14": {
+      "after": {
+        "adj_edge_jaccard": 0.7238742320202386,
+        "edge_fn": 4.0,
+        "edge_fp": 0.0,
+        "edge_jaccard": 0.8,
+        "edge_tp": 16.0,
+        "edges": 188,
+        "node_recall": 0.8064516129032258,
+        "nodes": 324,
+        "score": 0.7238742320202386
+      },
+      "before": {
+        "edge_fn": 4.0,
+        "edge_fp": 0.0,
+        "edge_jaccard": 0.8,
+        "edge_tp": 16.0,
+        "edges": 188,
+        "node_recall": 0.8064516129032258,
+        "nodes": 324,
+        "score": 0.7238742320202386
+      },
+      "offsets_zyx": [
+        [
+          3,
+          6,
+          -24
+        ]
+      ]
+    },
+    "6bba_372c8cb8": {
+      "after": {
+        "adj_edge_jaccard": 0.5919560645793712,
+        "edge_fn": 5.0,
+        "edge_fp": 1.0,
+        "edge_jaccard": 0.6470588235294118,
+        "edge_tp": 11.0,
+        "edges": 234,
+        "node_recall": 0.75,
+        "nodes": 390,
+        "score": 0.5919560645793712
+      },
+      "before": {
+        "edge_fn": 5.0,
+        "edge_fp": 1.0,
+        "edge_jaccard": 0.6470588235294118,
+        "edge_tp": 11.0,
+        "edges": 234,
+        "node_recall": 0.75,
+        "nodes": 390,
+        "score": 0.5919560645793712
+      },
+      "offsets_zyx": null
+    }
+  }
+}

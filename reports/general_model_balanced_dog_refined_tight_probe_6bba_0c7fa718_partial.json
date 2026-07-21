@@ -1,0 +1,42 @@
+{
+  "kind": "custom_route_probe_partial",
+  "dataset": "6bba_0c7fa718",
+  "base_route": "balanced_dog_tight",
+  "status": "interrupted_after_clear_regression",
+  "rows": [
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_refined_tight_mp190_l4.5_e0.45",
+      "adj_edge_jaccard": 0.05153235653235653,
+      "edge_jaccard": 0.05,
+      "node_recall": 0.14814814814814814,
+      "edge_tp": 1.0,
+      "edge_fp": 2.0,
+      "edge_fn": 17.0,
+      "num_pred_nodes": 284,
+      "num_pred_edges": 157,
+      "max_points_per_t": 190,
+      "max_link_um": 4.5,
+      "edge_cost_threshold": 0.45,
+      "runtime_sec": 40.685442209243774
+    },
+    {
+      "dataset": "6bba_0c7fa718",
+      "route": "balanced_dog_refined_tight_mp190_l4.5_e0.55",
+      "adj_edge_jaccard": 0.05131257631257631,
+      "edge_jaccard": 0.05,
+      "node_recall": 0.14814814814814814,
+      "edge_tp": 1.0,
+      "edge_fp": 2.0,
+      "edge_fn": 17.0,
+      "num_pred_nodes": 302,
+      "num_pred_edges": 169,
+      "max_points_per_t": 190,
+      "max_link_um": 4.5,
+      "edge_cost_threshold": 0.55,
+      "runtime_sec": 41.544458866119385
+    }
+  ],
+  "baseline_adj_edge_jaccard": 0.2698734014523488,
+  "notes": "Adding refine_local_score to balanced_dog_tight collapses endpoint node recall on the first two settings; sweep stopped early to conserve compute."
+}

@@ -1,0 +1,52 @@
+{
+  "kind": "interrupted_probe_summary",
+  "created_at": "2026-07-13T04:21:00+08:00",
+  "dataset": "6bba_0c7fa718",
+  "scope": "fold0 validation first 3-frame clip",
+  "probe": "strict subtile DoG/local-contrast custom route variants",
+  "note": "Probe was interrupted before the original script wrote a JSON report; rows below are captured from stdout and logged as a negative ablation.",
+  "baseline_score": 0.2698734014523488,
+  "rows": [
+    {
+      "variant": "subdog_tight_mp120",
+      "score": 0.0,
+      "edge_jaccard": 0.0,
+      "node_recall": 0.037037,
+      "nodes": 250,
+      "edges": 147
+    },
+    {
+      "variant": "subdog_tight_mp160",
+      "score": 0.05356339566865882,
+      "edge_jaccard": 0.0526316,
+      "node_recall": 0.111111,
+      "nodes": 337,
+      "edges": 198
+    },
+    {
+      "variant": "subdog_tight_mp190",
+      "score": 0.04792720507006221,
+      "edge_jaccard": 0.047619,
+      "node_recall": 0.185185,
+      "nodes": 383,
+      "edges": 226
+    },
+    {
+      "variant": "subdog_contrast_tight_mp120",
+      "score": 0.05492577597840756,
+      "edge_jaccard": 0.0526316,
+      "node_recall": 0.074074,
+      "nodes": 231,
+      "edges": 133
+    },
+    {
+      "variant": "subdog_contrast_tight_mp160",
+      "score": 0.05388471177944861,
+      "edge_jaccard": 0.0526316,
+      "node_recall": 0.074074,
+      "nodes": 312,
+      "edges": 182
+    }
+  ],
+  "decision": "rejected; strict subtile coverage collapsed sparse-label edge recall relative to baseline"
+}

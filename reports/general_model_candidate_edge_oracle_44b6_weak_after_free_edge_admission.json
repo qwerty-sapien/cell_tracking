@@ -1,0 +1,481 @@
+{
+  "kind": "candidate_edge_oracle_diagnostic",
+  "created_at_unix": 1783919964.813141,
+  "zip": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+  "split_manifest": "reports/general_model_split_manifest.json",
+  "fold_id": "0",
+  "datasets": [
+    "44b6_2f31fc2f",
+    "44b6_587a1e22",
+    "44b6_40c45f5a",
+    "44b6_71a4179f"
+  ],
+  "route_arg": "auto",
+  "clip_length": 3,
+  "scoring_json": "reports/general_model_coordinate_corrector_fold0_auto_midpoint_8ds_no44_balanced.json",
+  "reports": [
+    {
+      "dataset": "44b6_2f31fc2f",
+      "route": "balanced_axial_compact",
+      "route_reason": "crowded/high foreground; compact spatially balanced localizer preferred; low-foreground high-motif 44b6 field; balanced axial rescue fills z-localization gaps; division-like close-pair motifs",
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 3,
+      "gt_edges": 2,
+      "candidate_nodes": 540,
+      "edge_candidates": 431,
+      "selected_edges": 140,
+      "emitted_nodes": 249,
+      "matched_emitted_nodes": 2,
+      "matched_raw_candidate_nodes": 3,
+      "selected_gt_edge_tp": 1,
+      "selected_gt_edge_pairs": [
+        [
+          30000000020,
+          31000000020
+        ]
+      ],
+      "missed_gt_edges": [
+        [
+          31000000020,
+          32000000020
+        ]
+      ],
+      "raw_candidate_gt_edge_pairs": [],
+      "raw_candidate_gt_edge_hit_count": 0,
+      "raw_candidate_gt_edge_hits": [],
+      "raw_candidate_gt_edge_conflicts": {},
+      "unselected_emitted_gt_edge_hits": [],
+      "unselected_emitted_gt_edge_hit_count": 0,
+      "unselected_emitted_conflicts": {},
+      "selected_valid_edge_approx": 1,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 540,
+        "after_nodes": 249,
+        "edges": 140
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": null,
+      "free_edge_admission": null,
+      "localmax_clone_layers": null,
+      "endpoint_forward_clones": null,
+      "forks": 0
+    },
+    {
+      "dataset": "44b6_587a1e22",
+      "route": "balanced_axial_compact",
+      "route_reason": "crowded/high foreground; compact spatially balanced localizer preferred; low-foreground high-motif 44b6 field; balanced axial rescue fills z-localization gaps; division-like close-pair motifs",
+      "clip_start": 5,
+      "clip_end": 8,
+      "gt_nodes": 3,
+      "gt_edges": 2,
+      "candidate_nodes": 540,
+      "edge_candidates": 200,
+      "selected_edges": 78,
+      "emitted_nodes": 149,
+      "matched_emitted_nodes": 2,
+      "matched_raw_candidate_nodes": 2,
+      "selected_gt_edge_tp": 1,
+      "selected_gt_edge_pairs": [
+        [
+          8000000061,
+          9000000061
+        ]
+      ],
+      "missed_gt_edges": [
+        [
+          7000000061,
+          8000000061
+        ]
+      ],
+      "raw_candidate_gt_edge_pairs": [
+        [
+          8000000061,
+          9000000061
+        ]
+      ],
+      "raw_candidate_gt_edge_hit_count": 1,
+      "raw_candidate_gt_edge_hits": [
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 183,
+          "target_id": 363,
+          "gt_source_id": 8000000061,
+          "gt_target_id": 9000000061,
+          "distance_um": 1.6750116604071745,
+          "cost": 0.15333722013572487,
+          "score": 0.8301444172344176,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.035,
+            "appearance_delta": 0.03192660549287097,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 1.6750116604071745,
+            "target_best_distance_um": 1.6750116604071745
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        }
+      ],
+      "raw_candidate_gt_edge_conflicts": {
+        "source_out_used": 1,
+        "target_in_used": 1
+      },
+      "unselected_emitted_gt_edge_hits": [],
+      "unselected_emitted_gt_edge_hit_count": 0,
+      "unselected_emitted_conflicts": {},
+      "selected_valid_edge_approx": 1,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 540,
+        "after_nodes": 149,
+        "edges": 78
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": null,
+      "free_edge_admission": null,
+      "localmax_clone_layers": null,
+      "endpoint_forward_clones": null,
+      "forks": 0
+    },
+    {
+      "dataset": "44b6_40c45f5a",
+      "route": "hybrid_rescue_compact",
+      "route_reason": "crowded/high foreground; compact spatially balanced localizer preferred; high-signal high-motif 44b6 field; hybrid rescue recovers extra true edges; division-like close-pair motifs; high estimated total node count",
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 6,
+      "gt_edges": 4,
+      "candidate_nodes": 660,
+      "edge_candidates": 158,
+      "selected_edges": 116,
+      "emitted_nodes": 204,
+      "matched_emitted_nodes": 3,
+      "matched_raw_candidate_nodes": 3,
+      "selected_gt_edge_tp": 2,
+      "selected_gt_edge_pairs": [
+        [
+          141000000027,
+          142000000027
+        ],
+        [
+          142000000027,
+          143000000027
+        ]
+      ],
+      "missed_gt_edges": [
+        [
+          141000000026,
+          142000000026
+        ],
+        [
+          142000000026,
+          143000000026
+        ]
+      ],
+      "raw_candidate_gt_edge_pairs": [
+        [
+          141000000027,
+          142000000027
+        ],
+        [
+          142000000027,
+          143000000027
+        ]
+      ],
+      "raw_candidate_gt_edge_hit_count": 2,
+      "raw_candidate_gt_edge_hits": [
+        {
+          "selected": false,
+          "emitted_source": false,
+          "emitted_target": true,
+          "source_id": 39,
+          "target_id": 244,
+          "gt_source_id": 141000000027,
+          "gt_target_id": 142000000027,
+          "distance_um": 1.284675299443404,
+          "cost": -0.042949914444741666,
+          "score": 0.9146514542360615,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.03,
+            "appearance_delta": 0.005432098764537926,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 2.0,
+            "target_in_rank_norm": 0.5,
+            "target_in_candidate_count": 3.0,
+            "target_distance_to_best_um": 0.4721752994434041,
+            "target_best_margin_um": 0.4721752994434041,
+            "target_is_nearest": 0.0,
+            "mutual_nearest": 0.0,
+            "min_best_margin_um": 0.4721752994434041,
+            "candidate_ambiguity": 1.0986122886681098,
+            "source_best_distance_um": 1.284675299443404,
+            "target_best_distance_um": 0.8125
+          },
+          "conflicts": [
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 244,
+          "target_id": 481,
+          "gt_source_id": 142000000027,
+          "gt_target_id": 143000000027,
+          "distance_um": 3.0671202393287422,
+          "cost": 0.4603200683796406,
+          "score": 0.5887304806509771,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.024,
+            "appearance_delta": 0.018169694946129404,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 3.0671202393287422,
+            "target_best_distance_um": 3.0671202393287422
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        }
+      ],
+      "raw_candidate_gt_edge_conflicts": {
+        "target_in_used": 2,
+        "source_out_used": 1
+      },
+      "unselected_emitted_gt_edge_hits": [],
+      "unselected_emitted_gt_edge_hit_count": 0,
+      "unselected_emitted_conflicts": {},
+      "selected_valid_edge_approx": 2,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 660,
+        "after_nodes": 204,
+        "edges": 116
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": null,
+      "free_edge_admission": null,
+      "localmax_clone_layers": null,
+      "endpoint_forward_clones": null,
+      "forks": 0
+    },
+    {
+      "dataset": "44b6_71a4179f",
+      "route": "template_point_compact",
+      "route_reason": "crowded/high foreground; compact spatially balanced localizer preferred; moderate-foreground high-estimated 44b6 field; template point proposals recover sparse GT edges; division-like close-pair motifs; high estimated total node count",
+      "clip_start": 0,
+      "clip_end": 3,
+      "gt_nodes": 6,
+      "gt_edges": 4,
+      "candidate_nodes": 660,
+      "edge_candidates": 293,
+      "selected_edges": 232,
+      "emitted_nodes": 384,
+      "matched_emitted_nodes": 4,
+      "matched_raw_candidate_nodes": 5,
+      "selected_gt_edge_tp": 2,
+      "selected_gt_edge_pairs": [
+        [
+          271000000031,
+          272000000031
+        ],
+        [
+          272000000032,
+          273000000032
+        ]
+      ],
+      "missed_gt_edges": [
+        [
+          271000000032,
+          272000000032
+        ],
+        [
+          272000000031,
+          273000000031
+        ]
+      ],
+      "raw_candidate_gt_edge_pairs": [
+        [
+          271000000031,
+          272000000031
+        ],
+        [
+          272000000032,
+          273000000032
+        ]
+      ],
+      "raw_candidate_gt_edge_hit_count": 2,
+      "raw_candidate_gt_edge_hits": [
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 180,
+          "target_id": 418,
+          "gt_source_id": 271000000031,
+          "gt_target_id": 272000000031,
+          "distance_um": 2.03125,
+          "cost": 0.24708333333333338,
+          "score": 0.7705937136510052,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.01,
+            "appearance_delta": 0.013689253930975614,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 2.03125,
+            "target_best_distance_um": 2.03125
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        },
+        {
+          "selected": true,
+          "emitted_source": true,
+          "emitted_target": true,
+          "source_id": 438,
+          "target_id": 651,
+          "gt_source_id": 272000000032,
+          "gt_target_id": 273000000032,
+          "distance_um": 0.0,
+          "cost": -0.44,
+          "score": 0.9812934900456455,
+          "features": {
+            "source_score": 1.0,
+            "target_score": 1.0,
+            "density_penalty": 0.0,
+            "appearance_delta": 0.008441558438817677,
+            "appearance_penalty": 0.0,
+            "source_out_rank": 1.0,
+            "source_out_rank_norm": 0.0,
+            "source_out_candidate_count": 1.0,
+            "source_distance_to_best_um": 0.0,
+            "source_best_margin_um": 999.0,
+            "source_is_nearest": 1.0,
+            "target_in_rank": 1.0,
+            "target_in_rank_norm": 0.0,
+            "target_in_candidate_count": 1.0,
+            "target_distance_to_best_um": 0.0,
+            "target_best_margin_um": 999.0,
+            "target_is_nearest": 1.0,
+            "mutual_nearest": 1.0,
+            "min_best_margin_um": 999.0,
+            "candidate_ambiguity": 0.0,
+            "source_best_distance_um": 0.0,
+            "target_best_distance_um": 0.0
+          },
+          "conflicts": [
+            "source_out_used",
+            "target_in_used"
+          ]
+        }
+      ],
+      "raw_candidate_gt_edge_conflicts": {
+        "source_out_used": 2,
+        "target_in_used": 2
+      },
+      "unselected_emitted_gt_edge_hits": [],
+      "unselected_emitted_gt_edge_hit_count": 0,
+      "unselected_emitted_conflicts": {},
+      "selected_valid_edge_approx": 2,
+      "node_emission": {
+        "policy": "edge_endpoint_nodes",
+        "before_nodes": 660,
+        "after_nodes": 384,
+        "edges": 232
+      },
+      "coordinate_correction": null,
+      "node_pruning": null,
+      "refined_candidate_admission": null,
+      "edge_scoring": null,
+      "refined_chain_conflict_rescue": null,
+      "short_edge_pruning": null,
+      "localmax_refinement": null,
+      "free_edge_admission": null,
+      "localmax_clone_layers": null,
+      "endpoint_forward_clones": null,
+      "forks": 0
+    }
+  ],
+  "runtime_sec": 120.69161701202393
+}
