@@ -75,7 +75,7 @@ Thus the constants match the V45 reference, but matching the reference does not 
 - **Verified:** current division output is net-negative on the division term: 133 false forks and 0 true forks. **Inferred, not directly labeled here:** a false added fork edge is expected to contribute an edge FP when its endpoints do not match a GT edge; this investigation did not prove a one-for-one 133-edge increase.
 - **Verified:** a true-positive topology is possible, but the only demonstrated repair is the held-out oracle bridge above. The current heuristic does not contain a fit-safe signal that identifies that bridge rather than the 133 false forks.
 - **Inferred:** widening geometry alone is unsafe. It would increase candidates substantially, and the fit-only envelope statistics do not identify which candidate connects real daughter lineages at inference time.
-- **Decision:** do not widen geometry or add holdout-derived rewiring. Change the public runtime default to `division_enabled=False`; retain explicit opt-in for future fit-derived work. Re-enable only after a fit-safe end-to-end test demonstrates at least one official true positive without an unacceptable FP/edge-FP increase.
+- **Decision:** do not widen geometry or add holdout-derived rewiring. The public runtime now defaults to `division_enabled=False` at `src/celltrack_alpha/bh_graph.py:1930`; explicit opt-in is retained for future fit-derived work. Re-enable only after a fit-safe end-to-end test demonstrates at least one official true positive without an unacceptable FP/edge-FP increase.
 
 ## Commands/evidence checks
 

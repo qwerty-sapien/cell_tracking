@@ -706,6 +706,23 @@ class PostprocessingTests(unittest.TestCase):
 
 
 class InvariantAndProvenanceTests(unittest.TestCase):
+    def test_calibration_defaults_divisions_off_but_retains_explicit_opt_in(self) -> None:
+        parent = _node_um(0, 0, 0.0)
+        child_a = _node_um(1, 1, 1.0)
+        child_b = _node_um(2, 1, 2.0)
+
+        default = calibrate_v45_graph([parent, child_a, child_b])
+        opted_in = calibrate_v45_graph(
+            [parent, child_a, child_b], division_enabled=True
+        )
+
+        self.assertFalse(default.provenance["division_enabled"])
+        self.assertEqual(default.stats["division_added"], 0)
+        self.assertEqual(max(_degree_counts(default.edges)[1].values()), 1)
+        self.assertTrue(opted_in.provenance["division_enabled"])
+        self.assertEqual(opted_in.stats["division_added"], 1)
+        self.assertEqual(max(_degree_counts(opted_in.edges)[1].values()), 2)
+
     def test_merges_skips_and_third_children_fail_closed(self) -> None:
         nodes = [
             _node_um(0, 0, 0.0),

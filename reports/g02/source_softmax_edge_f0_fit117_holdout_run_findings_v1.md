@@ -134,3 +134,59 @@ Production divisions therefore default OFF, with explicit opt-in retained for
 future fit-derived work. The known-GT test remains an explicit expected failure
 until a fit-safe rule demonstrates a real official TP. It is inferred, not
 individually edge-match-verified, that the false forks also increase edge FPs.
+
+This result must be read beside the fixed-node oracle at
+`reports/g02/t04_v45f4_fold0_fixed_node_oracle/`. With its prediction nodes,
+coordinates, and node penalty fixed, held-out-GT-supported association rewiring
+scores adjusted edge `0.9749936254`, edge `TP/FP/FN = 36,909/0/324`, and
+division `TP/FP/FN = 37/0/5` (`division_jaccard = 0.8809523810`). The oracle is
+diagnostic and ineligible for selection or submission, but it establishes that
+association fragmentation is the upstream cause shared by the edge deficit and
+the zero division term. The 22.9% division-geometry envelope is therefore a
+symptom of missing intermediate connectivity, not a reason to widen gates or
+add re-parenting.
+
+## Finding F5 — terminal result is complete at 57; association fragmentation dominates
+
+Status: **verified by the frozen scorer on the prefix 52 plus five completed
+suffix fragments**. Full evidence and break-level records are in
+`reports/g02/source_softmax_edge_f0_fit117_holdout_complete57_v2/`.
+
+By explicit direction, `train:6bba_f4ae811c` is excluded from the terminal
+scope. Its evaluator finished while cancellation was being delivered, so the
+fragment is preserved. A previously launched background recovery later
+materialized a 58-video directory after the stop instruction; it is preserved
+but is out of scope and is not used for the terminal result or fragmentation
+analysis.
+
+The 57-video result is:
+
+- adjusted edge Jaccard `0.8495036625`;
+- raw edge Jaccard `0.8635120766`;
+- edge `TP/FP/FN = 34,107/3,230/2,161`;
+- division `TP/FP/FN = 0/149/42`, division Jaccard `0.0`.
+
+The prefix-52 pooled prediction component size is `23.3652` nodes versus
+`31.8989` for GT weak lineages, reproducing the reported 23.4 versus 31.9.
+`542/1,019 = 53.19%` of GT weak lineages are split across multiple prediction
+components. On 57 the values are `23.7173` versus `30.7767`, with
+`674/1,218 = 55.34%` fragmented.
+
+All prefix FNs are assigned to exact observable classes: 271 unmatched
+endpoints, 86 synthesized-gap endpoints, 336 final matched pairs above 10 um,
+15 division-degree constraints, 1,094 occupied-endpoint conflicts, and 8 cases
+with no observed endpoint conflict. No correct matched target ranks beyond 8
+among surviving final nodes. The original raw candidate tensors and logits were
+not persisted, so “gate exclusion” versus “out-ranked” cannot be split exactly;
+the report keeps that inference separate from the verified topology.
+
+The crowding claim reproduces on prefix 52 with Pearson `-0.701770` versus
+`-0.083338` for node ratio. On 57 the raw Pearson is `-0.464043`, weakened by
+three high-peak suffix outliers, but Spearman remains `-0.780080` and Pearson
+against `log1p(peak)` is `-0.689825`. Event-level break risk is 28.125% above
+the cap-8 final-node neighborhood versus 5.112% at or below it (`5.50x`).
+
+The decision is to target crowded-component association continuity. Do not
+widen division geometry, add a division head, tune division constants, or
+apply generic re-parenting. Divisions now default OFF in production, with
+explicit opt-in retained.

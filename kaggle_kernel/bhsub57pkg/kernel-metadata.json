@@ -1,0 +1,17 @@
+{
+  "code_file": "bh45.py",
+  "competition_sources": [
+    "biohub-cell-tracking-during-development"
+  ],
+  "dataset_sources": [
+    "pilkwang/biohub-tracking-support-pack-50ep-v1"
+  ],
+  "enable_gpu": true,
+  "enable_internet": false,
+  "id": "onebitbrain/bhv45-cv57",
+  "is_private": true,
+  "kernel_type": "script",
+  "language": "python",
+  "machine_shape": "NvidiaTeslaT4",
+  "title": "bhv45-cv57"
+}

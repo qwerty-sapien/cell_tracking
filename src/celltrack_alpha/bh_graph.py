@@ -1927,7 +1927,7 @@ def calibrate_v45_graph(
     max_component_matrix_dim: int | None = None,
     parity_mode: str = "sparse",
     topology_mode: str = "legacy",
-    division_enabled: bool = True,
+    division_enabled: bool = False,
     config: V45GraphConfig = V45_GRAPH_CONFIG,
 ) -> GraphResult:
     """Run V45 calibration, sparse by default with an explicit dense oracle."""
