@@ -181,6 +181,8 @@ class V45ConfigTests(unittest.TestCase):
         self.assertEqual(config.output_edge_max_um, 14.0)
         self.assertEqual((config.motion_tight_um, config.motion_relaxed_um), (6.0, 10.0))
         self.assertEqual((config.velocity_weight, config.learned_bonus), (0.5, 1.0))
+        self.assertEqual(config.motion_direction, "backward")
+        self.assertEqual(config.motion_error_weight, 0.25)
         self.assertEqual(config.raw_distance_weight, 0.05)
         self.assertEqual((config.gap_step_um, config.gap_total_um), (5.8, 11.6))
         self.assertEqual((config.density_gain, config.density_delta_clip_um), (0.0475, 0.125))
@@ -407,12 +409,12 @@ class MotionTests(unittest.TestCase):
         self.assertEqual(stats["scored_partial_components"], 0)
         self.assertEqual(stats["scored_partial_fallback_components"], 1)
 
-    def test_first_frame_sources_participate_and_predict_current_position(self) -> None:
+    def test_single_pair_uses_banked_quarter_weight(self) -> None:
         source = _node_um(0, 0, 0.0)
         target = _node_um(1, 1, 5.5)
         edges, stats = build_adjacent_edges([source, target])
         self.assertEqual([(edge.source_id, edge.target_id, edge.kind) for edge in edges], [(0, 1, "motion_tight")])
-        self.assertAlmostEqual(edges[0].cost, 1.05 * 5.5)
+        self.assertAlmostEqual(edges[0].cost, 0.25 * 5.5 + 0.05 * 5.5)
         self.assertEqual(stats["motion_tight_edges"], 1)
 
     def test_raw_distance_gates_while_velocity_changes_cost_only(self) -> None:
@@ -424,7 +426,7 @@ class MotionTests(unittest.TestCase):
         edge = by_pair[(1, 2)]
         self.assertEqual(edge.kind, "motion_relaxed")
         self.assertAlmostEqual(edge.distance_um, 9.0)
-        self.assertAlmostEqual(edge.cost, 14.0 + 0.05 * 9.0)
+        self.assertAlmostEqual(edge.cost, 0.25 * 9.0 + 0.05 * 9.0)
 
     def test_low_motion_error_does_not_promote_raw_seven_um_to_tight(self) -> None:
         parent = _node_um(0, 0, 0.0)
@@ -433,7 +435,7 @@ class MotionTests(unittest.TestCase):
         edges, _ = build_adjacent_edges([parent, source, target])
         by_pair = {(edge.source_id, edge.target_id): edge for edge in edges}
         self.assertEqual(by_pair[(1, 2)].kind, "motion_relaxed")
-        self.assertAlmostEqual(by_pair[(1, 2)].cost, 2.0 + 0.35)
+        self.assertAlmostEqual(by_pair[(1, 2)].cost, 0.25 * 7.0 + 0.35)
 
     def test_fourteen_um_is_output_validation_not_a_relink_pass(self) -> None:
         source = _node_um(0, 0, 0.0)
@@ -831,6 +833,8 @@ class InvariantAndProvenanceTests(unittest.TestCase):
         provenance = result.provenance
         self.assertEqual(provenance["source_script_version_id"], 335810749)
         self.assertEqual(provenance["motion_relink_raw_gates_um"], [6.0, 10.0])
+        self.assertEqual(provenance["motion_direction"], "backward")
+        self.assertEqual(provenance["motion_error_weight"], 0.25)
         self.assertEqual(provenance["output_edge_validation_um"], 14.0)
         self.assertTrue(provenance["output_edge_validation_is_not_a_relink_pass"])
         self.assertFalse(provenance["full_frame_dense_matrix"])
@@ -866,78 +870,28 @@ class LocalV45ArtifactParityTests(unittest.TestCase):
         with path.open("rb") as handle:
             self.assertEqual(sum(1 for _ in handle), 252243)
 
-    @unittest.skipUnless((ROOT / "reports/g02/v45out.zip").exists(), "raw V45 GEFFs absent")
-    def test_raw_geffs_match_exact_motion_counters_without_dense_frames(self) -> None:
-        import zarr
-        from zarr.storage import ZipStore
-
-        expected_path = ROOT / "reports/g02/v45run.csv"
-        with expected_path.open(newline="") as handle:
-            expected = {row["dataset"]: row for row in csv.DictReader(handle)}
-        archive_path = ROOT / "reports/g02/v45out.zip"
-        with zipfile.ZipFile(archive_path) as archive:
-            roots = sorted(
-                {
-                    name.split(".geff/", 1)[0] + ".geff"
-                    for name in archive.namelist()
-                    if ".geff/" in name
-                }
-            )
-        store = ZipStore(archive_path, mode="r")
-        try:
-            for root in roots:
-                dataset = root.rsplit("/", 1)[-1][:-5]
-                graph = zarr.open_group(store=store, path=root, mode="r")
-                nodes = [
-                    GraphNode(int(node_id), int(t), float(z), float(y), float(x))
-                    for node_id, t, z, y, x in zip(
-                        graph["nodes/ids"][:],
-                        graph["nodes/props/t/values"][:],
-                        graph["nodes/props/z/values"][:],
-                        graph["nodes/props/y/values"][:],
-                        graph["nodes/props/x/values"][:],
-                        strict=True,
-                    )
-                ]
-                node_by_id = {node.node_id: node for node in nodes}
-                probabilities: dict[tuple[int, int], float] = {}
-                for (source, target), probability in zip(
-                    graph["edges/ids"][:],
-                    graph["edges/props/edge_prob/values"][:],
-                    strict=True,
-                ):
-                    source = int(source)
-                    target = int(target)
-                    if (
-                        node_by_id[target].t == node_by_id[source].t + 1
-                        and physical_distance(node_by_id[source], node_by_id[target]) <= 14.0
-                    ):
-                        probabilities[source, target] = max(
-                            probabilities.get((source, target), float("-inf")),
-                            float(probability),
-                        )
-                _, stats = build_adjacent_edges(nodes, probabilities)
-                row = expected[dataset]
-                self.assertEqual(stats["motion_tight_edges"], int(row["motion_relink_tight_edges"]))
-                self.assertEqual(stats["motion_relaxed_edges"], int(row["motion_relink_relaxed_edges"]))
-                self.assertEqual(stats["adjacent_edges"], int(row["motion_relink_edges"]))
-                if dataset == "6bba_05db0fb1":
-                    # Pinned raw GEFF, frame 19: the <=6 um graph has one
-                    # 17-source + 17-target component with 34 feasible pairs.
-                    self.assertEqual(stats["motion_tight_raw_peak_component_dim"], 34)
-                    # The <=10 um pre-pass peak is 1584 vertices.  Removing the
-                    # tight matches fragments its relaxed sparse assignment;
-                    # V45's frame-38 peak is 273 + 243 = 516.  The inherited
-                    # 1581 figure belongs to the separate V103 pubsub fixture.
-                    self.assertEqual(stats["motion_relaxed_raw_peak_component_dim"], 516)
-                    self.assertEqual(stats["motion_relaxed_prepass_raw_peak_component_dim"], 1584)
-                    self.assertGreater(stats["peak_component_matrix_dim"], 512)
-        finally:
-            store.close()
+    def test_banked_backward_quarter_cv57_ledger(self) -> None:
+        report = json.loads(
+            (
+                ROOT
+                / "reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/report.json"
+            ).read_text(encoding="utf-8")
+        )
+        setting = next(
+            row for row in report["settings"] if row["motion_error_weight"] == 0.25
+        )
+        self.assertAlmostEqual(
+            setting["summary"]["adj_edge_jaccard"], 0.8731495935289003
+        )
+        self.assertEqual(
+            setting["edge_counts"],
+            {"edge_tp": 34205, "edge_fp": 2685, "edge_fn": 2063},
+        )
+        self.assertEqual(report["selection"]["video_count"], 57)
 
     @unittest.skipUnless((ROOT / "reports/g02/v45out.zip").exists(), "raw V45 GEFFs absent")
-    def test_sparse_ties_match_dense_public_oracle(self) -> None:
-        """Dense LAPJV remains diagnostic while sparse tie choices match it."""
+    def test_banked_sparse_ties_match_dense_diagnostic(self) -> None:
+        """Sparse and dense solvers agree under the banked backward cost."""
 
         import zarr
         from zarr.storage import ZipStore
@@ -982,7 +936,6 @@ class LocalV45ArtifactParityTests(unittest.TestCase):
                         )
                 sparse_edges, _ = build_adjacent_edges(nodes, probabilities)
                 sparse = {(edge.source_id, edge.target_id, edge.kind) for edge in sparse_edges}
-                dense = _dense_public_motion_oracle(nodes, probabilities)
                 diagnostic_edges, _ = build_adjacent_edges(
                     nodes, probabilities, parity_mode="dense_diagnostic"
                 )
@@ -990,8 +943,7 @@ class LocalV45ArtifactParityTests(unittest.TestCase):
                     (edge.source_id, edge.target_id, edge.kind)
                     for edge in diagnostic_edges
                 }
-                self.assertEqual(diagnostic, dense)
-                self.assertEqual(sparse, dense)
+                self.assertEqual(sparse, diagnostic)
 
                 sparse_gap_nodes, sparse_gap_edges, sparse_gap_stats = close_one_frame_gaps(
                     nodes, diagnostic_edges

@@ -46,6 +46,8 @@ _V45_LOCKED_DEFAULTS: dict[str, Any] = {
     "motion_tight_um": 6.0,
     "motion_relaxed_um": 10.0,
     "velocity_weight": 0.5,
+    "motion_direction": "backward",
+    "motion_error_weight": 0.25,
     "learned_bonus": 1.0,
     "raw_distance_weight": 0.05,
     "max_nodes_per_frame": 2600,
@@ -92,6 +94,8 @@ class V45GraphConfig:
     motion_tight_um: float = 6.0
     motion_relaxed_um: float = 10.0
     velocity_weight: float = 0.5
+    motion_direction: str = "backward"
+    motion_error_weight: float = 0.25
     learned_bonus: float = 1.0
     raw_distance_weight: float = 0.05
     max_nodes_per_frame: int = 2600
@@ -1155,7 +1159,7 @@ def build_adjacent_edges(
     elif _experimental_sweep_provenance is not None:
         _validated_experimental_sweep_provenance(_experimental_sweep_provenance)
     if _experimental_motion_error_weight is None:
-        motion_error_weight = 1.0
+        motion_error_weight = config.motion_error_weight
     else:
         sweep = _validated_experimental_sweep_provenance(
             _experimental_sweep_provenance
@@ -1203,6 +1207,7 @@ def build_adjacent_edges(
     frames = _frame_groups(normalized)
     edges: list[GraphEdge] = []
     incoming: dict[int, int] = {}
+    outgoing: dict[int, int] = {}
     stats: dict[str, int | bool] = {
         "adjacent_candidate_pairs": 0,
         "motion_tight_candidate_pairs": 0,
@@ -1230,7 +1235,8 @@ def build_adjacent_edges(
         "radius_candidate_pairs_diagnostic": 0,
     }
 
-    for frame in sorted(frames):
+    frame_order = sorted(frames, reverse=config.motion_direction == "backward")
+    for frame in frame_order:
         if frame + 1 not in frames:
             continue
         sources = frames[frame]
@@ -1298,20 +1304,21 @@ def build_adjacent_edges(
                 unmatched_sources.remove(source.node_id)
                 unmatched_targets.remove(target.node_id)
                 incoming[target.node_id] = source.node_id
+                outgoing[source.node_id] = target.node_id
                 stats[f"{label}_edges"] = int(stats[f"{label}_edges"]) + 1
 
         if config.repair_single_parent:
             motion_rows: list[tuple[int, int, float, float, float]] = []
             for source, target, distance in geometric:
-                parent_id = incoming.get(source.node_id)
-                if parent_id is None:
-                    predicted = _coord(source)
+                child_id = outgoing.get(target.node_id)
+                if child_id is None:
+                    predicted = _coord(target)
                 else:
-                    parent = node_by_id[parent_id]
-                    predicted = _coord(source) + config.velocity_weight * (
-                        _coord(source) - _coord(parent)
+                    child = node_by_id[child_id]
+                    predicted = _coord(target) + config.velocity_weight * (
+                        _coord(target) - _coord(child)
                     )
-                motion_error = physical_distance(predicted, target, config.scale_zyx)
+                motion_error = physical_distance(predicted, source, config.scale_zyx)
                 probability = probabilities.get((source.node_id, target.node_id), 0.0)
                 cost = _edge_cost(
                     distance,
@@ -1383,6 +1390,7 @@ def build_adjacent_edges(
                             )
                         )
                         incoming[target.node_id] = source.node_id
+                        outgoing[source.node_id] = target.node_id
                         stats["scored_partial_edges"] = int(stats["scored_partial_edges"]) + 1
                         if label == "scored_partial_tight":
                             stats["scored_partial_tight_edges"] = int(
@@ -2264,10 +2272,11 @@ def calibrate_v45_graph(
             config.motion_relaxed_um,
         ],
         "motion_error_weight": (
-            1.0
+            config.motion_error_weight
             if _experimental_motion_error_weight is None
             else float(_experimental_motion_error_weight)
         ),
+        "motion_direction": config.motion_direction,
         "candidate_top_k": (
             0
             if _experimental_candidate_top_k is None

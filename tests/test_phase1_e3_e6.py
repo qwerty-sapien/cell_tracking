@@ -47,7 +47,7 @@ def _provenance() -> dict[str, object]:
 
 
 class MotionCoefficientTests(unittest.TestCase):
-    def test_weight_one_is_production_exact_and_zero_changes_assignment(self) -> None:
+    def test_production_is_backward_quarter_and_override_is_explicit(self) -> None:
         nodes = [
             _node_um(0, 0, -6.0),
             _node_um(1, 0, 16.0),
@@ -57,31 +57,53 @@ class MotionCoefficientTests(unittest.TestCase):
             _node_um(21, 2, 6.0),
         ]
         production, _ = build_adjacent_edges(nodes)
-        experimental_one, stats_one = build_adjacent_edges(
+        experimental_quarter, stats_quarter = build_adjacent_edges(
             nodes,
             _experimental_sweep_provenance=_provenance(),
-            _experimental_motion_error_weight=1.0,
+            _experimental_motion_error_weight=0.25,
         )
         experimental_zero, stats_zero = build_adjacent_edges(
             nodes,
             _experimental_sweep_provenance=_provenance(),
             _experimental_motion_error_weight=0.0,
         )
-        self.assertEqual(production, experimental_one)
-        self.assertEqual(stats_one["motion_error_weight"], 1.0)
+        self.assertEqual(production, experimental_quarter)
+        self.assertEqual(stats_quarter["motion_error_weight"], 0.25)
         self.assertEqual(stats_zero["motion_error_weight"], 0.0)
-        production_last = {
+        production_first = {
             (edge.source_id, edge.target_id)
             for edge in production
-            if edge.source_id in {10, 11}
+            if edge.source_id in {0, 1}
         }
-        zero_last = {
+        zero_first = {
             (edge.source_id, edge.target_id)
             for edge in experimental_zero
-            if edge.source_id in {10, 11}
+            if edge.source_id in {0, 1}
         }
-        self.assertEqual(production_last, {(10, 21), (11, 20)})
-        self.assertEqual(zero_last, {(10, 20), (11, 21)})
+        self.assertEqual(production_first, {(0, 10), (1, 11)})
+        self.assertEqual(zero_first, {(0, 10), (1, 11)})
+
+    def test_backward_motion_uses_the_targets_selected_child(self) -> None:
+        nodes = [
+            _node_um(0, 0, -6.0),
+            _node_um(1, 0, 16.0),
+            _node_um(10, 1, 2.0),
+            _node_um(11, 1, 8.0),
+            _node_um(20, 2, 4.0),
+            _node_um(21, 2, 6.0),
+        ]
+        production, stats = build_adjacent_edges(nodes)
+        first = {
+            (edge.source_id, edge.target_id)
+            for edge in production
+            if edge.source_id in {0, 1}
+        }
+        self.assertEqual(first, {(0, 10), (1, 11)})
+        self.assertEqual(stats["motion_error_weight"], 0.25)
+        by_pair = {(edge.source_id, edge.target_id): edge for edge in production}
+        # target 10's already-selected child is 20: backward prediction is
+        # 2 + 0.5 * (2 - 4) = 1 um, seven microns from source 0 at -6.
+        self.assertAlmostEqual(by_pair[(0, 10)].cost, 0.05 * 8.0 + 0.25 * 7.0)
 
     def test_weight_override_requires_offline_provenance(self) -> None:
         with self.assertRaises(GraphCalibrationError):
