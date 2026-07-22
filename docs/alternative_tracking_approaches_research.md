@@ -25,7 +25,7 @@ The strongest realistic path under a small paid-compute budget is:
 4. Add learned scoring only where it is cheap: edge/division reranking over detected nodes, not end-to-end giant 3D training.
 5. Treat pretrained or small deep-learning models as a fourth branch only if a timed pilot extrapolates below `$25` total training cost.
 
-Full 3D U-Net/CELLECT/Trackastra-style training may help, but should only be attempted after candidate recall and local metric infrastructure are trustworthy.
+Full 3D U-Net or Trackastra-style training may help, but should only be attempted after candidate recall and local metric infrastructure are trustworthy.
 
 ## Source-Backed Method Matrix
 
@@ -40,7 +40,7 @@ Full 3D U-Net/CELLECT/Trackastra-style training may help, but should only be att
 | Trackastra | Transformer learns pairwise cell associations in temporal windows from detections and supports dividing cells. | High once detections are decent. | Medium | Check pretrained/installation viability. Training association on sparse edges may be cheaper than volumetric detector training. Sources: <https://arxiv.org/abs/2405.15700>, <https://github.com/weigertlab/trackastra> |
 | Cell-TRACTR | DETR-style transformer that segments and tracks cells end-to-end, with published checkpoints for DeepCell and mother-machine data. | Medium conceptually, low direct fit | Medium/poor for full adaptation | Use as architectural evidence for attention-based tracking and division handling. Do not adapt directly until sparse-point/Kaggle graph infrastructure is solved, because the published setup targets 2D mask-style segmentation/tracking rather than sparse 3D center graphs. Sources: <https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1013071>, <https://zenodo.org/records/14509424> |
 | OrganoidTracker 2.0 | CNN center detection, learned link/division probabilities, min-cost flow, calibrated context-aware error probabilities. | High as design pattern. | Low for full tool integration | Borrow probability calibration and local-subgraph marginalization ideas; full GUI/manual workflow is not Kaggle-friendly. Sources: <https://www.nature.com/articles/s41592-025-02845-6>, <https://github.com/jvzonlab/OrganoidTracker> |
-| CELLECT | Contrastive embedding learning for large-scale efficient 3D cell tracking, sparse annotations, center/feature/division maps. | Very high scientifically. | Medium/low | Strong long-term model target if pretrained weights transfer. Do not start by training from scratch unless Kaggle-free experiments show feasibility. Sources: <https://www.nature.com/articles/s41592-025-02886-x>, <https://github.com/zzz333za/CELLECT> |
+| CELLECT | Paused and archived under `_LATER/cellect/`. | Not currently active. | Deferred | Do not act on this direction unless explicitly asked and all conditions in `_LATER/cellect/PAUSE_RATIONALE.md` hold. |
 | Segment Anything for Cell Tracking / SAM2 | Zero-shot SAM2-based tracking framework for 2D and large-scale 3D time-lapse microscopy. | Uncertain | Medium/low | Interesting proposal generator, but likely too expensive and brittle for whole-volume competition inference. Test only on short clips if installation is easy. Source: <https://arxiv.org/abs/2509.09943> |
 | Cellpose / Cellpose3 | Generalist cell segmentation, including 3D usage/restoration improvements. | Medium as proposal source. | Medium | Use only as candidate proposal/restoration branch, not the main tracker. Sources: <https://www.nature.com/articles/s41592-020-01018-x>, <https://github.com/MouseLand/cellpose> |
 | StarDist-3D | 3D star-convex object detection/segmentation for nuclei, handles anisotropic voxels and NMS. | Medium as proposal source. | Medium | Worth testing on small clips if dependencies do not derail Kaggle. Source: <https://arxiv.org/abs/1908.03636> |
@@ -246,14 +246,12 @@ Sources:
 - <https://www.nature.com/articles/s41592-025-02845-6>
 - <https://github.com/jvzonlab/OrganoidTracker>
 
-### CELLECT
+### CELLECT (paused)
 
-CELLECT is highly relevant because it uses sparse annotations, contrastive embeddings, center prediction, division prediction, and lightweight MLPs for intra-frame duplicate removal and inter-frame link/division classification. It reported strong CTC performance on 3D C. elegans data and real-time-scale 3D tracking on a GTX 3090. The catch is practical: reproducing or adapting CELLECT under Kaggle-free compute may be nontrivial, but its architecture is a strong blueprint.
-
-Sources:
-
-- <https://www.nature.com/articles/s41592-025-02886-x>
-- <https://github.com/zzz333za/CELLECT>
+The CELLECT-specific research note was moved to
+`_LATER/cellect/research/alternative_tracking_approaches_excerpt.md`. Do not act on
+it unless explicitly asked and the resume conditions in
+`_LATER/cellect/PAUSE_RATIONALE.md` hold.
 
 ### Segment Anything for Cell Tracking
 
