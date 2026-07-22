@@ -1,5 +1,5 @@
 {
-  "created_at_utc": "2026-07-08T08:33:53.055032+00:00",
+  "created_at_utc": "2026-07-22T15:58:59.406148+00:00",
   "environment": {
     "credential_presence": {
       "GRB_LICENSE_FILE": false,
@@ -30,12 +30,12 @@
     "package": "gurobipy",
     "success": true
   },
-  "python": "3.14.6",
+  "python": "3.12.13",
   "status": "partial",
   "ultrack_check_gurobi": {
-    "installed": false,
+    "installed": true,
     "pip_installed": false,
-    "skipped_reason": "ultrack_cli_not_found",
+    "returncode": 1,
     "success": false
   }
 }

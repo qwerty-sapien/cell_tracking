@@ -1,0 +1,336 @@
+{
+  "deprecated_addmm_finding": {
+    "observed_semantics": "beta=1, alpha=-2; xx+yy-2*x@y.T",
+    "reimplementation": "keyword torch.addmm followed by clamp(1e-12).sqrt()",
+    "warning_observed": true
+  },
+  "dev_only_reference_import": true,
+  "e2e": {
+    "e2e_final_parameter_stream_sha256": "e736e45a8b7cfdba4072c30b55565e9057f140f502d2eb80f47c5dd7d9d83624"
+  },
+  "e2e_seed": 28086,
+  "e2e_steps": 50,
+  "fixtures": {
+    "distance_expected": {
+      "dtype": "<f4",
+      "sha256": "8829e6fd229e80400cb584eab9c686c47797377f3153367db3a355d684e4e38f",
+      "shape": [
+        3,
+        3
+      ]
+    },
+    "distance_x": {
+      "dtype": "<f4",
+      "sha256": "b4788a960a68604a7efa23f9c8e4ae1f71abdf1ffadc1628d019cbd3218d9892",
+      "shape": [
+        3,
+        3
+      ]
+    },
+    "distance_y": {
+      "dtype": "<f4",
+      "sha256": "9f011b21a8563fd1680543e35372b57d22248894fde421c2bc0cfcaf1fde8910",
+      "shape": [
+        3,
+        3
+      ]
+    },
+    "e2e_final_parameter_norms": {
+      "dtype": "<f8",
+      "sha256": "e7bd70e873a087fe1991ae5c86a144c6adbed2eea1d34207398c214b85e6b35e",
+      "shape": [
+        64
+      ]
+    },
+    "e2e_loss_curve": {
+      "dtype": "<f8",
+      "sha256": "df5fe33e4d8919ddfd8138755321a5db1418958dd5d258389ba51b424e78d6d9",
+      "shape": [
+        50
+      ]
+    },
+    "forward_input": {
+      "dtype": "<f4",
+      "sha256": "97034f33d9582132198f093c297b8e8f79825d46ff86a978aa88ed0ae272c115",
+      "shape": [
+        1,
+        2,
+        16,
+        16,
+        2
+      ]
+    },
+    "forward_output_0": {
+      "dtype": "<f4",
+      "sha256": "1ed20e21dea35681faa4f9f44403ec7913cd9dd1ec78f8f7ae73996080d5374f",
+      "shape": [
+        1,
+        3,
+        16,
+        16,
+        2
+      ]
+    },
+    "forward_output_1": {
+      "dtype": "<f4",
+      "sha256": "a7e077e50a8fcb8dd0b947c057eedf24bf512c24cf23231d53781cba676808e4",
+      "shape": [
+        1,
+        5,
+        16,
+        16,
+        2
+      ]
+    },
+    "forward_output_2": {
+      "dtype": "<f4",
+      "sha256": "fd16f688834e1447af5bdf1c4fb3fe2234d329235ebd781280ab5a9c1c14023a",
+      "shape": [
+        1,
+        64,
+        16,
+        16,
+        2
+      ]
+    },
+    "forward_output_3": {
+      "dtype": "<f4",
+      "sha256": "92be581dc117a5a5bfb317c982e511cbda4b9202357fdfc778392c1a2453488a",
+      "shape": [
+        1,
+        2,
+        16,
+        16,
+        2
+      ]
+    },
+    "forward_output_4": {
+      "dtype": "<f4",
+      "sha256": "87efeaae64fe289f79a66fdb31b7842e57ccbf94bb73efb0cc7d6cef32cb3dd0",
+      "shape": [
+        1,
+        1,
+        16,
+        16,
+        2
+      ]
+    },
+    "forward_preprocessed": {
+      "dtype": "<f4",
+      "sha256": "a1a326f3eda8bd94b1b2128547f9cf9837e53f89802f0cf4887eb04b639dd74a",
+      "shape": [
+        1,
+        2,
+        16,
+        16,
+        2
+      ]
+    },
+    "inter_mlp_output": {
+      "dtype": "<f4",
+      "sha256": "f445fe4c60992218afd1b792cb82e82fe11a5b788acf60df594dfbb0da5e0136",
+      "shape": [
+        4,
+        8
+      ]
+    },
+    "intra_mlp_output": {
+      "dtype": "<f4",
+      "sha256": "149e3f1bcf71e0936c358fa9134b5ace0b07224774e6519dc9466001281d2c1c",
+      "shape": [
+        4,
+        6
+      ]
+    },
+    "mining_distance": {
+      "dtype": "<f4",
+      "sha256": "9c1e27ada6fe26e054843b42f5fd724227de80c75cdb7b32cb11991efdc0f810",
+      "shape": [
+        6,
+        6
+      ]
+    },
+    "mining_embedding": {
+      "dtype": "<f4",
+      "sha256": "9cc0a26caae8c0218447d07877cf359a533396ee171a20e31deebf3b549a07a7",
+      "shape": [
+        6,
+        2
+      ]
+    },
+    "mining_hardest_negative": {
+      "dtype": "<f4",
+      "sha256": "6b6f35951d1ef60dd3e3756a6f554b0682448703eb21d7c113d4e557f205665b",
+      "shape": [
+        6
+      ]
+    },
+    "mining_hardest_positive": {
+      "dtype": "<f4",
+      "sha256": "abf5952e4631de9132f402d37bff23d2687c29527f2befba3b300399fd13c3f8",
+      "shape": [
+        6
+      ]
+    },
+    "mining_labels": {
+      "dtype": "<i8",
+      "sha256": "53550d298180cf258b5aa1f3bbd9a40a62622b4d3c999842141782db586a38a8",
+      "shape": [
+        6
+      ]
+    },
+    "mining_negative_indices": {
+      "dtype": "<i8",
+      "sha256": "8759500fed630d15bb92e2d4e38c507ef7e517bb0cc6f7eed7f2f45462a5918c",
+      "shape": [
+        6
+      ]
+    },
+    "mining_positive_indices": {
+      "dtype": "<i8",
+      "sha256": "007fcace3374b9c250d754123b9e8ad612d253e76b176fceb3415114263198dc",
+      "shape": [
+        6
+      ]
+    },
+    "mlp_anchor": {
+      "dtype": "<f4",
+      "sha256": "97a2b8784f6347ea44472094d50e893840ceea9f63180c253ddd1abd78ac08cf",
+      "shape": [
+        4,
+        1,
+        64
+      ]
+    },
+    "mlp_candidates": {
+      "dtype": "<f4",
+      "sha256": "c43f018937e5cc974a511fea4959bc5a1cf231c53cd4a579ecf90f5ecdc9ba14",
+      "shape": [
+        4,
+        5,
+        64
+      ]
+    },
+    "mlp_division": {
+      "dtype": "<f4",
+      "sha256": "aaa1029a2a8c2d8f12278bddf134419873fb6a8eed261332827c21a4790e8e34",
+      "shape": [
+        4,
+        5,
+        6
+      ]
+    },
+    "mlp_size": {
+      "dtype": "<f4",
+      "sha256": "6e7173469ca03c7b866c2e784aa45284d18b42d23bedea404aeec7777c16fd99",
+      "shape": [
+        4,
+        5,
+        6
+      ]
+    },
+    "mlp_spatial": {
+      "dtype": "<f4",
+      "sha256": "8e6241e27fcbd009738312fcc38b5def385dd2d6ee7a463a1ac350047bfaa8ba",
+      "shape": [
+        4,
+        5,
+        3
+      ]
+    },
+    "optimizer_gradient_norms": {
+      "dtype": "<f8",
+      "sha256": "d25b094a2b3874de3b995d6bbc2e6c2d1b647b3225325111c34da6c12c0337c5",
+      "shape": [
+        64
+      ]
+    },
+    "optimizer_input": {
+      "dtype": "<f4",
+      "sha256": "ce99835b7f2fb7e8ef058845027be925d7af434e0d38015675c81b4c6945b9e1",
+      "shape": [
+        1,
+        2,
+        16,
+        16,
+        2
+      ]
+    },
+    "optimizer_loss": {
+      "dtype": "<f8",
+      "sha256": "3b6a8c669cc12a23d5bf2d54b96115c95e04e3a01d854a4b82cdb03a8f09021d",
+      "shape": []
+    },
+    "optimizer_post_parameter_norms": {
+      "dtype": "<f8",
+      "sha256": "9fcb9c6647d8a1da459431a434400082a217d12d76d479d21ca0168454468546",
+      "shape": [
+        64
+      ]
+    },
+    "preprocess_expected": {
+      "dtype": "<f4",
+      "sha256": "c275335fdbebb312bb232b00bc7a693b7468d3224208e64ce487edcba055363b",
+      "shape": [
+        1,
+        2,
+        1,
+        2,
+        3
+      ]
+    },
+    "preprocess_input": {
+      "dtype": "<f4",
+      "sha256": "5736bbde09b67d3f95cf9a87849cee6917f624a16c13d54196bcbcc819c7c16f",
+      "shape": [
+        1,
+        2,
+        1,
+        2,
+        3
+      ]
+    },
+    "triplet_hardest_negative": {
+      "dtype": "<f4",
+      "sha256": "6b6f35951d1ef60dd3e3756a6f554b0682448703eb21d7c113d4e557f205665b",
+      "shape": [
+        6
+      ]
+    },
+    "triplet_hardest_positive": {
+      "dtype": "<f4",
+      "sha256": "abf5952e4631de9132f402d37bff23d2687c29527f2befba3b300399fd13c3f8",
+      "shape": [
+        6
+      ]
+    },
+    "triplet_loss": {
+      "dtype": "<f8",
+      "sha256": "fc38cd30687886112a0ed1c77649d28c9baff22d7e77d325f620b2fb98285c4b",
+      "shape": []
+    }
+  },
+  "input_layout": "B,C,Y,X,Z",
+  "npz_sha256": "d60d6af7d9b9160e6faf134950919e9e3ed1455321690214d34468a39d6e1de7",
+  "optimizer": {
+    "optimizer_gradient_stream_sha256": "09f62a48c47d0a07b6a4bedefc2e9b5ecdbe65ea2e9df8de046b930f653c50b3",
+    "optimizer_post_parameter_stream_sha256": "01d9a595c8133e6088b9019b47f9ddb63bfd2411392b952fb04f87871e12ae53"
+  },
+  "optimizer_seed": 41116016,
+  "reference": {
+    "backbone_checkpoint_sha256": "f3e8e7303976dc5fb6e52ade12d1ff7953d2a28e30c06274b9f309562cd89ce5",
+    "commit": "3586070926f7f1fd5d8df37456861d22bdc63236",
+    "inter_checkpoint_sha256": "4b0dd794c525e2053a0fe02a7d60253597d6cc669d0d4840b5ffe6481762b07e",
+    "intra_checkpoint_sha256": "deb21e312309f81f3784ff49f6ac2de0f9bf623453f0fe5394b317ac28666933",
+    "loss_source_sha256": "f733b16398034a4ea3eeb043f5000ff18b0bdf0bbbb857cdc573211c3461c2b2",
+    "model_source_sha256": "3b44f7c64c4b948ab7cc14bb32d5a86f61d3f4cff0ee3425a5ec32cc6c17d3ba"
+  },
+  "runtime": {
+    "numpy": "2.4.6",
+    "python": "3.13.7",
+    "torch": "2.13.0"
+  },
+  "schema": "celltrack-alpha.cellect-frozen-fixtures.v1",
+  "seed": 20251020,
+  "shipped_source_dependency": false
+}
