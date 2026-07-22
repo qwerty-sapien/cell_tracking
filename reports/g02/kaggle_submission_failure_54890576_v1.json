@@ -9,7 +9,7 @@
     "tests": {
       "package_scoring_suites_passed": 48,
       "real_public_zip_discovered_test_videos": 4,
-      "runner_suite_passed": 32
+      "runner_suite_passed": 34
     }
   },
   "created_at_utc": "2026-07-22T01:01:41.667000Z",

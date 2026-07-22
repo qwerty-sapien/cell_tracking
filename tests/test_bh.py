@@ -243,6 +243,58 @@ class DiscoveryTests(unittest.TestCase):
             )
             self.assertEqual(contract["data_identity_provenance"], BH.RUNTIME_METADATA_IDENTITY)
 
+    def test_submit_hidden_shape_is_discovered_but_frame_contract_remains_locked(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            hidden_shape = (7, 3, 5, 9)
+            _make_zarr(root / "test/hidden_shape.zarr", shape=hidden_shape)
+            job = BH.discover_submit_jobs(root)[0]
+            self.assertEqual(job.record.image_shape, hidden_shape)
+            self.assertNotEqual(job.record.image_shape, (100, 64, 256, 256))
+
+            handle = BH.open_video(job, expected_frames=hidden_shape[0])
+            handle.close()
+            with self.assertRaisesRegex(BH.RunnerError, "exactly 100 frames, got 7"):
+                BH.open_video(job)
+
+    def test_submit_hidden_group_metadata_is_hashed_and_locked_scale_checked(self) -> None:
+        import zarr
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            image = root / "test/hidden_metadata.zarr"
+            _make_zarr(image)
+            original = BH.discover_submit_jobs(root)[0]
+
+            group = zarr.open_group(str(image), mode="r+")
+            compatible_attrs = _attrs(123.0)
+            compatible_attrs["hidden_only_acquisition"] = {
+                "instrument": "not-present-in-public-four",
+            }
+            group.attrs.clear()
+            group.attrs.update(compatible_attrs)
+            compatible = BH.discover_submit_jobs(root)[0]
+            self.assertNotEqual(
+                compatible.record.exact_identity_sha256,
+                original.record.exact_identity_sha256,
+            )
+            handle = BH.open_video(compatible, expected_frames=3)
+            handle.close()
+
+            incompatible_attrs = _attrs(123.0)
+            incompatible_attrs["multiscales"][0]["datasets"][0][
+                "coordinateTransformations"
+            ][0]["scale"] = [1.0, 2.0, 0.40625, 0.40625]
+            group.attrs.clear()
+            group.attrs.update(incompatible_attrs)
+            incompatible = BH.discover_submit_jobs(root)[0]
+            self.assertNotEqual(
+                incompatible.record.exact_identity_sha256,
+                compatible.record.exact_identity_sha256,
+            )
+            with self.assertRaisesRegex(BH.RunnerError, "incompatible with locked V45 graph"):
+                BH.open_video(incompatible, expected_frames=3)
+
     def test_submit_zip_discovers_unregistered_test_id_without_label_access(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             archive = Path(temporary) / "competition.zip"

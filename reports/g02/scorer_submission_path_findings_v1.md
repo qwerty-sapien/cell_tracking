@@ -159,7 +159,7 @@ test-discovery correction is built and tested locally but has not been uploaded.
     any frozen `--datasets` selection at `scripts/run_bh.py:3322`. Discovery
     does not open labels or image chunks.
 
-21. The correction passed all 32 `tests.test_bh` tests and the 48 package,
+21. The correction passed all 34 `tests.test_bh` tests and the 48 package,
     scoring, GPU-diagnostic, fit-cache, and package-construction tests. Against
     the real public competition ZIP it discovered exactly the same four public
     IDs, all with native shape `[100,64,256,256]`. The rebuilt private candidate
@@ -171,6 +171,18 @@ test-discovery correction is built and tested locally but has not been uploaded.
     and package identity is
     `3f67d92b76443bd1ccc939c5fef1c5226b0a2849c13f869bb35cd5708c62e546`.
     It has not been uploaded or run.
+
+22. Hidden-contract coverage is explicit rather than limited to the public four.
+    `tests/test_bh.py:246` creates unseen `test:hidden_shape` with native shape
+    `[7,3,5,9]`; discovery records that shape and does not compare it with public
+    `[100,64,256,256]`. Arbitrary spatial dimensions pass `open_video`, but the
+    production worker remains locked to 100 frames at `scripts/run_bh.py:2933`,
+    so a hidden video with 7 frames fails at `scripts/run_bh.py:836` before
+    inference. `tests/test_bh.py:260` then adds group metadata absent from the
+    public four: compatible extra attributes are accepted and change the runtime
+    metadata identity, while a changed voxel scale is discovered but fails
+    closed at `scripts/run_bh.py:842`. Missing required quantile or multiscale
+    fields likewise remain execution errors rather than being silently defaulted.
 
 ## Inferred or pending
 
