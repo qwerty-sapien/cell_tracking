@@ -1,0 +1,88 @@
+{
+  "cohort": {
+    "above_10um_fn_events": 336,
+    "edge_totals": {
+      "edge_fn": 1810,
+      "edge_fp": 2660,
+      "edge_tp": 29676
+    },
+    "video_count_in_frozen_scope": 57,
+    "videos_with_above_gate_events": 38
+  },
+  "coordinate_stage": {
+    "limitation": "The source-softmax run recorded cache=disabled and did not persist FrameDet tensors. Thus the 336-event cohort and topology are exact, but these distances are a postprocessed-coordinate replay, not a byte-exact raw-coordinate replay.",
+    "production_cost_stage": "pre-gap, pre-division, pre-pruning, pre-smoothing FrameDet coordinates",
+    "used": "persisted postprocessed source-softmax fragment coordinates"
+  },
+  "prediction_contract": {
+    "formula": "source if no adjacent parent, else source + 0.5 * (source - parent)",
+    "gate_query_center": "source_physical (prediction is not used by _radius_pairs)",
+    "history_classes_from_final_topology": {
+      "branch_parent_ambiguous_added_edge": 2,
+      "none": 8,
+      "plain_adjacent_parent": 319,
+      "synthetic_parent_post_adjacent": 7
+    },
+    "velocity_weight": 0.5
+  },
+  "result": {
+    "decision": "FAIL; do not implement the proposed unmatched-source re-gating pass.",
+    "denominator": 336,
+    "distance_um": {
+      "max": 22.641832697258078,
+      "mean": 12.067642271265218,
+      "median": 11.562967008918815,
+      "min": 7.827563602624063,
+      "n": 336,
+      "p25": 10.642268367526803,
+      "p75": 12.912424748691665,
+      "p90": 14.800273500956832,
+      "p95": 16.284874353974008
+    },
+    "families": {
+      "44b6": {
+        "denominator": 40,
+        "fraction": 0.15,
+        "within_10um": 6
+      },
+      "6bba": {
+        "denominator": 296,
+        "fraction": 0.10810810810810811,
+        "within_10um": 32
+      }
+    },
+    "fraction": 0.1130952380952381,
+    "pass_at_large_fraction_0p5": false,
+    "threshold_sensitivity": {
+      "10.0": {
+        "count": 38,
+        "fraction": 0.1130952380952381
+      },
+      "12.0": {
+        "count": 203,
+        "fraction": 0.6041666666666666
+      },
+      "14.0": {
+        "count": 288,
+        "fraction": 0.8571428571428571
+      },
+      "6.0": {
+        "count": 0,
+        "fraction": 0.0
+      },
+      "8.0": {
+        "count": 1,
+        "fraction": 0.002976190476190476
+      }
+    },
+    "unmatched_source_only": {
+      "denominator": 73,
+      "recoverable_share_of_full_cohort": 0.03571428571428571,
+      "within_10um": 12,
+      "within_actionable_fraction": 0.1643835616438356
+    },
+    "within_10um": 38
+  },
+  "schema": "celltrack-alpha.e2-gate-recentring-prefix52.v1",
+  "status": "completed_read_only_cpu_diagnostic"
+}
