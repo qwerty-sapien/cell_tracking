@@ -1,9 +1,10 @@
 # Scorer/submission path unification findings v1
 
-Status: Step 2 released in substance; the Step 3 kernel completed; Step 4 was
-scored with the frozen scorer; and the Step 5 private submit kernel completed
-with a verified `submission.csv`. No Kaggle competition submission has been
-performed.
+Status: Step 2 was released in substance; the Step 3 kernel completed; Step 4
+was scored with the frozen scorer; and the Step 5 public-data private kernel
+completed with a verified `submission.csv`. Approved Kaggle submission
+`54890576` then failed its hidden-data rerun without a score. A bounded runtime
+test-discovery correction is built and tested locally but has not been uploaded.
 
 ## Verified
 
@@ -128,15 +129,64 @@ performed.
     endpoint resolves to a node within its dataset, and all per-dataset counts
     match the runner manifest.
 
+17. A direct 13.1 MB file upload was attempted first and Kaggle returned HTTP
+    400 without creating a submission ledger row. This competition requires a
+    code submission identified by kernel, version, and output filename. The
+    corrected command submitted `submission.csv` from
+    `onebitbrain/bhv45-submit/1` and created submission reference `54890576` at
+    `2026-07-22T01:01:41.667000Z`.
+
+18. Submission `54890576` reached terminal API status `COMPLETE` but is an
+    execution failure, not a scored completion. Kaggle classifies it as
+    `Notebook Threw Exception`; both `public_score` and `private_score` are empty,
+    and `total_bytes` is 0. The only available error text says that the notebook
+    hit an unhandled error during the hidden-data rerun and notes that the hidden
+    dataset can differ in size or contents. Kaggle exposes no hidden traceback.
+    Exact API/UI evidence is recorded in
+    `reports/g02/kaggle_submission_failure_54890576_v1.json`.
+
+19. Because no Kaggle score was observed, there is no local/Kaggle numeric pair
+    to record. `reports/g02/scorer_parity_v1.json` therefore correctly remains
+    `no_observed_kaggle_pairs`; writing 0 or an empty score as a pair would
+    falsify the ledger.
+
+20. The submitted `run_bh.py` loaded the packaged four-row public `bhreg.json`
+    and selected those rows before inspecting the mounted test input. Kaggle
+    code submissions are rerun against hidden test identities. The corrected
+    submit-only path at `scripts/run_bh.py:519` discovers every mounted
+    `test/*.zarr` from its bounded root and array metadata, while the CV path at
+    `scripts/run_bh.py:3109` remains exact-registry selected. Submit mode rejects
+    any frozen `--datasets` selection at `scripts/run_bh.py:3322`. Discovery
+    does not open labels or image chunks.
+
+21. The correction passed all 32 `tests.test_bh` tests and the 48 package,
+    scoring, GPU-diagnostic, fit-cache, and package-construction tests. Against
+    the real public competition ZIP it discovered exactly the same four public
+    IDs, all with native shape `[100,64,256,256]`. The rebuilt private candidate
+    remains D4-8 exact-sequential, released detector, legacy topology, divisions
+    off, the pinned conflict artifact, and `NvidiaTeslaT4`. Its monolithic source
+    is 241,131 bytes (SHA-256 `c2b7ff20c06aaaba11f2adc5299cf29b55b21aa672bf736148db2b5db55d5a5a`),
+    archive is 140,837 bytes (SHA-256
+    `8594563b8475e7dc41c6da3544ec35aeb4bfeea2ce1ee6da94116a18943a2e09`),
+    and package identity is
+    `3f67d92b76443bd1ccc939c5fef1c5226b0a2849c13f869bb35cd5708c62e546`.
+    It has not been uploaded or run.
+
 ## Inferred or pending
 
 - The released detector's pretraining exposure to imagery related to the four
   public test groups is not established by the grouped-split and edge-artifact
   evidence above.
-- Kaggle competition submission requires explicit approval and has not occurred.
-- `reports/g02/scorer_parity_v1.json` correctly remains
-  `no_observed_kaggle_pairs`; it will be updated only after Kaggle returns the
-  score paired with local baseline 0.8711885823490648.
+- The most likely hidden-rerun failure is the frozen four-row public registry:
+  hidden IDs or native shapes cannot satisfy that exact public registry. This is
+  strongly supported by the submitted control flow and Kaggle's generic hidden
+  dataset warning, but remains inferred because Kaggle did not expose the hidden
+  traceback.
+- Uploading the corrected package would create `onebitbrain/bhv45-submit/2` and
+  consume another private kernel run. Upload and any competition resubmission
+  both require fresh explicit approval.
+- `reports/g02/scorer_parity_v1.json` will be updated only after Kaggle returns
+  an actual score paired with local baseline 0.8711885823490648.
 
 ## Reproducibility and boundary
 
@@ -148,6 +198,7 @@ performed.
 - Relevant tests: 48 passed across `tests.test_pkgbh`,
   `tests.test_score_bh_cv57`, `tests.test_scoreall`, `tests.test_pkgbh9`,
   `tests.test_fitcache_kaggle`, and `tests.test_mkvs45`.
-- No training, Git push, public artifact publication, or Kaggle competition
-  submission occurred. External compute was limited to the approved private
-  CV57 and submit kernels described above.
+- No training, Git push, or public artifact publication occurred. External
+  compute remains limited to the approved private CV57 and submit kernels plus
+  the approved competition submission's failed hidden rerun. No corrected
+  kernel upload, retry kernel run, or second competition submission occurred.

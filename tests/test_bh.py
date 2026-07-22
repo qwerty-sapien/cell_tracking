@@ -215,6 +215,68 @@ class DiscoveryTests(unittest.TestCase):
             with self.assertRaisesRegex(BH.DiscoveryError, "exactly once"):
                 BH.discover_jobs(archive, [_record()])
 
+    def test_submit_directory_discovers_hidden_test_ids_from_bounded_metadata(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            _make_zarr(root / "test/hidden_b.zarr", shape=(3, 2, 4, 4))
+            _make_zarr(root / "test/hidden_a.zarr", shape=(3, 2, 4, 4))
+            (root / "test/hidden_a.geff").mkdir()
+            jobs = BH.discover_submit_jobs(root)
+            self.assertEqual([job.identity for job in jobs], ["test:hidden_a", "test:hidden_b"])
+            self.assertTrue(all(job.record.image_shape == (3, 2, 4, 4) for job in jobs))
+            self.assertTrue(
+                all(job.record.identity_provenance == BH.RUNTIME_METADATA_IDENTITY for job in jobs)
+            )
+            self.assertTrue(all(len(job.record.exact_identity_sha256) == 64 for job in jobs))
+            model_identity = SimpleNamespace(
+                config_sha256="a" * 64,
+                source_sha256="b" * 64,
+                weight_sha256="c" * 64,
+                pair_batch_size=1,
+                view_batch_size=1,
+            )
+            contract = BH.inference_contract(jobs[0], model_identity, frame_count=3)
+            self.assertNotIn("data_exact_identity_sha256", contract)
+            self.assertEqual(
+                contract["data_runtime_metadata_identity_sha256"],
+                jobs[0].record.exact_identity_sha256,
+            )
+            self.assertEqual(contract["data_identity_provenance"], BH.RUNTIME_METADATA_IDENTITY)
+
+    def test_submit_zip_discovers_unregistered_test_id_without_label_access(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            archive = Path(temporary) / "competition.zip"
+            _make_zip(archive)
+            with zipfile.ZipFile(archive, mode="a") as handle:
+                handle.writestr("test/tiny.geff/nodes/ids/c/0", b"must-not-read")
+            original = zipfile.ZipFile.read
+            opened: list[str] = []
+
+            def audited(instance, name, *args, **kwargs):
+                text = name.filename if isinstance(name, zipfile.ZipInfo) else str(name)
+                if ".geff/" in text:
+                    raise AssertionError(f"label access attempted: {text}")
+                opened.append(text)
+                return original(instance, name, *args, **kwargs)
+
+            with mock.patch.object(zipfile.ZipFile, "read", audited):
+                jobs = BH.discover_submit_jobs(archive)
+            self.assertEqual([job.identity for job in jobs], ["test:tiny"])
+            self.assertEqual(
+                opened,
+                ["test/tiny.zarr/zarr.json", "test/tiny.zarr/0/zarr.json"],
+            )
+
+    def test_submit_cli_rejects_frozen_dataset_selection(self) -> None:
+        args = BH.build_parser().parse_args(
+            [
+                "--input", "/tmp/competition", "--mode", "submit", "--split", "test",
+                "--datasets", "test:public",
+            ]
+        )
+        with self.assertRaisesRegex(BH.RunnerError, "complete mounted test split"):
+            BH.validate_args(args)
+
 
 class ModelGraphRouteTests(unittest.TestCase):
     def test_fake_model_path_uses_infer_video_cache_and_motion_graph_only(self) -> None:

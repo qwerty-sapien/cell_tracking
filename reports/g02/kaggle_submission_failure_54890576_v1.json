@@ -1,0 +1,44 @@
+{
+  "competition": "biohub-cell-tracking-during-development",
+  "correction_candidate": {
+    "archive_sha256": "8594563b8475e7dc41c6da3544ec35aeb4bfeea2ce1ee6da94116a18943a2e09",
+    "identity_sha256": "3f67d92b76443bd1ccc939c5fef1c5226b0a2849c13f869bb35cd5708c62e546",
+    "kernel_ref_if_uploaded": "onebitbrain/bhv45-submit/2",
+    "local_status": "built_and_tested_not_uploaded",
+    "runtime_change": "submit/test discovers every mounted test image Zarr from bounded group and array metadata; CV remains exact-registry selected",
+    "tests": {
+      "package_scoring_suites_passed": 48,
+      "real_public_zip_discovered_test_videos": 4,
+      "runner_suite_passed": 32
+    }
+  },
+  "created_at_utc": "2026-07-22T01:01:41.667000Z",
+  "diagnosis": {
+    "classification": "inferred_not_hidden_traceback_verified",
+    "evidence": [
+      "submitted bhreg.json contains exactly the four public test identities",
+      "submitted run_bh loaded and selected bhreg.json before inspecting mounted input",
+      "Kaggle states that the hidden rerun dataset can differ from the public dataset",
+      "the private public-data kernel completed, while only the hidden rerun threw an exception"
+    ],
+    "most_likely_cause": "frozen public test registry is incompatible with hidden test identities or shapes"
+  },
+  "direct_file_attempt": {
+    "created_submission": false,
+    "http_status": 400,
+    "reason": "competition requires a code submission identified by kernel, version, and output filename"
+  },
+  "error_description": "Your notebook hit an unhandled error while rerunning your code. Note that the hidden dataset can be larger/smaller/different than the public dataset",
+  "kernel_ref": "onebitbrain/bhv45-submit/1",
+  "local_score": 0.8711885823490648,
+  "private_score": "",
+  "public_score": "",
+  "retry_requires_approval": true,
+  "schema": "celltrack-alpha.kaggle-submission-failure.v1",
+  "scorer_parity_pair_recorded": false,
+  "status": "COMPLETE",
+  "submission_ref": 54890576,
+  "submission_result": "notebook_threw_exception_no_score",
+  "total_bytes": 0,
+  "url": "/code/onebitbrain/bhv45-submit?scriptVersionId=336990437"
+}

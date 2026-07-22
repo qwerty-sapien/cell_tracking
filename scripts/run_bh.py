@@ -47,6 +47,10 @@ RUNG_SCHEMA = "celltrack-alpha.bh-cv-rungs.v1"
 PREFLIGHT_SCHEMA = "celltrack-alpha.bh-preflight.v1"
 ACCEL_GATE_SCHEMA = "celltrack-alpha.bh-d4-accelerated-score-gate.v1"
 A0_AUDIT_SCHEMA = "celltrack-alpha.bh-a0-run-audit.v1"
+RUNTIME_ZARR_IDENTITY_SCHEMA = "celltrack-alpha.bh-runtime-zarr-identity.v1"
+REGISTRY_EXACT_IDENTITY = "registry-exact-image-manifest-v1"
+RUNTIME_METADATA_IDENTITY = "runtime-zarr-metadata-v1"
+MAX_RUNTIME_METADATA_BYTES = 1_000_000
 
 FRAME_COUNT = 100
 DEFAULT_BATCH_SIZE = 1
@@ -269,6 +273,7 @@ class RegistryRecord:
     video_id: str
     exact_identity_sha256: str
     image_shape: tuple[int, int, int, int]
+    identity_provenance: str = REGISTRY_EXACT_IDENTITY
 
     @classmethod
     def from_mapping(cls, value: Mapping[str, Any]) -> "RegistryRecord":
@@ -423,6 +428,161 @@ def discover_jobs(input_path: str | os.PathLike[str], records: Sequence[Registry
     identities = [job.identity for job in jobs]
     if len(identities) != len(records) or len(set(identities)) != len(identities):
         raise DiscoveryError("discovery lost or duplicated a requested dataset")
+    return tuple(sorted(jobs, key=lambda job: job.identity))
+
+
+def _runtime_metadata_bytes(path: Path) -> bytes:
+    try:
+        size = path.stat().st_size
+        if size <= 0 or size > MAX_RUNTIME_METADATA_BYTES:
+            raise DiscoveryError(
+                f"runtime Zarr metadata size must be in [1, {MAX_RUNTIME_METADATA_BYTES}]: {path}"
+            )
+        return path.read_bytes()
+    except OSError as exc:
+        raise DiscoveryError(f"cannot read runtime Zarr metadata {path}: {exc}") from exc
+
+
+def _runtime_zip_metadata_bytes(archive: zipfile.ZipFile, info: zipfile.ZipInfo) -> bytes:
+    if info.file_size <= 0 or info.file_size > MAX_RUNTIME_METADATA_BYTES:
+        raise DiscoveryError(
+            "runtime ZIP Zarr metadata size must be in "
+            f"[1, {MAX_RUNTIME_METADATA_BYTES}]: {info.filename}"
+        )
+    try:
+        payload = archive.read(info)
+    except (OSError, zipfile.BadZipFile, RuntimeError) as exc:
+        raise DiscoveryError(f"cannot read runtime ZIP Zarr metadata {info.filename}: {exc}") from exc
+    if len(payload) != info.file_size:
+        raise DiscoveryError(f"runtime ZIP Zarr metadata length mismatch: {info.filename}")
+    return payload
+
+
+def _runtime_submit_record(dataset: str, group_metadata: bytes, array_metadata: bytes) -> RegistryRecord:
+    _safe_slug("test", dataset)
+    try:
+        group = json.loads(
+            group_metadata.decode("utf-8"),
+            object_pairs_hook=_reject_duplicate_pairs,
+            parse_constant=lambda value: (_ for _ in ()).throw(
+                ValueError(f"non-finite JSON constant {value}")
+            ),
+        )
+        array = json.loads(
+            array_metadata.decode("utf-8"),
+            object_pairs_hook=_reject_duplicate_pairs,
+            parse_constant=lambda value: (_ for _ in ()).throw(
+                ValueError(f"non-finite JSON constant {value}")
+            ),
+        )
+    except (UnicodeError, ValueError, json.JSONDecodeError) as exc:
+        raise DiscoveryError(f"invalid runtime Zarr metadata for test:{dataset}: {exc}") from exc
+    if not isinstance(group, Mapping) or group.get("node_type") != "group":
+        raise DiscoveryError(f"test:{dataset} root metadata is not a Zarr group")
+    if not isinstance(array, Mapping) or array.get("node_type") != "array":
+        raise DiscoveryError(f"test:{dataset} image metadata is not a Zarr array")
+    raw_shape = array.get("shape")
+    if (
+        not isinstance(raw_shape, list)
+        or len(raw_shape) != 4
+        or any(type(item) is not int or item <= 0 for item in raw_shape)
+    ):
+        raise DiscoveryError(f"test:{dataset} runtime image shape is not four positive integers")
+    shape = tuple(raw_shape)
+    identity = {
+        "schema": RUNTIME_ZARR_IDENTITY_SCHEMA,
+        "split": "test",
+        "dataset": dataset,
+        "metadata": [
+            {
+                "path": "zarr.json",
+                "bytes": len(group_metadata),
+                "sha256": hashlib.sha256(group_metadata).hexdigest(),
+            },
+            {
+                "path": "0/zarr.json",
+                "bytes": len(array_metadata),
+                "sha256": hashlib.sha256(array_metadata).hexdigest(),
+            },
+        ],
+    }
+    return RegistryRecord(
+        "test",
+        dataset,
+        f"test:{dataset}",
+        canonical_sha256(identity),
+        shape,  # type: ignore[arg-type]
+        RUNTIME_METADATA_IDENTITY,
+    )
+
+
+def discover_submit_jobs(input_path: str | os.PathLike[str]) -> tuple[VideoJob, ...]:
+    """Discover every mounted test image Zarr without relying on public test IDs.
+
+    Kaggle code submissions are rerun against hidden test identities, so a
+    packaged public registry cannot define submission membership. Only the two
+    bounded Zarr metadata documents are read here; labels and image chunks are
+    not opened during discovery.
+    """
+
+    source = Path(input_path).resolve()
+    jobs: list[VideoJob] = []
+    if source.is_file():
+        if not zipfile.is_zipfile(source):
+            raise DiscoveryError(f"local submission input is not a ZIP archive: {source}")
+        try:
+            with zipfile.ZipFile(source, mode="r") as archive:
+                by_name: dict[str, list[zipfile.ZipInfo]] = defaultdict(list)
+                for info in archive.infolist():
+                    by_name[info.filename].append(info)
+                array_names = []
+                for name in by_name:
+                    parts = name.split("/")
+                    if (
+                        len(parts) == 4
+                        and parts[0] == "test"
+                        and parts[1].endswith(".zarr")
+                        and parts[2:] == ["0", "zarr.json"]
+                    ):
+                        array_names.append(name)
+                for array_name in sorted(array_names):
+                    dataset = array_name.split("/", 2)[1][:-5]
+                    group_name = f"test/{dataset}.zarr/zarr.json"
+                    group_records = by_name.get(group_name, [])
+                    if len(by_name[array_name]) != 1 or not group_records:
+                        raise DiscoveryError(
+                            f"runtime ZIP test:{dataset} must have one image and at least one group metadata record"
+                        )
+                    # Zarr's ZipStore appends group metadata when attributes are
+                    # updated. Zip readers resolve duplicate names to the final
+                    # record, so mirror that behavior while still requiring one
+                    # immutable array metadata record per test image.
+                    group_metadata = _runtime_zip_metadata_bytes(archive, group_records[-1])
+                    array_metadata = _runtime_zip_metadata_bytes(archive, by_name[array_name][0])
+                    record = _runtime_submit_record(dataset, group_metadata, array_metadata)
+                    jobs.append(
+                        VideoJob(record, "zip", str(source), f"test/{dataset}.zarr")
+                    )
+        except (OSError, zipfile.BadZipFile) as exc:
+            raise DiscoveryError(f"invalid submission ZIP {source}: {exc}") from exc
+    elif source.is_dir():
+        test_root = source / "test"
+        if not test_root.is_dir():
+            raise DiscoveryError(f"submission input has no test directory: {source}")
+        candidates = sorted(path for path in test_root.iterdir() if path.name.endswith(".zarr"))
+        for image in candidates:
+            dataset = image.name[:-5]
+            if not image.is_dir():
+                raise DiscoveryError(f"runtime test Zarr is not a directory: test:{dataset}")
+            group_metadata = _runtime_metadata_bytes(image / "zarr.json")
+            array_metadata = _runtime_metadata_bytes(image / "0" / "zarr.json")
+            record = _runtime_submit_record(dataset, group_metadata, array_metadata)
+            jobs.append(VideoJob(record, "directory", str(source), str(image)))
+    else:
+        raise DiscoveryError(f"submission input path does not exist: {source}")
+    identities = [job.identity for job in jobs]
+    if not jobs or len(set(identities)) != len(identities):
+        raise DiscoveryError("runtime submission discovery found no test Zarrs or duplicate identities")
     return tuple(sorted(jobs, key=lambda job: job.identity))
 
 
@@ -1074,7 +1234,6 @@ def inference_contract(
     )
     value = {
         "schema": CACHE_META_SCHEMA,
-        "data_exact_identity_sha256": job.record.exact_identity_sha256,
         "model": _identity_dict(cache_identity),
         "inference": {
             "api": "bh_model.infer_video",
@@ -1089,6 +1248,16 @@ def inference_contract(
             "learned_dense_transformer": False,
         },
     }
+    if job.record.identity_provenance == REGISTRY_EXACT_IDENTITY:
+        value["data_exact_identity_sha256"] = job.record.exact_identity_sha256
+    elif job.record.identity_provenance == RUNTIME_METADATA_IDENTITY:
+        value["data_runtime_metadata_identity_sha256"] = job.record.exact_identity_sha256
+    else:
+        raise RunnerError(
+            f"unsupported data identity provenance for {job.identity}: "
+            f"{job.record.identity_provenance}"
+        )
+    value["data_identity_provenance"] = job.record.identity_provenance
     return {**value, "sha256": canonical_sha256(value)}
 
 
@@ -2932,12 +3101,15 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
         d4_views=d4_views,
     )
     check_deadline(deadline_epoch, "post-preflight")
-    records = load_registry(args.registry)
     requested = [item.strip() for item in args.datasets.split(",")] if args.datasets else None
-    selected = select_records(records, split=args.split, requested=requested)
-    if args.mode == "submit" and args.split != "test":
-        raise RunnerError("submit mode is image-only and locked to the registry test split")
-    jobs = discover_jobs(args.input, selected)
+    if args.mode == "submit":
+        if args.split != "test" or requested is not None:
+            raise RunnerError("submit mode is image-only and must discover the complete mounted test split")
+        jobs = discover_submit_jobs(args.input)
+    else:
+        records = load_registry(args.registry)
+        selected = select_records(records, split=args.split, requested=requested)
+        jobs = discover_jobs(args.input, selected)
     devices = [item.strip() for item in args.devices.split(",") if item.strip()]
     if args.allow_cpu:
         if devices != ["cpu"]:
@@ -3029,6 +3201,12 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
             "whole_video_shards": [[job.identity for job in shard] for shard in shards],
             "submission": {"path": str(submission), "sha256": sha256_file(submission), **merged},
             "requested_identities": [job.identity for job in jobs],
+            "input_discovery": {
+                "mode": "runtime-mounted-test" if args.mode == "submit" else "exact-registry",
+                "identity_provenance": sorted(
+                    {job.record.identity_provenance for job in jobs}
+                ),
+            },
             "graph_variant": args.graph_variant,
             "view_execution": view_batch_report(
                 pair_batch_size=args.pair_batch_size,
@@ -3141,6 +3319,8 @@ def validate_args(args: argparse.Namespace) -> None:
         raise RunnerError(
             "--test-only-one-view requires CV/train, view batch size 1, a pinned edge artifact, and no accelerated gate"
         )
+    if args.mode == "submit" and (args.split != "test" or args.datasets is not None):
+        raise RunnerError("submit mode must discover the complete mounted test split")
     if args.input is None and not args.preflight_only and args.cv_rungs_out is None:
         raise RunnerError("--input is required for inference")
 

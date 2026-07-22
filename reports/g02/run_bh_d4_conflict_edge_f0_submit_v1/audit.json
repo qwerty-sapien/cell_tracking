@@ -2,9 +2,13 @@
   "approval_gate": {
     "approval_required_before_kernel_upload": false,
     "approval_required_before_kaggle_submission": true,
+    "approval_required_before_corrected_kernel_upload": true,
+    "approval_required_before_corrected_submission_retry": true,
+    "corrected_kernel_upload_performed": false,
     "kernel_run_completed": true,
     "kernel_upload_performed": true,
-    "kaggle_submission_performed": false
+    "kaggle_submission_performed": true,
+    "kaggle_submission_scored": false
   },
   "branch": "codex/fragmentation-57-rollback",
   "cv57_baseline": {
@@ -135,6 +139,73 @@
     },
     "view_execution": "exact-sequential"
   },
+  "kaggle_submission_attempt": {
+    "code_submission": {
+      "created_at_utc": "2026-07-22T01:01:41.667000Z",
+      "error_description": "Your notebook hit an unhandled error while rerunning your code. Note that the hidden dataset can be larger/smaller/different than the public dataset",
+      "evidence_path": "reports/g02/kaggle_submission_failure_54890576_v1.json",
+      "kernel_ref": "onebitbrain/bhv45-submit/1",
+      "private_score": "",
+      "public_score": "",
+      "status": "COMPLETE",
+      "submission_ref": 54890576,
+      "total_bytes": 0,
+      "ui_classification": "Notebook Threw Exception",
+      "url": "/code/onebitbrain/bhv45-submit?scriptVersionId=336990437"
+    },
+    "direct_file_attempt": {
+      "created_submission": false,
+      "http_status": 400,
+      "reason": "code competition requires kernel, version, and output filename"
+    },
+    "numeric_pair_observed": false,
+    "result": "hidden_rerun_failed_no_score"
+  },
+  "corrected_package_candidate": {
+    "aggregate_bytes": 397869,
+    "archive": {
+      "bytes": 140837,
+      "sha256": "8594563b8475e7dc41c6da3544ec35aeb4bfeea2ce1ee6da94116a18943a2e09",
+      "uncompressed_bytes": 608506
+    },
+    "identity_sha256": "3f67d92b76443bd1ccc939c5fef1c5226b0a2849c13f869bb35cd5708c62e546",
+    "logical_package_bytes": 180189,
+    "path": "kaggle_kernel/bh45pkg",
+    "physical_files": [
+      {
+        "bytes": 241131,
+        "path": "bh45.py",
+        "sha256": "c2b7ff20c06aaaba11f2adc5299cf29b55b21aa672bf736148db2b5db55d5a5a"
+      },
+      {
+        "bytes": 11600,
+        "path": "bh45att.json",
+        "sha256": "d22f7478f251c1c7272b587b1c240d2f30b3f2708a160a38b652443babe51ea6"
+      },
+      {
+        "bytes": 3892,
+        "path": "bh45man.json",
+        "sha256": "76b678f2b3cf6c1b73e94c123edbb5c2b382998ac1b78177f0951009e7570ef1"
+      },
+      {
+        "bytes": 140837,
+        "path": "bh45src.zip",
+        "sha256": "8594563b8475e7dc41c6da3544ec35aeb4bfeea2ce1ee6da94116a18943a2e09"
+      },
+      {
+        "bytes": 409,
+        "path": "kernel-metadata.json",
+        "sha256": "04207f4821480919a1616166d48f25601a939ea231726b1ab69cf496050afce9"
+      }
+    ],
+    "public_zip_discovery": {
+      "identity_provenance": "runtime-zarr-metadata-v1",
+      "test_video_count": 4,
+      "video_ids_match_public_registry": true
+    },
+    "runtime_membership": "all mounted test/*.zarr identities discovered from bounded metadata",
+    "status": "built_and_tested_not_uploaded"
+  },
   "public_test_group_audit": {
     "artifact_source_group_intersection": [],
     "dataset_registry": {
@@ -241,7 +312,8 @@
   "scorer_parity_ledger": {
     "path": "reports/g02/scorer_parity_v1.json",
     "status": "no_observed_kaggle_pairs",
-    "update_deferred_until_observed_kaggle_score": true
+    "update_deferred_until_observed_kaggle_score": true,
+    "unchanged_reason": "submission 54890576 returned no public or private score"
   },
-  "status": "submission_csv_verified_approval_required"
+  "status": "kaggle_hidden_rerun_failed_corrected_package_awaits_upload_approval"
 }
