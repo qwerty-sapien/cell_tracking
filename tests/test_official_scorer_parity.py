@@ -65,16 +65,17 @@ class OfficialScorerParityTests(unittest.TestCase):
         self.assertTrue(math.isnan(float(row["edge_tp"])))
         self.assertEqual(row["num_pred_nodes"], 1.0)
 
-    def test_division_false_positive_fixture_is_active(self) -> None:
+    def test_malformed_shared_child_forks_are_both_counted_as_false_positives(self) -> None:
         report = run_scorer_parity()
         case = next(
             row
             for row in report["cases"]
-            if row["name"] == "division_extra_fork_counts_division_fp"
+            if row["name"] == "shared_child_makes_both_forks_malformed"
         )
-        self.assertEqual(case["actual"]["division_tp"], 1.0)
-        self.assertEqual(case["actual"]["division_fp"], 1.0)
-        self.assertEqual(case["actual"]["division_jaccard"], 0.5)
+        self.assertEqual(case["actual"]["division_tp"], 0.0)
+        self.assertEqual(case["actual"]["division_fp"], 2.0)
+        self.assertEqual(case["actual"]["division_fn"], 1.0)
+        self.assertEqual(case["actual"]["division_jaccard"], 0.0)
 
     def test_edge_only_scorer_matches_full_edge_metrics(self) -> None:
         edge_keys = (

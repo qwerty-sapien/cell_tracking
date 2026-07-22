@@ -2,12 +2,51 @@
 
 Status: **verified structural objective mismatch; production division output must default OFF.**
 
+## Post-patch revalidation (2026-07-22)
+
+Status: **the connectivity conclusion survives, but the old component-based
+classification is historical rather than a description of the patched rule.**
+
+Verified against official checkout
+`075fc5f5a52d11077f9dc2b074644618f26939e2` (`division_metrics.py` SHA-256
+`0635c38621a38f1eb4b55a302b4a817a88e9094930dfc2dab16faeeee60f4dc9`):
+
+- The focused diagnostic bridge `596 -> 800` (submission IDs `667 -> 876`)
+  still changes GT divider 3 from FN to TP. The patched scorer accepts it as a
+  local matched-parent fork whose two child branches contain matches from the
+  two distinct GT daughter lineages. It is therefore not an instance of the
+  arbitrary weak-component reachability exploit that the patch removes.
+- The regression at `tests/test_bh_division_holdout.py` now freezes both sides:
+  baseline score `0`, bridged score `1` for divider 3.
+- The current division-off D4 57-video artifact was classified under the
+  patched local rule in
+  `reports/g02/division_failure_holdout57_postpatch_v1.json`: all 42 GT
+  divisions remain FN; 39 have the strict matched parent/daughter roles but no
+  local parent fork, and 3 lack one of the required matched roles. There are
+  zero predicted forks, topology candidates, TPs, and FPs, as required by the
+  production division-off setting.
+- The inherited fit-only geometry envelope is unchanged at `19/83 =
+  22.891566%`. Because the focused bridge passes the stricter pairing rule but
+  fails the inherited child/sister geometry, geometry remains the demonstrated
+  candidate-generation constraint. This does not prove a full-holdout causal
+  allocation while production divisions are off.
+
+The patched division arithmetic for a hypothetical `30 TP / 20 FP` outcome is
+`FN = 12`, division Jaccard `30 / (30 + 20 + 12) = 0.4838709677`, and score
+contribution `0.0483870968`. Holding the post-patch D4 adjusted-edge baseline
+fixed at `0.8711885823` gives `0.9195756791`, not `0.9077`. The ladder remains
+an arithmetic scenario only: the patched scorer requires all 30 TPs to satisfy
+local daughter-branch pairing, and the current division-off output supplies no
+such candidates.
+
 Scope and provenance:
 
 - Prediction/scoring artifact: `reports/g02/source_softmax_edge_f0_fit117_holdout_prefix52_v1/scores.json`.
 - Frozen split and scorer were read only. No Kaggle write, submission, public artifact, paid compute, or split/scorer change was made.
 - The artifact reports `division_tp=0`, `division_fp=133`, `division_fn=37` across 52 videos.
-- A focused known-GT replay was added at `tests/test_bh_division_holdout.py`. It replays `train:44b6_267148e4`, GT divider graph ID 3, through the pinned scorer and is retained as an explicit expected failure until production logic actually recovers it.
+- A focused known-GT replay at `tests/test_bh_division_holdout.py` replays
+  `train:44b6_267148e4`, GT divider graph ID 3. It now asserts the patched
+  baseline remains 0 and the diagnostic bridge changes it to 1.
 
 ## Verified findings
 
@@ -79,7 +118,8 @@ Thus the constants match the V45 reference, but matching the reference does not 
 
 ## Commands/evidence checks
 
-- `.venv/bin/python -m unittest -v tests.test_bh_division_holdout` — known-GT replay reproduces `0 != 1` before being marked expected failure.
+- `.venv/bin/python -m unittest -v tests.test_bh_division_holdout` — passes;
+  patched baseline `0`, diagnostic bridge `1`.
 - `PYTHONPATH=src .venv/bin/python -m unittest -v tests.test_bhg.PostprocessingTests.test_short_division_component_kept_while_other_short_component_pruned` — passes.
 - `PYTHONPATH=src .venv/bin/python -m unittest -v tests.test_official_scorer_parity` — all 7 frozen-scorer parity tests pass, including the active division-FP fixture.
 - Read-only all-event replay through `tracking_cellmot.division_metrics`: 37 events; classification counts 35 disconnected, 2 stage missing, 0 spanning, 0 fork candidate, 0 TP.

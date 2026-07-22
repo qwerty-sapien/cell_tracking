@@ -107,6 +107,16 @@ metric/code trace and the known-GT replay are recorded in
 `reports/g02/division_bug_investigation_holdout_prefix52_v1.md` and
 `tests/test_bh_division_holdout.py`.
 
+Post-patch revalidation at official checkout `075fc5f` preserves the core
+finding: the held-out diagnostic bridge still changes divider 3 from FN to TP
+because it forms a valid local matched-parent fork with two distinct matched
+daughter branches. The former `35/37` weak-component classification remains a
+pre-patch structural measurement and is not the patched scorer's decision
+procedure. On the current division-off D4 57-video output, patched
+classification is instead 39/42 strict-role-covered events with no local
+parent fork and 3/42 with a missing matched role; see
+`reports/g02/division_failure_holdout57_postpatch_v1.json`.
+
 The scorer requires matched prediction nodes covering the pre-split stage and
 both daughter lineages in one weakly connected component that contains a
 prediction fork. Exact replay classified 35/37 GT events as having the needed
@@ -131,9 +141,10 @@ The constants do match the scored V45 reference; the failure is the local
 orphan-node objective versus the scorer's lineage-connectivity objective.
 Widening geometry or applying the held-out oracle bridge is not supported.
 Production divisions therefore default OFF, with explicit opt-in retained for
-future fit-derived work. The known-GT test remains an explicit expected failure
-until a fit-safe rule demonstrates a real official TP. It is inferred, not
-individually edge-match-verified, that the false forks also increase edge FPs.
+future fit-derived work. The known-GT test now freezes the post-patch baseline
+failure and the diagnostic bridge TP; the bridge remains ineligible as a
+held-out oracle. It is inferred, not individually edge-match-verified, that the
+false forks also increase edge FPs.
 
 This result must be read beside the fixed-node oracle at
 `reports/g02/t04_v45f4_fold0_fixed_node_oracle/`. With its prediction nodes,

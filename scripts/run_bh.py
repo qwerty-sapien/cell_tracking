@@ -694,6 +694,13 @@ def preflight(
     if bh_graph.V45_GRAPH_CONFIG is not bh_graph.V45_CONFIG:
         raise PreflightError("bh_graph locked configuration aliases disagree")
     if (
+        bh_graph.V45_GRAPH_CONFIG.learned_bonus != 1.0
+        or bh_graph.V45_GRAPH_CONFIG.raw_distance_weight != 0.05
+        or bh_graph.V45_GRAPH_CONFIG.as_dict().get("learned_bonus") != 1.0
+        or bh_graph.V45_GRAPH_CONFIG.as_dict().get("raw_distance_weight") != 0.05
+    ):
+        raise PreflightError("submit graph learned-bonus/distance constants are not locked")
+    if (
         not hasattr(bh_route, "extract_features")
         or set(GRAPH_VARIANTS) != {LOCKED_GRAPH_VARIANT, A0_GRAPH_VARIANT}
         or not hasattr(bh_edge, "A0CheckpointScorer")
@@ -2647,6 +2654,11 @@ def process_video(
         check_deadline(deadline_epoch, f"{job.identity} bh_graph calibration")
         if graph_result.provenance.get("full_frame_dense_matrix") is not False:
             raise RunnerError("bh_graph did not attest sparse graph execution")
+        if (
+            graph_result.provenance.get("production_eligible") is not True
+            or "experimental_sweep" in graph_result.provenance
+        ):
+            raise RunnerError("production submission rejected experimental graph configuration")
         if a0_audit is not None:
             a0_audit["graph"] = {
                 "variant": A0_GRAPH_VARIANT,

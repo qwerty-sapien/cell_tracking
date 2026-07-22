@@ -15,6 +15,7 @@ import numpy as np
 from scipy.optimize import linear_sum_assignment
 
 from celltrack_alpha.bh_graph import (
+    EXPERIMENTAL_SWEEP_SCHEMA,
     PHYSICAL_SCALE_ZYX,
     GraphEdge,
     GraphInvariantError,
@@ -201,6 +202,37 @@ class V45ConfigTests(unittest.TestCase):
             replace(config, output_edge_max_um=13.0)
         with self.assertRaises(FrozenInstanceError):
             config.output_edge_max_um = 13.0  # type: ignore[misc]
+
+    def test_nondefault_config_requires_explicit_offline_sweep_provenance(self) -> None:
+        class SweepConfig:
+            def __init__(self) -> None:
+                for name, value in V45_GRAPH_CONFIG.as_dict().items():
+                    setattr(self, name, tuple(value) if name == "scale_zyx" else value)
+                self.learned_bonus = 2.0
+
+            def as_dict(self) -> dict[str, object]:
+                return {
+                    name: list(value) if isinstance(value, tuple) else value
+                    for name, value in vars(self).items()
+                }
+
+        nodes = [_node_um(0, 0, 0.0), _node_um(1, 1, 1.0)]
+        with self.assertRaisesRegex(ValueError, "requires sweep provenance"):
+            calibrate_v45_graph(nodes, config=SweepConfig())  # type: ignore[arg-type]
+        result = calibrate_v45_graph(
+            nodes,
+            config=SweepConfig(),  # type: ignore[arg-type]
+            _experimental_sweep_provenance={
+                "schema": EXPERIMENTAL_SWEEP_SCHEMA,
+                "experiment_id": "unit-test",
+                "purpose": "offline-cached-cv57-sweep",
+                "varied_fields": ["learned_bonus"],
+                "production_eligible": False,
+                "submit_eligible": False,
+            },
+        )
+        self.assertFalse(result.provenance["production_eligible"])
+        self.assertEqual(result.provenance["config"]["learned_bonus"], 2.0)
 
     def test_anisotropic_physical_distance(self) -> None:
         self.assertAlmostEqual(physical_distance((0, 0, 0), (1, 0, 0)), 1.625)

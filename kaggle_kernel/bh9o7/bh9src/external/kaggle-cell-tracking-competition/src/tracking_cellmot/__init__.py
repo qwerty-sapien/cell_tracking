@@ -1,1 +1,0 @@
-"""tracking-cellmot scorer."""

@@ -146,7 +146,7 @@ def _fake_graph_module(observed: dict[str, object] | None = None):
             tuple(nodes),
             tuple(edges),
             {"input_node_count": len(nodes)},
-            {"full_frame_dense_matrix": False},
+            {"full_frame_dense_matrix": False, "production_eligible": True},
         )
 
     return SimpleNamespace(
@@ -427,7 +427,11 @@ class ModelGraphRouteTests(unittest.TestCase):
         self.assertNotEqual(one_view["sha256"], exact["sha256"])
 
     def test_edge_artifact_cli_pin_and_one_view_gate_fail_closed(self) -> None:
-        artifact = ROOT / "reports/g02/conflict_edge_f0_fit117_v1/edge.json"
+        artifact = (
+            ROOT
+            / "_ARCHIVE/conflict_residual/reports/g02/"
+            "conflict_edge_f0_fit117_v1/edge.json"
+        )
         expected_sha256 = "5c6377cfdfe8bbc75bcef52c602cf86c402f07451a7751047a0adba87e7e8034"
         record = BH.pinned_edge_artifact_record(artifact, expected_sha256)
         self.assertEqual(record["sha256"], expected_sha256)
@@ -734,7 +738,7 @@ class ResumeDeadlineMergeTests(unittest.TestCase):
             (bh_graph.GraphNode(0, 0, z, 0, 0),),
             (),
             {},
-            {"full_frame_dense_matrix": False},
+            {"full_frame_dense_matrix": False, "production_eligible": True},
         )
         rows = BH.graph_rows(job.record.dataset, graph, job.record.image_shape)
         fragment = root / f"{job.slug}.csv"

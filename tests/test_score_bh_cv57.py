@@ -41,6 +41,17 @@ class CV57ScoreTests(unittest.TestCase):
             pkgbh.CV57_EDGE_ARTIFACT_SHA256,
         )
 
+    def test_postpatch_scorer_is_attested_by_green_parity_ledger(self) -> None:
+        evidence = score_bh_cv57.validate_revalidated_scorer(
+            ROOT / "reports/g02/scorer_parity_v1.json"
+        )
+        self.assertEqual(evidence["fixture_count"], 7)
+        self.assertEqual(
+            evidence["official_checkout"],
+            "075fc5f5a52d11077f9dc2b074644618f26939e2",
+        )
+        self.assertEqual(len(evidence["source_hashes"]), 3)
+
 
 if __name__ == "__main__":
     unittest.main()

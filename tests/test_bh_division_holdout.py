@@ -36,14 +36,17 @@ class FrozenHoldoutDivisionTests(unittest.TestCase):
         ARCHIVE.exists() and FRAGMENT.exists(),
         "requires the frozen local holdout archive and scored prediction fragment",
     )
-    @unittest.expectedFailure
-    def test_frozen_holdout_divider_3_is_recovered_by_the_emitted_fork(self) -> None:
-        """Regression for the known division in frozen holdout 44b6_267148e4."""
+    def test_diagnostic_bridge_still_recovers_holdout_divider_3(self) -> None:
+        """The bridge is a valid local two-daughter fork under the patched scorer."""
 
         dataset = "44b6_267148e4"
         submission = scoreall._fragment_graph(FRAGMENT, f"train:{dataset}")
         prediction_nodes, prediction_edges = scoreall._prediction_rows(dataset, submission)
         pred_graph = prediction_to_graph(prediction_nodes, prediction_edges)
+        bridged_graph = prediction_to_graph(
+            prediction_nodes,
+            [*prediction_edges, {"source_id": 667, "target_id": 876}],
+        )
 
         with ZipStore(ARCHIVE, mode="r") as store:
             gt_graph = geff_arrays_to_graph(read_geff_arrays(store, "train", dataset))
@@ -51,4 +54,7 @@ class FrozenHoldoutDivisionTests(unittest.TestCase):
             scale = tuple(float(value) for value in parse_scale(dict(group.attrs)))
 
         self.assertIn(3, gt_graph.dividing_nodes())
-        self.assertEqual(score_divisions(pred_graph, gt_graph, scale, 7.0)[3], 1)
+        baseline = score_divisions(pred_graph, gt_graph, scale, 7.0)
+        bridged = score_divisions(bridged_graph, gt_graph, scale, 7.0)
+        self.assertEqual(baseline.scores[3], 0)
+        self.assertEqual(bridged.scores[3], 1)

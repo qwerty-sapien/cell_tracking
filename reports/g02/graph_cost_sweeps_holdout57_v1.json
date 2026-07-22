@@ -1,0 +1,202 @@
+{
+  "schema": "celltrack-alpha.graph-cost-sweeps-holdout57.v1",
+  "scope": {
+    "videos": 57,
+    "detector_forward_passes": 0,
+    "division_enabled": false,
+    "geometry_changed": false,
+    "production_eligible": false,
+    "submit_eligible": false
+  },
+  "baseline": {
+    "learned_bonus": 1.0,
+    "raw_distance_weight": 0.05,
+    "adj_edge_jaccard": 0.8711885823490648,
+    "edge_jaccard": 0.8761665470208184,
+    "edge_tp": 34174,
+    "edge_fp": 2736,
+    "edge_fn": 2094,
+    "node_recall": 0.9903079300966847,
+    "prediction_component_count": 48881
+  },
+  "n3_learned_bonus": [
+    {
+      "learned_bonus": 1.0,
+      "raw_distance_weight": 0.05,
+      "adj_edge_jaccard": 0.8711885823490648,
+      "edge_jaccard": 0.8761665470208184,
+      "edge_tp": 34174,
+      "edge_fp": 2736,
+      "edge_fn": 2094,
+      "node_recall": 0.9903079300966847,
+      "prediction_component_count": 48881,
+      "report_sha256": "d0839e5a287ea27b8c585f819a46251ec3dac1c564355580fc61a12a94482ac1"
+    },
+    {
+      "learned_bonus": 2.0,
+      "raw_distance_weight": 0.05,
+      "adj_edge_jaccard": 0.8714246054524671,
+      "edge_jaccard": 0.8763877849285916,
+      "edge_tp": 34180,
+      "edge_fp": 2733,
+      "edge_fn": 2088,
+      "node_recall": 0.9902194187794149,
+      "prediction_component_count": 48843,
+      "report_sha256": "d95861e8879d8e27d1d7d0386781d56133e00cc91b28e1e1553c1ceffad42171"
+    },
+    {
+      "learned_bonus": 4.0,
+      "raw_distance_weight": 0.05,
+      "adj_edge_jaccard": 0.8720910462365732,
+      "edge_jaccard": 0.8770651616213443,
+      "edge_tp": 34188,
+      "edge_fp": 2712,
+      "edge_fn": 2080,
+      "node_recall": 0.9897281046650958,
+      "prediction_component_count": 48859,
+      "report_sha256": "951e5ae01f8ceb96b82053bdf67c5faf2e2c79ba87cf9630128c8f19e208aa85"
+    },
+    {
+      "learned_bonus": 8.0,
+      "raw_distance_weight": 0.05,
+      "adj_edge_jaccard": 0.8670102112352311,
+      "edge_jaccard": 0.8719586996524228,
+      "edge_tp": 34118,
+      "edge_fp": 2860,
+      "edge_fn": 2150,
+      "node_recall": 0.9904868323425705,
+      "prediction_component_count": 49172,
+      "report_sha256": "63bf6b4bf9172f9567ac6239b69447b2a0bd6f4ef34ad782cef01dc390153bf1"
+    },
+    {
+      "learned_bonus": 16.0,
+      "raw_distance_weight": 0.05,
+      "adj_edge_jaccard": 0.8479018413756242,
+      "edge_jaccard": 0.8528194255136554,
+      "edge_tp": 33787,
+      "edge_fp": 3350,
+      "edge_fn": 2481,
+      "node_recall": 0.9890894215578875,
+      "prediction_component_count": 50280,
+      "report_sha256": "80af59c3dff1b15779757a4e716eadf93e14083d75fb9e74816daeca05170291"
+    }
+  ],
+  "n4_joint_cost": [
+    {
+      "learned_bonus": 2.0,
+      "raw_distance_weight": 0.025,
+      "adj_edge_jaccard": 0.871594023045185,
+      "edge_jaccard": 0.8765577721934458,
+      "edge_tp": 34184,
+      "edge_fp": 2730,
+      "edge_fn": 2084,
+      "node_recall": 0.9902753033219827,
+      "prediction_component_count": 48838,
+      "report_sha256": "0cc86fd6a268fa36c728cc6a8ef25e09ce1775a6c4abe93484a0dcf5196f3f5f"
+    },
+    {
+      "learned_bonus": 2.0,
+      "raw_distance_weight": 0.05,
+      "adj_edge_jaccard": 0.8714246054524671,
+      "edge_jaccard": 0.8763877849285916,
+      "edge_tp": 34180,
+      "edge_fp": 2733,
+      "edge_fn": 2088,
+      "node_recall": 0.9902194187794149,
+      "prediction_component_count": 48843,
+      "reused_from_n3": true
+    },
+    {
+      "learned_bonus": 2.0,
+      "raw_distance_weight": 0.1,
+      "adj_edge_jaccard": 0.871822310859214,
+      "edge_jaccard": 0.8767920802236413,
+      "edge_tp": 34187,
+      "edge_fp": 2723,
+      "edge_fn": 2081,
+      "node_recall": 0.990197743876808,
+      "prediction_component_count": 48861,
+      "report_sha256": "0130c45cc20b76801c720aa94ab172842f0164e1a76ccd389faff72f9bf7a2d2"
+    },
+    {
+      "learned_bonus": 4.0,
+      "raw_distance_weight": 0.025,
+      "adj_edge_jaccard": 0.8720549393456486,
+      "edge_jaccard": 0.8770233178565016,
+      "edge_tp": 34189,
+      "edge_fp": 2715,
+      "edge_fn": 2079,
+      "node_recall": 0.9897312209548711,
+      "prediction_component_count": 48860,
+      "report_sha256": "b96f5366ae00ad7cce6208f6e39cf3445fe4dee23cdb51de7df905152fb8ee3c"
+    },
+    {
+      "learned_bonus": 4.0,
+      "raw_distance_weight": 0.05,
+      "adj_edge_jaccard": 0.8720910462365732,
+      "edge_jaccard": 0.8770651616213443,
+      "edge_tp": 34188,
+      "edge_fp": 2712,
+      "edge_fn": 2080,
+      "node_recall": 0.9897281046650958,
+      "prediction_component_count": 48859,
+      "reused_from_n3": true
+    },
+    {
+      "learned_bonus": 4.0,
+      "raw_distance_weight": 0.1,
+      "adj_edge_jaccard": 0.8717564284639117,
+      "edge_jaccard": 0.8767313019390581,
+      "edge_tp": 34182,
+      "edge_fp": 2720,
+      "edge_fn": 2086,
+      "node_recall": 0.989700430900946,
+      "prediction_component_count": 48829,
+      "report_sha256": "42556e5128a924a2f65d108ff73f5ba60e5f2caae75bbca5365214804baa9e7c"
+    },
+    {
+      "learned_bonus": 8.0,
+      "raw_distance_weight": 0.025,
+      "adj_edge_jaccard": 0.8667882353242209,
+      "edge_jaccard": 0.8717483518168345,
+      "edge_tp": 34115,
+      "edge_fp": 2866,
+      "edge_fn": 2153,
+      "node_recall": 0.9904964449526026,
+      "prediction_component_count": 49192,
+      "report_sha256": "393558d771a682dd5c495016aa9c155ce013d6454b3bb93dfb9f98ea8e15a3f2"
+    },
+    {
+      "learned_bonus": 8.0,
+      "raw_distance_weight": 0.05,
+      "adj_edge_jaccard": 0.8670102112352311,
+      "edge_jaccard": 0.8719586996524228,
+      "edge_tp": 34118,
+      "edge_fp": 2860,
+      "edge_fn": 2150,
+      "node_recall": 0.9904868323425705,
+      "prediction_component_count": 49172,
+      "reused_from_n3": true
+    },
+    {
+      "learned_bonus": 8.0,
+      "raw_distance_weight": 0.1,
+      "adj_edge_jaccard": 0.8681098569297764,
+      "edge_jaccard": 0.873072299941178,
+      "edge_tp": 34138,
+      "edge_fp": 2833,
+      "edge_fn": 2130,
+      "node_recall": 0.9905186546188723,
+      "prediction_component_count": 49109,
+      "report_sha256": "69263fef57f7f76f83eb7790307ce8fed93226ea8199910d98918def5a500dfa"
+    }
+  ],
+  "result": {
+    "best_learned_bonus": 4.0,
+    "best_raw_distance_weight": 0.05,
+    "best_adj_edge_jaccard": 0.8720910462365732,
+    "delta_from_baseline": 0.0009024638875084,
+    "promoted": false,
+    "production_defaults_unchanged": true
+  }
+}

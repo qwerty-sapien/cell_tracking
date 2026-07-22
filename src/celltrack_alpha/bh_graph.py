@@ -23,6 +23,7 @@ from scipy.spatial import cKDTree
 
 
 GRAPH_SCHEMA = "celltrack-alpha.bh-v45-graph.v1"
+EXPERIMENTAL_SWEEP_SCHEMA = "celltrack-alpha.bh-v45-graph-sweep.v1"
 PHYSICAL_SCALE_ZYX = (1.625, 0.40625, 0.40625)
 
 
@@ -232,6 +233,37 @@ NodeLike = GraphNode | Mapping[str, Any] | Any
 ProbabilityLike = LearnedEdgeProbability | Mapping[str, Any] | Sequence[Any]
 ImageSource = Mapping[int, np.ndarray] | Callable[[int], np.ndarray]
 RefineCallback = Callable[[int, tuple[float, float, float]], Sequence[float] | None]
+
+
+def _validated_experimental_sweep_provenance(value: Any) -> dict[str, Any]:
+    """Validate the private, offline-only graph-config unlock contract."""
+
+    if not isinstance(value, Mapping):
+        raise GraphCalibrationError("non-default graph config requires sweep provenance")
+    required = {
+        "schema",
+        "experiment_id",
+        "purpose",
+        "varied_fields",
+        "production_eligible",
+        "submit_eligible",
+    }
+    if set(value) != required:
+        raise GraphCalibrationError("experimental sweep provenance has missing or unexpected fields")
+    varied = value["varied_fields"]
+    if (
+        value["schema"] != EXPERIMENTAL_SWEEP_SCHEMA
+        or not isinstance(value["experiment_id"], str)
+        or not value["experiment_id"]
+        or value["purpose"] != "offline-cached-cv57-sweep"
+        or not isinstance(varied, list)
+        or not varied
+        or set(varied) - {"learned_bonus", "raw_distance_weight"}
+        or value["production_eligible"] is not False
+        or value["submit_eligible"] is not False
+    ):
+        raise GraphCalibrationError("experimental sweep provenance is not offline-only")
+    return dict(value)
 
 
 def _strict_int(value: Any, label: str) -> int:
@@ -1018,11 +1050,14 @@ def build_adjacent_edges(
     parity_mode: str = "sparse",
     topology_mode: str = "legacy",
     config: V45GraphConfig = V45_GRAPH_CONFIG,
+    _experimental_sweep_provenance: Mapping[str, Any] | None = None,
 ) -> tuple[tuple[GraphEdge, ...], dict[str, int | bool]]:
     """Build adjacent edges with the notebook's two raw-distance motion passes."""
 
     if config is not V45_GRAPH_CONFIG and config != V45_GRAPH_CONFIG:
-        raise GraphCalibrationError("only the locked V45 graph config is accepted")
+        _validated_experimental_sweep_provenance(_experimental_sweep_provenance)
+    elif _experimental_sweep_provenance is not None:
+        _validated_experimental_sweep_provenance(_experimental_sweep_provenance)
     if parity_mode not in {"sparse", "dense_diagnostic"}:
         raise GraphCalibrationError("parity_mode must be 'sparse' or 'dense_diagnostic'")
     if topology_mode not in {"legacy", "scored_partial"}:
@@ -1929,11 +1964,21 @@ def calibrate_v45_graph(
     topology_mode: str = "legacy",
     division_enabled: bool = False,
     config: V45GraphConfig = V45_GRAPH_CONFIG,
+    _experimental_sweep_provenance: Mapping[str, Any] | None = None,
 ) -> GraphResult:
     """Run V45 calibration, sparse by default with an explicit dense oracle."""
 
     if type(division_enabled) is not bool:
         raise GraphCalibrationError("division_enabled must be bool")
+    sweep_provenance = None
+    if config is not V45_GRAPH_CONFIG and config != V45_GRAPH_CONFIG:
+        sweep_provenance = _validated_experimental_sweep_provenance(
+            _experimental_sweep_provenance
+        )
+    elif _experimental_sweep_provenance is not None:
+        sweep_provenance = _validated_experimental_sweep_provenance(
+            _experimental_sweep_provenance
+        )
 
     normalized = normalize_nodes(nodes, max_nodes_per_frame=config.max_nodes_per_frame)
     adjacent_edges, adjacent_stats = build_adjacent_edges(
@@ -1944,6 +1989,7 @@ def calibrate_v45_graph(
         parity_mode=parity_mode,
         topology_mode=topology_mode,
         config=config,
+        _experimental_sweep_provenance=sweep_provenance,
     )
     gap_nodes, gap_edges, gap_stats = close_one_frame_gaps(
         normalized,
@@ -2030,7 +2076,10 @@ def calibrate_v45_graph(
         "adaptive_short_track_rescue": False,
         "outside_090_gate": False,
         "external_access": False,
+        "production_eligible": sweep_provenance is None,
     }
+    if sweep_provenance is not None:
+        provenance["experimental_sweep"] = sweep_provenance
     validate_graph(final_nodes, final_edges)
     return GraphResult(final_nodes, final_edges, stats, provenance)
 
@@ -2040,6 +2089,7 @@ build_graph = calibrate_v45_graph
 
 
 __all__ = [
+    "EXPERIMENTAL_SWEEP_SCHEMA",
     "GRAPH_SCHEMA",
     "PHYSICAL_SCALE_ZYX",
     "GraphCalibrationError",

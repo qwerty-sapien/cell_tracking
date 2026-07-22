@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """Classify why official GT divisions are missed by persisted predictions.
 
-For every GT division, this reuses the pinned official distance matching and
-separates four progressively stronger conditions: required stages detected,
-those stages connected in one prediction component, a prediction fork present
-in that component, and official recovery.  The diagnostic never changes or
+For every GT division, this mirrors the patched official scorer's strict local
+parent/fork and daughter-branch pairing rules. The diagnostic never changes or
 rescales a prediction.
 """
 
@@ -17,8 +15,6 @@ from pathlib import Path
 import sys
 from typing import Any, Mapping, Sequence
 
-import polars as pl
-import tracksdata as td
 import zarr
 from zarr.storage import ZipStore
 
@@ -40,9 +36,13 @@ from tracking_cellmot import division_metrics  # noqa: E402
 
 DEFAULT_ZIP = ROOT / "data/kaggle/raw/biohub-cell-tracking-during-development.zip"
 DEFAULT_SPLIT = ROOT / "reports/g02/grouped_3fold_audit20_v1.json"
-DEFAULT_FRAGMENTS = ROOT / "reports/g02/t04_v45f4_frozen_sparse_fold0_local_20260719/frags"
-DEFAULT_SCORES = ROOT / "reports/g02/t04_v45f4_frozen_sparse_fold0_local_20260719/scores.json"
-DEFAULT_OUTPUT = ROOT / "reports/g02/division_failure_fold0.json"
+DEFAULT_FRAGMENTS = ROOT / "kaggle_kernel/bhcv57out_v3/fragments"
+DEFAULT_SCORES = (
+    ROOT
+    / "_ARCHIVE/conflict_residual/reports/g02/"
+    "run_bh_d4_conflict_edge_f0_holdout57_v1/scores_postpatch.json"
+)
+DEFAULT_OUTPUT = ROOT / "reports/g02/division_failure_holdout57_postpatch_v1.json"
 
 
 class DivisionDiagnosticError(RuntimeError):
@@ -67,88 +67,71 @@ def _load(path: Path) -> Mapping[str, Any]:
     return value
 
 
-def _descendants(graph: Any, seed: int) -> set[int]:
-    result = {int(seed)}
-    stack = [int(seed)]
-    while stack:
-        for successor in graph.successors(stack.pop()):
-            value = int(successor)
-            if value not in result:
-                result.add(value)
-                stack.append(value)
-    return result
-
-
-def stage_coverage(matched_attrs: pl.DataFrame, gt_div: Any, divider: int) -> dict[str, Any]:
-    time_counts = gt_div.node_attrs(attr_keys=["t"]).group_by("t").agg(pl.len().alias("n"))
-    one_node_times = set(time_counts.filter(pl.col("n") == 1)["t"].to_list())
-    children = [int(value) for value in gt_div.successors(divider)]
-    lineages = [_descendants(gt_div, child) for child in children]
-    if matched_attrs.is_empty():
-        matched_times: set[int] = set()
-        matched_gt_ids: set[int] = set()
-    else:
-        matched_times = {int(value) for value in matched_attrs["t"].to_list()}
-        matched_gt_ids = {
-            int(value)
-            for value in matched_attrs[td.DEFAULT_ATTR_KEYS.MATCHED_NODE_ID].to_list()
-            if value is not None and int(value) != -1
-        }
-    covered = sum(bool(lineage & matched_gt_ids) for lineage in lineages)
-    has_one = bool(one_node_times & matched_times)
-    return {
-        "one_node_stage_matched": has_one,
-        "daughter_lineages": len(lineages),
-        "daughter_lineages_matched": covered,
-        "stage_covered": bool(has_one and covered >= 2),
-        "matched_prediction_nodes": int(matched_attrs.height),
-    }
-
-
 def classify_division(
     matched_pred: Any,
     gt_div: Any,
     divider: int,
     pred_dividing_nodes: set[int],
+    cross_component_forks: set[int],
+    malformed_forks: set[int],
     official_score: int,
 ) -> dict[str, Any]:
     attrs = division_metrics._matched_node_attrs(matched_pred)
-    overall = stage_coverage(attrs, gt_div, divider)
-    node_ids = [int(value) for value in attrs["node_id"].to_list()]
-    components = division_metrics._weakly_connected_components(matched_pred, node_ids)
-    spanning: list[dict[str, Any]] = []
-    fork_candidates: set[int] = set()
-    for matched_subset, visited in components:
-        component_attrs = attrs.filter(pl.col("node_id").is_in(list(matched_subset)))
-        coverage = stage_coverage(component_attrs, gt_div, divider)
-        if coverage["stage_covered"]:
-            forks = {int(value) for value in visited} & pred_dividing_nodes
-            fork_candidates |= forks
-            spanning.append(
-                {
-                    **coverage,
-                    "visited_prediction_nodes": len(visited),
-                    "fork_candidate_ids": sorted(forks),
-                }
+    matched_nodes = division_metrics._matched_division_nodes(attrs, gt_div, divider)
+    parent_ids: set[int] = set()
+    daughter_ids: list[set[int]] = []
+    local_forks: set[int] = set()
+    candidates: set[int] = set()
+    if matched_nodes is not None:
+        parent_ids, daughter_ids = matched_nodes
+        local_nodes = parent_ids | {
+            int(successor)
+            for parent_id in parent_ids
+            for successor in matched_pred.successors(parent_id)
+        }
+        local_forks = local_nodes & pred_dividing_nodes
+        invalid_forks = cross_component_forks | malformed_forks
+        candidates = {
+            pred_div
+            for pred_div in local_forks - invalid_forks
+            if division_metrics._is_strongly_connected_division(
+                matched_pred, pred_div, parent_ids, daughter_ids
             )
+        }
     if official_score:
         classification = "officially_recovered"
-    elif not overall["stage_covered"]:
-        classification = "detection_or_localization_stage_missing"
-    elif not spanning:
-        classification = "association_components_disconnected"
-    elif not fork_candidates:
-        classification = "connected_but_prediction_fork_missing"
+    elif matched_nodes is None:
+        classification = "detection_or_localization_role_missing"
+    elif not local_forks:
+        classification = "local_parent_fork_missing"
+    elif not local_forks - (cross_component_forks | malformed_forks):
+        if local_forks <= malformed_forks:
+            classification = "local_fork_malformed"
+        elif local_forks <= cross_component_forks:
+            classification = "local_fork_cross_gt_component"
+        else:
+            classification = "local_fork_invalid_mixed"
+    elif not candidates:
+        classification = "strict_daughter_branch_pairing_failed"
     else:
         classification = "fork_candidate_lost_in_global_pairing"
     return {
         "gt_divider_id": int(divider),
         "official_score": int(official_score),
         "classification": classification,
-        "overall_stage_coverage": overall,
-        "spanning_component_count": len(spanning),
-        "fork_candidate_ids": sorted(fork_candidates),
-        "spanning_components": spanning,
+        "strict_role_coverage": {
+            "matched_prediction_nodes": int(attrs.height),
+            "parent_side_matched": bool(parent_ids),
+            "parent_side_prediction_ids": sorted(parent_ids),
+            "daughter_lineages": len(gt_div.successors(divider)),
+            "daughter_lineages_matched": sum(bool(ids) for ids in daughter_ids),
+            "daughter_prediction_ids": [sorted(ids) for ids in daughter_ids],
+            "role_covered": matched_nodes is not None,
+        },
+        "local_fork_ids": sorted(local_forks),
+        "cross_component_fork_ids": sorted(local_forks & cross_component_forks),
+        "malformed_fork_ids": sorted(local_forks & malformed_forks),
+        "paired_topology_candidate_ids": sorted(candidates),
     }
 
 
@@ -159,7 +142,12 @@ def diagnose(
     scores_path: Path,
 ) -> dict[str, Any]:
     scores = _load(scores_path)
-    scored_archive = scores.get("archive")
+    frozen_scorer = scores.get("frozen_scorer")
+    scored_archive = (
+        frozen_scorer.get("archive")
+        if isinstance(frozen_scorer, Mapping)
+        else scores.get("archive")
+    )
     archive_sha256 = (
         scored_archive.get("sha256") if isinstance(scored_archive, Mapping) else None
     )
@@ -181,10 +169,20 @@ def diagnose(
     )
     split = _load(split_path)
     selection = scoreall.select_video_ids(split, "fold0")
-    if not set(division_ids).issubset(selection.selected_video_ids):
+    selection_evidence = scores.get("selection")
+    selected_video_ids = (
+        tuple(str(value) for value in selection_evidence.get("selected_video_ids", ()))
+        if isinstance(selection_evidence, Mapping)
+        else tuple(selection.selected_video_ids)
+    )
+    if len(selected_video_ids) != 57:
+        raise DivisionDiagnosticError("score artifact does not bind the 57-video holdout")
+    if not set(selected_video_ids).issubset(selection.selected_video_ids):
+        raise DivisionDiagnosticError("score artifact selection escaped fold-0 heldout")
+    if not set(division_ids).issubset(selected_video_ids):
         raise DivisionDiagnosticError("division-bearing scores escaped fold-0 heldout")
     manifest = scoreall.validate_fragment_set(
-        scoreall.resolve_fragment_paths(str(fragments)), selection.selected_video_ids
+        scoreall.resolve_fragment_paths(str(fragments)), selected_video_ids
     )
     paths = dict(manifest.ordered)
     results: list[dict[str, Any]] = []
@@ -198,19 +196,30 @@ def diagnose(
             gt_graph = geff_arrays_to_graph(gt_arrays)
             group = zarr.open_group(store=store, path=f"train/{dataset}.zarr", mode="r")
             scale = tuple(float(value) for value in parse_scale(dict(group.attrs)))
-            official_scores = division_metrics.score_divisions(pred_graph, gt_graph, scale, 7.0)
+            official_result = division_metrics.score_divisions(pred_graph, gt_graph, scale, 7.0)
             matched = division_metrics.match_divisions(pred_graph, gt_graph, scale, 7.0)
             gt_divisions = division_metrics.extract_divisions(gt_graph)
-            if set(official_scores) != set(matched) or set(matched) != set(gt_divisions):
+            if set(official_result.scores) != set(matched) or set(matched) != set(gt_divisions):
                 raise DivisionDiagnosticError("official division decomposition is inconsistent")
-            pred_dividing_nodes = {int(value) for value in pred_graph.dividing_nodes()}
+            pred_dividing_nodes = {
+                int(value)
+                for value in pred_graph.node_ids()
+                if pred_graph.out_degree(value) >= 2
+            }
+            _, cross_component_forks, malformed_forks = (
+                division_metrics._pred_division_fork_sets(
+                    pred_graph, gt_graph, scale, 7.0
+                )
+            )
             divisions = [
                 classify_division(
                     matched[divider],
                     gt_divisions[divider],
                     int(divider),
                     pred_dividing_nodes,
-                    int(official_scores[divider]),
+                    cross_component_forks,
+                    malformed_forks,
+                    int(official_result.scores[divider]),
                 )
                 for divider in sorted(gt_divisions)
             ]
@@ -224,6 +233,7 @@ def diagnose(
                     "prediction_dividing_nodes": len(pred_dividing_nodes),
                     "gt_divisions": len(divisions),
                     "official_division_tp": sum(item["official_score"] for item in divisions),
+                    "official_division_fp": len(official_result.fp_forks),
                     "divisions": divisions,
                 }
             )
@@ -240,7 +250,7 @@ def diagnose(
         "schema": "celltrack-alpha.division-failure-diagnostic.v1",
         "scope": {
             "subset": "fold0",
-            "full_heldout_video_count": len(selection.selected_video_ids),
+            "full_heldout_video_count": len(selected_video_ids),
             "division_bearing_video_count": len(division_ids),
             "division_bearing_video_ids": list(division_ids),
             "fit_used": False,
@@ -254,6 +264,9 @@ def diagnose(
             ),
             "official_division_tp": sum(
                 int(result["official_division_tp"]) for result in results
+            ),
+            "official_division_fp": sum(
+                int(result["official_division_fp"]) for result in results
             ),
             "classification_counts": classes,
         },

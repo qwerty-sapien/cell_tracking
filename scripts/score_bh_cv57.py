@@ -46,6 +46,51 @@ def _load_object(path: Path, label: str) -> dict[str, Any]:
     return value
 
 
+def validate_revalidated_scorer(path: Path) -> dict[str, Any]:
+    """Require the current scorer to match a green parity ledger.
+
+    The grouped split remains an immutable selection artifact and therefore
+    continues to attest the scorer that existed when the split was frozen.
+    A post-patch rescore instead takes scorer identity from the separately
+    re-frozen parity ledger.
+    """
+
+    report = _load_object(path, "scorer parity ledger")
+    fixture = report.get("fixture_report")
+    expected = report.get("source_hashes")
+    if report.get("artifact") != "scorer_parity_v1" or not isinstance(fixture, dict):
+        raise CV57ScoreError("scorer parity ledger has the wrong schema")
+    if fixture.get("overall_pass") is not True or fixture.get("edge_only_overall_pass") is not True:
+        raise CV57ScoreError("scorer parity ledger is not green")
+    if len(fixture.get("cases", ())) < 7:
+        raise CV57ScoreError("scorer parity ledger has fewer than seven fixtures")
+    if not isinstance(expected, dict):
+        raise CV57ScoreError("scorer parity ledger lacks source hashes")
+
+    observed: dict[str, str] = {}
+    for relative in scoreall.SCORER_SOURCES:
+        expected_hash = expected.get(relative)
+        if not isinstance(expected_hash, str):
+            raise CV57ScoreError(f"scorer parity ledger lacks a hash for {relative}")
+        actual_hash = scoreall.sha256_file(ROOT / relative)
+        if actual_hash != expected_hash:
+            raise CV57ScoreError(
+                f"revalidated scorer source hash mismatch for {relative}: "
+                f"expected {expected_hash}, got {actual_hash}"
+            )
+        observed[relative] = actual_hash
+
+    checkout = fixture.get("official_checkout")
+    if not isinstance(checkout, str) or len(checkout) != 40:
+        raise CV57ScoreError("scorer parity ledger lacks an official checkout SHA")
+    return {
+        "source_hashes": observed,
+        "official_checkout": checkout,
+        "fixture_count": len(fixture["cases"]),
+        "parity_report": {"path": str(path), "sha256": scoreall.sha256_file(path)},
+    }
+
+
 def exact_selection(
     split: Mapping[str, Any],
     *,
@@ -170,7 +215,7 @@ def validate_execution_evidence(
 def run(args: argparse.Namespace) -> dict[str, Any]:
     started = time.perf_counter()
     split = _load_object(args.split, "frozen split")
-    scorer_hashes = scoreall.verify_scorer_sources(split)
+    scorer = validate_revalidated_scorer(args.scorer_parity)
     archive_ids = scoreall.archive_train_video_ids(args.zip)
     selected = exact_selection(split, split_path=args.split, archive_video_ids=archive_ids)
     manifest = scoreall.validate_fragment_set(
@@ -214,10 +259,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "coverage": coverage,
         "input_provenance": input_provenance,
         "frozen_scorer": {
-            "source_hashes": scorer_hashes,
+            **scorer,
             "split": {"path": str(args.split), "sha256": scoreall.sha256_file(args.split)},
             "archive": {"path": str(args.zip), "sha256": scoreall.sha256_file(args.zip)},
-            "unchanged": True,
+            "revalidated_after_upstream_patch": True,
         },
         "retired_baseline_comparison": {
             "retired": RETIRED_BASELINE,
@@ -244,6 +289,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--merged", type=Path, required=True)
     parser.add_argument("--zip", type=Path, required=True)
     parser.add_argument("--split", type=Path, required=True)
+    parser.add_argument("--scorer-parity", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     return parser.parse_args(argv)
 
