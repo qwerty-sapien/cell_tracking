@@ -196,6 +196,39 @@ class GraphEdge:
 
 
 @dataclass(frozen=True, slots=True)
+class ErlangDivisionPrior:
+    """Fixed-shape Erlang prior for an experimental division-opening cost."""
+
+    shape: int
+    rate: float
+
+    def __post_init__(self) -> None:
+        if type(self.shape) is not int or self.shape <= 0:
+            raise GraphCalibrationError("Erlang shape must be a positive integer")
+        if not math.isfinite(self.rate) or self.rate <= 0.0:
+            raise GraphCalibrationError("Erlang rate must be finite and positive")
+
+    def negative_log_density(self, elapsed_frames: int) -> float:
+        """Return ``-log p(dt)`` with the continuous Erlang density."""
+
+        if type(elapsed_frames) is not int or elapsed_frames < 0:
+            raise GraphCalibrationError("elapsed division lifetime must be a nonnegative integer")
+        if elapsed_frames == 0:
+            if self.shape == 1:
+                return -math.log(self.rate)
+            return math.inf
+        value = (
+            math.lgamma(self.shape)
+            - self.shape * math.log(self.rate)
+            - (self.shape - 1) * math.log(elapsed_frames)
+            + self.rate * elapsed_frames
+        )
+        if not math.isfinite(value):
+            raise GraphCalibrationError("Erlang division-opening cost is non-finite")
+        return value
+
+
+@dataclass(frozen=True, slots=True)
 class LearnedEdgeProbability:
     """Primitive optional learned evidence for one adjacent candidate edge."""
 
@@ -1691,7 +1724,8 @@ def add_safe_divisions(
     edges: Iterable[GraphEdge],
     *,
     config: V45GraphConfig = V45_GRAPH_CONFIG,
-) -> tuple[tuple[GraphEdge, ...], dict[str, int]]:
+    lifetime_prior: ErlangDivisionPrior | None = None,
+) -> tuple[tuple[GraphEdge, ...], dict[str, int | float | bool]]:
     """Add a conservatively capped second child to safe one-child parents."""
 
     normalized = normalize_nodes(nodes, max_nodes_per_frame=config.max_nodes_per_frame)
@@ -1729,6 +1763,24 @@ def add_safe_divisions(
     }
     selected: list[GraphEdge] = []
     used_targets: set[int] = set()
+
+    def division_age(parent_id: int) -> int:
+        """Trace the current lineage to its root or most recent division."""
+
+        current_id = parent_id
+        while current_id in incoming:
+            predecessor_id = incoming[current_id]
+            if outdegree[predecessor_id] == 2:
+                break
+            current_id = predecessor_id
+        elapsed = node_by_id[parent_id].t - node_by_id[current_id].t
+        if elapsed < 0:
+            raise GraphInvariantError("division lineage birth occurs after its parent")
+        return int(elapsed)
+
+    lifetime_cost_min = math.inf
+    lifetime_cost_max = -math.inf
+    lifetime_zero_rejected = 0
     for frame in sorted(frames):
         if frame + 1 not in frames:
             continue
@@ -1774,7 +1826,21 @@ def add_safe_divisions(
                 if sister_distance > config.division_sister_um + 1.0e-12:
                     stats["division_geometry_rejected"] += 1
                     continue
-                score = parent_distance + config.division_sister_weight * sister_distance
+                lifetime_cost = 0.0
+                if lifetime_prior is not None:
+                    lifetime_cost = lifetime_prior.negative_log_density(
+                        division_age(parent_id)
+                    )
+                    if not math.isfinite(lifetime_cost):
+                        lifetime_zero_rejected += 1
+                        continue
+                    lifetime_cost_min = min(lifetime_cost_min, lifetime_cost)
+                    lifetime_cost_max = max(lifetime_cost_max, lifetime_cost)
+                score = (
+                    parent_distance
+                    + config.division_sister_weight * sister_distance
+                    + lifetime_cost
+                )
                 candidates.append((score, parent_id, candidate.node_id, parent_distance))
         stats["division_candidate_count"] += len(candidates)
         candidates.sort(key=lambda item: (item[0], item[1], item[2]))
@@ -1807,6 +1873,21 @@ def add_safe_divisions(
             used_targets.add(candidate_id)
             added_this_frame += 1
             stats["division_added"] += 1
+
+    stats.update(
+        {
+            "division_lifetime_prior_enabled": lifetime_prior is not None,
+            "division_lifetime_shape": 0 if lifetime_prior is None else lifetime_prior.shape,
+            "division_lifetime_rate": 0.0 if lifetime_prior is None else lifetime_prior.rate,
+            "division_lifetime_zero_rejected": lifetime_zero_rejected,
+            "division_lifetime_cost_min": (
+                0.0 if lifetime_cost_min == math.inf else lifetime_cost_min
+            ),
+            "division_lifetime_cost_max": (
+                0.0 if lifetime_cost_max == -math.inf else lifetime_cost_max
+            ),
+        }
+    )
 
     result = tuple(
         sorted((*current_edges, *selected), key=lambda edge: (node_by_id[edge.source_id].t, edge.source_id, edge.target_id))
@@ -2218,6 +2299,7 @@ __all__ = [
     "PHYSICAL_SCALE_ZYX",
     "GraphCalibrationError",
     "GraphEdge",
+    "ErlangDivisionPrior",
     "GraphInvariantError",
     "GraphNode",
     "GraphResult",

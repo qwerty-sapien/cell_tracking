@@ -17,6 +17,7 @@ from scipy.optimize import linear_sum_assignment
 from celltrack_alpha.bh_graph import (
     EXPERIMENTAL_SWEEP_SCHEMA,
     PHYSICAL_SCALE_ZYX,
+    ErlangDivisionPrior,
     GraphEdge,
     GraphInvariantError,
     GraphNode,
@@ -544,6 +545,59 @@ class GapClosingTests(unittest.TestCase):
 
 
 class DivisionTests(unittest.TestCase):
+    def test_erlang_negative_log_density_matches_closed_form(self) -> None:
+        prior = ErlangDivisionPrior(shape=3, rate=0.25)
+        expected = (
+            math.lgamma(3)
+            - 3 * math.log(0.25)
+            - 2 * math.log(8)
+            + 0.25 * 8
+        )
+        self.assertAlmostEqual(prior.negative_log_density(8), expected)
+        self.assertTrue(math.isinf(prior.negative_log_density(0)))
+        self.assertAlmostEqual(
+            ErlangDivisionPrior(shape=1, rate=0.25).negative_log_density(0),
+            -math.log(0.25),
+        )
+
+    def test_erlang_opening_cost_can_change_capped_division_choice(self) -> None:
+        young_root = _node_um(1, 9, 0.0)
+        young_parent = _node_um(2, 10, 0.0)
+        old_track = [_node_um(100 + frame, frame, 20.0) for frame in range(2, 11)]
+        young_existing = _node_um(3, 11, 1.0)
+        young_orphan = _node_um(4, 11, 1.5)
+        old_existing = _node_um(200, 11, 21.0)
+        old_orphan = _node_um(201, 11, 22.0)
+        nodes = [
+            young_root,
+            young_parent,
+            *old_track,
+            young_existing,
+            young_orphan,
+            old_existing,
+            old_orphan,
+        ]
+        edges = [_edge(young_root, young_parent), _edge(young_parent, young_existing)]
+        edges.extend(_edge(old_track[index], old_track[index + 1]) for index in range(8))
+        edges.append(_edge(old_track[-1], old_existing))
+
+        without_prior, _ = add_safe_divisions(nodes, edges)
+        with_prior, stats = add_safe_divisions(
+            nodes,
+            edges,
+            lifetime_prior=ErlangDivisionPrior(shape=5, rate=0.5),
+        )
+        self.assertEqual(
+            [(edge.source_id, edge.target_id) for edge in without_prior if edge.kind == "division"],
+            [(young_parent.node_id, young_orphan.node_id)],
+        )
+        self.assertEqual(
+            [(edge.source_id, edge.target_id) for edge in with_prior if edge.kind == "division"],
+            [(old_track[-1].node_id, old_orphan.node_id)],
+        )
+        self.assertTrue(stats["division_lifetime_prior_enabled"])
+        self.assertEqual(stats["division_lifetime_shape"], 5)
+
     def test_exact_geometry_without_disabled_angle_filter(self) -> None:
         parent = _node_um(0, 0, 0.0)
         existing = _node_um(1, 1, 7.65)
