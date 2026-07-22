@@ -1,0 +1,3 @@
+[submodule "external/CELLECT"]
+	path = external/CELLECT
+	url = https://github.com/zzz333za/CELLECT.git

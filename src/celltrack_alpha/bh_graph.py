@@ -258,7 +258,12 @@ def _validated_experimental_sweep_provenance(value: Any) -> dict[str, Any]:
         or value["purpose"] != "offline-cached-cv57-sweep"
         or not isinstance(varied, list)
         or not varied
-        or set(varied) - {"learned_bonus", "raw_distance_weight"}
+        or set(varied) - {
+            "candidate_top_k",
+            "learned_bonus",
+            "raw_distance_weight",
+            "motion_error_weight",
+        }
         or value["production_eligible"] is not False
         or value["submit_eligible"] is not False
     ):
@@ -909,6 +914,55 @@ def _radius_pairs(
     return result
 
 
+def _top_k_pairs(
+    sources: Sequence[GraphNode],
+    targets: Sequence[GraphNode],
+    top_k: int,
+    scale_zyx: Sequence[float],
+) -> list[tuple[GraphNode, GraphNode, float]]:
+    """Return each source's nearest targets with deterministic boundary ties."""
+
+    if not sources or not targets:
+        return []
+    neighbor_count = _strict_int(top_k, "candidate_top_k")
+    if neighbor_count <= 0:
+        raise GraphCalibrationError("candidate_top_k must be positive")
+    neighbor_count = min(neighbor_count, len(targets))
+    source_physical = _physical_array(sources, scale_zyx)
+    target_physical = _physical_array(targets, scale_zyx)
+    target_tree = cKDTree(target_physical)
+    queried_distances, _ = target_tree.query(source_physical, k=neighbor_count)
+    queried_distances = np.asarray(queried_distances, dtype=np.float64)
+    if queried_distances.ndim == 1:
+        queried_distances = queried_distances[:, None]
+    result: list[tuple[GraphNode, GraphNode, float]] = []
+    for source_index, source in enumerate(sources):
+        boundary = float(queried_distances[source_index, -1])
+        tolerance = 8.0 * float(np.spacing(max(1.0, abs(boundary))))
+        neighbor_indices = target_tree.query_ball_point(
+            source_physical[source_index],
+            r=boundary + tolerance,
+            return_sorted=True,
+        )
+        ranked = sorted(
+            (
+                float(
+                    np.linalg.norm(
+                        source_physical[source_index] - target_physical[int(target_index)]
+                    )
+                ),
+                targets[int(target_index)].node_id,
+                int(target_index),
+            )
+            for target_index in neighbor_indices
+        )
+        if len(ranked) < neighbor_count:
+            raise GraphInvariantError("top-k query returned fewer candidates than requested")
+        for distance, _target_id, target_index in ranked[:neighbor_count]:
+            result.append((source, targets[target_index], distance))
+    return result
+
+
 def _candidate_components(
     pairs: Sequence[tuple[GraphNode, GraphNode, float]],
 ) -> tuple[tuple[tuple[int, ...], tuple[int, ...], tuple[tuple[int, int], ...]], ...]:
@@ -1035,10 +1089,17 @@ def _edge_cost(
     config: V45GraphConfig,
     *,
     motion_error: float | None = None,
+    motion_error_weight: float = 1.0,
 ) -> float:
-    return motion_only_edge_cost(distance, motion_error, config=config) - learned_edge_score_bonus(
-        probability, config=config
+    weight = _finite_float(motion_error_weight, "motion_error_weight")
+    if weight < 0.0:
+        raise GraphCalibrationError("motion_error_weight must be nonnegative")
+    weighted_motion_error = (
+        None if motion_error is None else weight * float(motion_error)
     )
+    return motion_only_edge_cost(
+        distance, weighted_motion_error, config=config
+    ) - learned_edge_score_bonus(probability, config=config)
 
 
 def build_adjacent_edges(
@@ -1051,6 +1112,8 @@ def build_adjacent_edges(
     topology_mode: str = "legacy",
     config: V45GraphConfig = V45_GRAPH_CONFIG,
     _experimental_sweep_provenance: Mapping[str, Any] | None = None,
+    _experimental_motion_error_weight: float | None = None,
+    _experimental_candidate_top_k: int | None = None,
 ) -> tuple[tuple[GraphEdge, ...], dict[str, int | bool]]:
     """Build adjacent edges with the notebook's two raw-distance motion passes."""
 
@@ -1058,6 +1121,36 @@ def build_adjacent_edges(
         _validated_experimental_sweep_provenance(_experimental_sweep_provenance)
     elif _experimental_sweep_provenance is not None:
         _validated_experimental_sweep_provenance(_experimental_sweep_provenance)
+    if _experimental_motion_error_weight is None:
+        motion_error_weight = 1.0
+    else:
+        sweep = _validated_experimental_sweep_provenance(
+            _experimental_sweep_provenance
+        )
+        if "motion_error_weight" not in sweep["varied_fields"]:
+            raise GraphCalibrationError(
+                "motion-error sweep provenance must vary motion_error_weight"
+            )
+        motion_error_weight = _finite_float(
+            _experimental_motion_error_weight, "motion_error_weight"
+        )
+        if motion_error_weight < 0.0:
+            raise GraphCalibrationError("motion_error_weight must be nonnegative")
+    if _experimental_candidate_top_k is None:
+        candidate_top_k = 0
+    else:
+        sweep = _validated_experimental_sweep_provenance(
+            _experimental_sweep_provenance
+        )
+        if "candidate_top_k" not in sweep["varied_fields"]:
+            raise GraphCalibrationError(
+                "top-k gate provenance must vary candidate_top_k"
+            )
+        candidate_top_k = _strict_int(
+            _experimental_candidate_top_k, "candidate_top_k"
+        )
+        if candidate_top_k <= 0:
+            raise GraphCalibrationError("candidate_top_k must be positive")
     if parity_mode not in {"sparse", "dense_diagnostic"}:
         raise GraphCalibrationError("parity_mode must be 'sparse' or 'dense_diagnostic'")
     if topology_mode not in {"legacy", "scored_partial"}:
@@ -1099,6 +1192,9 @@ def build_adjacent_edges(
         "scored_partial_edges": 0,
         "scored_partial_tight_edges": 0,
         "scored_partial_relaxed_edges": 0,
+        "motion_error_weight": motion_error_weight,
+        "candidate_top_k": candidate_top_k,
+        "radius_candidate_pairs_diagnostic": 0,
     }
 
     for frame in sorted(frames):
@@ -1106,8 +1202,16 @@ def build_adjacent_edges(
             continue
         sources = frames[frame]
         targets = frames[frame + 1]
-        geometric = _radius_pairs(
+        radius_geometric = _radius_pairs(
             sources, targets, config.motion_relaxed_um, config.scale_zyx
+        )
+        stats["radius_candidate_pairs_diagnostic"] = int(
+            stats["radius_candidate_pairs_diagnostic"]
+        ) + len(radius_geometric)
+        geometric = (
+            _top_k_pairs(sources, targets, candidate_top_k, config.scale_zyx)
+            if candidate_top_k
+            else radius_geometric
         )
         stats["motion_relaxed_prepass_raw_peak_component_dim"] = max(
             int(stats["motion_relaxed_prepass_raw_peak_component_dim"]),
@@ -1176,7 +1280,13 @@ def build_adjacent_edges(
                     )
                 motion_error = physical_distance(predicted, target, config.scale_zyx)
                 probability = probabilities.get((source.node_id, target.node_id), 0.0)
-                cost = _edge_cost(distance, probability, config, motion_error=motion_error)
+                cost = _edge_cost(
+                    distance,
+                    probability,
+                    config,
+                    motion_error=motion_error,
+                    motion_error_weight=motion_error_weight,
+                )
                 motion_rows.append(
                     (source.node_id, target.node_id, cost, motion_error, distance)
                 )
@@ -1965,6 +2075,8 @@ def calibrate_v45_graph(
     division_enabled: bool = False,
     config: V45GraphConfig = V45_GRAPH_CONFIG,
     _experimental_sweep_provenance: Mapping[str, Any] | None = None,
+    _experimental_motion_error_weight: float | None = None,
+    _experimental_candidate_top_k: int | None = None,
 ) -> GraphResult:
     """Run V45 calibration, sparse by default with an explicit dense oracle."""
 
@@ -1990,6 +2102,8 @@ def calibrate_v45_graph(
         topology_mode=topology_mode,
         config=config,
         _experimental_sweep_provenance=sweep_provenance,
+        _experimental_motion_error_weight=_experimental_motion_error_weight,
+        _experimental_candidate_top_k=_experimental_candidate_top_k,
     )
     gap_nodes, gap_edges, gap_stats = close_one_frame_gaps(
         normalized,
@@ -2068,6 +2182,16 @@ def calibrate_v45_graph(
             config.motion_tight_um,
             config.motion_relaxed_um,
         ],
+        "motion_error_weight": (
+            1.0
+            if _experimental_motion_error_weight is None
+            else float(_experimental_motion_error_weight)
+        ),
+        "candidate_top_k": (
+            0
+            if _experimental_candidate_top_k is None
+            else int(_experimental_candidate_top_k)
+        ),
         "output_edge_validation_um": config.output_edge_max_um,
         "output_edge_validation_is_not_a_relink_pass": True,
         "image_refinement": refinement_mode,

@@ -1,0 +1,81 @@
+{
+  "adapter_config": {
+    "candidate_top_k": 10,
+    "crop_zyx": [
+      16,
+      64,
+      64
+    ],
+    "division_output_enabled": false,
+    "embedding_channels": 64,
+    "same_frame_weight": 0.1,
+    "triplet_margin": 0.3
+  },
+  "cv57": {
+    "adjusted_edge_jaccard": 0.8711885823490648,
+    "baseline": "/Users/agent/Desktop/cell_tracking/reports/g02/graph_cost_sweeps_holdout57_v1.json",
+    "baseline_sha256": "4b3e24412d1c791be92372d36502c67c2a435e68b787b79f1b2972f5401aec81",
+    "edge_fn": 2094,
+    "edge_fp": 2736,
+    "edge_tp": 34174,
+    "split": "/Users/agent/Desktop/cell_tracking/reports/g02/grouped_3fold_audit20_v1.json",
+    "split_sha256": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769",
+    "video_count": 57,
+    "video_ids_sha256": "58d090bc83702065b3bc8bc035c5d8e8911519c71a8d3a58f995e5abaf3099f1"
+  },
+  "experiment": {
+    "candidate_gate": "top-k physical neighbours",
+    "division_output_enabled": false,
+    "kaggle_action_performed": false,
+    "production_baseline_untouched": true,
+    "role": "orthogonal learned edge cost over released baseline detections",
+    "training_loss": "hard-positive/hard-negative squared-distance triplet"
+  },
+  "fit117": {
+    "data_boundary": {
+      "audit_used": false,
+      "competition_submission_performed": false,
+      "held_out_used": false,
+      "test_used": false,
+      "train_fit_only": true
+    },
+    "manifest": "/Users/agent/Desktop/cell_tracking/reports/g02/fitcache_117/manifest.json",
+    "manifest_sha256": "20ef8056bea8afb60f76cf99357c7b62215b2db6c408d78a1c3ba21c41431a33",
+    "video_count": 117,
+    "video_ids_sha256": "280bffb74a1ebc6d4ef506236b4b56a3922f1f720a35a31670404a6facc3d5ac"
+  },
+  "schema": "celltrack-alpha.cellect-cv57-preflight.v2",
+  "smoke": {
+    "device": "cpu",
+    "elapsed_seconds": 0.04985966579988599,
+    "feature_shape": [
+      1,
+      64,
+      32,
+      32,
+      8
+    ],
+    "finite": true,
+    "parameter_count": 2541972,
+    "synthetic_triplet_counts": {
+      "anchors": 3,
+      "valid_anchors": 3
+    },
+    "synthetic_triplet_loss": 0.1435856968164444
+  },
+  "status": "validated",
+  "supersedes": {
+    "path": "reports/g02/cellect_cv57_preflight_v1.json",
+    "status": "superseded_missing_model_source_hash"
+  },
+  "upstream": {
+    "git_head": "3586070926f7f1fd5d8df37456861d22bdc63236",
+    "license": "/Users/agent/Desktop/cell_tracking/external/CELLECT/LICENSE",
+    "license_sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    "model_source": "/Users/agent/Desktop/cell_tracking/external/CELLECT/unetext3Dn_con7.py",
+    "model_source_sha256": "3b44f7c64c4b948ab7cc14bb32d5a86f61d3f4cff0ee3425a5ec32cc6c17d3ba",
+    "upstream_commit": "3586070926f7f1fd5d8df37456861d22bdc63236",
+    "weight": "/Users/agent/Desktop/cell_tracking/external/CELLECT/model/U-ext+-x3rd-149.0-4.6540.pth",
+    "weight_sha256": "f3e8e7303976dc5fb6e52ade12d1ff7953d2a28e30c06274b9f309562cd89ce5"
+  }
+}

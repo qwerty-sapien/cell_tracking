@@ -1,0 +1,72 @@
+{
+  "best_delta_vs_physical": 0.0,
+  "best_epoch": 0,
+  "checkpoint": {
+    "license": "GPL-2.0-only",
+    "path": "artifacts/cellect/cellect_fit117_cpu_smoke_v1.pth",
+    "sha256": "e2179dfcc0bb095dabd59c54c51f0089d30065087d5ed0ee3a160e99b4a2475b"
+  },
+  "decision_rule": "Qualify for one untouched CV57 evaluation only if the best fit117 whole-video validation embedding top-1 accuracy exceeds physical-distance top-1 accuracy.",
+  "elapsed_seconds": 3.778866665903479,
+  "history": [
+    {
+      "epoch": 0,
+      "train_loss": 0.0,
+      "train_steps": 1,
+      "validation": {
+        "delta_vs_physical": 0.0,
+        "embedding_correct": 1,
+        "embedding_top1_accuracy": 1.0,
+        "examples": 1,
+        "loss": 0.0,
+        "physical_correct": 1,
+        "physical_top1_accuracy": 1.0,
+        "rows": 1
+      }
+    }
+  ],
+  "provenance": {
+    "amp_mandatory_on_cuda": true,
+    "appearance_gate": {
+      "decision": "PASS",
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e4_e5_holdout57_v1.json",
+      "sha256": "e2ec483c6338e68051af38456d755f46499c642c487f127e2caba2714c1ae7e7"
+    },
+    "archive": {
+      "bytes": 87393127165,
+      "path": "/Users/agent/Desktop/cell_tracking/data/kaggle/raw/biohub-cell-tracking-during-development.zip"
+    },
+    "config": {
+      "candidate_top_k": 10,
+      "crop_zyx": [
+        16,
+        64,
+        64
+      ],
+      "division_output_enabled": false,
+      "embedding_channels": 64,
+      "same_frame_weight": 0.1,
+      "triplet_margin": 0.3
+    },
+    "cv57_read": false,
+    "device": "cpu",
+    "division_output_enabled": false,
+    "index": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/cellect_fit117_index_v1.json",
+      "sha256": "56dde3e8987f5e7df8d53ddacecee9a540bd6775f67c843cfaadd683dbadeb28"
+    },
+    "kaggle_action_performed": false,
+    "seed": 41116016,
+    "test_read": false,
+    "upstream": {
+      "license": "/Users/agent/Desktop/cell_tracking/external/CELLECT/LICENSE",
+      "license_sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "model_source": "/Users/agent/Desktop/cell_tracking/external/CELLECT/unetext3Dn_con7.py",
+      "upstream_commit": "3586070926f7f1fd5d8df37456861d22bdc63236",
+      "weight": "/Users/agent/Desktop/cell_tracking/external/CELLECT/model/U-ext+-x3rd-149.0-4.6540.pth",
+      "weight_sha256": "f3e8e7303976dc5fb6e52ade12d1ff7953d2a28e30c06274b9f309562cd89ce5"
+    }
+  },
+  "schema": "celltrack-alpha.cellect-fit117-training.v1",
+  "status": "failed_fit_validation"
+}

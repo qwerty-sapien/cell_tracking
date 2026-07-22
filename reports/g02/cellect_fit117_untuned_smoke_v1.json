@@ -1,0 +1,67 @@
+{
+  "schema": "celltrack-alpha.cellect-fit117-untuned-smoke.v1",
+  "status": "superseded_gt_center_diagnostic",
+  "decision_use": false,
+  "superseded_by": {
+    "path": "reports/g02/cellect_fit117_raw_supervision_v1.json",
+    "reason": "This smoke predates the raw FrameDet supervision adaptation and is not performance evidence."
+  },
+  "model": {
+    "description": "published CELLECT checkpoint before Biohub tuning",
+    "upstream_commit": "3586070926f7f1fd5d8df37456861d22bdc63236",
+    "weight_sha256": "f3e8e7303976dc5fb6e52ade12d1ff7953d2a28e30c06274b9f309562cd89ce5"
+  },
+  "data_boundary": {
+    "fit117_only": true,
+    "cv57_labels_or_pixels_read": false,
+    "test_read": false,
+    "kaggle_action_performed": false,
+    "training_performed": false,
+    "division_output_enabled": false
+  },
+  "inputs": {
+    "fit117_index": "reports/g02/cellect_fit117_index_v1.json",
+    "fit117_index_sha256": "56dde3e8987f5e7df8d53ddacecee9a540bd6775f67c843cfaadd683dbadeb28",
+    "appearance_gate": "reports/g02/phase1_e4_e5_holdout57_v1.json",
+    "appearance_gate_sha256": "e2ec483c6338e68051af38456d755f46499c642c487f127e2caba2714c1ae7e7",
+    "seed": 41116016
+  },
+  "sampling": {
+    "examples": 10,
+    "method": "deterministic bounded sampling from the 94-video fit117 training partition; each crop required at least one GT positive and one top-10 negative",
+    "ranked_anchor_rows": 19
+  },
+  "results": {
+    "positive_loss_examples": 7,
+    "losses": [
+      0.0,
+      0.3577120304107666,
+      0.19912688434123993,
+      0.016147539019584656,
+      0.1706712543964386,
+      0.27651843428611755,
+      0.0,
+      0.19452553987503052,
+      0.1737297624349594,
+      0.0
+    ],
+    "untuned_embedding_correct": 17,
+    "untuned_embedding_top1_accuracy": 0.8947368421052632,
+    "physical_distance_correct": 19,
+    "physical_distance_top1_accuracy": 1.0,
+    "delta_vs_physical": -0.10526315789473684
+  },
+  "interpretation": "Superseded development smoke. It used GT-center supervision before the raw FrameDet adaptation, so its values must not be used as performance evidence. Full raw-coordinate tuning and group-held-out validation remain required.",
+  "superseded_smokes": [
+    {
+      "path": "reports/g02/cellect_fit117_cpu_smoke_v1.json",
+      "sha256": "c141384ffb9d5d3e1187d48678eb7c932f5878a237f877bd42259c62e61bc55b",
+      "status": "retracted_noop_single_candidate"
+    },
+    {
+      "path": "reports/g02/cellect_fit117_cpu_smoke_v2.json",
+      "sha256": "58994bfdccd24b4f142e1eac5856da7682c193898c117a2fb49398089aaf61f2",
+      "status": "superseded_single_triplet_smoke"
+    }
+  ]
+}
