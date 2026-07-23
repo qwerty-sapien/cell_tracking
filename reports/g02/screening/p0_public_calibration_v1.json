@@ -1,0 +1,105 @@
+{
+  "artifact": "p0_public_calibration_v1",
+  "schema_version": 2,
+  "verdict": "STILL-UNRESOLVED",
+  "verdict_scope": "local-to-Kaggle transfer only; scorer semantic parity is tracked separately and passes",
+  "public_score_display_resolution": 0.001,
+  "pairs": [
+    {
+      "configuration": "backward motion c=0, divisions off",
+      "mechanism": "graph cost/solver",
+      "kernel": "onebitbrain/bhp0-c0",
+      "kernel_version": 1,
+      "local_cv57": 0.8483945155545333,
+      "public_displayed": 0.86,
+      "public_interval": [0.8595, 0.8605]
+    },
+    {
+      "configuration": "backward motion c=2, divisions off",
+      "mechanism": "graph cost/solver",
+      "kernel": "onebitbrain/bhp0-c2",
+      "kernel_version": 2,
+      "local_cv57": 0.8721499474601118,
+      "public_displayed": 0.878,
+      "public_interval": [0.8775, 0.8785]
+    },
+    {
+      "configuration": "backward motion c=0.25, divisions off",
+      "mechanism": "graph cost/solver",
+      "kernel": "onebitbrain/bhv45-submit",
+      "kernel_version": 3,
+      "local_cv57": 0.8731495935289003,
+      "public_displayed": 0.877,
+      "public_interval": [0.8765, 0.8775]
+    }
+  ],
+  "affine_ols": {
+    "formula": "public_hat = intercept + slope * local_cv57",
+    "intercept": 0.2497831844600311,
+    "slope": 0.7193024334975513,
+    "r_squared": 0.9927714411156863,
+    "residual_standard_deviation_df1": 0.0012163244023105893,
+    "residual_degrees_of_freedom": 1,
+    "rounding_only_slope_range": [
+      0.6781267087550011,
+      0.7604781582400924
+    ],
+    "rounding_only_intercept_range": [
+      0.21435077361383054,
+      0.2852155953062399
+    ]
+  },
+  "baseline_anchored_forecast": {
+    "formula": "public_hat = 0.877 + 0.7193024334975513 * (local_cv57 - 0.8731495935289003)",
+    "baseline_local_cv57": 0.8731495935289003,
+    "baseline_public_displayed": 0.877,
+    "delta_formula": "delta_public_hat = 0.7193024334975513 * delta_local"
+  },
+  "fit_predictions": [
+    {
+      "configuration": "c=0",
+      "public_hat": 0.860035424064383,
+      "public_residual": -0.00003542406438306056
+    },
+    {
+      "configuration": "c=2",
+      "public_hat": 0.877122764042851,
+      "public_residual": 0.0008772359571489474
+    },
+    {
+      "configuration": "c=0.25",
+      "public_hat": 0.8778418118927669,
+      "public_residual": -0.0008418118927668861
+    }
+  ],
+  "rank_statistics": {
+    "pearson_r": 0.996379165336011,
+    "spearman_rho": 0.5,
+    "kendall_tau": 0.33333333333333337
+  },
+  "delta_checks": [
+    {
+      "comparison": "c=0 minus c=0.25",
+      "local_delta": -0.024755077974367046,
+      "public_displayed_delta": -0.017000000000000015,
+      "sign_matches": true
+    },
+    {
+      "comparison": "c=2 minus c=0.25",
+      "local_delta": -0.0009996460687885511,
+      "public_displayed_delta": 0.0010000000000000009,
+      "sign_matches": false
+    }
+  ],
+  "operational_policy": {
+    "absolute_forecast": "The baseline-anchored affine formula is descriptive over the observed graph-cost range only; do not use it as a decision-grade public forecast.",
+    "ranking": "Do not use scalar calibration to rank near-tied candidates; it cannot reverse the observed c=2/c=0.25 inversion.",
+    "one_public_display_tick_in_local_units": 0.0013902358082365702,
+    "heuristic_local_delta_resolution_floor": 0.004,
+    "resolution_floor_basis": "Approximately two fitted public residuals plus one displayed-score bin, converted through the fitted slope; this is a heuristic, not a confidence guarantee.",
+    "required_action": "Run canonical observation comparison, widen the score range, and add preregistered mechanism-diverse anchors sequentially. Transfer uncertainty blocks public forecasting and final selection, not leakage-safe local model development.",
+    "rounding_bin_feasibility": "No affine line intersects all three public-score rounding bins.",
+    "model_identifiability": "With three adaptively selected points from one graph-cost mechanism, per-family slopes and multivariable covariate regression are not admissible.",
+    "submission_policy": "Every calibration probe counts against the five-per-competition-day cap, is submitted only after explicit approval, and is measured one at a time before redesigning the remaining order."
+  }
+}

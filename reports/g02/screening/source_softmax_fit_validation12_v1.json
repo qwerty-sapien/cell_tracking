@@ -1,0 +1,21 @@
+{
+  "schema": "celltrack-alpha.explicit-replay-selection.v1",
+  "role": "fit-only-association-calibration-validation",
+  "source": "reports/g02/source_softmax_edge_f0_fit117_v1/report.json",
+  "audit_used": false,
+  "held_out_cv57_used_for_parameter_selection": false,
+  "video_ids": [
+    "train:44b6_b2c44266",
+    "train:6bba_b1ae37b9",
+    "train:44b6_2a2eff9f",
+    "train:6bba_6feb10f0",
+    "train:44b6_95029e92",
+    "train:6bba_a5e926bb",
+    "train:44b6_706092f0",
+    "train:6bba_2540cd90",
+    "train:6bba_062c8d37",
+    "train:6bba_debd7bfa",
+    "train:6bba_d0fc38b5",
+    "train:44b6_0c582fdc"
+  ]
+}

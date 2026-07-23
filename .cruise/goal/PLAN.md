@@ -1,8 +1,12 @@
 # G-02 Execution Plan
 
-- State: Draft; execution requires separate Plan approval and Start.
+- State: Active; Start recorded 2026-07-16. Revised calibration/screening DAG adopted 2026-07-24.
 - Global precondition: preserve the archived G-01 suite and unrelated worktree changes. No task may call a historical local audit or a CSV validity result a Kaggle score.
-- Global effect boundary after Start: task-owned paths only under `src/celltrack_alpha`, `scripts`, `tests`, `kaggle_kernel`, `reports/g02`, plus narrowly necessary configuration/manifests. No task may write `GOAL.md` or `CLOSEOUT.md` in this preparation contract.
+- Global effect boundary: task-owned paths under `src/celltrack_alpha`, `scripts`,
+  `tests`, `kaggle_kernel`, `reports/g02`, plus narrowly necessary
+  configuration/manifests. Ordinary commits and pushes to this private repository are
+  permitted. RunPod requires explicit human approval for each launch after pre-launch
+  hours/$/artifact accounting.
 
 ## T-02 — Freeze official scorer parity and leakage-safe splits
 
@@ -15,7 +19,11 @@
 - Allowed paths/effects: `src/celltrack_alpha/**`, `scripts/**`, `tests/**`, `reports/g02/**`, and narrowly necessary fold/config manifests only. Local tests/benchmarks are allowed after Start; no network, Kaggle, package install, or product path outside this scope.
 - Focused evidence: versioned scorer fixture report; official calibration-pair ledger with local/site fields explicitly null until observed; scale/matching/adjustment/division semantics test report; group-hash manifest; immutable three-fold membership; exact stratified 20-video audit membership; per-fit source provenance; baseline alpha report labeled local-only.
 - Remediation bounds: one deterministic split/scorer-manifest correction pass for a discovered collision, leakage, or semantic mismatch; rerun only affected focused tests and regenerate affected reports. Any changed audit membership or scorer semantics invalidates downstream candidates.
-- Stop rules: stop Blocked on ambiguous group ownership, leakage that cannot be resolved without discarding the audit, unavailable official metric semantics, or parity error > `0.02` on an available calibration pair after the bounded correction. Do not fit thresholds, adapters, router, or site correction on audit/validation labels.
+- Stop rules: stop Blocked on ambiguous group ownership, leakage that cannot be resolved
+  without discarding the audit, or unavailable/failed official metric semantics. A failed
+  or unresolved local-to-Kaggle transfer fit blocks public forecasting and final selection,
+  not local threshold, adapter, router, decomposition, or candidate work. Do not fit these
+  components or a site correction on audit/validation labels.
 
 ## T-03 — Fine-tune checkpoint and compact multi-task specialist heads
 
@@ -25,7 +33,12 @@
 - Satisfies: R-02, R-03, R-06; AC-02, AC-07
 - Preserves: D-01, D-02, D-03, D-08, D-10.
 - Verification: E-02 fold isolation, E-03 checkpoint/head training gate, and E-06 manifest/accounting gate.
-- Allowed paths/effects: `src/celltrack_alpha/**`, `scripts/**`, `tests/**`, `reports/g02/**`, `kaggle_kernel/**` only for a private training-notebook entrypoint, and narrowly necessary configuration/manifests. Private Kaggle training may use only approved competition/checkpoint data, remains private, and obeys D-04/D-05/D-07; no scored submission, public effect, external GPU, or dense NxN association.
+- Allowed paths/effects: `src/celltrack_alpha/**`, `scripts/**`, `tests/**`,
+  `reports/g02/**`, `kaggle_kernel/**` only for a private training-notebook entrypoint,
+  and narrowly necessary configuration/manifests. Private Kaggle training may use only
+  approved competition/checkpoint data, remains private, and obeys D-04/D-05/D-07.
+  RunPod is allowed only after explicit approval for the specific launch under D-10.
+  No scored submission, public effect, or dense NxN association.
 - Focused evidence: checkpoint source URL/version/hash and license record; frozen input/fold hashes; model manifest with architecture and trainable parameter count; center/backward-displacement/uncertainty/division target definitions; sparse-negative weighting; per-fold loss and official local diagnostics; output tensor schema; deterministic restore smoke; predicted runtime/spend before each paid launch and actual ledger after it.
 - Remediation bounds: at most the supplied `{0,1,2}` unfreeze depths and supplied learning-rate/sparse-negative-weight grid through the T-06 promotion funnel. Repair only loading/shape/provenance defects or lightweight-head loss wiring; do not replace the checkpoint, train a large model from scratch, or introduce a new task family.
 - Stop rules: stop Blocked if the released checkpoint cannot be identified/legally used, a launch would breach D-04/D-05, fold leakage appears, checkpoint restore is not deterministic enough for manifesting, or the only credible improvement is forbidden large training. A paid launch without a pre-launch maximum-charge record is prohibited.
@@ -64,7 +77,11 @@
 - Satisfies: R-02, R-03, R-04, R-05, R-06, R-08; AC-02, AC-03, AC-04, AC-05, AC-07
 - Preserves: D-01–D-05, D-08–D-10.
 - Verification: E-02 through E-07 except external E-08/E-10.
-- Allowed paths/effects: `src/celltrack_alpha/**`, `scripts/**`, `tests/**`, `reports/g02/**`, `kaggle_kernel/**` only for private non-public candidate integration, and narrowly necessary configuration/manifests. Paid private Kaggle trials obey D-04/D-05/D-07; no scored submission or dataset/publication action.
+- Allowed paths/effects: `src/celltrack_alpha/**`, `scripts/**`, `tests/**`,
+  `reports/g02/**`, `kaggle_kernel/**` only for private non-public candidate integration,
+  and narrowly necessary configuration/manifests. Paid private Kaggle trials obey
+  D-04/D-05/D-07. RunPod is allowed only after explicit approval for the specific launch
+  under D-10. No scored submission or dataset/publication action.
 - Focused evidence: candidate registry with source/config/cache hashes; 10/30/100 percent stage results; graph and runtime gate for every candidate; pre-launch maximum-charge estimates and actual spend; concurrency timestamps; retained-cache hit/miss evidence; grouped fold diagnostics; division activation report showing edge-only score, combined-score delta, and adjusted-edge-Jaccard delta.
 - Remediation bounds: evaluate only the locked search space and thresholds; maximum two paid trials concurrently; promote only candidates satisfying metric, graph, and runtime gates. The division branch may be added only after edge-only grouped CV >= `0.90`; retain it only when combined score improves and adjusted edge Jaccard declines <= `0.005`.
 - Stop rules: stop Blocked if cache provenance is incomplete, a candidate would exceed a spend/concurrency cap, no candidate survives a stage because graph validity fails, edge-only score cannot reach `0.90` yet division is requested, or a change requires a new model family/dense association. Do not spend the D-05 reserve during development.
@@ -77,7 +94,11 @@
 - Satisfies: R-04, R-06, R-07; AC-04, AC-05, AC-07
 - Preserves: D-04–D-10 and the alpha fallback.
 - Verification: E-04 graph validity, E-06 reproducibility, and E-07 runtime/package gate.
-- Allowed paths/effects: `src/celltrack_alpha/**`, `scripts/**`, `tests/**`, `kaggle_kernel/**`, `reports/g02/**`, and narrowly necessary configuration/manifests. Private notebook/package generation is permitted after Start; no Kaggle scored submission, dataset creation, public publication, or external GPU.
+- Allowed paths/effects: `src/celltrack_alpha/**`, `scripts/**`, `tests/**`,
+  `kaggle_kernel/**`, `reports/g02/**`, and narrowly necessary
+  configuration/manifests. Private notebook/package generation is permitted; no Kaggle
+  scored submission, dataset creation, or public publication. Any RunPod use requires
+  explicit approval under D-10.
 - Focused evidence: immutable package manifest and source/checkpoint/config hashes; dependency versions/lock changes; full graph/schema validator report; stage-level time and peak-memory profile for preprocessing, inference, candidate build, solve, and CSV generation; public four-clip elapsed time; measured 199-video/final-workload proxy and documented extrapolation; package restore/replay result.
 - Remediation bounds: optimize streaming, batching, cache reuse, NMS/candidate caps, serialization, and package dependency wiring without changing frozen scorer/split semantics or reintroducing NxN association. Reprofile whenever package/model/config identity changes.
 - Stop rules: stop Blocked when four-clip elapsed time exceeds seven minutes or the measured proxy projects above six hours after one bounded runtime pass, package identity cannot be reproduced, graph/schema validation fails, or required runtime depends on a forbidden provider/public artifact.
@@ -86,27 +107,49 @@
 
 - State: Not started
 - Owner: Kaggle experiment worker
-- Dependencies: T-07
+- Dependencies: T-02 plus the exact candidate's local graph/package/runtime validation.
+  Performance-candidate submissions require T-07; preregistered calibration probes may
+  proceed earlier when P0B has proved their prediction identity and the coordinator has
+  approved the next sequential probe.
 - Satisfies: R-01, R-06, R-07; AC-01, AC-06, AC-07
 - Preserves: D-04–D-10, all local gates, and site-score provenance.
 - Verification: E-08 external experiment/score-provenance gate and E-10 spend/submission ledger gate.
 - Allowed paths/effects: `kaggle_kernel/**`, `reports/g02/**`, narrowly necessary manifests/configuration, and approved private Kaggle competition/notebook/submission state only. May read official competition/notebook/submission state, update private notebooks, attach competition data/released public checkpoint, run private training/inference, upload qualifying CSVs, and read scores. Browser is limited to Kaggle competition/notebook/submission pages only when authenticated CLI/API access fails.
 - Focused evidence: pre-score experiment card with artifact/package/model/fold hashes, local official prediction, graph/schema/runtime pass, daily/monthly spend projection, submission count, and expected maximum charge; Kaggle notebook/version/submit ID/timestamps/status/displayed score; daily and cumulative ledger; calibration/holdout role frozen before score observation.
-- Remediation bounds: at most two concurrent paid trials; at most one scored submission per day and ten total. Use 10/30/100 percent local promotion before a site trial. A failed permission/auth/upload attempt may receive one diagnosis/retry only when no scored submission was created and no new boundary is crossed.
+- Remediation bounds: at most two concurrent paid trials; at most five Kaggle submissions
+  per competition day and at most two final selections. While transfer calibration is
+  unresolved, submit at most one genuinely new observation-distinct probe at a time,
+  update P0B/CAL from its rounded score interval, and redesign the remaining order before
+  the next probe. Performance candidates use 10/30/100 percent local promotion. A failed
+  permission/auth/upload attempt may receive one diagnosis/retry only when no submission
+  was created and no new boundary is crossed.
 - Stop rules: stop Blocked for HTTP 403 or other absent submission permission after the bounded diagnosis, quota/cost/concurrency cap breach, unexpected account/payment/credential prompt, public/dataset action request, or missing local gate. Never declare a site score from a notebook log, local output, or absent submission record.
 
-## T-09 — Calibrate site relationship and select final candidate
+## T-09 — Observation-aware transfer calibration
 
 - State: Not started
 - Owner: score-calibration analyst
-- Dependencies: T-02, T-08
+- Dependencies: T-02. Begin from existing artifact-linked pairs and update after each T-08
+  result; final candidate selection additionally depends on the relevant T-08 evidence.
 - Satisfies: R-01, R-02, R-06, R-07; AC-01, AC-02, AC-06, AC-07
 - Preserves: D-02, D-06, D-09 and frozen pre-score roles.
 - Verification: E-01 scorer/site-parity gate, E-02 leakage gate, E-08 external-provenance gate.
 - Allowed paths/effects: `reports/g02/**`, `scripts/**`, `tests/**`, and narrowly necessary manifests/configuration. Read existing Kaggle score state only; no new Kaggle mutation, model/package change, or audit selection.
-- Focused evidence: site/local pair table with artifact IDs and exact score labels; calibration versus untouched holdout designation frozen before return; residuals; any approved local correction fitted only on calibration pairs; re-scored holdout residuals; candidate ranking with grouped-CV/audit/runtime evidence kept separate from site score.
-- Remediation bounds: use identity, bias, or affine correction only if predeclared and supported by calibration pairs; do not refit or reassign holdouts after observing them. A correction is advisory for promotion and never substitutes for AC-06.
-- Stop rules: stop Blocked if no legitimate Kaggle score exists, any pair lacks an artifact identity, residual exceeds `0.02` on an available holdout and cannot be corrected within the frozen protocol, or a proposed action requires extra submissions beyond D-06. Do not claim local-only success.
+- Focused evidence: exact prediction/package/artifact IDs; canonical observation-diff
+  vectors; preregistered mechanism labels; rounded public-score intervals; calibration
+  versus untouched holdout designation frozen before return; interval-aware
+  out-of-sample errors; and candidate ranking with grouped-CV/audit/runtime evidence kept
+  separate from site score.
+- Remediation bounds: start with a descriptive global affine/monotone interval model over
+  the observed range. Add a common-slope mechanism intercept only after repeated
+  score-separated anchors exist; add per-family slopes only with at least three
+  score-separated points per family; do not fit a covariate model until observations
+  materially exceed its effective parameter count. Do not refit or reassign holdouts
+  after observing them.
+- Stop rules: public forecasting/final selection remains unresolved if any pair lacks an
+  artifact identity, the observation design is low-information, interval-aware
+  out-of-sample error is decision-relevant, or the observed family/range lacks leverage.
+  This does not block local model development. Do not claim local-only success.
 
 ## T-10 — Produce final local/audit/package evidence and qualifying submission
 
@@ -119,7 +162,7 @@
 - Allowed paths/effects: `src/celltrack_alpha/**`, `scripts/**`, `tests/**`, `kaggle_kernel/**`, `reports/g02/**`, narrowly necessary configuration/manifests, and the tightly scoped private Kaggle submission/notebook actions permitted by D-04–D-07. A final scored submission is allowed only when its daily/total/cost ledger and all local gates are already PASS; if T-08 already produced the qualifying exact final artifact, T-10 verifies it rather than resubmitting.
 - Focused evidence: final immutable manifest; complete per-sample grouped-fold and untouched-audit node/edge/division diagnostics; fixed scorer and split hashes; router and fallback report; graph/schema/package replay; four-clip and 199-video proxy profile; spend/submission ledger; Kaggle submission ID/status/displayed score tied to final artifact.
 - Remediation bounds: one integration repair for a manifest/package/schema/report linkage defect, followed by re-running only invalidated mandatory local gates. Model/HPO changes return to T-06; score-calibration changes return to T-09; no blind final resubmission.
-- Stop rules: stop Blocked unless grouped CV >= `0.92`, audit >= `0.92`, graph/package/runtime gates pass, scorer parity meets AC-01, and a qualifying Kaggle submission has displayed score >= `0.92`. Stop on any cap/boundary failure rather than lowering a gate or consuming an unplanned score.
+- Stop rules: stop Blocked unless grouped CV >= `0.92`, audit >= `0.92`, graph/package/runtime gates pass, exact scorer-semantic parity and the decision-grade transfer certificate meet AC-01, and a qualifying Kaggle submission has displayed score >= `0.92`. Stop on any cap/boundary failure rather than lowering a gate or consuming an unplanned score.
 
 ## T-01 — Final read-only adversarial verification
 
@@ -138,13 +181,13 @@
 
 | Gate | Threat prevented | Pass condition |
 | --- | --- | --- |
-| E-01 Official scorer and site parity | Semantic drift or local/site conflation | Official fixture passes and every available frozen pair residual <= `0.02`. |
+| E-01 Official scorer semantic parity | Semantic drift or local/site conflation | Official fixtures pass exactly and attested scorer/source identities remain unchanged. |
 | E-02 Split/audit integrity | Near-duplicate, fit-source, or audit leakage | Immutable group/fold/audit manifest and provenance checks pass. |
 | E-03 Checkpoint/head contract | Wrong or untraceable learned core | Released checkpoint/hash, lightweight head schema, fold isolation, and restore evidence pass. |
 | E-04 Sparse graph validity | Dense association, illegal lineage, incomplete coverage | KD-tree/candidate evidence and every graph constraint/coverage check pass. |
 | E-05 Router | Specialist selection leakage or excess regret | OOF regret/fallback thresholds pass. |
 | E-06 HPO/reproducibility | Unbounded search or irreproducible promotion | Cache identity, 10/30/100 ledger, manifest, and pre-launch accounting pass. |
 | E-07 Runtime/package | Hidden runtime/package failure | Four-clip and measured proxy thresholds plus package replay pass. |
-| E-08 Kaggle provenance/calibration | Fabricated/misattributed site score | Private artifact-linked submissions/scores and frozen calibration roles pass. |
+| E-08 Kaggle provenance/transfer | Fabricated or misattributed site score and overconfident transfer | Private artifact-linked submissions/scores, frozen calibration roles, rounded-score intervals, and any decision-grade transfer model's preregistered out-of-sample bound pass. |
 | E-09 Local quality/division | Early/divergent division or insufficient local quality | Grouped CV/audit >= `0.92`; division policy and diagnostics pass. |
 | E-10 External limits and endpoint | Overspend/quota breach or local-only completion | D-04/D-05/D-06 ledger passes and final displayed score >= `0.92`. |

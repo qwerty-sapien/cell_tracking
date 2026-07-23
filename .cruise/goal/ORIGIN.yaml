@@ -1,4 +1,19 @@
 change_ledger:
+  - timestamp: "2026-07-24T00:00:00.000Z"
+    affected_identifier: "G-02"
+    field: "active_coordinator_amendment"
+    prior_value:
+      - "Transfer-calibration failure halted the full screening campaign."
+      - "Commits, pushes, and external paid GPU were prohibited."
+    new_value:
+      - "Scorer semantic parity gates local work; transfer calibration gates public inference and final selection only."
+      - "Official scorer semantic fixtures must pass exactly; any local-to-Kaggle transfer model used for decisions must meet its preregistered interval-aware out-of-sample bound."
+      - "Use at most five Kaggle submissions per competition day and two final selections; count calibration probes against the cap."
+      - "Ordinary commits and pushes to the private repository are permitted."
+      - "RunPod requires explicit human approval for each launch."
+      - "Prioritize a stronger baseline above 0.88 and then robust performance in the competitive 0.90s while retaining the 0.92 completion target."
+    source: "user_answer"
+    rationale: "Records the explicit 2026-07-24 coordinator adoption of the revised DAG, authority hierarchy, and performance objective."
   - timestamp: "2026-07-16T08:30:00.000Z"
     affected_identifier: "G-02"
     field: "outcome"
@@ -16,7 +31,7 @@ change_ledger:
       - "Keep the rule-based alpha as teacher, fallback, and regression baseline."
       - "Keep official sparse-label scorer semantics, the submission schema, and truthful separation of local and Kaggle score provenance."
       - "Use hash-grouped near-duplicate splits, grouped three-fold validation, and an untouched stratified 20-video audit."
-      - "Use no more than two concurrent paid Kaggle trials, one scored submission per day, and ten scored submissions in total."
+      - "Use no more than two concurrent paid Kaggle trials, five Kaggle submissions per competition day, and two final selections."
     source: "user_answer"
     rationale: "Records the approved G-02 non-negotiables from the invalid draft as a schema-valid clarification."
   - timestamp: "2026-07-16T08:30:00.000Z"
@@ -37,7 +52,7 @@ change_ledger:
     field: "exclusions"
     prior_value: []
     new_value:
-      - "No public model or Kaggle dataset publication, external paid GPU provider, unrelated Kaggle/account actions, credential changes, git history mutation, push, or implementation during this preparation slice."
+      - "No public model or Kaggle dataset publication, unrelated Kaggle/account actions, credential changes, or destructive git history mutation. Private-repository commits/pushes are permitted; RunPod is per-launch approval-gated."
     source: "user_answer"
     rationale: "Records the approved G-02 exclusions from the invalid draft as a schema-valid clarification."
   - timestamp: "2026-07-16T08:30:00.000Z"
@@ -64,16 +79,16 @@ goal:
     - "Keep the rule-based alpha as teacher, fallback, and regression baseline."
     - "Keep official sparse-label scorer semantics, the submission schema, and truthful separation of local and Kaggle score provenance."
     - "Use hash-grouped near-duplicate splits, grouped three-fold validation, and an untouched stratified 20-video audit."
-    - "Use no more than two concurrent paid Kaggle trials, one scored submission per day, and ten scored submissions in total."
+    - "Use no more than two concurrent paid Kaggle trials, five Kaggle submissions per competition day, and two final selections."
   success_criteria:
-    - "Official scorer parity is within 0.02 on every available Kaggle calibration pair."
+    - "Official scorer semantic fixtures and source hashes pass exactly; separately, any local-to-Kaggle transfer model used for decisions meets its preregistered interval-aware out-of-sample bound on frozen calibration pairs."
     - "Grouped three-fold combined score and untouched audit combined score are each at least 0.92 with per-sample node, edge, and division diagnostics."
     - "Router mean regret is at most 0.01 and worst-scenario regret is at most 0.03, with the low-confidence universal fallback tested."
     - "Every emitted graph is valid and covers its dataset."
     - "Public four-clip runtime is at most seven minutes and a measured 199-video/final-workload proxy projects at most six hours."
     - "A qualifying private Kaggle submission completes with displayed site score at least 0.92, and the final manifest records model, fold, package, runtime, score, and spend identities."
   exclusions:
-    - "No public model or Kaggle dataset publication, external paid GPU provider, unrelated Kaggle/account actions, credential changes, git history mutation, push, or implementation during this preparation slice."
+    - "No public model or Kaggle dataset publication, unrelated Kaggle/account actions, credential changes, or destructive git history mutation. Private-repository commits/pushes are permitted; RunPod is per-launch approval-gated."
   permitted_inferences:
     - "The historical alpha local audit is useful as a teacher/fallback baseline but is not Kaggle site evidence."
     - "The released competition model and local alpha components may be composed only within the locked hybrid direction and later Start-time path ownership."

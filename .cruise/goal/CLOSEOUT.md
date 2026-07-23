@@ -7,7 +7,19 @@
 - Current T-02 source identity: `g02_integrity.py` `1836155b...fb52`; `freeze_g02_integrity.py` `9ef08dd5...ef33`; `test_g02_integrity.py` `1358c388...2857`
 - Current integrity artifacts: parity `0df49311...ae16`; registry `21f3b3f8...2158`; split `ddb313cb...8769`; provenance `6a9139bf...f14f`
 - Current T-03 installed identity: adapter `b90cc88c...e243`; trainer `b59e5467...9306`; tests `07835b10...4f2c` and `cf983619...d494`
-- Last updated: `2026-07-16T20:12:53Z`
+- Last updated: `2026-07-24` (authority/DAG amendment adopted)
+
+## 2026-07-24 coordinator amendment
+
+The coordinator explicitly adopted the revised screening/calibration DAG. Scorer semantic
+parity gates local scoring; local-to-Kaggle transfer calibration gates public forecasting,
+probe interpretation, and final selection only. Local model development remains active
+while transfer calibration is unresolved. The five-submissions-per-competition-day and
+two-final-selection caps apply to calibration probes. Ordinary commits and pushes to this
+private repository are permitted. Every RunPod launch requires explicit human approval
+after its job identity, estimated GPU-hours, and maximum cost are recorded. The immediate
+performance milestone is to break 0.88, followed by robust performance in the competitive
+0.90s; the contractual completion target remains 0.92.
 
 ## Outcome
 
@@ -51,7 +63,7 @@ Cruise readiness is restored and Doctor passes with runtime digest `1b97b53d...e
 
 | AC | Expected check/result | Current evidence | Result |
 | --- | --- | --- | --- |
-| AC-01 | Official scorer fixture and site parity | 7 fixtures pass; official source/constants frozen; Kaggle pair ledger explicitly null pending scored submissions | PASS for local semantics; site calibration pending T-08/T-09 |
+| AC-01 | Official scorer semantics and transfer | 7 fixtures pass; official source/constants frozen; transfer evidence is tracked independently from scorer semantics | PASS for local semantics; interval-aware transfer remains unresolved under T-08/T-09 |
 | AC-02 | Leakage-safe grouped three-fold and untouched audit20 | 199 train/4 test/203 total; 199 groups; exact audit20; folds hold out 58/59/58; zero fit overlap | PASS for split/provenance gate; score threshold pending models |
 | AC-03 through AC-07 | Model, solver, router, runtime, spend, and Kaggle gates | Compact trainer implementation and one real-fit step pass; actual folds, graph integration, routing, scores, and Kaggle remain pending | IN_PROGRESS |
 
@@ -76,7 +88,7 @@ No product requirement, score threshold, or audit membership changed. The archiv
 
 ## Remaining risk and next work
 
-T-02 proves local metric semantics and leakage-safe data ownership. T-03 now proves checkpoint provenance, compact sparse training mechanics, and one real-format fit step, not model quality. Actual three-fold training/checkpoints, sparse graph solving, router calibration, grouped CV >=0.92, runtime/cost limits, scored submission, and local-to-site residual calibration remain pending. The next action is the private T-03 training entrypoint and pre-launch ledger.
+T-02 proves local metric semantics and leakage-safe data ownership. T-03 now proves checkpoint provenance, compact sparse training mechanics, and one real-format fit step, not model quality. Actual three-fold training/checkpoints, sparse graph solving, router calibration, grouped CV >=0.92, runtime/cost limits, scored submission, and interval-aware local-to-Kaggle transfer calibration remain pending. Transfer uncertainty does not block leakage-safe local model development. The next action is the private T-03 training entrypoint and pre-launch ledger.
 
 ## Current determination
 

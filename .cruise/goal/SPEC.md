@@ -1,13 +1,21 @@
 # G-02 Specification — Trained Hybrid Tracker to 0.92
 
-- Planning state: Draft, pre-Start only
+- Planning state: Active; revised screening/calibration DAG adopted 2026-07-24
 - Slice: G-02
 - Origin: `.cruise/goal/ORIGIN.yaml`, raw-prompt SHA-256 `39a4581e041f6d78546723fdcf99e8c964f98a96a87dc3814b53bec5da3a55ae`
 - Baseline: `c3b9b703b049fc25f10e2b42bb986bb94f137a72`; provided baseline digest `6837725a09e6aff4198a80b9bfb38bb864a639842c6de38654398c6fc4f30f21`
 
 ## Outcome
 
-After separate Plan approval and Start, deliver a low-compute trained hybrid tracker based on the released official `TemporalUNet3D` checkpoint. It must produce sparse center, backward-displacement, uncertainty, division, and candidate-edge outputs, score sparse physical-coordinate candidates with a lightweight learned edge/division model, and solve the lineage graph globally. The one shared backbone has three lightweight specialist adapters/heads: `sparse_clean`, `dense_crowded`, and `low_snr_depth`. An out-of-fold router selects an adapter; confidence below `0.60` selects the universal adapter.
+Deliver a low-compute trained hybrid tracker based on the released official
+`TemporalUNet3D` checkpoint. It must produce sparse center, backward-displacement,
+uncertainty, division, and candidate-edge outputs, score sparse physical-coordinate
+candidates with a lightweight learned edge/division model, and solve the lineage graph
+globally. The one shared backbone has three lightweight specialist adapters/heads:
+`sparse_clean`, `dense_crowded`, and `low_snr_depth`. An out-of-fold router selects an
+adapter; confidence below `0.60` selects the universal adapter. Prioritize a materially
+stronger baseline above 0.88 and then robust performance in the 0.90s while retaining the
+0.92 completion target.
 
 Completion is deliberately conjunctive: official grouped local CV >= `0.92`, untouched stratified 20-video audit >= `0.92`, a valid package/submission and projected final hidden runtime <= six hours, and an actually displayed Kaggle site score >= `0.92`. Local-only success is insufficient.
 
@@ -37,9 +45,15 @@ These sources motivate the approved compact learned center/motion-plus-global-so
 
 ## Requirements
 
-### R-01 — Official sparse-label scorer parity
+### R-01 — Official sparse-label scorer semantics
 
-Use the official semantics: 7.0 um bipartite node matching; z/y/x physical scales `1.625/0.40625/0.40625` um per voxel; node-overprediction adjustment; edge Jaccard aggregation; sparse-label-aware division connected-component Jaccard; and the combined score. Every available Kaggle calibration pair must have absolute local/site parity error <= `0.02`.
+Use the official semantics: 7.0 um bipartite node matching; z/y/x physical scales `1.625/0.40625/0.40625` um per voxel; node-overprediction adjustment; edge Jaccard aggregation; sparse-label-aware division connected-component Jaccard; and the combined score. Official semantic fixtures must pass exactly. Local-to-Kaggle transfer is a separate, interval-aware gate: any transfer model used for public-score decisions must meet its preregistered out-of-sample error bound on frozen calibration pairs.
+
+Scorer-code/semantic parity and empirical local-to-Kaggle transfer are separate gates.
+Semantic parity authorizes leakage-safe local scoring, decomposition, error taxonomy, and
+candidate development. Unresolved transfer calibration blocks fine public-score forecasts,
+interpretation of public probes, and final portfolio selection; it does not halt local
+model development.
 
 ### R-02 — Leakage-safe validation and audit
 
@@ -61,9 +75,17 @@ Evaluate the three specialists out of fold. Train the router only from image sta
 
 Cache backbone outputs and maximal sparse graphs; use 10/30/100 percent successive halving. Before every paid trial, record a runtime/spend prediction and reject it if its maximum charge could exceed a cap. Run at most two paid trials concurrently, spend at most `$8/day` and `$80/month` on development, and retain `$2/day` and `$20/month` for final validation. Show a public four-clip time <= seven minutes and a measured 199-video/final-workload proxy projected <= six hours including preprocessing, inference, solve, and CSV generation. Manifest every checkpoint/source/fold/package/runtime/score/spend identity.
 
+RunPod also has a `$20` campaign sub-cap with `$5–10` ordinarily rationed for training,
+and every launch requires explicit human approval after its maximum cost is recorded.
+
 ### R-07 — Controlled Kaggle evidence and truthful calibration
 
-Use only private training/inference notebooks, directly passing private training outputs to private inference; do not create or publish a Kaggle dataset or model. Make at most two paid trials concurrent, at most one scored submission per day, and at most ten scored submissions total. Each scored submission needs a frozen artifact hash, local official evidence, valid graph/package evidence, runtime/spend prediction, and ledger entry. Kaggle site evidence is never inferred from local CV.
+Use only private training/inference notebooks, directly passing private training outputs to private inference; do not create or publish a Kaggle dataset or model. Make at most two paid trials concurrent, at most five Kaggle submissions per competition day, and select at most two final submissions. Each scored submission needs a frozen artifact hash, local official evidence, valid graph/package evidence, runtime/spend prediction, and ledger entry. Kaggle site evidence is never inferred from local CV.
+
+While transfer calibration is unresolved, every submitted probe consumes this cap and must
+be preregistered, observation-distinct, and measured sequentially so later probes can be
+redesigned from earlier results. Displayed Kaggle scores are rounded intervals, not exact
+responses.
 
 ### R-08 — Gated division policy and completion integrity
 
@@ -73,7 +95,7 @@ Do not activate the division branch until edge-only grouped CV >= `0.90`. Retain
 
 | ID | Criterion | Required proof |
 | --- | --- | --- |
-| AC-01 | Scorer parity | Per-pair local/Kaggle residual <= `0.02`, with official semantics and calibration/holdout roles frozen before observing scores. |
+| AC-01 | Scorer semantics and transfer | Official semantic fixtures and source hashes pass exactly; separately, any local-to-Kaggle transfer model used for public-score decisions meets its preregistered interval-aware out-of-sample bound on frozen calibration pairs. |
 | AC-02 | Model quality | Grouped three-fold and untouched 20-video audit combined score each >= `0.92`; complete per-sample node/edge/division diagnostics. |
 | AC-03 | Routing | Mean regret <= `0.01`, worst-scenario regret <= `0.03`, and universal fallback test. |
 | AC-04 | Graph validity | Every output graph has all required IDs, forward/time/legal degree constraints, valid divisions, and full dataset coverage. |
@@ -83,9 +105,16 @@ Do not activate the division branch until edge-only grouped CV >= `0.90`. Retain
 
 ## Scope and protected behavior
 
-In scope after Start: only task-owned paths under `src/celltrack_alpha`, `scripts`, `tests`, `kaggle_kernel`, `reports/g02`, and narrowly necessary configuration/manifests. The rule-based alpha remains readable and executable as teacher/fallback/regression baseline. Official CSV schema and sparse-label metric semantics remain unchanged.
+In scope: task-owned paths under `src/celltrack_alpha`, `scripts`, `tests`,
+`kaggle_kernel`, `reports/g02`, and narrowly necessary configuration/manifests. The
+rule-based alpha remains readable and executable as teacher/fallback/regression baseline.
+Official CSV schema and sparse-label metric semantics remain unchanged. Ordinary commits
+and pushes to this private repository are permitted.
 
-Out of scope: public releases; new Kaggle datasets; external GPU providers; account/profile/credential actions; unrelated Kaggle activity; git history rewrite, commit, or push; a large from-scratch model; restoring dense NxN association; and any product or external action during preparation.
+Out of scope: public releases; new Kaggle datasets; account/profile/credential actions;
+unrelated Kaggle activity; destructive git-history rewrite; a large from-scratch model;
+and restoring dense NxN association. RunPod is in scope only after explicit human approval
+for the particular launch and pre-launch hours/$/artifact accounting.
 
 ## Completion and block rules
 
