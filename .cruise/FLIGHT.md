@@ -364,9 +364,11 @@ Bank and operationalize the first confirmed local result above `0.88`:
     authenticated and atomically published video 1 (3,605 proposals / 99
     calls), then stopped on 11.50 MiB system swap growth at only 1.06 GiB RSS;
     an earlier attempt stopped on 33.88 MiB, while a sleep-only control
-    independently grew 54.87 MiB. Preserve the valid checkpoint, do not weaken
-    the zero-swap rule, and resume only after a fresh clean idle preflight.
-    Validation12, CV57, Kaggle, GPU and RunPod remained closed.
+    independently grew 54.87 MiB. A post-commit sleep-only preflight also grew
+    10.68 MiB in 42 seconds, so no third build was launched. Preserve the valid
+    checkpoint, do not weaken the zero-swap rule, and resume only after a fresh
+    clean idle preflight. Validation12, CV57, Kaggle, GPU and RunPod remained
+    closed.
 
 ## Stop and realign
 

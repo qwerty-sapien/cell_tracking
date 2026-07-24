@@ -103,6 +103,8 @@ sealed resumable build. That run atomically published the first video (3,605
 proposals and 99 calls) before another 11.50 MiB system-swap increase stopped
 it at 1.06 GiB peak process RSS and 32% minimum free memory. The checkpoint
 then passed an independent contract/code/file-hash resume authentication.
+After banking the implementation, another sleep-only preflight grew swap by
+10.68 MiB in 42.2 seconds at about 1 MiB RSS, so no third build was launched.
 Execution remains PARKed on host state, not candidate evidence.
 
 ## Verification
