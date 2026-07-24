@@ -46,5 +46,5 @@
       "Artifact provenance pins the external checkpoint, license, fit split and trainable parameter set."
     ]
   },
-  "decision": "QUALIFIED_FOR_GROUPED_OOF_DESIGN"
+  "decision": "QUALIFIED_FOR_GROUPED_OOF_IMPLEMENTATION"
 }

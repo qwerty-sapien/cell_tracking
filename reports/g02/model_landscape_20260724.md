@@ -28,8 +28,12 @@ gates. No T4 candidate is approved here.
 No paper result is directly comparable to this competition's patched adjusted-edge
 Jaccard. Literature establishes mechanism plausibility, not a promised 3.5% score gain.
 The pretrained candidate is
-`QUALIFIED_FOR_GROUPED_OOF_DESIGN`; that state does not authorize training,
-CV57, or external compute.
+`QUALIFIED_FOR_GROUPED_OOF_IMPLEMENTATION`. Its label-free complete-pool audit
+covered all 69 fit-train `6bba` videos: 110,471 geometry-admissible proposals,
+5,824 transition calls, maximum 870 required endpoints under the 1,024-token
+cap, and zero identity loss. Safety-factored frozen inference projects to
+1.213 hours. This state authorizes only the nested fit-only frozen-head path;
+it does not authorize validation12, CV57, LoRA, or external compute.
 
 ## Measured problem to solve
 
