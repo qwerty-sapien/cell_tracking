@@ -15,6 +15,7 @@ import hashlib
 import hmac
 import json
 import math
+import mmap
 import os
 from pathlib import Path
 import re
@@ -2449,6 +2450,220 @@ def load_sparse_cache(
     )
 
 
+def load_sparse_cache_node_times(
+    path: str | os.PathLike[str],
+    *,
+    expected_identity: CacheIdentity,
+) -> dict[int, int]:
+    """Authenticate a cache and load only its node-to-frame registry.
+
+    The cache body can contain large pair-context tensors that are irrelevant
+    when callers only need proposal timestamps.  This reader verifies the
+    complete self-digest and exact model/source/batching identity, but parses
+    only the canonical detection records.  Peak memory therefore scales with
+    the detection registry rather than the full cache.
+    """
+
+    if not isinstance(expected_identity, CacheIdentity):
+        raise CacheValidationError("expected_identity must be a CacheIdentity")
+    source = Path(path)
+    minimum = len(CACHE_MAGIC) + 8 + hashlib.sha256().digest_size
+    try:
+        with source.open("rb") as handle:
+            header = handle.read(len(CACHE_MAGIC) + 8)
+            if (
+                len(header) != len(CACHE_MAGIC) + 8
+                or header[: len(CACHE_MAGIC)] != CACHE_MAGIC
+            ):
+                raise CacheValidationError("cache magic or length is invalid")
+            body_length = int.from_bytes(header[len(CACHE_MAGIC) :], "big")
+            body_start = len(CACHE_MAGIC) + 8
+            body_end = body_start + body_length
+            file_size = os.fstat(handle.fileno()).st_size
+            if file_size < minimum or body_end + 32 != file_size:
+                raise CacheValidationError("cache body length is invalid")
+
+            handle.seek(0)
+            digest = hashlib.sha256()
+            remaining = body_end
+            while remaining:
+                chunk = handle.read(min(1024 * 1024, remaining))
+                if not chunk:
+                    raise CacheValidationError("cache body length is invalid")
+                digest.update(chunk)
+                remaining -= len(chunk)
+            stored_digest = handle.read(32)
+            if not hmac.compare_digest(digest.digest(), stored_digest):
+                raise CacheValidationError("cache content digest mismatch")
+
+            with mmap.mmap(
+                handle.fileno(), length=0, access=mmap.ACCESS_READ
+            ) as payload:
+                contexts_prefix = b'{"contexts":'
+                detections_tag = b',"detections":'
+                edges_tag = b',"edges":'
+                hashes_tag = b',"hashes":'
+                schema_tag = b',"schema":'
+                if (
+                    payload[body_start : body_start + len(contexts_prefix)]
+                    != contexts_prefix
+                    or payload[body_end - 1 : body_end] != b"}"
+                ):
+                    raise CacheValidationError(
+                        "cache top-level schema has missing or unexpected fields"
+                    )
+                positions = [
+                    payload.find(tag, body_start, body_end)
+                    for tag in (
+                        detections_tag,
+                        edges_tag,
+                        hashes_tag,
+                        schema_tag,
+                    )
+                ]
+                if (
+                    any(position < 0 for position in positions)
+                    or positions != sorted(positions)
+                    or any(
+                        payload.find(tag, position + len(tag), body_end) >= 0
+                        for tag, position in zip(
+                            (
+                                detections_tag,
+                                edges_tag,
+                                hashes_tag,
+                                schema_tag,
+                            ),
+                            positions,
+                        )
+                    )
+                ):
+                    raise CacheValidationError(
+                        "cache top-level schema has missing or unexpected fields"
+                    )
+                detections_at, edges_at, hashes_at, schema_at = positions
+                try:
+                    detection_records = json.loads(
+                        payload[
+                            detections_at + len(detections_tag) : edges_at
+                        ].decode("ascii"),
+                        object_pairs_hook=_reject_duplicate_json_pairs,
+                    )
+                    hashes = json.loads(
+                        payload[
+                            hashes_at + len(hashes_tag) : schema_at
+                        ].decode("ascii"),
+                        object_pairs_hook=_reject_duplicate_json_pairs,
+                    )
+                    schema = json.loads(
+                        payload[
+                            schema_at + len(schema_tag) : body_end - 1
+                        ].decode("ascii"),
+                    )
+                except (UnicodeError, ValueError, json.JSONDecodeError) as exc:
+                    raise CacheValidationError(
+                        f"cache JSON is invalid: {exc}"
+                    ) from exc
+    except CacheValidationError:
+        raise
+    except OSError as exc:
+        raise CacheValidationError(f"cannot read sparse cache: {exc}") from exc
+
+    if schema != CACHE_SCHEMA:
+        raise CacheValidationError("cache schema mismatch")
+    if not isinstance(hashes, dict) or set(hashes) != {
+        "config_sha256",
+        "pair_batch_size",
+        "source_sha256",
+        "view_batch_size",
+        "weight_sha256",
+    }:
+        raise CacheValidationError("cache hashes record is invalid")
+    try:
+        identity = CacheIdentity(**hashes)
+    except (TypeError, ValueError) as exc:
+        raise CacheValidationError(f"cache hashes are invalid: {exc}") from exc
+    if identity != expected_identity:
+        raise CacheValidationError(
+            "cache model/config/source/batching identity mismatch"
+        )
+
+    if not isinstance(detection_records, list) or len(detection_records) < 2:
+        raise CacheValidationError(
+            "cache detections must contain at least two ordered frames"
+        )
+    detection_keys = {
+        "frame_index",
+        "grid_coords_zyx",
+        "grid_shape_zyx",
+        "node_ids",
+        "scores",
+        "voxel_coords_zyx",
+    }
+    detections: list[FrameDet] = []
+    for index, detection_record in enumerate(detection_records):
+        if (
+            not isinstance(detection_record, dict)
+            or set(detection_record) != detection_keys
+        ):
+            raise CacheValidationError(
+                f"cache detection {index} has missing or unexpected fields"
+            )
+        grid_shape_raw = detection_record["grid_shape_zyx"]
+        if (
+            not isinstance(grid_shape_raw, list)
+            or len(grid_shape_raw) != 3
+            or any(type(value) is not int for value in grid_shape_raw)
+        ):
+            raise CacheValidationError(
+                f"cache detection {index} has an invalid grid shape"
+            )
+        try:
+            detections.append(
+                FrameDet(
+                    frame_index=detection_record["frame_index"],
+                    node_ids=_unpack_array(
+                        detection_record["node_ids"],
+                        "<i8",
+                        f"detection {index} node IDs",
+                    ),
+                    coords_zyx=_unpack_array(
+                        detection_record["voxel_coords_zyx"],
+                        "<i8",
+                        f"detection {index} voxel coordinates",
+                    ),
+                    scores=_unpack_array(
+                        detection_record["scores"],
+                        "<f4",
+                        f"detection {index} scores",
+                    ),
+                    grid_coords_zyx=_unpack_array(
+                        detection_record["grid_coords_zyx"],
+                        "<i8",
+                        f"detection {index} grid coordinates",
+                    ),
+                    grid_shape_zyx=tuple(grid_shape_raw),
+                )
+            )
+        except ModelValidationError as exc:
+            raise CacheValidationError(
+                f"cache detection {index} is invalid: {exc}"
+            ) from exc
+    try:
+        validate_frame_sequence(detections)
+    except ModelValidationError as exc:
+        raise CacheValidationError(str(exc)) from exc
+    for previous, current in zip(detections, detections[1:]):
+        if current.frame_index != previous.frame_index + 1:
+            raise CacheValidationError(
+                "canonical detection frames must be consecutive"
+            )
+    return {
+        int(node_id): detection.frame_index
+        for detection in detections
+        for node_id in detection.node_ids
+    }
+
+
 __all__ = [
     "ArtifactBundle",
     "ArtifactHashes",
@@ -2486,6 +2701,7 @@ __all__ = [
     "infer_two_frames",
     "infer_video",
     "load_sparse_cache",
+    "load_sparse_cache_node_times",
     "load_v45_model",
     "positional_features",
     "predict_sparse_edges",

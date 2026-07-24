@@ -30,6 +30,7 @@ from celltrack_alpha.bh_model import (
     deduplicate_frame_detections,
     infer_video,
     load_sparse_cache,
+    load_sparse_cache_node_times,
     load_v45_model,
     predict_sparse_edges,
     quantile_normalize,
@@ -628,6 +629,12 @@ class CacheAndGraphValidationTests(unittest.TestCase):
             save_sparse_cache(second, cache)
             self.assertEqual(first.read_bytes(), second.read_bytes())
             loaded = load_sparse_cache(first, expected_identity=cache.identity)
+            self.assertEqual(
+                load_sparse_cache_node_times(
+                    first, expected_identity=cache.identity
+                ),
+                {10: 4, 11: 4, 20: 5, 21: 5, 30: 6, 31: 6},
+            )
             save_sparse_cache(third, loaded)
             self.assertEqual(first.read_bytes(), third.read_bytes())
             self.assertFalse(hasattr(loaded.detections[0], "embeddings"))
@@ -647,6 +654,10 @@ class CacheAndGraphValidationTests(unittest.TestCase):
             first.write_bytes(tampered)
             with self.assertRaisesRegex(CacheValidationError, "digest mismatch"):
                 load_sparse_cache(first, expected_identity=cache.identity)
+            with self.assertRaisesRegex(CacheValidationError, "digest mismatch"):
+                load_sparse_cache_node_times(
+                    first, expected_identity=cache.identity
+                )
 
     def test_cache_hash_mismatch_fails_closed(self) -> None:
         cache = self._cache()
@@ -656,6 +667,10 @@ class CacheAndGraphValidationTests(unittest.TestCase):
             wrong = CacheIdentity("f" * 64, cache.identity.source_sha256, cache.identity.weight_sha256)
             with self.assertRaisesRegex(CacheValidationError, "identity mismatch"):
                 load_sparse_cache(path, expected_identity=wrong)
+            with self.assertRaisesRegex(CacheValidationError, "identity mismatch"):
+                load_sparse_cache_node_times(
+                    path, expected_identity=wrong
+                )
             accelerated = CacheIdentity(
                 cache.identity.config_sha256,
                 cache.identity.source_sha256,
