@@ -19,6 +19,10 @@ Current execution evidence:
 - Phase 1 six-rung dispersion ladder: **BANKED** in
   `dispersion_ladder_v1.md`, with all 15 full-CV57 pairwise observation vectors
   in `dispersion_ladder_observation_matrix_v1.json`.
+- Phase 2 cached Stage-A mechanism anchors: **BANKED** in
+  `cross_family_anchors_v1.md`. APNCC-direct is the only high-range anchor with
+  a reproduced fail-closed public package; the full-cost, detector-threshold,
+  and division candidates failed before full-CV57 promotion.
 - The prepared `lb16`/`c0` and `lb4`/`c2` matched pairs are not vacuous; both
   are observation-distinct. They remain below the high-range APNCC-direct
   submission priority and do not establish a general family effect.
