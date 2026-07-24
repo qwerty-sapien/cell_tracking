@@ -15,8 +15,8 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = ROOT / "reports/g02/screening/p0_public_calibration_v1.json"
-DEFAULT_OUTPUT = ROOT / "reports/g02/screening/p0_interval_feasibility_v1.json"
-SCHEMA = "celltrack-alpha.p0-interval-feasibility.v1"
+DEFAULT_OUTPUT = ROOT / "reports/g02/screening/p0_interval_feasibility_v2.json"
+SCHEMA = "celltrack-alpha.p0-interval-feasibility.v2"
 # The open-upper shrink is deliberately much larger than the numerical
 # half-space tolerance, while remaining seven orders below the 0.001 display
 # bin. This preserves strict interval semantics without losing vertices in the
@@ -38,6 +38,11 @@ EXPECTED_PAIRS = (
         "backward motion c=0.25, divisions off",
         0.8731495935289003,
         0.877,
+    ),
+    (
+        "APNCC direct swap, divisions off",
+        0.8815220699597315,
+        0.881,
     ),
 )
 APNCC_DIRECT_LOCAL = 0.8815220699597315
@@ -261,20 +266,24 @@ def build_report(
                 "implied_slope_range": pair_slope_range(first, second),
             }
         )
-        prospective.append(
-            {
-                "fit_pair": label,
-                "unconstrained": affine_envelope(
-                    [first, second],
-                    predict_at=APNCC_DIRECT_LOCAL,
-                ),
-                "monotone_nonnegative": affine_envelope(
-                    [first, second],
-                    minimum_slope=0.0,
-                    predict_at=APNCC_DIRECT_LOCAL,
-                ),
-            }
-        )
+        if not any(
+            point["configuration"] == EXPECTED_PAIRS[-1][0]
+            for point in (first, second)
+        ):
+            prospective.append(
+                {
+                    "fit_pair": label,
+                    "unconstrained": affine_envelope(
+                        [first, second],
+                        predict_at=APNCC_DIRECT_LOCAL,
+                    ),
+                    "monotone_nonnegative": affine_envelope(
+                        [first, second],
+                        minimum_slope=0.0,
+                        predict_at=APNCC_DIRECT_LOCAL,
+                    ),
+                }
+            )
 
     loo = []
     for held_index, held in enumerate(points):
@@ -337,13 +346,33 @@ def build_report(
         point["public_displayed"] - prediction
         for point, prediction in zip(points, point_predictions, strict=True)
     ]
+    apncc = points[-1]
+    baseline = points[-2]
+    apncc_absolute_error = (
+        apncc["public_displayed"] - apncc["local_cv57"]
+    )
+    apncc_local_delta = apncc["local_cv57"] - baseline["local_cv57"]
+    apncc_public_delta = (
+        apncc["public_displayed"] - baseline["public_displayed"]
+    )
     return {
         "schema": SCHEMA,
         "status": "completed",
         "verdict": "STILL-UNRESOLVED",
+        "operational_state": {
+            "high_range_coarse_alignment": "PASS",
+            "fine_global_transfer": "STILL-UNRESOLVED",
+            "submission_policy": (
+                "do not spend another calibration-only submission; measure "
+                "the next materially stronger observation-distinct candidate"
+            ),
+        },
         "scope": {
             "pair_count": len(points),
-            "mechanisms_observed": ["graph cost/solver"],
+            "mechanisms_observed": [
+                "graph cost/solver",
+                "appearance association postprocessor",
+            ],
             "observed_local_range": [
                 min(point["local_cv57"] for point in points),
                 max(point["local_cv57"] for point in points),
@@ -374,10 +403,6 @@ def build_report(
             **point_model,
             "predictions": point_predictions,
             "residuals": residuals,
-            "prospective_apncc_direct_prediction": (
-                point_model["intercept"]
-                + point_model["slope"] * APNCC_DIRECT_LOCAL
-            ),
             "decision_grade": False,
         },
         "all_pair_interval_feasibility": {
@@ -394,33 +419,62 @@ def build_report(
         },
         "pairwise_implied_slopes": pairwise,
         "leave_one_pair_out": loo,
-        "prospective_apncc_direct_local": APNCC_DIRECT_LOCAL,
-        "prospective_apncc_direct_pair_envelopes": prospective,
+        "apncc_direct_measurement": {
+            "local_cv57": apncc["local_cv57"],
+            "public_displayed": apncc["public_displayed"],
+            "public_interval": apncc["public_interval"],
+            "public_displayed_minus_local": apncc_absolute_error,
+            "absolute_error_within_one_display_tick": (
+                abs(apncc_absolute_error) <= 0.001
+            ),
+            "strict_identity_prediction_interval_miss": interval_miss(
+                [apncc["local_cv57"], apncc["local_cv57"]],
+                apncc["public_interval"],
+            ),
+            "baseline_configuration": baseline["configuration"],
+            "local_delta_from_baseline": apncc_local_delta,
+            "public_displayed_delta_from_baseline": apncc_public_delta,
+            "delta_sign_matches": (
+                math.copysign(1.0, apncc_local_delta)
+                == math.copysign(1.0, apncc_public_delta)
+            ),
+            "displayed_delta_realization_ratio": (
+                apncc_public_delta / apncc_local_delta
+            ),
+        },
+        "historical_prospective_apncc_pair_envelopes": prospective,
         "identifiability": {
             "global_affine": (
-                "descriptive only; no affine line intersects all three "
+                "descriptive only; no affine line intersects all four "
                 "display intervals"
             ),
             "mechanism_intercept": (
-                "not estimable: only one observed mechanism"
+                "not estimable robustly: APNCC has one public anchor"
             ),
             "per_mechanism_slope": (
-                "not estimable: no repeated score-separated public anchors "
-                "outside graph cost/solver"
+                "not estimable: APNCC has no repeated score-separated public "
+                "anchor"
             ),
             "covariate_regression": (
-                "not admissible: three pairs do not exceed the effective "
+                "not admissible: four pairs do not exceed the effective "
                 "parameter count"
             ),
         },
         "required_next_measurement": {
-            "candidate": "APNCC-direct",
-            "local_cv57": APNCC_DIRECT_LOCAL,
-            "reason": (
-                "only observation-distinct, package-ready anchor above local "
-                "0.88; it extends both score range and mechanism coverage"
+            "candidate": (
+                "next materially stronger observation-distinct candidate"
             ),
-            "submission_count_if_approved": 1,
+            "minimum_local_cv57_target": 0.89,
+            "reason": (
+                "APNCC-direct already confirms coarse high-range alignment; "
+                "the submission cap makes a calibration-only near-tie lower "
+                "value than an accuracy candidate that also extends the range"
+            ),
+            "calibration_only_submission_recommended": False,
+            "missing_for_mechanism_effect_claim": (
+                "a second APNCC/appearance anchor separated by at least the "
+                "0.004 local resolution heuristic"
+            ),
             "explicit_human_approval_required": True,
         },
     }

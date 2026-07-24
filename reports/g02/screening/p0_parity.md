@@ -4,19 +4,26 @@
 
 P0A: **PASS**
 
-P0B: **STILL-UNRESOLVED**
+P0B coarse high-range alignment: **PASS**
+
+P0B fine global transfer: **STILL-UNRESOLVED**
 
 The patched local implementation is byte-for-byte attested against the current
 official `metrics-fix` checkout and passes its deterministic fixtures. This is
 P0A and authorizes leakage-safe local scoring, decomposition, diagnostics, and
 candidate development.
 
-Three completed local-57/public pairs identify only a coarse relationship. The
+Four completed local-57/public pairs now include APNCC-direct at
+`0.881522070` local and `0.881` displayed public. Its absolute difference is
+within one leaderboard display tick, and its improvement over the `0.877`
+baseline transfers with the same sign. This clears the practical high-range
+alignment question and banks the first public score above 0.88.
+
+The four pairs still identify only a coarse relationship. The
 two near-baseline configurations reverse order: `c=2` is lower locally by
 0.00099965 and higher publicly by one displayed bin. This is a P0B
-local-to-Kaggle transfer failure, not a scorer-code failure. It blocks fine
-public forecasting, interpretation of new public probes, and S1 final
-selection; it does not lock P1, B1/B2/E1 consolidation, or local model work.
+fine-ranking failure, not a scorer-code failure. It blocks near-tie public
+forecasting and S1 final selection; it does not lock local model work.
 
 ## Available local/public pairs
 
@@ -31,11 +38,16 @@ numeric local 57-video score and a displayed Kaggle public score:
 | `onebitbrain/bhp0-c0/1` | divisions off; backward motion; `c=0` | 0.8483945156 | 0.8600000000 | +0.0116054844 |
 | `onebitbrain/bhp0-c2/2` | divisions off; backward motion; `c=2` | 0.8721499475 | 0.8780000000 | +0.0058500525 |
 | 54910497, `onebitbrain/bhv45-submit/3` | divisions off; backward motion; `c=0.25` | 0.8731495935 | 0.8770000000 | +0.0038504065 |
+| `onebitbrain/bhap-submit` | divisions off; APNCC direct swap | **0.8815220700** | **0.8810000000** | **-0.0005220700** |
 
-The local evidence is
+The APNCC public output is authenticated in place by
+`results-bhap.zip` (archive SHA-256
+`031aa5f64fd6eaf918213fc072a098657e2a6bc3d3e5a2d2ae0642d4037b7219`);
+its streamed `submission.csv` hash matches `run.json`. The archive was not
+expanded. The earlier local evidence is
 `reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/report.json`.
 The baseline submission identity and Kaggle API score are frozen in
-`reports/g02/scorer_parity_v1.json`; all three fit inputs are frozen in
+`reports/g02/scorer_parity_v1.json`; all four fit inputs are frozen in
 `p0_public_calibration_v1.json`.
 
 Records excluded from the fit:
@@ -78,30 +90,29 @@ public score
 
 ## Fit, rank correlation, residual, and confidence band
 
-The ordinary least-squares affine model is:
+The four-point ordinary least-squares affine model is:
 
-`public_hat = 0.2497831845 + 0.7193024335 * local`.
+`public_hat = 0.3010866732 + 0.6594275648 * local`.
 
 For forecasts relative to the known current baseline, use the anchored form:
 
-`public_hat = 0.877 + 0.7193024335 * (local - 0.8731495935)`.
+`public_hat = 0.877 + 0.6594275648 * (local - 0.8731495935)`.
 
 Thus a local delta maps coarsely to
-`delta_public_hat = 0.7193024335 * delta_local`.
+`delta_public_hat = 0.6594275648 * delta_local`.
 
 | Quantity | Result |
 |---|---|
-| Pair count | 3 |
-| Affine slope | 0.7193024335 |
-| Affine intercept | 0.2497831845 |
-| Pearson correlation | 0.9963791653 |
-| Spearman rank correlation | 0.5 |
-| Kendall rank correlation | 0.3333333333 |
-| R² | 0.9927714411 |
-| Residual standard deviation | 0.0012163244 with only 1 residual degree of freedom |
-| Rounding-only slope range | 0.6781267088 to 0.7604781582 |
-| Baseline fitted public score | 0.8778418119 |
-| Baseline 95% mean-response band | 0.8666863880 to 0.8889972358; very wide because `df=1` |
+| Pair count | 4 |
+| Affine slope | 0.6594275648 |
+| Affine intercept | 0.3010866732 |
+| Pearson correlation | 0.9898541727 |
+| Spearman rank correlation | 0.8 |
+| Kendall rank correlation | 0.6666666667 |
+| R² | 0.9798112833 |
+| Residual standard deviation | 0.0016509018 with 2 residual degrees of freedom |
+| APNCC local/public absolute difference | -0.0005220700 |
+| APNCC local/public improvement | +0.0083724764 / +0.004 displayed |
 
 The high Pearson correlation and R² are dominated by the deliberately distant
 `c=0` negative control. Rank statistics expose the near-baseline failure. The
@@ -110,20 +121,16 @@ full numeric calibration is frozen in `p0_public_calibration_v1.json`.
 ### Interval-feasibility audit
 
 The reproducible interval audit in
-`p0_interval_feasibility_v1.{md,json}` treats every displayed public score as
+`p0_interval_feasibility_v2.{md,json}` treats every displayed public score as
 `[s-0.0005, s+0.0005)`. No affine line, even with an unconstrained slope,
-intersects all three bins. A uniform expansion of 0.000343242 on each side of
+intersects all four bins. A uniform expansion of 0.000970557 on each side of
 every bin is required before feasibility.
 
-Leave-one-pair-out interval envelopes miss the held bin by 0.017000 for `c=0`,
-0.000686 for `c=2`, and 0.000715 for `c=0.25`. Pairwise APNCC-direct
-projections span 0.859749 to 0.885996 depending on which incompatible
-two-point subset is used. The center OLS value 0.883864 is therefore
-descriptive only, not a decision-grade forecast.
-
-The current data still cannot identify a mechanism intercept, separate
-mechanism slopes, or a covariate regression. The exact next measurement remains
-one APNCC-direct public result behind explicit approval.
+The APNCC result is nevertheless operationally useful: `0.881522` local is
+within one display tick of `0.881` public, and the improvement sign transfers.
+With only one APNCC public point, a mechanism intercept, mechanism slope, and
+covariate regression remain unidentified. Fine global transfer therefore
+stays unresolved.
 
 ## Do local deltas track public deltas?
 
@@ -132,6 +139,8 @@ one APNCC-direct public result behind explicit approval.
 - `c=0`: local delta -0.02475508, public delta -0.017; sign matches and the
   public magnitude is 0.687 times the local magnitude.
 - `c=2`: local delta -0.00099965, public delta +0.001; sign flips.
+- APNCC-direct: local delta +0.00837248, public displayed delta +0.004;
+  sign matches and 47.8% of the local improvement is displayed publicly.
 
 Public scores are displayed to 0.001, so the exact size of the second reversal
 is unresolved, but its displayed ordering is not monotone. No affine or
@@ -148,7 +157,7 @@ rescue the current screening design.
 
 Pure display precision alone corresponds to 0.00139024 local-score units per
 0.001 public tick. The wider 0.004 abstention zone additionally reflects the
-observed fit residuals. No affine line intersects all three public rounding
+observed fit residuals. No affine line intersects all four public rounding
 bins.
 
 ## Patched implementation versus the official scorer
@@ -226,14 +235,12 @@ future PASS.
 
 ## Gate action
 
-Continue local work under P0A. Keep public forecasting and S1 unresolved under
-P0B. The canonical comparison and six-rung dispersion ladder now exist:
-all 15 full-CV57 rung pairs are observation-distinct, and APNCC-direct is the
-only rung above local 0.88. The next action is therefore the already
-preregistered single APNCC-direct probe. Charge it to the
-five-per-competition-day cap and obtain explicit human approval before launch
-or submission. Measure that one probe and update the interval-aware design
-before choosing any second submission.
+Continue local work under P0A and the passed P0B coarse-alignment subgate.
+Keep fine public forecasting and S1 unresolved. APNCC-direct is now measured
+and banked at public `0.881`; do not spend another calibration-only slot.
+The next submission candidate must be observation-distinct, materially
+stronger, and target at least local `0.89`. It is still charged to the
+five-per-competition-day cap and requires explicit human approval.
 
 ## Continuation audit
 
@@ -260,4 +267,5 @@ the 9 focused graph-sweep tests passed.
 The human subsequently ran both kernels. The supplied Kaggle result screenshot
 shows `bhp0-c0` version 1 succeeded at 0.860, `bhp0-c2` version 2 succeeded at
 0.878, and the baseline version 3 at 0.877. These results complete the intended
-three-point calibration and produce the final **FAIL / HALT** verdict above.
+historical three-point calibration. The later APNCC-direct result supersedes
+its high-range gap but not its demonstrated near-tie reversal.

@@ -1,11 +1,11 @@
 # P0B dispersion ladder v1
 
-Decision: **BANK the six-rung observation ladder. Next public action remains
-APNCC-direct, one submission only, behind explicit human approval.**
+Decision: **BANK the six-rung observation ladder and the measured
+APNCC-direct public anchor.**
 
-P0A scorer semantics remain PASS. P0B local-to-Kaggle transfer remains
-**STILL-UNRESOLVED** because only the three graph-cost rungs have public scores
-and none is above local 0.88.
+P0A scorer semantics and P0B coarse high-range alignment are PASS.
+APNCC-direct measured `0.881` publicly from `0.881522` local. Fine
+local-to-Kaggle transfer remains **STILL-UNRESOLVED** for near-tie ranking.
 
 No Kaggle submission, Kaggle GPU, RunPod, or external action occurred.
 
@@ -21,13 +21,13 @@ All six rungs are exact full-CV57 fragment identities. TP/FP/FN use the attested
 | `c0p25` | graph cost/solver | 0.873149594 | 34,205 / 2,685 / 2,063 | measured `0.877`, interval `[0.8765, 0.8775)` | Existing banked calibration baseline and the other side of the reversal. |
 | `p4_no_attention` | learned association architecture/control | 0.874290046 | 34,227 / 2,658 / 2,041 | descriptive planning band `[0.876, 0.880]` | Cached mechanism-diverse anchor. It is not a reason to rebuild the dead P4 attention layer. |
 | `apncc_global` | appearance association postprocessor + global solver | 0.877400878 | 34,281 / 2,584 / 1,987 | descriptive planning band `[0.878, 0.883]` | Appearance-mechanism bridge and solver control for APNCC-direct. |
-| `apncc_direct` | appearance association postprocessor + exact local direct solver | **0.881522070** | **34,320 / 2,459 / 1,948** | descriptive planning band `[0.880, 0.886]` | Only rung above local 0.88; widest new high-range leverage and currently competitive candidate. |
+| `apncc_direct` | appearance association postprocessor + exact local direct solver | **0.881522070** | **34,320 / 2,459 / 1,948** | **measured `0.881`, interval `[0.8805, 0.8815)`** | First local and public rung above 0.88; confirms coarse high-range alignment. |
 
 The three unmeasured bands are deliberately broad planning intervals, not
 decision-grade forecasts. Their centers use the current descriptive affine
 mapping; their widths include the observed near-baseline reversal, Kaggle's
 0.001 display bin, and extra extrapolation uncertainty above the measured
-range. No affine line intersects all three existing public display bins.
+range. No affine line intersects all four public display bins.
 
 ## Pairwise observation vectors
 
@@ -85,22 +85,16 @@ APNCC-direct.
 
 Previously measured rungs `c0`, `c2`, and `c0p25` consume no new slot.
 
-1. **APNCC-direct — next and only currently recommended measurement.**
-   - It is the sole local `>0.88` rung.
-   - It is observation-distinct from every historical pair.
-   - It can both calibrate the missing high range and improve the live score.
-   - The fail-closed `bhap-submit` package has exact 57/57 parity.
-   - Launch and submission still require explicit human approval.
-2. **Redesign after that single result.**
-   - If APNCC-direct lands within its broad planning band and improves the
-     leaderboard, stop spending calibration-only slots and prioritize stronger
-     local candidates.
-   - If it under-transfers or reverses unexpectedly, prepare APNCC-global as
-     the next solver-control anchor before considering unrelated probes.
-   - Use `p4_no_attention` only if a learned-architecture anchor remains
-     decision-relevant after the APNCC result and its package path is reproduced
-     fail-closed.
-3. **Do not submit `lb4` or `lb16` now.** They are observationally distinct,
+1. **APNCC-direct — measured and BANKED at public `0.881`.**
+   - The fail-closed output completed 4/4 test videos and its streamed
+     submission hash matches `run.json`.
+   - The archive was inspected in place and not expanded.
+2. **Conserve the next slot for accuracy.**
+   - Require an observation-distinct candidate targeting local CV57 at least
+     `0.89`.
+   - Submit one at a time only after explicit approval and update calibration
+     immediately.
+3. **Do not submit `lb4` or `lb16`.** They are observationally distinct,
    but their same-system, sub-0.88 information gain is dominated by
    APNCC-direct under the five-submission/day cap and performance objective.
 
@@ -111,7 +105,8 @@ interval-aware calibration immediately, and preserve both final selections.
 ## Gate state
 
 - P0A scorer semantic parity: **PASS**.
-- P0B transfer calibration: **STILL-UNRESOLVED**.
-- Q next probe: **APNCC-direct, READY-FOR-HUMAN-APPROVAL**.
+- P0B coarse high-range alignment: **PASS**.
+- P0B fine transfer calibration: **STILL-UNRESOLVED**.
+- Q next probe: **none; await a local `>=0.89` candidate**.
 - S1 final selection: locked.
 - Local candidate development: continues independently.

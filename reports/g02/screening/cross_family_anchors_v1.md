@@ -1,6 +1,7 @@
 # P0B mechanism-diverse anchors v1
 
-Decision: **BANK cached Stage-A evidence; submit no calibration-only anchor.**
+Decision: **BANK APNCC-direct at public `0.881`; submit no calibration-only
+follow-up.**
 
 This file retains the requested legacy `cross_family_anchors` name, but uses
 the revised mechanism labels from `P0R_recalibration_wide_dispersion.md`.
@@ -19,7 +20,7 @@ and the exact fragment identities frozen in
 |---|---|---|---:|---:|---:|---|---|---|
 | P4 no-attention control | learned association architecture/control | graph-cost `c=0.25` | 0.874290 / 0.873150 | 0.001140 | .991023 / .974946 | exact 57/57 | none reproduced | BANK as cached matched-local interaction; do not rebuild the harmful P4 attention layer |
 | APNCC global re-solve | appearance association postprocessor + global solver | P4 no-attention | 0.877401 / 0.874290 | 0.003111 | .990483 / .973725 | exact 57/57 | none reproduced | PARK for accuracy; retain as a solver-control anchor |
-| APNCC direct swap | appearance association postprocessor + exact local solver | graph-cost `c=0.25` | **0.881522 / 0.873150** | 0.008372 | .992972 / .984736 | exact 57/57 | **READY**: `bhap-submit` | BANK as the high-range performance and transfer anchor |
+| APNCC direct swap | appearance association postprocessor + exact local solver | graph-cost `c=0.25` | **0.881522 / 0.873150** | 0.008372 | .992972 / .984736 | exact 57/57 | **MEASURED `0.881`**: `bhap-submit` | BANK as the high-range performance and transfer anchor |
 | APNCC direct swap | same appearance proposals, local solver | APNCC global re-solve | 0.881522 / 0.877401 | 0.004121 | .994074 / .988688 | exact 57/57 | direct only | useful score-separated solver comparison; not a matched-local pair |
 
 The no-attention/P4 control supplies one cached matched-local
@@ -42,8 +43,7 @@ prediction identity was authorized for them.
 
 ## Package-readiness gate
 
-`kaggle_kernel/bhap-submit` is the only Stage-A anchor ready for a public
-measurement:
+`kaggle_kernel/bhap-submit` produced the authenticated public measurement:
 
 - local score `0.8815220699597315`;
 - TP/FP/FN `34,320 / 2,459 / 1,948`;
@@ -51,20 +51,18 @@ measurement:
 - fragment tree byte-identical to the banked candidate;
 - manifest identity
   `779aa8d3cefd701024cfb1870d56f3fbb0b29ad1b72f120838951932017d606b`;
-- expected 7 minutes wall time and at most 0.25 Kaggle GPU-hours;
-- one competition submission if, after generation and output inspection, the
-  artifact is explicitly approved for submission.
+- observed 534.968 seconds wall time on the public run;
+- displayed public score `0.881`;
+- output archive and streamed submission hashes recorded in
+  `p0_public_calibration_v1.json`.
 
 ## Sequential decision
 
-1. If public measurement is authorized, measure APNCC-direct alone.
-2. Treat the displayed score as a 0.001-wide rounding interval and update P0B
-   before selecting any second probe.
-3. If transfer is unsurprising and the score improves, conserve submissions
-   for materially stronger local candidates.
-4. If direct swap under-transfers, reproduce APNCC-global as a fail-closed
-   solver-control package before considering P4 no-attention or lower-range
-   learned-bonus probes.
+1. Treat APNCC-direct as interval `[0.8805, 0.8815)` and bank its coarse
+   high-range alignment.
+2. Conserve submissions for materially stronger local candidates, targeting
+   local CV57 at least `0.89`.
+3. Do not reproduce APNCC-global or lower-range probes solely for calibration.
 
 Stage B learned-model work remains governed by the independent GA/GD gates.
 Neither a favorable nor unfavorable calibration verdict is, by itself, a GPU

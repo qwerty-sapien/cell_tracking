@@ -53,10 +53,57 @@
         "public_test_groups_excluded_from_all_fit_and_holdout_folds": true,
         "upload_performed": false
       }
+    },
+    {
+      "kernel_ref": "onebitbrain/bhap-submit",
+      "kernel_version": null,
+      "configuration": {
+        "mode": "submit",
+        "split": "test",
+        "division_enabled": false,
+        "mechanism": "post-gap-pre-prune-node-disjoint-full-3d-ncc-direct-swap",
+        "appearance_contract_sha256": "cee547ed7a82d1bf7f6afe8cbbc3cc9d554181f9e19e87d319a5350863718cf7",
+        "devices": [
+          "cuda:0",
+          "cuda:1"
+        ]
+      },
+      "local_score": 0.8815220699597315,
+      "local_score_source": "reports/g02/selected_graph_appearance_direct_cv57_v1/report.json",
+      "site_score": 0.881,
+      "site_score_interval": [0.8805, 0.8815],
+      "score_pair_status": "complete_user_reported_public_score",
+      "slot_status": "screening_submission_scored",
+      "competition_day": "2026-07-24",
+      "known_submission_number_that_day": 1,
+      "known_remaining_daily_slots_after_result": 4,
+      "result_recorded_date": "2026-07-24",
+      "result_evidence": "user-reported displayed Kaggle score",
+      "output_archive": "results-bhap.zip",
+      "output_archive_sha256": "031aa5f64fd6eaf918213fc072a098657e2a6bc3d3e5a2d2ae0642d4037b7219",
+      "submission_csv_sha256": "6944ed58c5b1c6b636ebf2cd62f673d13e7edbd7ad3ae1eecaf99d5a1548bea3",
+      "output_rows": 263282,
+      "runtime_seconds": 534.9683349132538,
+      "public_test_video_ids": [
+        "test:44b6_0113de3b",
+        "test:44b6_0b24845f",
+        "test:6bba_05b6850b",
+        "test:6bba_05db0fb1"
+      ],
+      "verification": {
+        "archive_expanded": false,
+        "archive_integrity_test": "passed",
+        "run_ok": true,
+        "workers_ok": 2,
+        "videos_completed": 4,
+        "streamed_submission_hash_matches_run_json": true
+      }
     }
   ],
-  "schema_version": 1,
+  "schema_version": 2,
+  "competition_day_submission_cap": 5,
+  "final_selection_slots": 2,
   "scored_submission_limit": 10,
   "scored_submission_slots_reserved": 1,
-  "scored_submission_slots_used": 0
+  "scored_submission_slots_used": 1
 }

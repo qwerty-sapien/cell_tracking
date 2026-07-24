@@ -6,7 +6,9 @@
 ## Status and scope
 
 - `P0A` scorer semantic parity: **PASS**.
-- `P0B` local-to-Kaggle transfer calibration: **STILL-UNRESOLVED**.
+- `P0B` coarse high-range alignment: **PASS** (`0.881522` local → `0.881`
+  displayed public).
+- `P0B` fine local-to-Kaggle transfer calibration: **STILL-UNRESOLVED**.
 - P0B gates fine public-score forecasting, public-probe interpretation, and S1.
 - P0B does not halt leakage-safe local decomposition, diagnostics, candidate
   development, or the association/detection GPU gates.
@@ -20,18 +22,19 @@ Current execution evidence:
   `dispersion_ladder_v1.md`, with all 15 full-CV57 pairwise observation vectors
   in `dispersion_ladder_observation_matrix_v1.json`.
 - Phase 2 cached Stage-A mechanism anchors: **BANKED** in
-  `cross_family_anchors_v1.md`. APNCC-direct is the only high-range anchor with
-  a reproduced fail-closed public package; the full-cost, detector-threshold,
-  and division candidates failed before full-CV57 promotion.
-- Phase 4 current-data feasibility: **BANKED** in
-  `p0_interval_feasibility_v1.{md,json}`. No affine line intersects all three
-  public rounding bins, and pairwise APNCC-direct projections are materially
-  incompatible. The verdict remains `STILL-UNRESOLVED`.
+  `cross_family_anchors_v1.md`. APNCC-direct is the measured high-range anchor
+  at public `0.881`; the full-cost, detector-threshold, and division candidates
+  failed before full-CV57 promotion.
+- Phase 4 four-pair feasibility: **BANKED** in
+  `p0_interval_feasibility_v2.{md,json}`. No affine line intersects all four
+  public rounding bins, but APNCC-direct is within one display tick of its
+  local score. Fine transfer remains `STILL-UNRESOLVED`.
 - The prepared `lb16`/`c0` and `lb4`/`c2` matched pairs are not vacuous; both
   are observation-distinct. They remain below the high-range APNCC-direct
   submission priority and do not establish a general family effect.
-- Next measurement: one APNCC-direct public probe, only after explicit human
-  approval, followed by complete redesign before any second submission.
+- Next measurement: no calibration-only probe. Await a materially stronger,
+  observation-distinct candidate targeting local CV57 at least `0.89`; explicit
+  human approval remains mandatory.
 
 ## Frozen identities
 
@@ -53,19 +56,22 @@ Historical public predictions are the three artifact-linked `submission.csv` fil
 `bhp0-c0-out-v1`, `bhp0-c2-out-v2`, and `bhsubmitout_v3`. Compare local with local and
 public with public; never cross prediction domains.
 
-## Why the current calibration is insufficient
+## Why fine calibration remains insufficient
 
-There are only three scored pairs, all one graph-cost mechanism:
+There are four scored pairs: three graph-cost points and one APNCC appearance
+postprocessor point:
 
 | Configuration | Local CV57 | Displayed public |
 |---|---:|---:|
 | backward motion `c=0` | 0.8483945156 | 0.860 |
 | backward motion `c=2` | 0.8721499475 | 0.878 |
 | backward motion `c=0.25` | 0.8731495935 | 0.877 |
+| APNCC direct swap | 0.8815220700 | 0.881 |
 
 The distant `c=0` anchor drives the high affine R². The two near-baseline points reverse
-rank, the observed range ends below 0.88, and displayed public scores are rounded to
-0.001. Treat every displayed value `s` as the interval `[s-0.0005, s+0.0005)`.
+rank, while APNCC confirms coarse high-range alignment but has no repeated
+score-separated mechanism mate. Displayed public scores are rounded to 0.001.
+Treat every displayed value `s` as `[s-0.0005, s+0.0005)`.
 
 ## Mechanism labels
 
@@ -195,15 +201,19 @@ Fit only models supported by the accumulated design:
    and the design matrix is full rank.
 
 Evaluate predictions against displayed-score intervals. Report interval coverage and miss
-distance, not point residual SD alone. With the current three pairs, per-family affine,
-multivariable regression, and a precise LOO uncertainty estimate are not admissible.
+distance, not point residual SD alone. With the current four pairs and only one APNCC
+anchor, a mechanism intercept, per-mechanism affine, multivariable regression, and a
+precise LOO uncertainty estimate are not admissible.
 
 Verdicts:
 
 - `GLOBAL-ADEQUATE-OBSERVED-RANGE`: one global mapping is adequate over the measured
   mechanisms and score range.
 - `MECHANISM-SPECIFIC`: repeated anchors show a mechanism shift material to decisions.
-- `STILL-UNRESOLVED`: identify the exact missing score range/mechanism anchor.
+- `STILL-UNRESOLVED`: identify the exact missing score range/mechanism anchor. Current
+  missing evidence is a second score-separated APNCC/appearance anchor; under the
+  submission cap it must come from a materially stronger candidate, not a dedicated
+  calibration-only probe.
 
 None of these verdicts triggers or vetoes GPU work by itself.
 

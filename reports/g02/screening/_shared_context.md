@@ -5,7 +5,8 @@ Classical BH-graph cell-tracking pipeline for the Biohub "cell tracking during d
 competition.
 
 ## Standing
-- Public: **0.877**, rank ~787. Frontier: **0.929** (post-rescoring).
+- Public: **0.881** from APNCC-direct (`0.881522` local). Frontier: **0.929**
+  (post-rescoring).
 - The rescoring dropped the former champion **0.985 → 0.913**: the new metric punishes whatever
   the old leaderboard rewarded. **Robust, generalizing solutions win now** — weight this in every
   keep/park decision.
@@ -25,20 +26,31 @@ competition.
   other's tuple.
 
 ## Budgets & rules
+- Machine-readable authority: `reports/g02/compute_governance_v1.json`.
+- **Preferred exploration funnel:** literature-validated lightweight candidates first.
+  Before implementation or training, validate a candidate manifest derived from
+  `reports/g02/model_candidate_template_v1.json`. Run the cheapest fit-only falsification
+  first; only promote a candidate whose preregistered learning and runtime gates pass.
+- **Standing local lane:** keep at most one guarded M5 training job available in parallel
+  with eligible external work. Use `scripts/run_local_training_guard.py`: process-tree
+  training memory <= **18 GiB**, background reserve >= **6 GiB**, no holdout access, no
+  swap growth, and <= **7 hours** per unattended stage. A resource violation stops the
+  stage and fails the runtime gate.
 - **Submissions:** competition rules allow **5/day, 2 final selections**. Treat submission as cheap
   for screening, but final selections are precious and rescoring-sensitive.
 - **Compute hierarchy — spend free quota before paid dollars:**
-  1. **Kaggle GPU quota (free, use first):** **30 GPU-hours/week**, resets **Saturday 00:00 UTC**.
-     This is a hard wall-clock quota, not money — it does not roll over and cannot be topped up.
-     Any T1/M1 training that fits a Kaggle notebook session (P100/T4×2, ~9h/session max) should run
-     there before touching RunPod. Track cumulative hours used this week in LEDGER.md so a node
-     never gets started that can't finish before the reset guillotines it mid-run.
-  2. **RunPod (paid, last resort):** **$20 total**, of which **$5–10 is rationed for training**,
-     spent ONLY when a model is likely the only remaining way to be competitive AND the job doesn't
-     fit Kaggle's weekly quota/session limits (e.g. needs >9h contiguous, or the week's 30h is
-     already spent on higher-priority runs). Estimate cost from the ~3.6 GPU-s/pair budget × pair
-     count BEFORE launching, log every dollar, and obtain explicit human approval for
-     that exact launch.
+  1. **Kaggle GPU quota (free, initial training only):** at most **30 cumulative T4
+     GPU-hours per model**, across sessions and quota resets. Archive a model when its
+     minimum credible training state cannot be reached inside that ceiling. Track both
+     per-model cumulative use and the live weekly quota in `LEDGER.md`.
+  2. **RunPod (paid, gated optimization only):** **$10 total** and never used for initial
+     training. It may be considered only after an artifact-linked accepted score reaches
+     **0.89** and the exact higher-quality-GPU-dependent optimization has literature or
+     theoretical support for an expected score improvement **greater than 5%**. The
+     ordinary hard improvement gate is **3.5%**. Estimate cost before launch, log every
+     dollar, and obtain explicit human approval for that exact launch.
+- Passing the local fast-fail lane does not itself authorize Kaggle or RunPod and does
+  not relax either platform's gates.
 - **No GNN.** HOCT adjusted homophily ≈ 0.01 on this graph class; a geometry-free edge transformer
   already beat GNN variants (0.922 vs 0.916/0.909).
 - Ordinary commits and pushes to this private repository are permitted. Do not rewrite

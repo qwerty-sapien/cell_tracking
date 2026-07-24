@@ -61,7 +61,7 @@ def test_interval_miss_handles_overlap_and_separation() -> None:
     )
 
 
-def test_frozen_report_is_unresolved_and_requests_apncc() -> None:
+def test_frozen_report_records_coarse_apncc_alignment_but_stays_fine_unresolved() -> None:
     source = (
         calibration.ROOT
         / "reports/g02/screening/p0_public_calibration_v1.json"
@@ -73,7 +73,19 @@ def test_frozen_report_is_unresolved_and_requests_apncc() -> None:
         report["all_pair_interval_feasibility"]["unconstrained"]["feasible"]
         is False
     )
-    assert report["required_next_measurement"]["candidate"] == "APNCC-direct"
+    assert report["scope"]["pair_count"] == 4
+    assert (
+        report["operational_state"]["high_range_coarse_alignment"] == "PASS"
+    )
+    assert report["apncc_direct_measurement"][
+        "absolute_error_within_one_display_tick"
+    ]
+    assert (
+        report["required_next_measurement"][
+            "calibration_only_submission_recommended"
+        ]
+        is False
+    )
     assert report["scope"]["kaggle_action"] is False
 
 
