@@ -23,6 +23,10 @@ Current execution evidence:
   `cross_family_anchors_v1.md`. APNCC-direct is the only high-range anchor with
   a reproduced fail-closed public package; the full-cost, detector-threshold,
   and division candidates failed before full-CV57 promotion.
+- Phase 4 current-data feasibility: **BANKED** in
+  `p0_interval_feasibility_v1.{md,json}`. No affine line intersects all three
+  public rounding bins, and pairwise APNCC-direct projections are materially
+  incompatible. The verdict remains `STILL-UNRESOLVED`.
 - The prepared `lb16`/`c0` and `lb4`/`c2` matched pairs are not vacuous; both
   are observation-distinct. They remain below the high-range APNCC-direct
   submission priority and do not establish a general family effect.

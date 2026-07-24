@@ -1,0 +1,362 @@
+{
+  "all_pair_interval_feasibility": {
+    "minimum_uniform_expansion_monotone_nonnegative": 0.00034324241753064255,
+    "minimum_uniform_expansion_unconstrained": 0.00034324241753064255,
+    "monotone_nonnegative": {
+      "feasible": false,
+      "minimum_slope_constraint": 0.0,
+      "uniform_interval_expansion": 0.0,
+      "vertex_count": 0
+    },
+    "unconstrained": {
+      "feasible": false,
+      "minimum_slope_constraint": null,
+      "uniform_interval_expansion": 0.0,
+      "vertex_count": 0
+    }
+  },
+  "descriptive_center_ols": {
+    "decision_grade": false,
+    "intercept": 0.24978318446003256,
+    "predictions": [
+      0.8600354240643828,
+      0.8771227640428508,
+      0.8778418118927667
+    ],
+    "prospective_apncc_direct_prediction": 0.8838641545638644,
+    "residuals": [
+      -3.5424064382838516e-05,
+      0.0008772359571491695,
+      -0.000841811892766664
+    ],
+    "slope": 0.7193024334975494
+  },
+  "identifiability": {
+    "covariate_regression": "not admissible: three pairs do not exceed the effective parameter count",
+    "global_affine": "descriptive only; no affine line intersects all three display intervals",
+    "mechanism_intercept": "not estimable: only one observed mechanism",
+    "per_mechanism_slope": "not estimable: no repeated score-separated public anchors outside graph cost/solver"
+  },
+  "leave_one_pair_out": [
+    {
+      "center_ols": {
+        "intercept": 1.7504587378381347,
+        "interval_miss": 0.04126384267120364,
+        "prediction": 0.9017638426712037,
+        "residual_displayed_minus_prediction": -0.0417638426712037,
+        "slope": -1.000354056523104
+      },
+      "held_configuration": "backward motion c=0, divisions off",
+      "held_public_interval": [
+        0.8595,
+        0.8605
+      ],
+      "monotone_training_interval_envelope": {
+        "feasible": false,
+        "minimum_slope_constraint": 0.0,
+        "uniform_interval_expansion": 0.0,
+        "vertex_count": 0
+      },
+      "unconstrained_training_interval_envelope": {
+        "feasible": true,
+        "held_interval_covered": false,
+        "held_interval_miss": 0.017000002376410195,
+        "intercept_range": [
+          0.8775000872459068,
+          2.6234173883304326
+        ],
+        "minimum_slope_constraint": null,
+        "prediction_at_local": 0.8483945155545333,
+        "prediction_range": [
+          0.8775000023764102,
+          0.9260276828660674
+        ],
+        "slope_range": [
+          -2.0007080130107937,
+          -1.0003541392927688e-07
+        ],
+        "uniform_interval_expansion": 0.0,
+        "vertex_count": 4
+      }
+    },
+    {
+      "center_ols": {
+        "intercept": 0.2773839088949246,
+        "interval_miss": 0.0011864847360609776,
+        "prediction": 0.876313515263939,
+        "residual_displayed_minus_prediction": 0.0016864847360610336,
+        "slope": 0.6867277904599159
+      },
+      "held_configuration": "backward motion c=2, divisions off",
+      "held_public_interval": [
+        0.8775,
+        0.8785
+      ],
+      "monotone_training_interval_envelope": {
+        "feasible": true,
+        "held_interval_covered": false,
+        "held_interval_miss": 0.0006864848360590425,
+        "intercept_range": [
+          0.24261237755119563,
+          0.31215544013866237
+        ],
+        "minimum_slope_constraint": 0.0,
+        "prediction_at_local": 0.8721499474601118,
+        "prediction_range": [
+          0.8758135152639381,
+          0.8768135151639409
+        ],
+        "slope_range": [
+          0.646332042119492,
+          0.727123538800331
+        ],
+        "uniform_interval_expansion": 0.0,
+        "vertex_count": 4
+      },
+      "unconstrained_training_interval_envelope": {
+        "feasible": true,
+        "held_interval_covered": false,
+        "held_interval_miss": 0.0006864848360590425,
+        "intercept_range": [
+          0.24261237755119563,
+          0.31215544013866237
+        ],
+        "minimum_slope_constraint": null,
+        "prediction_at_local": 0.8721499474601118,
+        "prediction_range": [
+          0.8758135152639381,
+          0.8768135151639409
+        ],
+        "slope_range": [
+          0.646332042119492,
+          0.727123538800331
+        ],
+        "uniform_interval_expansion": 0.0,
+        "vertex_count": 4
+      }
+    },
+    {
+      "center_ols": {
+        "intercept": 0.21715328853290616,
+        "interval_miss": 0.0012574532557316775,
+        "prediction": 0.8787574532557316,
+        "residual_displayed_minus_prediction": -0.0017574532557316225,
+        "slope": 0.7577214369978712
+      },
+      "held_configuration": "backward motion c=0.25, divisions off",
+      "held_public_interval": [
+        0.8765,
+        0.8775
+      ],
+      "monotone_training_interval_envelope": {
+        "feasible": true,
+        "held_interval_covered": false,
+        "held_interval_miss": 0.0007153725235116148,
+        "intercept_range": [
+          0.18093958591166356,
+          0.25336699105415694
+        ],
+        "minimum_slope_constraint": 0.0,
+        "prediction_at_local": 0.8731495935289003,
+        "prediction_range": [
+          0.8782153725235116,
+          0.8792995338879519
+        ],
+        "slope_range": [
+          0.7156258058186599,
+          0.7998170681770733
+        ],
+        "uniform_interval_expansion": 0.0,
+        "vertex_count": 4
+      },
+      "unconstrained_training_interval_envelope": {
+        "feasible": true,
+        "held_interval_covered": false,
+        "held_interval_miss": 0.0007153725235116148,
+        "intercept_range": [
+          0.18093958591166356,
+          0.25336699105415694
+        ],
+        "minimum_slope_constraint": null,
+        "prediction_at_local": 0.8731495935289003,
+        "prediction_range": [
+          0.8782153725235116,
+          0.8792995338879519
+        ],
+        "slope_range": [
+          0.7156258058186599,
+          0.7998170681770733
+        ],
+        "uniform_interval_expansion": 0.0,
+        "vertex_count": 4
+      }
+    }
+  ],
+  "pairwise_implied_slopes": [
+    {
+      "implied_slope_range": [
+        0.715625801609096,
+        0.7998170723866372
+      ],
+      "pair": "backward motion c=0, divisions off \u2194 backward motion c=2, divisions off"
+    },
+    {
+      "implied_slope_range": [
+        0.6463320380799165,
+        0.7271235428399067
+      ],
+      "pair": "backward motion c=0, divisions off \u2194 backward motion c=0.25, divisions off"
+    },
+    {
+      "implied_slope_range": [
+        -2.000708113046208,
+        0.0
+      ],
+      "pair": "backward motion c=2, divisions off \u2194 backward motion c=0.25, divisions off"
+    }
+  ],
+  "prospective_apncc_direct_local": 0.8815220699597315,
+  "prospective_apncc_direct_pair_envelopes": [
+    {
+      "fit_pair": "backward motion c=0, divisions off \u2194 backward motion c=2, divisions off",
+      "monotone_nonnegative": {
+        "feasible": true,
+        "intercept_range": [
+          0.18093958591166356,
+          0.25336699105415694
+        ],
+        "minimum_slope_constraint": 0.0,
+        "prediction_at_local": 0.8815220699597315,
+        "prediction_range": [
+          0.8842069327160228,
+          0.885995983440241
+        ],
+        "slope_range": [
+          0.7156258058186599,
+          0.7998170681770733
+        ],
+        "uniform_interval_expansion": 0.0,
+        "vertex_count": 4
+      },
+      "unconstrained": {
+        "feasible": true,
+        "intercept_range": [
+          0.18093958591166356,
+          0.25336699105415694
+        ],
+        "minimum_slope_constraint": null,
+        "prediction_at_local": 0.8815220699597315,
+        "prediction_range": [
+          0.8842069327160228,
+          0.885995983440241
+        ],
+        "slope_range": [
+          0.7156258058186599,
+          0.7998170681770733
+        ],
+        "uniform_interval_expansion": 0.0,
+        "vertex_count": 4
+      }
+    },
+    {
+      "fit_pair": "backward motion c=0, divisions off \u2194 backward motion c=0.25, divisions off",
+      "monotone_nonnegative": {
+        "feasible": true,
+        "intercept_range": [
+          0.24261237755119563,
+          0.31215544013866237
+        ],
+        "minimum_slope_constraint": 0.0,
+        "prediction_at_local": 0.8815220699597315,
+        "prediction_range": [
+          0.8819113997891374,
+          0.8835878245909086
+        ],
+        "slope_range": [
+          0.646332042119492,
+          0.727123538800331
+        ],
+        "uniform_interval_expansion": 0.0,
+        "vertex_count": 4
+      },
+      "unconstrained": {
+        "feasible": true,
+        "intercept_range": [
+          0.24261237755119563,
+          0.31215544013866237
+        ],
+        "minimum_slope_constraint": null,
+        "prediction_at_local": 0.8815220699597315,
+        "prediction_range": [
+          0.8819113997891374,
+          0.8835878245909086
+        ],
+        "slope_range": [
+          0.646332042119492,
+          0.727123538800331
+        ],
+        "uniform_interval_expansion": 0.0,
+        "vertex_count": 4
+      }
+    },
+    {
+      "fit_pair": "backward motion c=2, divisions off \u2194 backward motion c=0.25, divisions off",
+      "monotone_nonnegative": {
+        "feasible": false,
+        "minimum_slope_constraint": 0.0,
+        "uniform_interval_expansion": 0.0,
+        "vertex_count": 0
+      },
+      "unconstrained": {
+        "feasible": true,
+        "intercept_range": [
+          0.8775000872459068,
+          2.6234173883304326
+        ],
+        "minimum_slope_constraint": null,
+        "prediction_at_local": 0.8815220699597315,
+        "prediction_range": [
+          0.8597491193161364,
+          0.8774999990624817
+        ],
+        "slope_range": [
+          -2.0007080130107937,
+          -1.0003541392927688e-07
+        ],
+        "uniform_interval_expansion": 0.0,
+        "vertex_count": 4
+      }
+    }
+  ],
+  "provenance": {
+    "source": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/p0_public_calibration_v1.json",
+    "source_binding": "canonical pairs only; audit metadata may be appended to the source document without changing this identity",
+    "source_pairs_sha256": "7332883e8506888b2b336ae4e27c7835b7f02d3d6e2483ef0b1b9baf983102b8"
+  },
+  "required_next_measurement": {
+    "candidate": "APNCC-direct",
+    "explicit_human_approval_required": true,
+    "local_cv57": 0.8815220699597315,
+    "reason": "only observation-distinct, package-ready anchor above local 0.88; it extends both score range and mechanism coverage",
+    "submission_count_if_approved": 1
+  },
+  "schema": "celltrack-alpha.p0-interval-feasibility.v1",
+  "scope": {
+    "display_resolution": 0.001,
+    "gpu_action": false,
+    "kaggle_action": false,
+    "mechanisms_observed": [
+      "graph cost/solver"
+    ],
+    "observed_local_range": [
+      0.8483945155545333,
+      0.8731495935289003
+    ],
+    "open_upper_epsilon": 1e-10,
+    "pair_count": 3,
+    "public_interval_convention": "[displayed-0.0005, displayed+0.0005)",
+    "runpod_action": false
+  },
+  "status": "completed",
+  "verdict": "STILL-UNRESOLVED"
+}

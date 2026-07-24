@@ -91,6 +91,16 @@
       "sign_matches": false
     }
   ],
+  "interval_aware_audit": {
+    "report": "reports/g02/screening/p0_interval_feasibility_v1.json",
+    "report_sha256": "056ee65c228724b68379b1e67c9d8f9f1d596d215a8ce580086d6cd2d0295d8f",
+    "all_three_bins_affine_feasible": false,
+    "all_three_bins_monotone_affine_feasible": false,
+    "minimum_uniform_expansion_each_side": 0.00034324241753064255,
+    "prospective_apncc_direct_center_ols": 0.8838641545638644,
+    "prospective_apncc_direct_decision_grade": false,
+    "verdict": "STILL-UNRESOLVED"
+  },
   "operational_policy": {
     "absolute_forecast": "The baseline-anchored affine formula is descriptive over the observed graph-cost range only; do not use it as a decision-grade public forecast.",
     "ranking": "Do not use scalar calibration to rank near-tied candidates; it cannot reverse the observed c=2/c=0.25 inversion.",

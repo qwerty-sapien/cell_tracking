@@ -107,6 +107,24 @@ The high Pearson correlation and R² are dominated by the deliberately distant
 `c=0` negative control. Rank statistics expose the near-baseline failure. The
 full numeric calibration is frozen in `p0_public_calibration_v1.json`.
 
+### Interval-feasibility audit
+
+The reproducible interval audit in
+`p0_interval_feasibility_v1.{md,json}` treats every displayed public score as
+`[s-0.0005, s+0.0005)`. No affine line, even with an unconstrained slope,
+intersects all three bins. A uniform expansion of 0.000343242 on each side of
+every bin is required before feasibility.
+
+Leave-one-pair-out interval envelopes miss the held bin by 0.017000 for `c=0`,
+0.000686 for `c=2`, and 0.000715 for `c=0.25`. Pairwise APNCC-direct
+projections span 0.859749 to 0.885996 depending on which incompatible
+two-point subset is used. The center OLS value 0.883864 is therefore
+descriptive only, not a decision-grade forecast.
+
+The current data still cannot identify a mechanism intercept, separate
+mechanism slopes, or a covariate regression. The exact next measurement remains
+one APNCC-direct public result behind explicit approval.
+
 ## Do local deltas track public deltas?
 
 **Only at coarse scale.** Relative to the baseline:
