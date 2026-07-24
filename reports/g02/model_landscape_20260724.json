@@ -1,0 +1,115 @@
+{
+  "schema": "celltrack-alpha.model-landscape.v1",
+  "created_on": "2026-07-24",
+  "status": "TRACKASTRA_GROUPED_OOF_DESIGN",
+  "data_boundary": {
+    "training_set": "frozen_fold0_fit117_only",
+    "holdout_video_count": 57,
+    "holdout_access_during_research_or_training": false
+  },
+  "baselines": {
+    "plain_score": 0.87315,
+    "banked_score": 0.8815220699597315,
+    "hard_improvement_gate_percent": 3.5
+  },
+  "measured_bottleneck": [
+    "association under extreme background competition",
+    "calibrated no-link and background rejection",
+    "multi-frame and extended-radius reachability",
+    "cross-video and cross-family ranking stability"
+  ],
+  "local_ranked": [
+    {
+      "rank": 1,
+      "candidate_id": "pretrained-trackastra-head-lora-local-v1",
+      "projected_peak_memory_gib": [2, 6],
+      "pilot_minutes": [90, 120],
+      "maximum_continuation_hours": 7,
+      "frozen_parameter_count": 27456880,
+      "fit_only_signal_roc_auc": 0.9184914841849149,
+      "pair_ncc_control_roc_auc": 0.8412267300401742,
+      "status": "QUALIFIED_FOR_GROUPED_OOF_DESIGN"
+    },
+    {
+      "rank": 2,
+      "candidate_id": "compact-point-context-transformer-v1",
+      "projected_peak_memory_gib": [2, 6],
+      "pilot_minutes": [60, 90],
+      "maximum_continuation_hours": 7,
+      "parameter_estimate_millions": [0.5, 1.2],
+      "status": "PARK_OOF_PRECISION"
+    },
+    {
+      "rank": 3,
+      "candidate_id": "calibrated-3d-crop-linker-v1",
+      "projected_peak_memory_gib": [4, 10],
+      "pilot_minutes": [60, 90],
+      "maximum_continuation_hours": 7,
+      "parameter_estimate_millions": [0.5, 2.0],
+      "status": "PARK_OOF_PRECISION"
+    }
+  ],
+  "kaggle_t4_ranked": [
+    {
+      "rank": 1,
+      "candidate": "pretrained Trackastra supervised head or LoRA",
+      "projected_total_gpu_hours": [8, 24],
+      "projected_peak_vram_gib": [10, 16],
+      "status": "CONDITIONAL_PILOT"
+    },
+    {
+      "rank": 2,
+      "candidate": "compact Trackastra from scratch",
+      "projected_total_gpu_hours": [8, 20],
+      "projected_peak_vram_gib": [8, 14],
+      "status": "CONDITIONAL_PILOT"
+    },
+    {
+      "rank": 3,
+      "candidate": "Linajea-lite frozen features plus displacement/no-link head",
+      "projected_total_gpu_hours": [12, 28],
+      "projected_peak_vram_gib": [12, 16],
+      "status": "HOLD"
+    },
+    {
+      "rank": 4,
+      "candidate": "ASCENT-style projected-patch ResNet18 embedding",
+      "projected_total_gpu_hours": [6, 20],
+      "projected_peak_vram_gib": [6, 12],
+      "status": "HOLD_DOMAIN_MISMATCH"
+    }
+  ],
+  "timing_policy": {
+    "private_fit_only_probe_minutes": [30, 60],
+    "minimum_extrapolation_safety_factor": 1.25,
+    "archive_if_credible_total_exceeds_hours": 24,
+    "hard_cumulative_t4_limit_hours": 30
+  },
+  "excluded": [
+    {
+      "candidate": "organiser TemporalUNet3D plus SimpleNodeTransformer",
+      "status": "ARCHIVE",
+      "reason": "fit-only precision failure and about 478 projected T4 hours to epoch 300"
+    },
+    {
+      "candidate": "full Linajea",
+      "status": "ARCHIVE",
+      "reason": "400000-iteration 4-D U-Net exceeds the T4 budget"
+    },
+    {
+      "candidate": "full HOCT",
+      "status": "WATCHLIST",
+      "reason": "preprint only; about 60 GiB peak VRAM on H200"
+    },
+    {
+      "candidate": "CELLECT",
+      "status": "PAUSED",
+      "reason": "clean-room, licensing and engineering resume conditions are unmet"
+    }
+  ],
+  "runpod_eligible": false,
+  "runpod_reason": "accepted score below 0.89 and no fit-only evidence for a greater-than-5-percent quality-GPU-dependent gain",
+  "recommended_first_candidate": "pretrained-trackastra-head-lora-local-v1",
+  "training_launched": false,
+  "holdout_accessed": false
+}

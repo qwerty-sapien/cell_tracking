@@ -1,0 +1,50 @@
+{
+  "schema": "celltrack-alpha.model-candidate.v1",
+  "candidate_id": "pretrained-trackastra-head-lora-local-v1",
+  "model_family": "Frozen pretrained Trackastra with supervised head or minimal LoRA adapters",
+  "literature_evidence": [
+    {
+      "kind": "primary_peer_reviewed",
+      "citation": "Gallusser B, Weigert M. Trackastra: Transformer-based cell tracking for live-cell microscopy. ECCV 2024.",
+      "url": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/09819.pdf",
+      "reported_result": "Trackastra learns pairwise associations from temporal detection windows and its general model remained highly competitive across evaluated cell-tracking datasets.",
+      "task_relevance": "Frozen pretrained temporal representations may supply cross-video ranking stability while limiting trainable parameters and local compute."
+    },
+    {
+      "kind": "primary_peer_reviewed",
+      "citation": "Lalit M et al. An Investigation of Unsupervised Cell Tracking and Interactive Fine-Tuning. ICCV 2025 BIC Workshop.",
+      "url": "https://openaccess.thecvf.com/content/ICCV2025W/BIC/html/Lalit_An_Investigation_of_Unsupervised_Cell_Tracking_and_Interactive_Fine-Tuning_ICCVW_2025_paper.html",
+      "reported_result": "The work applies association-matrix objectives and low-rank adaptation to Trackastra in an interactive fine-tuning setting.",
+      "task_relevance": "It supports testing a frozen-head or parameter-efficient adaptation before spending the compute required for full transformer retraining."
+    }
+  ],
+  "hypothesis": {
+    "observed_failure_mode": "Small fit-only rankers fail to normalize association confidence consistently across videos and cell families.",
+    "proposed_mechanism": "A pretrained general cell-tracking representation provides transferable association context; a supervised fit-only head or minimal adapters specialize it without full retraining.",
+    "falsification_test": "The pinned zero-wrfeat checkpoint cleared the fit-only ranking-signal gate. Reject the next identity unless a grouped-OOF frozen-head candidate improves exact held-fit graph score by at least 0.005 over APNCC without raw-score or recall regression.",
+    "expected_score_improvement_percent": 3.5
+  },
+  "local_fast_fail": {
+    "m5_compatible": true,
+    "projected_peak_memory_gib": 12,
+    "background_reserve_gib": 6,
+    "max_wall_minutes": 120,
+    "training_scope": "fit_only",
+    "holdout_access": false,
+    "swap_growth_allowed": false,
+    "early_stop_conditions": [
+      "Stop if the pinned checkpoint, source commit, BSD-3-Clause license, or asset hashes drift.",
+      "Stop on MPS instability or any memory, free-memory, or swap guard violation.",
+      "Stop if frozen-body throughput cannot fit a useful continuation inside seven hours.",
+      "Stop if grouped-OOF proposal precision is below 0.95 or any fold is below 0.93.",
+      "Stop before validation12 or CV57 unless exact held-fit graph scoring improves adjusted edge Jaccard by at least 0.005 with nonnegative raw delta and node-recall delta."
+    ],
+    "success_criteria": [
+      "Grouped out-of-fold proposal precision is at least 0.95 and every fold is at least 0.93.",
+      "Exact held-fit graph adjusted edge Jaccard is at least 0.005 above APNCC, raw edge Jaccard does not regress, and node recall does not regress.",
+      "The frozen-head variant passes before validation12, CV57, or any LoRA adapters are enabled.",
+      "Artifact provenance pins the external checkpoint, license, fit split and trainable parameter set."
+    ]
+  },
+  "decision": "QUALIFIED_FOR_GROUPED_OOF_DESIGN"
+}

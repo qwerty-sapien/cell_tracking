@@ -1,0 +1,107 @@
+{
+  "schema": "celltrack-alpha.trackastra-zero-wrfeat-signal-contract.v1",
+  "status": "locked",
+  "purpose": "fit-only frozen-checkpoint compatibility and ranking-signal probe",
+  "asset_audit": {
+    "path": "reports/g02/trackastra_pretrained_asset_audit_v1.json",
+    "sha256": "2f809076fa570388d114f2f2bfe0a9be7dd5186cda41d67b3992127f10fa0132",
+    "required_verdict": "STATIC-PROVENANCE-PASS_FEATURE-INTERFACE-UNRESOLVED",
+    "checkpoint_archive_sha256": "2ede08481b2e1f4ea23a41dd3001e2151ecbce7d978be9829ad230f0a60aea0e",
+    "checkpoint_member_sha256": "24c290ce74289ee6dac952a3355c9fb7a0a477fda3012656a2c6d80af892981f",
+    "source_commit": "fb265888c8fce2ac16a362ebf182ccd5ea48e936"
+  },
+  "source_files": {
+    "trackastra/model/model.py": "53e47b931338ed3450f4f23d6391ad1985f7083fd2754eb4edd6d3b5cd8b964c",
+    "trackastra/model/model_parts.py": "b218eee5e5acb794b56ce1b36b991a390097ea6fd57960f9992240b01f891595",
+    "trackastra/model/rope.py": "761a850aee82eaac25e8ab5d772748bcee130a5cd10b3d5a31aa339709ce5290",
+    "trackastra/utils/__init__.py": "9cc30299112973185878e719aee11459913ac2da7d6b1765bba0a7f2e030189f",
+    "trackastra/utils/utils.py": "6de65b3996dd1fa006e90de826a3d16e7b1796fa8ddbbff8032b178342a07bff"
+  },
+  "data": {
+    "conflict_prepare": {
+      "path": "reports/g02/selected_graph_conflict_prepare_v1/prepare.json",
+      "sha256": "3965145141c8b58a6b844ed9f9bcee651589fde03785aec6767175dfc1612f1e"
+    },
+    "temporal_prepare": {
+      "path": "reports/g02/selected_graph_temporal_background_prepare_v1/prepare.json",
+      "sha256": "c41bc216d4dfd642126d476a66a3fd9659f54a91dc49463f6b468a301a971d89"
+    },
+    "selection": "nearest ranks [1,17,34,51,67] of 67 fit-train 6bba videos with labeled_rows > 0, ordered by raw_selected_edges then identity",
+    "videos": [
+      {
+        "identity": "train:6bba_ed9377fd",
+        "raw_selected_edges": 4353,
+        "labeled_rows": 33,
+        "conflict_sha256": "e0b6b6fade162cd9cbe5603c8009d6401360f2069bf1c8bc6d446731bd8fcd6c",
+        "temporal_sha256": "b8a5e85859ad57acab25693b624164af50ac7d37244dc694c60d2f1594b23196"
+      },
+      {
+        "identity": "train:6bba_6feeb0b1",
+        "raw_selected_edges": 6992,
+        "labeled_rows": 44,
+        "conflict_sha256": "eeba1300069b69eae7a0533e3d478915aca6a86f6a660a91773abc30c804eb42",
+        "temporal_sha256": "392156b52efce36627b287142f1a42df77a7edf6926952a64016517c827bfb1b"
+      },
+      {
+        "identity": "train:6bba_1ebfb80d",
+        "raw_selected_edges": 11648,
+        "labeled_rows": 107,
+        "conflict_sha256": "af0160de1399abb50ba39380c596f00c6c36f8a12d258594c5efe13e2f378fb7",
+        "temporal_sha256": "c4bd21ca27be43f16f369654ac5cf99a4a865e52e4c60d27f68b4c4647ed4504"
+      },
+      {
+        "identity": "train:6bba_74686d6a",
+        "raw_selected_edges": 27928,
+        "labeled_rows": 162,
+        "conflict_sha256": "3bec066920f3f974787c5cb8309ebb125cb9dd59f95e81c8ac99f5026c60f064",
+        "temporal_sha256": "6cd8350d9094261023ed10e981d82ef21cd6dcaadbc841358cfb0c21901673dc"
+      },
+      {
+        "identity": "train:6bba_57b7cc1e",
+        "raw_selected_edges": 84008,
+        "labeled_rows": 382,
+        "conflict_sha256": "186a1975a5e61044bd528682fb05a42d7d74b9d2467f06eceb93aeb7c5475934",
+        "temporal_sha256": "126834fe3babe95ee930517cd3abff57bc91df5a18c83c2eb4f0a490978ceff6"
+      }
+    ]
+  },
+  "probe": {
+    "checkpoint_frozen": true,
+    "training": false,
+    "feature_input": "twelve zero-filled wrfeat channels",
+    "coordinate_input": "raw cache voxel coordinates z,y,x with integer time prepended",
+    "window_frames": 4,
+    "window_placement": "source frame minus one through source frame plus two, shifted only at video boundaries",
+    "max_tokens": 1024,
+    "over_cap_policy": "per-proposal deterministic crop retaining challenger and all incumbent endpoints, filled by squared distance to their coordinate centroid then time and node_id",
+    "proposal_score": "minimum over conflict rows of normalized Trackastra association(challenger) minus association(incumbent)",
+    "control_score": "minimum over conflict rows of prepared pair-NCC margin at labeled feature index 44",
+    "label_use": "metrics only; labels do not select videos, windows, nodes, thresholds, or score direction"
+  },
+  "gate": {
+    "minimum_unique_proposals": 200,
+    "minimum_positive_proposals": 25,
+    "minimum_negative_proposals": 25,
+    "minimum_trackastra_roc_auc": 0.6,
+    "minimum_auc_gain_over_pair_ncc": 0.02,
+    "alternative_ambiguous_band": {
+      "definition": "lowest half of proposals by absolute pair-NCC margin, ties included",
+      "minimum_proposals": 50,
+      "minimum_positive_proposals": 10,
+      "minimum_negative_proposals": 10,
+      "minimum_trackastra_roc_auc": 0.6
+    },
+    "pass_rule": "support gates and minimum Trackastra ROC AUC and either full-set AUC gain or ambiguous-band gate",
+    "pass_effect": "authorizes design of a new grouped-OOF frozen-head candidate only; does not authorize fitting, validation12, CV57, submission, or external compute",
+    "fail_effect": "PARK the released zero-wrfeat checkpoint route; do not attempt LoRA or GPU"
+  },
+  "scope": {
+    "fit_train105_only": true,
+    "validation12_access": false,
+    "cv57_access": false,
+    "promotion_authorized": false,
+    "kaggle_action": false,
+    "gpu_action": false,
+    "runpod_action": false
+  }
+}
