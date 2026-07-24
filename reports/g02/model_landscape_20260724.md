@@ -2,8 +2,9 @@
 
 Date: 2026-07-24  
 Status: compact point-context and crop-linker branches PARKed after grouped
-evidence; frozen pretrained Trackastra qualified for grouped-OOF head design;
-no external training authorized or launched  
+evidence; frozen pretrained Trackastra grouped-OOF head is preregistered and
+its resumable label-free cache is 1/69 complete, with execution paused on host
+paging; no external training authorized or launched
 Data boundary: all proposed training and falsification use only the frozen fold-0 fit
 set of 117 videos. The 57-video holdout is inaccessible until a candidate has completed
 its preregistered fit-only path.
@@ -14,8 +15,11 @@ The next implementation candidate is now **frozen pretrained Trackastra plus a
 small fit-only association head**. The exact released CTC body runs locally,
 and its zero-wrfeat challenger/incumbent margin passed a preregistered
 five-video fit-only signal gate at ROC AUC 0.9185 versus 0.8412 for pair-NCC.
-This authorizes grouped-OOF design only. Full deployed-proposal coverage and
-exact held-fit graph improvement must pass before validation12 or CV57.
+The complete pool is feasible and the nested grouped-OOF/held-graph design is
+now locked. One of 69 label-free feature checkpoints is authenticated; the
+guard stopped two builds on system swap growth at about 1 GiB process RSS.
+Full deployed-proposal coverage, the proposal prerequisite and exact held-fit
+graph improvement must pass before validation12 or CV57.
 
 The compact point-context and calibrated 3-D crop-linker branches are PARKed.
 Both showed useful fit-only recall, but neither transferred the required

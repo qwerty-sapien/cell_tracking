@@ -1,7 +1,7 @@
 {
   "schema": "celltrack-alpha.model-landscape.v1",
   "created_on": "2026-07-24",
-  "status": "TRACKASTRA_GROUPED_OOF_IMPLEMENTATION",
+  "status": "TRACKASTRA_GROUPED_OOF_PREREGISTERED_CACHE_PARTIAL_HOST_PAGING",
   "data_boundary": {
     "training_set": "frozen_fold0_fit117_only",
     "holdout_video_count": 57,
@@ -30,7 +30,11 @@
       "pair_ncc_control_roc_auc": 0.8412267300401742,
       "full_pool_geometry_proposals": 110471,
       "full_pool_projected_inference_hours": 1.2133333333333334,
-      "status": "QUALIFIED_FOR_GROUPED_OOF_IMPLEMENTATION"
+      "grouped_oof_contract_sha256": "893504032ef208182ed9c27b35f4fbfebdbe08d6577278698a3efde7ec734da6",
+      "feature_cache_videos_complete": 1,
+      "feature_cache_videos_expected": 69,
+      "feature_cache_resume_authenticated": true,
+      "status": "GROUPED_OOF_PREREGISTERED_CACHE_PARTIAL_HOST_PAGING"
     },
     {
       "rank": 2,

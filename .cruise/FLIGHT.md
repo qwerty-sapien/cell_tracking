@@ -355,6 +355,18 @@ Bank and operationalize the first confirmed local result above `0.88`:
     implementation, not validation12/CV57; the densest transition's 154
     optional context tokens remain a transfer risk. Report SHA-256 is
     `2296f6b9…2cc7`.
+35. The frozen Trackastra successor now has a locked nested five-fold OOF and
+    exact held-fit graph contract (`89350403…da6`). It uses a fixed 49-feature
+    ridge head with no hyperparameter search, disjoint calibration thresholds,
+    overall/every-fold precision and support gates, and the banked APNCC graph
+    as its exact control. The label-free cache builder and resumable runner
+    pass 19 focused tests plus five model-gate subtests. A governed build
+    authenticated and atomically published video 1 (3,605 proposals / 99
+    calls), then stopped on 11.50 MiB system swap growth at only 1.06 GiB RSS;
+    an earlier attempt stopped on 33.88 MiB, while a sleep-only control
+    independently grew 54.87 MiB. Preserve the valid checkpoint, do not weaken
+    the zero-swap rule, and resume only after a fresh clean idle preflight.
+    Validation12, CV57, Kaggle, GPU and RunPod remained closed.
 
 ## Stop and realign
 
