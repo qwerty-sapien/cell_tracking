@@ -23,9 +23,11 @@ held-graph successor:
 5. bank the pinned BSD-3-Clause Trackastra checkpoint/source qualification and
    its zero-wrfeat fit-only signal gate (`0.918491` ROC AUC versus `0.841227`
    for pair NCC over 497 unique proposals);
-6. build no trainable successor until complete deployed-proposal scoring is
-   shown feasible inside the local resource envelope;
-7. preregister a five-fold frozen-head candidate whose promotion requires
+6. bank complete deployed-proposal feasibility: all 110,471 geometry-admissible
+   proposals across 69 fit-train videos fit into 5,824 transition calls with
+   zero missing endpoints, maximum 870 required nodes, and a safety-factored
+   1.213-hour frozen-inference projection;
+7. preregister and implement a five-fold frozen-head candidate whose promotion requires
    proposal precision plus exact held-fit graph gain `>= +0.005` over APNCC;
 8. keep validation12, CV57, Kaggle, GPU, and RunPod closed until the applicable
    gate explicitly opens them.
@@ -343,6 +345,16 @@ Bank and operationalize the first confirmed local result above `0.88`:
     mask-derived features, so zero-filled compatibility remains a domain
     mismatch; require complete-pool feasibility and exact held-fit graph gain
     before validation12/CV57. No Kaggle, GPU or RunPod action occurred.
+34. The label-free Trackastra complete-pool audit passed all 69 fit-train
+    `6bba` videos. The frozen APNCC geometry gate retained 110,471 of
+    2,309,298 conflicting proposals over 5,824 transitions. Every challenger
+    and incumbent endpoint fits in one deterministic 1,024-token window:
+    maximum required endpoints `870`, maximum raw four-frame detections
+    `4,157`, and zero missing identities. Safety-factored frozen inference
+    projects to `1.213` hours. Authorize grouped-OOF frozen-head
+    implementation, not validation12/CV57; the densest transition's 154
+    optional context tokens remain a transfer risk. Report SHA-256 is
+    `2296f6b9…2cc7`.
 
 ## Stop and realign
 
