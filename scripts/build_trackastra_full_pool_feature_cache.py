@@ -39,7 +39,6 @@ from celltrack_alpha import (  # noqa: E402
 )
 from evaluate_trackastra_zero_wrfeat_signal import (  # noqa: E402
     _association,
-    _load_model,
     select_window_nodes,
     sha256,
 )
@@ -51,21 +50,22 @@ from p4_edge_attention import (  # noqa: E402
     DEFAULT_ZIP,
 )
 from prepare_extended_radius_shell import _baseline  # noqa: E402
+from trackastra_checkpoint_loader import load_mmap_meta  # noqa: E402
 
 
-SCHEMA = "celltrack-alpha.trackastra-full-pool-feature-cache.v1"
-VIDEO_SCHEMA = "celltrack-alpha.trackastra-full-pool-video-features.v1"
+SCHEMA = "celltrack-alpha.trackastra-full-pool-feature-cache.v2"
+VIDEO_SCHEMA = "celltrack-alpha.trackastra-full-pool-video-features.v2"
 CHECKPOINT_SCHEMA = (
-    "celltrack-alpha.trackastra-full-pool-feature-checkpoint.v1"
+    "celltrack-alpha.trackastra-full-pool-feature-checkpoint.v2"
 )
 CONTRACT_SCHEMA = (
-    "celltrack-alpha.trackastra-full-pool-feature-cache-contract.v1"
+    "celltrack-alpha.trackastra-full-pool-feature-cache-contract.v2"
 )
 DEFAULT_CONTRACT = (
-    ROOT / "reports/g02/trackastra_full_pool_feature_cache_contract_v1.json"
+    ROOT / "reports/g02/trackastra_full_pool_feature_cache_contract_v2.json"
 )
 DEFAULT_CONTRACT_SHA256 = (
-    "58016f2020e2a03cfb16d2aede46082bd951abd786f0d19d1ac2533fd5176d66"
+    "e060b284da623a373a83c8dd690985503af945399518f4d77eb517fddb8128ac"
 )
 
 
@@ -95,13 +95,27 @@ def load_contract(path: Path, expected_sha256: str) -> dict[str, Any]:
     value = _load_json(path, "contract")
     scope = value.get("scope")
     features = value.get("features")
+    checkpoint_loader = value.get("checkpoint_loader")
+    parity_reference = (
+        checkpoint_loader.get("parity_reference")
+        if isinstance(checkpoint_loader, Mapping)
+        else None
+    )
+    stages = value.get("stages")
     execution = value.get("execution")
     if (
         value.get("schema") != CONTRACT_SCHEMA
         or value.get("status") != "locked"
         or not all(
             isinstance(section, Mapping)
-            for section in (scope, features, execution)
+            for section in (
+                scope,
+                features,
+                checkpoint_loader,
+                parity_reference,
+                stages,
+                execution,
+            )
         )
     ):
         raise TrackastraFeatureCacheError("contract is malformed")
@@ -124,8 +138,23 @@ def load_contract(path: Path, expected_sha256: str) -> dict[str, Any]:
         or int(features.get("trackastra_feature_count", 0)) != 1
         or int(features.get("output_feature_count", 0)) != 49
         or int(features.get("max_tokens", 0)) != 1024
+        or checkpoint_loader.get("kind")
+        != (
+            "stream-authenticated mmap weights plus meta-device "
+            "construction and assign-in-place state restoration"
+        )
+        or checkpoint_loader.get("tensor_values_changed") is not False
+        or checkpoint_loader.get("checkpoint_member_must_be_preextracted")
+        is not True
+        or parity_reference.get("identity") != "train:6bba_edf14583"
+        or not isinstance(parity_reference.get("path"), str)
+        or not isinstance(parity_reference.get("sha256"), str)
         or execution.get("atomic_video_publication") is not True
         or execution.get("resume_requires_exact_checkpoint") is not True
+        or execution.get("two_stage_required") is not True
+        or execution.get("model_stack_coexistence") is not False
+        or not isinstance(stages.get("apncc_base"), Mapping)
+        or not isinstance(stages.get("trackastra_enrichment"), Mapping)
     ):
         raise TrackastraFeatureCacheError("contract is not fail-closed")
     return value
@@ -231,6 +260,168 @@ def flatten_windows(
             "flattened feature cache is malformed"
         )
     return result
+
+
+def flatten_base_windows(
+    windows: Sequence[point_context_swap.RuntimeProposalWindow],
+) -> dict[str, Any]:
+    """Flatten the lossless 48-D APNCC stage without Trackastra."""
+
+    zero_margins = tuple(
+        tuple(
+            np.zeros(len(conflicts), dtype=np.float32)
+            for conflicts in window.conflicts
+        )
+        for window in windows
+    )
+    result = flatten_windows(windows, zero_margins)
+    result["row_features"] = np.asarray(
+        result["row_features"][:, :48], dtype=np.float32
+    )
+    if result["row_features"].shape != (len(result["conflicts"]), 48):
+        raise TrackastraFeatureCacheError(
+            "base feature cache is not exactly 48-D"
+        )
+    return result
+
+
+def trackastra_margins_from_flattened(
+    *,
+    model: torch.nn.Module,
+    detections: Sequence[bh_model.FrameDet],
+    base: Mapping[str, Any],
+    max_tokens: int,
+) -> tuple[np.ndarray, dict[str, int]]:
+    """Enrich a flattened APNCC cache without restoring V45 or raw images."""
+
+    challengers = np.asarray(base.get("challengers"), dtype=np.int64)
+    conflicts = np.asarray(base.get("conflicts"), dtype=np.int64)
+    proposal_offsets = np.asarray(
+        base.get("proposal_offsets"), dtype=np.int64
+    )
+    transition_offsets = np.asarray(
+        base.get("transition_offsets"), dtype=np.int64
+    )
+    transition_target_t = np.asarray(
+        base.get("transition_target_t"), dtype=np.int64
+    )
+    if (
+        challengers.ndim != 2
+        or challengers.shape[1:] != (2,)
+        or conflicts.ndim != 2
+        or conflicts.shape[1:] != (2,)
+        or proposal_offsets.shape != (len(challengers) + 1,)
+        or transition_offsets.shape != (len(transition_target_t) + 1,)
+        or int(proposal_offsets[-1]) != len(conflicts)
+        or int(transition_offsets[-1]) != len(challengers)
+    ):
+        raise TrackastraFeatureCacheError(
+            "flattened APNCC identities are malformed"
+        )
+    by_node: dict[int, tuple[int, np.ndarray]] = {}
+    frame_nodes: dict[int, tuple[int, ...]] = {}
+    for frame in detections:
+        ids = tuple(int(value) for value in frame.node_ids)
+        frame_nodes[int(frame.frame_index)] = ids
+        for node, coordinate in zip(
+            ids, np.asarray(frame.coords_zyx), strict=True
+        ):
+            if node in by_node:
+                raise TrackastraFeatureCacheError(
+                    "cache repeats a detection identity"
+                )
+            by_node[node] = (
+                int(frame.frame_index),
+                np.asarray(coordinate, dtype=np.float32),
+            )
+
+    margins = np.empty(len(conflicts), dtype=np.float32)
+    cropped = peak_tokens = 0
+    for transition_index, target_t in enumerate(transition_target_t):
+        proposal_start = int(transition_offsets[transition_index])
+        proposal_stop = int(transition_offsets[transition_index + 1])
+        required: set[int] = set()
+        for proposal_index in range(proposal_start, proposal_stop):
+            required.update(map(int, challengers[proposal_index]))
+            row_start = int(proposal_offsets[proposal_index])
+            row_stop = int(proposal_offsets[proposal_index + 1])
+            required.update(map(int, conflicts[row_start:row_stop].ravel()))
+        nodes, was_cropped = select_window_nodes(
+            by_node=by_node,
+            frame_nodes=frame_nodes,
+            source_frame=int(target_t) - 1,
+            required=required,
+            window_frames=4,
+            max_tokens=max_tokens,
+        )
+        if not required <= set(nodes):
+            raise TrackastraFeatureCacheError(
+                "Trackastra packing lost a proposal endpoint"
+            )
+        association, index_by_node = _association(model, nodes, by_node)
+        peak_tokens = max(peak_tokens, len(nodes))
+        cropped += int(was_cropped)
+        for proposal_index in range(proposal_start, proposal_stop):
+            challenger = challengers[proposal_index]
+            challenger_score = association[
+                index_by_node[int(challenger[0])],
+                index_by_node[int(challenger[1])],
+            ]
+            row_start = int(proposal_offsets[proposal_index])
+            row_stop = int(proposal_offsets[proposal_index + 1])
+            for row_index in range(row_start, row_stop):
+                conflict = conflicts[row_index]
+                margins[row_index] = (
+                    challenger_score
+                    - association[
+                        index_by_node[int(conflict[0])],
+                        index_by_node[int(conflict[1])],
+                    ]
+                )
+    if not np.isfinite(margins).all():
+        raise TrackastraFeatureCacheError(
+            "Trackastra enrichment produced non-finite margins"
+        )
+    return margins, {
+        "inference_calls": len(transition_target_t),
+        "cropped_calls": cropped,
+        "peak_tokens": peak_tokens,
+    }
+
+
+def enrich_base_payload(
+    base: Mapping[str, Any], margins: np.ndarray
+) -> dict[str, Any]:
+    """Append one aligned Trackastra margin to every 48-D conflict row."""
+
+    features = np.asarray(base.get("row_features"), dtype=np.float32)
+    margins = np.asarray(margins, dtype=np.float32)
+    if (
+        features.ndim != 2
+        or features.shape[1] != 48
+        or margins.shape != (features.shape[0],)
+        or not np.isfinite(features).all()
+        or not np.isfinite(margins).all()
+    ):
+        raise TrackastraFeatureCacheError(
+            "base features and Trackastra margins do not align"
+        )
+    return {
+        key: np.asarray(base[key]).copy()
+        for key in (
+            "challengers",
+            "conflicts",
+            "proposal_offsets",
+            "transition_offsets",
+            "transition_target_t",
+            "geometry_confidences",
+            "geometry_probabilities",
+        )
+    } | {
+        "row_features": np.concatenate(
+            (features, margins[:, None]), axis=1
+        ).astype(np.float32, copy=False)
+    }
 
 
 def _trackastra_margins(
@@ -340,6 +531,55 @@ def _atomic_json(path: Path, payload: Mapping[str, Any]) -> None:
     os.replace(temporary_name, path)
 
 
+def assert_v1_parity(
+    payload: Mapping[str, Any], contract: Mapping[str, Any]
+) -> None:
+    """Require exact v2 equivalence to the authenticated conventional output."""
+
+    reference = contract["checkpoint_loader"].get("parity_reference")
+    if not isinstance(reference, Mapping):
+        raise TrackastraFeatureCacheError(
+            "checkpoint-loader parity reference is missing"
+        )
+    path = ROOT / str(reference.get("path"))
+    _require(path, str(reference.get("sha256")), "v1 parity reference")
+    try:
+        expected = torch.load(path, map_location="cpu", weights_only=False)
+    except Exception as exc:
+        raise TrackastraFeatureCacheError(
+            "cannot restore v1 parity reference"
+        ) from exc
+    if (
+        not isinstance(expected, Mapping)
+        or payload.get("identity") != reference.get("identity")
+        or expected.get("identity") != reference.get("identity")
+        or payload.get("feature_names") != expected.get("feature_names")
+        or payload.get("selected_raw_edges")
+        != expected.get("selected_raw_edges")
+        or payload.get("pool_counts") != expected.get("pool_counts")
+        or payload.get("inference") != expected.get("inference")
+    ):
+        raise TrackastraFeatureCacheError(
+            "v2 scalar/identity parity with v1 failed"
+        )
+    for key in (
+        "challengers",
+        "conflicts",
+        "row_features",
+        "proposal_offsets",
+        "transition_offsets",
+        "transition_target_t",
+        "geometry_confidences",
+        "geometry_probabilities",
+    ):
+        if not np.array_equal(
+            np.asarray(payload.get(key)), np.asarray(expected.get(key))
+        ):
+            raise TrackastraFeatureCacheError(
+                f"v2 numerical parity with v1 failed for {key}"
+            )
+
+
 def _checkpoint(
     *,
     path: Path,
@@ -373,6 +613,12 @@ def _checkpoint(
 def build(args: argparse.Namespace) -> dict[str, Any]:
     started = time.perf_counter()
     contract = load_contract(args.contract, args.contract_sha256)
+    if contract["execution"].get("two_stage_required") is True:
+        raise TrackastraFeatureCacheError(
+            "co-resident V45+Trackastra builder is forbidden by v2; run "
+            "build_trackastra_apncc_base_cache.py, then "
+            "enrich_trackastra_apncc_cache.py in a new process"
+        )
     implementation_sha256 = sha256(Path(__file__))
     inputs = contract["inputs"]
     for label in (
@@ -423,6 +669,13 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     )
     if len(eligible) != 69:
         raise TrackastraFeatureCacheError("eligible video count drifted")
+    parity_identity = contract["checkpoint_loader"].get(
+        "parity_reference", {}
+    ).get("identity")
+    if not parity_identity or eligible[0] != parity_identity:
+        raise TrackastraFeatureCacheError(
+            "v1 parity video is not the first eligible identity"
+        )
     prepare_rows = {
         str(row["identity"]): row for row in prepare["videos"]
     }
@@ -438,7 +691,12 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         expected_sha256=str(inputs["appearance_contract"]["sha256"]),
         root=ROOT,
     )
-    model = _load_model(args.source_root, args.checkpoint_zip, contract)
+    model = load_mmap_meta(
+        source_root=args.source_root,
+        checkpoint_zip=args.checkpoint_zip,
+        checkpoint_member=args.checkpoint_member,
+        contract=contract,
+    )
     base_model, bundle = bh_model.load_v45_model(
         args.support_root, device="cpu"
     )
@@ -560,6 +818,8 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
                 raise TrackastraFeatureCacheError(
                     "label-like key escaped into feature payload"
                 )
+            if identity == parity_identity:
+                assert_v1_parity(payload, contract)
             _atomic_torch_save(feature_path, payload)
             record = {
                 "schema": CHECKPOINT_SCHEMA,
@@ -598,6 +858,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         "implementation_sha256": implementation_sha256,
         "scope": contract["scope"],
         "feature_contract": contract["features"],
+        "checkpoint_loader": contract["checkpoint_loader"],
         "aggregate": {
             "video_count": len(files),
             "proposal_count": sum(
@@ -635,6 +896,7 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--source-root", type=Path, required=True)
     parser.add_argument("--checkpoint-zip", type=Path, required=True)
+    parser.add_argument("--checkpoint-member", type=Path, required=True)
     parser.add_argument("--cache", type=Path, default=DEFAULT_CACHE)
     parser.add_argument("--zip", type=Path, default=DEFAULT_ZIP)
     parser.add_argument("--edge-artifact", type=Path, default=DEFAULT_EDGE)
@@ -655,6 +917,7 @@ def main() -> int:
         "contract",
         "source_root",
         "checkpoint_zip",
+        "checkpoint_member",
         "cache",
         "zip",
         "edge_artifact",

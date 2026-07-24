@@ -1,0 +1,40 @@
+{
+  "candidate_gate": {
+    "background_reserve_gib": 6.0,
+    "candidate_id": "trackastra-zero-wrfeat-linear-head-6bba-oof-v1",
+    "decision": "PASS",
+    "expected_score_improvement_percent": 3.5,
+    "holdout_access": false,
+    "literature_primary_source_count": 2,
+    "max_wall_minutes": 180.0,
+    "maximum_training_memory_gib": 18.0,
+    "minimum_system_memory_free_percent": 25.0,
+    "model_family": "Frozen pretrained Trackastra association representation plus fit-only linear conflict head",
+    "projected_peak_memory_gib": 4.0,
+    "swap_growth_allowed": false,
+    "training_scope": "fit_only"
+  },
+  "command": [
+    "/usr/bin/env",
+    "PYTHONPATH=/Users/agent/Desktop/cell_tracking/.venv313/lib/python3.13/site-packages:/Users/agent/Desktop/cell_tracking/src",
+    "/usr/local/bin/python3.13",
+    "scripts/build_trackastra_apncc_base_cache.py"
+  ],
+  "elapsed_seconds": 1399.4797937870026,
+  "ended_unix": 1784908735.5137448,
+  "initial_swap_mib": 20978.5,
+  "initial_system_memory_free_percent": 40.0,
+  "memory_cap_gib": 18.0,
+  "minimum_system_memory_free_percent": 32.0,
+  "mps_high_watermark_ratio": 1.0,
+  "mps_low_watermark_ratio": 0.9,
+  "peak_process_tree_rss_gib": 0.8389434814453125,
+  "peak_swap_mib": 21196.5,
+  "physical_memory_gib": 24.0,
+  "required_system_memory_free_percent": 25.0,
+  "return_code": -15,
+  "schema": "celltrack-alpha.local-training-guard.v1",
+  "started_unix": 1784907336.033951,
+  "stop_reason": "swap_growth_detected",
+  "swap_growth_mib": 218.0
+}

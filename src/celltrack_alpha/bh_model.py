@@ -2450,15 +2450,15 @@ def load_sparse_cache(
     )
 
 
-def load_sparse_cache_node_times(
+def load_sparse_cache_detections(
     path: str | os.PathLike[str],
     *,
     expected_identity: CacheIdentity,
-) -> dict[int, int]:
-    """Authenticate a cache and load only its node-to-frame registry.
+) -> tuple[FrameDet, ...]:
+    """Authenticate a cache and load only its canonical detections.
 
     The cache body can contain large pair-context tensors that are irrelevant
-    when callers only need proposal timestamps.  This reader verifies the
+    when callers only need proposal nodes.  This reader verifies the
     complete self-digest and exact model/source/batching identity, but parses
     only the canonical detection records.  Peak memory therefore scales with
     the detection registry rather than the full cache.
@@ -2657,6 +2657,19 @@ def load_sparse_cache_node_times(
             raise CacheValidationError(
                 "canonical detection frames must be consecutive"
             )
+    return tuple(detections)
+
+
+def load_sparse_cache_node_times(
+    path: str | os.PathLike[str],
+    *,
+    expected_identity: CacheIdentity,
+) -> dict[int, int]:
+    """Authenticate a cache and return its low-memory node-to-frame registry."""
+
+    detections = load_sparse_cache_detections(
+        path, expected_identity=expected_identity
+    )
     return {
         int(node_id): detection.frame_index
         for detection in detections
@@ -2701,6 +2714,7 @@ __all__ = [
     "infer_two_frames",
     "infer_video",
     "load_sparse_cache",
+    "load_sparse_cache_detections",
     "load_sparse_cache_node_times",
     "load_v45_model",
     "positional_features",

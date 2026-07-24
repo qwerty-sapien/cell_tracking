@@ -30,6 +30,7 @@ from celltrack_alpha.bh_model import (
     deduplicate_frame_detections,
     infer_video,
     load_sparse_cache,
+    load_sparse_cache_detections,
     load_sparse_cache_node_times,
     load_v45_model,
     predict_sparse_edges,
@@ -629,6 +630,19 @@ class CacheAndGraphValidationTests(unittest.TestCase):
             save_sparse_cache(second, cache)
             self.assertEqual(first.read_bytes(), second.read_bytes())
             loaded = load_sparse_cache(first, expected_identity=cache.identity)
+            detection_only = load_sparse_cache_detections(
+                first, expected_identity=cache.identity
+            )
+            self.assertEqual(len(detection_only), len(loaded.detections))
+            for lean, full in zip(
+                detection_only, loaded.detections, strict=True
+            ):
+                self.assertEqual(lean.frame_index, full.frame_index)
+                np.testing.assert_array_equal(lean.node_ids, full.node_ids)
+                np.testing.assert_array_equal(
+                    lean.coords_zyx, full.coords_zyx
+                )
+                np.testing.assert_array_equal(lean.scores, full.scores)
             self.assertEqual(
                 load_sparse_cache_node_times(
                     first, expected_identity=cache.identity
