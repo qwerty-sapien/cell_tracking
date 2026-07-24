@@ -13,6 +13,18 @@
 - No Kaggle submission or RunPod launch without explicit human approval.
 - Ordinary commits and pushes to this private repository are permitted.
 
+Current execution evidence:
+
+- Phase 0 canonical comparison: **BANKED** in `obs_diff_baseline_v1.json`.
+- Phase 1 six-rung dispersion ladder: **BANKED** in
+  `dispersion_ladder_v1.md`, with all 15 full-CV57 pairwise observation vectors
+  in `dispersion_ladder_observation_matrix_v1.json`.
+- The prepared `lb16`/`c0` and `lb4`/`c2` matched pairs are not vacuous; both
+  are observation-distinct. They remain below the high-range APNCC-direct
+  submission priority and do not establish a general family effect.
+- Next measurement: one APNCC-direct public probe, only after explicit human
+  approval, followed by complete redesign before any second submission.
+
 ## Frozen identities
 
 Do not mix these two local baselines:

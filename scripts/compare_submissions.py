@@ -687,6 +687,9 @@ def score_artifact(
     gt_zip: Path,
     scorer_parity: Path,
 ) -> dict[str, Any]:
+    if not gt_zip.is_file():
+        raise FileNotFoundError(f"ground-truth zip does not exist: {gt_zip}")
+
     from zarr.storage import ZipStore
 
     import scoreall

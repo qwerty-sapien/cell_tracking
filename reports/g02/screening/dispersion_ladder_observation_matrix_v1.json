@@ -1,0 +1,2598 @@
+{
+  "comparisons": [
+    {
+      "a": "c0",
+      "aggregate": {
+        "canonical_equal_datasets": 0,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1079987,
+          "a_only": 76042,
+          "b_edges": 1080081,
+          "b_only": 76136,
+          "jaccard": 0.8683721368747097,
+          "shared": 1003945
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1079987,
+          "a_only": 76042,
+          "b_edges": 1080081,
+          "b_only": 76136,
+          "jaccard": 0.8683721368747097,
+          "shared": 1003945
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1130017,
+          "a_only": 22592,
+          "b_nodes": 1128882,
+          "b_only": 21457,
+          "exact_coordinate_matches_after_id": 16181,
+          "exact_id_coordinate_matches": 852040,
+          "jaccard": 0.9617455539595337,
+          "shared": 1107425,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 239204
+        }
+      },
+      "b": "c2",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 528011,
+            "a_only": 38475,
+            "b_edges": 527984,
+            "b_only": 38448,
+            "jaccard": 0.8642037640853089,
+            "shared": 489536
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 528011,
+            "a_only": 38475,
+            "b_edges": 527984,
+            "b_only": 38448,
+            "jaccard": 0.8642037640853089,
+            "shared": 489536
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 552559,
+            "a_only": 10948,
+            "b_nodes": 551909,
+            "b_only": 10298,
+            "exact_coordinate_matches_after_id": 10748,
+            "exact_id_coordinate_matches": 409730,
+            "jaccard": 0.9622532899120025,
+            "shared": 541611,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 121133
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 551976,
+            "a_only": 37567,
+            "b_edges": 552097,
+            "b_only": 37688,
+            "jaccard": 0.8723764720247463,
+            "shared": 514409
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 551976,
+            "a_only": 37567,
+            "b_edges": 552097,
+            "b_only": 37688,
+            "jaccard": 0.8723764720247463,
+            "shared": 514409
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 577458,
+            "a_only": 11644,
+            "b_nodes": 576973,
+            "b_only": 11159,
+            "exact_coordinate_matches_after_id": 5433,
+            "exact_id_coordinate_matches": 442310,
+            "jaccard": 0.9612600383611075,
+            "shared": 565814,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 118071
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.023755431905578495,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.07045055988978124
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.019500207844618107
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.07045055988978124
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.07045055988978124,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.019500207844618107,
+          "raw_edge_disagreement_fraction": 0.07045055988978124
+        },
+        "zero_distance": false
+      }
+    },
+    {
+      "a": "c0",
+      "aggregate": {
+        "canonical_equal_datasets": 0,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1079987,
+          "a_only": 72983,
+          "b_edges": 1080133,
+          "b_only": 73129,
+          "jaccard": 0.8732894175434215,
+          "shared": 1007004
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1079987,
+          "a_only": 72983,
+          "b_edges": 1080133,
+          "b_only": 73129,
+          "jaccard": 0.8732894175434215,
+          "shared": 1007004
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1130017,
+          "a_only": 21703,
+          "b_nodes": 1128918,
+          "b_only": 20604,
+          "exact_coordinate_matches_after_id": 16519,
+          "exact_id_coordinate_matches": 861637,
+          "jaccard": 0.9632311595216844,
+          "shared": 1108314,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 230158
+        }
+      },
+      "b": "c0p25",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 528011,
+            "a_only": 37405,
+            "b_edges": 527988,
+            "b_only": 37382,
+            "jaccard": 0.8677256350892212,
+            "shared": 490606
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 528011,
+            "a_only": 37405,
+            "b_edges": 527988,
+            "b_only": 37382,
+            "jaccard": 0.8677256350892212,
+            "shared": 490606
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 552559,
+            "a_only": 10671,
+            "b_nodes": 551931,
+            "b_only": 10043,
+            "exact_coordinate_matches_after_id": 10927,
+            "exact_id_coordinate_matches": 412931,
+            "jaccard": 0.9631817874803147,
+            "shared": 541888,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 118030
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 551976,
+            "a_only": 35578,
+            "b_edges": 552145,
+            "b_only": 35747,
+            "jaccard": 0.8786418091515901,
+            "shared": 516398
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 551976,
+            "a_only": 35578,
+            "b_edges": 552145,
+            "b_only": 35747,
+            "jaccard": 0.8786418091515901,
+            "shared": 516398
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 577458,
+            "a_only": 11032,
+            "b_nodes": 576987,
+            "b_only": 10561,
+            "exact_coordinate_matches_after_id": 5592,
+            "exact_id_coordinate_matches": 448706,
+            "jaccard": 0.9632783974667485,
+            "shared": 566426,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 112128
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.024755077974367046,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.06764068662852064
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.018728737214660892
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.06764068662852064
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.06764068662852064,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.018728737214660892,
+          "raw_edge_disagreement_fraction": 0.06764068662852064
+        },
+        "zero_distance": false
+      }
+    },
+    {
+      "a": "c0",
+      "aggregate": {
+        "canonical_equal_datasets": 0,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1079987,
+          "a_only": 73595,
+          "b_edges": 1080541,
+          "b_only": 74149,
+          "jaccard": 0.8719873567759778,
+          "shared": 1006392
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1079987,
+          "a_only": 73595,
+          "b_edges": 1080541,
+          "b_only": 74149,
+          "jaccard": 0.8719873567759778,
+          "shared": 1006392
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1130017,
+          "a_only": 21667,
+          "b_nodes": 1129219,
+          "b_only": 20869,
+          "exact_coordinate_matches_after_id": 16258,
+          "exact_id_coordinate_matches": 857590,
+          "jaccard": 0.9630406486828409,
+          "shared": 1108350,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 234502
+        }
+      },
+      "b": "p4_no_attention",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 528011,
+            "a_only": 37599,
+            "b_edges": 528093,
+            "b_only": 37681,
+            "jaccard": 0.8669240505434053,
+            "shared": 490412
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 528011,
+            "a_only": 37599,
+            "b_edges": 528093,
+            "b_only": 37681,
+            "jaccard": 0.8669240505434053,
+            "shared": 490412
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 552559,
+            "a_only": 10626,
+            "b_nodes": 551965,
+            "b_only": 10032,
+            "exact_coordinate_matches_after_id": 10636,
+            "exact_id_coordinate_matches": 411569,
+            "jaccard": 0.9632806070484597,
+            "shared": 541933,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 119728
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 551976,
+            "a_only": 35996,
+            "b_edges": 552448,
+            "b_only": 36468,
+            "jaccard": 0.8768548918843594,
+            "shared": 515980
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 551976,
+            "a_only": 35996,
+            "b_edges": 552448,
+            "b_only": 36468,
+            "jaccard": 0.8768548918843594,
+            "shared": 515980
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 577458,
+            "a_only": 11041,
+            "b_nodes": 577254,
+            "b_only": 10837,
+            "exact_coordinate_matches_after_id": 5622,
+            "exact_id_coordinate_matches": 446021,
+            "jaccard": 0.9628111746657714,
+            "shared": 566417,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 114774
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.025895530436483072,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.06838328408611229
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.01882760366778858
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.06838328408611229
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.06838328408611229,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.01882760366778858,
+          "raw_edge_disagreement_fraction": 0.06838328408611229
+        },
+        "zero_distance": false
+      }
+    },
+    {
+      "a": "c0",
+      "aggregate": {
+        "canonical_equal_datasets": 0,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1079987,
+          "a_only": 73046,
+          "b_edges": 1080119,
+          "b_only": 73178,
+          "jaccard": 0.8731976776957331,
+          "shared": 1006941
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1079987,
+          "a_only": 73046,
+          "b_edges": 1080119,
+          "b_only": 73178,
+          "jaccard": 0.8731976776957331,
+          "shared": 1006941
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1130017,
+          "a_only": 21944,
+          "b_nodes": 1128672,
+          "b_only": 20599,
+          "exact_coordinate_matches_after_id": 16242,
+          "exact_id_coordinate_matches": 860934,
+          "jaccard": 0.9630258922177338,
+          "shared": 1108073,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 230897
+        }
+      },
+      "b": "apncc_global",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 528011,
+            "a_only": 37555,
+            "b_edges": 527985,
+            "b_only": 37529,
+            "jaccard": 0.8672348551826573,
+            "shared": 490456
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 528011,
+            "a_only": 37555,
+            "b_edges": 527985,
+            "b_only": 37529,
+            "jaccard": 0.8672348551826573,
+            "shared": 490456
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 552559,
+            "a_only": 10800,
+            "b_nodes": 551831,
+            "b_only": 10072,
+            "exact_coordinate_matches_after_id": 10701,
+            "exact_id_coordinate_matches": 412130,
+            "jaccard": 0.962902861733534,
+            "shared": 541759,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 118928
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 551976,
+            "a_only": 35491,
+            "b_edges": 552134,
+            "b_only": 35649,
+            "jaccard": 0.8789363965113806,
+            "shared": 516485
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 551976,
+            "a_only": 35491,
+            "b_edges": 552134,
+            "b_only": 35649,
+            "jaccard": 0.8789363965113806,
+            "shared": 516485
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 577458,
+            "a_only": 11144,
+            "b_nodes": 576841,
+            "b_only": 10527,
+            "exact_coordinate_matches_after_id": 5541,
+            "exact_id_coordinate_matches": 448804,
+            "jaccard": 0.9631436176092928,
+            "shared": 566314,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 111969
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.029006362725005785,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.06769297432625991
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.01883526240221651
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.06769297432625991
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.06769297432625991,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.01883526240221651,
+          "raw_edge_disagreement_fraction": 0.06769297432625991
+        },
+        "zero_distance": false
+      }
+    },
+    {
+      "a": "c0",
+      "aggregate": {
+        "canonical_equal_datasets": 0,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1079987,
+          "a_only": 78144,
+          "b_edges": 1075334,
+          "b_only": 73491,
+          "jaccard": 0.8685410558328811,
+          "shared": 1001843
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1079987,
+          "a_only": 78144,
+          "b_edges": 1075334,
+          "b_only": 73491,
+          "jaccard": 0.8685410558328811,
+          "shared": 1001843
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1130017,
+          "a_only": 25530,
+          "b_nodes": 1124771,
+          "b_only": 20284,
+          "exact_coordinate_matches_after_id": 16151,
+          "exact_id_coordinate_matches": 851335,
+          "jaccard": 0.9601721636336924,
+          "shared": 1104487,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 237001
+        }
+      },
+      "b": "apncc_direct",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 528011,
+            "a_only": 39980,
+            "b_edges": 525377,
+            "b_only": 37346,
+            "jaccard": 0.8632262446560315,
+            "shared": 488031
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 528011,
+            "a_only": 39980,
+            "b_edges": 525377,
+            "b_only": 37346,
+            "jaccard": 0.8632262446560315,
+            "shared": 488031
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 552559,
+            "a_only": 12715,
+            "b_nodes": 549659,
+            "b_only": 9815,
+            "exact_coordinate_matches_after_id": 10687,
+            "exact_id_coordinate_matches": 408427,
+            "jaccard": 0.9599376927098336,
+            "shared": 539844,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 120730
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 551976,
+            "a_only": 38164,
+            "b_edges": 549957,
+            "b_only": 36145,
+            "jaccard": 0.8736501502241886,
+            "shared": 513812
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 551976,
+            "a_only": 38164,
+            "b_edges": 549957,
+            "b_only": 36145,
+            "jaccard": 0.8736501502241886,
+            "shared": 513812
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 577458,
+            "a_only": 12815,
+            "b_nodes": 575112,
+            "b_only": 10469,
+            "exact_coordinate_matches_after_id": 5464,
+            "exact_id_coordinate_matches": 442908,
+            "jaccard": 0.960396443776183,
+            "shared": 564643,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 116271
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.03312755440519821,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.07035378952833476
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.020318539924817764
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.07035378952833476
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.07035378952833476,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.020318539924817764,
+          "raw_edge_disagreement_fraction": 0.07035378952833476
+        },
+        "zero_distance": false
+      }
+    },
+    {
+      "a": "c2",
+      "aggregate": {
+        "canonical_equal_datasets": 1,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1080081,
+          "a_only": 5490,
+          "b_edges": 1080133,
+          "b_only": 5542,
+          "jaccard": 0.9898380929659744,
+          "shared": 1074591
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1080081,
+          "a_only": 5490,
+          "b_edges": 1080133,
+          "b_only": 5542,
+          "jaccard": 0.9898380929659744,
+          "shared": 1074591
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1128882,
+          "a_only": 2211,
+          "b_nodes": 1128918,
+          "b_only": 2247,
+          "exact_coordinate_matches_after_id": 21080,
+          "exact_id_coordinate_matches": 1089185,
+          "jaccard": 0.9960588049638901,
+          "shared": 1126671,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 16406
+        }
+      },
+      "b": "c0p25",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 527984,
+            "a_only": 2134,
+            "b_edges": 527988,
+            "b_only": 2138,
+            "jaccard": 0.9919414776221323,
+            "shared": 525850
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 527984,
+            "a_only": 2134,
+            "b_edges": 527988,
+            "b_only": 2138,
+            "jaccard": 0.9919414776221323,
+            "shared": 525850
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 551909,
+            "a_only": 826,
+            "b_nodes": 551931,
+            "b_only": 848,
+            "exact_coordinate_matches_after_id": 12204,
+            "exact_id_coordinate_matches": 532623,
+            "jaccard": 0.996971544458053,
+            "shared": 551083,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 6256
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 1,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 552097,
+            "a_only": 3356,
+            "b_edges": 552145,
+            "b_only": 3404,
+            "jaccard": 0.9878308049850495,
+            "shared": 548741
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 552097,
+            "a_only": 3356,
+            "b_edges": 552145,
+            "b_only": 3404,
+            "jaccard": 0.9878308049850495,
+            "shared": 548741
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 576973,
+            "a_only": 1385,
+            "b_nodes": 576987,
+            "b_only": 1399,
+            "exact_coordinate_matches_after_id": 8876,
+            "exact_id_coordinate_matches": 556562,
+            "jaccard": 0.9951864889724952,
+            "shared": 575588,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 10150
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.0009996460687885511,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.0051069014458752695
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.0019744884400744087
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.0051069014458752695
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.0051069014458752695,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.0019744884400744087,
+          "raw_edge_disagreement_fraction": 0.0051069014458752695
+        },
+        "zero_distance": false
+      }
+    },
+    {
+      "a": "c2",
+      "aggregate": {
+        "canonical_equal_datasets": 0,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1080081,
+          "a_only": 14158,
+          "b_edges": 1080541,
+          "b_only": 14618,
+          "jaccard": 0.973713322109548,
+          "shared": 1065923
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1080081,
+          "a_only": 14158,
+          "b_edges": 1080541,
+          "b_only": 14618,
+          "jaccard": 0.973713322109548,
+          "shared": 1065923
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1128882,
+          "a_only": 5252,
+          "b_nodes": 1129219,
+          "b_only": 5589,
+          "exact_coordinate_matches_after_id": 22573,
+          "exact_id_coordinate_matches": 1057588,
+          "jaccard": 0.9904440042980385,
+          "shared": 1123630,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 43469
+        }
+      },
+      "b": "p4_no_attention",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 527984,
+            "a_only": 6499,
+            "b_edges": 528093,
+            "b_only": 6608,
+            "jaccard": 0.9754822369208668,
+            "shared": 521485
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 527984,
+            "a_only": 6499,
+            "b_edges": 528093,
+            "b_only": 6608,
+            "jaccard": 0.9754822369208668,
+            "shared": 521485
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 551909,
+            "a_only": 2345,
+            "b_nodes": 551965,
+            "b_only": 2401,
+            "exact_coordinate_matches_after_id": 14131,
+            "exact_id_coordinate_matches": 515624,
+            "jaccard": 0.9914380040049792,
+            "shared": 549564,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 19809
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 552097,
+            "a_only": 7659,
+            "b_edges": 552448,
+            "b_only": 8010,
+            "jaccard": 0.9720249880826342,
+            "shared": 544438
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 552097,
+            "a_only": 7659,
+            "b_edges": 552448,
+            "b_only": 8010,
+            "jaccard": 0.9720249880826342,
+            "shared": 544438
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 576973,
+            "a_only": 2907,
+            "b_nodes": 577254,
+            "b_only": 3188,
+            "exact_coordinate_matches_after_id": 8442,
+            "exact_id_coordinate_matches": 541964,
+            "jaccard": 0.9894942955489942,
+            "shared": 574066,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 23660
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.0021400985309045772,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.013318387020034047
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.004800936716293913
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.013318387020034047
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.013318387020034047,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.004800936716293913,
+          "raw_edge_disagreement_fraction": 0.013318387020034047
+        },
+        "zero_distance": false
+      }
+    },
+    {
+      "a": "c2",
+      "aggregate": {
+        "canonical_equal_datasets": 0,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1080081,
+          "a_only": 9691,
+          "b_edges": 1080119,
+          "b_only": 9729,
+          "jaccard": 0.9821803800662501,
+          "shared": 1070390
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1080081,
+          "a_only": 9691,
+          "b_edges": 1080119,
+          "b_only": 9729,
+          "jaccard": 0.9821803800662501,
+          "shared": 1070390
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1128882,
+          "a_only": 3850,
+          "b_nodes": 1128672,
+          "b_only": 3640,
+          "exact_coordinate_matches_after_id": 23269,
+          "exact_id_coordinate_matches": 1072171,
+          "jaccard": 0.9933864419410837,
+          "shared": 1125032,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 29592
+        }
+      },
+      "b": "apncc_global",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 527984,
+            "a_only": 4466,
+            "b_edges": 527985,
+            "b_only": 4467,
+            "jaccard": 0.9832228693344552,
+            "shared": 523518
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 527984,
+            "a_only": 4466,
+            "b_edges": 527985,
+            "b_only": 4467,
+            "jaccard": 0.9832228693344552,
+            "shared": 523518
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 551909,
+            "a_only": 1691,
+            "b_nodes": 551831,
+            "b_only": 1613,
+            "exact_coordinate_matches_after_id": 14190,
+            "exact_id_coordinate_matches": 522506,
+            "jaccard": 0.9940309508926475,
+            "shared": 550218,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 13522
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 552097,
+            "a_only": 5225,
+            "b_edges": 552134,
+            "b_only": 5262,
+            "jaccard": 0.9811844789444505,
+            "shared": 546872
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 552097,
+            "a_only": 5225,
+            "b_edges": 552134,
+            "b_only": 5262,
+            "jaccard": 0.9811844789444505,
+            "shared": 546872
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 576973,
+            "a_only": 2159,
+            "b_nodes": 576841,
+            "b_only": 2027,
+            "exact_coordinate_matches_after_id": 9079,
+            "exact_id_coordinate_matches": 549665,
+            "jaccard": 0.9927702936096718,
+            "shared": 574814,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 16070
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.005250930819427291,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.008989908341820202
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.003317750095900253
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.008989908341820202
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.008989908341820202,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.003317750095900253,
+          "raw_edge_disagreement_fraction": 0.008989908341820202
+        },
+        "zero_distance": false
+      }
+    },
+    {
+      "a": "c2",
+      "aggregate": {
+        "canonical_equal_datasets": 0,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1080081,
+          "a_only": 14952,
+          "b_edges": 1075334,
+          "b_only": 10205,
+          "jaccard": 0.9769262377027679,
+          "shared": 1065129
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1080081,
+          "a_only": 14952,
+          "b_edges": 1075334,
+          "b_only": 10205,
+          "jaccard": 0.9769262377027679,
+          "shared": 1065129
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1128882,
+          "a_only": 7731,
+          "b_nodes": 1124771,
+          "b_only": 3620,
+          "exact_coordinate_matches_after_id": 20233,
+          "exact_id_coordinate_matches": 1062685,
+          "jaccard": 0.9899770596431617,
+          "shared": 1121151,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 38233
+        }
+      },
+      "b": "apncc_direct",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 527984,
+            "a_only": 6916,
+            "b_edges": 525377,
+            "b_only": 4309,
+            "jaccard": 0.9789119902008856,
+            "shared": 521068
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 527984,
+            "a_only": 6916,
+            "b_edges": 525377,
+            "b_only": 4309,
+            "jaccard": 0.9789119902008856,
+            "shared": 521068
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 551909,
+            "a_only": 3718,
+            "b_nodes": 549659,
+            "b_only": 1468,
+            "exact_coordinate_matches_after_id": 11712,
+            "exact_id_coordinate_matches": 519934,
+            "jaccard": 0.9906284504054198,
+            "shared": 548191,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 16545
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 552097,
+            "a_only": 8036,
+            "b_edges": 549957,
+            "b_only": 5896,
+            "jaccard": 0.9750319448451862,
+            "shared": 544061
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 552097,
+            "a_only": 8036,
+            "b_edges": 549957,
+            "b_only": 5896,
+            "jaccard": 0.9750319448451862,
+            "shared": 544061
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 576973,
+            "a_only": 4013,
+            "b_nodes": 575112,
+            "b_only": 2152,
+            "exact_coordinate_matches_after_id": 8521,
+            "exact_id_coordinate_matches": 542751,
+            "jaccard": 0.9893546298294842,
+            "shared": 572960,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 21688
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.009372122499619717,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.011671534252104583
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.005036711507938445
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.011671534252104583
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.011671534252104583,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.005036711507938445,
+          "raw_edge_disagreement_fraction": 0.011671534252104583
+        },
+        "zero_distance": false
+      }
+    },
+    {
+      "a": "c0p25",
+      "aggregate": {
+        "canonical_equal_datasets": 0,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1080133,
+          "a_only": 13501,
+          "b_edges": 1080541,
+          "b_only": 13909,
+          "jaccard": 0.9749461172422996,
+          "shared": 1066632
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1080133,
+          "a_only": 13501,
+          "b_edges": 1080541,
+          "b_only": 13909,
+          "jaccard": 0.9749461172422996,
+          "shared": 1066632
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1128918,
+          "a_only": 4940,
+          "b_nodes": 1129219,
+          "b_only": 5241,
+          "exact_coordinate_matches_after_id": 23236,
+          "exact_id_coordinate_matches": 1058963,
+          "jaccard": 0.9910233044925799,
+          "shared": 1123978,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 41779
+        }
+      },
+      "b": "p4_no_attention",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 527988,
+            "a_only": 6437,
+            "b_edges": 528093,
+            "b_only": 6542,
+            "jaccard": 0.97571885581726,
+            "shared": 521551
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 527988,
+            "a_only": 6437,
+            "b_edges": 528093,
+            "b_only": 6542,
+            "jaccard": 0.97571885581726,
+            "shared": 521551
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 551931,
+            "a_only": 2286,
+            "b_nodes": 551965,
+            "b_only": 2320,
+            "exact_coordinate_matches_after_id": 14048,
+            "exact_id_coordinate_matches": 515789,
+            "jaccard": 0.9916896857200077,
+            "shared": 549645,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 19808
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 552145,
+            "a_only": 7064,
+            "b_edges": 552448,
+            "b_only": 7367,
+            "jaccard": 0.9742078811535767,
+            "shared": 545081
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 552145,
+            "a_only": 7064,
+            "b_edges": 552448,
+            "b_only": 7367,
+            "jaccard": 0.9742078811535767,
+            "shared": 545081
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 576987,
+            "a_only": 2654,
+            "b_nodes": 577254,
+            "b_only": 2921,
+            "exact_coordinate_matches_after_id": 9188,
+            "exact_id_coordinate_matches": 543174,
+            "jaccard": 0.9903864061195914,
+            "shared": 574333,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 21971
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.0011404524621160261,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.012685856357784655
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.004508583845887118
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.012685856357784655
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.012685856357784655,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.004508583845887118,
+          "raw_edge_disagreement_fraction": 0.012685856357784655
+        },
+        "zero_distance": false
+      }
+    },
+    {
+      "a": "c0p25",
+      "aggregate": {
+        "canonical_equal_datasets": 0,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1080133,
+          "a_only": 5862,
+          "b_edges": 1080119,
+          "b_only": 5848,
+          "jaccard": 0.989217122583176,
+          "shared": 1074271
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1080133,
+          "a_only": 5862,
+          "b_edges": 1080119,
+          "b_only": 5848,
+          "jaccard": 0.989217122583176,
+          "shared": 1074271
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1128918,
+          "a_only": 2299,
+          "b_nodes": 1128672,
+          "b_only": 2053,
+          "exact_coordinate_matches_after_id": 21205,
+          "exact_id_coordinate_matches": 1087020,
+          "jaccard": 0.9961519791400487,
+          "shared": 1126619,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 18394
+        }
+      },
+      "b": "apncc_global",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 527988,
+            "a_only": 3203,
+            "b_edges": 527985,
+            "b_only": 3200,
+            "jaccard": 0.9879458873317921,
+            "shared": 524785
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 527988,
+            "a_only": 3203,
+            "b_edges": 527985,
+            "b_only": 3200,
+            "jaccard": 0.9879458873317921,
+            "shared": 524785
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 551931,
+            "a_only": 1200,
+            "b_nodes": 551831,
+            "b_only": 1100,
+            "exact_coordinate_matches_after_id": 14592,
+            "exact_id_coordinate_matches": 526130,
+            "jaccard": 0.9958411011317629,
+            "shared": 550731,
+            "spatial_distance_max_um": 6.953879874753374,
+            "spatial_matches": 10009
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 552145,
+            "a_only": 2659,
+            "b_edges": 552134,
+            "b_only": 2648,
+            "jaccard": 0.9904342700791106,
+            "shared": 549486
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 552145,
+            "a_only": 2659,
+            "b_edges": 552134,
+            "b_only": 2648,
+            "jaccard": 0.9904342700791106,
+            "shared": 549486
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 576987,
+            "a_only": 1099,
+            "b_nodes": 576841,
+            "b_only": 953,
+            "exact_coordinate_matches_after_id": 6613,
+            "exact_id_coordinate_matches": 560890,
+            "jaccard": 0.9964494584212894,
+            "shared": 575888,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 8385
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.00425128475063874,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.0054206638855096535
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.0019277193821730253
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.0054206638855096535
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.0054206638855096535,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.0019277193821730253,
+          "raw_edge_disagreement_fraction": 0.0054206638855096535
+        },
+        "zero_distance": false
+      }
+    },
+    {
+      "a": "c0p25",
+      "aggregate": {
+        "canonical_equal_datasets": 0,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1080133,
+          "a_only": 10688,
+          "b_edges": 1075334,
+          "b_only": 5889,
+          "jaccard": 0.9847360366548744,
+          "shared": 1069445
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1080133,
+          "a_only": 10688,
+          "b_edges": 1075334,
+          "b_only": 5889,
+          "jaccard": 0.9847360366548744,
+          "shared": 1069445
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1128918,
+          "a_only": 6047,
+          "b_nodes": 1124771,
+          "b_only": 1900,
+          "exact_coordinate_matches_after_id": 3,
+          "exact_id_coordinate_matches": 1097018,
+          "jaccard": 0.9929723439138748,
+          "shared": 1122871,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 25850
+        }
+      },
+      "b": "apncc_direct",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 527988,
+            "a_only": 5396,
+            "b_edges": 525377,
+            "b_only": 2785,
+            "jaccard": 0.9845866311963871,
+            "shared": 522592
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 527988,
+            "a_only": 5396,
+            "b_edges": 525377,
+            "b_only": 2785,
+            "jaccard": 0.9845866311963871,
+            "shared": 522592
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 551931,
+            "a_only": 3136,
+            "b_nodes": 549659,
+            "b_only": 864,
+            "exact_coordinate_matches_after_id": 3,
+            "exact_id_coordinate_matches": 536449,
+            "jaccard": 0.9927640445373058,
+            "shared": 548795,
+            "spatial_distance_max_um": 6.953879874753374,
+            "spatial_matches": 12343
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 552145,
+            "a_only": 5292,
+            "b_edges": 549957,
+            "b_only": 3104,
+            "jaccard": 0.9848788561528251,
+            "shared": 546853
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 552145,
+            "a_only": 5292,
+            "b_edges": 549957,
+            "b_only": 3104,
+            "jaccard": 0.9848788561528251,
+            "shared": 546853
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 576987,
+            "a_only": 2911,
+            "b_nodes": 575112,
+            "b_only": 1036,
+            "exact_coordinate_matches_after_id": 0,
+            "exact_id_coordinate_matches": 560569,
+            "jaccard": 0.9931715519970659,
+            "shared": 574076,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 13507
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.008372476430831166,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.007690676776772737
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.003526218568755494
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.007690676776772737
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.007690676776772737,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.003526218568755494,
+          "raw_edge_disagreement_fraction": 0.007690676776772737
+        },
+        "zero_distance": false
+      }
+    },
+    {
+      "a": "p4_no_attention",
+      "aggregate": {
+        "canonical_equal_datasets": 0,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1080541,
+          "a_only": 14593,
+          "b_edges": 1080119,
+          "b_only": 14171,
+          "jaccard": 0.9737245960581413,
+          "shared": 1065948
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1080541,
+          "a_only": 14593,
+          "b_edges": 1080119,
+          "b_only": 14171,
+          "jaccard": 0.9737245960581413,
+          "shared": 1065948
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1129219,
+          "a_only": 5671,
+          "b_nodes": 1128672,
+          "b_only": 5124,
+          "exact_coordinate_matches_after_id": 23112,
+          "exact_id_coordinate_matches": 1056359,
+          "jaccard": 0.9904834781014208,
+          "shared": 1123548,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 44077
+        }
+      },
+      "b": "apncc_global",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 528093,
+            "a_only": 6770,
+            "b_edges": 527985,
+            "b_only": 6662,
+            "jaccard": 0.9748819552879356,
+            "shared": 521323
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 528093,
+            "a_only": 6770,
+            "b_edges": 527985,
+            "b_only": 6662,
+            "jaccard": 0.9748819552879356,
+            "shared": 521323
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 551965,
+            "a_only": 2509,
+            "b_nodes": 551831,
+            "b_only": 2375,
+            "exact_coordinate_matches_after_id": 14220,
+            "exact_id_coordinate_matches": 514724,
+            "jaccard": 0.9911895226756142,
+            "shared": 549456,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 20512
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 552448,
+            "a_only": 7823,
+            "b_edges": 552134,
+            "b_only": 7509,
+            "jaccard": 0.9726193261268276,
+            "shared": 544625
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 552448,
+            "a_only": 7823,
+            "b_edges": 552134,
+            "b_only": 7509,
+            "jaccard": 0.9726193261268276,
+            "shared": 544625
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 577254,
+            "a_only": 3162,
+            "b_nodes": 576841,
+            "b_only": 2749,
+            "exact_coordinate_matches_after_id": 8892,
+            "exact_id_coordinate_matches": 541635,
+            "jaccard": 0.9898086734034134,
+            "shared": 574092,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 23565
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.0031108322885227135,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.013312598928105301
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.004781010243630007
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.013312598928105301
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.013312598928105301,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.004781010243630007,
+          "raw_edge_disagreement_fraction": 0.013312598928105301
+        },
+        "zero_distance": false
+      }
+    },
+    {
+      "a": "p4_no_attention",
+      "aggregate": {
+        "canonical_equal_datasets": 0,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1080541,
+          "a_only": 20711,
+          "b_edges": 1075334,
+          "b_only": 15504,
+          "jaccard": 0.9669584734203431,
+          "shared": 1059830
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1080541,
+          "a_only": 20711,
+          "b_edges": 1075334,
+          "b_only": 15504,
+          "jaccard": 0.9669584734203431,
+          "shared": 1059830
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1129219,
+          "a_only": 9841,
+          "b_nodes": 1124771,
+          "b_only": 5393,
+          "exact_coordinate_matches_after_id": 22563,
+          "exact_id_coordinate_matches": 1041829,
+          "jaccard": 0.9865733836765344,
+          "shared": 1119378,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 54986
+        }
+      },
+      "b": "apncc_direct",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 528093,
+            "a_only": 9752,
+            "b_edges": 525377,
+            "b_only": 7036,
+            "jaccard": 0.9686281251810311,
+            "shared": 518341
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 528093,
+            "a_only": 9752,
+            "b_edges": 525377,
+            "b_only": 7036,
+            "jaccard": 0.9686281251810311,
+            "shared": 518341
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 551965,
+            "a_only": 4722,
+            "b_nodes": 549659,
+            "b_only": 2416,
+            "exact_coordinate_matches_after_id": 13657,
+            "exact_id_coordinate_matches": 508508,
+            "jaccard": 0.9871243783607303,
+            "shared": 547243,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 25078
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 552448,
+            "a_only": 10959,
+            "b_edges": 549957,
+            "b_only": 8468,
+            "jaccard": 0.9653655805860414,
+            "shared": 541489
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 552448,
+            "a_only": 10959,
+            "b_edges": 549957,
+            "b_only": 8468,
+            "jaccard": 0.9653655805860414,
+            "shared": 541489
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 577254,
+            "a_only": 5119,
+            "b_nodes": 575112,
+            "b_only": 2977,
+            "exact_coordinate_matches_after_id": 8906,
+            "exact_id_coordinate_matches": 533321,
+            "jaccard": 0.9860469364787473,
+            "shared": 572135,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 29908
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.00723202396871514,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.016798283759494406
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.00675868127187787
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.016798283759494406
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.016798283759494406,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.00675868127187787,
+          "raw_edge_disagreement_fraction": 0.016798283759494406
+        },
+        "zero_distance": false
+      }
+    },
+    {
+      "a": "apncc_global",
+      "aggregate": {
+        "canonical_equal_datasets": 0,
+        "dataset_count": 57,
+        "edges_raw": {
+          "a_edges": 1080119,
+          "a_only": 8523,
+          "b_edges": 1075334,
+          "b_only": 3738,
+          "jaccard": 0.9886876220756059,
+          "shared": 1071596
+        },
+        "edges_scorer_eligible": {
+          "a_edges": 1080119,
+          "a_only": 8523,
+          "b_edges": 1075334,
+          "b_only": 3738,
+          "jaccard": 0.9886876220756059,
+          "shared": 1071596
+        },
+        "forks": {
+          "a_forks": 0,
+          "a_only": 0,
+          "agreement": 1.0,
+          "b_forks": 0,
+          "b_only": 0,
+          "shared": 0
+        },
+        "nodes": {
+          "a_nodes": 1128672,
+          "a_only": 5299,
+          "b_nodes": 1124771,
+          "b_only": 1398,
+          "exact_coordinate_matches_after_id": 21018,
+          "exact_id_coordinate_matches": 1084258,
+          "jaccard": 0.994073818436026,
+          "shared": 1123373,
+          "spatial_distance_max_um": 6.989389279472134,
+          "spatial_matches": 18097
+        }
+      },
+      "b": "apncc_direct",
+      "by_family": {
+        "44b6": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 21,
+          "edges_raw": {
+            "a_edges": 527985,
+            "a_only": 4251,
+            "b_edges": 525377,
+            "b_only": 1643,
+            "jaccard": 0.9888714342897279,
+            "shared": 523734
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 527985,
+            "a_only": 4251,
+            "b_edges": 525377,
+            "b_only": 1643,
+            "jaccard": 0.9888714342897279,
+            "shared": 523734
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 551831,
+            "a_only": 2821,
+            "b_nodes": 549659,
+            "b_only": 649,
+            "exact_coordinate_matches_after_id": 14492,
+            "exact_id_coordinate_matches": 526408,
+            "jaccard": 0.9937192296553722,
+            "shared": 549010,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 8110
+          }
+        },
+        "6bba": {
+          "canonical_equal_datasets": 0,
+          "dataset_count": 36,
+          "edges_raw": {
+            "a_edges": 552134,
+            "a_only": 4272,
+            "b_edges": 549957,
+            "b_only": 2095,
+            "jaccard": 0.9885119688792899,
+            "shared": 547862
+          },
+          "edges_scorer_eligible": {
+            "a_edges": 552134,
+            "a_only": 4272,
+            "b_edges": 549957,
+            "b_only": 2095,
+            "jaccard": 0.9885119688792899,
+            "shared": 547862
+          },
+          "forks": {
+            "a_forks": 0,
+            "a_only": 0,
+            "agreement": 1.0,
+            "b_forks": 0,
+            "b_only": 0,
+            "shared": 0
+          },
+          "nodes": {
+            "a_nodes": 576841,
+            "a_only": 2478,
+            "b_nodes": 575112,
+            "b_only": 749,
+            "exact_coordinate_matches_after_id": 6526,
+            "exact_id_coordinate_matches": 557850,
+            "jaccard": 0.9944129919146799,
+            "shared": 574363,
+            "spatial_distance_max_um": 6.989389279472134,
+            "spatial_matches": 9987
+          }
+        }
+      },
+      "local_delta_a_minus_b": -0.004121191680192426,
+      "observation_class": {
+        "exceeded_components": {
+          "eligible_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.005688363420589547
+          },
+          "node_displacement_max_um": {
+            "limit": 0.0,
+            "observed": 6.989389279472134
+          },
+          "node_unmatched_fraction": {
+            "limit": 0.0,
+            "observed": 0.002971896781946559
+          },
+          "raw_edge_disagreement_fraction": {
+            "limit": 0.0,
+            "observed": 0.005688363420589547
+          }
+        },
+        "label": "DISTINCT",
+        "null_envelope": {
+          "eligible_edge_disagreement_fraction": 0.0,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 0.0,
+          "node_unmatched_fraction": 0.0,
+          "raw_edge_disagreement_fraction": 0.0
+        },
+        "observed": {
+          "eligible_edge_disagreement_fraction": 0.005688363420589547,
+          "fork_disagreement_fraction": 0.0,
+          "node_displacement_max_um": 6.989389279472134,
+          "node_unmatched_fraction": 0.002971896781946559,
+          "raw_edge_disagreement_fraction": 0.005688363420589547
+        },
+        "zero_distance": false
+      }
+    }
+  ],
+  "method": {
+    "comparison_tool": "/Users/agent/Desktop/cell_tracking/scripts/compare_submissions.py",
+    "comparison_tool_sha256": "ade5dd17ebb04117540e9f4d480334fb9a50a25b63f362f023c8b4700c23adae",
+    "distance_vector": [
+      "node_jaccard",
+      "raw_edge_jaccard",
+      "scorer_eligible_edge_jaccard",
+      "fork_agreement"
+    ],
+    "matching": "exact ID+coordinate, exact coordinate, then deterministic official-style physical matching at 7 um",
+    "null_envelope": {
+      "eligible_edge_disagreement_fraction": 0.0,
+      "fork_disagreement_fraction": 0.0,
+      "node_displacement_max_um": 0.0,
+      "node_unmatched_fraction": 0.0,
+      "raw_edge_disagreement_fraction": 0.0
+    }
+  },
+  "rungs": [
+    {
+      "canonical_sha256": "4d8569f3b89aeb392e11a676a117885c54fe826710fcd34927699cc768ec3f63",
+      "edge_counts": {
+        "edge_fn": 2481,
+        "edge_fp": 3324,
+        "edge_tp": 33787
+      },
+      "fragment_count": 57,
+      "fragment_dir": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/motion_error_weight_0/fragments",
+      "label": "backward motion c=0",
+      "local_cv57": 0.8483945155545333,
+      "mechanism": "graph cost/solver",
+      "public_displayed": 0.86,
+      "public_interval": [
+        0.8595,
+        0.8604999999999999
+      ],
+      "rung_id": "c0",
+      "source_report": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/report.json",
+      "source_report_sha256": "409d632879bdbc7220ffdb48b900580a0c4d9c7f5ec64da69883e931859b844f"
+    },
+    {
+      "canonical_sha256": "0efa29847bc051fc1a7d4068dbe3201a657bcc5cf96993f7c7443877c48bb91f",
+      "edge_counts": {
+        "edge_fn": 2090,
+        "edge_fp": 2699,
+        "edge_tp": 34178
+      },
+      "fragment_count": 57,
+      "fragment_dir": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/motion_error_weight_2/fragments",
+      "label": "backward motion c=2",
+      "local_cv57": 0.8721499474601118,
+      "mechanism": "graph cost/solver",
+      "public_displayed": 0.878,
+      "public_interval": [
+        0.8775000000000001,
+        0.8785
+      ],
+      "rung_id": "c2",
+      "source_report": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/report.json",
+      "source_report_sha256": "409d632879bdbc7220ffdb48b900580a0c4d9c7f5ec64da69883e931859b844f"
+    },
+    {
+      "canonical_sha256": "f44928e03e828324a6f1cb4764a297857701f1a772fad051ae0d434c1cafae72",
+      "edge_counts": {
+        "edge_fn": 2063,
+        "edge_fp": 2685,
+        "edge_tp": 34205
+      },
+      "fragment_count": 57,
+      "fragment_dir": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/motion_error_weight_0p25/fragments",
+      "label": "backward motion c=0.25",
+      "local_cv57": 0.8731495935289003,
+      "mechanism": "graph cost/solver",
+      "public_displayed": 0.877,
+      "public_interval": [
+        0.8765000000000001,
+        0.8775
+      ],
+      "rung_id": "c0p25",
+      "source_report": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/report.json",
+      "source_report_sha256": "409d632879bdbc7220ffdb48b900580a0c4d9c7f5ec64da69883e931859b844f"
+    },
+    {
+      "canonical_sha256": "72053e6617764d41a35c7ea03c279c23bd9bbb240831294da695b88ef0c5bb10",
+      "edge_counts": {
+        "edge_fn": 2041,
+        "edge_fp": 2658,
+        "edge_tp": 34227
+      },
+      "fragment_count": 57,
+      "fragment_dir": "/Users/agent/Desktop/cell_tracking/reports/g02/p4_edge_attention_cv57_v1/no_attention/fragments",
+      "label": "P4 no-attention control",
+      "local_cv57": 0.8742900459910163,
+      "mechanism": "learned association architecture/control",
+      "public_displayed": null,
+      "public_interval": null,
+      "rung_id": "p4_no_attention",
+      "source_report": "/Users/agent/Desktop/cell_tracking/reports/g02/p4_edge_attention_cv57_v1/report.json",
+      "source_report_sha256": "914989293b9f51ce8c92bf20cac8e8a37f8e115c16664c1231e9c0836d441b20"
+    },
+    {
+      "canonical_sha256": "e7285d12b5c72bcd604a64aac37be869bfdac417b3b3140a9ce7fe87514c399a",
+      "edge_counts": {
+        "edge_fn": 1987,
+        "edge_fp": 2584,
+        "edge_tp": 34281
+      },
+      "fragment_count": 57,
+      "fragment_dir": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_cv57_v1/fragments",
+      "label": "APNCC global re-solve",
+      "local_cv57": 0.877400878279539,
+      "mechanism": "appearance association postprocessor + global solver",
+      "public_displayed": null,
+      "public_interval": null,
+      "rung_id": "apncc_global",
+      "source_report": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_cv57_v1/report.json",
+      "source_report_sha256": "cfa24b670b09fd42786d1748457d15d4cbdaa455bcdc51224c230fe42757cbbb"
+    },
+    {
+      "canonical_sha256": "00b3bc599a9b58d452f6a7bd310f249797e618bda2bf1a86e7a7706a2a2c53cd",
+      "edge_counts": {
+        "edge_fn": 1948,
+        "edge_fp": 2459,
+        "edge_tp": 34320
+      },
+      "fragment_count": 57,
+      "fragment_dir": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_direct_cv57_v1/fragments",
+      "label": "APNCC exact direct swap",
+      "local_cv57": 0.8815220699597315,
+      "mechanism": "appearance association postprocessor + local direct solver",
+      "public_displayed": null,
+      "public_interval": null,
+      "rung_id": "apncc_direct",
+      "source_report": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_direct_cv57_v1/report.json",
+      "source_report_sha256": "8da96a3da9e66869192f446fc6d59fedd6016bdefe4fb272b136df68258a0df4"
+    }
+  ],
+  "schema": "celltrack-alpha.dispersion-ladder-observation-matrix.v1",
+  "scope": {
+    "gpu_action": false,
+    "gt_rescoring_performed": false,
+    "kaggle_action": false,
+    "pair_count": 15,
+    "rung_count": 6,
+    "runpod_action": false,
+    "streaming_max_live_video_pairs": 1,
+    "video_count": 57
+  },
+  "status": "completed"
+}

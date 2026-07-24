@@ -209,10 +209,13 @@ future PASS.
 ## Gate action
 
 Continue local work under P0A. Keep public forecasting and S1 unresolved under
-P0B. Before another submission, build the canonical observation comparison,
-preregister a wide-dispersion/mechanism-diverse probe, charge it to the
-five-per-competition-day cap, and obtain explicit human approval. Measure one
-probe at a time and update the interval-aware design before choosing the next.
+P0B. The canonical comparison and six-rung dispersion ladder now exist:
+all 15 full-CV57 rung pairs are observation-distinct, and APNCC-direct is the
+only rung above local 0.88. The next action is therefore the already
+preregistered single APNCC-direct probe. Charge it to the
+five-per-competition-day cap and obtain explicit human approval before launch
+or submission. Measure that one probe and update the interval-aware design
+before choosing any second submission.
 
 ## Continuation audit
 

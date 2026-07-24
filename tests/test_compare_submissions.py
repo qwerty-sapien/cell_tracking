@@ -45,6 +45,25 @@ def graph(
 
 
 class CompareSubmissionsTest(unittest.TestCase):
+    def test_score_artifact_fails_cleanly_for_missing_gt_zip(self) -> None:
+        artifact = compare.PredictionArtifact(
+            label="empty",
+            source="test",
+            files=(),
+            manifest_sha256="0" * 64,
+            canonical_sha256="0" * 64,
+            graphs={},
+        )
+        missing = ROOT / "does-not-exist.zip"
+        with self.assertRaisesRegex(
+            FileNotFoundError, "ground-truth zip does not exist"
+        ):
+            compare.score_artifact(
+                artifact,
+                gt_zip=missing,
+                scorer_parity=ROOT / "reports/g02/scorer_parity_v1.json",
+            )
+
     def test_json_safe_preserves_strict_output_and_marks_nonfinite_as_null(self) -> None:
         value = compare._json_safe(
             {"ok": 1.0, "nan": float("nan"), "nested": [float("inf")]}
