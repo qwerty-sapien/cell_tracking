@@ -1,0 +1,1 @@
+{"downsample":[1,4,4],"pool_kernel_um":5.0,"unet_layers":[32,64,128],"unet_out_channels":32,"window_size":2}

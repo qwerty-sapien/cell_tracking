@@ -1,0 +1,30 @@
+{
+  "appearance": {
+    "metric": "zero-mean-unit-norm-ncc",
+    "patch_shape": [
+      16,
+      32,
+      32
+    ],
+    "threshold": -0.04768145084381103
+  },
+  "geometry_gate": {
+    "path": "reports/g02/selected_graph_background_sparse_w050_v1/gate.pt",
+    "sha256": "04a4cec214b5848363af08ab9a092f5ac8cc077b83f946ea81fc986d36e91ed1",
+    "threshold": 0.605
+  },
+  "local_confirmation": {
+    "baseline_score": 0.8731495935289003,
+    "candidate_score": 0.8815220699597315,
+    "edge_fn": 1948,
+    "edge_fp": 2459,
+    "edge_tp": 34320,
+    "report_sha256": "8da96a3da9e66869192f446fc6d59fedd6016bdefe4fb272b136df68258a0df4"
+  },
+  "mechanism": "post-gap-pre-prune-node-disjoint-full-3d-ncc-direct-swap",
+  "proposal_cap": {
+    "minimum_per_video": 16,
+    "selected_edge_fraction": 0.005
+  },
+  "schema": "celltrack-alpha.appearance-direct-swap-contract.v1"
+}

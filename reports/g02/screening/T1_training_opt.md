@@ -20,13 +20,18 @@ architecture, on the **worst family from B2** — not the global set.
   training loss.
 
 ## Budget
-- **Check remaining Kaggle GPU-hours this week first** (30h/week, resets Saturday 00:00 UTC). A
-  20-30 trial Optuna loop on small graph slices should fit comfortably inside one or two ~9h Kaggle
-  sessions — run it there and spend $0. Only reach for RunPod if this week's Kaggle quota is already
-  spent on a higher-priority node or the search needs more contiguous time than a session allows.
+- Optimization begins only after the existing model's literature/mechanism manifest and
+  fit-only local falsification are valid. Run lightweight trials through the single
+  guarded M5 lane first when compatible: <=18 GiB, >=6 GiB background reserve, no
+  holdout, no swap growth, and <=7 hours per unattended stage.
+- Initial training is capped at **30 cumulative Kaggle T4 GPU-hours for this model**,
+  across all sessions. Project the full loop first and archive/cut it if it cannot become
+  viable within that ceiling.
 - Estimate cost/trial as ~3.6 GPU-s/pair × pairs/trial BEFORE launching. Every
-  RunPod launch requires explicit human approval for the exact job after hours/$ and
-  artifact identity are logged; if 20 trials exceed the cap, cut trials first.
+  RunPod launch is prohibited before an accepted score reaches `0.89`; any later
+  higher-quality-GPU-dependent optimization requires literature/theory-backed expected
+  improvement greater than `5%`, must fit the `$10` total cap, and needs explicit approval
+  for the exact logged job. The ordinary hard improvement gate is `3.5%`.
 - Log every trial: params, score, GPU-hrs (Kaggle) or GPU-s/$ (RunPod).
 
 ## Output

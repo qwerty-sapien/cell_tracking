@@ -1,0 +1,53 @@
+{
+  "schema": "celltrack-alpha.point-context-oof-threshold-headroom-contract.v1",
+  "status": "locked",
+  "source": {
+    "gate_contract": "reports/g02/point_context_oof_graph_gate_contract_v1.json",
+    "gate_contract_sha256": "a374a9e04488e28c911385c7af7873a10f45dced630844af816a39e97ba46f53",
+    "gate_output": "reports/g02/point_context_oof_graph_gate_v7",
+    "gate_report_sha256": "488687568ff5a72aa7ca81647421bf395a4d49f9f947c60845fa8f9f4a98ec36",
+    "prepare_report": "reports/g02/selected_graph_temporal_background_prepare_v1/prepare.json",
+    "prepare_report_sha256": "c41bc216d4dfd642126d476a66a3fd9659f54a91dc49463f6b468a301a971d89"
+  },
+  "scope": {
+    "family": "6bba",
+    "fit_train_video_count": 69,
+    "outer_fold_count": 5,
+    "fit_only": true,
+    "validation12_access": false,
+    "cv57_access": false,
+    "kaggle_action": false,
+    "gpu_action": false,
+    "runpod_action": false
+  },
+  "diagnostic": {
+    "calibration_precision_floor_grid": [
+      0.95,
+      0.96,
+      0.97,
+      0.975,
+      0.98,
+      0.985,
+      0.99
+    ],
+    "minimum_calibration_accepted": 25,
+    "oracle_minimum_held_accepted": 25,
+    "oracle_minimum_held_precision": 0.95,
+    "threshold_grid_size": 257,
+    "reproduce_banked_fold_metrics_before_analysis": true
+  },
+  "plausibility_gate": {
+    "minimum_aggregate_held_precision": 0.95,
+    "minimum_each_fold_held_precision": 0.93,
+    "minimum_aggregate_held_accepted": 1000,
+    "minimum_conservative_utility": 1500
+  },
+  "decision": {
+    "pass_label": "CALIBRATION_REPAIR_PLAUSIBLE",
+    "fail_label": "THRESHOLD_ONLY_REPAIR_NOT_SUPPORTED",
+    "promotion_authorized": false,
+    "graph_replay_authorized": false,
+    "cv57_authorized": false,
+    "interpretation": "A passing shared calibration floor justifies a newly preregistered cross-fitted calibration candidate; it does not validate or promote the current model. Oracle thresholds are diagnostic upper bounds only."
+  }
+}

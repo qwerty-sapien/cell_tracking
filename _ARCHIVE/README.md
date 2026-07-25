@@ -10,6 +10,10 @@ Agents must ignore this directory unless a user explicitly requests archived mat
 - `general_model/`: roughly 800 G-01 probe outputs superseded by the later grouped-split work.
 - `failed_bh9/`: `bh9o6` and `bh9o7` are large failed-run outputs with no active path.
 - `cruise_staging/`: duplicate drift blobs and stale integrity-script copies that could mislead future work.
+- `organizer_unet_transformer_f0/`: retired organiser TemporalUNet3D +
+  SimpleNodeTransformer experiment. Its epoch-7 fit-only checkpoint is preserved, but
+  convergence projected far beyond the locked 30 cumulative Kaggle T4-hour per-model
+  ceiling. No holdout evaluation was performed.
 
 The load-bearing `reports/g02/f4gtr.json`,
 `reports/g02/division_failure_fold0.json`,

@@ -1,0 +1,108 @@
+12.5s 1 Looking in links: /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels
+12.5s 2 Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/zarr-3.2.1-py3-none-any.whl
+12.5s 3 Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/numcodecs-0.15.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+12.6s 4 Processing /kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1/wheels/donfig-0.8.1.post1-py3-none-any.whl
+12.6s 5 Installing collected packages: zarr, numcodecs, donfig
+13.2s 6 Successfully installed donfig-0.8.1.post1 numcodecs-0.15.1 zarr-3.2.1
+18.8s 7 {"stage_command": ["/usr/bin/python3", "/kaggle/working/scripts/build_trackastra_apncc_base_cache.py", "--contract", "/kaggle/working/reports/g02/trackastra_full_pool_feature_cache_contract_v2.json", "--contract-sha256", "e060b284da623a373a83c8dd690985503af945399518f4d77eb517fddb8128ac", "--cache", "/kaggle/input/datasets/onebitbrain/trackastra-6bba-cache-v1/reports/g02/fitcache_117/bh9out/cache", "--raw-root", "/kaggle/input/competitions/biohub-cell-tracking-during-development", "--raw-manifest", "/kaggle/input/datasets/onebitbrain/trackastra-6bba-assets-v1/trackastra_6bba_raw_directory_manifest_v1.json", "--raw-manifest-sha256", "1a87473654dcfcc970daa06db4f8b2012af7a831720055980720f0449541c5ff", "--edge-artifact", "/kaggle/input/datasets/onebitbrain/trackastra-6bba-assets-v1/edge.json", "--edge-auxiliary", "/kaggle/input/datasets/onebitbrain/trackastra-6bba-assets-v1/v45f4.pt", "--support-root", "/kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1", "--output", "/kaggle/working/reports/g02/trackastra_apncc_base_cache_v2"]}
+408.1s 8 [1/69] train:6bba_edf14583: 3605 proposals / 99 calls
+473.2s 9 [2/69] train:6bba_1f58c2f6: 3026 proposals / 99 calls
+492.6s 10 [3/69] train:6bba_789f8168: 502 proposals / 67 calls
+513.3s 11 [4/69] train:6bba_784a78c9: 306 proposals / 88 calls
+524.7s 12 [5/69] train:6bba_e16ffc58: 164 proposals / 76 calls
+618.7s 13 [6/69] train:6bba_32db13fc: 4495 proposals / 99 calls
+637.0s 14 [7/69] train:6bba_eebc57a5: 279 proposals / 85 calls
+651.3s 15 [8/69] train:6bba_d6ecebbb: 414 proposals / 98 calls
+666.6s 16 [9/69] train:6bba_6feeb0b1: 265 proposals / 86 calls
+702.5s 17 [10/69] train:6bba_ab78413d: 1624 proposals / 99 calls
+749.6s 18 [11/69] train:6bba_207c6aaf: 3647 proposals / 99 calls
+764.5s 19 [12/69] train:6bba_b693381b: 143 proposals / 67 calls
+785.0s 20 [13/69] train:6bba_80d12824: 399 proposals / 86 calls
+797.6s 21 [14/69] train:6bba_5a4d9360: 97 proposals / 56 calls
+815.5s 22 [15/69] train:6bba_af149c94: 240 proposals / 87 calls
+862.9s 23 [16/69] train:6bba_337b1b3a: 815 proposals / 96 calls
+878.5s 24 [17/69] train:6bba_c27cba08: 212 proposals / 82 calls
+935.6s 25 [18/69] train:6bba_74686d6a: 2159 proposals / 99 calls
+957.1s 26 [19/69] train:6bba_91951b3a: 314 proposals / 84 calls
+1053.2s 27 [20/69] train:6bba_55c70843: 4551 proposals / 99 calls
+1066.6s 28 [21/69] train:6bba_4f99ce20: 141 proposals / 69 calls
+1124.7s 29 [22/69] train:6bba_6479435d: 3106 proposals / 99 calls
+1163.0s 30 [23/69] train:6bba_1d0d8384: 1112 proposals / 99 calls
+1271.1s 31 [24/69] train:6bba_767a1e17: 9331 proposals / 99 calls
+1292.1s 32 [25/69] train:6bba_3fda6b25: 311 proposals / 95 calls
+1320.6s 33 [26/69] train:6bba_d3da753b: 442 proposals / 85 calls
+1340.5s 34 [27/69] train:6bba_4aa14c89: 454 proposals / 80 calls
+1347.0s 35 [28/69] train:6bba_718b21f9: 16 proposals / 16 calls
+1365.1s 36 [29/69] train:6bba_fe670320: 505 proposals / 69 calls
+1383.7s 37 [30/69] train:6bba_61dd1e0d: 436 proposals / 84 calls
+1397.6s 38 [31/69] train:6bba_085bf656: 160 proposals / 67 calls
+1430.5s 39 [32/69] train:6bba_d1acb6ff: 2074 proposals / 98 calls
+1468.8s 40 [33/69] train:6bba_48816121: 1002 proposals / 99 calls
+1484.7s 41 [34/69] train:6bba_bbb708ca: 480 proposals / 96 calls
+1499.3s 42 [35/69] train:6bba_5c039895: 233 proposals / 81 calls
+1511.7s 43 [36/69] train:6bba_07477033: 327 proposals / 89 calls
+1521.2s 44 [37/69] train:6bba_aeee7805: 106 proposals / 61 calls
+1526.5s 45 [38/69] train:6bba_d5eae175: 16 proposals / 15 calls
+1545.9s 46 [39/69] train:6bba_20852818: 476 proposals / 83 calls
+1556.7s 47 [40/69] train:6bba_13f19531: 144 proposals / 69 calls
+1591.8s 48 [41/69] train:6bba_df673a83: 1183 proposals / 99 calls
+1652.5s 49 [42/69] train:6bba_09961292: 1700 proposals / 99 calls
+1741.5s 50 [43/69] train:6bba_78a7bd97: 5766 proposals / 99 calls
+1753.3s 51 [44/69] train:6bba_372c8cb8: 130 proposals / 62 calls
+1789.0s 52 [45/69] train:6bba_fc83837d: 2547 proposals / 99 calls
+1845.3s 53 [46/69] train:6bba_d82a4fc6: 1623 proposals / 99 calls
+1859.1s 54 [47/69] train:6bba_7d3058ae: 203 proposals / 79 calls
+1901.9s 55 [48/69] train:6bba_cdcfe533: 771 proposals / 98 calls
+1958.6s 56 [49/69] train:6bba_f8ffd5e7: 2780 proposals / 98 calls
+2003.8s 57 [50/69] train:6bba_0e7c0d07: 3060 proposals / 77 calls
+2013.0s 58 [51/69] train:6bba_f20478e9: 99 proposals / 55 calls
+2139.4s 59 [52/69] train:6bba_ebff6e76: 8764 proposals / 99 calls
+2153.6s 60 [53/69] train:6bba_12665c0e: 264 proposals / 68 calls
+2216.4s 61 [54/69] train:6bba_474be664: 3445 proposals / 99 calls
+2225.5s 62 [55/69] train:6bba_ed9377fd: 104 proposals / 62 calls
+2274.9s 63 [56/69] train:6bba_cf35214c: 589 proposals / 95 calls
+2300.7s 64 [57/69] train:6bba_1ebfb80d: 1288 proposals / 99 calls
+2356.8s 65 [58/69] train:6bba_c73a1d11: 4059 proposals / 99 calls
+2374.3s 66 [59/69] train:6bba_9e23430b: 600 proposals / 89 calls
+2407.1s 67 [60/69] train:6bba_fc5f39dc: 1190 proposals / 99 calls
+2601.9s 68 [61/69] train:6bba_57b7cc1e: 14950 proposals / 99 calls
+2617.1s 69 [62/69] train:6bba_268e1230: 402 proposals / 71 calls
+2689.8s 70 [63/69] train:6bba_cff5865f: 1683 proposals / 99 calls
+2699.0s 71 [64/69] train:6bba_96833384: 100 proposals / 58 calls
+2733.9s 72 [65/69] train:6bba_67ebd073: 1827 proposals / 99 calls
+2789.4s 73 [66/69] train:6bba_c328f2fd: 1742 proposals / 99 calls
+2797.8s 74 [67/69] train:6bba_e5e44988: 76 proposals / 43 calls
+2812.6s 75 [68/69] train:6bba_825bd1c6: 395 proposals / 80 calls
+2854.4s 76 [69/69] train:6bba_5c824876: 1002 proposals / 99 calls
+2854.5s 77 {"bytes": 46415917, "proposal_count": 110471, "resumed_video_count": 0, "row_count": 158561, "transition_count": 5824, "video_count": 69}
+2856.1s 78 {"stage_command": ["/usr/bin/python3", "/kaggle/working/scripts/enrich_trackastra_apncc_cache.py", "--contract", "/kaggle/working/reports/g02/trackastra_full_pool_feature_cache_contract_v2.json", "--contract-sha256", "e060b284da623a373a83c8dd690985503af945399518f4d77eb517fddb8128ac", "--source-root", "/kaggle/working/trackastra-source", "--checkpoint-zip", "/kaggle/input/datasets/onebitbrain/trackastra-6bba-assets-v1/ctc.zip.bin", "--checkpoint-member", "/kaggle/input/datasets/onebitbrain/trackastra-6bba-assets-v1/model.pt", "--cache", "/kaggle/input/datasets/onebitbrain/trackastra-6bba-cache-v1/reports/g02/fitcache_117/bh9out/cache", "--base", "/kaggle/working/reports/g02/trackastra_apncc_base_cache_v2", "--output", "/kaggle/working/reports/g02/trackastra_full_pool_feature_cache_v2"]}
+2932.3s 79 Traceback (most recent call last):
+2932.3s 80 File "/kaggle/working/scripts/enrich_trackastra_apncc_cache.py", line 381, in <module>
+2932.3s 81 raise SystemExit(main())
+2932.3s 82 ^^^^^^
+2932.3s 83 File "/kaggle/working/scripts/enrich_trackastra_apncc_cache.py", line 374, in main
+2932.3s 84 report = build(args)
+2932.3s 85 ^^^^^^^^^^^
+2932.3s 86 File "/kaggle/working/scripts/enrich_trackastra_apncc_cache.py", line 243, in build
+2932.3s 87 assert_v1_parity(payload, contract)
+2932.3s 88 File "/kaggle/working/scripts/build_trackastra_full_pool_feature_cache.py", line 593, in assert_v1_parity
+2932.4s 89 raise TrackastraFeatureCacheError(
+2932.4s 90 build_trackastra_full_pool_feature_cache.TrackastraFeatureCacheError: v2 numerical parity with v1 failed for row_features
+2933.1s 91 Traceback (most recent call last):
+2933.1s 92 File "/kaggle/src/script.py", line 433, in <module>
+2933.1s 93 raise SystemExit(main())
+2933.1s 94 ^^^^^^
+2933.1s 95 File "/kaggle/src/script.py", line 373, in main
+2933.1s 96 stage_b_seconds = run_stage(
+2933.1s 97 ^^^^^^^^^^
+2933.1s 98 File "/kaggle/src/script.py", line 195, in run_stage
+2933.1s 99 subprocess.run(command, check=True, env=env)
+2933.1s 100 File "/usr/lib/python3.12/subprocess.py", line 571, in run
+2933.1s 101 raise CalledProcessError(retcode, process.args,
+2933.1s 102 subprocess.CalledProcessError: Command '['/usr/bin/python3', '/kaggle/working/scripts/enrich_trackastra_apncc_cache.py', '--contract', '/kaggle/working/reports/g02/trackastra_full_pool_feature_cache_contract_v2.json', '--contract-sha256', 'e060b284da623a373a83c8dd690985503af945399518f4d77eb517fddb8128ac', '--source-root', '/kaggle/working/trackastra-source', '--checkpoint-zip', '/kaggle/input/datasets/onebitbrain/trackastra-6bba-assets-v1/ctc.zip.bin', '--checkpoint-member', '/kaggle/input/datasets/onebitbrain/trackastra-6bba-assets-v1/model.pt', '--cache', '/kaggle/input/datasets/onebitbrain/trackastra-6bba-cache-v1/reports/g02/fitcache_117/bh9out/cache', '--base', '/kaggle/working/reports/g02/trackastra_apncc_base_cache_v2', '--output', '/kaggle/working/reports/g02/trackastra_full_pool_feature_cache_v2']' returned non-zero exit status 1.
+2936.2s 103 /usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+2936.2s 104 cells[i][c] = re.sub('\\\\\|', '|', cell)
+2936.4s 105 /usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+2936.4s 106 text = re.sub(r'_', '\_', text) # Escape underscores in display text
+2937.1s 107 [NbConvertApp] Converting notebook __script__.ipynb to html
+2938.2s 108 [NbConvertApp] Writing 337574 bytes to __results__.html

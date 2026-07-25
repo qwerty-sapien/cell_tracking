@@ -1,0 +1,80 @@
+{
+  "schema": "celltrack-alpha.temporal-rank-oof-graph-gate-contract.v1",
+  "status": "locked",
+  "purpose": "retrospective-surrogate-to-graph-gate-validation",
+  "scope": {
+    "family": "6bba",
+    "source_partition": "fit-train105",
+    "fold_count": 5,
+    "validation12_access": false,
+    "cv57_access": false,
+    "kaggle_action": false,
+    "gpu_action": false,
+    "runpod_action": false,
+    "promotion_authorized": false
+  },
+  "candidate": {
+    "source_report": "reports/g02/selected_graph_temporal_family_rank_gate_v1/report.json",
+    "source_report_sha256": "a4c73a053d4f9d2453b8d0140bb6bf23e0b7921f9bb6ec6fee2430c498efa833",
+    "configuration": {
+      "name": "linear-bg005",
+      "hidden": 0,
+      "background_weight": 0.05,
+      "epochs": 40,
+      "seed_base": 1207,
+      "configuration_index": 0,
+      "family_index": 1
+    },
+    "fold_assignment": "sha256(video identity)[0:8] modulo 5",
+    "threshold_selection": {
+      "fit_partition_only": true,
+      "minimum_fit_accepted": 25,
+      "minimum_fit_precision": 0.95
+    },
+    "proposal_prerequisite": {
+      "minimum_oof_accepted": 25,
+      "minimum_oof_precision": 0.95
+    }
+  },
+  "control": {
+    "mechanism": "banked-geometry-prefiltered-full-3d-ncc-direct-swap",
+    "runtime_contract": "reports/g02/appearance_direct_swap_contract_v1.json",
+    "runtime_contract_sha256": "cee547ed7a82d1bf7f6afe8cbbc3cc9d554181f9e19e87d319a5350863718cf7",
+    "banked_cv57_score": 0.8815220699597315,
+    "banked_cv57_edge_counts": {
+      "edge_tp": 34320,
+      "edge_fp": 2459,
+      "edge_fn": 1948
+    }
+  },
+  "data": {
+    "prepare_report": "reports/g02/selected_graph_temporal_background_prepare_v1/prepare.json",
+    "prepare_report_sha256": "c41bc216d4dfd642126d476a66a3fd9659f54a91dc49463f6b468a301a971d89",
+    "selection_report": "reports/g02/selected_graph_appearance_audit_v1.json",
+    "selection_report_sha256": "0dd616423fa4d1577b6013750193916cb23c75dadb8062af7f7eb43b97007089",
+    "held_video_may_affect": [
+      "its emitted prediction fragment",
+      "its post-hoc official score"
+    ],
+    "held_video_must_not_affect": [
+      "model weights",
+      "feature normalization",
+      "operating threshold",
+      "proposal cap",
+      "candidate configuration"
+    ]
+  },
+  "graph_gate": {
+    "minimum_adjusted_edge_jaccard_delta": 0.005,
+    "require_nonnegative_raw_edge_jaccard_delta": true,
+    "minimum_node_recall_delta": 0.0,
+    "comparison": "candidate-oof-temporal-rank-versus-identically-reconstructed-apncc-on-the-same-held-fit-videos"
+  },
+  "interpretation": {
+    "known_full_cv57_outcome": "PARK",
+    "known_full_cv57_delta_vs_apncc": -0.0014080676020108,
+    "diagnostic_success": "The graph gate returns PARK for the known failed temporal ranker.",
+    "diagnostic_failure": "The graph gate passes despite the known CV57 regression; do not promote and treat fit-to-CV57 mechanism transfer as unresolved.",
+    "next_candidate_rule": "Any new learned association candidate must use a preregistered configuration and held-fit graph gate before CV57."
+  }
+}

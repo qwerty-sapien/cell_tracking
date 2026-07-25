@@ -1,0 +1,88 @@
+{
+  "schema": "celltrack-alpha.model-candidate.v1",
+  "candidate_id": "cgl-temporalunet-tail-rank-head-v1",
+  "model_family": "released-TemporalUNet3D-frozen-core-compact-tail-ranking-edge-head",
+  "literature_evidence": [
+    {
+      "kind": "primary_peer_reviewed",
+      "citation": "Lin, Goyal, Girshick, He, and Dollar. Focal Loss for Dense Object Detection. ICCV 2017.",
+      "url": "https://openaccess.thecvf.com/content_iccv_2017/html/Lin_Focal_Loss_for_ICCV_2017_paper.html",
+      "reported_result": "Focal loss prevented easy background examples from overwhelming dense one-stage detection and enabled RetinaNet to match or exceed contemporary two-stage accuracy.",
+      "task_relevance": "CGL has the same structural imbalance: a small correct set must be ordered above millions of mostly easy background candidates."
+    },
+    {
+      "kind": "primary_peer_reviewed",
+      "citation": "Chen et al. Towards Accurate One-Stage Object Detection With AP-Loss. CVPR 2019.",
+      "url": "https://openaccess.thecvf.com/content_CVPR_2019/html/Chen_Towards_Accurate_One-Stage_Object_Detection_With_AP-Loss_CVPR_2019_paper.html",
+      "reported_result": "Replacing classification with a ranking task and optimizing AP-loss improved multiple one-stage detectors without changing their architectures.",
+      "task_relevance": "The frozen representation already has good average separation but fails at the fixed-FP ranking tail, so a ranking objective is better aligned than BCE."
+    },
+    {
+      "kind": "primary_peer_reviewed",
+      "citation": "Qian, Chen, Li, and Jin. DR Loss: Improving Object Detection by Distributional Ranking. CVPR 2020.",
+      "url": "https://openaccess.thecvf.com/content_CVPR_2020/html/Qian_DR_Loss_Improving_Object_Detection_by_Distributional_Ranking_CVPR_2020_paper.html",
+      "reported_result": "Distributional ranking addressed foreground/background and background-hardness imbalance and improved RetinaNet ResNet-101 COCO mAP from 39.1% to 41.7%.",
+      "task_relevance": "CGL ranks positives against the hard per-video background distribution near the exact FP budget, rather than optimizing average classification."
+    }
+  ],
+  "hypothesis": {
+    "observed_failure_mode": "On the complete fit-train105 44b6 r10/k8 pool, frozen APNCC plus geometry retained only 14/766 known-correct edges (1.83%) at 728/742 FP despite 281/766 correct edges having finite support.",
+    "proposed_mechanism": "Freeze the released TemporalUNet3D core and train a 135-to-32-to-1 compact edge head with a per-video budget-tail pairwise softplus ranking loss, refreshed against learned hard negatives near each video's deployment FP boundary.",
+    "falsification_test": "Five deterministic held-video fit-only folds; select the exact per-video top-k under CG0's FP allocation and measure known-correct retention on every full r10/k8 background pool, with 44b6 first.",
+    "expected_score_improvement_percent": 3.5
+  },
+  "local_fast_fail": {
+    "m5_compatible": true,
+    "projected_peak_memory_gib": 12,
+    "background_reserve_gib": 6,
+    "max_wall_minutes": 360,
+    "training_scope": "fit_only",
+    "holdout_access": false,
+    "swap_growth_allowed": true,
+    "maximum_swap_growth_gib": 1.5,
+    "runtime_rss_ceiling_gib": 12,
+    "early_stop_conditions": [
+      "Reject any input path containing holdout or CV57 before read.",
+      "Stop if process-tree memory exceeds 12 GiB, free memory falls below 25%, swap growth exceeds 1.5 GiB, or wall time reaches 360 minutes.",
+      "DEAD if held-fit 44b6 retention is below 5% at the exact per-video FP budgets.",
+      "PARK if held-fit 44b6 retention is at least 5% but below 15%, or if 6bba retention is below 10%."
+    ],
+    "success_criteria": [
+      "Held-fit 44b6 known-correct retention is at least 15% at the exact per-video FP budgets.",
+      "Held-fit 6bba known-correct retention is at least 10% and every video respects its exact FP budget.",
+      "No validation12, holdout, audit, test, CV57, GPU, Kaggle, RunPod, or graph replay is used."
+    ]
+  },
+  "runtime_guard_amendment": {
+    "authorized_by": "goal_owner",
+    "authorized_on": "2026-07-26",
+    "scope": "CGL D-14 fast-fail only",
+    "prior_maximum_swap_growth_gib": 1.5,
+    "maximum_swap_growth_gib": 1.5,
+    "supersedes_candidate_content_sha256": "d62554218a1c7081327e5de889429907aae4e69b43d8169465db9d8a0d2f7056",
+    "rss_ceiling_gib": 12,
+    "max_wall_minutes": 360,
+    "outputs_deterministic_wrt_swap": true,
+    "unchanged_constraints": [
+      "12 GiB process-tree RSS ceiling",
+      "25% minimum system memory free",
+      "360 minute wall-time ceiling",
+      "fit-only and forbidden-path leakage guards",
+      "no GPU, Kaggle, RunPod, submission, graph replay, or full T-03 training"
+    ]
+  },
+  "implementation_contract": {
+    "core": "hash-pinned released TemporalUNet3D embeddings already present in the exact V45 r10/k8 sparse caches",
+    "core_trainable": false,
+    "head": "Linear(135,32)-GELU-Linear(32,1)",
+    "head_parameter_count": 4385,
+    "objective": "same-video budget-tail pairwise softplus ranking with deterministic hard-negative refresh",
+    "generic_bce_used": false,
+    "fold_count": 5,
+    "seed": 250725,
+    "go_44b6_retention": 0.15,
+    "noncollapse_6bba_retention": 0.10,
+    "park_44b6_retention": 0.05
+  },
+  "decision": "PASS"
+}

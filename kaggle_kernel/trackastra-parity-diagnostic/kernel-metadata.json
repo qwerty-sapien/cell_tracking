@@ -1,0 +1,19 @@
+{
+  "id": "onebitbrain/trackastra-6bba-parity-diag",
+  "title": "trackastra-6bba-parity-diag",
+  "code_file": "trackastra_parity_kernel.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "machine_shape": "NvidiaTeslaT4",
+  "competition_sources": [
+    "biohub-cell-tracking-during-development"
+  ],
+  "dataset_sources": [
+    "onebitbrain/trackastra-6bba-assets-v1",
+    "onebitbrain/trackastra-6bba-cache-v1",
+    "pilkwang/biohub-tracking-support-pack-50ep-v1"
+  ]
+}

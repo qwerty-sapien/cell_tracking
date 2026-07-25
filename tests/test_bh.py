@@ -295,6 +295,55 @@ class DiscoveryTests(unittest.TestCase):
             with self.assertRaisesRegex(BH.RunnerError, "incompatible with locked V45 graph"):
                 BH.open_video(incompatible, expected_frames=3)
 
+    def test_submit_input_contract_reports_all_three_stable_fail_closed_flags(self) -> None:
+        import zarr
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            _make_zarr(root / "test/frame_bad.zarr", shape=(4, 2, 4, 4))
+            missing = root / "test/metadata_bad.zarr"
+            _make_zarr(missing)
+            missing_group = zarr.open_group(str(missing), mode="r+")
+            missing_group.attrs.clear()
+
+            scale_bad = root / "test/scale_bad.zarr"
+            _make_zarr(scale_bad)
+            scale_group = zarr.open_group(str(scale_bad), mode="r+")
+            attrs = _attrs(99.0)
+            attrs["multiscales"][0]["datasets"][0]["coordinateTransformations"][0][
+                "scale"
+            ] = [1.0, 2.0, 0.40625, 0.40625]
+            scale_group.attrs.clear()
+            scale_group.attrs.update(attrs)
+
+            report = BH.submit_input_contract_report(
+                BH.discover_submit_jobs(root),
+                expected_frames=3,
+            )
+            self.assertFalse(report["ok"])
+            self.assertEqual(
+                report["triggered"],
+                [
+                    "frame_count_ne_100",
+                    "missing_quantile_or_multiscale_metadata",
+                    "voxel_scale_ne_locked",
+                ],
+            )
+            self.assertEqual(report["video_count"], 3)
+            self.assertTrue(all(report["fail_closed"].values()))
+
+    def test_submit_input_contract_accepts_locked_released_geometry(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            _make_zarr(root / "test/compatible.zarr")
+            report = BH.submit_input_contract_report(
+                BH.discover_submit_jobs(root),
+                expected_frames=3,
+            )
+            self.assertTrue(report["ok"])
+            self.assertEqual(report["triggered"], [])
+            self.assertFalse(any(report["fail_closed"].values()))
+
     def test_submit_zip_discovers_unregistered_test_id_without_label_access(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             archive = Path(temporary) / "competition.zip"

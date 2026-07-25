@@ -273,7 +273,7 @@ RefineCallback = Callable[[int, tuple[float, float, float]], Sequence[float] | N
 
 
 def _validated_experimental_sweep_provenance(value: Any) -> dict[str, Any]:
-    """Validate the private, offline-only graph-config unlock contract."""
+    """Validate a non-production graph-config unlock contract."""
 
     if not isinstance(value, Mapping):
         raise GraphCalibrationError("non-default graph config requires sweep provenance")
@@ -288,23 +288,29 @@ def _validated_experimental_sweep_provenance(value: Any) -> dict[str, Any]:
     if set(value) != required:
         raise GraphCalibrationError("experimental sweep provenance has missing or unexpected fields")
     varied = value["varied_fields"]
+    purpose = value["purpose"]
+    eligibility = {
+        "offline-cached-cv57-sweep": False,
+        "public-metric-parity-calibration": True,
+    }
     if (
         value["schema"] != EXPERIMENTAL_SWEEP_SCHEMA
         or not isinstance(value["experiment_id"], str)
         or not value["experiment_id"]
-        or value["purpose"] != "offline-cached-cv57-sweep"
+        or purpose not in eligibility
         or not isinstance(varied, list)
         or not varied
         or set(varied) - {
             "candidate_top_k",
             "learned_bonus",
             "raw_distance_weight",
+            "motion_direction",
             "motion_error_weight",
         }
         or value["production_eligible"] is not False
-        or value["submit_eligible"] is not False
+        or value["submit_eligible"] is not eligibility[purpose]
     ):
-        raise GraphCalibrationError("experimental sweep provenance is not offline-only")
+        raise GraphCalibrationError("experimental sweep provenance has invalid eligibility")
     return dict(value)
 
 
@@ -1198,6 +1204,8 @@ def build_adjacent_edges(
         learned_edge_probabilities is None or source_no_link_probabilities is None
     ):
         raise GraphCalibrationError("scored_partial topology requires edge and no-link probabilities")
+    if config.motion_direction not in {"forward", "backward"}:
+        raise GraphCalibrationError("motion_direction must be 'forward' or 'backward'")
     normalized = normalize_nodes(nodes, max_nodes_per_frame=config.max_nodes_per_frame)
     node_by_id = {node.node_id: node for node in normalized}
     probabilities = _coerce_probability_map(learned_edge_probabilities, node_by_id)
@@ -1310,15 +1318,30 @@ def build_adjacent_edges(
         if config.repair_single_parent:
             motion_rows: list[tuple[int, int, float, float, float]] = []
             for source, target, distance in geometric:
-                child_id = outgoing.get(target.node_id)
-                if child_id is None:
-                    predicted = _coord(target)
-                else:
-                    child = node_by_id[child_id]
-                    predicted = _coord(target) + config.velocity_weight * (
-                        _coord(target) - _coord(child)
+                if config.motion_direction == "backward":
+                    child_id = outgoing.get(target.node_id)
+                    if child_id is None:
+                        predicted = _coord(target)
+                    else:
+                        child = node_by_id[child_id]
+                        predicted = _coord(target) + config.velocity_weight * (
+                            _coord(target) - _coord(child)
+                        )
+                    motion_error = physical_distance(
+                        predicted, source, config.scale_zyx
                     )
-                motion_error = physical_distance(predicted, source, config.scale_zyx)
+                else:
+                    parent_id = incoming.get(source.node_id)
+                    if parent_id is None:
+                        predicted = _coord(source)
+                    else:
+                        parent = node_by_id[parent_id]
+                        predicted = _coord(source) + config.velocity_weight * (
+                            _coord(source) - _coord(parent)
+                        )
+                    motion_error = physical_distance(
+                        predicted, target, config.scale_zyx
+                    )
                 probability = probabilities.get((source.node_id, target.node_id), 0.0)
                 cost = _edge_cost(
                     distance,

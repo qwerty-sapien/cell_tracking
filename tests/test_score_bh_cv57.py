@@ -14,6 +14,52 @@ import score_bh_cv57  # noqa: E402
 
 
 class CV57ScoreTests(unittest.TestCase):
+    def test_kaggle_calibration_ledger_has_three_provenanced_pairs(self) -> None:
+        report = json.loads(
+            (ROOT / "reports/g02/scorer_parity_v1.json").read_text(encoding="utf-8")
+        )
+        ledger = report["calibration_pair_ledger"]
+        self.assertEqual(ledger["status"], "observed_kaggle_pairs")
+        self.assertEqual(ledger["pair_count"], 3)
+        self.assertEqual(
+            {pair["submission_ref"] for pair in ledger["pairs"]},
+            {54910497, 54921344, 54923074},
+        )
+        self.assertEqual(
+            {
+                pair["configuration"]["motion_error_weight"]: pair["site_score"]
+                for pair in ledger["pairs"]
+            },
+            {0.0: 0.860, 0.25: 0.877, 2.0: 0.878},
+        )
+        for pair in ledger["pairs"]:
+            self.assertFalse(pair["configuration"]["division_enabled"])
+            self.assertEqual(pair["configuration"]["motion_direction"], "backward")
+            self.assertEqual(pair["submission_status"], "COMPLETE")
+            self.assertIsNone(pair["error_description"])
+            self.assertTrue(pair["kernel_output"]["bhdiag_ok"])
+            self.assertTrue(pair["kernel_output"]["input_contract_ok"])
+            self.assertFalse(any(pair["kernel_output"]["fail_closed"].values()))
+            self.assertAlmostEqual(
+                pair["site_score"] - pair["local_score"],
+                pair["residual_site_minus_local"],
+                places=15,
+            )
+        calibration = ledger["calibration"]
+        self.assertEqual(calibration["fit_status"], "provisional_coarse_forecast_only")
+        self.assertAlmostEqual(
+            calibration["affine_ols"]["slope"],
+            0.7193024334975513,
+            places=15,
+        )
+        self.assertTrue(calibration["rank_transfer"]["near_tie_sign_reversal"])
+        self.assertEqual(
+            calibration["operational_policy"]["heuristic_local_delta_resolution_floor"],
+            0.004,
+        )
+        self.assertEqual(calibration["operational_policy"]["p0_verdict"], "FAIL/HALT")
+        self.assertEqual(calibration["operational_policy"]["p1_status"], "locked")
+
     def test_exact_selection_is_fold0_minus_only_terminal_exclusion(self) -> None:
         split_path = ROOT / "reports/g02/grouped_3fold_audit20_v1.json"
         split = json.loads(split_path.read_text(encoding="utf-8"))

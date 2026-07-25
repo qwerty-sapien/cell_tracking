@@ -1,0 +1,96 @@
+{
+  "schema": "celltrack-alpha.point-context-oof-graph-gate-contract.v1",
+  "status": "locked",
+  "purpose": "prospective-6bba-point-context-full-pool-graph-screen",
+  "scope": {
+    "family": "6bba",
+    "source_partition": "fit-train105",
+    "eligible_video_count": 69,
+    "outer_fold_count": 5,
+    "outer_fold_assignment": "sha256(video identity)[0:8] modulo 5",
+    "calibration_fold": "(outer_held_fold + 1) modulo 5",
+    "fit_folds": "the three folds other than outer held and calibration",
+    "validation12_access": false,
+    "cv57_access": false,
+    "promotion_authorized": false,
+    "kaggle_action": false,
+    "gpu_action": false,
+    "runpod_action": false
+  },
+  "candidate": {
+    "manifest": "reports/g02/model_candidate_compact_point_context_6bba_oof_v1.json",
+    "manifest_sha256": "2701c18ef3d6f3b0e069cc40d500b10b45dc0ab6d6e98b3fd376d2bc8051ca22",
+    "pilot_report": "reports/g02/compact_point_context_pilot_v1/report.json",
+    "pilot_report_sha256": "c94f42f10b87d49273fceac843fdc975b1144bf5214e46884329193e95f40620",
+    "pilot_6bba_validation": {
+      "correct_rescues": 182,
+      "harmful_swaps": 2,
+      "precision": 0.9891304347826086,
+      "control_utility_gain": 34
+    },
+    "architecture": {
+      "feature_count": 48,
+      "width": 96,
+      "heads": 4,
+      "layers": 2,
+      "dropout": 0.1,
+      "parental_softmax": true,
+      "explicit_no_parent": true
+    },
+    "optimization": {
+      "learning_rate": 0.0003,
+      "weight_decay": 0.0001,
+      "background_weight": 0.05,
+      "batch_size_windows": 64,
+      "max_steps": 500,
+      "seed_base": 240824
+    },
+    "threshold_selection": {
+      "calibration_partition_only": true,
+      "minimum_calibration_accepted": 25,
+      "minimum_calibration_precision": 0.95
+    },
+    "proposal_prerequisite": {
+      "minimum_held_accepted": 25,
+      "minimum_held_precision": 0.95
+    },
+    "deployment_pool": {
+      "source": "all selected-graph conflict groups emitted by appearance_swap.proposal_feature_groups",
+      "geometry_prefilter": "banked APNCC relative-geometry gate and threshold",
+      "sampled_background_used_for_inference": false,
+      "retain_challenger_and_all_conflict_ids": true,
+      "limiting_token": "lowest pair-NCC-margin row among a challenger's conflicts",
+      "selection": "parental probability threshold, node-disjoint greedy order, then banked APNCC cap"
+    }
+  },
+  "data": {
+    "prepare_report": "reports/g02/selected_graph_temporal_background_prepare_v1/prepare.json",
+    "prepare_report_sha256": "c41bc216d4dfd642126d476a66a3fd9659f54a91dc49463f6b468a301a971d89",
+    "data_audit": "reports/g02/compact_point_context_data_audit_v2.json",
+    "data_audit_sha256": "83ddb9e5784c3a9365b6d52d63234564c69e3948ea35928dc6c459adc03212aa",
+    "fit_labels": "prepared labeled proposals plus sampled background, fit/calibration partitions only",
+    "held_graph_inference": "full deployment proposal pool, no sampled-background proxy"
+  },
+  "control": {
+    "name": "APNCC direct swap",
+    "runtime_contract": "reports/g02/appearance_direct_swap_contract_v1.json",
+    "runtime_contract_sha256": "cee547ed7a82d1bf7f6afe8cbbc3cc9d554181f9e19e87d319a5350863718cf7",
+    "frozen_cv57_reference": 0.8815220699597315
+  },
+  "graph_gate": {
+    "minimum_adjusted_edge_jaccard_delta": 0.005,
+    "require_nonnegative_raw_edge_jaccard_delta": true,
+    "minimum_node_recall_delta": 0.0,
+    "require_observation_distinct": true,
+    "next_action_on_pass": "validation12-only confirmation; CV57 remains separately gated",
+    "next_action_on_fail": "PARK without validation12 or CV57"
+  },
+  "execution": {
+    "fold_checkpoint_schema": "celltrack-alpha.point-context-oof-fold-checkpoint.v1",
+    "checkpoint_unit": "one complete fit plus calibration plus held-proposal outer fold",
+    "publication": "same-filesystem atomic directory rename after model and evidence fsync",
+    "resume_policy": "accept only complete checkpoints matching contract, implementation, partition, model, artifact, and metric identities",
+    "unpublished_stage_policy": "ignore as non-authoritative and recompute the fold",
+    "graph_resume": false
+  }
+}

@@ -22,9 +22,49 @@ DEFAULT_SUPPORT = ROOT / "external" / "Tracking_Support"
 DEFAULT_SPLIT = ROOT / "reports" / "g02" / "grouped_3fold_audit20_v1.json"
 
 SOURCE_LIMIT = 1_000_000
+SUBMISSION_DEADLINE_MINUTES = 360
 KERNEL_SLUG = "bhv45-submit"
 KERNEL_REF = f"onebitbrain/{KERNEL_SLUG}"
 CV57_KERNEL_SLUG = "bhv45-cv57"
+APPEARANCE_SUBMIT_KERNEL_SLUG = "bhap-submit"
+APPEARANCE_CV57_KERNEL_SLUG = "bhap-cv57"
+P0_CALIBRATIONS = {
+    "p0-c0": {
+        "kernel_slug": "bhp0-c0",
+        "motion_direction": "backward",
+        "motion_error_weight": 0.0,
+        "learned_bonus": 1.0,
+        "local_cv57_score": 0.8483945155545333,
+    },
+    "p0-c2": {
+        "kernel_slug": "bhp0-c2",
+        "motion_direction": "backward",
+        "motion_error_weight": 2.0,
+        "learned_bonus": 1.0,
+        "local_cv57_score": 0.8721499474601118,
+    },
+    "p0-lb4": {
+        "kernel_slug": "bhp0-lb4",
+        "motion_direction": "forward",
+        "motion_error_weight": 1.0,
+        "learned_bonus": 4.0,
+        "local_cv57_score": 0.8720910462365732,
+    },
+    "p0-lb8": {
+        "kernel_slug": "bhp0-lb8",
+        "motion_direction": "forward",
+        "motion_error_weight": 1.0,
+        "learned_bonus": 8.0,
+        "local_cv57_score": 0.8670102112352311,
+    },
+    "p0-lb16": {
+        "kernel_slug": "bhp0-lb16",
+        "motion_direction": "forward",
+        "motion_error_weight": 1.0,
+        "learned_bonus": 16.0,
+        "local_cv57_score": 0.8479018413756242,
+    },
+}
 KAGGLE_ACCELERATOR_ID = "NvidiaTeslaT4"
 RELEASED_GRAPH_VARIANT = "v45-motion-lazyrefine-locked"
 SUPPORT_DATASET_SLUG = "biohub-tracking-support-pack-50ep-v1"
@@ -77,6 +117,10 @@ CV57_AUXILIARY_CHECKPOINT = "reports/g02/v45f4.pt"
 CV57_AUXILIARY_CHECKPOINT_SHA256 = "1cff90475b819b5652310ccb73ba57e1dc20069885962a06a5e10a6060c04473"
 CV57_EXCLUDED_IDENTITY = "train:6bba_f4ae811c"
 CV57_SELECTION_SHA256 = "58d090bc83702065b3bc8bc035c5d8e8911519c71a8d3a58f995e5abaf3099f1"
+APPEARANCE_CONTRACT = "reports/g02/appearance_direct_swap_contract_v1.json"
+APPEARANCE_CONTRACT_SHA256 = "cee547ed7a82d1bf7f6afe8cbbc3cc9d554181f9e19e87d319a5350863718cf7"
+APPEARANCE_GATE = "reports/g02/selected_graph_background_sparse_w050_v1/gate.pt"
+APPEARANCE_GATE_SHA256 = "04a4cec214b5848363af08ab9a092f5ac8cc077b83f946ea81fc986d36e91ed1"
 
 DEPENDENCIES = (
     ("torch", "torch", "2.2", "3", ">=2.2,<3"),
@@ -303,6 +347,28 @@ def submit_run_spec() -> dict[str, Any]:
     }
 
 
+def p0_calibration_run_spec(experiment_id: str) -> dict[str, Any]:
+    if experiment_id not in P0_CALIBRATIONS:
+        raise PackageError(f"unsupported P0 calibration: {experiment_id!r}")
+    calibration = P0_CALIBRATIONS[experiment_id]
+    run = submit_run_spec()
+    run["profile"] = "p0-public-calibration"
+    run["p0_calibration"] = {
+        "schema": "celltrack-alpha.p0-public-calibration.v1",
+        "experiment_id": experiment_id,
+        "purpose": "public-metric-parity-calibration",
+        "motion_direction": calibration["motion_direction"],
+        "motion_error_weight": calibration["motion_error_weight"],
+        "learned_bonus": calibration["learned_bonus"],
+        "local_cv57_score": calibration["local_cv57_score"],
+        "baseline_submission_id": 54910497,
+        "baseline_motion_error_weight": 0.25,
+        "production_eligible": False,
+        "submit_eligible": True,
+    }
+    return run
+
+
 def edge_artifact_run_spec() -> dict[str, str]:
     return {
         "path": CV57_EDGE_ARTIFACT,
@@ -330,12 +396,43 @@ def cv57_run_spec(split_path: Path = DEFAULT_SPLIT) -> dict[str, Any]:
     }
 
 
+def appearance_run_spec(
+    mode: str,
+    split_path: Path = DEFAULT_SPLIT,
+) -> dict[str, Any]:
+    """Return the sole hash-pinned appearance probe contract."""
+
+    if mode == "submit":
+        run = submit_run_spec()
+        run["profile"] = "appearance-direct-swap-submit"
+    elif mode == "cv57":
+        run = cv57_run_spec(split_path)
+        run["profile"] = "appearance-direct-swap-cv57"
+    else:
+        raise PackageError(f"invalid appearance run mode: {mode!r}")
+    run["appearance_swap"] = {
+        "contract_path": APPEARANCE_CONTRACT,
+        "contract_sha256": APPEARANCE_CONTRACT_SHA256,
+        "geometry_gate_path": APPEARANCE_GATE,
+        "geometry_gate_sha256": APPEARANCE_GATE_SHA256,
+        "local_score": 0.8815220699597315,
+        "edge_tp": 34320,
+        "edge_fp": 2459,
+        "edge_fn": 1948,
+        "production_eligible": False,
+        "submit_eligible": True,
+    }
+    return run
+
+
 def validate_run_spec(value: Mapping[str, Any]) -> dict[str, Any]:
     run = json.loads(canonical_json(value).decode("ascii"))
     mode = run.get("mode")
     split = run.get("split")
     datasets = run.get("datasets")
     edge = run.get("edge_artifact")
+    calibration = run.get("p0_calibration")
+    appearance = run.get("appearance_swap")
     if mode not in {"cv", "submit"} or split not in {"train", "test"}:
         raise PackageError("run specification has an invalid mode or split")
     if (
@@ -363,6 +460,44 @@ def validate_run_spec(value: Mapping[str, Any]) -> dict[str, Any]:
             raise PackageError("CV run specification has an invalid train selection")
     if not isinstance(edge, Mapping) or dict(edge) != edge_artifact_run_spec():
         raise PackageError("run specification must use the pinned conflict edge artifact")
+    if calibration is not None:
+        experiment_id = calibration.get("experiment_id") if isinstance(calibration, Mapping) else None
+        expected = (
+            p0_calibration_run_spec(experiment_id)["p0_calibration"]
+            if experiment_id in P0_CALIBRATIONS
+            else None
+        )
+        if (
+            mode != "submit"
+            or run.get("profile") != "p0-public-calibration"
+            or not isinstance(calibration, Mapping)
+            or dict(calibration) != expected
+        ):
+            raise PackageError("run specification has an invalid P0 calibration contract")
+    elif run.get("profile") == "p0-public-calibration":
+        raise PackageError("P0 calibration profile is missing its calibration contract")
+    if appearance is not None:
+        expected = appearance_run_spec(
+            "submit" if mode == "submit" else "cv57"
+        )["appearance_swap"]
+        expected_profile = (
+            "appearance-direct-swap-submit"
+            if mode == "submit"
+            else "appearance-direct-swap-cv57"
+        )
+        if (
+            calibration is not None
+            or run.get("profile") != expected_profile
+            or not isinstance(appearance, Mapping)
+            or dict(appearance) != expected
+        ):
+            raise PackageError(
+                "run specification has an invalid appearance-swap contract"
+            )
+    elif str(run.get("profile", "")).startswith("appearance-direct-swap"):
+        raise PackageError(
+            "appearance-swap profile is missing its contract"
+        )
     for key in ("path", "auxiliary_checkpoint_path"):
         path = edge.get(key)
         if not isinstance(path, str) or Path(path).is_absolute() or ".." in Path(path).parts:
@@ -417,7 +552,7 @@ def runner_command(
         "--view-batch-size",
         str(view_batch_size),
         "--deadline-min",
-        "120",
+        str(SUBMISSION_DEADLINE_MINUTES),
         "--source-budget-bytes",
         "999999",
         "--graph-variant",
@@ -433,6 +568,30 @@ def runner_command(
                 str(source / edge["path"]),
                 "--edge-artifact-sha256",
                 edge["sha256"],
+            )
+        )
+    calibration = run.get("p0_calibration")
+    if calibration is not None:
+        command.extend(
+            (
+                "--p0-experiment-id",
+                calibration["experiment_id"],
+                "--p0-motion-direction",
+                calibration["motion_direction"],
+                "--p0-motion-error-weight",
+                str(calibration["motion_error_weight"]),
+                "--p0-learned-bonus",
+                str(calibration["learned_bonus"]),
+            )
+        )
+    appearance = run.get("appearance_swap")
+    if appearance is not None:
+        command.extend(
+            (
+                "--appearance-swap-contract",
+                str(source / appearance["contract_path"]),
+                "--appearance-swap-contract-sha256",
+                appearance["contract_sha256"],
             )
         )
     if score_gate is not None:
@@ -466,7 +625,7 @@ ATTACHMENT = HERE / "bh45att.json"
 SOURCE_ARCHIVE = HERE / "bh45src.zip"
 SOURCE_ROOT = WORK / "bh45src"
 DIAGNOSTIC = WORK / "bhdiag.json"
-DEADLINE_SECONDS = 120 * 60
+DEADLINE_SECONDS = 360 * 60
 KSHAPE = "NvidiaTeslaT4"
 RELEASED_GRAPH_VARIANT = "v45-motion-lazyrefine-locked"
 GPU_ENV_KEYS = (
@@ -474,6 +633,13 @@ GPU_ENV_KEYS = (
     "NVIDIA_DRIVER_CAPABILITIES", "NVIDIA_REQUIRE_CUDA",
 )
 GPU_DIAG = None
+P0_CALIBRATIONS = {
+    "p0-c0": ("backward", 0.0, 1.0, 0.8483945155545333),
+    "p0-c2": ("backward", 2.0, 1.0, 0.8721499474601118),
+    "p0-lb4": ("forward", 1.0, 4.0, 0.8720910462365732),
+    "p0-lb8": ("forward", 1.0, 8.0, 0.8670102112352311),
+    "p0-lb16": ("forward", 1.0, 16.0, 0.8479018413756242),
+}
 DEPENDENCIES = (
     ("torch", "torch", "2.2", "3", ">=2.2,<3"),
     ("numpy", "numpy", "1.26", "3", ">=1.26,<3"),
@@ -862,6 +1028,58 @@ def _runner_command(competition, support, package_manifest, view_batch_size, sco
         raise LaunchError("package run specification is not released-graph legacy-topology D4-8")
     if run.get("division_enabled") is not False:
         raise LaunchError("package run specification attempted to enable divisions")
+    calibration = run.get("p0_calibration")
+    if calibration is not None:
+        experiment_id = calibration.get("experiment_id") if isinstance(calibration, dict) else None
+        expected = P0_CALIBRATIONS.get(experiment_id)
+        if (
+            run.get("profile") != "p0-public-calibration"
+            or expected is None
+            or set(calibration) != {
+                "schema", "experiment_id", "purpose", "motion_direction",
+                "motion_error_weight", "learned_bonus",
+                "local_cv57_score", "baseline_submission_id",
+                "baseline_motion_error_weight", "production_eligible", "submit_eligible",
+            }
+            or calibration.get("schema") != "celltrack-alpha.p0-public-calibration.v1"
+            or calibration.get("purpose") != "public-metric-parity-calibration"
+            or calibration.get("motion_direction") != expected[0]
+            or calibration.get("motion_error_weight") != expected[1]
+            or calibration.get("learned_bonus") != expected[2]
+            or calibration.get("local_cv57_score") != expected[3]
+            or calibration.get("baseline_submission_id") != 54910497
+            or calibration.get("baseline_motion_error_weight") != 0.25
+            or calibration.get("production_eligible") is not False
+            or calibration.get("submit_eligible") is not True
+        ):
+            raise LaunchError("package P0 calibration contract is invalid")
+    appearance = run.get("appearance_swap")
+    if appearance is not None:
+        expected_appearance = {
+            "contract_path": "reports/g02/appearance_direct_swap_contract_v1.json",
+            "contract_sha256": "cee547ed7a82d1bf7f6afe8cbbc3cc9d554181f9e19e87d319a5350863718cf7",
+            "geometry_gate_path": "reports/g02/selected_graph_background_sparse_w050_v1/gate.pt",
+            "geometry_gate_sha256": "04a4cec214b5848363af08ab9a092f5ac8cc077b83f946ea81fc986d36e91ed1",
+            "local_score": 0.8815220699597315,
+            "edge_tp": 34320,
+            "edge_fp": 2459,
+            "edge_fn": 1948,
+            "production_eligible": False,
+            "submit_eligible": True,
+        }
+        expected_profile = (
+            "appearance-direct-swap-submit"
+            if run.get("mode") == "submit"
+            else "appearance-direct-swap-cv57"
+        )
+        if (
+            calibration is not None
+            or run.get("profile") != expected_profile
+            or appearance != expected_appearance
+            or view_batch_size != 1
+            or score_gate is not None
+        ):
+            raise LaunchError("package appearance-swap contract is invalid")
     datasets = run.get("datasets")
     if datasets is not None and (not isinstance(datasets, list) or not datasets):
         raise LaunchError("package run specification datasets are invalid")
@@ -871,7 +1089,7 @@ def _runner_command(competition, support, package_manifest, view_batch_size, sco
         "--support-root", str(support), "--out-dir", str(WORK), "--output-file", str(run.get("output_file")),
         "--mode", str(run["mode"]), "--split", str(run["split"]),
         "--devices", "cuda:0,cuda:1", "--pair-batch-size", "1",
-        "--view-batch-size", str(view_batch_size), "--deadline-min", "120",
+        "--view-batch-size", str(view_batch_size), "--deadline-min", "360",
         "--source-budget-bytes", "999999", "--graph-variant", str(run["graph_variant"]),
     ]
     if datasets is not None:
@@ -884,6 +1102,20 @@ def _runner_command(competition, support, package_manifest, view_batch_size, sco
             "--edge-artifact", str(SOURCE_ROOT / str(edge.get("path"))),
             "--edge-artifact-sha256", str(edge.get("sha256")),
         ))
+    if calibration is not None:
+        command.extend((
+            "--p0-experiment-id", str(calibration["experiment_id"]),
+            "--p0-motion-direction", str(calibration["motion_direction"]),
+            "--p0-motion-error-weight", str(calibration["motion_error_weight"]),
+            "--p0-learned-bonus", str(calibration["learned_bonus"]),
+        ))
+    if appearance is not None:
+        command.extend((
+            "--appearance-swap-contract",
+            str(SOURCE_ROOT / str(appearance["contract_path"])),
+            "--appearance-swap-contract-sha256",
+            str(appearance["contract_sha256"]),
+        ))
     if score_gate is not None:
         command.extend(("--accelerated-score-gate", str(score_gate)))
     return command
@@ -892,7 +1124,7 @@ def _runner_command(competition, support, package_manifest, view_batch_size, sco
 def _run_with_deadline(command, environment, deadline):
     remaining = deadline - time.monotonic()
     if remaining <= 0:
-        raise LaunchError("120-minute global deadline expired before V45 launch")
+        raise LaunchError("360-minute global deadline expired before V45 launch")
     process = subprocess.Popen(command, env=environment, start_new_session=True)
     try:
         returncode = process.wait(timeout=remaining)
@@ -903,7 +1135,7 @@ def _run_with_deadline(command, environment, deadline):
         except subprocess.TimeoutExpired:
             os.killpg(process.pid, signal.SIGKILL)
             process.wait()
-        raise LaunchError("120-minute global deadline reached; V45 process group terminated") from exc
+        raise LaunchError("360-minute global deadline reached; V45 process group terminated") from exc
     if returncode != 0:
         raise LaunchError("scripts/run_bh.py failed with exit code %s" % returncode)
 
@@ -946,11 +1178,17 @@ def main(argv=None):
         }
         _write_diagnostic(diagnostics)
         _run_with_deadline(command, environment, deadline)
+        input_contract = WORK / "input_contract.json"
+        if input_contract.is_file():
+            diagnostics["input_contract"] = _load(input_contract)
         diagnostics.update({"ok": True, "elapsed_seconds": time.monotonic() - started})
         _write_diagnostic(diagnostics)
         return 0
     except Exception as exc:
         diagnostics["gpu_attestation"] = GPU_DIAG
+        input_contract = WORK / "input_contract.json"
+        if input_contract.is_file():
+            diagnostics["input_contract"] = _diagnostic_call(lambda: _load(input_contract))
         diagnostics["error"] = "%s: %s" % (type(exc).__name__, exc)
         diagnostics["elapsed_seconds"] = time.monotonic() - started
         _write_diagnostic(diagnostics)
@@ -1082,6 +1320,11 @@ def _archive_members(
 ) -> dict[str, bytes]:
     run = validate_run_spec(run_spec or submit_run_spec())
     source_paths = SOURCE_PATHS + (EDGE_SOURCE_PATHS if run["edge_artifact"] is not None else ())
+    if run.get("appearance_swap") is not None:
+        source_paths += (
+            "src/celltrack_alpha/relative_geometry_gate.py",
+            "src/celltrack_alpha/appearance_swap.py",
+        )
     missing = [path for path in source_paths if not (repo_root / path).is_file()]
     if missing:
         raise PackageError(f"runner source files are missing: {missing}")
@@ -1103,6 +1346,19 @@ def _archive_members(
             source = repo_root / relative
             if not source.is_file() or sha256_file(source) != edge[sha_key]:
                 raise PackageError(f"pinned CV edge input identity mismatch: {relative}")
+            members[relative] = source.read_bytes()
+    appearance = run.get("appearance_swap")
+    if appearance is not None:
+        for path_key, sha_key in (
+            ("contract_path", "contract_sha256"),
+            ("geometry_gate_path", "geometry_gate_sha256"),
+        ):
+            relative = appearance[path_key]
+            source = repo_root / relative
+            if not source.is_file() or sha256_file(source) != appearance[sha_key]:
+                raise PackageError(
+                    f"pinned appearance input identity mismatch: {relative}"
+                )
             members[relative] = source.read_bytes()
     return members
 
@@ -1171,7 +1427,7 @@ def _manifest_payload(
             "archive": dict(archive_identity),
             "runtime": {
                 "runner": "scripts/run_bh.py",
-                "deadline_minutes": 120,
+                "deadline_minutes": SUBMISSION_DEADLINE_MINUTES,
                 "devices": ["cuda:0", "cuda:1"],
                 "gpu_count": 2,
                 "machine_shape": KAGGLE_ACCELERATOR_ID,
@@ -1227,6 +1483,18 @@ def build_package(
         kernel_slug = CV57_KERNEL_SLUG
         run_spec = cv57_run_spec(split_manifest)
         default_output = repo_root / "kaggle_kernel/bhcv57pkg"
+    elif profile in P0_CALIBRATIONS:
+        kernel_slug = P0_CALIBRATIONS[profile]["kernel_slug"]
+        run_spec = p0_calibration_run_spec(profile)
+        default_output = repo_root / "kaggle_kernel" / kernel_slug
+    elif profile == "appearance-submit":
+        kernel_slug = APPEARANCE_SUBMIT_KERNEL_SLUG
+        run_spec = appearance_run_spec("submit", split_manifest)
+        default_output = repo_root / "kaggle_kernel" / kernel_slug
+    elif profile == "appearance-cv57":
+        kernel_slug = APPEARANCE_CV57_KERNEL_SLUG
+        run_spec = appearance_run_spec("cv57", split_manifest)
+        default_output = repo_root / "kaggle_kernel" / kernel_slug
     else:
         raise PackageError(f"unsupported package profile: {profile!r}")
     output_dir = (output_dir or default_output).resolve()
@@ -1308,7 +1576,17 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--registry", type=Path, default=DEFAULT_REGISTRY)
     parser.add_argument("--support-root", type=Path, default=DEFAULT_SUPPORT)
     parser.add_argument("--split-manifest", type=Path, default=DEFAULT_SPLIT)
-    parser.add_argument("--profile", choices=("submit", "cv57"), default="submit")
+    parser.add_argument(
+        "--profile",
+        choices=(
+            "submit",
+            "cv57",
+            *P0_CALIBRATIONS,
+            "appearance-submit",
+            "appearance-cv57",
+        ),
+        default="submit",
+    )
     args = parser.parse_args(argv)
     report = build_package(
         ROOT,

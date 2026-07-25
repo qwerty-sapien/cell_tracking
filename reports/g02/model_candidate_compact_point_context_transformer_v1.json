@@ -1,0 +1,44 @@
+{
+  "schema": "celltrack-alpha.model-candidate.v1",
+  "candidate_id": "compact-point-context-transformer-v1",
+  "model_family": "Trackastra-style compact point-context transformer",
+  "literature_evidence": [
+    {
+      "kind": "primary_peer_reviewed",
+      "citation": "Gallusser B, Weigert M. Trackastra: Transformer-based cell tracking for live-cell microscopy. ECCV 2024.",
+      "url": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/09819.pdf",
+      "reported_result": "Temporal windows of 3 to 6 performed well; parental softmax reduced bacteria AOGM by about 20%, and shallow-feature Trackastra reduced AOGM about 70% versus the cited state of the art.",
+      "task_relevance": "The measured fit-only failure is ranking correct parents under dense competition; temporal all-detection attention and an explicit no-parent parental softmax directly model that failure without a volumetric encoder."
+    }
+  ],
+  "hypothesis": {
+    "observed_failure_mode": "Pairwise and temporal MLP gates either over-abstain or lose precision across videos and families despite accessible correct edges.",
+    "proposed_mechanism": "A three-frame compact transformer over detection tokens learns relative competition and motion context, while parental softmax provides an explicit no-parent choice.",
+    "falsification_test": "On the frozen 105/12 fit-only split, reject unless grouped OOF and both-family validation precision reach 0.95 and capped validation utility exceeds the exact pair-NCC control by at least 5.",
+    "expected_score_improvement_percent": 3.5
+  },
+  "local_fast_fail": {
+    "m5_compatible": true,
+    "projected_peak_memory_gib": 6,
+    "background_reserve_gib": 6,
+    "max_wall_minutes": 90,
+    "training_scope": "fit_only",
+    "holdout_access": false,
+    "swap_growth_allowed": false,
+    "early_stop_conditions": [
+      "Stop on any memory, free-memory, or swap guard violation.",
+      "Stop if capped validation utility has not improved after 500 optimizer steps.",
+      "Stop if overall or either-family validation precision is below 0.93.",
+      "Stop if the measured continuation cannot finish inside seven hours."
+    ],
+    "success_criteria": [
+      "Grouped out-of-fold precision is at least 0.95.",
+      "Validation precision is at least 0.95 for both 44b6 and 6bba.",
+      "Validation capped utility is at least 5 above the exact pair-NCC control.",
+      "Utility change is non-negative on both families.",
+      "Artifact provenance proves fit117-only access and reproducibility."
+    ]
+  },
+  "decision": "PASS",
+  "decision_basis": "Coordinator pre-training gate review: primary peer-reviewed mechanism evidence, fit-only 105/12 falsification, 6 GiB projected peak, 90-minute pilot cap, explicit no-holdout/no-swap contract, and preregistered precision/utility failure gates all satisfy compute_governance_v1. PASS authorizes only the guarded local fit-only fast-fail; it does not authorize CV57, Kaggle, GPU, or RunPod work."
+}

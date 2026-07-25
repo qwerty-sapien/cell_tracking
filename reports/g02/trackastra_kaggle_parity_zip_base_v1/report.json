@@ -1,0 +1,59 @@
+{
+  "aggregate": {
+    "bytes": 1576201,
+    "proposal_count": 3605,
+    "resumed_video_count": 0,
+    "row_count": 5409,
+    "transition_count": 99,
+    "video_count": 1
+  },
+  "contract": {
+    "path": "reports/g02/trackastra_full_pool_feature_cache_contract_v2.json",
+    "sha256": "e060b284da623a373a83c8dd690985503af945399518f4d77eb517fddb8128ac"
+  },
+  "execution": {
+    "device": "cpu",
+    "elapsed_seconds": 77.02220549993217,
+    "gpu_action": false,
+    "kaggle_action": false,
+    "label_access": false,
+    "runpod_action": false,
+    "training": false
+  },
+  "feature_count": 48,
+  "files": [
+    {
+      "bytes": 1576201,
+      "contract_sha256": "e060b284da623a373a83c8dd690985503af945399518f4d77eb517fddb8128ac",
+      "feature_path": "reports/g02/trackastra_kaggle_parity_base_v1/videos/train__6bba_edf14583.pt",
+      "feature_sha256": "f66a1898edccb40b4d85e6e857adb8332ff5d98a85ea69e8000cc8c3eadadb13",
+      "identity": "train:6bba_edf14583",
+      "implementation_sha256": "e4032384980751ede295ec9728c2f31356bfa028a591d0495733b5be63ccdb09",
+      "proposal_count": 3605,
+      "row_count": 5409,
+      "schema": "celltrack-alpha.trackastra-apncc-base-checkpoint.v2",
+      "transition_count": 99
+    }
+  ],
+  "implementation_sha256": "e4032384980751ede295ec9728c2f31356bfa028a591d0495733b5be63ccdb09",
+  "model_stack": {
+    "raw_image_access": true,
+    "trackastra_loaded": false,
+    "v45_loaded": true
+  },
+  "schema": "celltrack-alpha.trackastra-apncc-base-cache.v2",
+  "scope": {
+    "cv57_access": false,
+    "expected_video_count": 69,
+    "family": "6bba",
+    "fit_train105_only": true,
+    "gpu_action": false,
+    "kaggle_action": false,
+    "label_access": false,
+    "promotion_authorized": false,
+    "runpod_action": false,
+    "training": false,
+    "validation12_access": false
+  },
+  "verdict": "PASS_APNCC_BASE_CACHE"
+}

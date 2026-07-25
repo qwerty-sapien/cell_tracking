@@ -75,8 +75,21 @@ Evaluate the three specialists out of fold. Train the router only from image sta
 
 Cache backbone outputs and maximal sparse graphs; use 10/30/100 percent successive halving. Before every paid trial, record a runtime/spend prediction and reject it if its maximum charge could exceed a cap. Run at most two paid trials concurrently, spend at most `$8/day` and `$80/month` on development, and retain `$2/day` and `$20/month` for final validation. Show a public four-clip time <= seven minutes and a measured 199-video/final-workload proxy projected <= six hours including preprocessing, inference, solve, and CSV generation. Manifest every checkpoint/source/fold/package/runtime/score/spend identity.
 
-RunPod also has a `$20` campaign sub-cap with `$5–10` ordinarily rationed for training,
-and every launch requires explicit human approval after its maximum cost is recorded.
+Initial training is capped at 30 cumulative Kaggle T4 GPU-hours per model; archive any
+model that cannot become viable inside that ceiling. RunPod has a `$10` total campaign
+cap and is considered only after an accepted score reaches `0.89`, for a
+higher-quality-GPU-dependent optimization with literature or theoretical support for an
+expected score improvement greater than `5%` (ordinary hard improvement gate `3.5%`).
+Every launch still requires explicit human approval after its maximum cost is recorded.
+
+Before any new learned candidate is implemented or trained, require a literature-gate
+manifest with primary peer-reviewed evidence, a measured fit-only bottleneck-to-mechanism
+mapping, expected improvement of at least `3.5%`, and explicit falsification, stop, and
+promotion criteria. Prefer lightweight candidates that can fail quickly on the M5.
+Maintain at most one fit-only local training lane in parallel with eligible external
+work: cap the process tree at `18 GiB`, reserve at least `6 GiB` for background work,
+forbid holdout access and swap growth, and end an unattended stage within seven hours.
+Passing this local funnel does not relax the Kaggle or RunPod gates.
 
 ### R-07 — Controlled Kaggle evidence and truthful calibration
 
@@ -113,8 +126,9 @@ and pushes to this private repository are permitted.
 
 Out of scope: public releases; new Kaggle datasets; account/profile/credential actions;
 unrelated Kaggle activity; destructive git-history rewrite; a large from-scratch model;
-and restoring dense NxN association. RunPod is in scope only after explicit human approval
-for the particular launch and pre-launch hours/$/artifact accounting.
+and restoring dense NxN association. RunPod is in scope only after the `0.89`, `>5%`
+evidence, and `$10` gates pass, explicit human approval is given for the particular
+launch, and pre-launch hours/$/artifact accounting is complete.
 
 ## Completion and block rules
 

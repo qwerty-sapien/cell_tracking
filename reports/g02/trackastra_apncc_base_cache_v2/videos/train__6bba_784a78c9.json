@@ -1,0 +1,12 @@
+{
+  "bytes": 123785,
+  "contract_sha256": "e060b284da623a373a83c8dd690985503af945399518f4d77eb517fddb8128ac",
+  "feature_path": "reports/g02/trackastra_apncc_base_cache_v2/videos/train__6bba_784a78c9.pt",
+  "feature_sha256": "95ac0db2e838e24e25ca2a38c2468d3b055995d3355a34a49e4826827ef57f6b",
+  "identity": "train:6bba_784a78c9",
+  "implementation_sha256": "61b6be888ddef7baf1787ff54411dbf6a9442a66d9d5a9a36a698995aecfd1a8",
+  "proposal_count": 306,
+  "row_count": 408,
+  "schema": "celltrack-alpha.trackastra-apncc-base-checkpoint.v2",
+  "transition_count": 88
+}

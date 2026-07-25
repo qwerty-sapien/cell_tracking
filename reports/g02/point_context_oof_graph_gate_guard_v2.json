@@ -1,0 +1,40 @@
+{
+  "candidate_gate": {
+    "background_reserve_gib": 6.0,
+    "candidate_id": "compact-point-context-6bba-oof-v1",
+    "decision": "PASS",
+    "expected_score_improvement_percent": 3.5,
+    "holdout_access": false,
+    "literature_primary_source_count": 1,
+    "max_wall_minutes": 420.0,
+    "maximum_training_memory_gib": 18.0,
+    "minimum_system_memory_free_percent": 25.0,
+    "model_family": "Trackastra-style compact point-context transformer, 6bba association branch",
+    "projected_peak_memory_gib": 6.0,
+    "swap_growth_allowed": false,
+    "training_scope": "fit_only"
+  },
+  "command": [
+    "/usr/local/bin/python3.13",
+    "scripts/evaluate_point_context_oof_graph_gate.py",
+    "--output",
+    "reports/g02/point_context_oof_graph_gate_v2"
+  ],
+  "elapsed_seconds": 29.078704833984375,
+  "ended_unix": 1784875274.439219,
+  "initial_swap_mib": 19365.75,
+  "initial_system_memory_free_percent": 41.0,
+  "memory_cap_gib": 18.0,
+  "minimum_system_memory_free_percent": 33.0,
+  "mps_high_watermark_ratio": 1.0,
+  "mps_low_watermark_ratio": 0.9,
+  "peak_process_tree_rss_gib": 1.150177001953125,
+  "peak_swap_mib": 19497.309999465942,
+  "physical_memory_gib": 24.0,
+  "required_system_memory_free_percent": 25.0,
+  "return_code": -15,
+  "schema": "celltrack-alpha.local-training-guard.v1",
+  "started_unix": 1784875245.3605142,
+  "stop_reason": "swap_growth_detected",
+  "swap_growth_mib": 131.55999946594238
+}

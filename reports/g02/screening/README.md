@@ -17,8 +17,16 @@ performance in the competitive 0.90s, with 0.92 retained as the completion thres
 6. Submit probes sequentially: at most one newly approved, observation-distinct probe at
    a time, update the design from its result, and never exceed five submissions per
    competition day. Keep both final selections uncommitted.
-7. Use private Kaggle GPU quota before RunPod. Every RunPod launch requires explicit
-   human approval for the exact job and predeclared hours/cost.
+7. Cap initial training at 30 cumulative Kaggle T4 GPU-hours per model and archive
+   models that cannot become viable inside it. RunPod is unavailable before an accepted
+   `0.89` score; later use needs >5% literature/theory-backed expected improvement, fits
+   the `$10` total cap, and requires exact-launch approval. The ordinary hard improvement
+   gate is 3.5%.
+8. Prefer literature-validated lightweight candidates. Validate their manifest before
+   implementation/training, then use the single guarded fit-only M5 lane for rapid
+   falsification. It may run in parallel with eligible external work but is capped at
+   18 GiB training memory, reserves 6 GiB for background work, forbids swap growth and
+   holdout access, and stops within seven hours per unattended stage.
 
 ## Governing distinctions
 

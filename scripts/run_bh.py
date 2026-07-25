@@ -48,13 +48,14 @@ PREFLIGHT_SCHEMA = "celltrack-alpha.bh-preflight.v1"
 ACCEL_GATE_SCHEMA = "celltrack-alpha.bh-d4-accelerated-score-gate.v1"
 A0_AUDIT_SCHEMA = "celltrack-alpha.bh-a0-run-audit.v1"
 RUNTIME_ZARR_IDENTITY_SCHEMA = "celltrack-alpha.bh-runtime-zarr-identity.v1"
+P0_CALIBRATION_SCHEMA = "celltrack-alpha.p0-public-calibration.v1"
 REGISTRY_EXACT_IDENTITY = "registry-exact-image-manifest-v1"
 RUNTIME_METADATA_IDENTITY = "runtime-zarr-metadata-v1"
 MAX_RUNTIME_METADATA_BYTES = 1_000_000
 
 FRAME_COUNT = 100
 DEFAULT_BATCH_SIZE = 1
-DEFAULT_DEADLINE_MINUTES = 120.0
+DEFAULT_DEADLINE_MINUTES = 360.0
 SOURCE_BUDGET_BYTES = 1_000_000
 CHECKPOINT_EXPOSURE = "unknown"
 IMAGE_SUPPORT_SCALE_ZYX = (1.625, 0.40625, 0.40625)
@@ -94,6 +95,50 @@ GRAPH_VARIANTS = {
         "audit_schema": A0_AUDIT_SCHEMA,
         "default": False,
         "locked": True,
+    },
+}
+P0_APPROVED_CALIBRATIONS = {
+    "p0-c0": {
+        "motion_direction": "backward",
+        "motion_error_weight": 0.0,
+        "learned_bonus": 1.0,
+        "varied_fields": ["motion_error_weight"],
+    },
+    "p0-c2": {
+        "motion_direction": "backward",
+        "motion_error_weight": 2.0,
+        "learned_bonus": 1.0,
+        "varied_fields": ["motion_error_weight"],
+    },
+    "p0-lb4": {
+        "motion_direction": "forward",
+        "motion_error_weight": 1.0,
+        "learned_bonus": 4.0,
+        "varied_fields": [
+            "learned_bonus",
+            "motion_direction",
+            "motion_error_weight",
+        ],
+    },
+    "p0-lb8": {
+        "motion_direction": "forward",
+        "motion_error_weight": 1.0,
+        "learned_bonus": 8.0,
+        "varied_fields": [
+            "learned_bonus",
+            "motion_direction",
+            "motion_error_weight",
+        ],
+    },
+    "p0-lb16": {
+        "motion_direction": "forward",
+        "motion_error_weight": 1.0,
+        "learned_bonus": 16.0,
+        "varied_fields": [
+            "learned_bonus",
+            "motion_direction",
+            "motion_error_weight",
+        ],
     },
 }
 
@@ -791,6 +836,101 @@ def read_scale_attrs(attrs: Mapping[str, Any]) -> tuple[float, float, float]:
     return result  # type: ignore[return-value]
 
 
+def submit_input_contract_report(
+    jobs: Sequence[VideoJob],
+    *,
+    expected_frames: int = FRAME_COUNT,
+) -> dict[str, Any]:
+    """Validate hidden-test geometry and normalization metadata before inference.
+
+    The three top-level flags are intentionally stable so a failed Kaggle
+    rerun can be diagnosed from ``bhdiag.json`` without relaxing any locked
+    V45 assumptions.
+    """
+
+    zarr = importlib.import_module("zarr")
+    rows: list[dict[str, Any]] = []
+    flags = {
+        "frame_count_ne_100": False,
+        "missing_quantile_or_multiscale_metadata": False,
+        "voxel_scale_ne_locked": False,
+    }
+    for job in jobs:
+        store = None
+        owns_store = False
+        row: dict[str, Any] = {
+            "identity": job.identity,
+            "image_shape": list(job.record.image_shape),
+            "frame_count": int(job.record.image_shape[0]),
+            "expected_frame_count": int(expected_frames),
+        }
+        row["frame_count_ok"] = row["frame_count"] == expected_frames
+        flags["frame_count_ne_100"] |= not row["frame_count_ok"]
+        try:
+            if job.input_kind == "zip":
+                store = zarr.storage.ZipStore(job.input_path, mode="r")
+                owns_store = True
+                group = zarr.open_group(
+                    store=store,
+                    path=job.zarr_path,
+                    mode="r",
+                    zarr_format=3,
+                )
+            elif job.input_kind == "directory":
+                group = zarr.open_group(job.zarr_path, mode="r", zarr_format=3)
+            else:
+                raise DiscoveryError(f"unsupported input kind {job.input_kind!r}")
+            attrs = dict(group.attrs)
+            try:
+                row["quantiles"] = list(read_quantile_attrs(attrs))
+                row["quantile_metadata_ok"] = True
+            except RunnerError as exc:
+                row["quantile_metadata_ok"] = False
+                row["quantile_error"] = str(exc)
+            try:
+                scale = read_scale_attrs(attrs)
+                row["multiscale_metadata_ok"] = True
+                row["voxel_scale_zyx"] = list(scale)
+                row["voxel_scale_ok"] = all(
+                    abs(left - right) <= 1.0e-9
+                    for left, right in zip(scale, IMAGE_SUPPORT_SCALE_ZYX, strict=True)
+                )
+            except RunnerError as exc:
+                row["multiscale_metadata_ok"] = False
+                row["voxel_scale_ok"] = False
+                row["multiscale_error"] = str(exc)
+        finally:
+            if owns_store and store is not None and callable(getattr(store, "close", None)):
+                store.close()
+        metadata_missing = not row.get("quantile_metadata_ok", False) or not row.get(
+            "multiscale_metadata_ok", False
+        )
+        flags["missing_quantile_or_multiscale_metadata"] |= metadata_missing
+        flags["voxel_scale_ne_locked"] |= (
+            row.get("multiscale_metadata_ok") is True and row.get("voxel_scale_ok") is not True
+        )
+        row["ok"] = (
+            row["frame_count_ok"]
+            and not metadata_missing
+            and row.get("voxel_scale_ok") is True
+        )
+        rows.append(row)
+    triggered = [name for name, value in flags.items() if value]
+    return {
+        "schema": "celltrack-alpha.bh-submit-input-contract.v1",
+        "ok": not triggered,
+        "video_count": len(rows),
+        "locked": {
+            "frame_count": int(expected_frames),
+            "voxel_scale_zyx": list(IMAGE_SUPPORT_SCALE_ZYX),
+            "quantiles": [0.001, 0.999],
+        },
+        "fail_closed": flags,
+        "triggered": triggered,
+        "videos": rows,
+    }
+
+
 @dataclass(slots=True)
 class VideoHandle:
     array: Any
@@ -1268,6 +1408,62 @@ def inference_contract(
     return {**value, "sha256": canonical_sha256(value)}
 
 
+def p0_calibration_contract(
+    experiment_id: str | None,
+    motion_error_weight: float | None,
+    motion_direction: str | None,
+    learned_bonus: float | None,
+) -> dict[str, Any] | None:
+    supplied = (
+        experiment_id,
+        motion_error_weight,
+        motion_direction,
+        learned_bonus,
+    )
+    if all(value is None for value in supplied):
+        return None
+    if (
+        experiment_id not in P0_APPROVED_CALIBRATIONS
+        or motion_error_weight is None
+        or motion_direction is None
+        or learned_bonus is None
+    ):
+        raise RunnerError(
+            "P0 calibration requires an approved experiment ID, motion direction, "
+            "motion weight, and learned bonus"
+        )
+    try:
+        weight = float(motion_error_weight)
+        bonus = float(learned_bonus)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise RunnerError("P0 calibration numeric values must be finite") from exc
+    expected = P0_APPROVED_CALIBRATIONS[experiment_id]
+    if (
+        not math.isfinite(weight)
+        or not math.isfinite(bonus)
+        or weight != expected["motion_error_weight"]
+        or bonus != expected["learned_bonus"]
+        or motion_direction != expected["motion_direction"]
+    ):
+        raise RunnerError(
+            f"P0 calibration {experiment_id} requires direction "
+            f"{expected['motion_direction']}, motion weight "
+            f"{expected['motion_error_weight']:g}, and learned bonus "
+            f"{expected['learned_bonus']:g}"
+        )
+    return {
+        "schema": P0_CALIBRATION_SCHEMA,
+        "experiment_id": experiment_id,
+        "purpose": "public-metric-parity-calibration",
+        "motion_direction": motion_direction,
+        "motion_error_weight": weight,
+        "learned_bonus": bonus,
+        "varied_fields": list(expected["varied_fields"]),
+        "production_eligible": False,
+        "submit_eligible": True,
+    }
+
+
 def run_contract(
     inference_value: Mapping[str, Any],
     *,
@@ -1275,6 +1471,8 @@ def run_contract(
     router_sha256: str | None,
     view_execution: Mapping[str, Any],
     edge_artifact: Mapping[str, Any] | None = None,
+    p0_calibration: Mapping[str, Any] | None = None,
+    appearance_swap: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     if graph_variant not in GRAPH_VARIANTS:
         raise RunnerError(f"unsupported graph variant {graph_variant!r}")
@@ -1290,6 +1488,10 @@ def run_contract(
     }
     if edge_artifact is not None:
         value["edge_artifact"] = dict(edge_artifact)
+    if p0_calibration is not None:
+        value["p0_calibration"] = dict(p0_calibration)
+    if appearance_swap is not None:
+        value["appearance_swap"] = dict(appearance_swap)
     return {**value, "sha256": canonical_sha256(value)}
 
 
@@ -2493,6 +2695,10 @@ def process_video(
     edge_scorer: Any | None = None,
     edge_artifact_identity: Mapping[str, Any] | None = None,
     edge_module: Any | None = None,
+    p0_calibration: Mapping[str, Any] | None = None,
+    appearance_swap_contract: Mapping[str, Any] | None = None,
+    appearance_swap_gate: Any | None = None,
+    appearance_swap_module: Any | None = None,
 ) -> dict[str, Any]:
     """Run or contract-safely resume one whole video transaction."""
 
@@ -2506,6 +2712,31 @@ def process_video(
         raise RunnerError("edge artifact association requires the locked motion graph without A0")
     if (edge_scorer is None) != (edge_artifact_identity is None):
         raise RunnerError("edge scorer and artifact identity must be supplied together")
+    if any(
+        value is not None
+        for value in (
+            appearance_swap_contract,
+            appearance_swap_gate,
+            appearance_swap_module,
+        )
+    ) and any(
+        value is None
+        for value in (
+            appearance_swap_contract,
+            appearance_swap_gate,
+            appearance_swap_module,
+        )
+    ):
+        raise RunnerError("appearance swap runtime inputs must be supplied together")
+    if appearance_swap_contract is not None and (
+        edge_scorer is None
+        or graph_variant != LOCKED_GRAPH_VARIANT
+        or a0_scorer is not None
+        or p0_calibration is not None
+    ):
+        raise RunnerError(
+            "appearance swaps require the locked edge-assisted baseline only"
+        )
     model_module = model_module or importlib.import_module("celltrack_alpha.bh_model")
     graph_module = graph_module or importlib.import_module("celltrack_alpha.bh_graph")
     route_module = route_module or importlib.import_module("celltrack_alpha.bh_route")
@@ -2530,6 +2761,8 @@ def process_video(
         router_sha256=router_sha256,
         view_execution=view_execution,
         edge_artifact=edge_artifact_identity,
+        p0_calibration=p0_calibration,
+        appearance_swap=appearance_swap_contract,
     )
     fragment_path = output_dir / "fragments" / f"{job.slug}.csv"
     status_path = output_dir / "status" / f"{job.slug}.json"
@@ -2650,15 +2883,206 @@ def process_video(
                     "division_enabled": False,
                 }
             )
+        sweep_provenance = None
+        if p0_calibration is not None:
+            sweep_provenance = {
+                "schema": graph_module.EXPERIMENTAL_SWEEP_SCHEMA,
+                "experiment_id": p0_calibration["experiment_id"],
+                "purpose": p0_calibration["purpose"],
+                "varied_fields": list(p0_calibration["varied_fields"]),
+                "production_eligible": False,
+                "submit_eligible": True,
+            }
+            calibration_config = replace(
+                graph_module.V45_GRAPH_CONFIG,
+                motion_direction=p0_calibration["motion_direction"],
+                learned_bonus=p0_calibration["learned_bonus"],
+            )
+            graph_options.update(
+                {
+                    "config": calibration_config,
+                    "_experimental_sweep_provenance": sweep_provenance,
+                    "_experimental_motion_error_weight": p0_calibration[
+                        "motion_error_weight"
+                    ],
+                }
+            )
         graph_result = graph_module.calibrate_v45_graph(graph_nodes, **graph_options)
         check_deadline(deadline_epoch, f"{job.identity} bh_graph calibration")
         if graph_result.provenance.get("full_frame_dense_matrix") is not False:
             raise RunnerError("bh_graph did not attest sparse graph execution")
-        if (
-            graph_result.provenance.get("production_eligible") is not True
-            or "experimental_sweep" in graph_result.provenance
+        appearance_audit = None
+        if appearance_swap_contract is not None:
+            raw_node_ids = {int(node.node_id) for node in graph_nodes}
+            selected = appearance_swap_module.selected_raw_pairs(
+                graph_result, raw_node_ids
+            )
+            cap_spec = appearance_swap_contract["proposal_cap"]
+            proposal_cap = max(
+                int(cap_spec["minimum_per_video"]),
+                int(
+                    math.ceil(
+                        float(cap_spec["selected_edge_fraction"])
+                        * len(selected)
+                    )
+                ),
+            )
+            appearance_spec = appearance_swap_contract["appearance"]
+            geometry_spec = appearance_swap_contract["geometry_gate"]
+            proposals, proposal_counts = appearance_swap_module.propose_swaps(
+                cache,
+                edge_scorer,
+                selected,
+                appearance_swap_gate,
+                refiner_source,
+                geometry_threshold=float(geometry_spec["threshold"]),
+                appearance_threshold=float(appearance_spec["threshold"]),
+                maximum=proposal_cap,
+            )
+            adjacent_edges, adjacent_stats = graph_module.build_adjacent_edges(
+                graph_nodes,
+                learned_edge_probabilities=learned_probabilities,
+                source_no_link_probabilities=source_no_link_probabilities,
+                topology_mode="legacy",
+            )
+            gap_nodes, gap_edges, gap_stats = graph_module.close_one_frame_gaps(
+                graph_nodes,
+                adjacent_edges,
+                image_refine_callback=refiner,
+            )
+            rebuilt_nodes, rebuilt_edges, _rebuilt_stats = (
+                graph_module.postprocess_graph(gap_nodes, gap_edges)
+            )
+            rebuilt = graph_module.GraphResult(
+                rebuilt_nodes, rebuilt_edges, {}, {}
+            )
+            if (
+                appearance_swap_module.selected_raw_pairs(
+                    rebuilt, raw_node_ids
+                )
+                != selected
+            ):
+                raise RunnerError(
+                    "appearance swap post-gap baseline identity drifted"
+                )
+            swapped_edges, swap_counts = (
+                appearance_swap_module.swap_post_gap_edges(
+                    gap_nodes,
+                    gap_edges,
+                    proposals,
+                    learned_probabilities,
+                )
+            )
+            final_nodes, final_edges, post_stats = (
+                graph_module.postprocess_graph(gap_nodes, swapped_edges)
+            )
+            final_pairs = {
+                (int(edge.source_id), int(edge.target_id))
+                for edge in final_edges
+            }
+            challengers = {
+                tuple(int(value) for value in proposal["challenger"])
+                for proposal in proposals
+            }
+            conflicts = {
+                tuple(int(value) for value in pair)
+                for proposal in proposals
+                for pair in proposal["conflicts"]
+            }
+            realization = {
+                "proposed_challengers": len(challengers),
+                "realized_challengers": len(challengers & final_pairs),
+                "proposed_conflicts": len(conflicts),
+                "retained_conflicts": len(conflicts & final_pairs),
+            }
+            if realization["retained_conflicts"] != 0:
+                raise RunnerError(
+                    "appearance direct swap retained a declared conflict"
+                )
+            appearance_audit = {
+                "contract_sha256": appearance_swap_contract[
+                    "contract_sha256"
+                ],
+                "proposal_counts": proposal_counts,
+                "swap_counts": swap_counts,
+                "realization": realization,
+            }
+            appearance_stats = {
+                f"appearance_{name}": value
+                for name, value in {
+                    **proposal_counts,
+                    **swap_counts,
+                    **realization,
+                }.items()
+                if isinstance(value, (int, float, bool))
+            }
+            provenance = dict(graph_result.provenance)
+            provenance.update(
+                {
+                    "calibration": (
+                        "frozen-selected-graph-appearance-direct-swap"
+                    ),
+                    "appearance_swap_contract_sha256": (
+                        appearance_swap_contract["contract_sha256"]
+                    ),
+                    "appearance_swap_stage": "post-gap-pre-prune",
+                    "production_eligible": False,
+                    "submit_eligible": True,
+                }
+            )
+            graph_result = graph_module.GraphResult(
+                final_nodes,
+                final_edges,
+                {
+                    **dict(graph_result.stats),
+                    **{
+                        f"appearance_adjacent_{key}": value
+                        for key, value in adjacent_stats.items()
+                    },
+                    **{
+                        f"appearance_gap_{key}": value
+                        for key, value in gap_stats.items()
+                    },
+                    **{
+                        f"appearance_post_{key}": value
+                        for key, value in post_stats.items()
+                    },
+                    **appearance_stats,
+                },
+                provenance,
+            )
+            graph_module.validate_graph(graph_result.nodes, graph_result.edges)
+        if p0_calibration is None and appearance_swap_contract is None:
+            if (
+                graph_result.provenance.get("production_eligible") is not True
+                or "experimental_sweep" in graph_result.provenance
+            ):
+                raise RunnerError("production submission rejected experimental graph configuration")
+        elif appearance_swap_contract is not None:
+            if (
+                graph_result.provenance.get("production_eligible") is not False
+                or graph_result.provenance.get("submit_eligible") is not True
+                or graph_result.provenance.get(
+                    "appearance_swap_contract_sha256"
+                )
+                != appearance_swap_contract["contract_sha256"]
+                or graph_result.provenance.get("appearance_swap_stage")
+                != "post-gap-pre-prune"
+            ):
+                raise RunnerError(
+                    "appearance swap graph lost its probe provenance"
+                )
+        elif (
+            graph_result.provenance.get("production_eligible") is not False
+            or graph_result.provenance.get("experimental_sweep") != sweep_provenance
+            or graph_result.provenance.get("motion_error_weight")
+            != p0_calibration["motion_error_weight"]
+            or graph_result.provenance.get("motion_direction")
+            != p0_calibration["motion_direction"]
+            or graph_result.provenance.get("config", {}).get("learned_bonus")
+            != p0_calibration["learned_bonus"]
         ):
-            raise RunnerError("production submission rejected experimental graph configuration")
+            raise RunnerError("P0 calibration graph lost its non-production provenance")
         if a0_audit is not None:
             a0_audit["graph"] = {
                 "variant": A0_GRAPH_VARIANT,
@@ -2672,6 +3096,8 @@ def process_video(
                 "full_frame_dense_matrix": False,
                 "division_enabled": False,
             }
+            if appearance_audit is not None:
+                edge_audit["appearance_swap"] = appearance_audit
         graph_result = project_graph_result_to_image_support(
             job.record.dataset,
             graph_result,
@@ -2706,6 +3132,8 @@ def process_video(
         if edge_audit is not None:
             feature_record["edge_artifact"] = dict(edge_artifact_identity)
             feature_record["edge_association"] = edge_audit
+        if appearance_audit is not None:
+            feature_record["appearance_swap"] = appearance_audit
         atomic_create_json(feature_path, feature_record, deadline_epoch)
         rows = graph_rows(job.record.dataset, graph_result, job.record.image_shape)
         for index, row in enumerate(rows):
@@ -2736,6 +3164,8 @@ def process_video(
         if edge_audit is not None:
             result["edge_artifact"] = dict(edge_artifact_identity)
             result["edge_association"] = edge_audit
+        if appearance_audit is not None:
+            result["appearance_swap"] = appearance_audit
         status = {
             "schema": STATUS_SCHEMA,
             "ok": True,
@@ -2919,6 +3349,29 @@ def _worker_entry(job_path_text: str) -> None:
         expected_edge_identity = payload.get("edge_artifact_identity")
         if edge_artifact_identity != expected_edge_identity:
             raise ResumeHashError("worker edge artifact identity differs from parent validation")
+        appearance_swap_module = None
+        appearance_swap_contract = None
+        appearance_swap_gate = None
+        if payload.get("appearance_swap_contract_path") is not None:
+            appearance_swap_module = importlib.import_module(
+                "celltrack_alpha.appearance_swap"
+            )
+            appearance_swap_contract, appearance_swap_gate = (
+                appearance_swap_module.load_contract(
+                    payload["appearance_swap_contract_path"],
+                    expected_sha256=payload[
+                        "appearance_swap_contract_sha256"
+                    ],
+                    root=payload["appearance_swap_root"],
+                )
+            )
+            if (
+                appearance_swap_contract
+                != payload.get("appearance_swap_contract")
+            ):
+                raise ResumeHashError(
+                    "worker appearance-swap identity differs from parent"
+                )
         router = None
         router_sha = payload.get("router_sha256")
         if payload.get("router_json") is not None:
@@ -2952,6 +3405,10 @@ def _worker_entry(job_path_text: str) -> None:
                 edge_scorer=edge_scorer,
                 edge_artifact_identity=edge_artifact_identity,
                 edge_module=edge_module,
+                p0_calibration=payload.get("p0_calibration"),
+                appearance_swap_contract=appearance_swap_contract,
+                appearance_swap_gate=appearance_swap_gate,
+                appearance_swap_module=appearance_swap_module,
             )
             results.append(result)
         worker_status = {
@@ -3103,6 +3560,24 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
         args.edge_artifact,
         args.edge_artifact_sha256,
     )
+    p0_calibration = p0_calibration_contract(
+        args.p0_experiment_id,
+        args.p0_motion_error_weight,
+        args.p0_motion_direction,
+        args.p0_learned_bonus,
+    )
+    appearance_swap_contract = None
+    if args.appearance_swap_contract is not None:
+        appearance_swap_module = importlib.import_module(
+            "celltrack_alpha.appearance_swap"
+        )
+        appearance_swap_contract, _appearance_swap_gate = (
+            appearance_swap_module.load_contract(
+                args.appearance_swap_contract,
+                expected_sha256=args.appearance_swap_contract_sha256,
+                root=ROOT,
+            )
+        )
     preflight_report = preflight(
         support_root=args.support_root,
         report_path=output_dir / "preflight.json",
@@ -3118,6 +3593,13 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
         if args.split != "test" or requested is not None:
             raise RunnerError("submit mode is image-only and must discover the complete mounted test split")
         jobs = discover_submit_jobs(args.input)
+        input_contract = submit_input_contract_report(jobs)
+        atomic_json(output_dir / "input_contract.json", input_contract, deadline_epoch)
+        if not input_contract["ok"]:
+            raise RunnerError(
+                "hidden submission input violated locked V45 assumptions: "
+                + ", ".join(input_contract["triggered"])
+            )
     else:
         records = load_registry(args.registry)
         selected = select_records(records, split=args.split, requested=requested)
@@ -3179,6 +3661,17 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
                 "edge_artifact": str(Path(args.edge_artifact).resolve()) if args.edge_artifact else None,
                 "edge_artifact_sha256": args.edge_artifact_sha256,
                 "edge_artifact_identity": edge_artifact_identity,
+                "p0_calibration": p0_calibration,
+                "appearance_swap_contract_path": (
+                    str(Path(args.appearance_swap_contract).resolve())
+                    if args.appearance_swap_contract
+                    else None
+                ),
+                "appearance_swap_contract_sha256": (
+                    args.appearance_swap_contract_sha256
+                ),
+                "appearance_swap_contract": appearance_swap_contract,
+                "appearance_swap_root": str(ROOT.resolve()),
                 "edge_auxiliary_checkpoint": str(DEFAULT_EDGE_AUXILIARY_CHECKPOINT.resolve()),
                 "router_json": str(Path(args.router_json).resolve()) if args.router_json else None,
                 "router_sha256": router_sha,
@@ -3231,6 +3724,10 @@ def run_pipeline(args: argparse.Namespace) -> dict[str, Any]:
             "preflight": preflight_report,
             "workers": aggregates,
         }
+        if p0_calibration is not None:
+            report["p0_calibration"] = p0_calibration
+        if appearance_swap_contract is not None:
+            report["appearance_swap"] = appearance_swap_contract
         if edge_artifact_identity is not None:
             report["edge_artifact"] = edge_artifact_identity
         if args.graph_variant == A0_GRAPH_VARIANT:
@@ -3292,6 +3789,32 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--edge-artifact", type=Path)
     parser.add_argument("--edge-artifact-sha256")
     parser.add_argument(
+        "--appearance-swap-contract",
+        type=Path,
+        help="Hash-pinned full-3D appearance direct-swap contract",
+    )
+    parser.add_argument("--appearance-swap-contract-sha256")
+    parser.add_argument(
+        "--p0-experiment-id",
+        choices=tuple(P0_APPROVED_CALIBRATIONS),
+        help="Approved non-production public metric-parity calibration ID",
+    )
+    parser.add_argument(
+        "--p0-motion-direction",
+        choices=("forward", "backward"),
+        help="Motion direction fixed by --p0-experiment-id",
+    )
+    parser.add_argument(
+        "--p0-motion-error-weight",
+        type=float,
+        help="Motion weight fixed by --p0-experiment-id",
+    )
+    parser.add_argument(
+        "--p0-learned-bonus",
+        type=float,
+        help="Learned-link bonus fixed by --p0-experiment-id",
+    )
+    parser.add_argument(
         "--test-only-one-view",
         action="store_true",
         help="Parity testing only: run unaugmented D4 view 0 in CV/train mode; never valid for submission",
@@ -3307,7 +3830,9 @@ def build_parser() -> argparse.ArgumentParser:
 
 def validate_args(args: argparse.Namespace) -> None:
     if args.deadline_min <= 0 or args.deadline_min > DEFAULT_DEADLINE_MINUTES:
-        raise RunnerError("hard deadline must be in (0, 120] minutes")
+        raise RunnerError(
+            f"hard deadline must be in (0, {DEFAULT_DEADLINE_MINUTES:g}] minutes"
+        )
     if Path(args.output_file).name != args.output_file or not args.output_file.endswith(".csv"):
         raise RunnerError("--output-file must be one CSV basename")
     if args.source_budget_bytes <= 0:
@@ -3321,6 +3846,49 @@ def validate_args(args: argparse.Namespace) -> None:
         raise RunnerError("--edge-artifact and --edge-artifact-sha256 must be supplied together")
     if has_edge_artifact and args.graph_variant != LOCKED_GRAPH_VARIANT:
         raise RunnerError("edge artifact association cannot be combined with --graph-variant a0")
+    has_appearance_swap = (
+        args.appearance_swap_contract is not None
+        or args.appearance_swap_contract_sha256 is not None
+    )
+    if has_appearance_swap and (
+        args.appearance_swap_contract is None
+        or args.appearance_swap_contract_sha256 is None
+    ):
+        raise RunnerError(
+            "--appearance-swap-contract and its SHA-256 must be supplied together"
+        )
+    p0_calibration = p0_calibration_contract(
+        args.p0_experiment_id,
+        args.p0_motion_error_weight,
+        args.p0_motion_direction,
+        args.p0_learned_bonus,
+    )
+    if p0_calibration is not None and (
+        args.mode != "submit"
+        or args.split != "test"
+        or args.graph_variant != LOCKED_GRAPH_VARIANT
+        or not has_edge_artifact
+        or args.router_json is not None
+        or args.accelerated_score_gate is not None
+        or args.test_only_one_view
+        or args.view_batch_size != 1
+    ):
+        raise RunnerError(
+            "P0 calibration requires full submit/test, the locked edge-assisted motion graph, "
+            "sequential D4 execution, and no router"
+        )
+    if has_appearance_swap and (
+        not has_edge_artifact
+        or p0_calibration is not None
+        or args.graph_variant != LOCKED_GRAPH_VARIANT
+        or args.router_json is not None
+        or args.accelerated_score_gate is not None
+        or args.view_batch_size != 1
+    ):
+        raise RunnerError(
+            "appearance swaps require the pinned edge-assisted locked graph, "
+            "sequential D4 execution, and no P0 sweep/router/acceleration"
+        )
     if args.test_only_one_view and (
         args.mode != "cv"
         or args.split != "train"

@@ -16,12 +16,22 @@ higher realistic ceiling than the current pairwise-edge scorer, evaluated on the
 - **Learned association cost** replacing the hand-tuned motion term (backward motion c=0.25).
 
 ## Rubric
+- Before implementation, complete and validate a candidate manifest derived from
+  `reports/g02/model_candidate_template_v1.json`, including primary peer-reviewed
+  evidence, the measured bottleneck-to-mechanism link, >=3.5% expected improvement, and
+  preregistered failure/promotion criteria.
+- Prefer a lightweight M5-compatible candidate and run its fit-only falsification through
+  `scripts/run_local_training_guard.py` before external GPU use. One local job may run in
+  parallel with eligible external work; it is limited to 18 GiB, reserves 6 GiB, forbids
+  holdout access and swap growth, and stops within seven hours.
 - SCREEN on the worst family first. A candidate needs `>= +0.005` on that slice at CONFIRM to justify
   a full build. `+0.002..+0.005` → human-decision note. `< +0.002` → PARK with reason.
-- **Compute:** use remaining Kaggle GPU-hours (30h/week, resets Saturday 00:00 UTC) before RunPod —
-  check what T1 already consumed from this week's quota. Only spend RunPod $ if Kaggle quota for the
-  week is exhausted or the spike needs more contiguous time than a ~9h session allows,
-  and only after explicit human approval for that exact launch.
+- **Compute:** at most 30 cumulative Kaggle T4 GPU-hours per model for initial training;
+  archive a candidate that cannot become viable inside that ceiling. RunPod is unavailable
+  before an accepted score reaches `0.89` and thereafter requires a
+  higher-quality-GPU-dependent optimization with literature/theory-backed expected
+  improvement greater than `5%`, the `$10` total cap, and exact-launch approval. The
+  ordinary hard improvement gate is `3.5%`.
 - Log GPU-hrs (Kaggle) or GPU-s/$ (RunPod) per candidate.
 
 ## Output

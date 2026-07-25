@@ -1,0 +1,44 @@
+{
+  "schema": "celltrack-alpha.model-candidate.v1",
+  "candidate_id": "6bba-crop-linker-nested-oof-v1",
+  "model_family": "6bba-only OrganoidTracker-style calibrated Siamese 3-D crop-pair linker",
+  "literature_evidence": [
+    {
+      "kind": "primary_peer_reviewed",
+      "citation": "Kok RN et al. OrganoidTracker 2.0: an algorithm for tracking cells in 3D organoids. Nature Methods. 2025.",
+      "url": "https://www.nature.com/articles/s41592-025-02845-6",
+      "reported_result": "The method learns 3-D center, link and division probabilities, calibrates link/division probabilities, and reports less than 0.5% errors per cell per frame in organoid lineage tracking.",
+      "task_relevance": "The completed all-family pilot shows that a compact shared 3-D crop encoder adds high-precision link signal on 6bba, while the failed 44b6 precision gate requires a family-scoped rather than universal deployment claim."
+    }
+  ],
+  "hypothesis": {
+    "observed_failure_mode": "The all-family crop-linker pilot reached 0.9846 overall validation precision and positive utility on both families, but failed its 44b6 precision floor; its 6bba slice reached 112/112 at the preregistered global threshold and 180/182 in a non-confirmatory family audit.",
+    "proposed_mechanism": "Train and calibrate the same compact Siamese 3-D crop-pair linker only within 6bba, where the image-link mechanism was strong, while preserving the banked APNCC behavior unchanged for 44b6 in any later hybrid.",
+    "falsification_test": "Exclude the already-open validation12 and run a fixed five-fold nested grouped OOF test on the 69 eligible 6bba videos: each outer fold is scored once, the next fold alone calibrates temperature and threshold, and the remaining three folds fit the model. Reject unless OOF precision is at least 0.95, every fold is at least 0.93, utility beats identically nested pair NCC by at least 50 with no negative fold, and calibration improves in every fold.",
+    "expected_score_improvement_percent": 3.5
+  },
+  "local_fast_fail": {
+    "m5_compatible": true,
+    "projected_peak_memory_gib": 3,
+    "background_reserve_gib": 6,
+    "max_wall_minutes": 30,
+    "training_scope": "fit_only",
+    "holdout_access": false,
+    "swap_growth_allowed": false,
+    "early_stop_conditions": [
+      "Stop on any memory, free-memory, swap, scope, or artifact-identity violation.",
+      "Stop if the original validation12 or CV57 identities would be loaded.",
+      "Stop if any outer fold lacks both supervised classes in fit, calibration, or held data.",
+      "Stop if any calibration fold has no admissible threshold at the frozen support and precision floor."
+    ],
+    "success_criteria": [
+      "Nested grouped OOF precision is at least 0.95 overall and at least 0.93 in every outer fold.",
+      "OOF conservative utility is at least 50 above the identically nested pair-NCC control and no outer fold has negative utility gain.",
+      "Candidate OOF accepted support is at least the control support.",
+      "Temperature scaling improves both NLL and Brier score in all five folds.",
+      "Only eligible 6bba fit/calibration identities are accessed; validation12 and CV57 remain sealed."
+    ]
+  },
+  "decision": "PASS",
+  "decision_basis": "This is a distinct, family-scoped confirmation candidate rather than promotion of the PARKed all-family model. The mechanism was selected after validation unsealing, so only the untouched nested OOF predictions on the disjoint 69-video eligible pool can support continuation."
+}

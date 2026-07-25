@@ -1,0 +1,44 @@
+{
+  "schema": "celltrack-alpha.model-candidate.v1",
+  "candidate_id": "temporal-rank-oof-graph-diagnostic-v1",
+  "model_family": "Trackastra-motivated linear temporal association ranker diagnostic",
+  "literature_evidence": [
+    {
+      "kind": "primary_peer_reviewed",
+      "citation": "Gallusser B, Weigert M. Trackastra: Transformer-based cell tracking for live-cell microscopy. ECCV 2024.",
+      "url": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/09819.pdf",
+      "reported_result": "Temporal context and explicit competition among parent candidates materially improve cell-association prediction.",
+      "task_relevance": "The repository's temporal ranker is a deliberately small diagnostic of the same context-and-competition mechanism; this run tests whether its proposal-level gain survives exact graph realization."
+    }
+  ],
+  "hypothesis": {
+    "observed_failure_mode": "The 6bba temporal ranker passed proposal-level OOF precision and utility gates but regressed by 0.001408 on frozen CV57 after graph application.",
+    "proposed_mechanism": "Require every learned association successor to beat the exact banked APNCC control after held-fit graph reconstruction and official scoring, not only on labeled proposal utility.",
+    "falsification_test": "Reproduce the fixed five-fold 6bba temporal ranker with each held fold excluded from fitting and threshold selection, reconstruct candidate and APNCC graphs for all 69 held-fit videos, and verify that the preregistered +0.005 graph gate PARKs the already-known CV57 failure.",
+    "expected_score_improvement_percent": 3.5
+  },
+  "local_fast_fail": {
+    "m5_compatible": true,
+    "projected_peak_memory_gib": 3,
+    "background_reserve_gib": 6,
+    "max_wall_minutes": 180,
+    "training_scope": "fit_only",
+    "holdout_access": false,
+    "swap_growth_allowed": false,
+    "early_stop_conditions": [
+      "Stop on any memory, free-memory, swap, artifact-identity, or scope violation.",
+      "Stop if validation12 or CV57 would be loaded.",
+      "Stop if any held video enters its model fit, normalization, or threshold selection.",
+      "Stop if the deterministic proposal-level OOF metrics do not reproduce the source report."
+    ],
+    "success_criteria": [
+      "All 69 eligible 6bba train105 videos receive exactly one held-fold prediction.",
+      "The APNCC control is reconstructed from the hash-pinned banked runtime contract.",
+      "Candidate and control fragments score through the attested official scorer.",
+      "The graph gate returns PARK for the temporal ranker known to regress on CV57.",
+      "No result from this retrospective diagnostic authorizes promotion or CV57."
+    ]
+  },
+  "decision": "PASS",
+  "decision_basis": "PASS authorizes only a guarded deterministic fit-only reproduction needed to validate the surrogate-to-graph gate. The locked 3.5% field is the minimum improvement demanded of a future promotable successor, not a renewed claim for the already-PARKed temporal ranker. No holdout, Kaggle, GPU, RunPod, or promotion action is authorized."
+}

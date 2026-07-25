@@ -7,3 +7,26 @@
 .env
 .DS_Store
 gurobi.lic
+
+# --- Reproducible large research artifacts (keep repo text-only; unblock attestation) ---
+# Binary tensors, checkpoints, caches, archived run outputs
+*.pt
+*.pth
+*.bhc
+*.zarr/
+*.npy
+*.npz
+results-*.zip
+
+# Reproducible per-video run outputs (predictions, fragments, feature/cache dumps)
+**/fragments/
+**/control_fragments/
+**/candidate_fragments/
+kaggle_kernel/*/cache/
+kaggle_kernel/*/features/
+**/submission.csv
+**/cv57.csv
+
+# Tracked CSV caches over GitHub's 100MB limit (also git rm --cached'd from the index)
+reports/g02/fitcache_remote/fc01_v3/bh9out/fit.csv
+reports/g02/fitcache_remote/fc00_v3/bh9out/fit.csv

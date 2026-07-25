@@ -1,0 +1,38 @@
+{
+  "candidate_gate": {
+    "background_reserve_gib": 6.0,
+    "candidate_id": "6bba-crop-linker-nested-oof-v1",
+    "decision": "PASS",
+    "expected_score_improvement_percent": 3.5,
+    "holdout_access": false,
+    "literature_primary_source_count": 1,
+    "max_wall_minutes": 30.0,
+    "maximum_training_memory_gib": 18.0,
+    "minimum_system_memory_free_percent": 25.0,
+    "model_family": "6bba-only OrganoidTracker-style calibrated Siamese 3-D crop-pair linker",
+    "projected_peak_memory_gib": 3.0,
+    "swap_growth_allowed": false,
+    "training_scope": "fit_only"
+  },
+  "command": [
+    "/usr/local/bin/python3.13",
+    "scripts/fit_crop_linker_6bba_oof.py"
+  ],
+  "elapsed_seconds": 588.5583679676056,
+  "ended_unix": 1784869347.60304,
+  "initial_swap_mib": 23239.0,
+  "initial_system_memory_free_percent": 70.0,
+  "memory_cap_gib": 18.0,
+  "minimum_system_memory_free_percent": 70.0,
+  "mps_high_watermark_ratio": 1.0,
+  "mps_low_watermark_ratio": 0.9,
+  "peak_process_tree_rss_gib": 2.1575164794921875,
+  "peak_swap_mib": 23239.0,
+  "physical_memory_gib": 24.0,
+  "required_system_memory_free_percent": 25.0,
+  "return_code": 0,
+  "schema": "celltrack-alpha.local-training-guard.v1",
+  "started_unix": 1784868759.044672,
+  "stop_reason": "completed",
+  "swap_growth_mib": 0.0
+}

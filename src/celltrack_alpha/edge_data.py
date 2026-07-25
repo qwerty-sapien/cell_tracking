@@ -22,6 +22,8 @@ MATCH_RADIUS_UM = 7.0
 FEATURE_COUNT = 16
 SOURCE_CONFLICT = 0
 TARGET_CONFLICT = 1
+CONTROL_LABEL = 0
+RESCUE_LABEL = 1
 
 
 class EdgeDataError(ValueError):
@@ -179,6 +181,125 @@ class ConflictPairExamples:
             torch.from_numpy(self.true_checkpoint_logits).to(device=device),
             torch.from_numpy(self.competitor_checkpoint_logits).to(device=device),
         )
+
+
+@dataclass(frozen=True)
+class SelectedGraphConflictExamples:
+    """Challenger-versus-selected comparisons with rescue/control labels."""
+
+    challenger_features: np.ndarray
+    selected_features: np.ndarray
+    challenger_logits: np.ndarray
+    selected_logits: np.ndarray
+    challenger_geometry_um: np.ndarray
+    selected_geometry_um: np.ndarray
+    conflict_kind: np.ndarray
+    labels: np.ndarray
+    challenger_pairs: np.ndarray
+    selected_pairs: np.ndarray
+    candidate_count: int
+    reachable_miss_count: int
+    rescue_count: int
+    control_count: int
+    source_conflict_count: int
+    target_conflict_count: int
+    skipped_division_truth: int
+    skipped_without_candidate_conflict: int
+    candidate_topology_sha256: str
+
+    def __post_init__(self) -> None:
+        challenger_features = np.asarray(self.challenger_features, dtype=np.float32)
+        selected_features = np.asarray(self.selected_features, dtype=np.float32)
+        challenger_logits = np.asarray(self.challenger_logits, dtype=np.float32)
+        selected_logits = np.asarray(self.selected_logits, dtype=np.float32)
+        challenger_geometry = np.asarray(self.challenger_geometry_um, dtype=np.float32)
+        selected_geometry = np.asarray(self.selected_geometry_um, dtype=np.float32)
+        kinds = np.asarray(self.conflict_kind, dtype=np.int8)
+        labels = np.asarray(self.labels, dtype=np.int8)
+        challenger_pairs = np.asarray(self.challenger_pairs, dtype=np.int64)
+        selected_pairs = np.asarray(self.selected_pairs, dtype=np.int64)
+        count = int(challenger_features.shape[0]) if challenger_features.ndim else -1
+        if (
+            challenger_features.shape != (count, FEATURE_COUNT)
+            or selected_features.shape != (count, FEATURE_COUNT)
+            or challenger_logits.shape != (count,)
+            or selected_logits.shape != (count,)
+            or challenger_geometry.shape != (count, 6)
+            or selected_geometry.shape != (count, 6)
+            or kinds.shape != (count,)
+            or labels.shape != (count,)
+            or challenger_pairs.shape != (count, 2)
+            or selected_pairs.shape != (count, 2)
+            or any(
+                not np.isfinite(value).all()
+                for value in (
+                    challenger_features,
+                    selected_features,
+                    challenger_logits,
+                    selected_logits,
+                    challenger_geometry,
+                    selected_geometry,
+                )
+            )
+        ):
+            raise EdgeDataError("selected-graph conflict tensor shapes or values are invalid")
+        if np.any(~np.isin(kinds, (SOURCE_CONFLICT, TARGET_CONFLICT))):
+            raise EdgeDataError("selected-graph conflict kind is invalid")
+        if np.any(~np.isin(labels, (CONTROL_LABEL, RESCUE_LABEL))):
+            raise EdgeDataError("selected-graph conflict label is invalid")
+        if np.any(np.all(challenger_pairs == selected_pairs, axis=1)):
+            raise EdgeDataError("challenger and selected pairs must differ")
+        if np.any(
+            (kinds == SOURCE_CONFLICT)
+            & (challenger_pairs[:, 0] != selected_pairs[:, 0])
+        ):
+            raise EdgeDataError("source conflicts must share a source")
+        if np.any(
+            (kinds == TARGET_CONFLICT)
+            & (challenger_pairs[:, 1] != selected_pairs[:, 1])
+        ):
+            raise EdgeDataError("target conflicts must share a target")
+        counters = (
+            self.candidate_count,
+            self.reachable_miss_count,
+            self.rescue_count,
+            self.control_count,
+            self.source_conflict_count,
+            self.target_conflict_count,
+            self.skipped_division_truth,
+            self.skipped_without_candidate_conflict,
+        )
+        if any(type(value) is not int or value < 0 for value in counters):
+            raise EdgeDataError("selected-graph conflict counters must be nonnegative")
+        if self.rescue_count + self.control_count != count:
+            raise EdgeDataError("selected-graph conflict labels do not reconcile")
+        if self.source_conflict_count + self.target_conflict_count != count:
+            raise EdgeDataError("selected-graph conflict kinds do not reconcile")
+        if (
+            not isinstance(self.candidate_topology_sha256, str)
+            or len(self.candidate_topology_sha256) != 64
+            or any(
+                character not in "0123456789abcdef"
+                for character in self.candidate_topology_sha256
+            )
+        ):
+            raise EdgeDataError("candidate topology identity must be a SHA-256")
+        for name, value in (
+            ("challenger_features", challenger_features),
+            ("selected_features", selected_features),
+            ("challenger_logits", challenger_logits),
+            ("selected_logits", selected_logits),
+            ("challenger_geometry_um", challenger_geometry),
+            ("selected_geometry_um", selected_geometry),
+            ("conflict_kind", kinds),
+            ("labels", labels),
+            ("challenger_pairs", challenger_pairs),
+            ("selected_pairs", selected_pairs),
+        ):
+            object.__setattr__(self, name, np.ascontiguousarray(value))
+
+    def __len__(self) -> int:
+        return int(self.labels.shape[0])
 
 
 def _topology_sha256(pairs: Sequence[tuple[int, int]]) -> str:
@@ -350,6 +471,225 @@ def conflict_examples_from_video(
     )
 
 
+def selected_graph_conflict_examples_from_video(
+    scorer: SparseEdgeScorer,
+    video: VideoInference,
+    detection_to_gt: Mapping[int, int | None],
+    gt_edges: set[tuple[int, int]],
+    selected_edges: Sequence[tuple[int, int]] | set[tuple[int, int]],
+) -> SelectedGraphConflictExamples:
+    """Build sparse rescue and correct-selection controls from graph decisions.
+
+    Rescue rows are identity-supported GT continuations that are reachable in
+    the frozen candidate graph but blocked by an edge selected by the actual
+    division-disabled baseline graph.  Control rows reverse the situation: the
+    selected edge is an unambiguous GT continuation and the challenger is a
+    fully matched non-edge sharing the selected source or target.
+    """
+
+    if not isinstance(scorer, SparseEdgeScorer) or not isinstance(video, VideoInference):
+        raise EdgeDataError("selected-graph examples require SparseEdgeScorer and VideoInference")
+    if len(video.contexts) != len(video.detections) - 1:
+        raise EdgeDataError("video pair contexts are incomplete")
+    try:
+        selected = {(int(source), int(target)) for source, target in selected_edges}
+    except (TypeError, ValueError) as exc:
+        raise EdgeDataError("selected edges must be integer pairs") from exc
+    if len(selected) != len(selected_edges):
+        raise EdgeDataError("selected continuation edges contain duplicates")
+    selected_out: dict[int, int] = {}
+    selected_in: dict[int, int] = {}
+    for source_id, target_id in sorted(selected):
+        if source_id in selected_out or target_id in selected_in:
+            raise EdgeDataError("selected continuation graph is not division/merge disabled")
+        selected_out[source_id] = target_id
+        selected_in[target_id] = source_id
+
+    gt_out: dict[int, int] = {}
+    gt_in: dict[int, int] = {}
+    for source_gt, target_gt in gt_edges:
+        gt_out[int(source_gt)] = gt_out.get(int(source_gt), 0) + 1
+        gt_in[int(target_gt)] = gt_in.get(int(target_gt), 0) + 1
+
+    detection_by_id: dict[int, tuple[int, np.ndarray]] = {}
+    for detection in video.detections:
+        for node_id, coordinate in zip(
+            detection.node_ids, detection.coords_zyx, strict=True
+        ):
+            key = int(node_id)
+            if key in detection_by_id:
+                raise EdgeDataError("detector node identities are not unique")
+            detection_by_id[key] = (
+                int(detection.frame_index),
+                np.asarray(coordinate, dtype=np.float64),
+            )
+    scale = np.asarray(scorer.config.scale_zyx, dtype=np.float64)
+    feature_by_pair: dict[tuple[int, int], np.ndarray] = {}
+    logit_by_pair: dict[tuple[int, int], float] = {}
+    geometry_by_pair: dict[tuple[int, int], np.ndarray] = {}
+    by_source: dict[int, list[tuple[int, int]]] = {}
+    by_target: dict[int, list[tuple[int, int]]] = {}
+    for context, source, target in zip(
+        video.contexts, video.detections[:-1], video.detections[1:], strict=True
+    ):
+        previous_velocity: dict[int, np.ndarray | None] = {}
+        for node_id, coordinate in zip(
+            source.node_ids, source.coords_zyx, strict=True
+        ):
+            source_id = int(node_id)
+            parent_id = selected_in.get(source_id)
+            parent = detection_by_id.get(parent_id) if parent_id is not None else None
+            if parent is None or parent[0] != int(source.frame_index) - 1:
+                previous_velocity[source_id] = None
+            else:
+                previous_velocity[source_id] = (
+                    np.asarray(coordinate, dtype=np.float64) - parent[1]
+                ) * scale
+        candidates, checkpoint_logits, residual_features = scorer.candidate_features(
+            context,
+            source,
+            target,
+            previous_velocity_um=previous_velocity,
+        )
+        with torch.no_grad():
+            combined_logits = checkpoint_logits + scorer.calibrator(residual_features)
+        feature_rows = residual_features.detach().cpu().numpy()
+        logit_rows = combined_logits.detach().cpu().numpy()
+        for row, (source_id, target_id) in enumerate(
+            zip(candidates.source_ids, candidates.target_ids, strict=True)
+        ):
+            pair = (int(source_id), int(target_id))
+            if pair in feature_by_pair:
+                raise EdgeDataError("candidate pair repeats across contexts")
+            source_record = detection_by_id.get(pair[0])
+            target_record = detection_by_id.get(pair[1])
+            if source_record is None or target_record is None:
+                raise EdgeDataError("candidate endpoint is absent from detections")
+            feature_by_pair[pair] = np.asarray(feature_rows[row], dtype=np.float32)
+            logit_by_pair[pair] = float(logit_rows[row])
+            geometry_by_pair[pair] = np.concatenate(
+                (source_record[1] * scale, target_record[1] * scale)
+            ).astype(np.float32, copy=False)
+            by_source.setdefault(pair[0], []).append(pair)
+            by_target.setdefault(pair[1], []).append(pair)
+
+    def gt_pair(pair: tuple[int, int]) -> tuple[int, int] | None:
+        source_gt = detection_to_gt.get(pair[0])
+        target_gt = detection_to_gt.get(pair[1])
+        if source_gt is None or target_gt is None:
+            return None
+        return int(source_gt), int(target_gt)
+
+    challenger_pairs: list[tuple[int, int]] = []
+    selected_pairs: list[tuple[int, int]] = []
+    kinds: list[int] = []
+    labels: list[int] = []
+    reachable_misses = 0
+    skipped_division = 0
+    skipped_without_conflict = 0
+    seen: set[tuple[tuple[int, int], tuple[int, int], int, int]] = set()
+
+    def append(
+        challenger: tuple[int, int],
+        selected_pair: tuple[int, int],
+        kind: int,
+        label: int,
+    ) -> None:
+        identity = (challenger, selected_pair, kind, label)
+        if identity in seen:
+            return
+        seen.add(identity)
+        challenger_pairs.append(challenger)
+        selected_pairs.append(selected_pair)
+        kinds.append(kind)
+        labels.append(label)
+
+    # Positive rescues: the missed truth must replace every occupied endpoint.
+    for challenger in sorted(feature_by_pair):
+        mapped = gt_pair(challenger)
+        if mapped is None or mapped not in gt_edges:
+            continue
+        if gt_out.get(mapped[0], 0) != 1 or gt_in.get(mapped[1], 0) != 1:
+            skipped_division += 1
+            continue
+        if challenger in selected:
+            continue
+        reachable_misses += 1
+        before = len(challenger_pairs)
+        source_target = selected_out.get(challenger[0])
+        if source_target is not None and source_target != challenger[1]:
+            competitor = (challenger[0], source_target)
+            if competitor in feature_by_pair and competitor in selected:
+                append(challenger, competitor, SOURCE_CONFLICT, RESCUE_LABEL)
+        target_source = selected_in.get(challenger[1])
+        if target_source is not None and target_source != challenger[0]:
+            competitor = (target_source, challenger[1])
+            if competitor in feature_by_pair and competitor in selected:
+                append(challenger, competitor, TARGET_CONFLICT, RESCUE_LABEL)
+        if len(challenger_pairs) == before:
+            skipped_without_conflict += 1
+
+    # Negative controls: preserve a correct selected edge against known non-edges.
+    for selected_pair in sorted(selected.intersection(feature_by_pair)):
+        mapped_selected = gt_pair(selected_pair)
+        if (
+            mapped_selected is None
+            or mapped_selected not in gt_edges
+            or gt_out.get(mapped_selected[0], 0) != 1
+            or gt_in.get(mapped_selected[1], 0) != 1
+        ):
+            continue
+        for challenger in by_source.get(selected_pair[0], ()):
+            if challenger == selected_pair:
+                continue
+            mapped = gt_pair(challenger)
+            if mapped is not None and mapped not in gt_edges:
+                append(challenger, selected_pair, SOURCE_CONFLICT, CONTROL_LABEL)
+        for challenger in by_target.get(selected_pair[1], ()):
+            if challenger == selected_pair:
+                continue
+            mapped = gt_pair(challenger)
+            if mapped is not None and mapped not in gt_edges:
+                append(challenger, selected_pair, TARGET_CONFLICT, CONTROL_LABEL)
+
+    count = len(labels)
+    challenger_array = np.asarray(challenger_pairs, dtype=np.int64).reshape(count, 2)
+    selected_array = np.asarray(selected_pairs, dtype=np.int64).reshape(count, 2)
+
+    def stack(
+        mapping: Mapping[tuple[int, int], np.ndarray], pairs: Sequence[tuple[int, int]], width: int
+    ) -> np.ndarray:
+        if not pairs:
+            return np.empty((0, width), dtype=np.float32)
+        return np.stack([mapping[pair] for pair in pairs]).astype(np.float32, copy=False)
+
+    return SelectedGraphConflictExamples(
+        challenger_features=stack(feature_by_pair, challenger_pairs, FEATURE_COUNT),
+        selected_features=stack(feature_by_pair, selected_pairs, FEATURE_COUNT),
+        challenger_logits=np.asarray(
+            [logit_by_pair[pair] for pair in challenger_pairs], dtype=np.float32
+        ),
+        selected_logits=np.asarray(
+            [logit_by_pair[pair] for pair in selected_pairs], dtype=np.float32
+        ),
+        challenger_geometry_um=stack(geometry_by_pair, challenger_pairs, 6),
+        selected_geometry_um=stack(geometry_by_pair, selected_pairs, 6),
+        conflict_kind=np.asarray(kinds, dtype=np.int8),
+        labels=np.asarray(labels, dtype=np.int8),
+        challenger_pairs=challenger_array,
+        selected_pairs=selected_array,
+        candidate_count=len(feature_by_pair),
+        reachable_miss_count=reachable_misses,
+        rescue_count=sum(label == RESCUE_LABEL for label in labels),
+        control_count=sum(label == CONTROL_LABEL for label in labels),
+        source_conflict_count=sum(kind == SOURCE_CONFLICT for kind in kinds),
+        target_conflict_count=sum(kind == TARGET_CONFLICT for kind in kinds),
+        skipped_division_truth=skipped_division,
+        skipped_without_candidate_conflict=skipped_without_conflict,
+        candidate_topology_sha256=_topology_sha256(tuple(feature_by_pair)),
+    )
+
+
 def _gt_by_frame(gt: Mapping[str, Any]) -> tuple[dict[int, tuple[np.ndarray, np.ndarray]], set[tuple[int, int]]]:
     nodes = gt.get("nodes")
     edges = gt.get("edges")
@@ -512,14 +852,18 @@ def examples_from_video(
 
 
 __all__ = [
+    "CONTROL_LABEL",
     "ConflictPairExamples",
     "FEATURE_COUNT",
     "MATCH_RADIUS_UM",
+    "RESCUE_LABEL",
     "SOURCE_CONFLICT",
+    "SelectedGraphConflictExamples",
     "TARGET_CONFLICT",
     "EdgeDataError",
     "EdgeExamples",
     "conflict_examples_from_video",
     "examples_from_video",
     "match_detections_to_gt",
+    "selected_graph_conflict_examples_from_video",
 ]

@@ -187,7 +187,10 @@ class KagglePackageTests(unittest.TestCase):
         }
         self.assertEqual(embedded, logical_files)
         self.assertEqual(identity["runtime"]["devices"], ["cuda:0", "cuda:1"])
-        self.assertEqual(identity["runtime"]["deadline_minutes"], 120)
+        self.assertEqual(
+            identity["runtime"]["deadline_minutes"],
+            pkgbh.SUBMISSION_DEADLINE_MINUTES,
+        )
         self.assertEqual(identity["runtime"]["default_view_batch_size"], 1)
         self.assertTrue(identity["runtime"]["accelerated_score_gate_required"])
         self.assertEqual(identity["runtime"]["machine_shape"], "NvidiaTeslaT4")
@@ -264,7 +267,10 @@ class KagglePackageTests(unittest.TestCase):
         self.assertEqual(command[command.index("--devices") + 1], "cuda:0,cuda:1")
         self.assertEqual(command[command.index("--pair-batch-size") + 1], "1")
         self.assertEqual(command[command.index("--view-batch-size") + 1], "1")
-        self.assertEqual(command[command.index("--deadline-min") + 1], "120")
+        self.assertEqual(
+            command[command.index("--deadline-min") + 1],
+            str(pkgbh.SUBMISSION_DEADLINE_MINUTES),
+        )
         self.assertNotIn("--allow-cpu", command)
         self.assertNotIn("--accelerated-score-gate", command)
 
@@ -328,6 +334,74 @@ class KagglePackageTests(unittest.TestCase):
         self.assertNotIn("--test-only-one-view", command)
         self.assertFalse(run["division_enabled"])
         self.assertEqual(run["topology_mode"], "legacy")
+
+    def test_appearance_probe_package_is_hash_pinned_and_fail_closed(self) -> None:
+        for relative in (
+            "src/celltrack_alpha/relative_geometry_gate.py",
+            "src/celltrack_alpha/appearance_swap.py",
+            pkgbh.APPEARANCE_CONTRACT,
+            pkgbh.APPEARANCE_GATE,
+        ):
+            source = ROOT / relative
+            target = self.repo / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, target)
+        output = self.root / "bhap-submit"
+        report = pkgbh.build_package(
+            self.repo,
+            output,
+            registry=self.registry,
+            support_root=self.support,
+            expected_artifact_hashes=self.expected,
+            profile="appearance-submit",
+        )
+        self.assertEqual(report["profile"], "appearance-submit")
+        self.assertEqual(
+            report["run"], pkgbh.appearance_run_spec("submit")
+        )
+        self.assertLess(report["aggregate_bytes"], pkgbh.SOURCE_LIMIT)
+        with zipfile.ZipFile(output / pkgbh.ARCHIVE_NAME) as archive:
+            names = set(archive.namelist())
+            self.assertIn(pkgbh.APPEARANCE_CONTRACT, names)
+            self.assertIn(pkgbh.APPEARANCE_GATE, names)
+            self.assertIn("src/celltrack_alpha/appearance_swap.py", names)
+            self.assertEqual(
+                _sha(archive.read(pkgbh.APPEARANCE_CONTRACT)),
+                pkgbh.APPEARANCE_CONTRACT_SHA256,
+            )
+            self.assertEqual(
+                _sha(archive.read(pkgbh.APPEARANCE_GATE)),
+                pkgbh.APPEARANCE_GATE_SHA256,
+            )
+        command = pkgbh.runner_command(
+            "python",
+            "/src",
+            "/competition",
+            "/support",
+            "/work",
+            run_spec=report["run"],
+        )
+        self.assertEqual(
+            command[command.index("--appearance-swap-contract") + 1],
+            f"/src/{pkgbh.APPEARANCE_CONTRACT}",
+        )
+        self.assertEqual(
+            command[command.index("--appearance-swap-contract-sha256") + 1],
+            pkgbh.APPEARANCE_CONTRACT_SHA256,
+        )
+
+        (self.repo / pkgbh.APPEARANCE_GATE).write_bytes(b"corrupt")
+        with self.assertRaisesRegex(
+            pkgbh.PackageError, "appearance input identity mismatch"
+        ):
+            pkgbh.build_package(
+                self.repo,
+                self.root / "bad-appearance",
+                registry=self.registry,
+                support_root=self.support,
+                expected_artifact_hashes=self.expected,
+                profile="appearance-submit",
+            )
 
     def test_embedded_gpu_diagnostics_classify_wrong_family_and_t4_count(self) -> None:
         output, _report = self.build("gpu")

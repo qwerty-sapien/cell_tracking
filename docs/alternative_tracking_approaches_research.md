@@ -2,6 +2,11 @@
 
 Updated: 2026-07-08
 
+> Superseded for learned-model selection and compute policy by
+> [`reports/g02/model_landscape_20260724.md`](../reports/g02/model_landscape_20260724.md)
+> and `reports/g02/compute_governance_v1.json`. The historical notes below retain the
+> older `$25` policy only as provenance; they are not current launch authority.
+
 Purpose: durable research notes for the Biohub Cell Tracking During Development Kaggle competition. This file is designed to survive `/clear` and let the next session continue from a concrete source-backed strategy.
 
 ## Current Alignment

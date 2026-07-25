@@ -1,0 +1,1638 @@
+{
+  "aggregate": {
+    "canonical_equal_datasets": 0,
+    "dataset_count": 10,
+    "edges_raw": {
+      "a_edges": 402319,
+      "a_only": 3987,
+      "b_edges": 400552,
+      "b_only": 2220,
+      "jaccard": 0.984656609127921,
+      "shared": 398332
+    },
+    "edges_scorer_eligible": {
+      "a_edges": 402319,
+      "a_only": 3987,
+      "b_edges": 400552,
+      "b_only": 2220,
+      "jaccard": 0.984656609127921,
+      "shared": 398332
+    },
+    "forks": {
+      "a_forks": 0,
+      "a_only": 0,
+      "agreement": 1.0,
+      "b_forks": 0,
+      "b_only": 0,
+      "shared": 0
+    },
+    "nodes": {
+      "a_nodes": 421105,
+      "a_only": 2097,
+      "b_nodes": 419727,
+      "b_only": 719,
+      "exact_coordinate_matches_after_id": 1,
+      "exact_id_coordinate_matches": 408963,
+      "jaccard": 0.9933242300106205,
+      "shared": 419008,
+      "spatial_distance_max_um": 6.953879874753374,
+      "spatial_matches": 10044
+    }
+  },
+  "artifacts": {
+    "a": {
+      "canonical_sha256": "43d3d91cbc87830e4721e218a0794499f2b1218e68df3fafb9cec24ded6f2a74",
+      "dataset_count": 10,
+      "edge_count": 402319,
+      "file_count": 10,
+      "files": [
+        {
+          "bytes": 2540935,
+          "datasets": [
+            "44b6_267148e4"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/motion_error_weight_0p25/fragments/train__44b6_267148e4.csv",
+          "sha256": "5dd8a60401410a88e114f869fec27ef222edeffbfa364227f801fd99bf2592ed"
+        },
+        {
+          "bytes": 3594170,
+          "datasets": [
+            "44b6_71a4179f"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/motion_error_weight_0p25/fragments/train__44b6_71a4179f.csv",
+          "sha256": "422de6e78ddb0822e02dccd79c2769d5ccc60bbbdaf199d23ead6b4b57732aea"
+        },
+        {
+          "bytes": 3479223,
+          "datasets": [
+            "44b6_87bba6c4"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/motion_error_weight_0p25/fragments/train__44b6_87bba6c4.csv",
+          "sha256": "ce48566bfd5db3055c151b099e3d79a9e868cdb28c8b5bac0bf98c2f77edbc3a"
+        },
+        {
+          "bytes": 2543125,
+          "datasets": [
+            "44b6_cf2536e8"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/motion_error_weight_0p25/fragments/train__44b6_cf2536e8.csv",
+          "sha256": "eeed2553713a165d27f8599b6fd86ab7e862a97ca2c38b4ee4a024e7f3103919"
+        },
+        {
+          "bytes": 5347106,
+          "datasets": [
+            "44b6_d5e7d891"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/motion_error_weight_0p25/fragments/train__44b6_d5e7d891.csv",
+          "sha256": "6fb28e46404136d689febe7ed9df2f2e9ad60fb0927a7dcd99d5a196eb7ec28c"
+        },
+        {
+          "bytes": 2286230,
+          "datasets": [
+            "44b6_e57ff5c6"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/motion_error_weight_0p25/fragments/train__44b6_e57ff5c6.csv",
+          "sha256": "02db89675a002c0fad9fee1870b71ddb68dd2d82b914d064eae4dc3e5ffc6f26"
+        },
+        {
+          "bytes": 6302852,
+          "datasets": [
+            "6bba_3abfe10a"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/motion_error_weight_0p25/fragments/train__6bba_3abfe10a.csv",
+          "sha256": "031a9de75a02e8755e431ccd7b3d5e48b6eaa0c68b2d72365f3cae1fb6ac2ee1"
+        },
+        {
+          "bytes": 6936725,
+          "datasets": [
+            "6bba_786893ac"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/motion_error_weight_0p25/fragments/train__6bba_786893ac.csv",
+          "sha256": "86d1c396dabc72987500ab107e70d6655026dff556f580aadadb755afe351b7a"
+        },
+        {
+          "bytes": 6461063,
+          "datasets": [
+            "6bba_ebdf3b34"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/motion_error_weight_0p25/fragments/train__6bba_ebdf3b34.csv",
+          "sha256": "136cfe90ee4c1173f306e6b188efc97a2385a1f2d051bd6b2a2e78c52a60da23"
+        },
+        {
+          "bytes": 2953763,
+          "datasets": [
+            "6bba_f17befbc"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/phase1_e3_backward_motion_coefficient_cv57_v1/motion_error_weight_0p25/fragments/train__6bba_f17befbc.csv",
+          "sha256": "58d6eded7d9e454b5c54f89a25be281e253519b3178610d20f23f89aec1ad99b"
+        }
+      ],
+      "label": "c0p25-top10",
+      "manifest_sha256": "02c0827a4364ecbd522c864788b05ec81acc243ad252b103ee627e831d76a0c4",
+      "node_count": 421105,
+      "source": "/private/tmp/g02-obsdiff-control.WJp04s"
+    },
+    "b": {
+      "canonical_sha256": "d0f128bbca7cb5713e2b4091483f1d02e90c8ef820286c3abe1ae72ed2f408bf",
+      "dataset_count": 10,
+      "edge_count": 400552,
+      "file_count": 10,
+      "files": [
+        {
+          "bytes": 2531706,
+          "datasets": [
+            "44b6_267148e4"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_direct_screen10_v3/fragments/train__44b6_267148e4.csv",
+          "sha256": "3230a170d74241a36fb901b3b2b243b453e14b512516bc5883f85d789e1121f1"
+        },
+        {
+          "bytes": 3576509,
+          "datasets": [
+            "44b6_71a4179f"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_direct_screen10_v3/fragments/train__44b6_71a4179f.csv",
+          "sha256": "14288788f3a60334d304e65fa06b08a7bdff15d4a341cbe1409b017504630715"
+        },
+        {
+          "bytes": 3468095,
+          "datasets": [
+            "44b6_87bba6c4"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_direct_screen10_v3/fragments/train__44b6_87bba6c4.csv",
+          "sha256": "518dbbeaa23a915dc485b22a6daa1227d0e9e1d3997ffcbf679a5b64e187a355"
+        },
+        {
+          "bytes": 2526803,
+          "datasets": [
+            "44b6_cf2536e8"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_direct_screen10_v3/fragments/train__44b6_cf2536e8.csv",
+          "sha256": "7c4782db8770e3bbd71af38c415c1e6070ad80682d8879719bc41c25f9f430e4"
+        },
+        {
+          "bytes": 5326715,
+          "datasets": [
+            "44b6_d5e7d891"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_direct_screen10_v3/fragments/train__44b6_d5e7d891.csv",
+          "sha256": "f78f7d3921cdb9d7bf745dd94a600edd8746871b60691714cc08e7c6c4a55557"
+        },
+        {
+          "bytes": 2277818,
+          "datasets": [
+            "44b6_e57ff5c6"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_direct_screen10_v3/fragments/train__44b6_e57ff5c6.csv",
+          "sha256": "77f5256420be962b2b535a0c48a3f665e6516d88b539655361e314a56a2e2d1c"
+        },
+        {
+          "bytes": 6277581,
+          "datasets": [
+            "6bba_3abfe10a"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_direct_screen10_v3/fragments/train__6bba_3abfe10a.csv",
+          "sha256": "1e2291b89ae80e091260f6d2e012ff138e524b1ae4b27ba9b709501527628907"
+        },
+        {
+          "bytes": 6909637,
+          "datasets": [
+            "6bba_786893ac"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_direct_screen10_v3/fragments/train__6bba_786893ac.csv",
+          "sha256": "14d1dbb007efd23ca66e34dcf2e3ac49d2697ce261026ca556705d2ab4cb0e61"
+        },
+        {
+          "bytes": 6443469,
+          "datasets": [
+            "6bba_ebdf3b34"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_direct_screen10_v3/fragments/train__6bba_ebdf3b34.csv",
+          "sha256": "d7d16b6157e17fb33ccc88ad20aa4a6a1b1cdf16ffde495d45b9a9e1b265572d"
+        },
+        {
+          "bytes": 2942812,
+          "datasets": [
+            "6bba_f17befbc"
+          ],
+          "path": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_direct_screen10_v3/fragments/train__6bba_f17befbc.csv",
+          "sha256": "325297c6d12e71b8036228c33193e04a31c87af24656fa94380bff810d310022"
+        }
+      ],
+      "label": "selected-graph-appearance-direct-top10",
+      "manifest_sha256": "07f2372f40dd901fcbbab413708fa7f80cae8e68ce3a4715f546196e4468201a",
+      "node_count": 419727,
+      "source": "/Users/agent/Desktop/cell_tracking/reports/g02/selected_graph_appearance_direct_screen10_v3/fragments"
+    }
+  },
+  "by_dataset": [
+    {
+      "canonical_equal": false,
+      "dataset": "44b6_267148e4",
+      "edges_raw": {
+        "a_edges": 24260,
+        "a_only": 230,
+        "b_edges": 24160,
+        "b_edges_with_both_nodes_matched": 24122,
+        "b_only": 130,
+        "consecutive_only": false,
+        "jaccard": 0.985239852398524,
+        "shared": 24030
+      },
+      "edges_scorer_eligible": {
+        "a_edges": 24260,
+        "a_only": 230,
+        "b_edges": 24160,
+        "b_edges_with_both_nodes_matched": 24122,
+        "b_only": 130,
+        "consecutive_only": true,
+        "jaccard": 0.985239852398524,
+        "shared": 24030
+      },
+      "family": "44b6",
+      "forks": {
+        "a_forks": 0,
+        "a_only": 0,
+        "agreement": 1.0,
+        "b_forks": 0,
+        "b_forks_with_full_local_topology_matched": 0,
+        "b_only": 0,
+        "semantics": "divider + predecessor + two child branches + grandchildren",
+        "shared": 0
+      },
+      "nodes": {
+        "a_nodes": 25393,
+        "a_only": 116,
+        "b_nodes": 25315,
+        "b_only": 38,
+        "exact_coordinate_matches_after_id": 0,
+        "exact_id_coordinate_matches": 24656,
+        "jaccard": 0.993944398568676,
+        "max_distance_um": 7.0,
+        "shared": 25277,
+        "spatial_distance_max_um": 6.809990937035085,
+        "spatial_distance_mean_um": 2.06176123782549,
+        "spatial_matches": 621
+      }
+    },
+    {
+      "canonical_equal": false,
+      "dataset": "44b6_71a4179f",
+      "edges_raw": {
+        "a_edges": 34134,
+        "a_only": 353,
+        "b_edges": 33956,
+        "b_edges_with_both_nodes_matched": 33896,
+        "b_only": 175,
+        "consecutive_only": false,
+        "jaccard": 0.9846104520679705,
+        "shared": 33781
+      },
+      "edges_scorer_eligible": {
+        "a_edges": 34134,
+        "a_only": 353,
+        "b_edges": 33956,
+        "b_edges_with_both_nodes_matched": 33896,
+        "b_only": 175,
+        "consecutive_only": true,
+        "jaccard": 0.9846104520679705,
+        "shared": 33781
+      },
+      "family": "44b6",
+      "forks": {
+        "a_forks": 0,
+        "a_only": 0,
+        "agreement": 1.0,
+        "b_forks": 0,
+        "b_forks_with_full_local_topology_matched": 0,
+        "b_only": 0,
+        "semantics": "divider + predecessor + two child branches + grandchildren",
+        "shared": 0
+      },
+      "nodes": {
+        "a_nodes": 35767,
+        "a_only": 224,
+        "b_nodes": 35602,
+        "b_only": 59,
+        "exact_coordinate_matches_after_id": 0,
+        "exact_id_coordinate_matches": 34805,
+        "jaccard": 0.9921007089823034,
+        "max_distance_um": 7.0,
+        "shared": 35543,
+        "spatial_distance_max_um": 6.953879874753374,
+        "spatial_distance_mean_um": 1.5310228186362418,
+        "spatial_matches": 738
+      }
+    },
+    {
+      "canonical_equal": false,
+      "dataset": "44b6_87bba6c4",
+      "edges_raw": {
+        "a_edges": 33001,
+        "a_only": 339,
+        "b_edges": 32879,
+        "b_edges_with_both_nodes_matched": 32776,
+        "b_only": 217,
+        "consecutive_only": false,
+        "jaccard": 0.9832620868203986,
+        "shared": 32662
+      },
+      "edges_scorer_eligible": {
+        "a_edges": 33001,
+        "a_only": 339,
+        "b_edges": 32879,
+        "b_edges_with_both_nodes_matched": 32776,
+        "b_only": 217,
+        "consecutive_only": true,
+        "jaccard": 0.9832620868203986,
+        "shared": 32662
+      },
+      "family": "44b6",
+      "forks": {
+        "a_forks": 0,
+        "a_only": 0,
+        "agreement": 1.0,
+        "b_forks": 0,
+        "b_forks_with_full_local_topology_matched": 0,
+        "b_only": 0,
+        "semantics": "divider + predecessor + two child branches + grandchildren",
+        "shared": 0
+      },
+      "nodes": {
+        "a_nodes": 34733,
+        "a_only": 195,
+        "b_nodes": 34641,
+        "b_only": 103,
+        "exact_coordinate_matches_after_id": 0,
+        "exact_id_coordinate_matches": 33737,
+        "jaccard": 0.9914456309564817,
+        "max_distance_um": 7.0,
+        "shared": 34538,
+        "spatial_distance_max_um": 6.761347521944128,
+        "spatial_distance_mean_um": 2.113547060818405,
+        "spatial_matches": 801
+      }
+    },
+    {
+      "canonical_equal": false,
+      "dataset": "44b6_cf2536e8",
+      "edges_raw": {
+        "a_edges": 24122,
+        "a_only": 269,
+        "b_edges": 23964,
+        "b_edges_with_both_nodes_matched": 23938,
+        "b_only": 111,
+        "consecutive_only": false,
+        "jaccard": 0.9843189039739199,
+        "shared": 23853
+      },
+      "edges_scorer_eligible": {
+        "a_edges": 24122,
+        "a_only": 269,
+        "b_edges": 23964,
+        "b_edges_with_both_nodes_matched": 23938,
+        "b_only": 111,
+        "consecutive_only": true,
+        "jaccard": 0.9843189039739199,
+        "shared": 23853
+      },
+      "family": "44b6",
+      "forks": {
+        "a_forks": 0,
+        "a_only": 0,
+        "agreement": 1.0,
+        "b_forks": 0,
+        "b_forks_with_full_local_topology_matched": 0,
+        "b_only": 0,
+        "semantics": "divider + predecessor + two child branches + grandchildren",
+        "shared": 0
+      },
+      "nodes": {
+        "a_nodes": 25512,
+        "a_only": 186,
+        "b_nodes": 25352,
+        "b_only": 26,
+        "exact_coordinate_matches_after_id": 1,
+        "exact_id_coordinate_matches": 24823,
+        "jaccard": 0.9916986451562377,
+        "max_distance_um": 7.0,
+        "shared": 25326,
+        "spatial_distance_max_um": 6.90625,
+        "spatial_distance_mean_um": 1.5219305558080667,
+        "spatial_matches": 502
+      }
+    },
+    {
+      "canonical_equal": false,
+      "dataset": "44b6_d5e7d891",
+      "edges_raw": {
+        "a_edges": 50665,
+        "a_only": 504,
+        "b_edges": 50436,
+        "b_edges_with_both_nodes_matched": 50343,
+        "b_only": 275,
+        "consecutive_only": false,
+        "jaccard": 0.9847074990184531,
+        "shared": 50161
+      },
+      "edges_scorer_eligible": {
+        "a_edges": 50665,
+        "a_only": 504,
+        "b_edges": 50436,
+        "b_edges_with_both_nodes_matched": 50343,
+        "b_only": 275,
+        "consecutive_only": true,
+        "jaccard": 0.9847074990184531,
+        "shared": 50161
+      },
+      "family": "44b6",
+      "forks": {
+        "a_forks": 0,
+        "a_only": 0,
+        "agreement": 1.0,
+        "b_forks": 0,
+        "b_forks_with_full_local_topology_matched": 0,
+        "b_only": 0,
+        "semantics": "divider + predecessor + two child branches + grandchildren",
+        "shared": 0
+      },
+      "nodes": {
+        "a_nodes": 52759,
+        "a_only": 244,
+        "b_nodes": 52604,
+        "b_only": 89,
+        "exact_coordinate_matches_after_id": 0,
+        "exact_id_coordinate_matches": 51237,
+        "jaccard": 0.9936989100817438,
+        "max_distance_um": 7.0,
+        "shared": 52515,
+        "spatial_distance_max_um": 6.749131888620936,
+        "spatial_distance_mean_um": 1.6988860605829843,
+        "spatial_matches": 1278
+      }
+    },
+    {
+      "canonical_equal": false,
+      "dataset": "44b6_e57ff5c6",
+      "edges_raw": {
+        "a_edges": 21762,
+        "a_only": 216,
+        "b_edges": 21673,
+        "b_edges_with_both_nodes_matched": 21614,
+        "b_only": 127,
+        "consecutive_only": false,
+        "jaccard": 0.9843300287815798,
+        "shared": 21546
+      },
+      "edges_scorer_eligible": {
+        "a_edges": 21762,
+        "a_only": 216,
+        "b_edges": 21673,
+        "b_edges_with_both_nodes_matched": 21614,
+        "b_only": 127,
+        "consecutive_only": true,
+        "jaccard": 0.9843300287815798,
+        "shared": 21546
+      },
+      "family": "44b6",
+      "forks": {
+        "a_forks": 0,
+        "a_only": 0,
+        "agreement": 1.0,
+        "b_forks": 0,
+        "b_forks_with_full_local_topology_matched": 0,
+        "b_only": 0,
+        "semantics": "divider + predecessor + two child branches + grandchildren",
+        "shared": 0
+      },
+      "nodes": {
+        "a_nodes": 23070,
+        "a_only": 137,
+        "b_nodes": 22992,
+        "b_only": 59,
+        "exact_coordinate_matches_after_id": 0,
+        "exact_id_coordinate_matches": 22461,
+        "jaccard": 0.9915257901335985,
+        "max_distance_um": 7.0,
+        "shared": 22933,
+        "spatial_distance_max_um": 6.512682938889317,
+        "spatial_distance_mean_um": 2.1482013294347344,
+        "spatial_matches": 472
+      }
+    },
+    {
+      "canonical_equal": false,
+      "dataset": "6bba_3abfe10a",
+      "edges_raw": {
+        "a_edges": 59534,
+        "a_only": 614,
+        "b_edges": 59256,
+        "b_edges_with_both_nodes_matched": 59168,
+        "b_only": 336,
+        "consecutive_only": false,
+        "jaccard": 0.9841322866210122,
+        "shared": 58920
+      },
+      "edges_scorer_eligible": {
+        "a_edges": 59534,
+        "a_only": 614,
+        "b_edges": 59256,
+        "b_edges_with_both_nodes_matched": 59168,
+        "b_only": 336,
+        "consecutive_only": true,
+        "jaccard": 0.9841322866210122,
+        "shared": 58920
+      },
+      "family": "6bba",
+      "forks": {
+        "a_forks": 0,
+        "a_only": 0,
+        "agreement": 1.0,
+        "b_forks": 0,
+        "b_forks_with_full_local_topology_matched": 0,
+        "b_only": 0,
+        "semantics": "divider + predecessor + two child branches + grandchildren",
+        "shared": 0
+      },
+      "nodes": {
+        "a_nodes": 62300,
+        "a_only": 286,
+        "b_nodes": 62100,
+        "b_only": 86,
+        "exact_coordinate_matches_after_id": 0,
+        "exact_id_coordinate_matches": 60402,
+        "jaccard": 0.9940371237136537,
+        "max_distance_um": 7.0,
+        "shared": 62014,
+        "spatial_distance_max_um": 6.953879874753374,
+        "spatial_distance_mean_um": 1.8922272717657738,
+        "spatial_matches": 1612
+      }
+    },
+    {
+      "canonical_equal": false,
+      "dataset": "6bba_786893ac",
+      "edges_raw": {
+        "a_edges": 65314,
+        "a_only": 658,
+        "b_edges": 65027,
+        "b_edges_with_both_nodes_matched": 64873,
+        "b_only": 371,
+        "consecutive_only": false,
+        "jaccard": 0.9843343229047727,
+        "shared": 64656
+      },
+      "edges_scorer_eligible": {
+        "a_edges": 65314,
+        "a_only": 658,
+        "b_edges": 65027,
+        "b_edges_with_both_nodes_matched": 64873,
+        "b_only": 371,
+        "consecutive_only": true,
+        "jaccard": 0.9843343229047727,
+        "shared": 64656
+      },
+      "family": "6bba",
+      "forks": {
+        "a_forks": 0,
+        "a_only": 0,
+        "agreement": 1.0,
+        "b_forks": 0,
+        "b_forks_with_full_local_topology_matched": 0,
+        "b_only": 0,
+        "semantics": "divider + predecessor + two child branches + grandchildren",
+        "shared": 0
+      },
+      "nodes": {
+        "a_nodes": 68631,
+        "a_only": 377,
+        "b_nodes": 68405,
+        "b_only": 151,
+        "exact_coordinate_matches_after_id": 0,
+        "exact_id_coordinate_matches": 66677,
+        "jaccard": 0.992323573027827,
+        "max_distance_um": 7.0,
+        "shared": 68254,
+        "spatial_distance_max_um": 6.9181882111576005,
+        "spatial_distance_mean_um": 1.8941533729434679,
+        "spatial_matches": 1577
+      }
+    },
+    {
+      "canonical_equal": false,
+      "dataset": "6bba_ebdf3b34",
+      "edges_raw": {
+        "a_edges": 61316,
+        "a_only": 538,
+        "b_edges": 61110,
+        "b_edges_with_both_nodes_matched": 61037,
+        "b_only": 332,
+        "consecutive_only": false,
+        "jaccard": 0.9858876200363353,
+        "shared": 60778
+      },
+      "edges_scorer_eligible": {
+        "a_edges": 61316,
+        "a_only": 538,
+        "b_edges": 61110,
+        "b_edges_with_both_nodes_matched": 61037,
+        "b_only": 332,
+        "consecutive_only": true,
+        "jaccard": 0.9858876200363353,
+        "shared": 60778
+      },
+      "family": "6bba",
+      "forks": {
+        "a_forks": 0,
+        "a_only": 0,
+        "agreement": 1.0,
+        "b_forks": 0,
+        "b_forks_with_full_local_topology_matched": 0,
+        "b_only": 0,
+        "semantics": "divider + predecessor + two child branches + grandchildren",
+        "shared": 0
+      },
+      "nodes": {
+        "a_nodes": 63398,
+        "a_only": 203,
+        "b_nodes": 63268,
+        "b_only": 73,
+        "exact_coordinate_matches_after_id": 0,
+        "exact_id_coordinate_matches": 61481,
+        "jaccard": 0.9956515574041689,
+        "max_distance_um": 7.0,
+        "shared": 63195,
+        "spatial_distance_max_um": 6.894291116568838,
+        "spatial_distance_mean_um": 1.9261299911805356,
+        "spatial_matches": 1714
+      }
+    },
+    {
+      "canonical_equal": false,
+      "dataset": "6bba_f17befbc",
+      "edges_raw": {
+        "a_edges": 28211,
+        "a_only": 266,
+        "b_edges": 28091,
+        "b_edges_with_both_nodes_matched": 28056,
+        "b_only": 146,
+        "consecutive_only": false,
+        "jaccard": 0.9854709595514335,
+        "shared": 27945
+      },
+      "edges_scorer_eligible": {
+        "a_edges": 28211,
+        "a_only": 266,
+        "b_edges": 28091,
+        "b_edges_with_both_nodes_matched": 28056,
+        "b_only": 146,
+        "consecutive_only": true,
+        "jaccard": 0.9854709595514335,
+        "shared": 27945
+      },
+      "family": "6bba",
+      "forks": {
+        "a_forks": 0,
+        "a_only": 0,
+        "agreement": 1.0,
+        "b_forks": 0,
+        "b_forks_with_full_local_topology_matched": 0,
+        "b_only": 0,
+        "semantics": "divider + predecessor + two child branches + grandchildren",
+        "shared": 0
+      },
+      "nodes": {
+        "a_nodes": 29542,
+        "a_only": 129,
+        "b_nodes": 29448,
+        "b_only": 35,
+        "exact_coordinate_matches_after_id": 0,
+        "exact_id_coordinate_matches": 28684,
+        "jaccard": 0.9944551509618961,
+        "max_distance_um": 7.0,
+        "shared": 29413,
+        "spatial_distance_max_um": 6.761347521944128,
+        "spatial_distance_mean_um": 1.983065764211104,
+        "spatial_matches": 729
+      }
+    }
+  ],
+  "by_family": {
+    "44b6": {
+      "canonical_equal_datasets": 0,
+      "dataset_count": 6,
+      "edges_raw": {
+        "a_edges": 187944,
+        "a_only": 1911,
+        "b_edges": 187068,
+        "b_only": 1035,
+        "jaccard": 0.9844109662978426,
+        "shared": 186033
+      },
+      "edges_scorer_eligible": {
+        "a_edges": 187944,
+        "a_only": 1911,
+        "b_edges": 187068,
+        "b_only": 1035,
+        "jaccard": 0.9844109662978426,
+        "shared": 186033
+      },
+      "forks": {
+        "a_forks": 0,
+        "a_only": 0,
+        "agreement": 1.0,
+        "b_forks": 0,
+        "b_only": 0,
+        "shared": 0
+      },
+      "nodes": {
+        "a_nodes": 197234,
+        "a_only": 1102,
+        "b_nodes": 196506,
+        "b_only": 374,
+        "exact_coordinate_matches_after_id": 1,
+        "exact_id_coordinate_matches": 191719,
+        "jaccard": 0.9925306667746245,
+        "shared": 196132,
+        "spatial_distance_max_um": 6.953879874753374,
+        "spatial_matches": 4412
+      }
+    },
+    "6bba": {
+      "canonical_equal_datasets": 0,
+      "dataset_count": 4,
+      "edges_raw": {
+        "a_edges": 214375,
+        "a_only": 2076,
+        "b_edges": 213484,
+        "b_only": 1185,
+        "jaccard": 0.9848719614028577,
+        "shared": 212299
+      },
+      "edges_scorer_eligible": {
+        "a_edges": 214375,
+        "a_only": 2076,
+        "b_edges": 213484,
+        "b_only": 1185,
+        "jaccard": 0.9848719614028577,
+        "shared": 212299
+      },
+      "forks": {
+        "a_forks": 0,
+        "a_only": 0,
+        "agreement": 1.0,
+        "b_forks": 0,
+        "b_only": 0,
+        "shared": 0
+      },
+      "nodes": {
+        "a_nodes": 223871,
+        "a_only": 995,
+        "b_nodes": 223221,
+        "b_only": 345,
+        "exact_coordinate_matches_after_id": 0,
+        "exact_id_coordinate_matches": 217244,
+        "jaccard": 0.9940236200806365,
+        "shared": 222876,
+        "spatial_distance_max_um": 6.953879874753374,
+        "spatial_matches": 5632
+      }
+    }
+  },
+  "frozen_score": {
+    "a": {
+      "edge_counts": {
+        "W": 6980,
+        "edge_fn": 730,
+        "edge_fp": 1133,
+        "edge_tp": 5117
+      },
+      "samples": [
+        {
+          "adj_edge_jaccard": 0.6681368277287436,
+          "cropped": false,
+          "dataset": "44b6_267148e4",
+          "division_fn": 1.0,
+          "division_fp": 0.0,
+          "division_jaccard": 0.0,
+          "division_tp": 0.0,
+          "edge_fn": 38.0,
+          "edge_fp": 69.0,
+          "edge_jaccard": 0.6907514450867052,
+          "edge_tp": 239.0,
+          "elapsed_seconds": 2.534076875075698,
+          "estimated_number_of_nodes": 19130.0,
+          "full_video": true,
+          "ground_truth_edges": 277,
+          "ground_truth_nodes": 280,
+          "identity": "train:44b6_267148e4",
+          "node_recall": 1.0,
+          "num_pred_nodes": 25393.0,
+          "prediction_edge_rows": 24260,
+          "prediction_node_rows": 25393,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "43d3d91cbc87830e4721e218a0794499f2b1218e68df3fafb9cec24ded6f2a74",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.32739153162571877
+        },
+        {
+          "adj_edge_jaccard": 0.65531887293121,
+          "cropped": false,
+          "dataset": "44b6_71a4179f",
+          "division_fn": 0.0,
+          "division_fp": 0.0,
+          "division_jaccard": null,
+          "division_tp": 0.0,
+          "edge_fn": 22.0,
+          "edge_fp": 36.0,
+          "edge_jaccard": 0.6258064516129033,
+          "edge_tp": 97.0,
+          "elapsed_seconds": 1.6624686252325773,
+          "estimated_number_of_nodes": 67688.0,
+          "full_video": true,
+          "ground_truth_edges": 119,
+          "ground_truth_nodes": 121,
+          "identity": "train:44b6_71a4179f",
+          "node_recall": 1.0,
+          "num_pred_nodes": 35767.0,
+          "prediction_edge_rows": 34134,
+          "prediction_node_rows": 35767,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "43d3d91cbc87830e4721e218a0794499f2b1218e68df3fafb9cec24ded6f2a74",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": -0.47159023756057206
+        },
+        {
+          "adj_edge_jaccard": 0.4836815193066527,
+          "cropped": false,
+          "dataset": "44b6_87bba6c4",
+          "division_fn": 0.0,
+          "division_fp": 0.0,
+          "division_jaccard": null,
+          "division_tp": 0.0,
+          "edge_fn": 42.0,
+          "edge_fp": 67.0,
+          "edge_jaccard": 0.49537037037037035,
+          "edge_tp": 107.0,
+          "elapsed_seconds": 0.8728480408899486,
+          "estimated_number_of_nodes": 28102.0,
+          "full_video": true,
+          "ground_truth_edges": 149,
+          "ground_truth_nodes": 153,
+          "identity": "train:44b6_87bba6c4",
+          "node_recall": 0.9738562091503268,
+          "num_pred_nodes": 34733.0,
+          "prediction_edge_rows": 33001,
+          "prediction_node_rows": 34733,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "43d3d91cbc87830e4721e218a0794499f2b1218e68df3fafb9cec24ded6f2a74",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.23596185324887908
+        },
+        {
+          "adj_edge_jaccard": 0.8470001959362419,
+          "cropped": false,
+          "dataset": "44b6_cf2536e8",
+          "division_fn": 0.0,
+          "division_fp": 0.0,
+          "division_jaccard": null,
+          "division_tp": 0.0,
+          "edge_fn": 6.0,
+          "edge_fp": 11.0,
+          "edge_jaccard": 0.8023255813953488,
+          "edge_tp": 69.0,
+          "elapsed_seconds": 0.8985281251370907,
+          "estimated_number_of_nodes": 57565.0,
+          "full_video": true,
+          "ground_truth_edges": 75,
+          "ground_truth_nodes": 76,
+          "identity": "train:44b6_cf2536e8",
+          "node_recall": 1.0,
+          "num_pred_nodes": 25512.0,
+          "prediction_edge_rows": 24122,
+          "prediction_node_rows": 25512,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "43d3d91cbc87830e4721e218a0794499f2b1218e68df3fafb9cec24ded6f2a74",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": -0.5568140363067836
+        },
+        {
+          "adj_edge_jaccard": 0.8120714873378581,
+          "cropped": false,
+          "dataset": "44b6_d5e7d891",
+          "division_fn": 2.0,
+          "division_fp": 0.0,
+          "division_jaccard": 0.0,
+          "division_tp": 0.0,
+          "edge_fn": 68.0,
+          "edge_fp": 105.0,
+          "edge_jaccard": 0.8266533066132264,
+          "edge_tp": 825.0,
+          "elapsed_seconds": 3.0899698748253286,
+          "estimated_number_of_nodes": 44848.0,
+          "full_video": true,
+          "ground_truth_edges": 893,
+          "ground_truth_nodes": 906,
+          "identity": "train:44b6_d5e7d891",
+          "node_recall": 0.9966887417218543,
+          "num_pred_nodes": 52759.0,
+          "prediction_edge_rows": 50665,
+          "prediction_node_rows": 52759,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "43d3d91cbc87830e4721e218a0794499f2b1218e68df3fafb9cec24ded6f2a74",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.17639582590082056
+        },
+        {
+          "adj_edge_jaccard": 0.5816417700273044,
+          "cropped": false,
+          "dataset": "44b6_e57ff5c6",
+          "division_fn": 0.0,
+          "division_fp": 0.0,
+          "division_jaccard": null,
+          "division_tp": 0.0,
+          "edge_fn": 38.0,
+          "edge_fp": 65.0,
+          "edge_jaccard": 0.5896414342629482,
+          "edge_tp": 148.0,
+          "elapsed_seconds": 0.8385668750852346,
+          "estimated_number_of_nodes": 20314.0,
+          "full_video": true,
+          "ground_truth_edges": 186,
+          "ground_truth_nodes": 193,
+          "identity": "train:44b6_e57ff5c6",
+          "node_recall": 1.0,
+          "num_pred_nodes": 23070.0,
+          "prediction_edge_rows": 21762,
+          "prediction_node_rows": 23070,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "43d3d91cbc87830e4721e218a0794499f2b1218e68df3fafb9cec24ded6f2a74",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.13566998129368907
+        },
+        {
+          "adj_edge_jaccard": 0.747611773092983,
+          "cropped": false,
+          "dataset": "6bba_3abfe10a",
+          "division_fn": 1.0,
+          "division_fp": 0.0,
+          "division_jaccard": 0.0,
+          "division_tp": 0.0,
+          "edge_fn": 103.0,
+          "edge_fp": 156.0,
+          "edge_jaccard": 0.7626031164069661,
+          "edge_tp": 832.0,
+          "elapsed_seconds": 2.596804833970964,
+          "estimated_number_of_nodes": 52065.0,
+          "full_video": true,
+          "ground_truth_edges": 935,
+          "ground_truth_nodes": 997,
+          "identity": "train:6bba_3abfe10a",
+          "node_recall": 0.9939819458375125,
+          "num_pred_nodes": 62300.0,
+          "prediction_edge_rows": 59534,
+          "prediction_node_rows": 62300,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "43d3d91cbc87830e4721e218a0794499f2b1218e68df3fafb9cec24ded6f2a74",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.19658119658119658
+        },
+        {
+          "adj_edge_jaccard": 0.6591425751011448,
+          "cropped": false,
+          "dataset": "6bba_786893ac",
+          "division_fn": 3.0,
+          "division_fp": 0.0,
+          "division_jaccard": 0.0,
+          "division_tp": 0.0,
+          "edge_fn": 227.0,
+          "edge_fp": 348.0,
+          "edge_jaccard": 0.6701090074584051,
+          "edge_tp": 1168.0,
+          "elapsed_seconds": 3.577098249923438,
+          "estimated_number_of_nodes": 58979.0,
+          "full_video": true,
+          "ground_truth_edges": 1395,
+          "ground_truth_nodes": 1465,
+          "identity": "train:6bba_786893ac",
+          "node_recall": 0.9815699658703072,
+          "num_pred_nodes": 68631.0,
+          "prediction_edge_rows": 65314,
+          "prediction_node_rows": 68631,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "43d3d91cbc87830e4721e218a0794499f2b1218e68df3fafb9cec24ded6f2a74",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.16365146916699164
+        },
+        {
+          "adj_edge_jaccard": 0.8198471680842488,
+          "cropped": false,
+          "dataset": "6bba_ebdf3b34",
+          "division_fn": 2.0,
+          "division_fp": 0.0,
+          "division_jaccard": 0.0,
+          "division_tp": 0.0,
+          "edge_fn": 64.0,
+          "edge_fp": 88.0,
+          "edge_jaccard": 0.8294051627384961,
+          "edge_tp": 739.0,
+          "elapsed_seconds": 3.7995403329841793,
+          "estimated_number_of_nodes": 56847.0,
+          "full_video": true,
+          "ground_truth_edges": 803,
+          "ground_truth_nodes": 847,
+          "identity": "train:6bba_ebdf3b34",
+          "node_recall": 0.987012987012987,
+          "num_pred_nodes": 63398.0,
+          "prediction_edge_rows": 61316,
+          "prediction_node_rows": 63398,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "43d3d91cbc87830e4721e218a0794499f2b1218e68df3fafb9cec24ded6f2a74",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.11523915070276355
+        },
+        {
+          "adj_edge_jaccard": 0.7286945710407846,
+          "cropped": false,
+          "dataset": "6bba_f17befbc",
+          "division_fn": 0.0,
+          "division_fp": 0.0,
+          "division_jaccard": null,
+          "division_tp": 0.0,
+          "edge_fn": 122.0,
+          "edge_fp": 188.0,
+          "edge_jaccard": 0.742310889443059,
+          "edge_tp": 893.0,
+          "elapsed_seconds": 1.746449749916792,
+          "estimated_number_of_nodes": 24963.0,
+          "full_video": true,
+          "ground_truth_edges": 1015,
+          "ground_truth_nodes": 1078,
+          "identity": "train:6bba_f17befbc",
+          "node_recall": 0.9879406307977736,
+          "num_pred_nodes": 29542.0,
+          "prediction_edge_rows": 28211,
+          "prediction_node_rows": 29542,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "43d3d91cbc87830e4721e218a0794499f2b1218e68df3fafb9cec24ded6f2a74",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.1834314785883107
+        }
+      ],
+      "scorer": {
+        "fixture_count": 7,
+        "official_checkout": "075fc5f5a52d11077f9dc2b074644618f26939e2",
+        "parity_report": {
+          "path": "reports/g02/scorer_parity_v1.json",
+          "sha256": "d8cfe66b2531a5b591183fa1e947f7e803e4a43986cc9d37d332ae1363ba3cb6"
+        },
+        "source_hashes": {
+          "external/kaggle-cell-tracking-competition/src/tracking_cellmot/division_metrics.py": "0635c38621a38f1eb4b55a302b4a817a88e9094930dfc2dab16faeeee60f4dc9",
+          "external/kaggle-cell-tracking-competition/src/tracking_cellmot/metrics.py": "cfdd596e3f8909cca14db0682889738b19ff75c3808b3773175aba9367ca7444",
+          "src/celltrack_alpha/official_eval.py": "22f12e0eb7568c364a8503b8eeb9167147c152f182c2aa10dc10aef588bc01e6"
+        }
+      },
+      "summary": {
+        "adj_edge_jaccard": 0.7217965286432867,
+        "division_fn": 9.0,
+        "division_fp": 0.0,
+        "division_jaccard": 0.0,
+        "division_tp": 0.0,
+        "edge_jaccard": 0.7330945558739255,
+        "n": 10,
+        "n_adj": 10,
+        "node_recall": 0.9921050480390761,
+        "score": 0.7217965286432867
+      }
+    },
+    "b": {
+      "edge_counts": {
+        "W": 6889,
+        "edge_fn": 696,
+        "edge_fp": 1042,
+        "edge_tp": 5151
+      },
+      "samples": [
+        {
+          "adj_edge_jaccard": 0.6666786461055934,
+          "cropped": false,
+          "dataset": "44b6_267148e4",
+          "division_fn": 1.0,
+          "division_fp": 0.0,
+          "division_jaccard": 0.0,
+          "division_tp": 0.0,
+          "edge_fn": 40.0,
+          "edge_fp": 67.0,
+          "edge_jaccard": 0.688953488372093,
+          "edge_tp": 237.0,
+          "elapsed_seconds": 1.8836373751983047,
+          "estimated_number_of_nodes": 19130.0,
+          "full_video": true,
+          "ground_truth_edges": 277,
+          "ground_truth_nodes": 280,
+          "identity": "train:44b6_267148e4",
+          "node_recall": 0.9928571428571429,
+          "num_pred_nodes": 25315.0,
+          "prediction_edge_rows": 24160,
+          "prediction_node_rows": 25315,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "d0f128bbca7cb5713e2b4091483f1d02e90c8ef820286c3abe1ae72ed2f408bf",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.3233141662310507
+        },
+        {
+          "adj_edge_jaccard": 0.682189974589292,
+          "cropped": false,
+          "dataset": "44b6_71a4179f",
+          "division_fn": 0.0,
+          "division_fp": 0.0,
+          "division_jaccard": null,
+          "division_tp": 0.0,
+          "edge_fn": 20.0,
+          "edge_fp": 33.0,
+          "edge_jaccard": 0.6513157894736842,
+          "edge_tp": 99.0,
+          "elapsed_seconds": 1.7577660833485425,
+          "estimated_number_of_nodes": 67688.0,
+          "full_video": true,
+          "ground_truth_edges": 119,
+          "ground_truth_nodes": 121,
+          "identity": "train:44b6_71a4179f",
+          "node_recall": 1.0,
+          "num_pred_nodes": 35602.0,
+          "prediction_edge_rows": 33956,
+          "prediction_node_rows": 35602,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "d0f128bbca7cb5713e2b4091483f1d02e90c8ef820286c3abe1ae72ed2f408bf",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": -0.4740278926840799
+        },
+        {
+          "adj_edge_jaccard": 0.49972293621409053,
+          "cropped": false,
+          "dataset": "44b6_87bba6c4",
+          "division_fn": 0.0,
+          "division_fp": 0.0,
+          "division_jaccard": null,
+          "division_tp": 0.0,
+          "edge_fn": 39.0,
+          "edge_fp": 66.0,
+          "edge_jaccard": 0.5116279069767442,
+          "edge_tp": 110.0,
+          "elapsed_seconds": 1.7685588751919568,
+          "estimated_number_of_nodes": 28102.0,
+          "full_video": true,
+          "ground_truth_edges": 149,
+          "ground_truth_nodes": 153,
+          "identity": "train:44b6_87bba6c4",
+          "node_recall": 0.9869281045751634,
+          "num_pred_nodes": 34641.0,
+          "prediction_edge_rows": 32879,
+          "prediction_node_rows": 34641,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "d0f128bbca7cb5713e2b4091483f1d02e90c8ef820286c3abe1ae72ed2f408bf",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.23268806490641236
+        },
+        {
+          "adj_edge_jaccard": 0.8799661252497176,
+          "cropped": false,
+          "dataset": "44b6_cf2536e8",
+          "division_fn": 0.0,
+          "division_fp": 0.0,
+          "division_jaccard": null,
+          "division_tp": 0.0,
+          "edge_fn": 5.0,
+          "edge_fp": 9.0,
+          "edge_jaccard": 0.8333333333333334,
+          "edge_tp": 70.0,
+          "elapsed_seconds": 1.0392195410095155,
+          "estimated_number_of_nodes": 57565.0,
+          "full_video": true,
+          "ground_truth_edges": 75,
+          "ground_truth_nodes": 76,
+          "identity": "train:44b6_cf2536e8",
+          "node_recall": 1.0,
+          "num_pred_nodes": 25352.0,
+          "prediction_edge_rows": 23964,
+          "prediction_node_rows": 25352,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "d0f128bbca7cb5713e2b4091483f1d02e90c8ef820286c3abe1ae72ed2f408bf",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": -0.5595935029966125
+        },
+        {
+          "adj_edge_jaccard": 0.8210702242407857,
+          "cropped": false,
+          "dataset": "44b6_d5e7d891",
+          "division_fn": 2.0,
+          "division_fp": 0.0,
+          "division_jaccard": 0.0,
+          "division_tp": 0.0,
+          "edge_fn": 65.0,
+          "edge_fp": 98.0,
+          "edge_jaccard": 0.8355196770938446,
+          "edge_tp": 828.0,
+          "elapsed_seconds": 2.4415409159846604,
+          "estimated_number_of_nodes": 44848.0,
+          "full_video": true,
+          "ground_truth_edges": 893,
+          "ground_truth_nodes": 906,
+          "identity": "train:44b6_d5e7d891",
+          "node_recall": 0.9966887417218543,
+          "num_pred_nodes": 52604.0,
+          "prediction_edge_rows": 50436,
+          "prediction_node_rows": 52604,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "d0f128bbca7cb5713e2b4091483f1d02e90c8ef820286c3abe1ae72ed2f408bf",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.17293970745629683
+        },
+        {
+          "adj_edge_jaccard": 0.6290958206163236,
+          "cropped": false,
+          "dataset": "44b6_e57ff5c6",
+          "division_fn": 0.0,
+          "division_fp": 0.0,
+          "division_jaccard": null,
+          "division_tp": 0.0,
+          "edge_fn": 33.0,
+          "edge_fp": 54.0,
+          "edge_jaccard": 0.6375,
+          "edge_tp": 153.0,
+          "elapsed_seconds": 4.106253125239164,
+          "estimated_number_of_nodes": 20314.0,
+          "full_video": true,
+          "ground_truth_edges": 186,
+          "ground_truth_nodes": 193,
+          "identity": "train:44b6_e57ff5c6",
+          "node_recall": 1.0,
+          "num_pred_nodes": 22992.0,
+          "prediction_edge_rows": 21673,
+          "prediction_node_rows": 22992,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "d0f128bbca7cb5713e2b4091483f1d02e90c8ef820286c3abe1ae72ed2f408bf",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.1318302648419809
+        },
+        {
+          "adj_edge_jaccard": 0.7495419824242222,
+          "cropped": false,
+          "dataset": "6bba_3abfe10a",
+          "division_fn": 1.0,
+          "division_fp": 0.0,
+          "division_jaccard": 0.0,
+          "division_tp": 0.0,
+          "edge_fn": 105.0,
+          "edge_fp": 151.0,
+          "edge_jaccard": 0.7642725598526704,
+          "edge_tp": 830.0,
+          "elapsed_seconds": 3.354755708016455,
+          "estimated_number_of_nodes": 52065.0,
+          "full_video": true,
+          "ground_truth_edges": 935,
+          "ground_truth_nodes": 997,
+          "identity": "train:6bba_3abfe10a",
+          "node_recall": 0.9919759277833501,
+          "num_pred_nodes": 62100.0,
+          "prediction_edge_rows": 59256,
+          "prediction_node_rows": 62100,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "d0f128bbca7cb5713e2b4091483f1d02e90c8ef820286c3abe1ae72ed2f408bf",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.19273984442523767
+        },
+        {
+          "adj_edge_jaccard": 0.670505315845569,
+          "cropped": false,
+          "dataset": "6bba_786893ac",
+          "division_fn": 3.0,
+          "division_fp": 0.0,
+          "division_jaccard": 0.0,
+          "division_tp": 0.0,
+          "edge_fn": 223.0,
+          "edge_fp": 325.0,
+          "edge_jaccard": 0.6813953488372093,
+          "edge_tp": 1172.0,
+          "elapsed_seconds": 3.271066832821816,
+          "estimated_number_of_nodes": 58979.0,
+          "full_video": true,
+          "ground_truth_edges": 1395,
+          "ground_truth_nodes": 1465,
+          "identity": "train:6bba_786893ac",
+          "node_recall": 0.9774744027303754,
+          "num_pred_nodes": 68405.0,
+          "prediction_edge_rows": 65027,
+          "prediction_node_rows": 68405,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "d0f128bbca7cb5713e2b4091483f1d02e90c8ef820286c3abe1ae72ed2f408bf",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.1598195968056427
+        },
+        {
+          "adj_edge_jaccard": 0.8508784129021557,
+          "cropped": false,
+          "dataset": "6bba_ebdf3b34",
+          "division_fn": 2.0,
+          "division_fp": 0.0,
+          "division_jaccard": 0.0,
+          "division_tp": 0.0,
+          "edge_fn": 56.0,
+          "edge_fp": 65.0,
+          "edge_jaccard": 0.8605990783410138,
+          "edge_tp": 747.0,
+          "elapsed_seconds": 2.5295975827611983,
+          "estimated_number_of_nodes": 56847.0,
+          "full_video": true,
+          "ground_truth_edges": 803,
+          "ground_truth_nodes": 847,
+          "identity": "train:6bba_ebdf3b34",
+          "node_recall": 0.9858323494687131,
+          "num_pred_nodes": 63268.0,
+          "prediction_edge_rows": 61110,
+          "prediction_node_rows": 63268,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "d0f128bbca7cb5713e2b4091483f1d02e90c8ef820286c3abe1ae72ed2f408bf",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.11295231058806973
+        },
+        {
+          "adj_edge_jaccard": 0.7474686589979915,
+          "cropped": false,
+          "dataset": "6bba_f17befbc",
+          "division_fn": 0.0,
+          "division_fp": 0.0,
+          "division_jaccard": null,
+          "division_tp": 0.0,
+          "edge_fn": 110.0,
+          "edge_fp": 174.0,
+          "edge_jaccard": 0.7611438183347351,
+          "edge_tp": 905.0,
+          "elapsed_seconds": 1.7980450000613928,
+          "estimated_number_of_nodes": 24963.0,
+          "full_video": true,
+          "ground_truth_edges": 1015,
+          "ground_truth_nodes": 1078,
+          "identity": "train:6bba_f17befbc",
+          "node_recall": 0.9935064935064936,
+          "num_pred_nodes": 29448.0,
+          "prediction_edge_rows": 28091,
+          "prediction_node_rows": 29448,
+          "scale_zyx": [
+            1.625,
+            0.40625,
+            0.40625
+          ],
+          "source": {
+            "artifact": "d0f128bbca7cb5713e2b4091483f1d02e90c8ef820286c3abe1ae72ed2f408bf",
+            "mode": "observation_compare"
+          },
+          "total_node_ratio": 0.17966590554019948
+        }
+      ],
+      "scorer": {
+        "fixture_count": 7,
+        "official_checkout": "075fc5f5a52d11077f9dc2b074644618f26939e2",
+        "parity_report": {
+          "path": "reports/g02/scorer_parity_v1.json",
+          "sha256": "d8cfe66b2531a5b591183fa1e947f7e803e4a43986cc9d37d332ae1363ba3cb6"
+        },
+        "source_hashes": {
+          "external/kaggle-cell-tracking-competition/src/tracking_cellmot/division_metrics.py": "0635c38621a38f1eb4b55a302b4a817a88e9094930dfc2dab16faeeee60f4dc9",
+          "external/kaggle-cell-tracking-competition/src/tracking_cellmot/metrics.py": "cfdd596e3f8909cca14db0682889738b19ff75c3808b3773175aba9367ca7444",
+          "src/celltrack_alpha/official_eval.py": "22f12e0eb7568c364a8503b8eeb9167147c152f182c2aa10dc10aef588bc01e6"
+        }
+      },
+      "summary": {
+        "adj_edge_jaccard": 0.7364822092452032,
+        "division_fn": 9.0,
+        "division_fp": 0.0,
+        "division_jaccard": 0.0,
+        "division_tp": 0.0,
+        "edge_jaccard": 0.7477137465524749,
+        "n": 10,
+        "n_adj": 10,
+        "node_recall": 0.9925263162643093,
+        "score": 0.7364822092452032
+      }
+    }
+  },
+  "observation_class": {
+    "exceeded_components": {
+      "eligible_edge_disagreement_fraction": {
+        "limit": 0.0,
+        "observed": 0.007731005354533916
+      },
+      "node_displacement_max_um": {
+        "limit": 0.0,
+        "observed": 6.953879874753374
+      },
+      "node_unmatched_fraction": {
+        "limit": 0.0,
+        "observed": 0.0033490637844420766
+      },
+      "raw_edge_disagreement_fraction": {
+        "limit": 0.0,
+        "observed": 0.007731005354533916
+      }
+    },
+    "label": "DISTINCT",
+    "null_envelope": {
+      "eligible_edge_disagreement_fraction": 0.0,
+      "fork_disagreement_fraction": 0.0,
+      "node_displacement_max_um": 0.0,
+      "node_unmatched_fraction": 0.0,
+      "raw_edge_disagreement_fraction": 0.0
+    },
+    "observed": {
+      "eligible_edge_disagreement_fraction": 0.007731005354533916,
+      "fork_disagreement_fraction": 0.0,
+      "node_displacement_max_um": 6.953879874753374,
+      "node_unmatched_fraction": 0.0033490637844420766,
+      "raw_edge_disagreement_fraction": 0.007731005354533916
+    },
+    "zero_distance": false
+  },
+  "parameters": {
+    "division_comparison": "structural fork/lineage agreement; GT division metrics only in optional frozen score",
+    "edge_overlap_name": "edge_jaccard",
+    "matching": "exact ID+coordinate, exact coordinate, then official-style optimal physical matching per dataset/time",
+    "max_distance_um": 7.0,
+    "scale_zyx_um": [
+      1.625,
+      0.40625,
+      0.40625
+    ],
+    "selected_datasets": [
+      "44b6_267148e4",
+      "44b6_71a4179f",
+      "44b6_87bba6c4",
+      "44b6_cf2536e8",
+      "44b6_d5e7d891",
+      "44b6_e57ff5c6",
+      "6bba_3abfe10a",
+      "6bba_786893ac",
+      "6bba_ebdf3b34",
+      "6bba_f17befbc"
+    ]
+  },
+  "reconciliation": {
+    "a": {
+      "edge_counts": {
+        "expected": [
+          5117,
+          1133,
+          730
+        ],
+        "observed": [
+          5117,
+          1133,
+          730
+        ],
+        "pass": true
+      },
+      "score": {
+        "expected": 0.7217965286432867,
+        "observed": 0.7217965286432867,
+        "pass": true,
+        "tolerance": 1e-10
+      }
+    },
+    "b": {
+      "edge_counts": {
+        "expected": [
+          5151,
+          1042,
+          696
+        ],
+        "observed": [
+          5151,
+          1042,
+          696
+        ],
+        "pass": true
+      },
+      "score": {
+        "expected": 0.7364822092452032,
+        "observed": 0.7364822092452032,
+        "pass": true,
+        "tolerance": 1e-10
+      }
+    }
+  },
+  "schema": "celltrack-alpha.observation-distance.v1"
+}

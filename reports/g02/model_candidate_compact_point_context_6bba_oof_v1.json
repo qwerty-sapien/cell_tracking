@@ -1,0 +1,44 @@
+{
+  "schema": "celltrack-alpha.model-candidate.v1",
+  "candidate_id": "compact-point-context-6bba-oof-v1",
+  "model_family": "Trackastra-style compact point-context transformer, 6bba association branch",
+  "literature_evidence": [
+    {
+      "kind": "primary_peer_reviewed",
+      "citation": "Gallusser B, Weigert M. Trackastra: Transformer-based cell tracking for live-cell microscopy. ECCV 2024.",
+      "url": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/09819.pdf",
+      "reported_result": "Temporal all-detection attention and parental softmax improved association decisions under competition.",
+      "task_relevance": "The repository's pairwise gates expose correct 6bba alternatives but fail to rank and abstain consistently. Full-transition context plus an explicit no-parent alternative directly targets that measured mechanism."
+    }
+  ],
+  "hypothesis": {
+    "observed_failure_mode": "The all-family pilot missed its global precision gate, but its untouched fit-validation12 6bba slice reached 182 correct versus 2 harmful accepted proposals and gained 34 conservative utility over pair-NCC.",
+    "proposed_mechanism": "Restrict the compact point-context transformer to 6bba, preserve all full-pool proposal identities, and select each threshold on a video-disjoint calibration fold.",
+    "falsification_test": "Across five nested grouped partitions of the sealed 69-video 6bba fit-train105 scope, require at least 25 held labeled proposals at precision >=0.95, then require exact held graphs to beat APNCC by >=0.005 adjusted edge Jaccard with nonnegative raw edge Jaccard and recall deltas.",
+    "expected_score_improvement_percent": 3.5
+  },
+  "local_fast_fail": {
+    "m5_compatible": true,
+    "projected_peak_memory_gib": 6,
+    "background_reserve_gib": 6,
+    "max_wall_minutes": 420,
+    "training_scope": "fit_only",
+    "holdout_access": false,
+    "swap_growth_allowed": false,
+    "early_stop_conditions": [
+      "Stop on any memory, free-memory, or swap guard violation.",
+      "Stop before graph reconstruction if the aggregate held proposal prerequisite fails.",
+      "Stop without validation12 or CV57 if the exact held graph gate fails.",
+      "Stop if the guarded run cannot finish inside seven hours."
+    ],
+    "success_criteria": [
+      "Every video is used as held graph evidence exactly once.",
+      "Model fitting, threshold calibration, and held graph identities are mutually disjoint within every outer fold.",
+      "Aggregate held labeled precision is at least 0.95 with at least 25 accepted proposals.",
+      "Full-pool held graphs improve adjusted edge Jaccard by at least 0.005 with nonnegative raw edge Jaccard and recall deltas.",
+      "Candidate and APNCC fragments are observation-distinct."
+    ]
+  },
+  "decision": "PASS",
+  "decision_basis": "Coordinator gate review: a primary-source mechanism, strong repository-measured 6bba-only pilot signal, a sealed nested fit-only design, full-pool deployment replay, and a material exact-graph falsification threshold satisfy the local compute policy. PASS authorizes only guarded CPU fit-only work; validation12, CV57, Kaggle, GPU, and RunPod remain closed."
+}

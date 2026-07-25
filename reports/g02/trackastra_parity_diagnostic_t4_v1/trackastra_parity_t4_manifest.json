@@ -1,0 +1,14 @@
+{
+  "elapsed_seconds": 215.42985601900006,
+  "error": "TimeoutExpired: Command '['/usr/bin/python3', '/kaggle/working/scripts/build_trackastra_apncc_base_cache.py', '--contract', '/kaggle/working/reports/g02/trackastra_full_pool_feature_cache_contract_v2.json', '--contract-sha256', 'e060b284da623a373a83c8dd690985503af945399518f4d77eb517fddb8128ac', '--cache', '/kaggle/input/datasets/onebitbrain/trackastra-6bba-cache-v1/reports/g02/fitcache_117/bh9out/cache', '--raw-root', '/kaggle/input/competitions/biohub-cell-tracking-during-development', '--raw-manifest', '/kaggle/input/datasets/onebitbrain/trackastra-6bba-assets-v1/trackastra_6bba_raw_directory_manifest_v1.json', '--raw-manifest-sha256', '1a87473654dcfcc970daa06db4f8b2012af7a831720055980720f0449541c5ff', '--edge-artifact', '/kaggle/input/datasets/onebitbrain/trackastra-6bba-assets-v1/edge.json', '--edge-auxiliary', '/kaggle/input/datasets/onebitbrain/trackastra-6bba-assets-v1/v45f4.pt', '--support-root', '/kaggle/input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1', '--identity', 'train:6bba_edf14583', '--output', '/kaggle/working/parity_run_2/base']' timed out after 64.75529575299998 seconds",
+  "persisted_partial_files": {},
+  "schema": "celltrack-alpha.trackastra-parity-t4-diagnostic.v1",
+  "scope": {
+    "competition_submission": false,
+    "identity": "train:6bba_edf14583",
+    "runpod": false,
+    "training": false,
+    "video_count": 1
+  },
+  "status": "STOP_FAIL_CLOSED"
+}

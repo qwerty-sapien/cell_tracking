@@ -101,7 +101,14 @@ launch after the job's artifact identity, estimated GPU-hours, and maximum dolla
 are recorded. Private data flow is training-notebook output directly to private inference;
 no Kaggle dataset is created.
 
-No more than two paid trials may run concurrently; development is capped at `$8/day` and `$80/month`, preserving `$2/day` and `$20/month` for final validation (platform maxima `$10/day`/`$100/month`). RunPod has an additional `$20` campaign sub-cap, with `$5–10` ordinarily rationed for training. No more than five Kaggle submissions may be made per competition day, and at most two final submissions may be selected. Each paid/scored action needs its frozen artifact, local graph/package/runtime evidence, maximum-charge prediction, cap/concurrency/submission ledger entry, and recorded result.
+No more than two paid trials may run concurrently; development is capped at `$8/day` and `$80/month`, preserving `$2/day` and `$20/month` for final validation (platform maxima `$10/day`/`$100/month`). Initial training is capped at 30 cumulative Kaggle T4 GPU-hours per model, and models that cannot become viable inside that ceiling are archived. RunPod has a `$10` total campaign cap and is unavailable before an accepted score reaches `0.89`; any later higher-quality-GPU-dependent optimization requires literature or theoretical support for an expected score improvement greater than `5%` (ordinary hard improvement gate `3.5%`). No more than five Kaggle submissions may be made per competition day, and at most two final submissions may be selected. Each paid/scored action needs its frozen artifact, local graph/package/runtime evidence, maximum-charge prediction, cap/concurrency/submission ledger entry, and recorded result.
+
+New learned candidates follow a literature-first lightweight fast-fail funnel. A
+primary-evidence manifest and fit-only mechanism test must pass before training. Keep at
+most one guarded M5 training lane available alongside eligible external work, limited to
+`18 GiB` training memory with `6 GiB` reserved for background work, zero holdout access,
+zero swap growth, and seven hours maximum per unattended stage. Local promotion does not
+authorize or expand Kaggle or RunPod use.
 
 The locked permissions define scope only. They do **not** grant a runtime sandbox, tool,
 browser, process, network, paid-compute, or external-effect approval: recheck the current
