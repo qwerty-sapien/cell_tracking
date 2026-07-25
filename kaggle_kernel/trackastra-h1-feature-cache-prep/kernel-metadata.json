@@ -1,0 +1,20 @@
+{
+  "code_file": "trackastra_h1_feature_cache.py",
+  "competition_sources": [
+    "biohub-cell-tracking-during-development"
+  ],
+  "dataset_sources": [
+    "onebitbrain/trackastra-6bba-assets-v1",
+    "onebitbrain/trackastra-h1-option-c-assets-v1",
+    "onebitbrain/trackastra-h1-fit105-cache-v1",
+    "pilkwang/biohub-tracking-support-pack-50ep-v1"
+  ],
+  "enable_gpu": true,
+  "enable_internet": false,
+  "id": "onebitbrain/trackastra-h1-feature-cache",
+  "is_private": true,
+  "kernel_type": "script",
+  "language": "python",
+  "machine_shape": "NvidiaTeslaT4",
+  "title": "trackastra-h1-feature-cache"
+}

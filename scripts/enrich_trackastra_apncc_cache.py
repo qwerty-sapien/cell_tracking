@@ -7,8 +7,11 @@ import argparse
 from collections.abc import Mapping
 import gc
 import json
+import os
 from pathlib import Path
+import random
 import sys
+import tempfile
 import time
 
 import numpy as np
@@ -42,8 +45,11 @@ from build_trackastra_full_pool_feature_cache import (  # noqa: E402
     _checkpoint,
     _load_json,
     _require,
+    attest_module_device,
     assert_v1_parity,
+    assert_t4_repeatability,
     enrich_base_payload,
+    execution_device,
     load_contract,
     trackastra_margins_from_flattened,
 )
@@ -56,6 +62,37 @@ from trackastra_checkpoint_loader import load_mmap_meta  # noqa: E402
 SCHEMA = "celltrack-alpha.trackastra-full-pool-feature-cache.v2"
 DEFAULT_BASE = ROOT / "reports/g02/trackastra_apncc_base_cache_v2"
 DEFAULT_OUTPUT = ROOT / "reports/g02/trackastra_full_pool_feature_cache_v2"
+OPTION_C_EXACT_FIELDS = (
+    "challengers",
+    "conflicts",
+    "proposal_offsets",
+    "transition_offsets",
+    "transition_target_t",
+    "geometry_confidences",
+    "geometry_probabilities",
+)
+
+
+def _atomic_option_c_npz(
+    path: Path, payload: Mapping[str, object]
+) -> None:
+    descriptor, temporary_name = tempfile.mkstemp(
+        dir=path.parent, prefix=f".{path.name}.", suffix=".npz"
+    )
+    os.close(descriptor)
+    temporary = Path(temporary_name)
+    try:
+        np.savez_compressed(
+            temporary,
+            row_features=np.asarray(payload["row_features"]),
+            **{
+                key: np.asarray(payload[key])
+                for key in OPTION_C_EXACT_FIELDS
+            },
+        )
+        os.replace(temporary, path)
+    finally:
+        temporary.unlink(missing_ok=True)
 
 
 def _validate_base_report(
@@ -144,6 +181,30 @@ def _load_base_video(
 def build(args: argparse.Namespace) -> dict[str, object]:
     started = time.perf_counter()
     contract = load_contract(args.contract, args.contract_sha256)
+    if (
+        contract["schema"]
+        == "celltrack-alpha.trackastra-h1-feature-cache-contract.option-c.v1"
+        and contract["runtime_projection"]["full_run_authorized"] is not True
+        and getattr(args, "identity", None) is None
+    ):
+        raise TrackastraFeatureCacheError(
+            "Option-C full Stage B is blocked pending banked cuda:0 timing"
+        )
+    if (
+        contract["schema"]
+        == "celltrack-alpha.trackastra-h1-feature-cache-contract.option-c.v1"
+    ):
+        seed = int(contract["execution"]["seed"])
+        random.seed(seed)
+        np.random.seed(seed)
+        torch.manual_seed(seed)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(seed)
+        torch.use_deterministic_algorithms(True)
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
+        torch.backends.cuda.matmul.allow_tf32 = False
+        torch.backends.cudnn.allow_tf32 = False
     implementation_sha256 = sha256(Path(__file__))
     eligible, _prepare_rows, feasibility_rows = _eligible(
         contract, getattr(args, "identity", None)
@@ -159,17 +220,26 @@ def build(args: argparse.Namespace) -> dict[str, object]:
         _require(ROOT / str(record["path"]), str(record["sha256"]), label)
     if (
         set(eligible) != set(base_rows)
-        or eligible[0]
-        != contract["checkpoint_loader"]["parity_reference"]["identity"]
+        or (
+            contract["schema"]
+            == "celltrack-alpha.trackastra-full-pool-feature-cache-contract.v2"
+            and eligible[0]
+            != contract["checkpoint_loader"]["parity_reference"]["identity"]
+        )
     ):
         raise TrackastraFeatureCacheError(
             "Trackastra enrichment video scope drifted"
         )
+    device = execution_device(contract)
     model = load_mmap_meta(
         source_root=args.source_root,
         checkpoint_zip=args.checkpoint_zip,
         checkpoint_member=args.checkpoint_member,
         contract=contract,
+        device=device,
+    )
+    trackastra_device = attest_module_device(
+        model, device, "stage_b_trackastra"
     )
 
     args.output.mkdir(parents=True, exist_ok=args.resume)
@@ -177,6 +247,13 @@ def build(args: argparse.Namespace) -> dict[str, object]:
     videos_root.mkdir(exist_ok=args.resume)
     files: list[dict[str, object]] = []
     resumed = 0
+    option_c_parity: list[dict[str, object]] = []
+    repeatability_identities = set(
+        str(value)
+        for value in contract.get("parity", {}).get(
+            "t4_repeatability_identities", ()
+        )
+    )
     for ordinal, identity in enumerate(eligible, start=1):
         slug = identity.replace(":", "__", 1)
         feature_path = videos_root / f"{slug}.pt"
@@ -197,6 +274,49 @@ def build(args: argparse.Namespace) -> dict[str, object]:
         if existing is not None:
             files.append(existing)
             resumed += 1
+            if (
+                identity in repeatability_identities
+                and contract["schema"]
+                != "celltrack-alpha.trackastra-full-pool-feature-cache-contract.v2"
+            ):
+                slug = identity.replace(":", "__", 1)
+                parity_first = (
+                    args.output / f"option_c_{slug}_t4_run1.npz"
+                )
+                parity_second = (
+                    args.output / f"option_c_{slug}_t4_run2.npz"
+                )
+                if (
+                    not parity_first.is_file()
+                    or not parity_second.is_file()
+                ):
+                    raise TrackastraFeatureCacheError(
+                        "Option-C resume lacks persisted T4 repeatability arrays"
+                    )
+                with (
+                    np.load(parity_first, allow_pickle=False) as first,
+                    np.load(parity_second, allow_pickle=False) as second,
+                ):
+                    if set(first.files) != set(second.files) or any(
+                        not np.array_equal(first[key], second[key])
+                        for key in first.files
+                    ):
+                        raise TrackastraFeatureCacheError(
+                            "Option-C persisted T4 repeatability drifted"
+                        )
+                option_c_parity.append(
+                    {
+                        "identity": identity,
+                        "t4_array_equal": True,
+                        "run1_path": str(parity_first.relative_to(ROOT)),
+                        "run1_sha256": sha256(parity_first),
+                        "run2_path": str(parity_second.relative_to(ROOT)),
+                        "run2_sha256": sha256(parity_second),
+                        "m5_t4_tolerance_status": (
+                            "PROPOSED_REQUIRES_HUMAN_APPROVAL"
+                        ),
+                    }
+                )
             print(
                 f"[{ordinal}/{len(eligible)}] {identity}: enriched resume",
                 flush=True,
@@ -223,6 +343,7 @@ def build(args: argparse.Namespace) -> dict[str, object]:
             detections=detections,
             base=base,
             max_tokens=int(contract["features"]["max_tokens"]),
+            expected_device=device,
         )
         flattened = enrich_base_payload(base, margins)
         payload = {
@@ -239,8 +360,57 @@ def build(args: argparse.Namespace) -> dict[str, object]:
             "inference": inference,
             **flattened,
         }
-        if identity == eligible[0]:
+        if (
+            contract["schema"]
+            == "celltrack-alpha.trackastra-full-pool-feature-cache-contract.v2"
+            and identity == eligible[0]
+        ):
             assert_v1_parity(payload, contract)
+        elif identity in repeatability_identities:
+            repeat_margins, repeat_inference = (
+                trackastra_margins_from_flattened(
+                    model=model,
+                    detections=detections,
+                    base=base,
+                    max_tokens=int(
+                        contract["features"]["max_tokens"]
+                    ),
+                    expected_device=device,
+                )
+            )
+            repeat_flattened = enrich_base_payload(
+                base, repeat_margins
+            )
+            repeat_payload = {
+                **payload,
+                "inference": repeat_inference,
+                **repeat_flattened,
+            }
+            assert_t4_repeatability(
+                payload, repeat_payload, contract
+            )
+            parity_slug = identity.replace(":", "__", 1)
+            parity_first = (
+                args.output / f"option_c_{parity_slug}_t4_run1.npz"
+            )
+            parity_second = (
+                args.output / f"option_c_{parity_slug}_t4_run2.npz"
+            )
+            _atomic_option_c_npz(parity_first, payload)
+            _atomic_option_c_npz(parity_second, repeat_payload)
+            option_c_parity.append(
+                {
+                    "identity": identity,
+                    "t4_array_equal": True,
+                    "run1_path": str(parity_first.relative_to(ROOT)),
+                    "run1_sha256": sha256(parity_first),
+                    "run2_path": str(parity_second.relative_to(ROOT)),
+                    "run2_sha256": sha256(parity_second),
+                    "m5_t4_tolerance_status": (
+                        "PROPOSED_REQUIRES_HUMAN_APPROVAL"
+                    ),
+                }
+            )
         _atomic_torch_save(feature_path, payload)
         record = {
             "schema": CHECKPOINT_SCHEMA,
@@ -280,15 +450,28 @@ def build(args: argparse.Namespace) -> dict[str, object]:
     }
     if (
         aggregate["video_count"] != len(eligible)
-        or aggregate["proposal_count"]
-        != sum(
-            int(feasibility_rows[identity]["geometry_proposals"])
-            for identity in eligible
-        )
-        or aggregate["inference_calls"]
-        != sum(
-            int(feasibility_rows[identity]["nonempty_transitions"])
-            for identity in eligible
+        or (
+            set(eligible) <= set(feasibility_rows)
+            and (
+                aggregate["proposal_count"]
+                != sum(
+                    int(
+                        feasibility_rows[identity][
+                            "geometry_proposals"
+                        ]
+                    )
+                    for identity in eligible
+                )
+                or aggregate["inference_calls"]
+                != sum(
+                    int(
+                        feasibility_rows[identity][
+                            "nonempty_transitions"
+                        ]
+                    )
+                    for identity in eligible
+                )
+            )
         )
     ):
         raise TrackastraFeatureCacheError(
@@ -312,6 +495,7 @@ def build(args: argparse.Namespace) -> dict[str, object]:
         "scope": contract["scope"],
         "feature_contract": contract["features"],
         "checkpoint_loader": contract["checkpoint_loader"],
+        "option_c_parity": option_c_parity,
         "model_stack": {
             "trackastra_loaded": True,
             "v45_loaded": False,
@@ -319,7 +503,11 @@ def build(args: argparse.Namespace) -> dict[str, object]:
         },
         "aggregate": aggregate,
         "execution": {
-            "device": "cpu",
+            "device": device,
+            "device_attestation": {
+                "trackastra": trackastra_device,
+                "coordinates_and_features_follow_trackastra_device": True,
+            },
             "training": False,
             "label_access": False,
             "elapsed_seconds": time.perf_counter() - started,
@@ -346,8 +534,8 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--identity",
         help=(
-            "run only the contract parity reference; any other identity "
-            "fails closed"
+            "run only a contract-authorized parity witness; any other "
+            "identity fails closed"
         ),
     )
     parser.add_argument("--resume", action="store_true")

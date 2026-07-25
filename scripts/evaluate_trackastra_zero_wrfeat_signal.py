@@ -313,7 +313,24 @@ def _association(
     model: torch.nn.Module,
     nodes: Sequence[int],
     by_node: Mapping[int, tuple[int, np.ndarray]],
+    *,
+    expected_device: str | None = None,
 ) -> tuple[np.ndarray, dict[int, int]]:
+    parameter_devices = {
+        str(parameter.device) for parameter in model.parameters()
+    }
+    if len(parameter_devices) != 1:
+        raise TrackastraSignalError(
+            "Trackastra parameters span multiple devices"
+        )
+    model_device = torch.device(next(iter(parameter_devices)))
+    if (
+        expected_device is not None
+        and model_device != torch.device(expected_device)
+    ):
+        raise TrackastraSignalError(
+            "Trackastra model is not on the required inference device"
+        )
     coordinates = np.stack(
         [
             np.concatenate(
@@ -325,14 +342,34 @@ def _association(
             for node in nodes
         ]
     )
-    timepoints = torch.from_numpy(coordinates[:, 0].astype(np.int64))
-    coords = torch.from_numpy(coordinates).unsqueeze(0)
-    features = torch.zeros((1, len(nodes), 12), dtype=torch.float32)
+    timepoints = torch.from_numpy(
+        coordinates[:, 0].astype(np.int64)
+    ).to(device=model_device)
+    coords = torch.from_numpy(coordinates).unsqueeze(0).to(
+        device=model_device
+    )
+    features = torch.zeros(
+        (1, len(nodes), 12),
+        dtype=torch.float32,
+        device=model_device,
+    )
+    if {
+        str(timepoints.device),
+        str(coords.device),
+        str(features.device),
+    } != {str(model_device)}:
+        raise TrackastraSignalError(
+            "Trackastra coordinates/features left the model device"
+        )
     with torch.inference_mode():
         logits = model(coords, features=features)
         association = model.normalize_output(
             logits, timepoints.unsqueeze(0), coords
         )[0]
+    if association.device != model_device:
+        raise TrackastraSignalError(
+            "Trackastra association output left the model device"
+        )
     value = association.detach().cpu().numpy().astype(np.float64)
     if value.shape != (len(nodes), len(nodes)) or not np.isfinite(value).all():
         raise TrackastraSignalError(

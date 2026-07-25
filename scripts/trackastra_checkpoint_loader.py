@@ -26,6 +26,7 @@ def load_mmap_meta(
     checkpoint_zip: Path,
     checkpoint_member: Path,
     contract: Mapping[str, Any],
+    device: str | torch.device = "cpu",
 ) -> torch.nn.Module:
     """Restore exact tensors without allocating a duplicate initialized body."""
 
@@ -75,6 +76,7 @@ def load_mmap_meta(
             mmap=True,
         )
         model.load_state_dict(state, strict=True, assign=True)
+        model.to(torch.device(device))
     except Exception as exc:
         raise TrackastraCheckpointLoaderError(
             "mmap/meta checkpoint restoration failed"
@@ -82,6 +84,13 @@ def load_mmap_meta(
     if any(parameter.is_meta for parameter in model.parameters()):
         raise TrackastraCheckpointLoaderError(
             "restoration left meta parameters"
+        )
+    parameter_devices = {
+        str(parameter.device) for parameter in model.parameters()
+    }
+    if parameter_devices != {str(torch.device(device))}:
+        raise TrackastraCheckpointLoaderError(
+            "restored Trackastra parameters are not on the requested device"
         )
     model.eval()
     for parameter in model.parameters():

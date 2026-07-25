@@ -44,42 +44,48 @@ quality:
   profiles:
     - core
   gates:
-    - id: core.intent
+    -
+      id: core.intent
       dimension: intent
       criterion: H0 and H1-PREP match the locked DAG, stop boundaries, ownership, and exact forbidden-action constraints.
       oracle: Review reports, manifests, ledger append, commits, and prohibited-path evidence.
       severity: high
       state: pending
       evidence: null
-    - id: core.functional
+    -
+      id: core.functional
       dimension: functional-correctness
       criterion: H0 deterministically computes all declared statistics and preregistered decision; H1 package validates both-family scope, option-C parity, assets, hashes, runtime, and human-run command without launch.
       oracle: Run focused unit tests and deterministic report/package validators.
       severity: high
       state: pending
       evidence: null
-    - id: core.regression
+    -
+      id: core.regression
       dimension: regression
       criterion: Existing Trackastra parity/cache tests and relevant repository integrity checks remain green and no protected artifact changes.
       oracle: Run focused legacy tests and inspect git diff/name-status.
       severity: high
       state: pending
       evidence: null
-    - id: core.failure-paths
+    -
+      id: core.failure-paths
       dimension: failure-paths
       criterion: Missing assets, structural drift, tolerance breaches, holdout/CV57 paths, swap growth, dirty/unverified package state, and runtime-budget overflow fail closed.
       oracle: Unit-test synthetic drift and inspect package guards and report stop conditions.
       severity: high
       state: pending
       evidence: null
-    - id: core.completion-review
+    -
+      id: core.completion-review
       dimension: completion-review
       criterion: A skeptical final review finds no fabricated pair, unbanked model result, unauthorized tolerance, external launch, leakage path, ownership violation, or missing follow-on contract.
       oracle: Independent diff-and-evidence review after final mutation.
       severity: high
       state: pending
       evidence: null
-    - id: core.independent-review
+    -
+      id: core.independent-review
       dimension: independent-review
       criterion: An independent agent adversarially checks H0 evidence provenance/statistics and H1 package/launch boundary against the locked DAG.
       oracle: Independent review of final artifacts and tests with credible findings resolved.

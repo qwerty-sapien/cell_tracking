@@ -60,6 +60,9 @@ CHECKPOINT_SCHEMA = (
 CONTRACT_SCHEMA = (
     "celltrack-alpha.trackastra-full-pool-feature-cache-contract.v2"
 )
+OPTION_C_CONTRACT_SCHEMA = (
+    "celltrack-alpha.trackastra-h1-feature-cache-contract.option-c.v1"
+)
 DEFAULT_CONTRACT = (
     ROOT / "reports/g02/trackastra_full_pool_feature_cache_contract_v2.json"
 )
@@ -119,7 +122,7 @@ def load_contract(path: Path, expected_sha256: str) -> dict[str, Any]:
     stages = value.get("stages")
     execution = value.get("execution")
     if (
-        value.get("schema") != CONTRACT_SCHEMA
+        value.get("schema") not in (CONTRACT_SCHEMA, OPTION_C_CONTRACT_SCHEMA)
         or value.get("status") != "locked"
         or not all(
             isinstance(section, Mapping)
@@ -134,7 +137,8 @@ def load_contract(path: Path, expected_sha256: str) -> dict[str, Any]:
         )
     ):
         raise TrackastraFeatureCacheError("contract is malformed")
-    if (
+    schema = value["schema"]
+    common_invalid = (
         scope.get("fit_train105_only") is not True
         or scope.get("label_access") is not False
         or scope.get("training") is not False
@@ -144,8 +148,6 @@ def load_contract(path: Path, expected_sha256: str) -> dict[str, Any]:
                 "validation12_access",
                 "cv57_access",
                 "promotion_authorized",
-                "kaggle_action",
-                "gpu_action",
                 "runpod_action",
             )
         )
@@ -170,9 +172,134 @@ def load_contract(path: Path, expected_sha256: str) -> dict[str, Any]:
         or execution.get("model_stack_coexistence") is not False
         or not isinstance(stages.get("apncc_base"), Mapping)
         or not isinstance(stages.get("trackastra_enrichment"), Mapping)
-    ):
+    )
+    legacy_invalid = schema == CONTRACT_SCHEMA and (
+        scope.get("family") != "6bba"
+        or int(scope.get("expected_video_count", 0)) != 69
+        or scope.get("kaggle_action") is not False
+        or scope.get("gpu_action") is not False
+    )
+    option_c = value.get("parity")
+    environment = value.get("environment")
+    runtime_projection = value.get("runtime_projection")
+    source_files = value.get("source_files")
+    option_c_invalid = schema == OPTION_C_CONTRACT_SCHEMA and (
+        scope.get("families") != ["44b6", "6bba"]
+        or scope.get("family_counts") != {"44b6": 36, "6bba": 69}
+        or int(scope.get("expected_video_count", 0)) != 105
+        or scope.get("kaggle_action") != "HUMAN_GATED"
+        or scope.get("gpu_action") != "HUMAN_GATED"
+        or not isinstance(option_c, Mapping)
+        or option_c.get("canonical_device") != "NvidiaTeslaT4"
+        or option_c.get("t4_repeatability") != "numpy.array_equal"
+        or option_c.get("cross_device_byte_identity_required") is not False
+        or option_c.get("m5_t4_tolerance_status")
+        != "PROPOSED_REQUIRES_HUMAN_APPROVAL"
+        or option_c.get("t4_repeatability_identities")
+        != ["train:44b6_cf8fed6b", "train:6bba_edf14583"]
+        or int(execution.get("seed", -1)) != 20260725
+        or execution.get("device") != "NvidiaTeslaT4"
+        or not isinstance(environment, Mapping)
+        or environment.get("python") != "3.12.13"
+        or environment.get("cuda_runtime") != "12.8.1"
+        or environment.get("torch_cuda") != "12.8"
+        or int(environment.get("cudnn", -1)) != 91002
+        or environment.get("device") != "Tesla T4"
+        or environment.get("packages")
+        != {
+            "PyYAML": "6.0.3",
+            "donfig": "0.8.1.post1",
+            "numcodecs": "0.15.1",
+            "numpy": "2.0.2",
+            "scipy": "1.16.3",
+            "torch": "2.10.0+cu128",
+            "zarr": "3.2.1",
+        }
+        or not isinstance(source_files, Mapping)
+        or source_files
+        != {
+            "trackastra/model/model.py": "53e47b931338ed3450f4f23d6391ad1985f7083fd2754eb4edd6d3b5cd8b964c",
+            "trackastra/model/model_parts.py": "b218eee5e5acb794b56ce1b36b991a390097ea6fd57960f9992240b01f891595",
+            "trackastra/model/rope.py": "761a850aee82eaac25e8ab5d772748bcee130a5cd10b3d5a31aa339709ce5290",
+            "trackastra/utils/__init__.py": "9cc30299112973185878e719aee11459913ac2da7d6b1765bba0a7f2e030189f",
+            "trackastra/utils/utils.py": "6de65b3996dd1fa006e90de826a3d16e7b1796fa8ddbbff8032b178342a07bff",
+        }
+        or not isinstance(runtime_projection, Mapping)
+        or runtime_projection.get("full_run_authorized") is not False
+        or runtime_projection.get("status")
+        != "BLOCKED_NO_BANKED_OPTION_C_CUDA_TIMING"
+        or option_c.get("exact_fields")
+        != [
+            "challengers",
+            "conflicts",
+            "proposal_offsets",
+            "transition_offsets",
+            "transition_target_t",
+            "geometry_confidences",
+            "geometry_probabilities",
+        ]
+    )
+    if common_invalid or legacy_invalid or option_c_invalid:
         raise TrackastraFeatureCacheError("contract is not fail-closed")
     return value
+
+
+def contract_families(
+    contract: Mapping[str, Any],
+) -> tuple[tuple[str, ...], dict[str, int]]:
+    """Return the exact authorized family order and fit-only counts."""
+
+    scope = contract["scope"]
+    if contract["schema"] == CONTRACT_SCHEMA:
+        return ("6bba",), {"6bba": 69}
+    families = tuple(str(value) for value in scope["families"])
+    counts = {
+        str(key): int(value)
+        for key, value in scope["family_counts"].items()
+    }
+    return families, counts
+
+
+def execution_device(contract: Mapping[str, Any]) -> str:
+    """Keep legacy v2 on CPU and require Option C on cuda:0."""
+
+    if contract["schema"] == OPTION_C_CONTRACT_SCHEMA:
+        return "cuda:0"
+    return "cpu"
+
+
+def attest_module_device(
+    module: torch.nn.Module, expected_device: str, label: str
+) -> dict[str, Any]:
+    """Fail closed unless every parameter and buffer uses one exact device."""
+
+    expected = torch.device(expected_device)
+    tensors = tuple(module.parameters()) + tuple(module.buffers())
+    if not tensors:
+        raise TrackastraFeatureCacheError(
+            f"{label} has no tensors to attest"
+        )
+    actual = {tensor.device for tensor in tensors}
+    if actual != {expected}:
+        raise TrackastraFeatureCacheError(
+            f"{label} device placement drifted: "
+            f"{sorted(map(str, actual))} != {expected}"
+        )
+    if expected.type == "cuda" and (
+        not torch.cuda.is_available()
+        or expected.index != 0
+        or torch.cuda.current_device() != 0
+    ):
+        raise TrackastraFeatureCacheError(
+            f"{label} lacks the required cuda:0 runtime"
+        )
+    return {
+        "label": label,
+        "expected_device": str(expected),
+        "actual_devices": sorted(map(str, actual)),
+        "tensor_count": len(tensors),
+        "pass": True,
+    }
 
 
 def flatten_windows(
@@ -306,6 +433,7 @@ def trackastra_margins_from_flattened(
     detections: Sequence[bh_model.FrameDet],
     base: Mapping[str, Any],
     max_tokens: int,
+    expected_device: str | None = None,
 ) -> tuple[np.ndarray, dict[str, int]]:
     """Enrich a flattened APNCC cache without restoring V45 or raw images."""
 
@@ -373,7 +501,12 @@ def trackastra_margins_from_flattened(
             raise TrackastraFeatureCacheError(
                 "Trackastra packing lost a proposal endpoint"
             )
-        association, index_by_node = _association(model, nodes, by_node)
+        association, index_by_node = _association(
+            model,
+            nodes,
+            by_node,
+            expected_device=expected_device,
+        )
         peak_tokens = max(peak_tokens, len(nodes))
         cropped += int(was_cropped)
         for proposal_index in range(proposal_start, proposal_stop):
@@ -445,6 +578,7 @@ def _trackastra_margins(
     windows: Sequence[point_context_swap.RuntimeProposalWindow],
     cache: bh_model.SparseInferenceCache,
     max_tokens: int,
+    expected_device: str | None = None,
 ) -> tuple[list[list[np.ndarray]], dict[str, int]]:
     by_node: dict[int, tuple[int, np.ndarray]] = {}
     frame_nodes: dict[int, tuple[int, ...]] = {}
@@ -485,7 +619,12 @@ def _trackastra_margins(
             raise TrackastraFeatureCacheError(
                 "Trackastra packing lost a proposal endpoint"
             )
-        association, index_by_node = _association(model, nodes, by_node)
+        association, index_by_node = _association(
+            model,
+            nodes,
+            by_node,
+            expected_device=expected_device,
+        )
         peak_tokens = max(peak_tokens, len(nodes))
         cropped += int(was_cropped)
         window_result = []
@@ -592,6 +731,55 @@ def assert_v1_parity(
         ):
             raise TrackastraFeatureCacheError(
                 f"v2 numerical parity with v1 failed for {key}"
+            )
+
+
+def assert_t4_repeatability(
+    first: Mapping[str, Any],
+    second: Mapping[str, Any],
+    contract: Mapping[str, Any],
+) -> None:
+    """Require exact same-environment T4 repeatability for Option C."""
+
+    if contract.get("schema") != OPTION_C_CONTRACT_SCHEMA:
+        raise TrackastraFeatureCacheError(
+            "T4 repeatability is restricted to the Option-C contract"
+        )
+    if (
+        first.get("identity") != second.get("identity")
+        or first.get("feature_names") != second.get("feature_names")
+        or first.get("selected_raw_edges") != second.get("selected_raw_edges")
+        or first.get("pool_counts") != second.get("pool_counts")
+        or first.get("inference") != second.get("inference")
+    ):
+        raise TrackastraFeatureCacheError(
+            "T4 repeatability scalar/identity mismatch"
+        )
+    for key in (
+        "challengers",
+        "conflicts",
+        "row_features",
+        "proposal_offsets",
+        "transition_offsets",
+        "transition_target_t",
+        "geometry_confidences",
+        "geometry_probabilities",
+    ):
+        if key not in first or key not in second:
+            raise TrackastraFeatureCacheError(
+                f"T4 repeatability missing required field: {key}"
+            )
+        first_value = np.asarray(first[key])
+        second_value = np.asarray(second[key])
+        if first_value.dtype.kind not in "iuf" or second_value.dtype.kind not in "iuf":
+            raise TrackastraFeatureCacheError(
+                f"T4 repeatability unauthorized dtype for {key}"
+            )
+        if not np.array_equal(
+            first_value, second_value
+        ):
+            raise TrackastraFeatureCacheError(
+                f"T4 repeatability failed for {key}"
             )
 
 

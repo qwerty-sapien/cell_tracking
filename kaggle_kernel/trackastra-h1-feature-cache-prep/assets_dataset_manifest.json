@@ -1,0 +1,23 @@
+{
+  "files": [
+    {
+      "path": "source_overlay/kaggle_kernel/trackastra-h1-feature-cache-prep/option_c_contract.json",
+      "sha256": "9f2247cf69cd431840395162ec057770081689a11e964ccb27ff4bd4aee6f6b7"
+    },
+    {
+      "path": "source_overlay/kaggle_kernel/trackastra-h1-feature-cache-prep/raw_fit105_directory_manifest.json",
+      "sha256": "665c505b4e38a03f5a501527fde58a064d3ce8fac413898656a4f3f3e6cf781e"
+    },
+    {
+      "path": "source_overlay/kaggle_kernel/trackastra-h1-feature-cache-prep/source_dependency_manifest.json",
+      "sha256": "fadc47e81d7290e5d723ae5da279382f1218e4ce138aa0d5712cb88990feab05"
+    }
+  ],
+  "remote_dataset": {
+    "created": false,
+    "slug": "onebitbrain/trackastra-h1-option-c-assets-v1",
+    "version": null
+  },
+  "schema": "celltrack-alpha.trackastra-h1-option-c-assets-dataset.v1",
+  "status": "LOCAL_SOURCE_MANIFEST_COMPLETE_REMOTE_DATASET_NOT_CREATED"
+}

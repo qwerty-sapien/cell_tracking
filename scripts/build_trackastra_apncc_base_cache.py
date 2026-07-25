@@ -9,9 +9,11 @@ from contextlib import nullcontext
 import gc
 import json
 from pathlib import Path
+import random
 import sys
 import time
 
+import numpy as np
 import torch
 import zarr
 from zarr.storage import ZipStore
@@ -36,7 +38,10 @@ from build_trackastra_full_pool_feature_cache import (  # noqa: E402
     _checkpoint,
     _load_json,
     _require,
+    attest_module_device,
     flatten_base_windows,
+    contract_families,
+    execution_device,
     load_contract,
 )
 from celltrack_alpha import appearance_swap, bh_edge, bh_model, point_context_swap  # noqa: E402
@@ -116,24 +121,53 @@ def _validate_raw_directory(
     manifest = _load_json(manifest_path, "raw directory manifest")
     scope = manifest.get("scope")
     records = manifest.get("files")
-    if (
-        manifest.get("schema")
-        != "celltrack-alpha.trackastra-6bba-raw-directory-manifest.v1"
-        or not isinstance(scope, Mapping)
-        or scope.get("family") != "6bba"
-        or scope.get("video_count") != 69
-        or not isinstance(records, list)
-    ):
+    if not isinstance(scope, Mapping) or not isinstance(records, list):
         raise TrackastraFeatureCacheError(
             "raw directory manifest scope drifted"
         )
+    allowed_schemas = {
+        "celltrack-alpha.trackastra-6bba-raw-directory-manifest.v1",
+        "celltrack-alpha.trackastra-h1-raw-directory-manifest.v1",
+    }
+    if manifest.get("schema") not in allowed_schemas:
+        raise TrackastraFeatureCacheError(
+            "raw directory manifest schema drifted"
+        )
     authorized = tuple(str(value) for value in scope.get("identities", ()))
+    if manifest.get("schema") == (
+        "celltrack-alpha.trackastra-6bba-raw-directory-manifest.v1"
+    ):
+        scope_invalid = (
+            scope.get("family") != "6bba"
+            or int(scope.get("video_count", 0)) != 69
+            or len(authorized) != 69
+        )
+    else:
+        counts = {
+            family: sum(
+                identity.startswith(f"train:{family}_")
+                for identity in authorized
+            )
+            for family in ("44b6", "6bba")
+        }
+        scope_invalid = (
+            scope.get("fit_train105_only") is not True
+            or scope.get("families") != ["44b6", "6bba"]
+            or scope.get("family_counts") != {"44b6": 36, "6bba": 69}
+            or int(scope.get("video_count", 0)) != 105
+            or scope.get("validation12_access") is not False
+            or scope.get("cv57_access") is not False
+            or counts != {"44b6": 36, "6bba": 69}
+        )
     if (
-        len(authorized) != 69
-        or len(set(authorized)) != 69
+        scope_invalid
+        or len(set(authorized)) != len(authorized)
+        or not set(identities) <= set(authorized)
         or any(
-            identity not in authorized
-            or not identity.startswith("train:6bba_")
+            not any(
+                identity.startswith(f"train:{family}_")
+                for family in ("44b6", "6bba")
+            )
             for identity in identities
         )
     ):
@@ -208,20 +242,49 @@ def _eligible(
         )
     ):
         raise TrackastraFeatureCacheError("fit prepare scope drifted")
+    families, family_counts = contract_families(contract)
     full_eligible = tuple(
-        str(identity)
-        for identity in scope["train_video_ids"]
-        if str(identity).startswith("train:6bba_")
+        str(candidate)
+        for candidate in scope["train_video_ids"]
+        if any(
+            str(candidate).startswith(f"train:{family}_")
+            for family in families
+        )
     )
-    if len(full_eligible) != 69:
+    actual_counts = {
+        family: sum(
+            value.startswith(f"train:{family}_")
+            for value in full_eligible
+        )
+        for family in families
+    }
+    if actual_counts != family_counts:
         raise TrackastraFeatureCacheError("eligible video count drifted")
     if identity is not None:
-        parity_identity = str(
-            contract["checkpoint_loader"]["parity_reference"]["identity"]
+        option_c = (
+            contract["schema"]
+            == "celltrack-alpha.trackastra-h1-feature-cache-contract.option-c.v1"
         )
-        if identity != parity_identity or identity not in full_eligible:
+        if option_c:
+            authorized = {
+                str(value)
+                for value in contract["parity"][
+                    "t4_repeatability_identities"
+                ]
+            }
+        else:
+            authorized = {
+                str(
+                    contract["checkpoint_loader"][
+                        "parity_reference"
+                    ]["identity"]
+                )
+            }
+        if identity not in authorized or identity not in full_eligible:
             raise TrackastraFeatureCacheError(
-                "single-video scope is restricted to the parity reference"
+                "single-video scope is restricted to an authorized witness"
+                if option_c
+                else "single-video scope is restricted to the parity reference"
             )
         eligible = (identity,)
     else:
@@ -232,7 +295,11 @@ def _eligible(
     feasibility_rows = {
         str(row["identity"]): row for row in feasibility["videos"]
     }
-    if set(full_eligible) != set(feasibility_rows):
+    if (
+        contract["schema"]
+        == "celltrack-alpha.trackastra-full-pool-feature-cache-contract.v2"
+        and set(full_eligible) != set(feasibility_rows)
+    ):
         raise TrackastraFeatureCacheError(
             "feasibility video coverage drifted"
         )
@@ -246,7 +313,7 @@ def _base_checkpoint(
     identity: str,
     contract_sha256: str,
     implementation_sha256: str,
-    expected_proposals: int,
+    expected_proposals: int | None,
 ) -> dict[str, object] | None:
     if not path.exists() and not feature_path.exists():
         return None
@@ -260,7 +327,11 @@ def _base_checkpoint(
         or value.get("identity") != identity
         or value.get("contract_sha256") != contract_sha256
         or value.get("implementation_sha256") != implementation_sha256
-        or int(value.get("proposal_count", -1)) != expected_proposals
+        or (
+            expected_proposals is not None
+            and int(value.get("proposal_count", -1))
+            != expected_proposals
+        )
         or value.get("feature_sha256") != sha256(feature_path)
     ):
         raise TrackastraFeatureCacheError(
@@ -272,6 +343,24 @@ def _base_checkpoint(
 def build(args: argparse.Namespace) -> dict[str, object]:
     started = time.perf_counter()
     contract = load_contract(args.contract, args.contract_sha256)
+    if (
+        contract["schema"]
+        == "celltrack-alpha.trackastra-h1-feature-cache-contract.option-c.v1"
+        and contract["runtime_projection"]["full_run_authorized"] is not True
+        and getattr(args, "identity", None) is None
+    ):
+        raise TrackastraFeatureCacheError(
+            "Option-C full Stage A is blocked pending banked cuda:0 timing"
+        )
+    if (
+        contract["schema"]
+        == "celltrack-alpha.trackastra-h1-feature-cache-contract.option-c.v1"
+    ):
+        seed = int(contract["execution"]["seed"])
+        random.seed(seed)
+        np.random.seed(seed)
+        torch.manual_seed(seed)
+        torch.use_deterministic_algorithms(True)
     if contract["execution"].get("model_stack_coexistence") is not False:
         raise TrackastraFeatureCacheError(
             "two-stage model isolation contract drifted"
@@ -317,8 +406,12 @@ def build(args: argparse.Namespace) -> dict[str, object]:
         expected_sha256=str(inputs["appearance_contract"]["sha256"]),
         root=ROOT,
     )
+    device = execution_device(contract)
     base_model, bundle = bh_model.load_v45_model(
-        args.support_root, device="cpu"
+        args.support_root, device=device
+    )
+    v45_device = attest_module_device(
+        base_model, device, "stage_a_v45"
     )
     scorer, edge_record = run_bh.load_sparse_edge_scorer(
         args.edge_artifact,
@@ -332,6 +425,9 @@ def build(args: argparse.Namespace) -> dict[str, object]:
         raise TrackastraFeatureCacheError(
             "frozen edge scorer did not restore"
         )
+    edge_device = attest_module_device(
+        scorer, device, "stage_a_edge_scorer"
+    )
 
     args.output.mkdir(parents=True, exist_ok=args.resume)
     videos_root = args.output / "videos"
@@ -348,8 +444,10 @@ def build(args: argparse.Namespace) -> dict[str, object]:
             slug = identity.replace(":", "__", 1)
             feature_path = videos_root / f"{slug}.pt"
             checkpoint_path = videos_root / f"{slug}.json"
-            expected_proposals = int(
-                feasibility_rows[identity]["geometry_proposals"]
+            expected_proposals = (
+                int(feasibility_rows[identity]["geometry_proposals"])
+                if identity in feasibility_rows
+                else None
             )
             existing = (
                 _base_checkpoint(
@@ -408,16 +506,21 @@ def build(args: argparse.Namespace) -> dict[str, object]:
                 geometry_gate,
                 image,
                 identity=identity,
-                family=1,
+                family=int(":6bba_" in identity),
                 geometry_threshold=float(
                     appearance_contract["geometry_gate"]["threshold"]
                 ),
             )
             if (
-                int(pool_counts["full_pool_proposals"])
-                != expected_proposals
-                or len(windows)
-                != int(feasibility_rows[identity]["nonempty_transitions"])
+                expected_proposals is not None
+                and (
+                    int(pool_counts["full_pool_proposals"])
+                    != expected_proposals
+                    or len(windows)
+                    != int(
+                        feasibility_rows[identity]["nonempty_transitions"]
+                    )
+                )
             ):
                 raise TrackastraFeatureCacheError(
                     f"{identity} full-pool counts drifted"
@@ -470,15 +573,28 @@ def build(args: argparse.Namespace) -> dict[str, object]:
     }
     if (
         aggregate["video_count"] != len(eligible)
-        or aggregate["proposal_count"]
-        != sum(
-            int(feasibility_rows[identity]["geometry_proposals"])
-            for identity in eligible
-        )
-        or aggregate["transition_count"]
-        != sum(
-            int(feasibility_rows[identity]["nonempty_transitions"])
-            for identity in eligible
+        or (
+            set(eligible) <= set(feasibility_rows)
+            and (
+                aggregate["proposal_count"]
+                != sum(
+                    int(
+                        feasibility_rows[identity][
+                            "geometry_proposals"
+                        ]
+                    )
+                    for identity in eligible
+                )
+                or aggregate["transition_count"]
+                != sum(
+                    int(
+                        feasibility_rows[identity][
+                            "nonempty_transitions"
+                        ]
+                    )
+                    for identity in eligible
+                )
+            )
         )
     ):
         raise TrackastraFeatureCacheError(
@@ -501,7 +617,11 @@ def build(args: argparse.Namespace) -> dict[str, object]:
         },
         "aggregate": aggregate,
         "execution": {
-            "device": "cpu",
+            "device": device,
+            "device_attestation": {
+                "v45": v45_device,
+                "edge_scorer": edge_device,
+            },
             "training": False,
             "label_access": False,
             "elapsed_seconds": time.perf_counter() - started,
@@ -556,8 +676,8 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--identity",
         help=(
-            "run only the contract parity reference; any other identity "
-            "fails closed"
+            "run only a contract-authorized parity witness; any other "
+            "identity fails closed"
         ),
     )
     parser.add_argument("--resume", action="store_true")

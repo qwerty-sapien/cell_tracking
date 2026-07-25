@@ -1,0 +1,164 @@
+{
+  "asset_audit": {
+    "checkpoint_archive_sha256": "2ede08481b2e1f4ea23a41dd3001e2151ecbce7d978be9829ad230f0a60aea0e",
+    "checkpoint_member_sha256": "24c290ce74289ee6dac952a3355c9fb7a0a477fda3012656a2c6d80af892981f",
+    "parameter_count": 27456880,
+    "source_commit": "fb265888c8fce2ac16a362ebf182ccd5ea48e936"
+  },
+  "checkpoint_loader": {
+    "checkpoint_member_must_be_preextracted": true,
+    "kind": "stream-authenticated mmap weights plus meta-device construction and assign-in-place state restoration",
+    "parity_reference": {
+      "identity": "train:6bba_edf14583",
+      "path": "reports/g02/trackastra_full_pool_feature_cache_v1/videos/train__6bba_edf14583.pt",
+      "sha256": "fed771aaf78df907460e8833a66d698067766e942258c088e31219e998115016"
+    },
+    "tensor_values_changed": false
+  },
+  "execution": {
+    "atomic_video_publication": true,
+    "device": "NvidiaTeslaT4",
+    "maximum_wall_hours": 7.0,
+    "model_stack_coexistence": false,
+    "one_video_at_a_time": true,
+    "resume_requires_exact_checkpoint": true,
+    "seed": 20260725,
+    "two_stage_required": true
+  },
+  "environment": {
+    "banked_t4_evidence": [
+      {
+        "path": "kaggle_kernel/bhp0-c0-out-v1/run.json",
+        "sha256": "bd459feecf9a05545ced763b0c9a364a885cb375fdbdea08fedf58d1a83e5a9d"
+      },
+      {
+        "path": "reports/g02/fitcache_remote/fc00_v3/bh9.json",
+        "sha256": "25cb4247d337941275f4447d4ff5d26f260aac52028702a8e90cc51d17d94e97"
+      }
+    ],
+    "cuda_runtime": "12.8.1",
+    "cudnn": 91002,
+    "device": "Tesla T4",
+    "packages": {
+      "PyYAML": "6.0.3",
+      "donfig": "0.8.1.post1",
+      "numcodecs": "0.15.1",
+      "numpy": "2.0.2",
+      "scipy": "1.16.3",
+      "torch": "2.10.0+cu128",
+      "zarr": "3.2.1"
+    },
+    "python": "3.12.13",
+    "torch_cuda": "12.8"
+  },
+  "features": {
+    "base_feature_count": 48,
+    "checkpoint_features": "two H3 arms required: twelve zero-filled wrfeat channels and real wrfeat-regionprops2 mask features",
+    "max_tokens": 1024,
+    "output_feature_count": 49,
+    "trackastra_feature": "normalized frozen challenger association minus incumbent association for each conflict row",
+    "trackastra_feature_count": 1,
+    "window_frames": 4
+  },
+  "inputs": {
+    "appearance_contract": {
+      "path": "reports/g02/appearance_direct_swap_contract_v1.json",
+      "sha256": "cee547ed7a82d1bf7f6afe8cbbc3cc9d554181f9e19e87d319a5350863718cf7"
+    },
+    "asset_audit": {
+      "path": "reports/g02/trackastra_pretrained_asset_audit_v1.json",
+      "sha256": "2f809076fa570388d114f2f2bfe0a9be7dd5186cda41d67b3992127f10fa0132"
+    },
+    "fit_prepare": {
+      "path": "reports/g02/selected_graph_temporal_background_prepare_v1/prepare.json",
+      "sha256": "c41bc216d4dfd642126d476a66a3fd9659f54a91dc49463f6b468a301a971d89"
+    },
+    "full_pool_feasibility": {
+      "coverage": "6bba-only banked evidence; 44b6 counts are intentionally not fabricated",
+      "path": "reports/g02/trackastra_full_pool_feasibility_v1/report.json",
+      "sha256": "2296f6b9e5716a68705e167e9222b26c8f9a74a398ca45d6453d511217b92cc7"
+    },
+    "raw_archive": {
+      "access": "exact fit-train105 identities only; validation12 and CV57 forbidden",
+      "bytes": 87393127165,
+      "path": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+      "sha256": "538ed8a4d7b6669fa948865f947ed43c23aba7ee006fea8826d6ddd1277dfd19"
+    }
+  },
+  "parity": {
+    "canonical_device": "NvidiaTeslaT4",
+    "cross_device_byte_identity_required": false,
+    "exact_fields": [
+      "challengers",
+      "conflicts",
+      "proposal_offsets",
+      "transition_offsets",
+      "transition_target_t",
+      "geometry_confidences",
+      "geometry_probabilities"
+    ],
+    "float_column_count": 49,
+    "m5_t4_tolerance_status": "PROPOSED_REQUIRES_HUMAN_APPROVAL",
+    "t4_repeatability_identities": [
+      "train:44b6_cf8fed6b",
+      "train:6bba_edf14583"
+    ],
+    "t4_repeatability": "numpy.array_equal"
+  },
+  "purpose": "H1 frozen Trackastra two-family feature generation under the human-selected Option-C parity contract",
+  "runtime_projection": {
+    "full_run_authorized": false,
+    "status": "BLOCKED_NO_BANKED_OPTION_C_CUDA_TIMING",
+    "reason": "The prior Stage-A/Stage-B timing evidence executed the corrected builders on CPU and cannot bound the new cuda:0 Option-C path. A human-gated two-family T4 timing smoke must be banked before a full <=7 h projection can be approved."
+  },
+  "schema": "celltrack-alpha.trackastra-h1-feature-cache-contract.option-c.v1",
+  "scope": {
+    "cv57_access": false,
+    "expected_video_count": 105,
+    "families": [
+      "44b6",
+      "6bba"
+    ],
+    "family_counts": {
+      "44b6": 36,
+      "6bba": 69
+    },
+    "fit_train105_only": true,
+    "gpu_action": "HUMAN_GATED",
+    "kaggle_action": "HUMAN_GATED",
+    "label_access": false,
+    "promotion_authorized": false,
+    "runpod_action": false,
+    "training": false,
+    "validation12_access": false
+  },
+  "source_files": {
+    "trackastra/model/model.py": "53e47b931338ed3450f4f23d6391ad1985f7083fd2754eb4edd6d3b5cd8b964c",
+    "trackastra/model/model_parts.py": "b218eee5e5acb794b56ce1b36b991a390097ea6fd57960f9992240b01f891595",
+    "trackastra/model/rope.py": "761a850aee82eaac25e8ab5d772748bcee130a5cd10b3d5a31aa339709ce5290",
+    "trackastra/utils/__init__.py": "9cc30299112973185878e719aee11459913ac2da7d6b1765bba0a7f2e030189f",
+    "trackastra/utils/utils.py": "6de65b3996dd1fa006e90de826a3d16e7b1796fa8ddbbff8032b178342a07bff"
+  },
+  "stages": {
+    "apncc_base": {
+      "model_stack": "V45 edge scorer only",
+      "output_feature_count": 48,
+      "raw_image_access": true,
+      "trackastra_loaded": false
+    },
+    "required_order": [
+      "complete and authenticate Stage A once for all 105 fit-train identities",
+      "start Stage B in a new process",
+      "run Stage B twice on named 44b6 and 6bba parity identities and require T4-to-T4 numpy.array_equal",
+      "publish T4-canonical arrays; quarantine downstream use until the one-time M5-to-T4 classification and human tolerance approval"
+    ],
+    "trackastra_enrichment": {
+      "input_feature_count": 48,
+      "model_stack": "Trackastra mmap/meta only",
+      "output_feature_count": 49,
+      "raw_image_access": false,
+      "v45_loaded": false
+    }
+  },
+  "status": "locked"
+}
