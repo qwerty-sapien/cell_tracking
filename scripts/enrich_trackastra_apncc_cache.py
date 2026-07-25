@@ -24,11 +24,12 @@ for location in (
     if str(location) not in sys.path:
         sys.path.insert(0, str(location))
 
-import sweep_bh_graph_weights as sweep  # noqa: E402
 from build_trackastra_apncc_base_cache import (  # noqa: E402
     CHECKPOINT_SCHEMA as BASE_CHECKPOINT_SCHEMA,
     SCHEMA as BASE_REPORT_SCHEMA,
     VIDEO_SCHEMA as BASE_VIDEO_SCHEMA,
+    _cache_identity,
+    _eligible,
 )
 from build_trackastra_full_pool_feature_cache import (  # noqa: E402
     CHECKPOINT_SCHEMA,
@@ -61,6 +62,7 @@ def _validate_base_report(
     path: Path,
     *,
     contract_sha256: str,
+    expected_identities: tuple[str, ...],
 ) -> tuple[dict[str, object], dict[str, dict[str, object]]]:
     value = _load_json(path, "APNCC base report")
     files = value.get("files")
@@ -72,9 +74,10 @@ def _validate_base_report(
         or value.get("contract", {}).get("sha256") != contract_sha256
         or value.get("feature_count") != 48
         or not isinstance(files, list)
-        or len(files) != 69
+        or len(files) != len(expected_identities)
         or not isinstance(aggregate, Mapping)
-        or int(aggregate.get("video_count", -1)) != 69
+        or int(aggregate.get("video_count", -1))
+        != len(expected_identities)
         or not isinstance(model_stack, Mapping)
         or model_stack.get("v45_loaded") is not True
         or model_stack.get("trackastra_loaded") is not False
@@ -87,7 +90,7 @@ def _validate_base_report(
         for row in files
         if isinstance(row, Mapping)
     }
-    if len(by_identity) != 69:
+    if set(by_identity) != set(expected_identities):
         raise TrackastraFeatureCacheError(
             "APNCC base report identities are incomplete"
         )
@@ -142,25 +145,20 @@ def build(args: argparse.Namespace) -> dict[str, object]:
     started = time.perf_counter()
     contract = load_contract(args.contract, args.contract_sha256)
     implementation_sha256 = sha256(Path(__file__))
+    eligible, _prepare_rows, feasibility_rows = _eligible(
+        contract, getattr(args, "identity", None)
+    )
     base_report, base_rows = _validate_base_report(
         args.base / "report.json",
         contract_sha256=args.contract_sha256,
+        expected_identities=eligible,
     )
     inputs = contract["inputs"]
     for label in ("fit_prepare", "full_pool_feasibility", "asset_audit"):
         record = inputs[label]
         _require(ROOT / str(record["path"]), str(record["sha256"]), label)
-    prepare = _load_json(
-        ROOT / str(inputs["fit_prepare"]["path"]), "fit prepare"
-    )
-    eligible = tuple(
-        str(identity)
-        for identity in prepare["scope"]["train_video_ids"]
-        if str(identity).startswith("train:6bba_")
-    )
     if (
-        len(eligible) != 69
-        or set(eligible) != set(base_rows)
+        set(eligible) != set(base_rows)
         or eligible[0]
         != contract["checkpoint_loader"]["parity_reference"]["identity"]
     ):
@@ -199,7 +197,10 @@ def build(args: argparse.Namespace) -> dict[str, object]:
         if existing is not None:
             files.append(existing)
             resumed += 1
-            print(f"[{ordinal}/69] {identity}: enriched resume", flush=True)
+            print(
+                f"[{ordinal}/{len(eligible)}] {identity}: enriched resume",
+                flush=True,
+            )
             continue
         if feature_path.exists() or checkpoint_path.exists():
             raise TrackastraFeatureCacheError(
@@ -215,7 +216,7 @@ def build(args: argparse.Namespace) -> dict[str, object]:
         )
         detections = bh_model.load_sparse_cache_detections(
             args.cache / f"{slug}.bhc",
-            expected_identity=sweep._cache_identity(meta),
+            expected_identity=_cache_identity(meta),
         )
         margins, inference = trackastra_margins_from_flattened(
             model=model,
@@ -258,7 +259,7 @@ def build(args: argparse.Namespace) -> dict[str, object]:
         _atomic_json(checkpoint_path, record)
         files.append(record)
         print(
-            f"[{ordinal}/69] {identity}: "
+            f"[{ordinal}/{len(eligible)}] {identity}: "
             f"{record['proposal_count']} proposals / "
             f"{record['transition_count']} calls",
             flush=True,
@@ -278,11 +279,17 @@ def build(args: argparse.Namespace) -> dict[str, object]:
         "resumed_video_count": resumed,
     }
     if (
-        aggregate["video_count"] != 69
+        aggregate["video_count"] != len(eligible)
         or aggregate["proposal_count"]
-        != int(contract["features"]["expected_proposals"])
+        != sum(
+            int(feasibility_rows[identity]["geometry_proposals"])
+            for identity in eligible
+        )
         or aggregate["inference_calls"]
-        != int(contract["features"]["expected_inference_calls"])
+        != sum(
+            int(feasibility_rows[identity]["nonempty_transitions"])
+            for identity in eligible
+        )
     ):
         raise TrackastraFeatureCacheError(
             "enriched cache aggregate coverage drifted"
@@ -336,6 +343,13 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--cache", type=Path, default=DEFAULT_CACHE)
     parser.add_argument("--base", type=Path, default=DEFAULT_BASE)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument(
+        "--identity",
+        help=(
+            "run only the contract parity reference; any other identity "
+            "fails closed"
+        ),
+    )
     parser.add_argument("--resume", action="store_true")
     return parser.parse_args()
 

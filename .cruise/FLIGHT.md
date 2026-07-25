@@ -8,6 +8,47 @@ Execute `reports/g02/screening/DAG.md` toward a materially stronger cell-trackin
 baseline above 0.88 and then competitive 0.90s performance, retaining 0.92 as the
 contractual endpoint.
 
+## Authorized K-node micro-goal (2026-07-25)
+
+Build, verify, and—only if the quota/runtime stop condition remains satisfiable—push
+one private Kaggle GPU kernel, `onebitbrain/trackastra-6bba-feat`, that materializes
+the frozen two-stage 49-D Trackastra feature cache for exactly the 69
+`train:6bba_` fit-train105 videos.
+
+- This is frozen inference only: no training, competition submission, 44b6 access,
+  validation12/CV57 access, or RunPod action.
+- Preserve the contract-required Stage A (48-D APNCC) then Stage B (frozen
+  Trackastra) sequence and require exact first-video parity with
+  `train:6bba_edf14583`.
+- Fail closed on any input SHA, identity, contract, coverage, or parity mismatch.
+- Do not launch if dataset upload, queueing, and the projected 1.213-hour run cannot
+  plausibly complete before the stated quota reset.
+- Bank only a retrieved and independently verified 69/69 output; otherwise record
+  the concrete stop condition without claiming a usable cache.
+
+Preflight stop at `2026-07-25 06:58 +08`: the stated reset window was 60 minutes,
+shorter than the 72.78-minute inference projection before queueing. Authenticated
+Kaggle inspection also found no reusable private datasets, while the required
+`train/6bba_` image subset is approximately 50.8 GB compressed. No dataset, kernel,
+GPU session, or competition submission was created.
+
+At the next user turn, the human explicitly directed the K-node to proceed despite
+that quota-reset timing risk. This overrides only the timing stop above; the frozen
+inference, 6bba-only, contract/parity, no-training, no-submission, and no-RunPod
+boundaries remain unchanged.
+
+Final K-node stop at `2026-07-25 15:59 +08`: private kernel
+`onebitbrain/trackastra-6bba-feat` version 3 authenticated the exact 7,038-file raw
+6bba manifest and completed Stage A for 69/69 videos (110,471 proposals, 158,561
+rows, 5,824 transitions) in 2,854.53 seconds. Stage B then failed the mandatory
+first-video `numpy.array_equal` gate for `row_features` at 2,932.35 seconds. Kaggle
+reported `KernelWorkerStatus.ERROR` and exposed no downloadable output files.
+Approximately 0.83 T4-hours were consumed across three versions, including two
+short pre-inference dependency failures. No 49-D cache was retrieved, no LEDGER
+row was added, and no submission, training, 44b6 processing, or RunPod action
+occurred. The node remains STOP/PARK pending an explicitly authorized parity-only
+Kaggle diagnostic; do not launch another full 69-video run first.
+
 ## Current micro-goal
 
 Bank the frozen pretrained Trackastra signal and design its grouped-OOF
@@ -145,6 +186,9 @@ Bank and operationalize the first confirmed local result above `0.88`:
 - `src/celltrack_alpha/point_context_swap.py`
 - `src/celltrack_alpha/bh_model.py`
 - `scripts/evaluate_point_context_oof_graph_gate.py`
+- `kaggle_kernel/trackastra-6bba-feat/**`
+- `reports/g02/trackastra_6bba_feature_kernel_manifest_v1.json`
+- `reports/g02/screening/trackastra_6bba_feature_kernel_v1.md`
 - `scripts/falsify_e4_e5.py`
 - `src/celltrack_alpha/edge_data.py`
 - `src/celltrack_alpha/relative_geometry_gate.py`
@@ -179,7 +223,8 @@ Bank and operationalize the first confirmed local result above `0.88`:
 ## Non-goals for this micro-goal
 
 - Kaggle submission or score retrieval
-- Kaggle GPU or RunPod launch
+- Any Kaggle GPU action other than the single authorized private 6bba frozen-inference
+  K-node kernel; any RunPod launch
 - paid compute
 - final portfolio selection
 - destructive history changes

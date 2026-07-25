@@ -30,7 +30,6 @@ for location in (ROOT / "src", ROOT / "scripts"):
         sys.path.insert(0, str(location))
 
 from celltrack_alpha import bh_model  # noqa: E402
-import sweep_bh_graph_weights as sweep  # noqa: E402
 
 
 SCHEMA = "celltrack-alpha.trackastra-zero-wrfeat-signal.v1"
@@ -48,6 +47,22 @@ DEFAULT_CACHE = ROOT / "reports/g02/fitcache_117/bh9out/cache"
 
 class TrackastraSignalError(RuntimeError):
     """The sealed frozen-checkpoint signal probe failed closed."""
+
+
+def _cache_identity(meta: Mapping[str, Any]) -> bh_model.CacheIdentity:
+    try:
+        model = meta["contract"]["model"]
+        return bh_model.CacheIdentity(
+            str(model["config_sha256"]),
+            str(model["source_sha256"]),
+            str(model["weight_sha256"]),
+            int(model["pair_batch_size"]),
+            int(model["view_batch_size"]),
+        )
+    except (KeyError, TypeError, ValueError) as exc:
+        raise TrackastraSignalError(
+            "cache metadata lacks a valid model identity"
+        ) from exc
 
 
 def sha256(path: Path) -> str:
@@ -448,7 +463,7 @@ def _video(
     meta = _load_json(cache_root / f"{slug}.json", f"{identity} cache metadata")
     cache = bh_model.load_sparse_cache(
         cache_root / f"{slug}.bhc",
-        expected_identity=sweep._cache_identity(meta),
+        expected_identity=_cache_identity(meta),
     )
     by_node: dict[int, tuple[int, np.ndarray]] = {}
     frame_nodes: dict[int, tuple[int, ...]] = {}

@@ -30,7 +30,6 @@ for location in (
         sys.path.insert(0, str(location))
 
 import run_bh  # noqa: E402
-import sweep_bh_graph_weights as sweep  # noqa: E402
 from celltrack_alpha import (  # noqa: E402
     appearance_swap,
     bh_edge,
@@ -71,6 +70,22 @@ DEFAULT_CONTRACT_SHA256 = (
 
 class TrackastraFeatureCacheError(RuntimeError):
     """The sealed label-free feature cache failed closed."""
+
+
+def _cache_identity(meta: Mapping[str, Any]) -> bh_model.CacheIdentity:
+    try:
+        model = meta["contract"]["model"]
+        return bh_model.CacheIdentity(
+            str(model["config_sha256"]),
+            str(model["source_sha256"]),
+            str(model["weight_sha256"]),
+            int(model["pair_batch_size"]),
+            int(model["view_batch_size"]),
+        )
+    except (KeyError, TypeError, ValueError) as exc:
+        raise TrackastraFeatureCacheError(
+            "cache metadata lacks a valid model identity"
+        ) from exc
 
 
 def _load_json(path: Path, label: str) -> dict[str, Any]:
@@ -702,7 +717,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     )
     scorer, edge_record = run_bh.load_sparse_edge_scorer(
         args.edge_artifact,
-        sweep._sha256(args.edge_artifact),
+        sha256(args.edge_artifact),
         args.edge_auxiliary,
         base_model,
         bundle,
@@ -755,7 +770,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             )
             cache = bh_model.load_sparse_cache(
                 args.cache / f"{slug}.bhc",
-                expected_identity=sweep._cache_identity(meta),
+                expected_identity=_cache_identity(meta),
             )
             selected, _probabilities, _no_link, graph = _baseline(
                 cache, scorer
