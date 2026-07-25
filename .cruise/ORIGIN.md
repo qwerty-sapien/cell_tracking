@@ -1,67 +1,152 @@
-TASK: Act as ROOT COORDINATOR to initiate the campaign cascade defined in
-reports/g02/screening/campaign_narrowing_and_hypothesis_dag_v1.md (the human-locked
-2026-07-25 DAG). Follow its falsification order and gates EXACTLY. Do NOT create a
-competing DAG doc. Do NOT re-screen any Section-1 DEAD mechanism. Do NOT launch any
-Kaggle GPU / submission / RunPod job (human-gated). Frozen scorer only; no holdout
-(validation12/CV57) access; zero-swap CPU discipline; commit locally per node. You are
-the sole writer of LEDGER.md; workers own disjoint outputs.
+ROLE: You are the ROOT COORDINATOR driving the human-locked G-02 cell-tracking DAG.
+Advance it one node at a time under its own falsification order and gates. Do not
+improvise scope.
 
-READ FIRST: campaign_narrowing_and_hypothesis_dag_v1.md, DAG.md, _shared_context.md,
-P1_framework_and_rubric.md, p0_parity.md, and LEDGER.md rows GA-TRACKASTRA-* (64-70).
+READ FIRST (in order), then restate the current frontier before acting:
+1. reports/g02/screening/LIVE_STATE.md
+2. reports/g02/screening/campaign_narrowing_and_hypothesis_dag_v1.md
+   (human-locked 2026-07-25 plan; §3.1, §4, §5, §6)
+3. reports/g02/screening/DAG.md
+4. reports/g02/screening/LEDGER.md
+   (bet history; the root coordinator is its SOLE writer)
+5. reports/g02/screening/p0_parity.md
+Also obey AGENTS.md.
 
-INITIATE TWO NODES IN PARALLEL (per §5 ranking):
+CURRENT FRONTIER (verify against LIVE_STATE; follow LIVE_STATE if it differs):
+- H0 DONE: proposal-only screening BANNED. Every candidate routes directly to the
+  44b6-first held-fit GRAPH gate. Proposal metrics may be reported but never gate.
+- H1-PREP DONE: the two-family Option-C frozen-Trackastra feature package is ready.
+- NEXT node: H1 execution.
 
-== NODE H0 — proxy-validity audit (CPU, no training; run to completion now) ==
-Purpose: settle whether proposal-level screening should be formally banned.
-- Assemble every available (proposal metric, held-fit GRAPH delta) pair from the ledger
-  (~15: OOF precision, utility gain, AUC, support vs the measured graph adjusted/raw
-  delta) — e.g. CTRL-OOF-GRAPH, GA-TEMPHYBRID, GA-POINTCTX-OOF, GA-CROPLINK-6BBA-OOF,
-  GA-SCENCAL, GA-TRACKASTRA-QUAL, etc. Use only values already banked in reports; do NOT
-  rerun any model.
-- Fit graph-delta (and its sign) on each proxy; report Pearson/Spearman/Kendall and a
-  sign-agreement rate with bootstrap CIs.
-- PREREGISTERED DECISION: if no proxy predicts graph-delta sign at |rho| >= 0.5, emit a
-  formal "proposal-only screening BANNED; route candidates straight to the 44b6-first
-  held-fit graph gate" verdict. If one clears 0.5, recover it as a fast-fail WITH its
-  measured error bar.
-- Output reports/g02/screening/h0_proxy_validity_v1.md + .json. Add ONE LEDGER row
-  (id H0-PROXY-VALIDITY, class DIAGNOSTIC/CONTROL). No holdout, no training, no GPU.
+EXPLICIT HUMAN AUTHORIZATION FOR THIS RUN:
+This prompt is the human approval required by DAG §4/§6.3 for the following narrowly
+scoped external actions:
+1. Upload/update the H1 Kaggle timing-smoke and feature-cache kernel/package.
+2. Run the two-family CUDA timing smoke on Kaggle T4.
+3. If and only if the smoke and all integrity gates pass, launch the frozen-feature
+   cache generation for 44b6 and 6bba.
+4. If and only if H1 subsequently passes every 44b6, 6bba, and full-CV57 gate below,
+   prepare/upload/run the observation-distinct H1 inference/submission kernel and make
+   exactly ONE public Kaggle submission.
+5. Once Kaggle confirms that the one submission has been created, record its identity
+   and END THE GOAL. Do not launch another probe or continue to H2.
 
-== NODE H1-PREP — prepare (not launch) the frozen Trackastra feature caches ==
-Purpose: unblock H1 by making the 44b6+6bba frozen-inference kernel launch-ready, under
-the corrected parity contract. This is PREP ONLY; the GPU launch is human-executed.
-- Adopt the option-C contract decided this session: canonical features are generated
-  ENTIRELY on T4 (one pinned env); parity becomes (1) T4<->T4 array_equal repeatability
-  - (2) a one-time per-column M5<->T4 tolerance classification (benign-FP vs bug). REMOVE
-  the cross-device numpy.array_equal byte-identity requirement from the launch path;
-  replace with per-column tolerance (report proposed atol/rtol per float column; exact on
-  integer/geometry columns). Any tolerance as FINAL contract is flagged for human approval,
-  not self-enacted.
-- Reuse the corrected Stage-A-once/Stage-B-twice kernel and the two-stage isolation
-  (GA-TRACKASTRA-2STAGE) that reached Stage A 59/69; scope to BOTH families 6bba AND 44b6
-  (H1 requires 44b6 — a 6bba-only cache replays the GA-TEMPHYBRID regression and cannot
-  test the surviving question).
-- Package: frozen 27.46M checkpoint as a Kaggle dataset + scripts + data access; pin
-  seeds/env/library versions; verify a 45-second clean zero-swap idle preflight; emit
-  kernel/script/checkpoint/manifest SHA-256s and a projected T4 wall-time + GPU-hour
-  estimate (must fit inside 7 h with packaging margin; frozen inference does NOT consume
-  the 30-h training cap).
-- STOP at the launch boundary: write a launch-readiness report
-  reports/g02/screening/h1_feature_cache_prep_v1.md with the exact human-run command,
-  the quota estimate, and the §6.3 fallback ("reserve quota; do not launch if the kernel
-  cannot be verified clean before reset"). Add ONE LEDGER row (id H1-PREP, class
-  CONTROL/IMPLEMENT). Do NOT launch.
+Do not pause or ask for additional human approval for the authorized actions above.
+This authorization does NOT cover RunPod, backbone training/fine-tuning, PEFT training,
+extra submissions, or unrelated Kaggle jobs.
 
-FOLLOW-ON (document as the next-node contract; do NOT execute yet):
-H1 graph gate runs 44b6-FIRST: held-fit adjusted edge Jaccard >= +0.005 on BOTH families,
-no raw/node-recall regression; kill immediately if 44b6 graph delta <= 0. Fold in H3
-(zeroed vs real mask-feature ablation) inside the 44b6 gate. H2 (shell background
-abstention) only after H1 shows real graph-level signal.
+EXECUTION ORDER — DO NOT SKIP OR REORDER:
 
-CONSTRAINTS
-- Deterministic; record seeds. If a required artifact is missing, STOP and name it;
-  do not fabricate. Fail closed on any holdout/CV57 path.
-- Add unit tests for the H0 correlation/decision logic and the H1-PREP tolerance-contract
-  comparator (benign-FP vs structural classification on a synthetic M5/T4 pair).
-- New branch. Do not touch bhap-submit or any banked *_v1 report. Append LEDGER rows as
-  coordinator; do not rewrite existing rows.
+A. Record the authorization
+- Re-read LIVE_STATE immediately before execution.
+- Record that the narrowly scoped H1 Kaggle GPU/cache/public-probe gate has been
+  explicitly authorized.
+- Preserve all existing banked artifacts and histories.
+
+B. Final launch verification and timing smoke
+- Finalize and verify the launch-ready package, remote dataset versions, checkpoint
+  identity, source/environment witnesses, explicit cuda:0 paths, and authenticated H3
+  mask/wrfeat inputs.
+- Run the exact two-family CUDA timing smoke.
+- Require verified T4 witnesses and a defensible projection of <=7 hours for the complete
+  two-family cache run, including packaging margin.
+- Establish T4-to-T4 repeatability.
+- Freeze a conservative, evidence-derived M5<->T4 tolerance before any graph scoring.
+  The human authorizes adoption of that frozen tolerance without another approval,
+  provided it is derived only from the preregistered parity evidence and is not tuned
+  after graph results are seen.
+- If runtime cannot be proven <=7 hours, remote datasets/witnesses cannot be authenticated,
+  repeatability fails, tolerance cannot be defensibly frozen, or H3 mask/wrfeat cannot be
+  authenticated: RESERVE quota and STOP. Do not launch a guillotine-risk job.
+
+C. Generate H1 frozen feature caches
+- Launch only after every step-B gate passes.
+- Backbone remains strictly FROZEN and inference-only.
+- Generate complete authenticated caches for both families: 44b6 and 6bba.
+- Record exact kernel version, dataset versions, accelerator, elapsed time, cache counts,
+  manifests, and SHA-256 identities.
+- Do not access validation12, CV57, holdout, audit, test, or submission inputs during
+  cache generation.
+
+D. Run H1 held-fit GRAPH gate
+- Use the implemented H1 runner immediately after caches authenticate.
+- H3 is an ablation INSIDE the 44b6 gate: zeroed mask/wrfeat versus authenticated real
+  mask/wrfeat.
+- Preserve nested grouped held-fit separation.
+- Run 44b6 FIRST.
+- Preregistered H1 success:
+  adjusted edge Jaccard delta >= +0.005 on BOTH families,
+  with no raw edge-score regression and no node-recall regression.
+- KILL H1 immediately if the 44b6 graph delta <= 0.
+- On any 44b6 failure, do not run 6bba, CV57, or a public probe.
+- If 44b6 is positive but below +0.005, H1 has not passed; report/PARK according to the
+  locked DAG and do not promote it.
+- Only after 44b6 passes all guards may 6bba run.
+- Only after both families pass may full CV57 run.
+
+E. Full CV57 and conditional public probe
+- Do not read or run CV57 before both held-fit family gates pass.
+- The public candidate must be observation-distinct and achieve local CV57 >=0.89.
+  This is a submission-worthiness floor, not a prediction of public >=0.89.
+- If local CV57 is below 0.89, do not upload or submit the public candidate.
+- If local CV57 is >=0.89 and all integrity checks pass:
+  1. prepare and hash-pin the inference/submission kernel;
+  2. verify package-path parity and output identity;
+  3. upload and run it on Kaggle;
+  4. verify successful output;
+  5. create exactly ONE public submission;
+  6. record the kernel version, output archive, submission ID, status, and all SHA-256s;
+  7. END THE GOAL immediately after submission creation is confirmed.
+- Do not wait for or use the public score to tune this identity.
+- Do not launch H2 in this goal. H2 remains eligible only if H1 demonstrates genuine
+  graph-level signal and must be handled as a later node.
+
+FALSIFICATION ORDER:
+manifest/literature -> data/leakage -> 44b6 held-fit GRAPH delta
+-> 6bba held-fit GRAPH delta -> full CV57 -> one authorized public probe
+
+HARD INVARIANTS:
+- Frozen scorer only.
+- No validation12/CV57/holdout access or path reads before its named gate.
+  Fail closed if a forbidden split is referenced.
+- Trackastra backbone stays FROZEN and inference-only.
+- No training or fine-tuning.
+- A PEFT adapter (<1% parameters) remains a possible future path only if frozen features
+  fail 44b6, but it is NOT authorized in this run.
+- Do not re-screen any DEAD mechanism listed in LIVE_STATE/DAG §6.1.
+- No RunPod launch. RunPod remains locked until accepted public >=0.89 and all DAG §3.1
+  conditions are met.
+- Zero-swap CPU discipline; perform a 45-second clean-idle preflight before every local
+  run and never co-load V45 with Trackastra.
+- Do not modify banked *_v1 reports or the bhap-submit package.
+- Do not exceed the Kaggle submission cap. This authorization permits exactly one new
+  H1 public submission and no others.
+
+NODE ACCOUNTING:
+- H1 is the active node.
+- If H1 stops or fails, complete H1 accounting and end.
+- If H1 passes through CV57, complete H1 accounting before beginning the public-probe node.
+- The single public probe is a separate node and receives its own accounting.
+- For each completed node:
+  1. update LIVE_STATE Current frontier and Key numbers;
+  2. append a dated newest-first LIVE_STATE Log entry;
+  3. append EXACTLY ONE coordinator-owned row to LEDGER.md;
+  4. commit locally on a codex/ branch;
+  5. do not push or open a PR.
+
+FINAL REPORT:
+Report each completed node separately:
+- node ID and verdict;
+- exact adjusted/raw graph deltas and node recall per family;
+- H3 zeroed-versus-real ablation results;
+- CV57 score if authorized by prior gates;
+- timing, GPU-hour accounting, kernel/dataset/submission identities;
+- artifacts and complete SHA-256s;
+- commit identity;
+- any STOP/KILL reason;
+- public submission ID/status if created.
+
+Begin by restating the verified LIVE_STATE frontier and naming H1 as the single node
+being advanced. Then execute continuously without waiting for further approval, stopping
+only on a preregistered failure/STOP condition or after the one authorized public
+submission is confirmed.
