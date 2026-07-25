@@ -1,81 +1,88 @@
 ---
 version: 2
-status: blocked
-outcome: Retry CGL D-14 fit-only on CPU and either produce the preregistered held-fit verdict or fail closed under a 12 GiB RSS ceiling and the existing 1.5 GiB swap ceiling.
+status: active
+outcome: Complete H0 from banked report evidence and prepare, without launching, the option-C 44b6+6bba frozen Trackastra feature-cache package; append exactly one coordinator-owned ledger row per node and commit locally per node.
 verify:
-  - .venv313/bin/python scripts/validate_model_candidate_gate.py --candidate reports/g02/model_candidate_cgl_tail_rank_head_v1.json --policy reports/g02/compute_governance_v1.json
-  - .venv313/bin/python -m unittest -v tests.test_model_candidate_gate
-  - jq consistency checks over the guard and final CGL reports
+  - focused H0 correlation and decision unit tests
+  - focused H1 tolerance comparator and package fail-closed unit tests
+  - deterministic report and manifest validation
+  - git diff review proving no banked v1 report, bhap-submit, holdout, or CV57 mutation/access
 scope:
   touchpoints:
     - .cruise/ORIGIN.md
     - .cruise/FLIGHT.md
-    - reports/g02/model_candidate_cgl_tail_rank_head_v1.json
-    - reports/g02/screening/candgen/CGL_D14_learned_representation_fastfail.md
-    - reports/g02/screening/candgen/cgl_d14_runtime_guard_amendment_preregistered_v3.json
-    - reports/g02/screening/candgen/cgl_d14_fastfail_guard_amended_v3.json
-    - reports/g02/screening/candgen/cgl_d14_fastfail_v1.json
-    - reports/g02/screening/candgen/cgl_d14_fastfail_v1.md
+    - reports/g02/screening/h0_proxy_validity_v1.md
+    - reports/g02/screening/h0_proxy_validity_v1.json
+    - reports/g02/screening/h1_feature_cache_prep_v1.md
+    - reports/g02/screening/h1_feature_cache_prep_v1.json
     - reports/g02/screening/LEDGER.md
-    - scripts/run_local_training_guard.py
-    - scripts/run_cgl_d14_fastfail.py
-    - src/celltrack_alpha/model_candidate_gate.py
-    - tests/test_model_candidate_gate.py
+    - scripts
+    - tests
+    - kaggle_kernel/trackastra-h1-feature-cache-prep
   non_goals:
-    - GPU or full T-03 training
-    - Kaggle RunPod or competition submission
+    - competing DAG documentation
+    - rescreening any Section-1 DEAD mechanism
+    - Kaggle GPU launch submission RunPod launch or any external mutation
+    - training or backbone fine-tuning
     - validation12 CV57 holdout audit or test access
-    - graph replay or a scientific verdict when training and held-fit evaluation do not complete
+    - final human approval of proposed cross-device tolerances
+    - execution of H1 H2 or H3 graph gates
 invariants:
-  - Process-tree RSS must remain at or below 12 GiB.
-  - Cumulative swap growth must remain at or below 1.5 GiB.
-  - System free memory must remain at or above 25 percent.
-  - Wall time must remain at or below 360 minutes.
-  - The frozen core compact head objective folds and preregistered retention gates remain unchanged.
-  - Forbidden holdout and CV57 paths are rejected before read.
-  - Unrelated dirty-worktree changes are preserved.
+  - The human-locked 2026-07-25 DAG and its falsification order remain authoritative.
+  - H0 uses only already banked report values and never reruns a model.
+  - H1-PREP generates no feature cache and stops at the exact human launch boundary.
+  - Canonical Trackastra features are T4-generated in one pinned environment with exact T4-to-T4 repeatability.
+  - M5-to-T4 tolerance values remain proposals requiring human approval; integer and geometry columns remain exact.
+  - H1-PREP covers both 44b6 and 6bba and packages the frozen 27.46M checkpoint.
+  - No forbidden validation12 or CV57 path is read.
+  - Local CPU work observes zero-swap discipline and a 45-second clean idle preflight.
+  - Only the root coordinator edits LEDGER.md; workers own disjoint outputs.
+  - Exactly one ledger row is appended for H0 and exactly one for H1-PREP.
+  - Banked *_v1 reports and bhap-submit are not modified.
 quality:
-  risk: medium
+  risk: high
   profiles:
     - core
   gates:
-    -
-      id: core.intent
+    - id: core.intent
       dimension: intent
-      criterion: The retry uses no more than 12 GiB RSS and preserves every existing scientific and external-action restriction.
-      oracle: Review the amended manifest preregistration guard telemetry and final report.
+      criterion: H0 and H1-PREP match the locked DAG, stop boundaries, ownership, and exact forbidden-action constraints.
+      oracle: Review reports, manifests, ledger append, commits, and prohibited-path evidence.
       severity: high
       state: pending
       evidence: null
-    -
-      id: core.functional
+    - id: core.functional
       dimension: functional-correctness
-      criterion: The guarded retry either completes full-pool held-fit evaluation or records the exact fail-closed boundary without fabricating retention.
-      oracle: Validate the guard and final JSON reports with jq assertions.
+      criterion: H0 deterministically computes all declared statistics and preregistered decision; H1 package validates both-family scope, option-C parity, assets, hashes, runtime, and human-run command without launch.
+      oracle: Run focused unit tests and deterministic report/package validators.
       severity: high
       state: pending
       evidence: null
-    -
-      id: core.regression
+    - id: core.regression
       dimension: regression
-      criterion: Candidate validation legacy zero-swap behavior and the CGL-specific bounded amendment remain tested.
-      oracle: Run tests.test_model_candidate_gate and Python compilation.
+      criterion: Existing Trackastra parity/cache tests and relevant repository integrity checks remain green and no protected artifact changes.
+      oracle: Run focused legacy tests and inspect git diff/name-status.
       severity: high
       state: pending
       evidence: null
-    -
-      id: core.failure-paths
+    - id: core.failure-paths
       dimension: failure-paths
-      criterion: RSS swap free-memory and timeout breaches all remain fail-closed at their exact boundaries.
-      oracle: Review strict comparisons unit tests and observed guard stop behavior.
-      severity: medium
+      criterion: Missing assets, structural drift, tolerance breaches, holdout/CV57 paths, swap growth, dirty/unverified package state, and runtime-budget overflow fail closed.
+      oracle: Unit-test synthetic drift and inspect package guards and report stop conditions.
+      severity: high
       state: pending
       evidence: null
-    -
-      id: core.completion-review
+    - id: core.completion-review
       dimension: completion-review
-      criterion: A skeptical final review finds the contract hash telemetry metrics cascade and prohibited-action statements mutually consistent.
-      oracle: Final diff artifact and hash review.
+      criterion: A skeptical final review finds no fabricated pair, unbanked model result, unauthorized tolerance, external launch, leakage path, ownership violation, or missing follow-on contract.
+      oracle: Independent diff-and-evidence review after final mutation.
+      severity: high
+      state: pending
+      evidence: null
+    - id: core.independent-review
+      dimension: independent-review
+      criterion: An independent agent adversarially checks H0 evidence provenance/statistics and H1 package/launch boundary against the locked DAG.
+      oracle: Independent review of final artifacts and tests with credible findings resolved.
       severity: high
       state: pending
       evidence: null
@@ -85,22 +92,7 @@ stall:
 ---
 # Flight plan
 
-Retry the deterministic CGL D-14 CPU fast-fail under a newly hashed contract whose
-process-tree RSS ceiling is 12 GiB. Preserve the already authorized 1.5 GiB cumulative
-swap-growth ceiling and every scientific leakage and external-compute restriction.
-Produce the preregistered GO/PARK/DEAD result only if feature assembly, compact-head
-training, and full-pool held-fit evaluation complete. Otherwise fail closed and record
-the exact runtime boundary without cascading scientifically.
-
-## Completion evidence and assurance blocker
-
-The guarded computation completed with verdict DEAD. Focused validation, eight unit
-tests, Python compilation, JSON invariants, full-pool counts, artifact hashes, guard
-ceilings, and prohibited-action assertions all passed. The final and preserved
-post-training head artifacts are byte-identical.
-
-Cruise assurance attestation cannot produce a context fingerprint because its workspace
-fingerprinter refuses more than 64 MiB of untracked files; this pre-existing research
-workspace has approximately 4.0 GiB untracked. Unrelated artifacts were not deleted,
-staged, or ignored to bypass that protection. This blocks only Cruise's completion
-receipt, not the completed and independently hash-verified CGL report.
+Run H0 and H1-PREP concurrently with disjoint worker ownership. H0 owns its analysis
+script, tests, and two reports; H1-PREP owns its comparator/package scripts, tests,
+kernel package, and readiness reports. The root coordinator alone integrates the two
+ledger rows and serializes one local commit per node. No external launch is in scope.

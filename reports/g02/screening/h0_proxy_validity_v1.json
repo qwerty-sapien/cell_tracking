@@ -1,0 +1,1725 @@
+{
+  "complete_outcome_inventory": {
+    "adjusted_analysis": {
+      "auc": {
+        "cluster_n": 0,
+        "clusters": [],
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": null,
+        "linear_fit": null,
+        "minimum_clusters": 3,
+        "outcomes": [],
+        "pearson": null,
+        "row_n": 0,
+        "sign_agreement": null,
+        "spearman_rho": null,
+        "status": "INSUFFICIENT_INDEPENDENT_CLUSTERS"
+      },
+      "precision": {
+        "cluster_n": 4,
+        "clusters": [
+          "apncc",
+          "relative_geometry_swap",
+          "selected_graph_background",
+          "temporal_6bba_ranker"
+        ],
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": {
+          "cluster_ci95": {
+            "lower": -0.8164965809277261,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 18602
+          },
+          "estimate": 0.5041841733655162
+        },
+        "linear_fit": {
+          "intercept": -0.1736234489954314,
+          "r_squared": 0.24128672460214728,
+          "slope": 0.17887512808330763
+        },
+        "outcomes": [
+          "GA-RGSWAP-20260724/top10",
+          "GA-APNCC-DIRECT-20260724/full-cv57",
+          "GA-SGBG-20260724/top10",
+          "CTRL-OOF-GRAPH-20260724/held-fit69",
+          "GA-APNCC-GLOBAL-20260724/top10",
+          "GA-APNCC-GLOBAL-20260724/full-cv57",
+          "GA-APNCC-DIRECT-20260724/top10",
+          "GA-TEMPHYBRID-20260724/full-cv57"
+        ],
+        "pearson": {
+          "cluster_ci95": {
+            "lower": -0.6708220919013291,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 18617
+          },
+          "estimate": 0.49120945084774864
+        },
+        "row_n": 8,
+        "sign_agreement": {
+          "cluster_ci95": {
+            "lower": 0.0,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.9230769230769231,
+            "valid_replicates": 20000
+          },
+          "estimate": 0.5
+        },
+        "spearman_rho": {
+          "cluster_ci95": {
+            "lower": -0.8660254037844387,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 18602
+          },
+          "estimate": 0.659828879073858
+        },
+        "status": "SENSITIVITY_ONLY"
+      },
+      "support": {
+        "cluster_n": 4,
+        "clusters": [
+          "apncc",
+          "relative_geometry_swap",
+          "selected_graph_background",
+          "temporal_6bba_ranker"
+        ],
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": {
+          "cluster_ci95": {
+            "lower": -1.0,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.6324555320336759,
+            "valid_replicates": 19709
+          },
+          "estimate": -0.4536323543632774
+        },
+        "linear_fit": {
+          "intercept": 0.006279086025564238,
+          "r_squared": 0.4080591552998716,
+          "slope": -2.6499219695414643e-06
+        },
+        "outcomes": [
+          "GA-RGSWAP-20260724/top10",
+          "GA-APNCC-DIRECT-20260724/full-cv57",
+          "GA-SGBG-20260724/top10",
+          "CTRL-OOF-GRAPH-20260724/held-fit69",
+          "GA-APNCC-GLOBAL-20260724/top10",
+          "GA-APNCC-GLOBAL-20260724/full-cv57",
+          "GA-APNCC-DIRECT-20260724/top10",
+          "GA-TEMPHYBRID-20260724/full-cv57"
+        ],
+        "pearson": {
+          "cluster_ci95": {
+            "lower": -1.0,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.7333754113254181,
+            "valid_replicates": 19672
+          },
+          "estimate": -0.6387950808356867
+        },
+        "row_n": 8,
+        "sign_agreement": {
+          "cluster_ci95": {
+            "lower": 0.0,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.9230769230769231,
+            "valid_replicates": 20000
+          },
+          "estimate": 0.5
+        },
+        "spearman_rho": {
+          "cluster_ci95": {
+            "lower": -1.0,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.7071067811865475,
+            "valid_replicates": 19698
+          },
+          "estimate": -0.5363499164507368
+        },
+        "status": "SENSITIVITY_ONLY"
+      },
+      "utility_gain": {
+        "cluster_n": 1,
+        "clusters": [
+          "temporal_6bba_ranker"
+        ],
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": null,
+        "linear_fit": null,
+        "minimum_clusters": 3,
+        "outcomes": [
+          "CTRL-OOF-GRAPH-20260724/held-fit69",
+          "GA-TEMPHYBRID-20260724/full-cv57"
+        ],
+        "pearson": null,
+        "row_n": 2,
+        "sign_agreement": null,
+        "spearman_rho": null,
+        "status": "INSUFFICIENT_INDEPENDENT_CLUSTERS"
+      }
+    },
+    "mechanism_cluster_count": 4,
+    "raw_analysis": {
+      "auc": {
+        "cluster_n": 0,
+        "clusters": [],
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": null,
+        "linear_fit": null,
+        "minimum_clusters": 3,
+        "outcomes": [],
+        "pearson": null,
+        "row_n": 0,
+        "sign_agreement": null,
+        "spearman_rho": null,
+        "status": "INSUFFICIENT_INDEPENDENT_CLUSTERS"
+      },
+      "precision": {
+        "cluster_n": 4,
+        "clusters": [
+          "apncc",
+          "relative_geometry_swap",
+          "selected_graph_background",
+          "temporal_6bba_ranker"
+        ],
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": {
+          "cluster_ci95": {
+            "lower": -0.8164965809277261,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 18602
+          },
+          "estimate": 0.5041841733655162
+        },
+        "linear_fit": {
+          "intercept": -0.17368488486194228,
+          "r_squared": 0.24229597757473387,
+          "slope": 0.17887730290134216
+        },
+        "outcomes": [
+          "GA-RGSWAP-20260724/top10",
+          "GA-APNCC-DIRECT-20260724/full-cv57",
+          "GA-SGBG-20260724/top10",
+          "CTRL-OOF-GRAPH-20260724/held-fit69",
+          "GA-APNCC-GLOBAL-20260724/top10",
+          "GA-APNCC-GLOBAL-20260724/full-cv57",
+          "GA-APNCC-DIRECT-20260724/top10",
+          "GA-TEMPHYBRID-20260724/full-cv57"
+        ],
+        "pearson": {
+          "cluster_ci95": {
+            "lower": -0.6599303680560014,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 18617
+          },
+          "estimate": 0.4922356931133023
+        },
+        "row_n": 8,
+        "sign_agreement": {
+          "cluster_ci95": {
+            "lower": 0.0,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.9230769230769231,
+            "valid_replicates": 20000
+          },
+          "estimate": 0.5
+        },
+        "spearman_rho": {
+          "cluster_ci95": {
+            "lower": -0.8660254037844387,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 18602
+          },
+          "estimate": 0.659828879073858
+        },
+        "status": "SENSITIVITY_ONLY"
+      },
+      "support": {
+        "cluster_n": 4,
+        "clusters": [
+          "apncc",
+          "relative_geometry_swap",
+          "selected_graph_background",
+          "temporal_6bba_ranker"
+        ],
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": {
+          "cluster_ci95": {
+            "lower": -1.0,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.6324555320336759,
+            "valid_replicates": 19709
+          },
+          "estimate": -0.4536323543632774
+        },
+        "linear_fit": {
+          "intercept": 0.006227154202715464,
+          "r_squared": 0.4120708481871945,
+          "slope": -2.6573965114045166e-06
+        },
+        "outcomes": [
+          "GA-RGSWAP-20260724/top10",
+          "GA-APNCC-DIRECT-20260724/full-cv57",
+          "GA-SGBG-20260724/top10",
+          "CTRL-OOF-GRAPH-20260724/held-fit69",
+          "GA-APNCC-GLOBAL-20260724/top10",
+          "GA-APNCC-GLOBAL-20260724/full-cv57",
+          "GA-APNCC-DIRECT-20260724/top10",
+          "GA-TEMPHYBRID-20260724/full-cv57"
+        ],
+        "pearson": {
+          "cluster_ci95": {
+            "lower": -1.0,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.7350084307780036,
+            "valid_replicates": 19672
+          },
+          "estimate": -0.6419274477596314
+        },
+        "row_n": 8,
+        "sign_agreement": {
+          "cluster_ci95": {
+            "lower": 0.0,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.9230769230769231,
+            "valid_replicates": 20000
+          },
+          "estimate": 0.5
+        },
+        "spearman_rho": {
+          "cluster_ci95": {
+            "lower": -1.0,
+            "method": "mechanism-cluster nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.7071067811865475,
+            "valid_replicates": 19698
+          },
+          "estimate": -0.5363499164507368
+        },
+        "status": "SENSITIVITY_ONLY"
+      },
+      "utility_gain": {
+        "cluster_n": 1,
+        "clusters": [
+          "temporal_6bba_ranker"
+        ],
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": null,
+        "linear_fit": null,
+        "minimum_clusters": 3,
+        "outcomes": [
+          "CTRL-OOF-GRAPH-20260724/held-fit69",
+          "GA-TEMPHYBRID-20260724/full-cv57"
+        ],
+        "pearson": null,
+        "row_n": 2,
+        "sign_agreement": null,
+        "spearman_rho": null,
+        "status": "INSUFFICIENT_INDEPENDENT_CLUSTERS"
+      }
+    },
+    "role": "complete-row, cluster-aware sensitivity; repeated graph outcomes sharing one proxy/model do not increase independent mechanism n",
+    "row_count": 8,
+    "rows": [
+      {
+        "candidate_id": "GA-RGSWAP-20260724",
+        "graph_adjusted_delta": -0.00163361,
+        "graph_raw_delta": -0.0017211703958691649,
+        "graph_raw_derivation": {
+          "candidate_tp_fp_fn": [
+            5110,
+            1125,
+            737
+          ],
+          "control_tp_fp_fn": [
+            5122,
+            1125,
+            725
+          ],
+          "formula": "TP / (TP + FP + FN), candidate minus control"
+        },
+        "graph_scope": "registered CV57 top-10 screen (banked report value only)",
+        "mechanism": "competitor-relative no-link/edge promotion gate",
+        "mechanism_cluster": "relative_geometry_swap",
+        "outcome_id": "GA-RGSWAP-20260724/top10",
+        "proxies": {
+          "precision": 0.9997352396081546,
+          "support": 3777
+        },
+        "proxy_screen_predicted_positive": true,
+        "sources": {
+          "graph_adjusted_delta": {
+            "field": "Registered top-10 result / adjusted edge Jaccard / delta",
+            "path": "reports/g02/screening/relative_geometry_swap_gate_v1.md",
+            "value_text": "-0.001633610"
+          },
+          "graph_raw_delta": {
+            "field": "Registered top-10 result / edge TP, FP, FN; exact scorer raw-edge-Jaccard derivation",
+            "path": "reports/g02/screening/relative_geometry_swap_gate_v1.md",
+            "value_text": "5110/(5110+1125+737) - 5122/(5122+1125+725)"
+          },
+          "precision": {
+            "field": "fit-domain validation result; derived exactly as 3,776 correct / (3,776 correct + 1 harmful)",
+            "path": "reports/g02/screening/relative_geometry_swap_gate_v1.md",
+            "value_text": "3776/3777"
+          },
+          "support": {
+            "field": "fit-domain validation accepted decisions; 3,776 correct + 1 harmful",
+            "path": "reports/g02/screening/relative_geometry_swap_gate_v1.md",
+            "value_text": "3777"
+          }
+        },
+        "unit": "candidate"
+      },
+      {
+        "candidate_id": "GA-APNCC-DIRECT-20260724",
+        "graph_adjusted_delta": 0.008372476430831166,
+        "graph_raw_delta": 0.008093907370849918,
+        "graph_raw_derivation": {
+          "candidate_tp_fp_fn": [
+            34320,
+            2459,
+            1948
+          ],
+          "control_tp_fp_fn": [
+            34205,
+            2685,
+            2063
+          ],
+          "formula": "TP / (TP + FP + FN), candidate minus control"
+        },
+        "graph_scope": "full CV57 confirmation (banked report value only)",
+        "mechanism": "appearance-aware direct swap",
+        "mechanism_cluster": "apncc",
+        "outcome_id": "GA-APNCC-DIRECT-20260724/full-cv57",
+        "proxies": {
+          "precision": 1.0,
+          "support": 38
+        },
+        "proxy_screen_predicted_positive": true,
+        "sources": {
+          "graph_adjusted_delta": {
+            "field": "Frozen comparison / change",
+            "path": "reports/g02/screening/selected_graph_appearance_direct_v1.md",
+            "value_text": "+0.008372476430831166"
+          },
+          "graph_raw_delta": {
+            "field": "Frozen comparison / edge TP, FP, FN; exact scorer raw-edge-Jaccard derivation",
+            "path": "reports/g02/screening/selected_graph_appearance_direct_v1.md",
+            "value_text": "34320/(34320+2459+1948) - 34205/(34205+2685+2063)"
+          },
+          "precision": {
+            "field": "geometry + NCC + node-disjoint cap on validation / precision",
+            "path": "reports/g02/screening/selected_graph_appearance_direct_v1.md",
+            "value_text": "1.000000"
+          },
+          "support": {
+            "field": "geometry + NCC + node-disjoint cap on validation / accepted",
+            "path": "reports/g02/screening/selected_graph_appearance_direct_v1.md",
+            "value_text": "38"
+          }
+        },
+        "unit": "candidate"
+      },
+      {
+        "candidate_id": "GA-SGBG-20260724",
+        "graph_adjusted_delta": -0.000861814,
+        "graph_raw_delta": -0.0008877679604212263,
+        "graph_raw_derivation": {
+          "candidate_tp_fp_fn": [
+            5113,
+            1136,
+            734
+          ],
+          "control_tp_fp_fn": [
+            5117,
+            1133,
+            730
+          ],
+          "formula": "TP / (TP + FP + FN), candidate minus control"
+        },
+        "graph_scope": "registered CV57 top-10 screen (banked report value only)",
+        "mechanism": "deployment-background-regularized selected-graph gate",
+        "mechanism_cluster": "selected_graph_background",
+        "outcome_id": "GA-SGBG-20260724/top10",
+        "proxies": {
+          "precision": 1.0,
+          "support": 10
+        },
+        "proxy_screen_predicted_positive": true,
+        "sources": {
+          "graph_adjusted_delta": {
+            "field": "Exact top-10 arm / Delta",
+            "path": "reports/g02/screening/selected_graph_background_gate_v1.md",
+            "value_text": "-0.000861814"
+          },
+          "graph_raw_delta": {
+            "field": "Exact top-10 arm / TP, FP, FN; exact scorer raw-edge-Jaccard derivation",
+            "path": "reports/g02/screening/selected_graph_background_gate_v1.md",
+            "value_text": "5113/(5113+1136+734) - 5117/(5117+1133+730)"
+          },
+          "precision": {
+            "field": "labeled validation: 10 accepted, 10 correct, 0 harmful",
+            "path": "reports/g02/screening/selected_graph_background_gate_v1.md",
+            "value_text": "10/10"
+          },
+          "support": {
+            "field": "labeled validation accepted",
+            "path": "reports/g02/screening/selected_graph_background_gate_v1.md",
+            "value_text": "10"
+          }
+        },
+        "unit": "candidate"
+      },
+      {
+        "candidate_id": "CTRL-OOF-GRAPH-20260724",
+        "graph_adjusted_delta": -0.000612091023178704,
+        "graph_raw_delta": -0.0006408361424446913,
+        "graph_scope": "69-video five-fold held-fit reconstructed graph",
+        "mechanism": "6bba temporal family ranker",
+        "mechanism_cluster": "temporal_6bba_ranker",
+        "outcome_id": "CTRL-OOF-GRAPH-20260724/held-fit69",
+        "proxies": {
+          "precision": 0.9648497198166073,
+          "support": 1963,
+          "utility_gain": 313
+        },
+        "proxy_screen_predicted_positive": true,
+        "sources": {
+          "graph_adjusted_delta": {
+            "field": "temporal minus APNCC / fit69 adjusted edge Jaccard",
+            "path": "reports/g02/screening/temporal_rank_oof_graph_gate_v1.md",
+            "value_text": "-0.0006120910"
+          },
+          "graph_raw_delta": {
+            "field": "temporal minus APNCC / raw edge Jaccard",
+            "path": "reports/g02/screening/temporal_rank_oof_graph_gate_v1.md",
+            "value_text": "-0.0006408361"
+          },
+          "precision": {
+            "field": "proposal-only prerequisite / precision",
+            "path": "reports/g02/screening/temporal_rank_oof_graph_gate_v1.md",
+            "value_text": "0.9648497"
+          },
+          "support": {
+            "field": "proposal-only prerequisite / accepted rescues (1,894 correct + 69 harmful)",
+            "path": "reports/g02/screening/temporal_rank_oof_graph_gate_v1.md",
+            "value_text": "1963"
+          },
+          "utility_gain": {
+            "field": "6bba OOF temporal utility 1,756 minus pair-NCC control utility 1,443",
+            "path": "reports/g02/screening/selected_graph_temporal_family_rank_gate_v1.md",
+            "value_text": "+313"
+          }
+        },
+        "unit": "candidate"
+      },
+      {
+        "candidate_id": "GA-APNCC-GLOBAL-20260724",
+        "graph_adjusted_delta": 0.006597192755873338,
+        "graph_raw_delta": 0.006712388370419764,
+        "graph_scope": "registered CV57 top-10 screen (banked report value only)",
+        "mechanism": "appearance-aware global score integration",
+        "mechanism_cluster": "apncc",
+        "outcome_id": "GA-APNCC-GLOBAL-20260724/top10",
+        "proxies": {
+          "precision": 1.0,
+          "support": 38
+        },
+        "proxy_screen_predicted_positive": true,
+        "sources": {
+          "graph_adjusted_delta": {
+            "field": "decision.delta_adjusted_edge_jaccard",
+            "path": "reports/g02/selected_graph_appearance_screen10_v1/report.json",
+            "value_text": "+0.006597192755873338"
+          },
+          "graph_raw_delta": {
+            "field": "candidate.summary.edge_jaccard - baseline.summary.edge_jaccard",
+            "path": "reports/g02/selected_graph_appearance_screen10_v1/report.json",
+            "value_text": "0.7398069442443452 - 0.7330945558739255"
+          },
+          "proxy": {
+            "field": "shared banked geometry + NCC + node-disjoint validation screen",
+            "path": "reports/g02/screening/selected_graph_appearance_direct_v1.md",
+            "value_text": "38/38, support 38"
+          }
+        },
+        "unit": "repeated_outcome"
+      },
+      {
+        "candidate_id": "GA-APNCC-GLOBAL-20260724",
+        "graph_adjusted_delta": 0.00425128475063874,
+        "graph_raw_delta": 0.004238882455891324,
+        "graph_scope": "full CV57 confirmation (banked report value only)",
+        "mechanism": "appearance-aware global score integration",
+        "mechanism_cluster": "apncc",
+        "outcome_id": "GA-APNCC-GLOBAL-20260724/full-cv57",
+        "proxies": {
+          "precision": 1.0,
+          "support": 38
+        },
+        "proxy_screen_predicted_positive": true,
+        "sources": {
+          "graph_adjusted_delta": {
+            "field": "decision.delta_adjusted_edge_jaccard",
+            "path": "reports/g02/selected_graph_appearance_cv57_v1/report.json",
+            "value_text": "+0.00425128475063874"
+          },
+          "graph_raw_delta": {
+            "field": "candidate.summary.edge_jaccard - baseline.summary.edge_jaccard",
+            "path": "reports/g02/selected_graph_appearance_cv57_v1/report.json",
+            "value_text": "0.8823483990528158 - 0.8781095165969245"
+          },
+          "proxy": {
+            "field": "shared banked geometry + NCC + node-disjoint validation screen",
+            "path": "reports/g02/screening/selected_graph_appearance_direct_v1.md",
+            "value_text": "38/38, support 38"
+          }
+        },
+        "unit": "repeated_outcome"
+      },
+      {
+        "candidate_id": "GA-APNCC-DIRECT-20260724",
+        "graph_adjusted_delta": 0.014685680601916551,
+        "graph_raw_delta": 0.014619190678549443,
+        "graph_scope": "registered CV57 top-10 screen (banked report value only)",
+        "mechanism": "appearance-aware direct swap",
+        "mechanism_cluster": "apncc",
+        "outcome_id": "GA-APNCC-DIRECT-20260724/top10",
+        "proxies": {
+          "precision": 1.0,
+          "support": 38
+        },
+        "proxy_screen_predicted_positive": true,
+        "sources": {
+          "graph_adjusted_delta": {
+            "field": "decision.delta_adjusted_edge_jaccard",
+            "path": "reports/g02/selected_graph_appearance_direct_screen10_v3/report.json",
+            "value_text": "+0.014685680601916551"
+          },
+          "graph_raw_delta": {
+            "field": "candidate.summary.edge_jaccard - baseline.summary.edge_jaccard",
+            "path": "reports/g02/selected_graph_appearance_direct_screen10_v3/report.json",
+            "value_text": "0.7477137465524749 - 0.7330945558739255"
+          },
+          "proxy": {
+            "field": "shared banked geometry + NCC + node-disjoint validation screen",
+            "path": "reports/g02/screening/selected_graph_appearance_direct_v1.md",
+            "value_text": "38/38, support 38"
+          }
+        },
+        "unit": "repeated_outcome"
+      },
+      {
+        "candidate_id": "GA-TEMPHYBRID-20260724",
+        "graph_adjusted_delta": -0.0014080676020108,
+        "graph_raw_delta": -0.0014977843174481809,
+        "graph_raw_derivation": {
+          "candidate_tp_fp_fn": [
+            34308,
+            2511,
+            1960
+          ],
+          "control_tp_fp_fn": [
+            34320,
+            2459,
+            1948
+          ],
+          "formula": "TP / (TP + FP + FN), candidate minus control"
+        },
+        "graph_scope": "full CV57 transfer outcome (banked report value only)",
+        "mechanism": "44b6 APNCC + 6bba temporal family ranker",
+        "mechanism_cluster": "temporal_6bba_ranker",
+        "outcome_id": "GA-TEMPHYBRID-20260724/full-cv57",
+        "proxies": {
+          "precision": 0.9648497198166073,
+          "support": 1963,
+          "utility_gain": 313
+        },
+        "proxy_screen_predicted_positive": true,
+        "sources": {
+          "graph_adjusted_delta": {
+            "field": "hybrid minus banked / CV57",
+            "path": "reports/g02/screening/selected_graph_temporal_6bba_hybrid_cv57_v1.md",
+            "value_text": "-0.0014080676020108"
+          },
+          "graph_raw_delta": {
+            "field": "candidate/control TP, FP, FN; exact scorer raw-edge-Jaccard derivation",
+            "path": "reports/g02/screening/selected_graph_temporal_6bba_hybrid_cv57_v1.md",
+            "value_text": "34308/(34308+2511+1960) - 34320/(34320+2459+1948)"
+          },
+          "proxy": {
+            "field": "shared 6bba temporal OOF proxy",
+            "path": "reports/g02/screening/selected_graph_temporal_family_rank_gate_v1.md",
+            "value_text": "precision 0.9648497; utility gain +313; support 1963"
+          }
+        },
+        "unit": "repeated_outcome"
+      }
+    ]
+  },
+  "decision": {
+    "clearing_proxies": [],
+    "formal_text": "Proposal-only screening BANNED; route candidates straight to the 44b6-first held-fit graph gate.",
+    "verdict": "PROPOSAL_ONLY_SCREENING_BANNED"
+  },
+  "determinism": {
+    "bootstrap_replicates": 20000,
+    "confidence_level": 0.95,
+    "seed": 20260725
+  },
+  "exclusions": [
+    {
+      "graph_delta_status": "absent, not zero",
+      "ids": "GA-POINTCTX-PILOT-20260724; GA-POINTCTX-OOF-20260724; GA-POINTCTX-THRESH-20260724",
+      "reason": "Proposal metrics exist, but exact graph scoring was not entered.",
+      "sources": "reports/g02/screening/point_context_full_pool_oof_gate_v1.md; reports/g02/screening/point_context_oof_threshold_headroom_v1.md; LEDGER.md"
+    },
+    {
+      "graph_delta_status": "absent, not zero",
+      "ids": "GA-CROPLINK-PILOT-20260724; GA-CROPLINK-6BBA-OOF-20260724",
+      "reason": "Precision/utility/support exist, but no exact graph output was produced.",
+      "sources": "reports/g02/screening/crop_linker_6bba_oof_v1.md; LEDGER.md"
+    },
+    {
+      "graph_delta_status": "absent, not zero",
+      "ids": "GA-SCENCAL-20260724",
+      "reason": "Proposal utility/precision exist; the report explicitly says no predictions were emitted and no graph replay occurred.",
+      "sources": "reports/g02/screening/selected_graph_scenario_calibration_v1.md; LEDGER.md"
+    },
+    {
+      "graph_delta_status": "absent, not zero",
+      "ids": "GA-TRACKASTRA-QUAL-20260724",
+      "reason": "ROC AUC 0.918491 (gain +0.077265) is banked, but the row is ranking-only with no graph or prediction CSV.",
+      "sources": "reports/g02/screening/trackastra_pretrained_qualification_v1.md; LEDGER.md"
+    },
+    {
+      "graph_delta_status": "absent, not zero",
+      "ids": "GA-SGCONFLICT-20260724",
+      "reason": "Proposal precision/support exist, but the support gate failed before score.",
+      "sources": "reports/g02/screening/selected_graph_conflict_gate_v1.md; LEDGER.md"
+    },
+    {
+      "graph_delta_status": "measured; proxy side absent",
+      "ids": "GA-SP-20260724; GA-B2-20260724; GD-T985-20260724",
+      "reason": "Graph deltas exist, but no comparable proposal precision/utility-gain/AUC/support proxy is banked for the scored identity.",
+      "sources": "reports/g02/screening/association_cost_screen_v1.md; reports/g02/screening/node_threshold_screen_v1.md"
+    },
+    {
+      "graph_delta_status": "measured; comparable proxy side absent",
+      "ids": "GA-APNCC-POLICY-20260724",
+      "reason": "Adjusted/raw graph deltas are measured, but the nine added proposals are an observation-difference count, not labeled proposal support, precision, utility gain, or AUC; treating nine as support would mix definitions.",
+      "sources": "reports/g02/screening/appearance_direct_policy_fit_v1.md; LEDGER.md"
+    }
+  ],
+  "inventory_rescan": {
+    "comparable_additions_found": [
+      "GA-APNCC-GLOBAL-20260724/top10",
+      "GA-APNCC-GLOBAL-20260724/full-cv57",
+      "GA-APNCC-DIRECT-20260724/top10",
+      "GA-TEMPHYBRID-20260724/full-cv57"
+    ],
+    "note": "Other proposal-report examples lack a measured graph outcome; other graph outcomes lack a comparable proposal precision, utility gain, AUC, or support value for the scored identity.",
+    "other_comparable_pairs_found": 0,
+    "scope": "banked screening Markdown/JSON summaries only"
+  },
+  "limitations": [
+    "Only four mechanism/identity clusters have comparable precision/support and graph evidence.",
+    "Utility gain has only one independent candidate and AUC has none with a graph delta, so neither can be correlation-tested.",
+    "The primary bootstrap is very small-sample and tie-heavy; its intervals are descriptive error bars, not asymptotic guarantees.",
+    "The complete-row inventory contains eight graph outcomes but only four mechanism/identity clusters; na\u00efve complete-row ranks overweight APNCC and temporal repeats.",
+    "The temporal fold sensitivity can expose within-mechanism behavior but cannot establish cross-candidate proxy validity.",
+    "Raw scorer edge Jaccard is explicit for CTRL-OOF-GRAPH and exactly derivable from banked scorer TP/FP/FN for the other three primary candidates."
+  ],
+  "primary_analysis": {
+    "auc": {
+      "eligible_for_preregistered_decision": false,
+      "kendall_tau_b": null,
+      "linear_fit": null,
+      "minimum_n": 3,
+      "n": 0,
+      "pearson": null,
+      "sign_agreement": null,
+      "spearman_rho": null,
+      "status": "INSUFFICIENT_N",
+      "units": []
+    },
+    "precision": {
+      "eligible_for_preregistered_decision": true,
+      "kendall_tau_b": {
+        "ci95": {
+          "lower": -1.0,
+          "method": "paired nonparametric percentile bootstrap",
+          "requested_replicates": 20000,
+          "upper": 1.0,
+          "valid_replicates": 18565
+        },
+        "estimate": 0.18257418583505536
+      },
+      "linear_fit": {
+        "intercept": -0.07238357309680725,
+        "r_squared": 0.07614388824855567,
+        "slope": 0.07435816278676877
+      },
+      "n": 4,
+      "pearson": {
+        "ci95": {
+          "lower": -1.0,
+          "method": "paired nonparametric percentile bootstrap",
+          "requested_replicates": 20000,
+          "upper": 1.0000000000000002,
+          "valid_replicates": 18529
+        },
+        "estimate": 0.27594182040523524
+      },
+      "sign_agreement": {
+        "ci95": {
+          "lower": 0.0,
+          "method": "paired nonparametric percentile bootstrap",
+          "requested_replicates": 20000,
+          "upper": 0.75,
+          "valid_replicates": 20000
+        },
+        "definition": "banked proposal screen pass predicts graph delta > 0; graph delta == 0 would count as non-positive",
+        "estimate": 0.25
+      },
+      "spearman_rho": {
+        "ci95": {
+          "lower": -1.0,
+          "method": "paired nonparametric percentile bootstrap",
+          "requested_replicates": 20000,
+          "upper": 1.0,
+          "valid_replicates": 18608
+        },
+        "estimate": 0.21081851067789195
+      },
+      "status": "ESTIMATED",
+      "units": [
+        "GA-RGSWAP-20260724",
+        "GA-APNCC-DIRECT-20260724",
+        "GA-SGBG-20260724",
+        "CTRL-OOF-GRAPH-20260724"
+      ]
+    },
+    "support": {
+      "eligible_for_preregistered_decision": true,
+      "kendall_tau_b": {
+        "ci95": {
+          "lower": -1.0,
+          "method": "paired nonparametric percentile bootstrap",
+          "requested_replicates": 20000,
+          "upper": 1.0,
+          "valid_replicates": 19679
+        },
+        "estimate": -0.3333333333333333
+      },
+      "linear_fit": {
+        "intercept": 0.0034960105421882994,
+        "r_squared": 0.3302970791841673,
+        "slope": -1.5064064894783579e-06
+      },
+      "n": 4,
+      "pearson": {
+        "ci95": {
+          "lower": -1.0000000000000002,
+          "method": "paired nonparametric percentile bootstrap",
+          "requested_replicates": 20000,
+          "upper": 1.0000000000000002,
+          "valid_replicates": 19662
+        },
+        "estimate": -0.5747147807253328
+      },
+      "sign_agreement": {
+        "ci95": {
+          "lower": 0.0,
+          "method": "paired nonparametric percentile bootstrap",
+          "requested_replicates": 20000,
+          "upper": 0.75,
+          "valid_replicates": 20000
+        },
+        "definition": "banked proposal screen pass predicts graph delta > 0; graph delta == 0 would count as non-positive",
+        "estimate": 0.25
+      },
+      "spearman_rho": {
+        "ci95": {
+          "lower": -1.0,
+          "method": "paired nonparametric percentile bootstrap",
+          "requested_replicates": 20000,
+          "upper": 1.0,
+          "valid_replicates": 19699
+        },
+        "estimate": -0.4
+      },
+      "status": "ESTIMATED",
+      "units": [
+        "GA-RGSWAP-20260724",
+        "GA-APNCC-DIRECT-20260724",
+        "GA-SGBG-20260724",
+        "CTRL-OOF-GRAPH-20260724"
+      ]
+    },
+    "utility_gain": {
+      "eligible_for_preregistered_decision": false,
+      "kendall_tau_b": null,
+      "linear_fit": null,
+      "minimum_n": 3,
+      "n": 1,
+      "pearson": null,
+      "sign_agreement": null,
+      "spearman_rho": null,
+      "status": "INSUFFICIENT_N",
+      "units": [
+        "CTRL-OOF-GRAPH-20260724"
+      ]
+    }
+  },
+  "primary_candidate_count": 4,
+  "primary_corpus": [
+    {
+      "candidate_id": "GA-RGSWAP-20260724",
+      "graph_adjusted_delta": -0.00163361,
+      "graph_raw_delta": -0.0017211703958691649,
+      "graph_raw_derivation": {
+        "candidate_tp_fp_fn": [
+          5110,
+          1125,
+          737
+        ],
+        "control_tp_fp_fn": [
+          5122,
+          1125,
+          725
+        ],
+        "formula": "TP / (TP + FP + FN), candidate minus control"
+      },
+      "graph_scope": "registered CV57 top-10 screen (banked report value only)",
+      "mechanism": "competitor-relative no-link/edge promotion gate",
+      "mechanism_cluster": "relative_geometry_swap",
+      "outcome_id": "GA-RGSWAP-20260724/top10",
+      "proxies": {
+        "precision": 0.9997352396081546,
+        "support": 3777
+      },
+      "proxy_screen_predicted_positive": true,
+      "sources": {
+        "graph_adjusted_delta": {
+          "field": "Registered top-10 result / adjusted edge Jaccard / delta",
+          "path": "reports/g02/screening/relative_geometry_swap_gate_v1.md",
+          "value_text": "-0.001633610"
+        },
+        "graph_raw_delta": {
+          "field": "Registered top-10 result / edge TP, FP, FN; exact scorer raw-edge-Jaccard derivation",
+          "path": "reports/g02/screening/relative_geometry_swap_gate_v1.md",
+          "value_text": "5110/(5110+1125+737) - 5122/(5122+1125+725)"
+        },
+        "precision": {
+          "field": "fit-domain validation result; derived exactly as 3,776 correct / (3,776 correct + 1 harmful)",
+          "path": "reports/g02/screening/relative_geometry_swap_gate_v1.md",
+          "value_text": "3776/3777"
+        },
+        "support": {
+          "field": "fit-domain validation accepted decisions; 3,776 correct + 1 harmful",
+          "path": "reports/g02/screening/relative_geometry_swap_gate_v1.md",
+          "value_text": "3777"
+        }
+      },
+      "unit": "candidate"
+    },
+    {
+      "candidate_id": "GA-APNCC-DIRECT-20260724",
+      "graph_adjusted_delta": 0.008372476430831166,
+      "graph_raw_delta": 0.008093907370849918,
+      "graph_raw_derivation": {
+        "candidate_tp_fp_fn": [
+          34320,
+          2459,
+          1948
+        ],
+        "control_tp_fp_fn": [
+          34205,
+          2685,
+          2063
+        ],
+        "formula": "TP / (TP + FP + FN), candidate minus control"
+      },
+      "graph_scope": "full CV57 confirmation (banked report value only)",
+      "mechanism": "appearance-aware direct swap",
+      "mechanism_cluster": "apncc",
+      "outcome_id": "GA-APNCC-DIRECT-20260724/full-cv57",
+      "proxies": {
+        "precision": 1.0,
+        "support": 38
+      },
+      "proxy_screen_predicted_positive": true,
+      "sources": {
+        "graph_adjusted_delta": {
+          "field": "Frozen comparison / change",
+          "path": "reports/g02/screening/selected_graph_appearance_direct_v1.md",
+          "value_text": "+0.008372476430831166"
+        },
+        "graph_raw_delta": {
+          "field": "Frozen comparison / edge TP, FP, FN; exact scorer raw-edge-Jaccard derivation",
+          "path": "reports/g02/screening/selected_graph_appearance_direct_v1.md",
+          "value_text": "34320/(34320+2459+1948) - 34205/(34205+2685+2063)"
+        },
+        "precision": {
+          "field": "geometry + NCC + node-disjoint cap on validation / precision",
+          "path": "reports/g02/screening/selected_graph_appearance_direct_v1.md",
+          "value_text": "1.000000"
+        },
+        "support": {
+          "field": "geometry + NCC + node-disjoint cap on validation / accepted",
+          "path": "reports/g02/screening/selected_graph_appearance_direct_v1.md",
+          "value_text": "38"
+        }
+      },
+      "unit": "candidate"
+    },
+    {
+      "candidate_id": "GA-SGBG-20260724",
+      "graph_adjusted_delta": -0.000861814,
+      "graph_raw_delta": -0.0008877679604212263,
+      "graph_raw_derivation": {
+        "candidate_tp_fp_fn": [
+          5113,
+          1136,
+          734
+        ],
+        "control_tp_fp_fn": [
+          5117,
+          1133,
+          730
+        ],
+        "formula": "TP / (TP + FP + FN), candidate minus control"
+      },
+      "graph_scope": "registered CV57 top-10 screen (banked report value only)",
+      "mechanism": "deployment-background-regularized selected-graph gate",
+      "mechanism_cluster": "selected_graph_background",
+      "outcome_id": "GA-SGBG-20260724/top10",
+      "proxies": {
+        "precision": 1.0,
+        "support": 10
+      },
+      "proxy_screen_predicted_positive": true,
+      "sources": {
+        "graph_adjusted_delta": {
+          "field": "Exact top-10 arm / Delta",
+          "path": "reports/g02/screening/selected_graph_background_gate_v1.md",
+          "value_text": "-0.000861814"
+        },
+        "graph_raw_delta": {
+          "field": "Exact top-10 arm / TP, FP, FN; exact scorer raw-edge-Jaccard derivation",
+          "path": "reports/g02/screening/selected_graph_background_gate_v1.md",
+          "value_text": "5113/(5113+1136+734) - 5117/(5117+1133+730)"
+        },
+        "precision": {
+          "field": "labeled validation: 10 accepted, 10 correct, 0 harmful",
+          "path": "reports/g02/screening/selected_graph_background_gate_v1.md",
+          "value_text": "10/10"
+        },
+        "support": {
+          "field": "labeled validation accepted",
+          "path": "reports/g02/screening/selected_graph_background_gate_v1.md",
+          "value_text": "10"
+        }
+      },
+      "unit": "candidate"
+    },
+    {
+      "candidate_id": "CTRL-OOF-GRAPH-20260724",
+      "graph_adjusted_delta": -0.000612091023178704,
+      "graph_raw_delta": -0.0006408361424446913,
+      "graph_scope": "69-video five-fold held-fit reconstructed graph",
+      "mechanism": "6bba temporal family ranker",
+      "mechanism_cluster": "temporal_6bba_ranker",
+      "outcome_id": "CTRL-OOF-GRAPH-20260724/held-fit69",
+      "proxies": {
+        "precision": 0.9648497198166073,
+        "support": 1963,
+        "utility_gain": 313
+      },
+      "proxy_screen_predicted_positive": true,
+      "sources": {
+        "graph_adjusted_delta": {
+          "field": "temporal minus APNCC / fit69 adjusted edge Jaccard",
+          "path": "reports/g02/screening/temporal_rank_oof_graph_gate_v1.md",
+          "value_text": "-0.0006120910"
+        },
+        "graph_raw_delta": {
+          "field": "temporal minus APNCC / raw edge Jaccard",
+          "path": "reports/g02/screening/temporal_rank_oof_graph_gate_v1.md",
+          "value_text": "-0.0006408361"
+        },
+        "precision": {
+          "field": "proposal-only prerequisite / precision",
+          "path": "reports/g02/screening/temporal_rank_oof_graph_gate_v1.md",
+          "value_text": "0.9648497"
+        },
+        "support": {
+          "field": "proposal-only prerequisite / accepted rescues (1,894 correct + 69 harmful)",
+          "path": "reports/g02/screening/temporal_rank_oof_graph_gate_v1.md",
+          "value_text": "1963"
+        },
+        "utility_gain": {
+          "field": "6bba OOF temporal utility 1,756 minus pair-NCC control utility 1,443",
+          "path": "reports/g02/screening/selected_graph_temporal_family_rank_gate_v1.md",
+          "value_text": "+313"
+        }
+      },
+      "unit": "candidate"
+    }
+  ],
+  "primary_proxy_graph_pair_count": 9,
+  "primary_representative_policy": {
+    "apncc": "final banked direct-swap full-CV57 realization; the global integration and both top-10 outcomes are repeated realization/scope checks",
+    "one_row_per_mechanism_identity_cluster": true,
+    "relative_geometry_swap": "only comparable scored outcome",
+    "selected_graph_background": "only comparable scored outcome",
+    "temporal_6bba_ranker": "held-fit69 objective-first graph gate; GA-TEMPHYBRID is a later transfer outcome using the same model/proxy"
+  },
+  "raw_outcome_analysis": {
+    "analysis": {
+      "auc": {
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": null,
+        "linear_fit": null,
+        "minimum_n": 3,
+        "n": 0,
+        "pearson": null,
+        "sign_agreement": null,
+        "spearman_rho": null,
+        "status": "INSUFFICIENT_N",
+        "units": []
+      },
+      "precision": {
+        "eligible_for_preregistered_decision": true,
+        "kendall_tau_b": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 18565
+          },
+          "estimate": 0.18257418583505536
+        },
+        "linear_fit": {
+          "intercept": -0.06959470865407903,
+          "r_squared": 0.07374900595468548,
+          "slope": 0.07143823890446403
+        },
+        "n": 4,
+        "pearson": {
+          "ci95": {
+            "lower": -1.0000000000000002,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 18529
+          },
+          "estimate": 0.2715676820880664
+        },
+        "sign_agreement": {
+          "ci95": {
+            "lower": 0.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.75,
+            "valid_replicates": 20000
+          },
+          "definition": "banked proposal screen pass predicts graph delta > 0; graph delta == 0 would count as non-positive",
+          "estimate": 0.25
+        },
+        "spearman_rho": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 18608
+          },
+          "estimate": 0.21081851067789195
+        },
+        "status": "ESTIMATED",
+        "units": [
+          "GA-RGSWAP-20260724",
+          "GA-APNCC-DIRECT-20260724",
+          "GA-SGBG-20260724",
+          "CTRL-OOF-GRAPH-20260724"
+        ]
+      },
+      "support": {
+        "eligible_for_preregistered_decision": true,
+        "kendall_tau_b": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19679
+          },
+          "estimate": -0.3333333333333333
+        },
+        "linear_fit": {
+          "intercept": 0.0033594812922607617,
+          "r_squared": 0.33670532247817386,
+          "slope": -1.4847602448044593e-06
+        },
+        "n": 4,
+        "pearson": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19662
+          },
+          "estimate": -0.5802631493367245
+        },
+        "sign_agreement": {
+          "ci95": {
+            "lower": 0.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.75,
+            "valid_replicates": 20000
+          },
+          "definition": "banked proposal screen pass predicts graph delta > 0; graph delta == 0 would count as non-positive",
+          "estimate": 0.25
+        },
+        "spearman_rho": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19699
+          },
+          "estimate": -0.4
+        },
+        "status": "ESTIMATED",
+        "units": [
+          "GA-RGSWAP-20260724",
+          "GA-APNCC-DIRECT-20260724",
+          "GA-SGBG-20260724",
+          "CTRL-OOF-GRAPH-20260724"
+        ]
+      },
+      "utility_gain": {
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": null,
+        "linear_fit": null,
+        "minimum_n": 3,
+        "n": 1,
+        "pearson": null,
+        "sign_agreement": null,
+        "spearman_rho": null,
+        "status": "INSUFFICIENT_N",
+        "units": [
+          "CTRL-OOF-GRAPH-20260724"
+        ]
+      }
+    },
+    "available_candidate_count": 4,
+    "definition": "scorer raw edge Jaccard = TP/(TP+FP+FN); never an observation-arm prediction Jaccard",
+    "role": "secondary outcome; adjusted graph delta remains the preregistered decision outcome",
+    "unavailable_candidates": []
+  },
+  "schema": "h0_proxy_validity_v1",
+  "scope": {
+    "data_source": "banked report values only",
+    "gpu_hours": 0,
+    "kaggle_submissions": 0,
+    "minimum_n_for_correlation": 3,
+    "models_rerun": 0,
+    "primary_unit": "one scored representative per mechanism/identity cluster",
+    "rho_for_preregistered_decision": "Spearman rank correlation",
+    "rho_threshold": 0.5,
+    "training_runs": 0,
+    "validation12_or_cv57_artifact_access": false
+  },
+  "status": "COMPLETE",
+  "temporal_fold_sensitivity": {
+    "analysis": {
+      "auc": {
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": null,
+        "linear_fit": null,
+        "minimum_n": 3,
+        "n": 0,
+        "pearson": null,
+        "sign_agreement": null,
+        "spearman_rho": null,
+        "status": "INSUFFICIENT_N",
+        "units": []
+      },
+      "precision": {
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19965
+          },
+          "estimate": 0.2
+        },
+        "linear_fit": {
+          "intercept": -0.018210624681324353,
+          "r_squared": 0.2761835423955812,
+          "slope": 0.01815193184224866
+        },
+        "n": 5,
+        "pearson": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19967
+          },
+          "estimate": 0.5255316759202842
+        },
+        "sign_agreement": {
+          "ci95": {
+            "lower": 0.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.6,
+            "valid_replicates": 20000
+          },
+          "definition": "banked proposal screen pass predicts graph delta > 0; graph delta == 0 would count as non-positive",
+          "estimate": 0.2
+        },
+        "spearman_rho": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19971
+          },
+          "estimate": 0.3
+        },
+        "status": "ESTIMATED",
+        "units": [
+          "fold-0",
+          "fold-1",
+          "fold-2",
+          "fold-3",
+          "fold-4"
+        ]
+      },
+      "support": {
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19968
+          },
+          "estimate": 0.4
+        },
+        "linear_fit": {
+          "intercept": -0.003677194580940174,
+          "r_squared": 0.7739254186009537,
+          "slope": 7.482460626286844e-06
+        },
+        "n": 5,
+        "pearson": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19970
+          },
+          "estimate": 0.8797303101524659
+        },
+        "sign_agreement": {
+          "ci95": {
+            "lower": 0.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.6,
+            "valid_replicates": 20000
+          },
+          "definition": "banked proposal screen pass predicts graph delta > 0; graph delta == 0 would count as non-positive",
+          "estimate": 0.2
+        },
+        "spearman_rho": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19969
+          },
+          "estimate": 0.6
+        },
+        "status": "ESTIMATED",
+        "units": [
+          "fold-0",
+          "fold-1",
+          "fold-2",
+          "fold-3",
+          "fold-4"
+        ]
+      },
+      "utility_gain": {
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19960
+          },
+          "estimate": 0.4
+        },
+        "linear_fit": {
+          "intercept": -0.0015051664695043916,
+          "r_squared": 0.4739091579912521,
+          "slope": 1.2229807195597972e-05
+        },
+        "n": 5,
+        "pearson": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19961
+          },
+          "estimate": 0.6884106027591762
+        },
+        "sign_agreement": {
+          "ci95": {
+            "lower": 0.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.6,
+            "valid_replicates": 20000
+          },
+          "definition": "banked proposal screen pass predicts graph delta > 0; graph delta == 0 would count as non-positive",
+          "estimate": 0.2
+        },
+        "spearman_rho": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19977
+          },
+          "estimate": 0.6
+        },
+        "status": "ESTIMATED",
+        "units": [
+          "fold-0",
+          "fold-1",
+          "fold-2",
+          "fold-3",
+          "fold-4"
+        ]
+      }
+    },
+    "raw_analysis": {
+      "auc": {
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": null,
+        "linear_fit": null,
+        "minimum_n": 3,
+        "n": 0,
+        "pearson": null,
+        "sign_agreement": null,
+        "spearman_rho": null,
+        "status": "INSUFFICIENT_N",
+        "units": []
+      },
+      "precision": {
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19965
+          },
+          "estimate": 0.2
+        },
+        "linear_fit": {
+          "intercept": -0.017774164933664856,
+          "r_squared": 0.2735628888852868,
+          "slope": 0.017669280735678996
+        },
+        "n": 5,
+        "pearson": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19967
+          },
+          "estimate": 0.5230323975484579
+        },
+        "sign_agreement": {
+          "ci95": {
+            "lower": 0.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.6,
+            "valid_replicates": 20000
+          },
+          "definition": "banked proposal screen pass predicts graph delta > 0; graph delta == 0 would count as non-positive",
+          "estimate": 0.2
+        },
+        "spearman_rho": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19971
+          },
+          "estimate": 0.3
+        },
+        "status": "ESTIMATED",
+        "units": [
+          "fold-0",
+          "fold-1",
+          "fold-2",
+          "fold-3",
+          "fold-4"
+        ]
+      },
+      "support": {
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19968
+          },
+          "estimate": 0.4
+        },
+        "linear_fit": {
+          "intercept": -0.0036375322035017187,
+          "r_squared": 0.7721467662767103,
+          "slope": 7.309895009782239e-06
+        },
+        "n": 5,
+        "pearson": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19970
+          },
+          "estimate": 0.8787188209414376
+        },
+        "sign_agreement": {
+          "ci95": {
+            "lower": 0.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.6,
+            "valid_replicates": 20000
+          },
+          "definition": "banked proposal screen pass predicts graph delta > 0; graph delta == 0 would count as non-positive",
+          "estimate": 0.2
+        },
+        "spearman_rho": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19969
+          },
+          "estimate": 0.6
+        },
+        "status": "ESTIMATED",
+        "units": [
+          "fold-0",
+          "fold-1",
+          "fold-2",
+          "fold-3",
+          "fold-4"
+        ]
+      },
+      "utility_gain": {
+        "eligible_for_preregistered_decision": false,
+        "kendall_tau_b": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19960
+          },
+          "estimate": 0.4
+        },
+        "linear_fit": {
+          "intercept": -0.0015135701757820735,
+          "r_squared": 0.4702610208289969,
+          "slope": 1.1915379442825276e-05
+        },
+        "n": 5,
+        "pearson": {
+          "ci95": {
+            "lower": -0.9999999999999999,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19961
+          },
+          "estimate": 0.6857558026214556
+        },
+        "sign_agreement": {
+          "ci95": {
+            "lower": 0.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 0.6,
+            "valid_replicates": 20000
+          },
+          "definition": "banked proposal screen pass predicts graph delta > 0; graph delta == 0 would count as non-positive",
+          "estimate": 0.2
+        },
+        "spearman_rho": {
+          "ci95": {
+            "lower": -1.0,
+            "method": "paired nonparametric percentile bootstrap",
+            "requested_replicates": 20000,
+            "upper": 1.0,
+            "valid_replicates": 19977
+          },
+          "estimate": 0.6
+        },
+        "status": "ESTIMATED",
+        "units": [
+          "fold-0",
+          "fold-1",
+          "fold-2",
+          "fold-3",
+          "fold-4"
+        ]
+      }
+    },
+    "role": "within-one-mechanism sensitivity only; folds are correlated and are not independent candidate evidence or eligible for the decision",
+    "rows": [
+      {
+        "fold": 0,
+        "graph_adjusted_delta": -0.00039635532614179514,
+        "graph_raw_delta": -0.0004367024204227077,
+        "precision": 0.991130820399113,
+        "proxies": {
+          "precision": 0.991130820399113,
+          "support": 451,
+          "utility_gain": 124
+        },
+        "proxy_screen_predicted_positive": true,
+        "support": 451,
+        "utility_gain": 124
+      },
+      {
+        "fold": 1,
+        "graph_adjusted_delta": -0.00022204305592343765,
+        "graph_raw_delta": -0.00026145723522574826,
+        "precision": 0.9772727272727273,
+        "proxies": {
+          "precision": 0.9772727272727273,
+          "support": 484,
+          "utility_gain": 92
+        },
+        "proxy_screen_predicted_positive": true,
+        "support": 484,
+        "utility_gain": 92
+      },
+      {
+        "fold": 2,
+        "graph_adjusted_delta": 5.90946252868596e-05,
+        "graph_raw_delta": 1.6618575904514543e-05,
+        "precision": 0.9481981981981982,
+        "proxies": {
+          "precision": 0.9481981981981982,
+          "support": 444,
+          "utility_gain": 52
+        },
+        "proxy_screen_predicted_positive": false,
+        "support": 444,
+        "utility_gain": 52
+      },
+      {
+        "fold": 3,
+        "graph_adjusted_delta": -0.0012879840952172428,
+        "graph_raw_delta": -0.0013025526340039173,
+        "precision": 0.9633699633699634,
+        "proxies": {
+          "precision": 0.9633699633699634,
+          "support": 273,
+          "utility_gain": 31
+        },
+        "proxy_screen_predicted_positive": true,
+        "support": 273,
+        "utility_gain": 31
+      },
+      {
+        "fold": 4,
+        "graph_adjusted_delta": -0.001850614843304177,
+        "graph_raw_delta": -0.0018542433995581975,
+        "precision": 0.932475884244373,
+        "proxies": {
+          "precision": 0.932475884244373,
+          "support": 311,
+          "utility_gain": 14
+        },
+        "proxy_screen_predicted_positive": false,
+        "support": 311,
+        "utility_gain": 14
+      }
+    ],
+    "source_fields": {
+      "graph": "graph.per_fold[].decision.adjusted_edge_jaccard_delta",
+      "graph_raw": "graph.per_fold[].decision.raw_edge_jaccard_delta",
+      "precision": "selected.families.6bba.folds[].held.precision",
+      "support": "selected.families.6bba.folds[].held.accepted_labeled",
+      "utility_gain": "selected.families.6bba.folds[].held.conservative_utility - control.families.6bba.folds[].held.conservative_utility"
+    },
+    "source_paths": [
+      "reports/g02/temporal_rank_oof_graph_gate_v1/report.json",
+      "reports/g02/selected_graph_temporal_family_rank_gate_v1/report.json"
+    ]
+  }
+}
