@@ -14,12 +14,14 @@ points at the authoritative artifacts; it does not replace them.
 ## Current frontier (as of 2026-07-27)
 - **H0 DONE** — proposal-only screening **BANNED** (no proxy `|ρ|≥0.5`). Every candidate now
   routes straight to the **44b6-first held-fit graph gate**; proposal metrics may be reported, never gate.
-- **H1-ZWRFEAT CACHE-PREP READY / HUMAN-GATE** — the authenticated 5.538884 h timing
-  PASS now pins a fail-closed full-cache contract and source overlay. The remaining H1
-  flow is wired in `h1_remaining_dag/`; no full cache or graph result exists yet.
-- **NEXT HUMAN GATE** — version the staged Option-C assets, verify remote version 2 is
-  `ready`, then push the frozen full-cache kernel. Its output is quarantined until local
-  cache attestation and explicit M5↔T4 tolerance approval. No `submission.csv` is allowed.
+- **H1-ZWRFEAT FULL CACHE RUNNING / CONTINUE** — the human crossed the N0 Kaggle gate.
+  Read-only status is `RUNNING`; the supplied log reached Stage A **82/105 at 5,088 s**.
+  Warm throughput is ~48.8 s/video, projecting Stage A near 1.73 h and total near
+  2.3–2.5 h. This is healthy progress, not an abort condition.
+- **NEXT** — let the cache kernel finish. At 7 h, abort if Stage A is incomplete, no
+  progress appeared for 20 min, or remaining ETA exceeds 45 min. Only a recently
+  progressing Stage B with ETA `<=45 min` merits bounded leeway. On completion, download
+  the quarantined output and resume `h1_remaining_dag/N1_cache_attest_tolerance.md`.
 
 ## The one live lever
 Frozen **pretrained Trackastra + tiny calibrated head**, tested **44b6-first at the graph
@@ -31,8 +33,9 @@ graph-level signal. Everything else is DEAD (below).
 - In-pool re-ranking oracle `~0.896` (projection). Transfer slope `≈0.48–0.66` (soft, rounding-bounded).
 - **Accepted (public) 0.89 needs local `≈0.895–0.900`** ⇒ requires H1→44b6 + H2 recall, not
   in-pool re-ranking (DAG §3.1). Kaggle cap 30 T4-h/model. RunPod locked until accepted `≥0.89`.
-- H1 external usage: two human-created dataset v1s; two failed timing-kernel versions and
-  one passing smoke; **0.0822 kernel-h** (≤0.1644 allocated T4-GPU-h), **0 submissions**.
+- H1 external usage: two human-created datasets; two failed timing-kernel versions, one
+  passing smoke, and one active full-cache kernel. Banked completed use is **0.0822
+  kernel-h** (≤0.1644 allocated T4-GPU-h); active runtime is unbanked, **0 submissions**.
   All family graph deltas remain unmeasured.
   Package covers exactly **36 44b6 + 69 6bba**.
 - H1-ZWRFEAT full-cache pins: contract `4da06d48…34b`, kernel `28a3801a…537`, source
@@ -47,6 +50,9 @@ knobs (`GA-SP`, `LC-P4CTRL`) · full organizer `TemporalUNet3D` (~478 T4-h).
 Conditional-PARK (revisitable): detection front-end · divisions · GT-conflict gates.
 
 ## Log (newest first)
+- 2026-07-27 — H1 full-cache monitor CONTINUE: remote kernel `RUNNING`; Stage A reached
+  82/105 at 5,088 s with steady warm progress and projected total ~2.3–2.5 h. No abort
+  or 7 h leeway is warranted now; recorded the conditional 7 h stop rule. (Codex)
 - 2026-07-27 — H1-ZWRFEAT-CACHE-PREP package ready: timing evidence, full-cache
   contract, source overlay, kernel hashes, and a five-node auto-cascade were pinned.
   Per `dag-prompts`, halted before the human Kaggle dataset-version/GPU gate. (Codex)
