@@ -1,4 +1,63 @@
-# H1-ZWRFEAT — ready at the human upload boundary
+# H1-ZWRFEAT — smoke attempt 1 stopped at source registration
+
+## Attempt 1 result (2026-07-26)
+
+Verdict: **STOP_SOURCE_REGISTRATION_DRIFT.**
+
+The human-created datasets both report `ready`, version 1. The timing kernel
+failed in 6.7 seconds before its runtime/configuration code or any model work:
+Kaggle did not mount
+`onebitbrain/trackastra-h1-fit105-cache-v1`.
+
+The pulled remote kernel code is byte-identical to the local kernel
+(`03ec4df4…d8d`). The pulled remote kernel metadata is not identical to the
+local metadata:
+
+- local metadata declares all four dataset sources, including the fit105 cache;
+- remote metadata contains the legacy assets, Option-C assets, and support
+  pack, but omits only the fit105 cache;
+- the omitted dataset is currently visible to the authenticated account,
+  `ready`, private, version 1, remote dataset id `11357935`;
+- dataset last update was `13:17:11.353Z`; kernel last run was
+  `13:17:22.493Z`, only 11.14 seconds later.
+
+This proves a remote source-registration failure. The short timing makes a
+Kaggle indexing/attachment race plausible, but that specific upstream cause is
+not proven. It is not a cache path, kernel code, CUDA, timing, repeatability, or
+model failure.
+
+No full timing witness, feature cache, graph score, CV run, or submission was
+produced. The warnings from Mistune/nbconvert are post-failure HTML conversion
+warnings and are not causal.
+
+### Exact human retry and verification
+
+The dataset is now registered. Re-push the unchanged local kernel:
+
+```bash
+.venv313/bin/kaggle datasets status onebitbrain/trackastra-h1-fit105-cache-v1 --format 'json(status,current_version_number)'
+.venv313/bin/kaggle datasets metadata onebitbrain/trackastra-h1-fit105-cache-v1 -p /private/tmp/h1-fit105-retry-metadata
+.venv313/bin/kaggle kernels push -p /Users/agent/Desktop/cell_tracking/kaggle_kernel/trackastra-h1-feature-cache-prep
+```
+
+Then pull the newly registered kernel metadata and require the fail-closed
+verifier to return `PASS`:
+
+```bash
+.venv313/bin/kaggle kernels pull onebitbrain/trackastra-h1-feature-cache -p /private/tmp/h1-kernel-retry-audit -m
+PYTHONDONTWRITEBYTECODE=1 .venv313/bin/python scripts/verify_h1_kaggle_registration.py --local-metadata kaggle_kernel/trackastra-h1-feature-cache-prep/kernel-metadata.json --remote-metadata /private/tmp/h1-kernel-retry-audit/kernel-metadata.json
+```
+
+If it returns `STOP_SOURCE_REGISTRATION_DRIFT`, do not treat that version as a
+timing attempt and do not widen the package. The verifier requires exactly the
+four locked datasets and the competition source. Codex did not perform this
+retry.
+
+The detailed evidence is banked in `h1_smoke_attempt_1.json`.
+
+---
+
+# Original H1-ZWRFEAT launch handoff
 
 Verdict: **READY / STOPPED BEFORE EXTERNAL MUTATION.**
 
