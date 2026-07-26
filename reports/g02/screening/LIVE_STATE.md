@@ -14,14 +14,14 @@ points at the authoritative artifacts; it does not replace them.
 ## Current frontier (as of 2026-07-26)
 - **H0 DONE** — proposal-only screening **BANNED** (no proxy `|ρ|≥0.5`). Every candidate now
   routes straight to the **44b6-first held-fit graph gate**; proposal metrics may be reported, never gate.
-- **H1-ZWRFEAT SMOKE1 STOP / REGISTRATION DRIFT** — both datasets are now ready at version
-  1, but the failed remote kernel metadata omitted only
-  `trackastra-h1-fit105-cache-v1`; the byte-identical kernel therefore stopped at mount
-  resolution in 6.7 s before CUDA/model work. No timing, cache, or graph result exists.
-- **NEXT** — human re-pushes the unchanged timing kernel now that the dataset is registered,
-  pulls the new remote metadata, and runs `verify_h1_kaggle_registration.py`. Continue only
-  if all four dataset sources register exactly; then require T4 repeatability and projected
-  total `<=7 h` before any full cache/graph use.
+- **H1-ZWRFEAT SMOKE2 STOP / LOCALLY REPAIRED** — registration is fixed and Stage A was
+  invoked for the 44b6 witness, but the launcher had not copied the authenticated fit105
+  manifest from the Option-C overlay into its contract-declared `/kaggle/working` path.
+  It stopped in 25.2 s before model work; no timing, cache, or graph result exists.
+- **NEXT** — human pushes corrected timing kernel `5e67eff7…a88f`, then pulls it and requires
+  exact code identity plus `verify_h1_kaggle_registration.py` PASS. Continue only if the
+  smoke has exact T4 repeatability and projected total `<=7 h`; if the source manifest is
+  absent remotely, version the unchanged authenticated Option-C assets first.
 
 ## The one live lever
 Frozen **pretrained Trackastra + tiny calibrated head**, tested **44b6-first at the graph
@@ -33,11 +33,11 @@ graph-level signal. Everything else is DEAD (below).
 - In-pool re-ranking oracle `~0.896` (projection). Transfer slope `≈0.48–0.66` (soft, rounding-bounded).
 - **Accepted (public) 0.89 needs local `≈0.895–0.900`** ⇒ requires H1→44b6 + H2 recall, not
   in-pool re-ranking (DAG §3.1). Kaggle cap 30 T4-h/model. RunPod locked until accepted `≥0.89`.
-- H1 external usage: two human-created dataset v1s, one failed timing-kernel version,
+- H1 external usage: two human-created dataset v1s, two failed timing-kernel versions,
   **0 measured GPU work, 0 submissions**. All family graph deltas remain unmeasured.
   Package covers exactly **36 44b6 + 69 6bba**.
-- H1-ZWRFEAT pins: contract `a7e866c3…9404`, kernel `03ec4df4…d8d`, graph contract
-  `d35e2d3d…7f48`; focused fail-closed verification **18/18 PASS**.
+- H1-ZWRFEAT pins: contract `a7e866c3…9404`, corrected kernel `5e67eff7…a88f`, graph
+  contract `d35e2d3d…7f48`; focused fail-closed verification **22/22 PASS**, swap 0 MiB.
 
 ## DEAD — do not re-propose without a new named mechanism (register: DAG §6.1)
 Deterministic recall / shell abstention (`R12SHELL`, `MGSHELL`, `TEMPBG`) · from-scratch
@@ -47,6 +47,9 @@ knobs (`GA-SP`, `LC-P4CTRL`) · full organizer `TemporalUNet3D` (~478 T4-h).
 Conditional-PARK (revisitable): detection front-end · divisions · GT-conflict gates.
 
 ## Log (newest first)
+- 2026-07-26 — H1-ZWRFEAT-SMOKE2 STOP after registration cleared: launcher omitted the
+  pinned fit105 manifest from `/kaggle/working`, so Stage A failed before model work.
+  Corrected the authenticated copy path locally; repush remains human-executed. (Codex)
 - 2026-07-26 — H1-ZWRFEAT-SMOKE1 STOP at source registration: fit105 dataset is ready v1,
   but pulled remote kernel metadata omitted that source although local metadata declared it;
   code hashes match. Kernel failed in 6.7 s before CUDA/model/timing work. Added an exact

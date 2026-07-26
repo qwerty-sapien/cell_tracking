@@ -1,3 +1,77 @@
+# H1-ZWRFEAT — smoke attempt 2 repaired at human kernel-push gate
+
+## Attempt 2 result (2026-07-26)
+
+Verdict: **STOP_WORKING_MANIFEST_NOT_MATERIALIZED / REPAIRED LOCALLY.**
+
+The human retry cleared source registration: the fit105 dataset mounted and
+Stage A was invoked for `train:44b6_cf8fed6b`. It then failed at 23.4 seconds,
+before V45 or Trackastra model work, because the launcher had copied
+`option_c_contract.json` into `/kaggle/working` but not the contract-pinned
+`cache_dataset_manifest.json`.
+
+The corrected launcher now authenticates the source-overlay manifest
+(`ff7b205f…8f28`), copies it to the exact contract-declared working path,
+re-authenticates the destination, and verifies that the contract path and hash
+agree before Stage A. Corrected kernel SHA-256:
+`5e67eff789846ab6faa505a7ea3d44724f5852c09b214a7ee7bb6abb2913a88f`.
+The focused packaging, graph-runner, and registration suite passed 22/22 after
+a 45-second clean-idle preflight; swap was 0 MiB before and after.
+
+No family graph delta, precision, timing projection, complete cache, CV run, or
+submission exists. The Mistune/nbconvert warnings remain post-failure report
+conversion noise.
+
+### Exact human retry
+
+Run from `/Users/agent/Desktop/cell_tracking`:
+
+```bash
+shasum -a 256 kaggle_kernel/trackastra-h1-feature-cache-prep/trackastra_h1_feature_cache.py
+.venv313/bin/kaggle datasets status onebitbrain/trackastra-h1-option-c-assets-v1 --format 'json(status,current_version_number)'
+.venv313/bin/kaggle kernels push -p /Users/agent/Desktop/cell_tracking/kaggle_kernel/trackastra-h1-feature-cache-prep
+```
+
+The first command must print
+`5e67eff789846ab6faa505a7ea3d44724f5852c09b214a7ee7bb6abb2913a88f`;
+the dataset status must be `ready` with version `1` or later.
+
+Pull the just-pushed version and require both code identity and exact source
+registration before accepting its result:
+
+```bash
+test ! -e /private/tmp/h1-kernel-smoke2-audit
+.venv313/bin/kaggle kernels pull onebitbrain/trackastra-h1-feature-cache -p /private/tmp/h1-kernel-smoke2-audit -m
+shasum -a 256 /private/tmp/h1-kernel-smoke2-audit/trackastra_h1_feature_cache.py
+PYTHONDONTWRITEBYTECODE=1 .venv313/bin/python scripts/verify_h1_kaggle_registration.py --local-metadata kaggle_kernel/trackastra-h1-feature-cache-prep/kernel-metadata.json --remote-metadata /private/tmp/h1-kernel-smoke2-audit/kernel-metadata.json
+.venv313/bin/kaggle kernels status onebitbrain/trackastra-h1-feature-cache
+.venv313/bin/kaggle kernels output onebitbrain/trackastra-h1-feature-cache -p /private/tmp/trackastra-h1-smoke2-output -o --file-pattern '^trackastra_h1_timing_smoke\.json$'
+```
+
+The pulled code hash must equal the corrected hash above and the registration
+verifier must return `PASS`. A successful smoke must still satisfy exact T4
+repeatability and projected two-family runtime `<=7 h`; it cannot launch the
+full 105-video cache.
+
+If the corrected kernel instead stops on the *source-overlay* path for
+`cache_dataset_manifest.json`, the remote assets version lacks that pinned
+file. Only then stage an unchanged authenticated assets update and let the
+human create version 2:
+
+```bash
+test ! -e /private/tmp/trackastra-h1-option-c-assets-smoke2
+PYTHONDONTWRITEBYTECODE=1 .venv313/bin/python scripts/prepare_h1_feature_cache.py stage-assets --stage-dir /private/tmp/trackastra-h1-option-c-assets-smoke2
+shasum -a 256 /private/tmp/trackastra-h1-option-c-assets-smoke2/source_overlay/kaggle_kernel/trackastra-h1-feature-cache-prep/cache_dataset_manifest.json
+.venv313/bin/kaggle datasets version -p /private/tmp/trackastra-h1-option-c-assets-smoke2 -m 'Add authenticated fit105 manifest for H1 smoke' --dir-mode zip
+.venv313/bin/kaggle datasets status onebitbrain/trackastra-h1-option-c-assets-v1 --format 'json(status,current_version_number)'
+```
+
+That hash must be `ff7b205f…8f28`. Dataset versioning and the corrected kernel
+push are human-executed external mutations; Codex stopped before them.
+Detailed evidence is banked in `h1_smoke_attempt_2.json`.
+
+---
+
 # H1-ZWRFEAT — smoke attempt 1 stopped at source registration
 
 ## Attempt 1 result (2026-07-26)
@@ -197,7 +271,7 @@ zero-versus-real ablation may run before authentic masks are established.
 - assets manifest:
   `154580ec7e79f61401b41e319b6a05ed6b879e2703ea1323bd07c22e03fded9c`
 - timing kernel:
-  `03ec4df4118f0a3c4e78261827f2aedbb45df787445fd4bc836be49da1f73d8d`
+  `5e67eff789846ab6faa505a7ea3d44724f5852c09b214a7ee7bb6abb2913a88f`
 - graph contract:
   `d35e2d3dbbc93de99061d0f34c7650ac85867734f44108b28ad35af665847f48`
 - graph coordinator:

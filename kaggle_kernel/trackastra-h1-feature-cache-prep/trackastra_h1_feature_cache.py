@@ -22,6 +22,9 @@ WORKING = Path("/kaggle/working")
 CONTRACT_SHA256 = (
     "a7e866c34c15f46671ae3c30aeb4cf1107e5dd55acd63458a22890b69ff29404"
 )
+CACHE_DATASET_MANIFEST_SHA256 = (
+    "ff7b205f58ad70c69954fed1c3e60a100d246c1e374a849c6ea7183934e98f28"
+)
 SEED = 20260725
 ENVIRONMENT_PINS = {
     "python": "3.12.13",
@@ -84,6 +87,17 @@ def competition_root(slug: str) -> Path:
 def require(path: Path, expected_sha256: str) -> None:
     if not path.is_file() or sha256(path) != expected_sha256:
         raise KernelError(f"pinned file identity mismatch: {path}")
+
+
+def copy_pinned_file(
+    source: Path,
+    destination: Path,
+    expected_sha256: str,
+) -> None:
+    require(source, expected_sha256)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, destination)
+    require(destination, expected_sha256)
 
 
 def run(command: list[str], env: dict[str, str]) -> float:
@@ -254,20 +268,30 @@ def main() -> int:
             raise KernelError(
                 f"unknown source dependency origin: {origin}"
             )
-    contract_source = (
+    package_overlay = (
         overlay
         / "kaggle_kernel/trackastra-h1-feature-cache-prep"
-        / "option_c_contract.json"
     )
-    require(contract_source, CONTRACT_SHA256)
-    contract = (
+    package_working = (
         WORKING
         / "kaggle_kernel/trackastra-h1-feature-cache-prep"
-        / "option_c_contract.json"
     )
-    contract.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(contract_source, contract)
+    fit_manifest = package_working / "cache_dataset_manifest.json"
+    copy_pinned_file(
+        package_overlay / "cache_dataset_manifest.json",
+        fit_manifest,
+        CACHE_DATASET_MANIFEST_SHA256,
+    )
+    contract = package_working / "option_c_contract.json"
+    copy_pinned_file(
+        package_overlay / "option_c_contract.json",
+        contract,
+        CONTRACT_SHA256,
+    )
     contract_payload = json.loads(contract.read_text(encoding="ascii"))
+    fit_manifest_record = contract_payload.get("inputs", {}).get(
+        "fit_manifest", {}
+    )
     if (
         contract_payload.get("environment") is None
         or contract_payload.get("status") != "locked-zero-wrfeat-primary"
@@ -281,6 +305,13 @@ def main() -> int:
         .get("h3_fallback", {})
         .get("status")
         != "CONDITIONAL_NOT_STARTED"
+        or fit_manifest_record.get("path")
+        != (
+            "kaggle_kernel/trackastra-h1-feature-cache-prep/"
+            "cache_dataset_manifest.json"
+        )
+        or fit_manifest_record.get("sha256")
+        != CACHE_DATASET_MANIFEST_SHA256
     ):
         raise KernelError("zero-wrfeat primary contract is absent or drifted")
     contract_environment = dict(contract_payload["environment"])

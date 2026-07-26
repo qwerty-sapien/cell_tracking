@@ -22,7 +22,7 @@
     },
     "kernel": {
       "path": "kaggle_kernel/trackastra-h1-feature-cache-prep/trackastra_h1_feature_cache.py",
-      "sha256": "03ec4df4118f0a3c4e78261827f2aedbb45df787445fd4bc836be49da1f73d8d"
+      "sha256": "5e67eff789846ab6faa505a7ea3d44724f5852c09b214a7ee7bb6abb2913a88f"
     },
     "raw_manifest": {
       "path": "kaggle_kernel/trackastra-h1-feature-cache-prep/raw_fit105_directory_manifest.json",
@@ -76,8 +76,15 @@
   },
   "human_boundary": {
     "codex_external_mutations": 0,
-    "next_action": "human stages and creates both datasets, verifies ready status plus non-null current version and file registration, then pushes the timing-only kernel",
-    "stop_before": "first kaggle datasets create"
+    "next_action": "human pushes the corrected timing-only kernel, verifies byte identity and exact source registration, then inspects the timing smoke",
+    "stop_before": "corrected kaggle kernels push"
+  },
+  "last_smoke_attempt": {
+    "attempt": 2,
+    "elapsed_seconds_reported_by_human": 25.2,
+    "failure": "fit_manifest identity mismatch in /kaggle/working before model work",
+    "repair": "authenticate and materialize the pinned fit manifest from the Option-C source overlay before Stage A",
+    "status": "STOP_WORKING_MANIFEST_NOT_MATERIALIZED"
   },
   "parity": {
     "cross_device_exact_fields": [
@@ -129,5 +136,5 @@
     "real_masks_required": false,
     "training": false
   },
-  "status": "READY_STOPPED_AT_HUMAN_UPLOAD_BOUNDARY"
+  "status": "REPAIRED_READY_STOPPED_AT_HUMAN_KERNEL_PUSH_BOUNDARY"
 }

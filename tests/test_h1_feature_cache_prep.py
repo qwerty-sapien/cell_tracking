@@ -6,6 +6,7 @@ import importlib.util
 import json
 from pathlib import Path
 import sys
+import tempfile
 import unittest
 
 import numpy as np
@@ -22,6 +23,19 @@ import prepare_h1_feature_cache as prep  # noqa: E402
 def _load_builder():
     path = SCRIPTS / "build_trackastra_full_pool_feature_cache.py"
     spec = importlib.util.spec_from_file_location("h1_builder", path)
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _load_kernel():
+    path = (
+        ROOT
+        / "kaggle_kernel/trackastra-h1-feature-cache-prep"
+        / "trackastra_h1_feature_cache.py"
+    )
+    spec = importlib.util.spec_from_file_location("h1_kernel", path)
     assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -66,6 +80,36 @@ def _literal_assignment(path: Path, name: str):
 
 
 class H1FeatureCachePrepTests(unittest.TestCase):
+    def test_kernel_materializes_authenticated_fit_manifest(self) -> None:
+        kernel = _load_kernel()
+        source = prep.DEFAULT_MANIFEST
+        self.assertEqual(
+            _sha256(source),
+            kernel.CACHE_DATASET_MANIFEST_SHA256,
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            destination = (
+                Path(temporary) / "package/cache_dataset_manifest.json"
+            )
+            kernel.copy_pinned_file(
+                source,
+                destination,
+                kernel.CACHE_DATASET_MANIFEST_SHA256,
+            )
+            self.assertEqual(
+                destination.read_bytes(),
+                source.read_bytes(),
+            )
+            with self.assertRaisesRegex(
+                kernel.KernelError,
+                "pinned file identity mismatch",
+            ):
+                kernel.copy_pinned_file(
+                    source,
+                    destination,
+                    "0" * 64,
+                )
+
     def test_authenticated_manifest_is_exact_fit_train105(self) -> None:
         manifest = prep.load_json(prep.DEFAULT_MANIFEST)
         train = tuple(str(value) for value in manifest["identities"])
@@ -371,6 +415,12 @@ class H1FeatureCachePrepTests(unittest.TestCase):
         )
         dependency_path = package / "source_dependency_manifest.json"
         self.assertEqual(_sha256(dependency_path), dependency_hash)
+        self.assertEqual(
+            _sha256(package / "cache_dataset_manifest.json"),
+            _literal_assignment(
+                kernel_path, "CACHE_DATASET_MANIFEST_SHA256"
+            ),
+        )
         dependencies = json.loads(
             dependency_path.read_text(encoding="utf-8")
         )

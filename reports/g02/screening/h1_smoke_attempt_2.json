@@ -1,0 +1,57 @@
+{
+  "dataset_registration": {
+    "fit105_mount_resolved": true,
+    "option_c_assets_current_version_number": 1,
+    "option_c_assets_status": "ready",
+    "raw_manifest_resolved_from_option_c_overlay": true
+  },
+  "failure": {
+    "elapsed_seconds_reported_by_human": 25.2,
+    "exception": "TrackastraFeatureCacheError: fit_manifest identity mismatch: /kaggle/working/kaggle_kernel/trackastra-h1-feature-cache-prep/cache_dataset_manifest.json",
+    "model_work_reached": false,
+    "stage": "Stage A contract input authentication",
+    "timing_witness_completed": false
+  },
+  "metrics": {
+    "44b6": {
+      "adjusted_edge_jaccard_delta": null,
+      "node_recall_delta": null,
+      "raw_edge_jaccard_delta": null
+    },
+    "6bba": {
+      "adjusted_edge_jaccard_delta": null,
+      "node_recall_delta": null,
+      "raw_edge_jaccard_delta": null
+    }
+  },
+  "repair": {
+    "cache_manifest_sha256": "ff7b205f58ad70c69954fed1c3e60a100d246c1e374a849c6ea7183934e98f28",
+    "corrected_kernel_sha256": "5e67eff789846ab6faa505a7ea3d44724f5852c09b214a7ee7bb6abb2913a88f",
+    "description": "The launcher now authenticates the source-overlay fit manifest, copies it to the contract-declared /kaggle/working path, re-authenticates the destination, and checks the contract path/hash pins before Stage A.",
+    "old_kernel_sha256": "03ec4df4118f0a3c4e78261827f2aedbb45df787445fd4bc836be49da1f73d8d"
+  },
+  "root_cause": {
+    "confirmed": true,
+    "fault": "The launcher copied option_c_contract.json into /kaggle/working but omitted cache_dataset_manifest.json required by that contract.",
+    "noncausal": [
+      "dataset registration",
+      "CUDA timing",
+      "Trackastra checkpoint",
+      "Mistune and nbconvert warnings"
+    ]
+  },
+  "schema": "celltrack-alpha.h1-zero-wrfeat-smoke-attempt.v1",
+  "status": "STOP_WORKING_MANIFEST_NOT_MATERIALIZED",
+  "usage": {
+    "cache_generated": false,
+    "graph_gate_run": false,
+    "human_kernel_attempts_total": 2,
+    "model_gpu_hours_measured": 0,
+    "submission_created": false
+  },
+  "verification": {
+    "focused_tests": "22/22 PASS",
+    "post_run_swap_used_mib": 0,
+    "preflight_idle_seconds": 45
+  }
+}
