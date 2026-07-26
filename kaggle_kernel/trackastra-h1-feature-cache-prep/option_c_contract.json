@@ -126,9 +126,18 @@
     "real_mask_pre_smoke_prerequisite": false
   },
   "runtime_projection": {
-    "full_run_authorized": false,
-    "status": "BLOCKED_NO_BANKED_OPTION_C_CUDA_TIMING",
-    "reason": "The prior Stage-A/Stage-B timing evidence executed the corrected builders on CPU and cannot bound the new cuda:0 Option-C path. A human-gated two-family T4 timing smoke must be banked before a full <=7 h projection can be approved."
+    "coordinator_attestation": {
+      "path": "reports/g02/screening/h1_smoke_attempt_3.json",
+      "sha256": "9d21b48195439ad3baf702d4cba31266cc05b829bd1c1366e765bb3bd73bb88e"
+    },
+    "full_run_authorized": true,
+    "maximum_hours": 7.0,
+    "projected_hours_with_margin": 5.538883840561126,
+    "status": "PASS_BANKED_OPTION_C_CUDA_TIMING",
+    "timing_artifact": {
+      "path": "reports/g02/screening/h1_timing_smoke_3.json",
+      "sha256": "5c6ff4fbebaf019a6695266fb6d98bba5da7fd510f53060b52d0bbbefb3accd1"
+    }
   },
   "schema": "celltrack-alpha.trackastra-h1-feature-cache-contract.option-c.v1",
   "scope": {

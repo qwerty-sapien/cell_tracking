@@ -397,12 +397,16 @@ class H1FeatureCachePrepTests(unittest.TestCase):
                 "torch_cuda": "12.8",
             },
         )
-        self.assertFalse(
+        self.assertTrue(
             contract["runtime_projection"]["full_run_authorized"]
         )
         self.assertEqual(
             contract["runtime_projection"]["status"],
-            "BLOCKED_NO_BANKED_OPTION_C_CUDA_TIMING",
+            "PASS_BANKED_OPTION_C_CUDA_TIMING",
+        )
+        self.assertLessEqual(
+            contract["runtime_projection"]["projected_hours_with_margin"],
+            contract["runtime_projection"]["maximum_hours"],
         )
 
     def test_hash_pins_match_actual_files_kernel_and_report(self) -> None:

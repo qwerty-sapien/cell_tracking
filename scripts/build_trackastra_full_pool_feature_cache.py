@@ -108,6 +108,80 @@ def _require(path: Path, expected_sha256: str, label: str) -> None:
         raise TrackastraFeatureCacheError(f"{label} identity mismatch: {path}")
 
 
+def _option_c_runtime_projection_valid(
+    runtime_projection: object,
+) -> bool:
+    if not isinstance(runtime_projection, Mapping):
+        return False
+    if (
+        runtime_projection.get("full_run_authorized") is False
+        and runtime_projection.get("status")
+        == "BLOCKED_NO_BANKED_OPTION_C_CUDA_TIMING"
+    ):
+        return True
+    if (
+        runtime_projection.get("full_run_authorized") is not True
+        or runtime_projection.get("status")
+        != "PASS_BANKED_OPTION_C_CUDA_TIMING"
+        or float(runtime_projection.get("maximum_hours", -1.0)) != 7.0
+    ):
+        return False
+    timing_record = runtime_projection.get("timing_artifact")
+    attestation_record = runtime_projection.get("coordinator_attestation")
+    if not isinstance(timing_record, Mapping) or not isinstance(
+        attestation_record, Mapping
+    ):
+        return False
+    timing_path = ROOT / str(timing_record.get("path", ""))
+    attestation_path = ROOT / str(attestation_record.get("path", ""))
+    timing_sha256 = str(timing_record.get("sha256", ""))
+    attestation_sha256 = str(attestation_record.get("sha256", ""))
+    _require(timing_path, timing_sha256, "banked Option-C timing artifact")
+    _require(
+        attestation_path,
+        attestation_sha256,
+        "banked Option-C timing attestation",
+    )
+    timing = _load_json(timing_path, "banked Option-C timing artifact")
+    attestation = _load_json(
+        attestation_path, "banked Option-C timing attestation"
+    )
+    projected = float(timing.get("projected_hours_with_margin", -1.0))
+    records = timing.get("timings")
+    identities = (
+        {
+            str(row.get("identity"))
+            for row in records
+            if isinstance(row, Mapping)
+        }
+        if isinstance(records, list)
+        else set()
+    )
+    return (
+        timing.get("schema")
+        == "celltrack-alpha.trackastra-h1-cuda-timing-smoke.v1"
+        and timing.get("verdict") == "PASS_TIMING_ONLY_NO_FULL_CACHE"
+        and timing.get("fits_inside_7_hours") is True
+        and timing.get("full_run_executed") is False
+        and timing.get("human_contract_update_required") is True
+        and identities
+        == {"train:44b6_cf8fed6b", "train:6bba_edf14583"}
+        and 0.0 < projected <= 7.0
+        and projected
+        == float(runtime_projection.get("projected_hours_with_margin", -1.0))
+        and attestation.get("schema")
+        == "celltrack-alpha.h1-zero-wrfeat-smoke-attempt.v1"
+        and attestation.get("status") == "PASS_TIMING_ONLY_NO_FULL_CACHE"
+        and attestation.get("artifact", {}).get("sha256") == timing_sha256
+        and attestation.get("tolerance", {}).get("t4_t4_repeatability")
+        == "PASS"
+        and attestation.get("submission_gate", {}).get(
+            "submission_csv_authorized"
+        )
+        is False
+    )
+
+
 def load_contract(path: Path, expected_sha256: str) -> dict[str, Any]:
     _require(path, expected_sha256, "contract")
     value = _load_json(path, "contract")
@@ -238,10 +312,7 @@ def load_contract(path: Path, expected_sha256: str) -> dict[str, Any]:
             "trackastra/utils/__init__.py": "9cc30299112973185878e719aee11459913ac2da7d6b1765bba0a7f2e030189f",
             "trackastra/utils/utils.py": "6de65b3996dd1fa006e90de826a3d16e7b1796fa8ddbbff8032b178342a07bff",
         }
-        or not isinstance(runtime_projection, Mapping)
-        or runtime_projection.get("full_run_authorized") is not False
-        or runtime_projection.get("status")
-        != "BLOCKED_NO_BANKED_OPTION_C_CUDA_TIMING"
+        or not _option_c_runtime_projection_valid(runtime_projection)
         or option_c.get("exact_fields")
         != [
             "challengers",

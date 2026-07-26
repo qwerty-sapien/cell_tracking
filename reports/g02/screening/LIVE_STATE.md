@@ -14,13 +14,12 @@ points at the authoritative artifacts; it does not replace them.
 ## Current frontier (as of 2026-07-27)
 - **H0 DONE** — proposal-only screening **BANNED** (no proxy `|ρ|≥0.5`). Every candidate now
   routes straight to the **44b6-first held-fit graph gate**; proposal metrics may be reported, never gate.
-- **H1-ZWRFEAT SMOKE3 PASS / TIMING ONLY** — both frozen T4 witnesses and T4-to-T4
-  repeatability passed. Projected 105-video runtime with 35% margin is **5.538884 h**,
-  below the 7 h gate. No full cache, graph result, CV run, or submission exists.
-- **NEXT** — `H1-ZWRFEAT-CACHE-PREP`: pin a full-cache contract revision, then stop at the
-  human Option-C dataset-version/kernel-push boundary. The resulting cache stays
-  quarantined pending human M5↔T4 tolerance approval, then runs the 44b6 graph gate first.
-  Do **not** add `submission.csv`; public submission remains after both graph gates + CV57.
+- **H1-ZWRFEAT CACHE-PREP READY / HUMAN-GATE** — the authenticated 5.538884 h timing
+  PASS now pins a fail-closed full-cache contract and source overlay. The remaining H1
+  flow is wired in `h1_remaining_dag/`; no full cache or graph result exists yet.
+- **NEXT HUMAN GATE** — version the staged Option-C assets, verify remote version 2 is
+  `ready`, then push the frozen full-cache kernel. Its output is quarantined until local
+  cache attestation and explicit M5↔T4 tolerance approval. No `submission.csv` is allowed.
 
 ## The one live lever
 Frozen **pretrained Trackastra + tiny calibrated head**, tested **44b6-first at the graph
@@ -36,8 +35,9 @@ graph-level signal. Everything else is DEAD (below).
   one passing smoke; **0.0822 kernel-h** (≤0.1644 allocated T4-GPU-h), **0 submissions**.
   All family graph deltas remain unmeasured.
   Package covers exactly **36 44b6 + 69 6bba**.
-- H1-ZWRFEAT pins: contract `a7e866c3…9404`, corrected kernel `5e67eff7…a88f`, graph
-  contract `d35e2d3d…7f48`; focused fail-closed verification **22/22 PASS**, swap 0 MiB.
+- H1-ZWRFEAT full-cache pins: contract `4da06d48…34b`, kernel `28a3801a…537`, source
+  dependencies `a252e8ef…9e9`, graph contract `d35e2d3d…7f48`; focused verification
+  **22/22 PASS**, staged v2 assets 55 files, swap 0 MiB.
 
 ## DEAD — do not re-propose without a new named mechanism (register: DAG §6.1)
 Deterministic recall / shell abstention (`R12SHELL`, `MGSHELL`, `TEMPBG`) · from-scratch
@@ -47,6 +47,9 @@ knobs (`GA-SP`, `LC-P4CTRL`) · full organizer `TemporalUNet3D` (~478 T4-h).
 Conditional-PARK (revisitable): detection front-end · divisions · GT-conflict gates.
 
 ## Log (newest first)
+- 2026-07-27 — H1-ZWRFEAT-CACHE-PREP package ready: timing evidence, full-cache
+  contract, source overlay, kernel hashes, and a five-node auto-cascade were pinned.
+  Per `dag-prompts`, halted before the human Kaggle dataset-version/GPU gate. (Codex)
 - 2026-07-27 — H1-ZWRFEAT-SMOKE3 PASS: authenticated T4 timing artifact projects
   **5.538884 h** with margin, with both-family T4 repeatability PASS. The notebook is
   intentionally non-submittable; it produced no `submission.csv`, full cache, or graph

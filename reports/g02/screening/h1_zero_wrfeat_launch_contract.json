@@ -2,7 +2,7 @@
   "artifacts": {
     "assets_manifest": {
       "path": "kaggle_kernel/trackastra-h1-feature-cache-prep/assets_dataset_manifest.json",
-      "sha256": "154580ec7e79f61401b41e319b6a05ed6b879e2703ea1323bd07c22e03fded9c"
+      "sha256": "38e9921c6a7c6aabf90a169f70487f9086af0d5bc7261d936de668d53b4c87fd"
     },
     "cache_manifest": {
       "path": "kaggle_kernel/trackastra-h1-feature-cache-prep/cache_dataset_manifest.json",
@@ -10,7 +10,7 @@
     },
     "feature_contract": {
       "path": "kaggle_kernel/trackastra-h1-feature-cache-prep/option_c_contract.json",
-      "sha256": "a7e866c34c15f46671ae3c30aeb4cf1107e5dd55acd63458a22890b69ff29404"
+      "sha256": "4da06d487ba1787f91467a01862e4f7471daa16244674f5171960774da06334b"
     },
     "graph_contract": {
       "path": "reports/g02/screening/h1_zero_wrfeat_graph_gate_contract.json",
@@ -22,7 +22,7 @@
     },
     "kernel": {
       "path": "kaggle_kernel/trackastra-h1-feature-cache-prep/trackastra_h1_feature_cache.py",
-      "sha256": "5e67eff789846ab6faa505a7ea3d44724f5852c09b214a7ee7bb6abb2913a88f"
+      "sha256": "28a3801a41800d601be4087010e1c73bb631119747e993cd41bad69f7aaa8537"
     },
     "raw_manifest": {
       "path": "kaggle_kernel/trackastra-h1-feature-cache-prep/raw_fit105_directory_manifest.json",
@@ -30,7 +30,7 @@
     },
     "source_dependencies": {
       "path": "kaggle_kernel/trackastra-h1-feature-cache-prep/source_dependency_manifest.json",
-      "sha256": "999db8a2a475415abc9ff5dde1d18d366c9caf40a311ddfb09af4c008df51326"
+      "sha256": "a252e8ef45f59f93b4b5f8bcc6d89b5f0eb5a9006673b19af8ab2fcf5e9859e9"
     }
   },
   "checkpoint": {
@@ -44,14 +44,17 @@
     "create_cache_dataset": ".venv313/bin/kaggle datasets create -p /private/tmp/trackastra-h1-fit105-cache-v1 --dir-mode zip",
     "download_smoke": ".venv313/bin/kaggle kernels output onebitbrain/trackastra-h1-feature-cache -p /private/tmp/trackastra-h1-smoke-output -o --file-pattern '^trackastra_h1_timing_smoke\\\\.json$'",
     "push_timing_kernel": ".venv313/bin/kaggle kernels push -p /Users/agent/Desktop/cell_tracking/kaggle_kernel/trackastra-h1-feature-cache-prep",
+    "push_full_cache_kernel": ".venv313/bin/kaggle kernels push -p /Users/agent/Desktop/cell_tracking/kaggle_kernel/trackastra-h1-feature-cache-prep",
     "stage_assets": "PYTHONDONTWRITEBYTECODE=1 .venv313/bin/python scripts/prepare_h1_feature_cache.py stage-assets --stage-dir /private/tmp/trackastra-h1-option-c-assets-v1",
+    "stage_assets_v2": "PYTHONDONTWRITEBYTECODE=1 .venv313/bin/python scripts/prepare_h1_feature_cache.py stage-assets --stage-dir /private/tmp/trackastra-h1-option-c-assets-v2",
     "stage_cache": "PYTHONDONTWRITEBYTECODE=1 .venv313/bin/python scripts/prepare_h1_feature_cache.py stage-cache --stage-dir /private/tmp/trackastra-h1-fit105-cache-v1",
     "verify_assets_files": ".venv313/bin/kaggle datasets files onebitbrain/trackastra-h1-option-c-assets-v1 --format json --page-size 200",
     "verify_assets_version": ".venv313/bin/kaggle datasets status onebitbrain/trackastra-h1-option-c-assets-v1 --format 'json(status,current_version_number)'",
     "verify_cache_files": ".venv313/bin/kaggle datasets files onebitbrain/trackastra-h1-fit105-cache-v1 --format json --page-size 200",
     "verify_cache_version": ".venv313/bin/kaggle datasets status onebitbrain/trackastra-h1-fit105-cache-v1 --format 'json(status,current_version_number)'",
     "verify_kernel_files": ".venv313/bin/kaggle kernels files onebitbrain/trackastra-h1-feature-cache --format json --page-size 200",
-    "verify_kernel_status": ".venv313/bin/kaggle kernels status onebitbrain/trackastra-h1-feature-cache"
+    "verify_kernel_status": ".venv313/bin/kaggle kernels status onebitbrain/trackastra-h1-feature-cache",
+    "version_assets_v2": ".venv313/bin/kaggle datasets version -p /private/tmp/trackastra-h1-option-c-assets-v2 -m 'Authorize frozen H1 fit105 full cache from banked 5.538884 h timing PASS' --dir-mode zip"
   },
   "decision": {
     "date": "2026-07-26",
@@ -76,8 +79,8 @@
   },
   "human_boundary": {
     "codex_external_mutations": 0,
-    "next_action": "prepare a separately pinned full-cache contract revision; after that node, the human versions the Option-C assets and pushes the full-cache kernel",
-    "stop_before": "full-cache contract revision and its human-executed Kaggle dataset/kernel mutations"
+    "next_action": "human versions the staged Option-C assets, waits for ready registration, then pushes the full-cache kernel",
+    "stop_before": "kaggle datasets version and kaggle kernels push"
   },
   "last_smoke_attempt": {
     "artifact_sha256": "5c6ff4fbebaf019a6695266fb6d98bba5da7fd510f53060b52d0bbbefb3accd1",
@@ -124,7 +127,7 @@
     },
     "maximum_projected_hours_with_margin": 7.0,
     "projection": "family witness (Stage A + Stage B including repeatability) times family count, summed, then multiplied by 1.35",
-    "quarantine": "timing kernel cannot launch the full cache while runtime_projection.full_run_authorized is false",
+    "quarantine": "full cache is authorized by the banked timing PASS but remains unusable for graph scoring until N1 authenticates all outputs and the human approves M5-to-T4 tolerance",
     "stop_if_over_limit": true
   },
   "schema": "celltrack-alpha.h1-zero-wrfeat-launch-contract.v1",
@@ -137,5 +140,5 @@
     "real_masks_required": false,
     "training": false
   },
-  "status": "TIMING_PASS_FULL_CACHE_CONTRACT_REVISION_REQUIRED"
+  "status": "FULL_CACHE_PACKAGE_READY_STOPPED_AT_HUMAN_EXTERNAL_GATE"
 }

@@ -1,3 +1,62 @@
+# H1-ZWRFEAT — full-cache package ready at human external gate
+
+## Full-cache preparation (2026-07-27)
+
+Verdict: **HUMAN-DECISION / PACKAGE READY.**
+
+The banked smoke and coordinator attestation now authorize only the frozen
+fit105 full-cache path. The Option-C contract pins the 5.5388838406-hour
+projection and both T4-repeatability witnesses; the shared builder validates
+those artifacts before accepting `full_run_authorized=true`. The source overlay
+now carries both timing records, and all contract, dependency, asset, and
+kernel hashes were rotated.
+
+The complete remaining cascade is dispatchable from
+`h1_remaining_dag/DAG.md`. It auto-advances only through local GO gates and
+halts at the full-cache GPU launch, M5↔T4 approval, and public submission.
+Focused package, graph-runner, and registration verification passed 22/22
+after a 45-second clean-idle preflight; swap stayed at 0 MiB. The staged v2
+assets contain 55 files with exact timing, attestation, contract, dependency,
+and builder hashes and no forbidden split path.
+
+### Exact human full-cache launch boundary
+
+Run from `/Users/agent/Desktop/cell_tracking`:
+
+```bash
+test ! -e /private/tmp/trackastra-h1-option-c-assets-v2
+PYTHONDONTWRITEBYTECODE=1 .venv313/bin/python scripts/prepare_h1_feature_cache.py stage-assets --stage-dir /private/tmp/trackastra-h1-option-c-assets-v2
+shasum -a 256 /private/tmp/trackastra-h1-option-c-assets-v2/source_overlay/kaggle_kernel/trackastra-h1-feature-cache-prep/option_c_contract.json
+shasum -a 256 /private/tmp/trackastra-h1-option-c-assets-v2/source_overlay/reports/g02/screening/h1_timing_smoke_3.json
+.venv313/bin/kaggle datasets version -p /private/tmp/trackastra-h1-option-c-assets-v2 -m 'Authorize frozen H1 fit105 full cache from banked 5.538884 h timing PASS' --dir-mode zip
+.venv313/bin/kaggle datasets status onebitbrain/trackastra-h1-option-c-assets-v1 --format 'json(status,current_version_number)'
+.venv313/bin/kaggle kernels push -p /Users/agent/Desktop/cell_tracking/kaggle_kernel/trackastra-h1-feature-cache-prep
+```
+
+The two hashes must be
+`4da06d487ba1787f91467a01862e4f7471daa16244674f5171960774da06334b`
+and
+`5c6ff4fbebaf019a6695266fb6d98bba5da7fd510f53060b52d0bbbefb3accd1`.
+Do not push until the dataset reports `ready` at version 2 or later.
+
+After the kernel completes, retrieve its quarantined output:
+
+```bash
+.venv313/bin/kaggle kernels status onebitbrain/trackastra-h1-feature-cache
+test ! -e /private/tmp/trackastra-h1-full-cache-output
+.venv313/bin/kaggle kernels output onebitbrain/trackastra-h1-feature-cache -p /private/tmp/trackastra-h1-full-cache-output -o
+```
+
+Then resume at
+`h1_remaining_dag/N1_cache_attest_tolerance.md`. Do not use Kaggle's competition
+submission control: this cache kernel still intentionally emits no
+`submission.csv`.
+
+Codex performed no Kaggle dataset version, kernel push, GPU launch, RunPod
+action, or submission.
+
+---
+
 # H1-ZWRFEAT — smoke attempt 3 passed; not a submission kernel
 
 ## Attempt 3 result (2026-07-27)
