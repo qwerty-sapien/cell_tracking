@@ -53,7 +53,15 @@
   },
   "features": {
     "base_feature_count": 48,
-    "checkpoint_features": "two H3 arms required: twelve zero-filled wrfeat channels and real wrfeat-regionprops2 mask features",
+    "checkpoint_features": "primary H1 arm is the established points-only interface with twelve zero-filled wrfeat channels; it has no mask input or mask prerequisite",
+    "h3_fallback": {
+      "ablation": "zero-filled versus authenticated real wrfeat-regionprops2",
+      "allowed_only_after": "zero-wrfeat H1 fails the 44b6 held-fit graph gate",
+      "authentic_source_required": true,
+      "node": "H3-MASK-SOURCE",
+      "pseudo_masks_forbidden": true,
+      "status": "CONDITIONAL_NOT_STARTED"
+    },
     "max_tokens": 1024,
     "output_feature_count": 49,
     "trackastra_feature": "normalized frozen challenger association minus incumbent association for each conflict row",
@@ -72,6 +80,11 @@
     "fit_prepare": {
       "path": "reports/g02/selected_graph_temporal_background_prepare_v1/prepare.json",
       "sha256": "c41bc216d4dfd642126d476a66a3fd9659f54a91dc49463f6b468a301a971d89"
+    },
+    "fit_manifest": {
+      "path": "kaggle_kernel/trackastra-h1-feature-cache-prep/cache_dataset_manifest.json",
+      "sha256": "ff7b205f58ad70c69954fed1c3e60a100d246c1e374a849c6ea7183934e98f28",
+      "supersedes_fit_prepare_path_read_for_option_c": true
     },
     "full_pool_feasibility": {
       "coverage": "6bba-only banked evidence; 44b6 counts are intentionally not fabricated",
@@ -106,6 +119,12 @@
     "t4_repeatability": "numpy.array_equal"
   },
   "purpose": "H1 frozen Trackastra two-family feature generation under the human-selected Option-C parity contract",
+  "revision": {
+    "date": "2026-07-26",
+    "decision": "DECOUPLE_H1_FEATURE_ARMS_ZERO_WRFEAT_FIRST",
+    "rationale": "fit-train105 has points and images but no authentic per-detection masks; coupling the absent real-mask arm blocked the cheaper points-only falsification even though zero-filled wrfeat is the already authenticated QUAL/FULLPOOL interface",
+    "real_mask_pre_smoke_prerequisite": false
+  },
   "runtime_projection": {
     "full_run_authorized": false,
     "status": "BLOCKED_NO_BANKED_OPTION_C_CUDA_TIMING",
@@ -127,6 +146,7 @@
     "gpu_action": "HUMAN_GATED",
     "kaggle_action": "HUMAN_GATED",
     "label_access": false,
+    "prepared_validation_metadata_access": false,
     "promotion_authorized": false,
     "runpod_action": false,
     "training": false,
@@ -150,7 +170,7 @@
       "complete and authenticate Stage A once for all 105 fit-train identities",
       "start Stage B in a new process",
       "run Stage B twice on named 44b6 and 6bba parity identities and require T4-to-T4 numpy.array_equal",
-      "publish T4-canonical arrays; quarantine downstream use until the one-time M5-to-T4 classification and human tolerance approval"
+      "publish T4-canonical zero-wrfeat arrays; quarantine downstream use until the one-time M5-to-T4 classification and human tolerance approval"
     ],
     "trackastra_enrichment": {
       "input_feature_count": 48,
@@ -160,5 +180,5 @@
       "v45_loaded": false
     }
   },
-  "status": "locked"
+  "status": "locked-zero-wrfeat-primary"
 }

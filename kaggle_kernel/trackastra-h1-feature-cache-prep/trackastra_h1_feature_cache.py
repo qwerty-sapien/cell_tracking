@@ -20,7 +20,7 @@ import zipfile
 
 WORKING = Path("/kaggle/working")
 CONTRACT_SHA256 = (
-    "9f2247cf69cd431840395162ec057770081689a11e964ccb27ff4bd4aee6f6b7"
+    "a7e866c34c15f46671ae3c30aeb4cf1107e5dd55acd63458a22890b69ff29404"
 )
 SEED = 20260725
 ENVIRONMENT_PINS = {
@@ -43,7 +43,7 @@ RAW_MANIFEST_SHA256 = (
     "665c505b4e38a03f5a501527fde58a064d3ce8fac413898656a4f3f3e6cf781e"
 )
 SOURCE_DEPENDENCY_MANIFEST_SHA256 = (
-    "fadc47e81d7290e5d723ae5da279382f1218e4ce138aa0d5712cb88990feab05"
+    "999db8a2a475415abc9ff5dde1d18d366c9caf40a311ddfb09af4c008df51326"
 )
 
 
@@ -268,8 +268,21 @@ def main() -> int:
     contract.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(contract_source, contract)
     contract_payload = json.loads(contract.read_text(encoding="ascii"))
-    if contract_payload.get("environment") is None:
-        raise KernelError("Option-C environment contract is absent")
+    if (
+        contract_payload.get("environment") is None
+        or contract_payload.get("status") != "locked-zero-wrfeat-primary"
+        or contract_payload.get("revision", {}).get("decision")
+        != "DECOUPLE_H1_FEATURE_ARMS_ZERO_WRFEAT_FIRST"
+        or contract_payload.get("revision", {}).get(
+            "real_mask_pre_smoke_prerequisite"
+        )
+        is not False
+        or contract_payload.get("features", {})
+        .get("h3_fallback", {})
+        .get("status")
+        != "CONDITIONAL_NOT_STARTED"
+    ):
+        raise KernelError("zero-wrfeat primary contract is absent or drifted")
     contract_environment = dict(contract_payload["environment"])
     contract_environment.pop("banked_t4_evidence", None)
     if contract_environment != ENVIRONMENT_PINS:
@@ -398,6 +411,13 @@ def main() -> int:
                 .get("device_attestation", {})
                 .get("coordinates_and_features_follow_trackastra_device")
                 is not True
+                or {
+                    str(row.get("identity"))
+                    for row in enriched_report.get("option_c_parity", ())
+                    if isinstance(row, dict)
+                    and row.get("t4_array_equal") is True
+                }
+                != {identity}
             ):
                 raise KernelError(
                     f"cuda:0 timing smoke device attestation failed: {identity}"
@@ -426,7 +446,11 @@ def main() -> int:
         projected_hours_with_margin = projected_seconds * 1.35 / 3600.0
         smoke = {
             "schema": "celltrack-alpha.trackastra-h1-cuda-timing-smoke.v1",
-            "verdict": "TIMING_ONLY_NO_FULL_CACHE",
+            "verdict": (
+                "PASS_TIMING_ONLY_NO_FULL_CACHE"
+                if projected_hours_with_margin <= 7.0
+                else "STOP_PROJECTED_RUNTIME_EXCEEDS_7_HOURS"
+            ),
             "runtime": runtime,
             "timings": timings,
             "projection_method": (
@@ -444,7 +468,7 @@ def main() -> int:
             encoding="ascii",
         )
         print(json.dumps(smoke, sort_keys=True), flush=True)
-        return 0
+        return 0 if smoke["fits_inside_7_hours"] else 3
     base = WORKING / "reports/g02/trackastra_h1_apncc_base"
     output = WORKING / "reports/g02/trackastra_h1_feature_cache"
     stage_a = run(

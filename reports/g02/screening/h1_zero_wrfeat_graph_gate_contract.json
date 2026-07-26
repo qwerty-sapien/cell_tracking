@@ -1,0 +1,116 @@
+{
+  "candidate": {
+    "arm": "points-only-zero-wrfeat-12",
+    "deployment": {
+      "retain_challenger_and_all_conflict_ids": true,
+      "sampled_background_used_for_inference": false,
+      "score": "held-fold linear score of the limiting 49-D conflict row",
+      "selection": "fold-calibrated threshold followed by node-disjoint greedy order and the frozen APNCC cap"
+    },
+    "feature_cache_contract": "kaggle_kernel/trackastra-h1-feature-cache-prep/option_c_contract.json",
+    "feature_cache_contract_sha256": "a7e866c34c15f46671ae3c30aeb4cf1107e5dd55acd63458a22890b69ff29404",
+    "feature_cache_report": "reports/g02/trackastra_h1_feature_cache/report.json",
+    "feature_cache_requirements": {
+      "feature_count": 49,
+      "schema": "celltrack-alpha.trackastra-full-pool-feature-cache.v2",
+      "verdict": "PASS_LABEL_FREE_FEATURE_CACHE",
+      "video_count": 105
+    },
+    "label_join": {
+      "held_identity_may_not_affect": [
+        "feature normalization",
+        "ridge weights",
+        "operating threshold",
+        "proposal cap",
+        "candidate configuration"
+      ],
+      "source": "fit105-only prepared labeled challenger pairs",
+      "unmatched_full_pool_proposals": "inference-only"
+    },
+    "linear_head": {
+      "adaptive_hyperparameter_search": false,
+      "feature_count": 49,
+      "fit_dtype": "float64",
+      "kind": "standardized ridge least-squares binary ranker with an unpenalized intercept",
+      "ridge_lambda": 0.01,
+      "standard_deviation_floor": 1e-06
+    },
+    "proposal_metrics_gate": false,
+    "proposal_prerequisite": {
+      "gating": false,
+      "report_only": true
+    },
+    "threshold_selection": {
+      "calibration_partition_only": true,
+      "candidate_thresholds": "unique finite calibration scores in descending order",
+      "minimum_calibration_accepted": 100,
+      "minimum_calibration_precision": 0.95,
+      "purpose": "freeze the candidate operating point inside each outer fold; never a promotion gate"
+    }
+  },
+  "control": {
+    "name": "APNCC direct swap",
+    "runtime_contract": "reports/g02/appearance_direct_swap_contract_v1.json",
+    "runtime_contract_sha256": "cee547ed7a82d1bf7f6afe8cbbc3cc9d554181f9e19e87d319a5350863718cf7"
+  },
+  "data": {
+    "fit_labels": "prepared examples addressed only by the authenticated fit105 identities",
+    "fit_manifest": "kaggle_kernel/trackastra-h1-feature-cache-prep/cache_dataset_manifest.json",
+    "fit_manifest_sha256": "ff7b205f58ad70c69954fed1c3e60a100d246c1e374a849c6ea7183934e98f28",
+    "prepared_examples_root": "reports/g02/selected_graph_temporal_background_prepare_v1/examples",
+    "raw_archive": "data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+    "raw_archive_bytes": 87393127165
+  },
+  "execution": {
+    "device": "cpu",
+    "family_order": [
+      "44b6",
+      "6bba"
+    ],
+    "graph_resume": false,
+    "guard_required": true,
+    "maximum_peak_rss_gib": 4.0,
+    "maximum_wall_hours_per_family": 3.0,
+    "swap_growth_allowed": false
+  },
+  "fallback": {
+    "allowed_only_after": "zero-wrfeat 44b6 graph failure",
+    "authentic_per_detection_masks_required": true,
+    "node": "H3-MASK-SOURCE",
+    "pseudo_masks_forbidden": true,
+    "status": "CONDITIONAL_NOT_STARTED",
+    "zero_vs_real_ablation_before_authentication": false
+  },
+  "graph_gate": {
+    "comparison": "zero-wrfeat H1 held-fold candidate versus APNCC on the same held fit-family videos",
+    "kill_44b6_if_adjusted_delta_at_or_below": 0.0,
+    "minimum_adjusted_edge_jaccard_delta": 0.005,
+    "minimum_node_recall_delta": 0.0,
+    "next_action_on_fail": "KILL or PARK without 6bba or any cross-validation after a 44b6 failure",
+    "require_nonnegative_raw_edge_jaccard_delta": true,
+    "require_observation_distinct": true
+  },
+  "purpose": "direct 44b6-first held-fit graph falsification of frozen Trackastra zero-wrfeat features",
+  "schema": "celltrack-alpha.h1-zero-wrfeat-graph-gate-contract.v1",
+  "scope": {
+    "cross_validation_access": false,
+    "families": [
+      "44b6",
+      "6bba"
+    ],
+    "family_counts": {
+      "44b6": 36,
+      "6bba": 69
+    },
+    "gpu_action": false,
+    "holdout_access": false,
+    "kaggle_action": false,
+    "outer_fold_assignment": "sha256(video identity)[0:8] modulo 5",
+    "outer_fold_count": 5,
+    "promotion_authorized": false,
+    "runpod_action": false,
+    "source_partition": "fit-train105",
+    "validation_access": false
+  },
+  "status": "locked"
+}

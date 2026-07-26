@@ -66,19 +66,20 @@ def _literal_assignment(path: Path, name: str):
 
 
 class H1FeatureCachePrepTests(unittest.TestCase):
-    def test_real_prepare_is_exact_fit_train105_both_families(self) -> None:
-        train, validation = prep.fit_identities(
-            prep.load_json(prep.PREPARE)
-        )
+    def test_authenticated_manifest_is_exact_fit_train105(self) -> None:
+        manifest = prep.load_json(prep.DEFAULT_MANIFEST)
+        train = tuple(str(value) for value in manifest["identities"])
         self.assertEqual(len(train), 105)
-        self.assertEqual(len(validation), 12)
+        self.assertEqual(len(set(train)), 105)
         self.assertEqual(
             sum(":44b6_" in identity for identity in train), 36
         )
         self.assertEqual(
             sum(":6bba_" in identity for identity in train), 69
         )
-        self.assertTrue(set(train).isdisjoint(validation))
+        self.assertTrue(manifest["scope"]["fit_train105_only"])
+        self.assertFalse(manifest["scope"]["validation12_access"])
+        self.assertFalse(manifest["scope"]["cv57_access"])
 
     def test_benign_float_drift_requires_human_approval(self) -> None:
         m5 = _payload()
@@ -167,6 +168,19 @@ class H1FeatureCachePrepTests(unittest.TestCase):
             if "option_c" in relative:
                 self.assertEqual(families, ("44b6", "6bba"))
                 self.assertEqual(counts, {"44b6": 36, "6bba": 69})
+                self.assertEqual(
+                    contract["revision"]["decision"],
+                    "DECOUPLE_H1_FEATURE_ARMS_ZERO_WRFEAT_FIRST",
+                )
+                self.assertFalse(
+                    contract["revision"][
+                        "real_mask_pre_smoke_prerequisite"
+                    ]
+                )
+                self.assertEqual(
+                    contract["features"]["h3_fallback"]["status"],
+                    "CONDITIONAL_NOT_STARTED",
+                )
             else:
                 self.assertEqual(families, ("6bba",))
                 self.assertEqual(counts, {"6bba": 69})
@@ -409,26 +423,8 @@ class H1FeatureCachePrepTests(unittest.TestCase):
                 msg=f"stale assets manifest pin for {relative}",
             )
 
-        report = json.loads(
-            (
-                ROOT
-                / "reports/g02/screening/h1_feature_cache_prep_v1.json"
-            ).read_text(encoding="utf-8")
-        )
-        for name, record in report["artifacts"].items():
-            if name == "scripts":
-                for filename, expected in record.items():
-                    self.assertEqual(
-                        _sha256(SCRIPTS / filename),
-                        expected,
-                        msg=f"stale report script pin for {filename}",
-                    )
-            elif "path" in record:
-                self.assertEqual(
-                    _sha256(ROOT / record["path"]),
-                    record["sha256"],
-                    msg=f"stale report artifact pin for {name}",
-                )
+        # The banked H1-PREP v1 report is immutable historical evidence. The
+        # active zero-wrfeat revision is pinned by the package manifests above.
 
 
 if __name__ == "__main__":

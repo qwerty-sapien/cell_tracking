@@ -1,8 +1,12 @@
 {
   "files": [
     {
+      "path": "source_overlay/kaggle_kernel/trackastra-h1-feature-cache-prep/cache_dataset_manifest.json",
+      "sha256": "ff7b205f58ad70c69954fed1c3e60a100d246c1e374a849c6ea7183934e98f28"
+    },
+    {
       "path": "source_overlay/kaggle_kernel/trackastra-h1-feature-cache-prep/option_c_contract.json",
-      "sha256": "9f2247cf69cd431840395162ec057770081689a11e964ccb27ff4bd4aee6f6b7"
+      "sha256": "a7e866c34c15f46671ae3c30aeb4cf1107e5dd55acd63458a22890b69ff29404"
     },
     {
       "path": "source_overlay/kaggle_kernel/trackastra-h1-feature-cache-prep/raw_fit105_directory_manifest.json",
@@ -10,7 +14,7 @@
     },
     {
       "path": "source_overlay/kaggle_kernel/trackastra-h1-feature-cache-prep/source_dependency_manifest.json",
-      "sha256": "fadc47e81d7290e5d723ae5da279382f1218e4ce138aa0d5712cb88990feab05"
+      "sha256": "999db8a2a475415abc9ff5dde1d18d366c9caf40a311ddfb09af4c008df51326"
     }
   ],
   "remote_dataset": {

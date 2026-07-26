@@ -215,7 +215,14 @@ def build(args: argparse.Namespace) -> dict[str, object]:
         expected_identities=eligible,
     )
     inputs = contract["inputs"]
-    for label in ("fit_prepare", "full_pool_feasibility", "asset_audit"):
+    required_inputs = ["full_pool_feasibility", "asset_audit"]
+    required_inputs.append(
+        "fit_manifest"
+        if contract["schema"]
+        == "celltrack-alpha.trackastra-h1-feature-cache-contract.option-c.v1"
+        else "fit_prepare"
+    )
+    for label in required_inputs:
         record = inputs[label]
         _require(ROOT / str(record["path"]), str(record["sha256"]), label)
     if (

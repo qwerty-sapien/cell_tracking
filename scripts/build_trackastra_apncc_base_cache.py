@@ -225,27 +225,57 @@ def _eligible(
 ) -> tuple[tuple[str, ...], dict[str, object], dict[str, object]]:
     inputs = contract["inputs"]
     assert isinstance(inputs, Mapping)
-    prepare = _load_json(
-        ROOT / str(inputs["fit_prepare"]["path"]), "fit prepare"
+    option_c = (
+        contract["schema"]
+        == "celltrack-alpha.trackastra-h1-feature-cache-contract.option-c.v1"
     )
+    if option_c:
+        fit_manifest = _load_json(
+            ROOT / str(inputs["fit_manifest"]["path"]),
+            "fit105 identity manifest",
+        )
+        manifest_scope = fit_manifest.get("scope")
+        if (
+            not isinstance(manifest_scope, Mapping)
+            or manifest_scope.get("fit_train105_only") is not True
+            or manifest_scope.get("validation12_access") is not False
+            or manifest_scope.get("cv57_access") is not False
+        ):
+            raise TrackastraFeatureCacheError(
+                "fit105 identity manifest scope drifted"
+            )
+        source_identities = tuple(
+            str(value) for value in fit_manifest.get("identities", ())
+        )
+        prepare_rows: dict[str, object] = {}
+    else:
+        prepare = _load_json(
+            ROOT / str(inputs["fit_prepare"]["path"]), "fit prepare"
+        )
+        scope = prepare.get("scope")
+        if (
+            not isinstance(scope, Mapping)
+            or scope.get("fit_only") is not True
+            or any(
+                scope.get(key) is not False
+                for key in ("held_out_used", "audit_used", "test_used")
+            )
+        ):
+            raise TrackastraFeatureCacheError("fit prepare scope drifted")
+        source_identities = tuple(
+            str(value) for value in scope["train_video_ids"]
+        )
+        prepare_rows = {
+            str(row["identity"]): row for row in prepare["videos"]
+        }
     feasibility = _load_json(
         ROOT / str(inputs["full_pool_feasibility"]["path"]),
         "full-pool feasibility",
     )
-    scope = prepare.get("scope")
-    if (
-        not isinstance(scope, Mapping)
-        or scope.get("fit_only") is not True
-        or any(
-            scope.get(key) is not False
-            for key in ("held_out_used", "audit_used", "test_used")
-        )
-    ):
-        raise TrackastraFeatureCacheError("fit prepare scope drifted")
     families, family_counts = contract_families(contract)
     full_eligible = tuple(
         str(candidate)
-        for candidate in scope["train_video_ids"]
+        for candidate in source_identities
         if any(
             str(candidate).startswith(f"train:{family}_")
             for family in families
@@ -261,10 +291,6 @@ def _eligible(
     if actual_counts != family_counts:
         raise TrackastraFeatureCacheError("eligible video count drifted")
     if identity is not None:
-        option_c = (
-            contract["schema"]
-            == "celltrack-alpha.trackastra-h1-feature-cache-contract.option-c.v1"
-        )
         if option_c:
             authorized = {
                 str(value)
@@ -289,9 +315,6 @@ def _eligible(
         eligible = (identity,)
     else:
         eligible = full_eligible
-    prepare_rows = {
-        str(row["identity"]): row for row in prepare["videos"]
-    }
     feasibility_rows = {
         str(row["identity"]): row for row in feasibility["videos"]
     }
@@ -367,12 +390,18 @@ def build(args: argparse.Namespace) -> dict[str, object]:
         )
     implementation_sha256 = sha256(Path(__file__))
     inputs = contract["inputs"]
-    for label in (
+    required_inputs = [
         "appearance_contract",
-        "fit_prepare",
         "full_pool_feasibility",
         "asset_audit",
-    ):
+    ]
+    required_inputs.append(
+        "fit_manifest"
+        if contract["schema"]
+        == "celltrack-alpha.trackastra-h1-feature-cache-contract.option-c.v1"
+        else "fit_prepare"
+    )
+    for label in required_inputs:
         record = inputs[label]
         _require(ROOT / str(record["path"]), str(record["sha256"]), label)
     eligible, prepare_rows, feasibility_rows = _eligible(
@@ -483,8 +512,14 @@ def build(args: argparse.Namespace) -> dict[str, object]:
             selected, _probabilities, _no_link, graph = _baseline(
                 cache, scorer
             )
-            if int(graph["raw_selected_edges"]) != int(
-                prepare_rows[identity]["graph"]["raw_selected_edges"]
+            if (
+                identity in prepare_rows
+                and int(graph["raw_selected_edges"])
+                != int(
+                    prepare_rows[identity]["graph"][
+                        "raw_selected_edges"
+                    ]
+                )
             ):
                 raise TrackastraFeatureCacheError(
                     f"{identity} selected graph identity drifted"

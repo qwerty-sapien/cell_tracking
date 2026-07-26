@@ -123,7 +123,8 @@ def load_contract(path: Path, expected_sha256: str) -> dict[str, Any]:
     execution = value.get("execution")
     if (
         value.get("schema") not in (CONTRACT_SCHEMA, OPTION_C_CONTRACT_SCHEMA)
-        or value.get("status") != "locked"
+        or value.get("status")
+        not in ("locked", "locked-zero-wrfeat-primary")
         or not all(
             isinstance(section, Mapping)
             for section in (
@@ -141,6 +142,11 @@ def load_contract(path: Path, expected_sha256: str) -> dict[str, Any]:
     common_invalid = (
         scope.get("fit_train105_only") is not True
         or scope.get("label_access") is not False
+        or (
+            schema == OPTION_C_CONTRACT_SCHEMA
+            and scope.get("prepared_validation_metadata_access")
+            is not False
+        )
         or scope.get("training") is not False
         or any(
             scope.get(key) is not False
@@ -216,6 +222,14 @@ def load_contract(path: Path, expected_sha256: str) -> dict[str, Any]:
             "zarr": "3.2.1",
         }
         or not isinstance(source_files, Mapping)
+        or value.get("inputs", {})
+        .get("fit_manifest", {})
+        .get("sha256")
+        != "ff7b205f58ad70c69954fed1c3e60a100d246c1e374a849c6ea7183934e98f28"
+        or value.get("inputs", {})
+        .get("fit_manifest", {})
+        .get("supersedes_fit_prepare_path_read_for_option_c")
+        is not True
         or source_files
         != {
             "trackastra/model/model.py": "53e47b931338ed3450f4f23d6391ad1985f7083fd2754eb4edd6d3b5cd8b964c",
@@ -238,6 +252,18 @@ def load_contract(path: Path, expected_sha256: str) -> dict[str, Any]:
             "geometry_confidences",
             "geometry_probabilities",
         ]
+        or value.get("revision", {}).get("decision")
+        != "DECOUPLE_H1_FEATURE_ARMS_ZERO_WRFEAT_FIRST"
+        or value.get("revision", {}).get(
+            "real_mask_pre_smoke_prerequisite"
+        )
+        is not False
+        or features.get("h3_fallback", {}).get("status")
+        != "CONDITIONAL_NOT_STARTED"
+        or features.get("h3_fallback", {}).get(
+            "pseudo_masks_forbidden"
+        )
+        is not True
     )
     if common_invalid or legacy_invalid or option_c_invalid:
         raise TrackastraFeatureCacheError("contract is not fail-closed")
@@ -945,7 +971,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
                 files.append(existing)
                 resumed += 1
                 print(
-                    f"[{ordinal}/69] {identity}: authenticated resume",
+                    f"[{ordinal}/{len(eligible)}] {identity}: authenticated resume",
                     flush=True,
                 )
                 continue
@@ -1040,14 +1066,14 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             _atomic_json(checkpoint_path, record)
             files.append(record)
             print(
-                f"[{ordinal}/69] {identity}: "
+                f"[{ordinal}/{len(eligible)}] {identity}: "
                 f"{record['proposal_count']} proposals / "
                 f"{record['transition_count']} calls",
                 flush=True,
             )
             del cache, windows, margins, flattened, payload
             gc.collect()
-    if len(files) != 69:
+    if len(files) != len(eligible):
         raise TrackastraFeatureCacheError(
             "feature cache video coverage is incomplete"
         )

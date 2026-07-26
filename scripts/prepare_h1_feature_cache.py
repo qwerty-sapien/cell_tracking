@@ -574,6 +574,8 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     manifest = subparsers.add_parser("manifest")
     manifest.add_argument("--output", type=Path, default=DEFAULT_MANIFEST)
     manifest.add_argument("--stage-dir", type=Path)
+    stage_cache = subparsers.add_parser("stage-cache")
+    stage_cache.add_argument("--stage-dir", type=Path, required=True)
     raw = subparsers.add_parser("raw-manifest")
     raw.add_argument("--output", type=Path, default=DEFAULT_RAW_MANIFEST)
     assets = subparsers.add_parser("stage-assets")
@@ -604,6 +606,22 @@ def main(argv: Sequence[str] | None = None) -> int:
         )
         if args.stage_dir is not None:
             stage_cache_dataset(result, args.stage_dir)
+    elif args.command == "stage-cache":
+        manifest = load_json(DEFAULT_MANIFEST)
+        if (
+            manifest.get("schema")
+            != "celltrack-alpha.trackastra-h1-fit105-cache-dataset.v1"
+            or manifest.get("scope", {}).get("fit_train105_only")
+            is not True
+            or manifest.get("scope", {}).get("video_count") != 105
+            or manifest.get("scope", {}).get("family_counts")
+            != FAMILY_COUNTS
+        ):
+            raise H1PrepError(
+                "authenticated fit105 cache manifest drifted"
+            )
+        stage_cache_dataset(manifest, args.stage_dir)
+        result = {"verdict": "FIT105_CACHE_DATASET_STAGED"}
     elif args.command == "raw-manifest":
         result = build_raw_manifest()
         args.output.parent.mkdir(parents=True, exist_ok=True)

@@ -14,11 +14,14 @@ points at the authoritative artifacts; it does not replace them.
 ## Current frontier (as of 2026-07-26)
 - **H0 DONE** — proposal-only screening **BANNED** (no proxy `|ρ|≥0.5`). Every candidate now
   routes straight to the **44b6-first held-fit graph gate**; proposal metrics may be reported, never gate.
-- **H1 STOP / QUOTA RESERVED** — human authorization was recorded, but the launch-integrity
-  gate failed before upload/smoke: no authenticated real H3 mask/wrfeat arm exists and the
-  two H1 remote datasets/kernel are absent. No GPU, cache, graph, CV57, or submission ran.
-- **NEXT** — H1 remains PARKed until a new authenticated, node-aligned real H3 artifact
-  covers both fit-train families and the remote package is created/version-verified.
+- **H1-ZWRFEAT READY / HUMAN UPLOAD GATE** — the 2026-07-26 human decision decoupled the
+  arms. The primary H1 arm is points-only with twelve zero-filled `wrfeat` channels and no
+  mask prerequisite. The fit105 package and 44b6-first graph runner are locally verified;
+  no external mutation or graph scoring ran.
+- **NEXT** — human stages/creates and version-verifies
+  `trackastra-h1-option-c-assets-v1` and `trackastra-h1-fit105-cache-v1`, then pushes the
+  timing-only T4 kernel. Require exact T4 witnesses/repeatability and projected total
+  `<=7 h`; freeze the proposed M5↔T4 per-column tolerance before any full cache/graph use.
 
 ## The one live lever
 Frozen **pretrained Trackastra + tiny calibrated head**, tested **44b6-first at the graph
@@ -30,8 +33,10 @@ graph-level signal. Everything else is DEAD (below).
 - In-pool re-ranking oracle `~0.896` (projection). Transfer slope `≈0.48–0.66` (soft, rounding-bounded).
 - **Accepted (public) 0.89 needs local `≈0.895–0.900`** ⇒ requires H1→44b6 + H2 recall, not
   in-pool re-ranking (DAG §3.1). Kaggle cap 30 T4-h/model. RunPod locked until accepted `≥0.89`.
-- H1 execution usage: **0 GPU-h, 0 uploads, 0 submissions**; all family graph deltas
-  unmeasured because the prerequisite gate stopped before the timing smoke.
+- H1 execution usage: **0 GPU-h, 0 uploads, 0 submissions**; all family graph deltas remain
+  unmeasured at the human upload boundary. Package covers exactly **36 44b6 + 69 6bba**.
+- H1-ZWRFEAT pins: contract `a7e866c3…9404`, kernel `03ec4df4…d8d`, graph contract
+  `d35e2d3d…7f48`; focused fail-closed verification **18/18 PASS**.
 
 ## DEAD — do not re-propose without a new named mechanism (register: DAG §6.1)
 Deterministic recall / shell abstention (`R12SHELL`, `MGSHELL`, `TEMPBG`) · from-scratch
@@ -41,6 +46,11 @@ knobs (`GA-SP`, `LC-P4CTRL`) · full organizer `TemporalUNet3D` (~478 T4-h).
 Conditional-PARK (revisitable): detection front-end · divisions · GT-conflict gates.
 
 ## Log (newest first)
+- 2026-07-26 — H1-ZWRFEAT READY at the human upload boundary: decoupled points-only
+  zero-wrfeat contract, fit105-only two-stage package, exact create/version-verify/smoke
+  commands, and 44b6-first graph runner banked; 18/18 focused tests passed after a 45 s
+  zero-swap preflight. H3-MASK-SOURCE is conditional and unstarted. No Kaggle/RunPod
+  mutation or graph run occurred. (Codex)
 - 2026-07-26 — H1 STOP / RESERVE QUOTA at launch-integrity gate: authenticated fit105
   manifests contain no real H3 mask/wrfeat artifact; authenticated Kaggle listings contain
   neither H1 dataset nor kernel. No external mutation or downstream gate ran. (Codex)

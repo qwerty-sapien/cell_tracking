@@ -75,6 +75,9 @@ SCHEMA = "celltrack-alpha.trackastra-linear-oof-graph-gate.v1"
 CONTRACT_SCHEMA = (
     "celltrack-alpha.trackastra-linear-oof-graph-gate-contract.v1"
 )
+H1_CONTRACT_SCHEMA = (
+    "celltrack-alpha.h1-zero-wrfeat-graph-gate-contract.v1"
+)
 FOLD_SCHEMA = "celltrack-alpha.trackastra-linear-oof-fold.v1"
 DEFAULT_CONTRACT = (
     ROOT / "reports/g02/trackastra_linear_oof_graph_gate_contract_v1.json"
@@ -211,6 +214,65 @@ def load_contract(path: Path, expected: str) -> dict[str, Any]:
     return value
 
 
+def load_h1_contract(path: Path, expected: str) -> dict[str, Any]:
+    """Load the decoupled fit105-only H1 contract without split metadata."""
+    _require(path, expected, "H1 contract")
+    value = _load_json(path, "H1 contract")
+    scope = value.get("scope")
+    candidate = value.get("candidate")
+    graph = value.get("graph_gate")
+    execution = value.get("execution")
+    fallback = value.get("fallback")
+    if (
+        value.get("schema") != H1_CONTRACT_SCHEMA
+        or value.get("status") != "locked"
+        or not all(
+            isinstance(section, Mapping)
+            for section in (
+                scope,
+                candidate,
+                graph,
+                execution,
+                fallback,
+            )
+        )
+        or scope.get("families") != ["44b6", "6bba"]
+        or scope.get("family_counts") != {"44b6": 36, "6bba": 69}
+        or scope.get("source_partition") != "fit-train105"
+        or int(scope.get("outer_fold_count", 0)) != 5
+        or any(
+            scope.get(key) is not False
+            for key in (
+                "validation_access",
+                "cross_validation_access",
+                "holdout_access",
+                "promotion_authorized",
+                "kaggle_action",
+                "gpu_action",
+                "runpod_action",
+            )
+        )
+        or candidate.get("arm") != "points-only-zero-wrfeat-12"
+        or candidate.get("proposal_metrics_gate") is not False
+        or float(graph.get("minimum_adjusted_edge_jaccard_delta", 0.0))
+        != 0.005
+        or graph.get("require_nonnegative_raw_edge_jaccard_delta")
+        is not True
+        or float(graph.get("minimum_node_recall_delta", -1.0)) != 0.0
+        or graph.get("kill_44b6_if_adjusted_delta_at_or_below")
+        != 0.0
+        or execution.get("family_order") != ["44b6", "6bba"]
+        or execution.get("guard_required") is not True
+        or fallback.get("node") != "H3-MASK-SOURCE"
+        or fallback.get("pseudo_masks_forbidden") is not True
+        or fallback.get("status") != "CONDITIONAL_NOT_STARTED"
+    ):
+        raise TrackastraOOFGraphGateError(
+            "H1 contract values are not the locked zero-wrfeat design"
+        )
+    return value
+
+
 def _code_identity() -> dict[str, str]:
     result = {}
     for relative in CODE_PATHS:
@@ -239,10 +301,16 @@ def _feature_records(
         or not isinstance(aggregate, Mapping)
         or int(aggregate.get("video_count", 0))
         != int(requirements["video_count"])
-        or int(aggregate.get("proposal_count", 0))
-        != int(requirements["proposal_count"])
-        or int(aggregate.get("inference_calls", 0))
-        != int(requirements["inference_calls"])
+        or (
+            "proposal_count" in requirements
+            and int(aggregate.get("proposal_count", 0))
+            != int(requirements["proposal_count"])
+        )
+        or (
+            "inference_calls" in requirements
+            and int(aggregate.get("inference_calls", 0))
+            != int(requirements["inference_calls"])
+        )
         or not isinstance(files, list)
         or len(files) != int(requirements["video_count"])
     ):
@@ -285,7 +353,10 @@ def _load_feature(
     if (
         not isinstance(value, dict)
         or value.get("schema")
-        != "celltrack-alpha.trackastra-full-pool-video-features.v1"
+        not in (
+            "celltrack-alpha.trackastra-full-pool-video-features.v1",
+            "celltrack-alpha.trackastra-full-pool-video-features.v2",
+        )
         or value.get("identity") != record["identity"]
         or value.get("contract_sha256") != cache_contract_sha256
         or value.get("implementation_sha256") != implementation_sha256
@@ -468,20 +539,29 @@ def _write_park(
     code_identity: Mapping[str, str],
     started: float,
 ) -> dict[str, Any]:
+    family = str(getattr(args, "h1_family", "6bba"))
+    h1_mode = contract.get("schema") == H1_CONTRACT_SCHEMA
     result = {
         "schema": SCHEMA,
         "status": "PARK",
         "scope": {
-            "family": "6bba",
+            "family": family,
             "source_partition": "fit-train105",
-            "video_count": 69,
+            "video_count": int(
+                contract.get("scope", {})
+                .get("family_counts", {})
+                .get(family, 69)
+            ),
             "validation12_access": False,
             "cv57_access": False,
             "promotion_authorized": False,
         },
         "proposal_prerequisite": {
             "held_oof": dict(held),
-            "contract": contract["candidate"]["proposal_prerequisite"],
+            "contract": contract["candidate"].get(
+                "proposal_prerequisite",
+                {"gating": False, "report_only": True},
+            ),
             "passed": False,
         },
         "folds": list(folds),
@@ -490,6 +570,7 @@ def _write_park(
             "status": "PARK",
             "reason": reason,
             "promotion_authorized": False,
+            "proposal_metrics_gate": not h1_mode,
         },
         "provenance": {
             "contract": str(args.contract),
@@ -519,30 +600,49 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         raise TrackastraOOFGraphGateError(
             f"refusing to overwrite output: {args.output}"
         )
-    contract = load_contract(args.contract, args.contract_sha256)
+    h1_mode = getattr(args, "h1_family", None) is not None
+    contract = (
+        load_h1_contract(args.contract, args.contract_sha256)
+        if h1_mode
+        else load_contract(args.contract, args.contract_sha256)
+    )
     candidate = contract["candidate"]
-    for relative, expected, label in (
-        (
-            candidate["manifest"],
-            candidate["manifest_sha256"],
-            "candidate manifest",
-        ),
+    required_inputs = [
         (
             candidate["feature_cache_contract"],
             candidate["feature_cache_contract_sha256"],
             "feature-cache contract",
         ),
         (
-            contract["data"]["prepare_report"],
-            contract["data"]["prepare_report_sha256"],
-            "prepare report",
-        ),
-        (
             contract["control"]["runtime_contract"],
             contract["control"]["runtime_contract_sha256"],
             "APNCC runtime contract",
         ),
-    ):
+    ]
+    if h1_mode:
+        required_inputs.append(
+            (
+                contract["data"]["fit_manifest"],
+                contract["data"]["fit_manifest_sha256"],
+                "fit105 identity manifest",
+            )
+        )
+    else:
+        required_inputs.extend(
+            [
+                (
+                    candidate["manifest"],
+                    candidate["manifest_sha256"],
+                    "candidate manifest",
+                ),
+                (
+                    contract["data"]["prepare_report"],
+                    contract["data"]["prepare_report_sha256"],
+                    "prepare report",
+                ),
+            ]
+        )
+    for relative, expected, label in required_inputs:
         _require(ROOT / relative, expected, label)
     if (
         args.zip != (ROOT / contract["data"]["raw_archive"]).resolve()
@@ -550,12 +650,16 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         != int(contract["data"]["raw_archive_bytes"])
     ):
         raise TrackastraOOFGraphGateError("raw archive identity drifted")
-    candidate_gate = validate_candidate(
-        load_json_object(ROOT / candidate["manifest"]),
-        load_json_object(args.policy),
-    )
-    prepare = _load_json(
-        ROOT / contract["data"]["prepare_report"], "prepare report"
+    candidate_gate = (
+        {
+            "status": "NOT_A_GATE",
+            "reason": "H0 bans proposal-only promotion gates",
+        }
+        if h1_mode
+        else validate_candidate(
+            load_json_object(ROOT / candidate["manifest"]),
+            load_json_object(args.policy),
+        )
     )
     feature_report = _load_json(
         ROOT / candidate["feature_cache_report"], "feature-cache report"
@@ -564,30 +668,89 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         feature_report, contract, args.feature_root
     )
     implementation_sha256 = str(feature_report["implementation_sha256"])
-    split = sweep._load(args.split, "frozen split")
-    score_bh_cv57.validate_revalidated_scorer(args.scorer_parity)
-    cv57 = set(
-        score_bh_cv57.exact_selection(
-            split,
-            split_path=args.split,
-            archive_video_ids=scoreall.archive_train_video_ids(args.zip),
+    if h1_mode:
+        family = str(args.h1_family)
+        if family not in ("44b6", "6bba"):
+            raise TrackastraOOFGraphGateError("unknown H1 family")
+        fit_manifest = _load_json(
+            ROOT / contract["data"]["fit_manifest"],
+            "fit105 identity manifest",
         )
-    )
-    eligible = validate_fit_scope(prepare["scope"], prepare["scope"], cv57)
-    if (
-        len(eligible) != 69
-        or any(not identity.startswith("train:6bba_") for identity in eligible)
-        or set(eligible) != set(feature_records)
-    ):
-        raise TrackastraOOFGraphGateError(
-            "eligible fit-only feature coverage drifted"
+        identities = tuple(str(value) for value in fit_manifest["identities"])
+        expected_count = int(contract["scope"]["family_counts"][family])
+        eligible = tuple(
+            identity
+            for identity in identities
+            if identity.startswith(f"train:{family}_")
         )
+        if (
+            fit_manifest.get("scope", {}).get("fit_train105_only") is not True
+            or len(identities) != 105
+            or len(set(identities)) != 105
+            or len(eligible) != expected_count
+            or set(eligible) != {
+                identity
+                for identity in feature_records
+                if identity.startswith(f"train:{family}_")
+            }
+            or set(feature_records) != set(identities)
+        ):
+            raise TrackastraOOFGraphGateError(
+                "authenticated fit105 family coverage drifted"
+            )
+        examples_root = ROOT / contract["data"]["prepared_examples_root"]
+        prepare_rows = {
+            identity: {
+                "identity": identity,
+                "path": str(
+                    (
+                        examples_root
+                        / f"{identity.replace(':', '__', 1)}.pt"
+                    ).relative_to(ROOT)
+                ),
+            }
+            for identity in eligible
+        }
+        if any(
+            not (ROOT / str(row["path"])).is_file()
+            for row in prepare_rows.values()
+        ):
+            raise TrackastraOOFGraphGateError(
+                "fit-only prepared label coverage is incomplete"
+            )
+    else:
+        prepare = _load_json(
+            ROOT / contract["data"]["prepare_report"], "prepare report"
+        )
+        split = sweep._load(args.split, "frozen split")
+        score_bh_cv57.validate_revalidated_scorer(args.scorer_parity)
+        cv57 = set(
+            score_bh_cv57.exact_selection(
+                split,
+                split_path=args.split,
+                archive_video_ids=scoreall.archive_train_video_ids(args.zip),
+            )
+        )
+        eligible = validate_fit_scope(
+            prepare["scope"], prepare["scope"], cv57
+        )
+        if (
+            len(eligible) != 69
+            or any(
+                not identity.startswith("train:6bba_")
+                for identity in eligible
+            )
+            or set(eligible) != set(feature_records)
+        ):
+            raise TrackastraOOFGraphGateError(
+                "eligible fit-only feature coverage drifted"
+            )
+        prepare_rows = {
+            str(row["identity"]): row
+            for row in prepare["videos"]
+            if str(row["identity"]) in set(eligible)
+        }
     partitions = nested_partitions(eligible, 5)
-    prepare_rows = {
-        str(row["identity"]): row
-        for row in prepare["videos"]
-        if str(row["identity"]) in set(eligible)
-    }
     labeled_data = {}
     label_coverage = {}
     for identity in eligible:
@@ -710,8 +873,11 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         )
 
     held_oof = aggregate_precision(fold_metrics)
-    prerequisite = candidate["proposal_prerequisite"]
-    proposal_passed = (
+    prerequisite = candidate.get(
+        "proposal_prerequisite",
+        {"gating": False, "report_only": True},
+    )
+    proposal_passed = h1_mode or (
         held_oof["accepted_labeled"]
         >= int(prerequisite["minimum_held_accepted_total"])
         and held_oof["precision"]
@@ -780,12 +946,22 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                 expected_identity=sweep._cache_identity(meta),
             )
             selected, _unused, _no_link, graph = _baseline(cache, scorer)
-            expected_selected = int(
-                prepare_rows[identity]["graph"]["raw_selected_edges"]
+            expected_selected = (
+                None
+                if h1_mode
+                else int(
+                    prepare_rows[identity]["graph"][
+                        "raw_selected_edges"
+                    ]
+                )
             )
             if (
-                len(selected) != expected_selected
-                or int(graph["raw_selected_edges"]) != expected_selected
+                expected_selected is not None
+                and (
+                    len(selected) != expected_selected
+                    or int(graph["raw_selected_edges"])
+                    != expected_selected
+                )
             ):
                 raise TrackastraOOFGraphGateError(
                     f"selected graph identity drifted for {identity}"
@@ -923,7 +1099,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                 }
             )
             print(
-                f"Trackastra graph {index:02d}/69 {identity} "
+                f"Trackastra graph {index:02d}/{len(eligible)} {identity} "
                 f"fold={held_fold} apncc={len(control_proposals)} "
                 f"candidate={len(candidate_proposals)} equal={equal}",
                 flush=True,
@@ -957,13 +1133,20 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     decision.update(
         {
             "status": "PASS-GRAPH" if graph_passed else "PARK",
-            "proposal_prerequisite_passed": True,
+            "proposal_prerequisite_passed": (
+                None if h1_mode else True
+            ),
+            "proposal_metrics_gate": not h1_mode,
             "observation_distinct": observation_distinct,
             "promotion_authorized": False,
             "next_action": (
-                "validation12-only-confirmation"
-                if graph_passed
-                else "PARK-no-validation12-or-CV57"
+                "return-to-H1-44b6-first-coordinator"
+                if h1_mode
+                else (
+                    "validation12-only-confirmation"
+                    if graph_passed
+                    else "PARK-no-validation12-or-CV57"
+                )
             ),
         }
     )
@@ -971,7 +1154,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "schema": SCHEMA,
         "status": "PASS-GRAPH" if graph_passed else "PARK",
         "scope": {
-            "family": "6bba",
+            "family": str(getattr(args, "h1_family", "6bba")),
             "source_partition": "fit-train105",
             "video_count": len(eligible),
             "video_ids": list(eligible),
@@ -984,7 +1167,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "held_oof": held_oof,
             "folds": fold_metrics,
             "contract": prerequisite,
-            "passed": True,
+            "passed": None if h1_mode else True,
+            "gate_used": not h1_mode,
         },
         "label_coverage": label_coverage,
         "folds": fold_records,
