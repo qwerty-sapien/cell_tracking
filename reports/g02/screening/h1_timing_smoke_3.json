@@ -1,0 +1,43 @@
+{
+  "fits_inside_7_hours": true,
+  "full_run_executed": false,
+  "human_contract_update_required": true,
+  "projected_hours_with_margin": 5.538883840561126,
+  "projection_method": "Conservative family-wise one-video timings; Stage B retains the witness repeatability rerun; multiply by family counts and add 35% margin.",
+  "runtime": {
+    "cuda_runtime": "12.8.1",
+    "cudnn": 91002,
+    "deterministic_algorithms": true,
+    "device_0": "Tesla T4",
+    "device_count": 2,
+    "packages": {
+      "PyYAML": "6.0.3",
+      "donfig": "0.8.1.post1",
+      "numcodecs": "0.15.1",
+      "numpy": "2.0.2",
+      "scipy": "1.16.3",
+      "torch": "2.10.0+cu128",
+      "zarr": "3.2.1"
+    },
+    "python": "3.12.13",
+    "seed": 20260725,
+    "tf32": false,
+    "torch_cuda": "12.8"
+  },
+  "schema": "celltrack-alpha.trackastra-h1-cuda-timing-smoke.v1",
+  "timings": [
+    {
+      "family": "44b6",
+      "identity": "train:44b6_cf8fed6b",
+      "stage_a_seconds": 94.98500655500004,
+      "stage_b_seconds_including_repeatability": 19.838164249999977
+    },
+    {
+      "family": "6bba",
+      "identity": "train:6bba_edf14583",
+      "stage_a_seconds": 132.696516998,
+      "stage_b_seconds_including_repeatability": 21.45888530900004
+    }
+  ],
+  "verdict": "PASS_TIMING_ONLY_NO_FULL_CACHE"
+}

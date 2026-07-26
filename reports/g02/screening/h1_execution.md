@@ -1,3 +1,43 @@
+# H1-ZWRFEAT — smoke attempt 3 passed; not a submission kernel
+
+## Attempt 3 result (2026-07-27)
+
+Verdict: **PASS_TIMING_ONLY_NO_FULL_CACHE.**
+
+The corrected human-run kernel completed both frozen T4 witnesses and Kaggle
+reports `KernelWorkerStatus.COMPLETE`. The read-only downloaded artifact is
+`h1_timing_smoke_3.json`, SHA-256
+`5c6ff4fbebaf019a6695266fb6d98bba5da7fd510f53060b52d0bbbefb3accd1`.
+
+| family | Stage A | Stage B incl. repeatability | witness total |
+|---|---:|---:|---:|
+| 44b6 | 94.985007 s | 19.838164 s | 114.823171 s |
+| 6bba | 132.696517 s | 21.458885 s | 154.155402 s |
+
+The locked projection
+`1.35 × (36 × 114.823171 + 69 × 154.155402) / 3600` is
+**5.5388838406 h**, passing the `<=7 h` gate by **1.4611161594 h**.
+Runtime pins, deterministic mode, both family identities, and T4-to-T4
+repeatability passed.
+
+Kaggle's refusal to offer this notebook version as a competition submission is
+expected and correct. This kernel intentionally emits
+`trackastra_h1_timing_smoke.json`, not `submission.csv`; it generated no full
+cache or competition predictions. Adding `submission.csv` would violate the
+locked order:
+
+`full fit105 cache → 44b6 held-fit graph → 6bba held-fit graph → full CV57 → human approval → one public probe`.
+
+No graph delta or proposal precision exists for either family. The M5-to-T4
+per-column tolerance is still proposed and requires human approval before graph
+use. The next node is a separately pinned full-cache contract revision; its
+Option-C dataset version and kernel push remain human-executed external
+mutations.
+
+Detailed evidence is banked in `h1_smoke_attempt_3.json`.
+
+---
+
 # H1-ZWRFEAT — smoke attempt 2 repaired at human kernel-push gate
 
 ## Attempt 2 result (2026-07-26)

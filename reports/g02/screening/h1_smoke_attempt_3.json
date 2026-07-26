@@ -1,0 +1,72 @@
+{
+  "artifact": {
+    "downloaded_read_only": true,
+    "path": "reports/g02/screening/h1_timing_smoke_3.json",
+    "sha256": "5c6ff4fbebaf019a6695266fb6d98bba5da7fd510f53060b52d0bbbefb3accd1"
+  },
+  "graph_metrics": {
+    "44b6": {
+      "adjusted_edge_jaccard_delta": null,
+      "node_recall_delta": null,
+      "proposal_precision": null,
+      "raw_edge_jaccard_delta": null
+    },
+    "6bba": {
+      "adjusted_edge_jaccard_delta": null,
+      "node_recall_delta": null,
+      "proposal_precision": null,
+      "raw_edge_jaccard_delta": null
+    }
+  },
+  "kaggle": {
+    "kernel": "onebitbrain/trackastra-h1-feature-cache",
+    "kernel_status": "KernelWorkerStatus.COMPLETE",
+    "submission_created": false,
+    "submission_ui_message": "This Competition requires a submission file named submission.csv and the selected Notebook Version does not output this file.",
+    "submission_ui_verdict": "EXPECTED_NON_SUBMISSION_KERNEL"
+  },
+  "runtime_gate": {
+    "fits_inside_7_hours": true,
+    "maximum_hours": 7.0,
+    "projected_hours_with_margin": 5.538883840561126,
+    "projection_margin": 1.35,
+    "projection_pass_margin_hours": 1.461116159438874
+  },
+  "schema": "celltrack-alpha.h1-zero-wrfeat-smoke-attempt.v1",
+  "status": "PASS_TIMING_ONLY_NO_FULL_CACHE",
+  "submission_gate": {
+    "current_order": [
+      "full fit105 feature cache",
+      "44b6 held-fit graph delta",
+      "6bba held-fit graph delta",
+      "full CV57",
+      "human approval",
+      "one public probe"
+    ],
+    "submission_csv_authorized": false
+  },
+  "timings": {
+    "44b6": {
+      "identity": "train:44b6_cf8fed6b",
+      "stage_a_seconds": 94.98500655500004,
+      "stage_b_seconds_including_repeatability": 19.838164249999977,
+      "total_seconds": 114.82317080500002
+    },
+    "6bba": {
+      "identity": "train:6bba_edf14583",
+      "stage_a_seconds": 132.696516998,
+      "stage_b_seconds_including_repeatability": 21.45888530900004,
+      "total_seconds": 154.15540230700003
+    }
+  },
+  "tolerance": {
+    "m5_t4_status": "PROPOSED_REQUIRES_HUMAN_APPROVAL",
+    "t4_t4_repeatability": "PASS"
+  },
+  "usage": {
+    "allocated_t4_gpu_hours_upper_bound": 0.1644311111111111,
+    "kernel_wall_hours": 0.08221555555555556,
+    "kernel_wall_seconds": 295.976,
+    "submission_count": 0
+  }
+}

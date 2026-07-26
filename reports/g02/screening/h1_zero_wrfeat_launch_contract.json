@@ -76,15 +76,16 @@
   },
   "human_boundary": {
     "codex_external_mutations": 0,
-    "next_action": "human pushes the corrected timing-only kernel, verifies byte identity and exact source registration, then inspects the timing smoke",
-    "stop_before": "corrected kaggle kernels push"
+    "next_action": "prepare a separately pinned full-cache contract revision; after that node, the human versions the Option-C assets and pushes the full-cache kernel",
+    "stop_before": "full-cache contract revision and its human-executed Kaggle dataset/kernel mutations"
   },
   "last_smoke_attempt": {
-    "attempt": 2,
-    "elapsed_seconds_reported_by_human": 25.2,
-    "failure": "fit_manifest identity mismatch in /kaggle/working before model work",
-    "repair": "authenticate and materialize the pinned fit manifest from the Option-C source overlay before Stage A",
-    "status": "STOP_WORKING_MANIFEST_NOT_MATERIALIZED"
+    "artifact_sha256": "5c6ff4fbebaf019a6695266fb6d98bba5da7fd510f53060b52d0bbbefb3accd1",
+    "attempt": 3,
+    "fits_inside_7_hours": true,
+    "projected_hours_with_margin": 5.538883840561126,
+    "status": "PASS_TIMING_ONLY_NO_FULL_CACHE",
+    "t4_t4_repeatability": "PASS"
   },
   "parity": {
     "cross_device_exact_fields": [
@@ -136,5 +137,5 @@
     "real_masks_required": false,
     "training": false
   },
-  "status": "REPAIRED_READY_STOPPED_AT_HUMAN_KERNEL_PUSH_BOUNDARY"
+  "status": "TIMING_PASS_FULL_CACHE_CONTRACT_REVISION_REQUIRED"
 }

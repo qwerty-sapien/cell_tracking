@@ -11,17 +11,16 @@ points at the authoritative artifacts; it does not replace them.
 - Bet ledger (root coordinator is the sole writer): `LEDGER.md`.
 - Scorer / CV57→public transfer gate: `p0_parity.md`.
 
-## Current frontier (as of 2026-07-26)
+## Current frontier (as of 2026-07-27)
 - **H0 DONE** — proposal-only screening **BANNED** (no proxy `|ρ|≥0.5`). Every candidate now
   routes straight to the **44b6-first held-fit graph gate**; proposal metrics may be reported, never gate.
-- **H1-ZWRFEAT SMOKE2 STOP / LOCALLY REPAIRED** — registration is fixed and Stage A was
-  invoked for the 44b6 witness, but the launcher had not copied the authenticated fit105
-  manifest from the Option-C overlay into its contract-declared `/kaggle/working` path.
-  It stopped in 25.2 s before model work; no timing, cache, or graph result exists.
-- **NEXT** — human pushes corrected timing kernel `5e67eff7…a88f`, then pulls it and requires
-  exact code identity plus `verify_h1_kaggle_registration.py` PASS. Continue only if the
-  smoke has exact T4 repeatability and projected total `<=7 h`; if the source manifest is
-  absent remotely, version the unchanged authenticated Option-C assets first.
+- **H1-ZWRFEAT SMOKE3 PASS / TIMING ONLY** — both frozen T4 witnesses and T4-to-T4
+  repeatability passed. Projected 105-video runtime with 35% margin is **5.538884 h**,
+  below the 7 h gate. No full cache, graph result, CV run, or submission exists.
+- **NEXT** — `H1-ZWRFEAT-CACHE-PREP`: pin a full-cache contract revision, then stop at the
+  human Option-C dataset-version/kernel-push boundary. The resulting cache stays
+  quarantined pending human M5↔T4 tolerance approval, then runs the 44b6 graph gate first.
+  Do **not** add `submission.csv`; public submission remains after both graph gates + CV57.
 
 ## The one live lever
 Frozen **pretrained Trackastra + tiny calibrated head**, tested **44b6-first at the graph
@@ -33,8 +32,9 @@ graph-level signal. Everything else is DEAD (below).
 - In-pool re-ranking oracle `~0.896` (projection). Transfer slope `≈0.48–0.66` (soft, rounding-bounded).
 - **Accepted (public) 0.89 needs local `≈0.895–0.900`** ⇒ requires H1→44b6 + H2 recall, not
   in-pool re-ranking (DAG §3.1). Kaggle cap 30 T4-h/model. RunPod locked until accepted `≥0.89`.
-- H1 external usage: two human-created dataset v1s, two failed timing-kernel versions,
-  **0 measured GPU work, 0 submissions**. All family graph deltas remain unmeasured.
+- H1 external usage: two human-created dataset v1s; two failed timing-kernel versions and
+  one passing smoke; **0.0822 kernel-h** (≤0.1644 allocated T4-GPU-h), **0 submissions**.
+  All family graph deltas remain unmeasured.
   Package covers exactly **36 44b6 + 69 6bba**.
 - H1-ZWRFEAT pins: contract `a7e866c3…9404`, corrected kernel `5e67eff7…a88f`, graph
   contract `d35e2d3d…7f48`; focused fail-closed verification **22/22 PASS**, swap 0 MiB.
@@ -47,6 +47,10 @@ knobs (`GA-SP`, `LC-P4CTRL`) · full organizer `TemporalUNet3D` (~478 T4-h).
 Conditional-PARK (revisitable): detection front-end · divisions · GT-conflict gates.
 
 ## Log (newest first)
+- 2026-07-27 — H1-ZWRFEAT-SMOKE3 PASS: authenticated T4 timing artifact projects
+  **5.538884 h** with margin, with both-family T4 repeatability PASS. The notebook is
+  intentionally non-submittable; it produced no `submission.csv`, full cache, or graph
+  result. Next is full-cache contract preparation, not a public probe. (Codex)
 - 2026-07-26 — H1-ZWRFEAT-SMOKE2 STOP after registration cleared: launcher omitted the
   pinned fit105 manifest from `/kaggle/working`, so Stage A failed before model work.
   Corrected the authenticated copy path locally; repush remains human-executed. (Codex)
