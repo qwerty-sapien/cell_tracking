@@ -1,0 +1,69 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-support-stress.v1",
+  "status": "PARK_PREREQUISITE",
+  "proposal_support": {
+    "legacy_candidate_rows": 15240,
+    "unique_candidate_identities": 14280,
+    "identity_conflicts": 0,
+    "fit105_44b6_dataset_coverage": {
+      "covered_partial": 4,
+      "required": 36,
+      "temporal_extent_per_legacy_dataset_frames": 3,
+      "complete": false
+    },
+    "fit105_6bba_dataset_coverage": {
+      "covered_partial": 3,
+      "required": 69,
+      "complete": false,
+      "gate_opened": false
+    },
+    "extracted_raw_zarrs": {
+      "total": 12,
+      "44b6": 3,
+      "6bba": 9,
+      "fit105_overlap": 10,
+      "complete_fit105_coverage": false
+    },
+    "embedded_gt_join_columns_present": [
+      "label",
+      "label_status",
+      "matched_gt_id",
+      "nearest_gt_um"
+    ],
+    "labels_used_for_candidate_selection": false
+  },
+  "background": {
+    "exact_unlabeled_background_available": false,
+    "p0_definition": "UNDEFINED: no banked node proposal generator",
+    "p0_raw_background_actions": null
+  },
+  "preregistered_false_node_stress_budgets": [
+    0,
+    1,
+    2,
+    5,
+    10,
+    20,
+    50
+  ],
+  "stress_curve": {
+    "executed": false,
+    "points": [],
+    "reason": "the deterministic harmful-node order cannot be instantiated without a complete immutable background universe; fabricating background actions is forbidden"
+  },
+  "controls": {
+    "noop_graph_run": false,
+    "isolated_node_add_graph_run": false,
+    "topology_complete_restore_graph_run": false,
+    "reason": "the candidate prerequisite failed before any held-family graph outcome opened"
+  },
+  "graph_vectors": {
+    "44b6": null,
+    "6bba": null
+  },
+  "verdict": "PARK_NO_COMPLETE_AUTHENTIC_CANDIDATE_UNIVERSE",
+  "source": {
+    "audit_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/PROVENANCE_AUDIT.json",
+    "audit_sha256": "481504fc0ca2e744ab08794f8cbb8d38ee2f5299d969c45e4035dc33cd951dd6"
+  }
+}

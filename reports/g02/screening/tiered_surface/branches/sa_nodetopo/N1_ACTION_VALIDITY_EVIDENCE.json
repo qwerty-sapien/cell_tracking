@@ -1,0 +1,33 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-n1-evidence.v1",
+  "scope": "synthetic interface contract only; not scientific candidate evidence",
+  "frozen_n1_interface_sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865",
+  "frozen_n1_implementation_sha256": "457f6607a493d51d972913fa155d687e9ffc4045475605bc109a4ca9e90124f5",
+  "complete_restore_topology_action": {
+    "compiled": true,
+    "action_sha256": "6259e431773e03b7435fe1a073ce69f1afbae9023f0c99e0400c3350bc65b0b5",
+    "before_graph_sha256": "47ee5267c988e8b75e9a8ff8c97223468bcb0bf9d6e4aeeaddf59324c73fe42f",
+    "after_graph_sha256": "da3d20ae6410e185bf471495501382041ce7e456c3dd5ccd007b275ec16ae97d",
+    "observation_distinct": true,
+    "removed_conflict_edges": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ]
+    ]
+  },
+  "isolated_coordinate_only_control": {
+    "rejected": true,
+    "error": "restore_topology requires nodes and edges and no explicit deletions"
+  },
+  "real_candidate_actions_compiled": 0,
+  "real_action_reason": "no complete provenance-pinned candidate-to-baseline incident-topology join exists",
+  "source": {
+    "audit_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/PROVENANCE_AUDIT.json",
+    "audit_sha256": "481504fc0ca2e744ab08794f8cbb8d38ee2f5299d969c45e4035dc33cd951dd6"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "updated_utc": "2026-07-28T02:20:00Z",
+  "plan_sha256": "a322724e77dd77f53c36e918e5345e86e8394a3848033a9a2225c21924e75116",
+  "objective": "S(G)=weighted_adjusted_edge_Jaccard + 0.1*division_Jaccard",
+  "gate": "44b6->6bba->CV57; adj>=+0.005 both families; raw,node>=0",
+  "forbidden_scope": {
+    "audit_used": false,
+    "test_split_used": false,
+    "cv57_used": false,
+    "submission_action": false,
+    "runpod_action": false,
+    "kaggle_gpu_action": false,
+    "external_download_or_service": false,
+    "dead_rescreen": false,
+    "pseudo_mask_or_segmentation": false,
+    "sibling_live_output_used": false,
+    "root_single_writer_mutation": false
+  },
+  "family_execution": {
+    "44b6_ran": false,
+    "family_44b6_gate": {
+      "status": "NOT_OPENED_PREREQUISITE_PARK",
+      "adjusted_delta": null,
+      "raw_delta": null,
+      "node_delta": null
+    },
+    "6bba_ran": false,
+    "cv57_ran": false
+  },
+  "memo_quarantine": true,
+  "nodes": [
+    {
+      "id": "NODETOPO-O0",
+      "branch": "atomic_p0",
+      "owner_agent": "SA-NODETOPO",
+      "tier": "PARK_A",
+      "banked": true,
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/PROVENANCE_AUDIT.json",
+      "evidence_sha256": "481504fc0ca2e744ab08794f8cbb8d38ee2f5299d969c45e4035dc33cd951dd6",
+      "evidence_basis": "Branch-local audit authenticates P0 8ad548c1...9c06 and retains topology-complete restore headroom while proving the candidate prerequisite absent",
+      "oracle_headroom": {
+        "family_44b6_dS": 0.009812493435202185,
+        "family_6bba_dS": 0.02404,
+        "control": "CG0_fit117"
+      },
+      "graph_result": null,
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "resume_condition": "Root freezes a full fit105 label-independent candidate bank, exact unlabeled background, and immutable candidate-to-baseline incident-topology join.",
+      "blocked_on": [
+        "AUTHENTIC_NODE_PROPOSAL_UNIVERSE",
+        "EXACT_UNLABELED_BACKGROUND",
+        "CANDIDATE_TO_BASELINE_TOPOLOGY_JOIN"
+      ],
+      "priority": 1,
+      "last_change_utc": "2026-07-28T02:20:00Z",
+      "latest_audit_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/PROVENANCE_AUDIT.json",
+      "latest_audit_sha256": "481504fc0ca2e744ab08794f8cbb8d38ee2f5299d969c45e4035dc33cd951dd6",
+      "latest_audit_verdict": "PARK_NO_COMPLETE_AUTHENTIC_CANDIDATE_UNIVERSE"
+    },
+    {
+      "id": "NODERESTORE-O0",
+      "branch": "event_node_actions",
+      "owner_agent": "SA-NODETOPO",
+      "tier": "PARK_B",
+      "banked": true,
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/PROVENANCE_AUDIT.json",
+      "evidence_sha256": "481504fc0ca2e744ab08794f8cbb8d38ee2f5299d969c45e4035dc33cd951dd6",
+      "evidence_basis": "Branch-local audit authenticates event/node register 6df46ab0...e2552c1b5fb5b3 and proves no banked full candidate restoration universe exists",
+      "oracle_headroom": {
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0,
+        "control": "not_measured_or_governance"
+      },
+      "graph_result": null,
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "resume_condition": "Root freezes a full fit105 provenance-pinned candidate bank and candidate-to-baseline topology join.",
+      "blocked_on": [
+        "AUTHENTIC_NODE_PROPOSAL_UNIVERSE"
+      ],
+      "priority": 2,
+      "last_change_utc": "2026-07-28T02:20:00Z",
+      "latest_audit_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/PROVENANCE_AUDIT.json",
+      "latest_audit_sha256": "481504fc0ca2e744ab08794f8cbb8d38ee2f5299d969c45e4035dc33cd951dd6",
+      "latest_audit_verdict": "PARK_NO_COMPLETE_AUTHENTIC_CANDIDATE_UNIVERSE"
+    }
+  ]
+}
