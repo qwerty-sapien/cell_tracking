@@ -1,3 +1,33 @@
+# H1-ZWRFEAT — N1 cache attestation stopped on structural M5↔T4 drift
+
+## N1 result (2026-07-27)
+
+Verdict: **DEAD_STRUCTURAL_M5_T4_DRIFT / NOT SCORED.**
+
+The human-run full cache completed in 7,325.321653 seconds. Read-only retrieval
+authenticated 105/105 enriched feature payloads, 105/105 base payloads, and all
+210 corresponding atomic manifests: 36 `44b6`, 69 `6bba`, 195,354 proposals,
+280,095 rows, and 9,363 Trackastra calls. The two named T4 repeats are
+array-exact.
+
+N1 nevertheless fails its preregistered M5↔T4 gate. Integer/identity arrays are
+exact, but exact-only `geometry_confidences` and `geometry_probabilities` differ
+from the banked M5 reference in 2,431/3,605 and 3,494/5,409 values respectively;
+both have maximum absolute error `8.940696716308594e-7`. Eight float/neural
+columns are outside the locked `atol=1e-7, rtol=1e-5` probe, including
+`trackastra_margin` at maximum absolute error `1.7642974853515625e-5`.
+
+This is not a human tolerance-approval case: N1 routes authenticated structural
+drift to DEAD. No graph delta, proposal precision, CV57 score, public score, or
+`submission.csv` exists. The stale graph contract was not rotated or executed.
+N2, CV57, and submission packaging remain closed; H3 is not eligible because
+44b6 was never graph-tested.
+
+Authoritative artifacts are `h1_cache_attestation.json` and
+`h1_m5_t4_tolerance_proposal.json`.
+
+---
+
 # H1-ZWRFEAT — full-cache package ready at human external gate
 
 ## Full-cache preparation (2026-07-27)
