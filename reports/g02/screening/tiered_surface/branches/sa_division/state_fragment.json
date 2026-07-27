@@ -1,0 +1,87 @@
+{
+  "schema": "celltrack-alpha.phase1-state-fragment.v1",
+  "schema_version": 1,
+  "updated_utc": "2026-07-28T00:00:00Z",
+  "owner_agent": "SA-DIVISION",
+  "branch": "codex/sa-division",
+  "plan_sha256": "a322724e77dd77f53c36e918e5345e86e8394a3848033a9a2225c21924e75116",
+  "objective": "S(G)=weighted_adjusted_edge_Jaccard + 0.1*division_Jaccard",
+  "verdict": "PARK_DEPENDENCY",
+  "tier_move_proposed": false,
+  "dependency": {
+    "single_banked_arm_required": true,
+    "adjusted_min_each_family": 0.005,
+    "raw_min_each_family": 0.0,
+    "node_min_each_family": 0.0,
+    "qualifying_arm_count": 0,
+    "resume_condition": "one root-banked association-continuity arm with resolvable path+SHA and passing exact vectors on both 44b6 and 6bba"
+  },
+  "nodes": [
+    {
+      "id": "DIV-F1",
+      "branch": "event_node_actions",
+      "owner_agent": "SA-DIVISION",
+      "tier": "PARK_A",
+      "banked": true,
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_division/guarded_results.json",
+      "evidence_sha256": "38990d30d4b30ea7afbf99e0a655b0150c34a73fdd4918f93178316d9d9e3c76",
+      "evidence_basis": "dependency audit found 0 qualifying both-family association-continuity arms; N1/scorer fixture foundation passed 7/7 without held-family execution",
+      "graph_result": null,
+      "kill_line": "after dependency opens, adjusted>=+0.005 on 44b6 and 6bba with raw/node nonnegative; otherwise stop",
+      "resume_condition": "root-authenticated single-arm both-family association-continuity pass",
+      "blocked_on": [
+        "ASSOCIATION_CONTINUITY_BOTH_FAMILIES"
+      ],
+      "priority": 1,
+      "last_change_utc": "2026-07-28T00:00:00Z"
+    }
+  ],
+  "family_execution": {
+    "order": [
+      "44b6",
+      "6bba",
+      "CV57"
+    ],
+    "44b6_ran": false,
+    "6bba_ran": false,
+    "family_44b6_gate": {
+      "status": "NOT_RUN_DEPENDENCY_CLOSED",
+      "adjusted_delta": null,
+      "raw_delta": null,
+      "node_delta": null
+    },
+    "family_6bba_gate": {
+      "status": "NOT_RUN_DEPENDENCY_CLOSED",
+      "adjusted_delta": null,
+      "raw_delta": null,
+      "node_delta": null
+    }
+  },
+  "forbidden_scope": {
+    "model_fitted": false,
+    "held_out_opened": false,
+    "held_graph_scoring": false,
+    "cv57_used": false,
+    "gpu_action": false,
+    "kaggle_action": false,
+    "submission_action": false,
+    "runpod_action": false,
+    "external_service_action": false,
+    "external_mutation": false,
+    "plan_amendment": false,
+    "dead_rescreen": false,
+    "sibling_output_read": false
+  },
+  "fixture_execution": {
+    "tests_passed": 7,
+    "tests_total": 7,
+    "official_scorer_fixtures_preserved": "14/14",
+    "d1_counterfactuals_preserved": "51/51",
+    "duplicate_survivors": 0,
+    "d1_rerun": false,
+    "successful_guard_sha256": "3cf2644ce0ef19ada6c53510dbe1d42d01a81aa9aff934d20acf778091793522",
+    "swap_growth_mib": 0.0
+  },
+  "memo_quarantine": true
+}
+

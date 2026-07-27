@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/Users/agent/Desktop/cell_tracking/.venv313/bin/python",
+    "reports/g02/screening/tiered_surface/branches/sa_division/fixture_audit.py",
+    "--output",
+    "reports/g02/screening/tiered_surface/branches/sa_division/guarded_results.json"
+  ],
+  "elapsed_seconds": 1.833197832107544,
+  "ending_swap_mib": 2333.5599994659424,
+  "external_action": false,
+  "gpu_action": false,
+  "initial_swap_mib": 2333.5599994659424,
+  "minimum_system_memory_free_percent": 37.0,
+  "peak_process_tree_rss_gib": 0.075103759765625,
+  "peak_swap_mib": 2333.5599994659424,
+  "return_code": 0,
+  "schema": "celltrack-alpha.u0-t4canon-guard.v1",
+  "status": "PASS",
+  "stop_reason": "completed",
+  "swap_growth_mib": 0.0
+}
