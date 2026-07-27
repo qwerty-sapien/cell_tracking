@@ -40,6 +40,7 @@ from celltrack_alpha.model_candidate_gate import (  # noqa: E402
 )
 from celltrack_alpha.trackastra_linear import (  # noqa: E402
     LinearHead,
+    TrackastraLinearError,
     aggregate_precision,
     challenger_labels,
     fit_ridge,
@@ -370,6 +371,24 @@ def _load_feature(
     return value
 
 
+def _labeled_subset_allow_empty(
+    payload: Mapping[str, Any],
+    known: Mapping[tuple[int, int], int],
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Keep videos with zero exact label overlap as valid empty groups."""
+    try:
+        return labeled_subset(payload, known)
+    except TrackastraLinearError as exc:
+        if str(exc) != "feature cache has no prepared labels":
+            raise
+    features = proposal_features(payload)
+    return (
+        np.empty((0, features.shape[1]), dtype=features.dtype),
+        np.empty((0,), dtype=np.int8),
+        np.empty((0,), dtype=np.int64),
+    )
+
+
 def _video_labeled(
     identity: str,
     prepare_row: Mapping[str, Any],
@@ -396,7 +415,7 @@ def _video_labeled(
         cache_contract_sha256=cache_contract_sha256,
         implementation_sha256=implementation_sha256,
     )
-    features, labels, _indices = labeled_subset(payload, known)
+    features, labels, _indices = _labeled_subset_allow_empty(payload, known)
     return features, labels, len(known)
 
 
@@ -823,9 +842,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                 head_contract["standard_deviation_floor"]
             ),
         )
+        calibration_scores = head.score(calibration_x)
         try:
             threshold, calibration_metrics = select_threshold(
-                head.score(calibration_x),
+                calibration_scores,
                 calibration_y,
                 minimum_accepted=int(
                     threshold_contract["minimum_calibration_accepted"]
@@ -835,15 +855,36 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                 ),
             )
         except ValueError:
-            return _write_park(
-                args=args,
-                contract=contract,
-                folds=fold_records,
-                held=aggregate_precision(fold_metrics),
-                reason=f"fold {held_fold} has no admissible calibration threshold",
-                candidate_gate=candidate_gate,
-                code_identity=code_identity,
-                started=started,
+            if (
+                not h1_mode
+                or threshold_contract.get("no_admissible_action")
+                != (
+                    "use the maximum finite calibration score as a "
+                    "deterministic one-or-ties fallback; report its "
+                    "precision but do not PARK"
+                )
+                or not len(calibration_scores)
+                or not np.isfinite(calibration_scores).all()
+            ):
+                return _write_park(
+                    args=args,
+                    contract=contract,
+                    folds=fold_records,
+                    held=aggregate_precision(fold_metrics),
+                    reason=(
+                        f"fold {held_fold} has no admissible "
+                        "calibration threshold"
+                    ),
+                    candidate_gate=candidate_gate,
+                    code_identity=code_identity,
+                    started=started,
+                )
+            threshold = float(np.max(calibration_scores))
+            calibration_metrics = precision_metrics(
+                calibration_scores, calibration_y, threshold
+            )
+            calibration_metrics["selection_status"] = (
+                "REPORT_ONLY_MAX_SCORE_FALLBACK"
             )
         held_metrics = precision_metrics(
             head.score(held_x), held_y, threshold

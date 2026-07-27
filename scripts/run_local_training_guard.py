@@ -176,7 +176,13 @@ def run_guarded(args: argparse.Namespace) -> int:
 
     policy = load_json_object(args.policy)
     gate = validate_candidate(load_json_object(args.candidate), policy)
-    memory_cap_bytes = int(float(gate["maximum_training_memory_gib"]) * GIB)
+    memory_cap_bytes = int(
+        min(
+            float(gate["maximum_training_memory_gib"]),
+            float(gate["projected_peak_memory_gib"]),
+        )
+        * GIB
+    )
     reserve_bytes = int(float(gate["background_reserve_gib"]) * GIB)
     minimum_free_percent = float(gate["minimum_system_memory_free_percent"])
     wall_seconds = float(gate["max_wall_minutes"]) * 60.0
@@ -210,6 +216,7 @@ def run_guarded(args: argparse.Namespace) -> int:
             gate["maximum_training_memory_gib"]
         )
         environment["CELLTRACK_HOLDOUT_ACCESS"] = "0"
+        environment["CELLTRACK_GUARD_ACTIVE"] = "1"
         started_at = time.time()
         process = subprocess.Popen(
             args.command,

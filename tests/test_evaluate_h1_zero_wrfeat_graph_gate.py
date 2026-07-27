@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import numpy as np
 from pathlib import Path
 import sys
 import unittest
@@ -17,6 +18,14 @@ import evaluate_trackastra_linear_oof_graph_gate as engine  # noqa: E402
 
 def _report(adjusted: float, raw: float = 0.0, recall: float = 0.0):
     return {
+        "proposal_prerequisite": {
+            "held_oof": {
+                "accepted_labeled": 123,
+                "correct_rescues": 120,
+                "harmful_swaps": 3,
+                "precision": 120 / 123,
+            }
+        },
         "decision": {
             "adjusted_edge_jaccard_delta": adjusted,
             "raw_edge_jaccard_delta": raw,
@@ -37,6 +46,24 @@ class H1ZeroWrfeatGraphGateTests(unittest.TestCase):
         self.assertFalse(contract["candidate"]["proposal_metrics_gate"])
         self.assertEqual(
             contract["fallback"]["status"], "CONDITIONAL_NOT_STARTED"
+        )
+        self.assertEqual(
+            contract["parity_repair"]["verdict"], "BENIGN_FP"
+        )
+        self.assertFalse(
+            contract["parity_repair"]["m5_is_a_pass_fail_gate"]
+        )
+        self.assertEqual(
+            contract["candidate"]["threshold_selection"][
+                "minimum_calibration_accepted"
+            ],
+            1,
+        )
+        self.assertIn(
+            "do not PARK",
+            contract["candidate"]["threshold_selection"][
+                "no_admissible_action"
+            ],
         )
 
     def test_44b6_nonpositive_kills_without_6bba(self) -> None:
@@ -62,6 +89,40 @@ class H1ZeroWrfeatGraphGateTests(unittest.TestCase):
         result = gate.execute_ordered(evaluate)
         self.assertEqual(calls, ["44b6"])
         self.assertEqual(result["status"], "PARK")
+        self.assertEqual(
+            result["families"][0]["proposal_accepted_labeled"], 123
+        )
+        self.assertFalse(
+            result["families"][0]["proposal_metrics_gate"]
+        )
+
+    def test_pregraph_park_is_reported_without_6bba(self) -> None:
+        calls = []
+
+        def evaluate(family: str):
+            calls.append(family)
+            return {
+                "graph": None,
+                "proposal_prerequisite": {
+                    "held_oof": {
+                        "accepted_labeled": 0,
+                        "correct_rescues": 0,
+                        "harmful_swaps": 0,
+                        "precision": 0.0,
+                    }
+                },
+                "decision": {
+                    "status": "PARK",
+                    "reason": "calibration threshold unavailable",
+                },
+            }
+
+        result = gate.execute_ordered(evaluate)
+        self.assertEqual(calls, ["44b6"])
+        self.assertEqual(result["status"], "PARK")
+        self.assertIsNone(
+            result["families"][0]["adjusted_edge_jaccard_delta"]
+        )
 
     def test_raw_or_recall_regression_blocks_downstream(self) -> None:
         for report in (_report(0.006, raw=-1e-9), _report(0.006, recall=-1e-9)):
@@ -96,6 +157,20 @@ class H1ZeroWrfeatGraphGateTests(unittest.TestCase):
         self.assertNotIn("--split", source)
         self.assertNotIn("--scorer-parity", source)
         self.assertNotIn("score_bh_cv57", source)
+        self.assertIn("CELLTRACK_GUARD_ACTIVE", source)
+
+    def test_zero_overlap_video_remains_a_valid_empty_group(self) -> None:
+        payload = {
+            "challengers": np.asarray([[1, 2]], dtype=np.int64),
+            "row_features": np.zeros((1, 49), dtype=np.float32),
+            "proposal_offsets": np.asarray([0, 1], dtype=np.int64),
+        }
+        features, labels, indices = (
+            engine._labeled_subset_allow_empty(payload, {(3, 4): 1})
+        )
+        self.assertEqual(features.shape, (0, 49))
+        self.assertEqual(labels.shape, (0,))
+        self.assertEqual(indices.shape, (0,))
 
 
 if __name__ == "__main__":

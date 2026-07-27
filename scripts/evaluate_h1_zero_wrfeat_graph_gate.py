@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 from collections.abc import Callable, Mapping, Sequence
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -28,12 +29,16 @@ from p4_edge_attention import (  # noqa: E402
 
 
 DEFAULT_CONTRACT = (
-    ROOT / "reports/g02/screening/h1_zero_wrfeat_graph_gate_contract.json"
+    ROOT
+    / "reports/g02/screening/"
+    "h1_zero_wrfeat_graph_gate_contract_parity_repair.json"
 )
 DEFAULT_FEATURE_ROOT = (
     ROOT / "reports/g02/trackastra_h1_feature_cache"
 )
-DEFAULT_OUTPUT = ROOT / "reports/g02/screening/h1_zero_wrfeat_graph_gate"
+DEFAULT_OUTPUT = (
+    ROOT / "reports/g02/screening/ga_h1_zero_wrfeat_graph"
+)
 FAMILY_ORDER = ("44b6", "6bba")
 
 
@@ -41,10 +46,167 @@ class H1ZeroWrfeatGateError(RuntimeError):
     """The fit105-only, 44b6-first H1 gate failed closed."""
 
 
-def family_metrics(report: Mapping[str, Any]) -> dict[str, float]:
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _load_json(path: Path, label: str) -> dict[str, Any]:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise H1ZeroWrfeatGateError(f"cannot read {label}: {path}") from exc
+    if not isinstance(value, dict):
+        raise H1ZeroWrfeatGateError(f"{label} must be an object")
+    return value
+
+
+def _verify_file(path: Path, expected: str, label: str) -> None:
+    if not path.is_file() or _sha256(path) != expected:
+        raise H1ZeroWrfeatGateError(f"{label} identity mismatch: {path}")
+
+
+def verify_parity_repair(
+    contract: Mapping[str, Any],
+    *,
+    edge_artifact: Path,
+    edge_auxiliary: Path,
+) -> dict[str, Any]:
+    repair = contract.get("parity_repair")
+    pins = contract.get("pinned_inputs")
+    if (
+        not isinstance(repair, Mapping)
+        or not isinstance(pins, Mapping)
+        or repair.get("canonical_platform") != "Tesla T4"
+        or repair.get("verdict") != "BENIGN_FP"
+        or repair.get("m5_is_a_pass_fail_gate") is not False
+    ):
+        raise H1ZeroWrfeatGateError("parity-repair contract is not locked")
+    for label, raw in pins.items():
+        if not isinstance(raw, Mapping):
+            raise H1ZeroWrfeatGateError(f"malformed pinned input: {label}")
+        path = (ROOT / str(raw["path"])).resolve()
+        _verify_file(path, str(raw["sha256"]), str(label))
+    if edge_artifact != (ROOT / str(pins["edge_scorer"]["path"])).resolve():
+        raise H1ZeroWrfeatGateError("edge scorer CLI path is not pinned")
+    if edge_auxiliary != (
+        ROOT / str(pins["edge_auxiliary"]["path"])
+    ).resolve():
+        raise H1ZeroWrfeatGateError("edge auxiliary CLI path is not pinned")
+    repair_path = (ROOT / str(repair["parity_contract"])).resolve()
+    _verify_file(
+        repair_path,
+        str(repair["parity_contract_sha256"]),
+        "parity-repair contract",
+    )
+    parity = _load_json(repair_path, "parity-repair contract")
+    platform = parity.get("platform_contract", {})
+    classification = parity.get("classification", {})
+    safety = classification.get("safety_catch", {})
+    witnesses = parity.get("t4_repeatability_witnesses", [])
+    if (
+        parity.get("status") != "LOCKED_BENIGN_FP"
+        or platform.get("canonical_platform") != "Tesla T4"
+        or platform.get("m5_is_a_pass_fail_gate") is not False
+        or classification.get("verdict") != "BENIGN_FP"
+        or safety.get("structured_drift_detected") is not False
+        or safety.get("nan_or_inf_count") != 0
+        or safety.get("shape_match") is not True
+        or safety.get("dtype_match") is not True
+        or len(witnesses) != 2
+        or any(
+            witness.get("array_equal") is not True
+            or witness.get("run1_sha256") != witness.get("run2_sha256")
+            for witness in witnesses
+        )
+    ):
+        raise H1ZeroWrfeatGateError(
+            "parity-repair safety classification did not pass"
+        )
+    attestation = _load_json(
+        (ROOT / str(pins["cache_attestation"]["path"])).resolve(),
+        "cache attestation",
+    )
+    if (
+        attestation.get("cache_integrity") != "PASS"
+        or attestation.get("coverage", {}).get("video_count") != 105
+        or attestation.get("t4_repeatability") != witnesses
+    ):
+        raise H1ZeroWrfeatGateError(
+            "cache attestation does not support the repair contract"
+        )
+    return {
+        "verdict": "BENIGN_FP",
+        "canonical_platform": "Tesla T4",
+        "t4_repeatability_witnesses": witnesses,
+        "cache_integrity": "PASS",
+    }
+
+
+def verify_fit_inputs(
+    contract: Mapping[str, Any],
+    *,
+    cache_root: Path,
+) -> dict[str, int]:
+    data = contract["data"]
+    manifest_path = (ROOT / str(data["fit_manifest"])).resolve()
+    prepare_path = (ROOT / str(data["prepare_report"])).resolve()
+    _verify_file(
+        manifest_path,
+        str(data["fit_manifest_sha256"]),
+        "fit105 manifest",
+    )
+    _verify_file(
+        prepare_path,
+        str(data["prepare_report_sha256"]),
+        "fit-label prepare report",
+    )
+    manifest = _load_json(manifest_path, "fit105 manifest")
+    identities = {str(value) for value in manifest.get("identities", [])}
+    if (
+        len(identities) != 105
+        or any(not value.startswith("train:") for value in identities)
+    ):
+        raise H1ZeroWrfeatGateError("fit105 identities drifted")
+    verified_cache_files = 0
+    for raw in manifest.get("files", []):
+        if not isinstance(raw, Mapping):
+            raise H1ZeroWrfeatGateError("malformed fit-cache manifest row")
+        path = (ROOT / str(raw["path"])).resolve()
+        if cache_root not in path.parents:
+            raise H1ZeroWrfeatGateError("fit-cache file escaped cache root")
+        if path.stat().st_size != int(raw["bytes"]):
+            raise H1ZeroWrfeatGateError(f"fit-cache size mismatch: {path}")
+        _verify_file(path, str(raw["sha256"]), "fit-cache file")
+        verified_cache_files += 1
+    prepare = _load_json(prepare_path, "fit-label prepare report")
+    rows = {
+        str(raw["identity"]): raw
+        for raw in prepare.get("videos", [])
+        if isinstance(raw, Mapping)
+        and str(raw.get("identity", "")) in identities
+    }
+    if set(rows) != identities:
+        raise H1ZeroWrfeatGateError("fit-label identity coverage drifted")
+    for identity, raw in rows.items():
+        path = (ROOT / str(raw["path"])).resolve()
+        _verify_file(path, str(raw["sha256"]), f"fit label {identity}")
+    return {
+        "fit_identities": len(identities),
+        "fit_cache_files": verified_cache_files,
+        "fit_label_files": len(rows),
+    }
+
+
+def family_metrics(report: Mapping[str, Any]) -> dict[str, float] | None:
     decision = report.get("decision")
     if not isinstance(decision, Mapping):
         raise H1ZeroWrfeatGateError("family report has no graph decision")
+    if report.get("graph") is None and decision.get("status") == "PARK":
+        return None
     try:
         result = {
             "adjusted_edge_jaccard_delta": float(
@@ -66,7 +228,44 @@ def classify_family(
     family: str,
     report: Mapping[str, Any],
 ) -> dict[str, Any]:
+    held = report.get("proposal_prerequisite", {}).get("held_oof", {})
+    proposal = {
+        "proposal_precision": (
+            float(held["precision"]) if "precision" in held else None
+        ),
+        "proposal_accepted_labeled": (
+            int(held["accepted_labeled"])
+            if "accepted_labeled" in held
+            else None
+        ),
+        "proposal_correct_rescues": (
+            int(held["correct_rescues"])
+            if "correct_rescues" in held
+            else None
+        ),
+        "proposal_harmful_swaps": (
+            int(held["harmful_swaps"])
+            if "harmful_swaps" in held
+            else None
+        ),
+        "proposal_metrics_gate": False,
+    }
     metrics = family_metrics(report)
+    if metrics is None:
+        return {
+            "family": family,
+            "status": "PARK",
+            "reason": str(
+                report.get("decision", {}).get(
+                    "reason", "pre-graph family screen parked"
+                )
+            ),
+            "adjusted_edge_jaccard_delta": None,
+            "raw_edge_jaccard_delta": None,
+            "node_recall_delta": None,
+            "observation_distinct": False,
+            **proposal,
+        }
     adjusted = metrics["adjusted_edge_jaccard_delta"]
     passed = (
         adjusted >= 0.005
@@ -91,6 +290,7 @@ def classify_family(
         "observation_distinct": bool(
             report.get("decision", {}).get("observation_distinct")
         ),
+        **proposal,
     }
 
 
@@ -155,7 +355,10 @@ def _parse_args(
 
 
 def run(args: argparse.Namespace) -> dict[str, Any]:
-    if os.environ.get("CELLTRACK_HOLDOUT_ACCESS") != "0":
+    if (
+        os.environ.get("CELLTRACK_HOLDOUT_ACCESS") != "0"
+        or os.environ.get("CELLTRACK_GUARD_ACTIVE") != "1"
+    ):
         raise H1ZeroWrfeatGateError(
             "runner must be launched by the zero-swap resource guard"
         )
@@ -186,6 +389,15 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         raise H1ZeroWrfeatGateError(
             "authenticated zero-wrfeat feature report is not present"
         )
+    parity_evidence = verify_parity_repair(
+        contract,
+        edge_artifact=args.edge_artifact,
+        edge_auxiliary=args.edge_auxiliary,
+    )
+    fit_input_evidence = verify_fit_inputs(
+        contract,
+        cache_root=args.cache,
+    )
     args.output.mkdir(parents=True, exist_ok=False)
 
     def evaluate(family: str) -> Mapping[str, Any]:
@@ -214,6 +426,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "forbidden_scope_access": False,
             "proposal_metrics_gate": False,
         },
+        "parity_repair": parity_evidence,
+        "input_attestation": fit_input_evidence,
         **execute_ordered(evaluate),
         "fallback": contract["fallback"],
         "contract": {

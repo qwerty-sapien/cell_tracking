@@ -14,32 +14,34 @@ points at the authoritative artifacts; it does not replace them.
 ## Current frontier (as of 2026-07-27)
 - **H0 DONE** — proposal-only screening **BANNED** (no proxy `|ρ|≥0.5`). Every candidate now
   routes straight to the **44b6-first held-fit graph gate**; proposal metrics may be reported, never gate.
-- **H1-ZWRFEAT N1 DEAD — STRUCTURAL M5↔T4 DRIFT.** The full cache completed in
-  **7,325.321653 s** and all 105 feature/base payloads plus 210 atomic manifests
-  authenticated (36 44b6 + 69 6bba). Both family T4 repeats are exact. The locked
-  cross-device gate failed: `geometry_confidences` and `geometry_probabilities`
-  differ from the banked M5 reference (max `8.9406967e-7`), and eight float/neural
-  columns are outside the preregistered `atol=1e-7, rtol=1e-5` probe.
-- **NEXT / STOP** — do not run N2, 6bba, CV57, or build a submission kernel. No
-  graph/local/public score exists. H3 remains closed because no 44b6 graph failure
-  occurred. Revisiting parity requires a new human-locked node/contract; it is not
-  an in-node tolerance approval.
+- **GA-H1-ZWRFEAT-GRAPH DEAD — 44b6 GRAPH KILL.** The human-authorized parity
+  repair supersedes N1's false M5↔T4 fail: T4 is canonical, both T4 witnesses are
+  array-exact, and the one-time M5 comparison is **BENIGN_FP**. The existing
+  105-video cache was not regenerated. On 44b6, adjusted edge Jaccard
+  **−0.01114808**, raw edge Jaccard **−0.01105753**, and node recall
+  **−0.00028790**; held proposal precision was report-only **0.956522** (242/253).
+- **NEXT / STOP** — H1 zero-wrfeat is falsified at the graph level. **6bba and
+  CV57 were not run.** Do not build a submission kernel. `H3-MASK-SOURCE` is
+  eligible only as a separately authorized provenance node for authentic
+  per-detection masks; pseudo-masks remain forbidden and H3 is not started.
 
 ## The one live lever
 No lever is executable under the current DAG. Frozen **pretrained Trackastra + tiny
-calibrated head** remains the mechanism of interest, but its zero-wrfeat cache is
-quarantined by N1 structural cross-device drift. H2 still requires graph-level signal;
-H3 still requires an actual 44b6 graph failure.
+calibrated head** remains the mechanism of interest, but zero-wrfeat H1 is now
+falsified at the 44b6 graph gate. H2 still requires graph-level signal;
+H3-MASK-SOURCE is eligible only as a separate authentic-mask provenance node.
 
 ## Key numbers
 - Baseline local `0.873150` → public `0.877`. Banked APNCC local `0.881522` → **public `0.881`**.
 - In-pool re-ranking oracle `~0.896` (projection). Transfer slope `≈0.48–0.66` (soft, rounding-bounded).
-- **Accepted (public) 0.89 needs local `≈0.895–0.900`** ⇒ requires H1→44b6 + H2 recall, not
-  in-pool re-ranking (DAG §3.1). Kaggle cap 30 T4-h/model. RunPod locked until accepted `≥0.89`.
+- **Accepted (public) 0.89 needs local `≈0.895–0.900`**; zero-wrfeat H1 cannot
+  supply it after the 44b6 graph kill. Kaggle cap 30 T4-h/model. RunPod locked
+  until accepted `≥0.89`.
 - H1 external usage: two human-created datasets; two failed timing-kernel versions, one
   passing smoke, and one completed full-cache kernel. Banked completed use is
-  **2.1170 kernel-h** (≤**4.2340 allocated T4-GPU-h**), **0 submissions**. All family
-  graph deltas and proposal precisions remain unmeasured.
+  **2.1170 kernel-h** (≤**4.2340 allocated T4-GPU-h**), **0 submissions**. The
+  44b6 adjusted/raw/node vector is
+  `−0.01114808/−0.01105753/−0.00028790`; 6bba remains unrun.
   Package covers exactly **36 44b6 + 69 6bba**.
 - H1-ZWRFEAT full-cache pins: contract `4da06d48…34b`, kernel `28a3801a…537`, source
   dependencies `a252e8ef…9e9`, graph contract `d35e2d3d…7f48`; focused verification
@@ -47,6 +49,10 @@ H3 still requires an actual 44b6 graph failure.
 - N1 pins: run manifest `548bbac4…8d10`, feature report `d52a4a42…c0cf`,
   cache attestation `e7c0ca58…ce3b`, tolerance evidence `8264bb9a…e621`;
   attestation preflight **45.152 s**, swap 0 MiB.
+- Parity/graph pins: repair contract `f0beba3c…aa24`, rotated graph contract
+  `09b67cdd…4fb`, coordinator result `94a3cd00…c9a`, 44b6 report
+  `53011727…19d`, guard `3538f97e…a71`; runtime **2,092.348 s**, peak RSS
+  **1.119 GiB**, swap growth **0 MiB**, and all 36 fragments distinct.
 
 ## DEAD — do not re-propose without a new named mechanism (register: DAG §6.1)
 Deterministic recall / shell abstention (`R12SHELL`, `MGSHELL`, `TEMPBG`) · from-scratch
@@ -54,8 +60,16 @@ rankers (`POINTCTX`, `CROPLINK`, `TEMPRANK`, `TEMPHYBRID`, `TRACKCTX`) · scalar
 threshold (`SCENCAL`, `POINTCTX-THRESH`, `APNCC-POLICY`) · hand-tuned graph-cost / motion
 knobs (`GA-SP`, `LC-P4CTRL`) · full organizer `TemporalUNet3D` (~478 T4-h).
 Conditional-PARK (revisitable): detection front-end · divisions · GT-conflict gates.
+Frozen Trackastra zero-wrfeat H1 is DEAD at the 44b6 graph gate. Only the distinct,
+separately authorized authentic-mask `H3-MASK-SOURCE` provenance question remains eligible.
 
 ## Log (newest first)
+- 2026-07-27 — `GA-H1-ZWRFEAT-GRAPH` **DEAD / 44b6 KILL**:
+  Option-C parity repair classified M5↔T4 drift BENIGN_FP and accepted the
+  existing exact-repeat T4 cache. The fit-only graph gate then regressed
+  adjusted/raw/node by `−0.01114808/−0.01105753/−0.00028790`; 6bba/CV57
+  stayed closed. No GPU, Kaggle, RunPod, submission, or forbidden-scope
+  access occurred. (Codex)
 - 2026-07-27 — H1-ZWRFEAT-CACHE-ATTEST **DEAD**: full cache/atomic integrity and
   two-family T4 repeatability passed, but exact-only M5↔T4 geometry drift and eight
   out-of-probe float/neural columns triggered `STOP_EXACT_GEOMETRY_OR_IDENTITY_DRIFT`.
