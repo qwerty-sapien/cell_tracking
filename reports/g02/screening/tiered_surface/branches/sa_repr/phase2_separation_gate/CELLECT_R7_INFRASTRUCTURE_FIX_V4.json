@@ -1,0 +1,102 @@
+{
+  "schema": "celltrack-alpha.cellect-r7-infrastructure-fix.v4",
+  "status": "AUTHENTICATED_REMOTE_BYTE_EXACT_PASS_NO_LAUNCH",
+  "frozen_date": "2026-07-29",
+  "scope": {
+    "scientific_contract_changed": false,
+    "population_changed": false,
+    "labels_changed": false,
+    "folds_changed": false,
+    "representation_or_weight_changed": false,
+    "B0_A1_A0_changed": false,
+    "transport_and_discovery_only": true
+  },
+  "diagnosis": {
+    "dataset_id": "onebitbrain/g02-cellect-r7-published-assets-v1",
+    "ownership": "user-owned private dataset",
+    "rules_or_entitlement_diagnosis_retracted": true,
+    "cli_403_cause": "token/scope path, not rules or entitlement; refreshed cmux OAuth can status/upload, while legacy ListDatasetFiles/GetDatasetMetadata endpoints remain 403",
+    "v3_staged_total_bytes": 19467606,
+    "v3_non_checkpoint_bytes": 9270385,
+    "v3_remote_total_bytes": 18508409,
+    "v3_remote_checkpoint_bytes_inferred": 9238024,
+    "authenticated_checkpoint_bytes": 10197221,
+    "v3_checkpoint_byte_deficit": 959197
+  },
+  "authentication_governance": {
+    "standing_rule": "Every authenticated Kaggle CLI list, push, or submit runs through computer-use cmux where the owner's real session lives; never use the agent-shell token.",
+    "list_rerun_through_cmux": true,
+    "list_rerun_result": "HTTP 403 ListDatasetFiles persists after successful owner reauthentication",
+    "download_rerun_through_cmux": true,
+    "download_rerun_result": "CLI metadata preflight returned HTTP 403 GetDatasetMetadata; authenticated Kaggle SDK download in the same cmux owner session succeeded",
+    "credential_refresh_required": false,
+    "credential_refresh_completed": true,
+    "remote_upload_performed": true,
+    "remote_version_ready": 4,
+    "remote_roundtrip_performed": true,
+    "remote_roundtrip_status": "BYTE_EXACT_ROUNDTRIP_PASS"
+  },
+  "checkpoint": {
+    "safe_member_name": "cellect_uext_x3rd_149_0_4p6540.pth",
+    "bytes": 10197221,
+    "sha256": "f3e8e7303976dc5fb6e52ade12d1ff7953d2a28e30c06274b9f309562cd89ce5",
+    "container_name": "cellect_uext_x3rd_149_0_4p6540.tar",
+    "container_format": "uncompressed USTAR",
+    "container_bytes": 10199040,
+    "container_sha256": "a8110e0d5c796ad54bc51bf6fd8f11c332848c9e9ef378cd23bd9575aa0af559"
+  },
+  "implementations": {
+    "feature_kernel": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/kaggle_cellect_action_features.py",
+      "sha256": "1c8a6961cb72fdba47b530279239a793eb491f41bd7c7310e99a81ac49283e58",
+      "step_zero": "Before dependency installation, hash all direct .pth/.bin files and regular members of uncompressed .tar files; accept exactly one match and fail closed otherwise."
+    },
+    "asset_builder": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/build_cellect_asset_v4.py",
+      "sha256": "95cbf3762819955b5c59ee7f5f84026fca02758468a469aeb19be9b848c2b60a"
+    },
+    "roundtrip_verifier": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/verify_cellect_asset_roundtrip.py",
+      "sha256": "bb2382ed715c2a37a3baad382fd5fb06281606668ca89ecb825bdca681b0a5d9"
+    },
+    "cmux_roundtrip_orchestrator": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/run_cellect_cmux_roundtrip.py",
+      "sha256": "166356b6c349bb9389f8f49052415b44dc7552caa1879381571465ab928de3c9",
+      "dry_run": "DRY_RUN_NO_EXTERNAL_ACTION",
+      "pre_upload_guard": "dataset must be ready at frozen version 3 before any version mutation",
+      "external_command_scope": [
+        "kaggle datasets version",
+        "kaggle datasets status",
+        "kaggle datasets files",
+        "authenticated Kaggle SDK dataset download through cmux"
+      ],
+      "kernel_or_submission_command_present": false
+    },
+    "tests": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/test_cellect_separation.py",
+      "sha256": "5cec9708fc2c6827e59eb54286550829f86c8d5c9de17f40c4bae6c6fadd574c",
+      "result": "17/17 PASS"
+    }
+  },
+  "asset_dataset": {
+    "manifest_path": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/ASSET_DATASET_V4_MANIFEST.json",
+    "manifest_sha256": "4b9b959319256ff251fd9fb4663311d84466152465acd2f50d604afe1f01105d",
+    "dataset_id": "onebitbrain/g02-cellect-r7-published-assets-v1",
+    "target_version": 4,
+    "required_visibility": "private",
+    "required_file_count": 7,
+    "required_total_bytes": 19469425,
+    "local_verification_status": "LOCAL_BYTE_EXACT_PASS",
+    "authenticated_remote_verification_status": "BYTE_EXACT_ROUNDTRIP_PASS",
+    "remote_materialization": "Kaggle expanded the uncompressed tar to cellect_uext_x3rd_149_0_4p6540/cellect_uext_x3rd_149_0_4p6540.pth while preserving the exact 10197221-byte pinned member",
+    "remote_receipt_path": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/CELLECT_R7_ASSET_V4_REMOTE_ROUNDTRIP.json"
+  },
+  "hard_stops": {
+    "kernel_launch_before_authenticated_byte_exact_roundtrip": false,
+    "kernel_launched": false,
+    "submission": false,
+    "dead_promotion": false,
+    "plan_amendment": false,
+    "runpod": false
+  }
+}

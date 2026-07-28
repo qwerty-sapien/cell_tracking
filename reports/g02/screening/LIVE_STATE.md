@@ -22,22 +22,40 @@ points at the authoritative artifacts; it does not replace them.
   `tiered_surface/n1_feasibility_compiler/N1_FREEZE_REPORT.json`.
 - **TIER CENSUS / NO LIVE RUN:** machine state
   `tiered_surface/tier_census.json` at SHA-256
-  `a52d3dd32a46e1dbf19007f4d2fb07562ddffb7b8b7509b07ea987d5080a8759`
-  records **LIVE 0 / PARK-A 13 / PARK-B 22 / PARK-C 9 / DEAD 1**. The five
-  mandatory disjoint worktrees passed the collective root barrier at exact clean
-  commits and were merged scope-only. DELETE-O0 moved PARK-A→PARK-C after its
-  exact 44b6 failure. SWAP-O0 now records its exact-regret learner's banked
-  `−0.000310288/−0.000296592/0` 44b6 failure as a PARK-C instantiation
-  breadcrumb while the high-headroom surface correctly remains PARK-A pending
-  the representation separation gate. Proposed demotions of the broader
-  AE-P1/AE-P2 families remain rejected. R7's CELLECT supplier remains PARK-B.
-  Manifest `f8852468…7a63`; barrier `5fef02ee…9349`; decisions
-  `edba055b…0da1`; **uncited tier moves 0**.
-- **CPU-ONLY WAVE-2 BARRIER COMPLETE / NODETOPO GRAPH HUMAN-HELD.**
+  `4c7b6735cb2b03abdae3e1780e7b207a6e14ea237e199126ca47e7a9de944aa7`
+  records **LIVE 0 / PARK-A 15 / PARK-B 19 / PARK-C 10 / DEAD 1**.
+  Wave-3 accepted three cited moves: AE-P5 and AE-P7 PARK-B→PARK-A after
+  exact contracts plus positive occupied-swap P0 headroom, and G2 PARK-B→PARK-C
+  for the exact `SA-SWAP-W1-EXACT-REGRET` instantiation only. AE-P1/AE-P2 and
+  the broader decision-focused family remain unchanged. Decisions
+  `202cc2a5…bec9`; **accepted/uncited moves 3/0**.
+- **CPU-ONLY WAVE-3 BARRIER COMPLETE.** The authorized independent NODETOPO
+  replay confirmed `BLOCKPEAK-RESTORE-V1` **KILL_44B6_STOP** at
+  adjusted/raw/node `−0.00000343615 / 0 / 0`, with 50/50 actions, 24/24 affected
+  batches, 36/36 videos, unchanged edge TP/FP/FN `10,341/1,064/673`, and no
+  DET-F0/F2/F3 or NODERESTORE unblock. That exact instantiation is PARK-C;
+  broader NODETOPO-O0 remains PARK-A and NODERESTORE-O0 PARK-B.
+  DINOv2 ViT-S/14 is now authenticated at official source revision
+  `7764ea0f…5fc8`, weight SHA `b938bf1b…0cd9`, 22,056,576 parameters, and a
+  strict safe CPU load; R4's provenance block is cleared and R5's XY-beta
+  contract is staged as a second supplier beside CELLECT, but no feature or
+  outcome ran. Reverse Trackastra now has an exact endpoint-return contract but
+  stops on a missing exact checkpoint/reverse cache with a bounded
+  **0.758 CPU-h / 0 GPU-h** request. Division continuity now has exact bundles
+  for all 38 fragmented events (39 adds, 27 net deletes; 36 late equivalents);
+  fitting stays locked. No GPU, Kaggle, budget debit, RunPod, submission, DEAD,
+  plan, or CELLECT action occurred.
+- **CPU-ONLY WAVE-2 BARRIER COMPLETE / NODETOPO 44b6 GRAPH KILL.**
   `SA-NODETOPO-GEN` authenticated all 36 fit105 44b6 Zarrs and 3,600 frames,
   froze 107,370 label-free proposals plus an exact 50-action
   `restore_topology` population across 24 videos, and passed frozen N1 for
-  50/50 singles and 55/55 nonempty budget batches. `SA-DIVISION-DEEP` found
+  50/50 singles and 55/55 nonempty budget batches. The released graph gate
+  replayed all 50 actions and 24/24 affected-video batches exactly, but stopped
+  at 44b6 with adjusted/raw/node deltas
+  **`−0.00000343615 / 0 / 0`** against the unchanged
+  `+0.005 / 0 / 0` floors. Edge TP/FP/FN stayed
+  `10,341 / 1,064 / 673`; 6bba and CV57 were not opened.
+  `SA-DIVISION-DEEP` found
   **38/42 CV57 divisions present-but-fragmented**, one role-present
   component-spanning event without a local fork, and three role-missing events;
   39/39 diagnostic actions compiled, while fitting remains locked behind a
@@ -47,9 +65,10 @@ points at the authoritative artifacts; it does not replace them.
   forward-cache files but found no immutable reverse supplier, so separation
   and graph stayed closed. Barrier `c60799d9…c63f3`; validation
   `6a467695…5c0f8` (**48/48 PASS**). Accepted and uncited tier moves are 0/0;
-  census stays 0/13/22/9/1. No graph, GPU, Kaggle launch/debit, CELLECT write,
-  RunPod, submission, or DEAD action occurred.
-- **CONCURRENT CPU WAVE / ROOT BARRIER PASS.** PARK-B support/identity sweep
+  census stays 0/13/22/9/1. No additional graph beyond the NODETOPO 44b6
+  barrier, GPU, Kaggle launch/debit, CELLECT write, RunPod, submission, or DEAD
+  action occurred.
+- **CONCURRENT CPU WAVE / QUALIFIED BARRIER; ALL LANES HELD.** PARK-B support/identity sweep
   `3bb73ef`, representation population/provenance `cefd106`, division refinement
   `0bfa879`, and authentic raw-node universe `27b7220` are terminal. Representation
   froze 154 exact 44b6 population shards (44,729,626 bytes) but found no new
@@ -60,12 +79,20 @@ points at the authoritative artifacts; it does not replace them.
   `GAP-F1`, `DET-F0`, and `G2` because their node-specific transition evidence
   was absent. The newer independent R7 terminal state and budget were preserved.
   Barrier `9fed2429…8f8d`; validation `9dae1cb1…b522`; accepted moves 0, uncited
-  moves 0, census unchanged.
+  moves 0, census unchanged. Posthoc independent review quarantined the PARK-B
+  fragment because it referenced an unmerged NODETOPO artifact; the reference
+  drove no accepted move. It also found that the root evidence chain is not
+  self-contained at clean checkout and that NODETOPO's original receipt omitted
+  its top-level verdict; the hash-pinned terminal report supplies
+  `PARK_RESOURCE_GUARD`. Review `27d9a87e…8db9e10`.
 - **OWNER COMPUTE GOVERNANCE:** Kaggle GPU is authorized as needed within
   **30 h/week cumulative**, with hours banked every run. **RunPod is forbidden.**
   Public submission remains a separate explicit human gate. Local runs retain the
-  45-second idle preflight and zero-swap rule.
-- **CELLECT R7 SEPARATION / INVALID TERMINAL INFRA HOLD.** The authenticated-weight
+  45-second idle preflight and zero-swap rule. **Standing authentication rule:**
+  every authenticated Kaggle CLI list, push, or submit must run through
+  computer-use cmux, where the owner's real session lives; the agent-shell token
+  must never be used for those operations.
+- **CELLECT R7 SEPARATION / REMOTE BYTE-EXACT PASS / NO LAUNCH.** The authenticated-weight
   per-class amendment is frozen at `9fb030bd…3310e`; exact fit-only 44b6 populations completed under
   guard with delete **1,345,497 / 1,118 beneficial** and occupied-swap
   **45,961 / 134 beneficial** actions. The official checkpoint matches pinned
@@ -75,7 +102,24 @@ points at the authoritative artifacts; it does not replace them.
   kernel still observed zero mounted files under the exact checkpoint name and
   stopped before checkpoint load or supplier features. No A1/A0 metric or
   scientific verdict exists across any attempt; total CELLECT invalid-run debit
-  is **0.4591 kernel-h**. R7 remains PARK-B and no further launch is authorized.
+  is **0.4591 kernel-h**. The v3 manifest staged **19,467,606 bytes**, including
+  **9,270,385** non-checkpoint bytes; the remote total of **18,508,409 bytes**
+  therefore implies a **9,238,024-byte** checkpoint, **959,197 bytes smaller**
+  than the authenticated **10,197,221-byte** file. Direct `.pth` transport is
+  invalid. A deterministic local v4 package now wraps safe-ASCII
+  `cellect_uext_x3rd_149_0_4p6540.pth` inside an uncompressed tar and recovers
+  SHA-256 `f3e8e730…89ce5` at kernel step 0 before dependency installation.
+  The earlier rules/entitlement diagnosis is retracted: this is the user's own
+  private dataset, and the failure is in the CLI/OAuth token-scope path. After
+  owner reauthentication in cmux, status and upload succeeded and private asset
+  **v4 is READY**. The legacy `ListDatasetFiles` and metadata-preflight endpoints
+  still return 403, but an authenticated SDK download in that same cmux owner
+  session recovered all seven assets. Kaggle expanded the uncompressed tar during
+  materialization; the safe-ASCII checkpoint round-tripped at exactly
+  **10,197,221 B** and SHA-256 `f3e8e730…89ce5`, with all other payload hashes
+  exact. Focused tests are **17/17 PASS**. No kernel or submission command ran.
+  Infrastructure-fix contract `a1e6180a…3398`; remote receipt
+  `4aa00106…ecd0`; R7 remains PARK-B.
 - **H0 DONE** — proposal-only screening **BANNED** (no proxy `|ρ|≥0.5`). Every candidate now
   routes straight to the **44b6-first held-fit graph gate**; proposal metrics may be reported, never gate.
 - **GA-H1-ZWRFEAT-GRAPH DEAD — 44b6 GRAPH KILL.** The human-authorized parity
@@ -123,9 +167,12 @@ points at the authoritative artifacts; it does not replace them.
 Phase 1 is closed. The supplier-agnostic **R-SEPARATION-FALSIFIER-44B6**
 per-class amendment is frozen at `tiered_surface/branches/sa_repr/phase2_separation_gate/`
 (`9fb030bd…3310e`). Its exact 44b6 populations and both-class B0 are banked, but
-the feature run is **INVALID / terminally infrastructure-blocked** before supplier
-outcomes: v1 lacked `zarr`; v2 and the authenticated-weight v3 could not find the
-mounted CELLECT checkpoint.
+the feature run remains **INVALID** before supplier outcomes. The direct v3
+checkpoint transport is proven byte-changing rather than absent. Private asset
+v4 is READY and its authenticated cmux download proves a byte-exact safe-ASCII
+checkpoint after Kaggle expands the uncompressed tar. The infrastructure barrier
+is cleared, but the feature kernel remains unlaunched and requires a separate
+human launch authorization.
 On the exact fit-only Phase-1
 N1-valid delete and occupied-swap populations, every class/fold must clear
 A1 AUC `≥0.65`, `≥B0+0.05`, `≥A0+0.03` and CG0-budget retention `≥0.15`,
@@ -134,16 +181,22 @@ Trackastra's prior AUC `0.918491` still led to a failed graph, so PASS only
 unlocks a supplier-class-specific 44b6 graph contract; it is not a promotion.
 No further retry, A1/A0 evaluation, full cache, graph, 6bba, or CV57 run is authorized. Division still
 requires one association-continuity arm passing both families. C2 remains
-PARK-B / NOT SCORED.
+unscored, but its newly exact AE-P5 contract is PARK-A pending implementation
+and rank-1 output. DINOv2 is an authenticated second supplier; its separately
+authorized bounded R5 endpoint-feature materialization has not run.
 
 ## Census / fallback queue
 
 | Queue | Surface | Tier | 44b6 evidence | Headroom / next condition |
 |---:|---|---|---|---|
+| 1 | `AE-P5` | PARK-A | no graph; exact C0/C2 contract committed | `+0.075828`; implement frozen rule and emit rank-1 |
+| 1 | `AE-P7` | PARK-A | no graph; exact phase-template contract committed | `+0.075828`; fit105 identity/runtime smoke |
 | 1 | `AE-P1` | PARK-A | broader mechanism unscored; failed exact realizers do not demote it | `+0.075828`; newly named realizer only |
 | 2 | `AE-P2` | PARK-A | broader mechanism unscored; failed exact realizers do not demote it | `+0.075828`; newly named realizer only |
 | gated | `SWAP-O0` | PARK-A | exact-regret instantiation `−0.000310288/−0.000296592/0` (PARK-C breadcrumb) | `+0.075828`; representation falsifier PASS |
-| gated | `R7` CELLECT | PARK-B | official weight + B0 authenticated; A1/A0 INVALID/unrun, graph unrun | materially new authorized mount-path resolution, then falsifier |
+| gated | `R5` DINOv2 XY | PARK-B | source/weight/load authenticated; feature and graph unrun | bounded endpoint-feature authorization |
+| gated | `R7` CELLECT | PARK-B | official weight + B0 authenticated; v4 remote checkpoint byte-exact; A1/A0 INVALID/unrun, graph unrun | separate human authorization for unchanged falsifier launch |
+| closed | `G2` exact regret | PARK-C | `−0.000310288/−0.000296592/0` | new named decision-focused mechanism only |
 | closed | `DELETE-O0` | PARK-C | exact retention beta `−0.000127119/−0.000131807/0` | materially new named deletion mechanism |
 
 ## Key numbers
@@ -167,18 +220,33 @@ PARK-B / NOT SCORED.
 - Phase-1 graph outcomes: DELETE-O0 adjusted/raw/node
   `−0.0001271190/−0.0001318070/0`; SA-SWAP exact-regret
   `−0.0003102875/−0.0002965922/0`; both stopped at 44b6.
-- Tier census is **0/13/22/9/1** over 45 nodes. Weekly Kaggle budget artifact
+- Tier census is **0/15/19/10/1** over 45 nodes. Weekly Kaggle budget artifact
   `tiered_surface/kaggle_budget.json` at SHA-256
   `2e02bc4f…1fc6` reconciles **2.5761/30.0 kernel-h used**, **27.4239 h remaining**,
   no active authorization; RunPod forbidden and submission human-gated.
 - CPU-only Wave-2 NODETOPO prerequisite: **36/36 videos, 3,600/3,600 frames,
   107,370 proposals, 106,668 false proposals, 100,983 topology-joinable,
-  50 restoration actions across 24 videos**, with 0 MiB swap growth. The graph
-  gate remains human-held.
+  50 restoration actions across 24 videos**, with 0 MiB swap growth. Its graph
+  gate is terminal at 44b6: adjusted/raw/node
+  **`−0.00000343615 / 0 / 0`**, 50/50 actions and 24/24 affected batches exact,
+  36/36 videos scored, 111.186 s committed-lane guard, 0.667 GiB peak RSS,
+  and 0 MiB swap growth; 6bba/CV57 unrun. Committed lane `189c43b`,
+  terminal `540adb67…b31ac`, validation `6f87905b…579b3`, and post-run
+  provenance closure `f2c7b12a…2c9d4` bind the full 87.4 GB archive SHA-256,
+  preregistered central directory, evaluator, wrapper, and imported scorer.
+  A separate evaluator independently reproduced the exact scores, deltas, and
+  verdict.
 - CPU-only Wave-2 division diagnostic: **38/42 present-but-fragmented,
   1/42 present/component-spanning without a local fork, 3/42 role-missing**;
   39/39 diagnostic N1 actions compiled, 36 persistent actions selected, three
   missing-persistence actions suppressed, and zero duplicate survivors.
+- CPU-only Wave-3: DINOv2 ViT-S/14 authenticates at **88,283,115 bytes,
+  175 keys, 22,056,576 parameters**, strict safe CPU load and a deterministic
+  768-D XY interface. The reverse supplier request is **0.758 CPU-h**, 1.5 h
+  wall, 4 GiB RAM, 512 MiB scratch, and 0 GPU-h. Division continuity freezes
+  **38 direct bundles / 36 one-frame-late equivalents / 39 adds / 27 net
+  deletes**. NODETOPO independent repeat guard was 111.186 s, peak RSS
+  0.667 GiB, swap growth 0 MiB.
 - H1 external usage: two human-created datasets; two failed timing-kernel versions, one
   passing smoke, and one completed full-cache kernel. Banked completed use is
   **2.1170 kernel-h** (≤**4.2340 allocated T4-GPU-h**), **0 submissions**. The
@@ -225,6 +293,57 @@ Frozen C1 conflict-set attention (`C1-TA-HOCT-LITE`) is DEAD at its 44b6 graph g
 do not run 6bba or re-screen it without a new named mechanism.
 
 ## Log (newest first)
+- 2026-07-29 — CELLECT R7 **PRIVATE ASSET V4 READY / AUTHENTICATED BYTE-EXACT
+  ROUND-TRIP PASS / NO LAUNCH**: owner reauthentication in computer-use cmux
+  restored status/upload access and created version 4. `ListDatasetFiles` and
+  the CLI metadata preflight remain endpoint-specific 403s, not entitlement
+  failures; a direct authenticated SDK download in the same cmux session
+  recovered all seven assets. Kaggle expanded the uncompressed tar, and its
+  safe-ASCII member returned at exactly 10,197,221 B with SHA
+  `f3e8e730…89ce5`; every other payload hash matched. Focused tests pass 17/17.
+  No kernel, GPU, submission, RunPod, DEAD, or plan action occurred. Contract
+  `a1e6180a…3398`; receipt `4aa00106…ecd0`. (Human auth + Codex root)
+- 2026-07-29 — CPU-only Wave-3 **ROOT BARRIER PASS**: merged five disjoint
+  lane fragments. AE-P5 and AE-P7 move PARK-B→PARK-A on exact committed
+  contracts plus positive banked occupied-swap P0 headroom; G2 moves
+  PARK-B→PARK-C for `SA-SWAP-W1-EXACT-REGRET` only. DINOv2 authenticates and
+  stages R5 as a second independent supplier; reverse Trackastra stops at a
+  bounded 0.758 CPU-h request; all 38 fragmented division events receive exact
+  continuity targets. The independent NODETOPO replay confirms
+  `−0.00000343615/0/0` and unblocks nothing. Census becomes 0/15/19/10/1;
+  accepted/uncited moves 3/0. No GPU, Kaggle, budget debit, RunPod, submission,
+  DEAD, plan, or CELLECT action. Decisions `202cc2a5…bec9`. (Codex root +
+  five isolated lanes)
+- 2026-07-29 — CELLECT R7 **CMUX ROUND-TRIP WORKFLOW FROZEN / AUTH HOLD
+  UNCHANGED**: inspected the installed CLI without an API call and pinned its
+  `status/current_version_number` and `name/size` JSON receipt schemas. The
+  fail-closed orchestrator dry-runs only private-dataset version, status, files,
+  and download commands; it contains no kernel or submission command. Synthetic
+  exact/mismatched receipt tests pass, bringing the focused suite to 16/16.
+  Contract `e4b51091…a6bc`. No credential refresh, upload, download, launch, or
+  other external action occurred. (Codex root)
+- 2026-07-29 — NODETOPO exact 50-action graph gate **KILL_44B6_STOP**:
+  adjusted/raw/node deltas were
+  `−0.000003436150368 / 0 / 0`; raw and node passed at equality, but adjusted
+  missed the preregistered `+0.005` floor. All 50 frozen restorations and 24/24
+  affected-video N1 batches replayed exactly; edge TP/FP/FN remained
+  `10,341/1,064/673`. The authoritative committed lane `189c43b` used a
+  111.186 s guard, 0.667 GiB peak RSS, and 0 MiB swap growth; a separate
+  evaluator reproduced its exact scores, deltas, and verdict. The run stopped
+  before 6bba/CV57 with no GPU, Kaggle, external action, tier move, DEAD
+  promotion, or plan amendment. Terminal `540adb67…b31ac`; validation
+  `6f87905b…579b3`; provenance closure `f2c7b12a…2c9d4`.
+  (Codex root + independent lanes)
+- 2026-07-29 — CELLECT R7 **AUTH/BYTE DIAGNOSIS CORRECTED / LOCAL V4 READY**:
+  v3 arithmetic proves the remotely stored direct checkpoint is 9,238,024 B,
+  959,197 B below the authenticated 10,197,221 B pin. The rules/entitlement
+  diagnosis is retracted; the owner-private dataset's 403 is a CLI token/scope
+  failure. A deterministic uncompressed tar (`a8110e0d…f559`) with safe-ASCII
+  member recovers exact SHA `f3e8e730…89ce5` at step 0 in 0.027 s, and 16/16
+  focused tests pass. Cmux list/download still return 403 under its saved
+  credential, so upload and remote round-trip await credential refresh. No
+  dataset version or kernel launch occurred. Infrastructure-fix contract
+  `e4b51091…a6bc`. (Human correction + Codex root)
 - 2026-07-29 — CPU-only Wave-2 **ROOT BARRIER PASS / GRAPH HOLD**:
   banked exact clean lane commits `3f38a524`+`50bc0e08`,
   `cd7f24d3`+`cf703b5c`+`9151934e`, `47905928`, and
@@ -238,6 +357,31 @@ do not run 6bba or re-screen it without a new named mechanism.
   moves remain 0/0 and census remains 0/13/22/9/1. The NODETOPO graph gate is
   held for human review. No GPU, Kaggle launch/debit, CELLECT action, RunPod,
   submission, DEAD promotion, or graph run occurred. (Codex root)
+- 2026-07-28 — CELLECT R7 **RETRACTED 403 DIAGNOSIS / HISTORICAL**:
+  the then-recorded competition-entitlement explanation is superseded by the
+  2026-07-29 owner correction and byte arithmetic above. The dataset is
+  owner-private; the denial is a CLI token/scope failure. No external action
+  occurred under the retracted diagnosis. (Superseded human clarification +
+  Codex root)
+- 2026-07-28 — CELLECT R7 **SUPERSEDED V3 PACKAGING DIAGNOSIS / HISTORICAL**:
+  `kaggle datasets status` confirmed the private published-assets dataset is
+  ready at current version 3, while `kaggle datasets files` and read-only
+  download both returned HTTP 403 under the configured owner OAuth session.
+  Its filename-mangling hypothesis is superseded by the exact 2026-07-29 byte
+  mismatch proof above. No re-upload, kernel push/launch, GPU use, debit,
+  training, cache, graph, 6bba, CV57, submission, or RunPod action occurred.
+  (Codex root)
+- 2026-07-28 — Concurrent CPU wave **POSTHOC QUALIFIED / FAIL CLOSED**:
+  independent review confirmed all four exact commits, scopes, fragment hashes,
+  and terminal worktrees, but found that SA-PARKB referenced a NODETOPO artifact
+  absent from its commit, violating the no-live-sibling rule. PARKB is
+  quarantined; its three proposed moves remain rejected, accepted/uncited moves
+  remain 0/0, and census remains 0/13/22/9/1. The root chain is not
+  clean-checkout self-contained because several shared authority artifacts are
+  untracked, and NODETOPO's root receipt had a null top-level verdict despite
+  terminal `PARK_RESOURCE_GUARD`. No rerun, GPU/Kaggle action, debit, submission,
+  RunPod, DEAD promotion, or plan amendment occurred. Review
+  `27d9a87e…8db9e10`. (Codex root + independent review)
 - 2026-07-28 — Concurrent CPU wave **ROOT BARRIER PASS**: all four clean,
   scope-only lane commits were collected; evidence hashes and memo quarantine
   validated. SA-REPR-MULTI froze 154 exact shards but queued zero new suppliers;
