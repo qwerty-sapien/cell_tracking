@@ -1,0 +1,28 @@
+{
+  "authenticated_but_excluded": [
+    {
+      "node": "R7",
+      "reason": "Authenticated but already dispatched on the independent serial GPU lane; duplicate request/authorization is forbidden.",
+      "supplier_id": "F2-CELLECT-PUBLISHED-64D-V1"
+    }
+  ],
+  "authorization_held": false,
+  "authorization_requested": false,
+  "gpu_launched": false,
+  "next_named_inputs_that_can_reopen": [
+    "Exact locally supplied DINOv2 ViT-S/14 weights plus pinned source and license bundle",
+    "Authentic complete per-detection mask/wrfeat identity join",
+    "Immutable reverse-inference feature supplier for R8",
+    "New tracklet/event evidence supplier for R9",
+    "Separately frozen <1% adapter contract paired with authenticated new evidence for R10"
+  ],
+  "population_aggregate_sha256": "ebde982b68abfa1359b0323b8699c31a0e303c0982cfcb01caa2b2fa0536130c",
+  "preregistration_sha256": "02eabc2dde266f5548ac20e4fef9170513bbfbe7c826701b6b4bfa7669a99f16",
+  "projection_rule": "Queue only with measured same-implementation projection <5 h; no literature-only or unverified estimate.",
+  "queue_scope": "Exact frozen 44b6 delete and occupied-swap endpoint sample only",
+  "ready_sample_count": 0,
+  "ready_samples": [],
+  "schema": "g02.sa-repr-multi.ready-sample-queue.v1",
+  "status": "NO_NEW_READY_SUPPLIER",
+  "verdict_barrier": "HOLD_PARK_NOT_READY"
+}

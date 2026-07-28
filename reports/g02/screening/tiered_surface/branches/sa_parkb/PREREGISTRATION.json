@@ -1,0 +1,55 @@
+{
+  "schema": "celltrack-alpha.parkb-support-sweep-preregistration.v1",
+  "status": "FROZEN_BEFORE_SUPPORT_AUDIT",
+  "frozen_utc": "2026-07-28T06:55:00Z",
+  "owner_agent": "SA-PARKB-SWEEP",
+  "write_scope": "reports/g02/screening/tiered_surface/branches/sa_parkb/**",
+  "objective": "Run the cheapest identity/support falsifier for every root-census PARK_B node without opening held graph outcomes.",
+  "frozen_inputs": {
+    "tier_census": {
+      "path": "reports/g02/screening/tiered_surface/tier_census.json",
+      "sha256": "768810ba949c37ab998ded83d99d47b9d9d6add6a57f5ff5340cf55bcf37994e"
+    },
+    "n1": {
+      "path": "reports/g02/screening/tiered_surface/n1_feasibility_compiler/N1_FREEZE_REPORT.json",
+      "sha256": "a27fdf5597d0ac66d3d0f1c85689a5cc03b16d0155684b765d441dab6117786d"
+    },
+    "folds": {
+      "path": "reports/g02/grouped_3fold_audit20_v1.json",
+      "sha256": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769"
+    },
+    "p0": {
+      "path": "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+      "sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06"
+    }
+  },
+  "decision_rules": {
+    "B_to_A": "Only banked positive class support at or above the binding +0.005 adjusted threshold with nonnegative raw/node and a complete identity prerequisite may be proposed.",
+    "B_to_C": "Only banked zero/weak class support or a complete named identity/support falsification may be proposed; absence alone remains PARK_B unless the node contract explicitly defines it as a negative.",
+    "unchanged": "Missing prerequisites, sibling-wave dependencies, and quarantined memo claims remain PARK_B.",
+    "dead": "FORBIDDEN"
+  },
+  "predeclared_support_interpretations": {
+    "GAP-F1": "P0 one-gap score deltas below +0.005 on both families are weak banked class support and propose PARK_C for this exact class instantiation.",
+    "DET-F0": "P0 free node-add has exactly zero score, adjusted/raw edge, and node-recall deltas; propose PARK_C for this exact free-node instantiation.",
+    "G2": "N1 is frozen GO and P0 swap/delete class support exceeds +0.005 on both families; propose PARK_A for the feasibility-exact decision-focused mechanism while preserving graph gating.",
+    "all_other_nodes": "Run evidence identity and prerequisite/support presence checks; do not infer a move from absence or a sibling's live work."
+  },
+  "memo_quarantine": {
+    "C2_numbers": true,
+    "branch_b_66_of_223": true,
+    "may_tier": false
+  },
+  "forbidden": {
+    "held_graph_outcome": true,
+    "family_execution": true,
+    "cv57": true,
+    "gpu": true,
+    "kaggle": true,
+    "submission": true,
+    "runpod": true,
+    "dead_promotion": true,
+    "plan_amendment": true,
+    "root_single_writer_files": true
+  }
+}

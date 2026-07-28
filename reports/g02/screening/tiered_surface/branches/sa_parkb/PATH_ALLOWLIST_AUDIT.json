@@ -1,0 +1,17 @@
+{
+  "allowed_prefix": "reports/g02/screening/tiered_surface/branches/sa_parkb/",
+  "changed_paths": [
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/PATH_ALLOWLIST_AUDIT.json",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/PREREGISTRATION.json",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/PROPOSED_LEDGER_ROWS.md",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/TERMINAL_REPORT.md",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/VALIDATION.json",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/run_parkb_sweep.py",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/state_fragment.json",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/validate_parkb_sweep.py"
+  ],
+  "out_of_scope_paths": [],
+  "schema": "celltrack-alpha.worktree-path-allowlist.v1",
+  "status": "PASS"
+}

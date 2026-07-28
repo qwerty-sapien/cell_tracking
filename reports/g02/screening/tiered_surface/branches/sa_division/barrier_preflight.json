@@ -1,0 +1,13 @@
+{
+  "elapsed_seconds": 45.69627380371094,
+  "ending_swap_mib": 2333.5599994659424,
+  "external_action": false,
+  "gpu_action": false,
+  "initial_swap_mib": 2333.5599994659424,
+  "minimum_system_memory_free_percent": 34.0,
+  "peak_swap_mib": 2333.5599994659424,
+  "required_seconds": 45.0,
+  "schema": "celltrack-alpha.u0-t4canon-preflight.v1",
+  "status": "PASS_ZERO_SWAP_GROWTH",
+  "swap_growth_mib": 0.0
+}

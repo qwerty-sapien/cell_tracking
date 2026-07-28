@@ -1,0 +1,22 @@
+{
+  "command": [
+    "python3",
+    "reports/g02/screening/tiered_surface/branches/sa_repr_multi/validate_artifacts.py",
+    "--output",
+    "/private/tmp/g02_phase1_20260728/sa_repr/reports/g02/screening/tiered_surface/branches/sa_repr_multi/FINAL_VALIDATION.json"
+  ],
+  "elapsed_seconds": 0.11319645802723244,
+  "forced_stop_on_swap_growth": false,
+  "gpu": false,
+  "peak_process_tree_rss_gib": 0.020294189453125,
+  "returncode": 0,
+  "schema": "g02.sa-repr-multi.resource-guard.v1",
+  "status": "PASS",
+  "stderr": "",
+  "stdout": "{\"status\": \"PASS\", \"checks\": 31}\n",
+  "swap_end_mib": 4324.125,
+  "swap_growth_mib": 0.0,
+  "swap_metric": "cumulative vm_stat Swapouts pages converted to MiB",
+  "swap_peak_mib": 4324.125,
+  "swap_start_mib": 4324.125
+}

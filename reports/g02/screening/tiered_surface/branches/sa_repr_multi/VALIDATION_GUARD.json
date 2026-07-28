@@ -1,0 +1,20 @@
+{
+  "command": [
+    "python3",
+    "reports/g02/screening/tiered_surface/branches/sa_repr_multi/validate_artifacts.py"
+  ],
+  "elapsed_seconds": 0.22242879201075993,
+  "forced_stop_on_swap_growth": false,
+  "gpu": false,
+  "peak_process_tree_rss_gib": 0.019287109375,
+  "returncode": 2,
+  "schema": "g02.sa-repr-multi.resource-guard.v1",
+  "status": "FAIL",
+  "stderr": "FAIL CLOSED: all population integrity checks pass\n",
+  "stdout": "",
+  "swap_end_mib": 4324.125,
+  "swap_growth_mib": 0.0,
+  "swap_metric": "cumulative vm_stat Swapouts pages converted to MiB",
+  "swap_peak_mib": 4324.125,
+  "swap_start_mib": 4324.125
+}

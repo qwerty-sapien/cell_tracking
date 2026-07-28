@@ -1,0 +1,1091 @@
+{
+  "active_agents": [],
+  "fallback_order": [
+    "PARK_A",
+    "PARK_B",
+    "PARK_C"
+  ],
+  "fallback_sort": "lowest priority, then descending oracle_headroom.family_44b6_dS, excluding nodes with blocked_on",
+  "frozen_inputs": {
+    "fit_provenance_sha256": "6a9139bf281b98d2c3869c8f12f80fb9655f85ba1c0f7f91f0a51acd7c37f14f",
+    "grouped_folds_sha256": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769",
+    "n1_interface_sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865",
+    "n1_tests_sha256": "09107306fbdea2078d5a73006bde6215a242779ae9245015e365181dd48bee97",
+    "p0_sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06"
+  },
+  "gate": "44b6->6bba->CV57; adjusted>=+0.005 both families; raw,node>=0",
+  "kaggle_week": {
+    "auto_approve_under_h": 5.0,
+    "budget_artifact": "reports/g02/screening/tiered_surface/kaggle_budget.json",
+    "budget_artifact_sha256": "2e02bc4f0032b1125f42604bd4021a24fd70bb45b786c82e89ad17290bf31fc6",
+    "budget_h": 30.0,
+    "hard_kill_h": 5.0,
+    "remaining_h": 27.4239,
+    "used_h": 2.5761,
+    "week_start_utc": "2026-07-27T00:00:00Z"
+  },
+  "nodes": [
+    {
+      "banked": true,
+      "blocked_on": [
+        "COMPLETED_P0_ENABLER"
+      ],
+      "branch": "association_expansion",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/association_expansion.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "37dd4b9a31b5b8cf420dc6744c97d5165bc29faa83cd3d7990ebdafffbc6f5be",
+      "graph_result": null,
+      "id": "AE-P0",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 1,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_A"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "association_expansion",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/association_expansion.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "37dd4b9a31b5b8cf420dc6744c97d5165bc29faa83cd3d7990ebdafffbc6f5be",
+      "graph_result": null,
+      "id": "AE-P1",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "CG0_fit117",
+        "family_44b6_dS": 0.075827918,
+        "family_6bba_dS": 0.059735
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 1,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_A"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "association_expansion",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/association_expansion.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "37dd4b9a31b5b8cf420dc6744c97d5165bc29faa83cd3d7990ebdafffbc6f5be",
+      "graph_result": null,
+      "id": "AE-P2",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "CG0_fit117",
+        "family_44b6_dS": 0.075827918,
+        "family_6bba_dS": 0.059735
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 1,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_A"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "AE-P2_BOTH_FAMILY_PASS"
+      ],
+      "branch": "association_expansion",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/association_expansion.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "37dd4b9a31b5b8cf420dc6744c97d5165bc29faa83cd3d7990ebdafffbc6f5be",
+      "graph_result": null,
+      "id": "AE-P3",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "CG0_fit117",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 1,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_A"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "association_expansion",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/association_expansion.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "37dd4b9a31b5b8cf420dc6744c97d5165bc29faa83cd3d7990ebdafffbc6f5be",
+      "graph_result": null,
+      "id": "AE-P4",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "CG0_fit117",
+        "family_44b6_dS": 0.003638840028941659,
+        "family_6bba_dS": 0.004424175906171723
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 3,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_C"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "association_expansion",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "evidence_basis": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE",
+      "evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "graph_result": null,
+      "id": "AE-P5",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T06:55:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-PARKB-SWEEP",
+      "priority": 2,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "association_expansion",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "evidence_basis": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE",
+      "evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "graph_result": null,
+      "id": "AE-P6",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T06:55:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-PARKB-SWEEP",
+      "priority": 2,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "association_expansion",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "evidence_basis": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE",
+      "evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "graph_result": null,
+      "id": "AE-P7",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T06:55:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-PARKB-SWEEP",
+      "priority": 2,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "association_expansion",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "evidence_basis": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE",
+      "evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "graph_result": null,
+      "id": "AE-P8",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T06:55:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-PARKB-SWEEP",
+      "priority": 2,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "association_expansion",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "evidence_basis": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE",
+      "evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "graph_result": null,
+      "id": "AE-P9",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T06:55:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-PARKB-SWEEP",
+      "priority": 2,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "association_expansion",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/association_expansion.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "37dd4b9a31b5b8cf420dc6744c97d5165bc29faa83cd3d7990ebdafffbc6f5be",
+      "graph_result": null,
+      "id": "AE-P10",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 3,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_C"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "ASSOCIATION_CONTINUITY_PASS"
+      ],
+      "branch": "event_node_actions",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/event_node_actions.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "6df46ab0b3744a89b588d55d24e71a687f70e261667491adf6e2552c1b5fb5b3",
+      "graph_result": null,
+      "id": "DIV-O0",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "CG0_fit117",
+        "family_44b6_dS": 0.014723031692599364,
+        "family_6bba_dS": 0.02140505577004803
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 1,
+      "resume_condition": "Wait for a both-family association-continuity pass.",
+      "tier": "PARK_A"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "ASSOCIATION_CONTINUITY_PASS"
+      ],
+      "branch": "event_node_actions",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/event_node_actions.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "6df46ab0b3744a89b588d55d24e71a687f70e261667491adf6e2552c1b5fb5b3",
+      "graph_result": null,
+      "id": "DIV-F0",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 3,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_C"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "ASSOCIATION_CONTINUITY_BOTH_FAMILIES"
+      ],
+      "branch": "event_node_actions",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_division/oracle_refinement_results.json",
+      "evidence_basis": "dependency audit found 0 qualifying both-family association-continuity arms; frozen P0 division-fork oracle remained diagnostic and below D1 division-Jaccard GO on both families; no fit or held execution",
+      "evidence_sha256": "aded494fd19aca50a9123dfdbcccfd37448709330f8449e76984359833c44c22",
+      "graph_result": null,
+      "id": "DIV-F1",
+      "kill_line": "after dependency opens, adjusted>=+0.005 on 44b6 and 6bba with raw/node nonnegative; otherwise stop",
+      "last_change_utc": "2026-07-28T06:54:16Z",
+      "owner_agent": "SA-DIVISION",
+      "priority": 1,
+      "resume_condition": "root-authenticated single-arm both-family association-continuity pass",
+      "tier": "PARK_A"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "ASSOCIATION_CONTINUITY_PASS",
+        "AUTHENTIC_PRETRAINED_FORK_INPUT"
+      ],
+      "branch": "event_node_actions",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "evidence_basis": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE",
+      "evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "graph_result": null,
+      "id": "DIV-F2",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T06:55:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-PARKB-SWEEP",
+      "priority": 2,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "event_node_actions",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/event_node_actions.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "6df46ab0b3744a89b588d55d24e71a687f70e261667491adf6e2552c1b5fb5b3",
+      "graph_result": null,
+      "id": "GAP-O0",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "CG0_fit117",
+        "family_44b6_dS": 0.003638840028941659,
+        "family_6bba_dS": 0.004424175906171723
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 3,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_C"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "POSITIVE_GAP_CLASS_GATE"
+      ],
+      "branch": "event_node_actions",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/event_node_actions.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "6df46ab0b3744a89b588d55d24e71a687f70e261667491adf6e2552c1b5fb5b3",
+      "graph_result": null,
+      "id": "GAP-F1",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 2,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "TOPOLOGY_REQUIRED"
+      ],
+      "branch": "event_node_actions",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/event_node_actions.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "6df46ab0b3744a89b588d55d24e71a687f70e261667491adf6e2552c1b5fb5b3",
+      "graph_result": null,
+      "id": "NODEADD-O0",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "CG0_fit117",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 3,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_C"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "ZERO_SWAP_AUTHENTIC_UNIVERSE_EXECUTION",
+        "COMPLETE_AUTHENTIC_NODE_PROPOSAL_UNIVERSE"
+      ],
+      "branch": "event_node_actions",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+      "evidence_basis": "The authentic raw proposal-universe execution terminated at the binding resource guard before one complete video, so no restoration action bank or graph result exists.",
+      "evidence_sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d",
+      "graph_result": null,
+      "id": "NODERESTORE-O0",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T07:26:37Z",
+      "latest_audit_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+      "latest_audit_sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d",
+      "latest_audit_verdict": "PARK_RESOURCE_GUARD",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-NODETOPO",
+      "priority": 2,
+      "resume_condition": "A new named resource-safe execution mechanism or root-approved environment completes the frozen proposal universe under unchanged guards.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "AUTHENTIC_NODE_PROPOSAL_UNIVERSE"
+      ],
+      "branch": "event_node_actions",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/event_node_actions.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "6df46ab0b3744a89b588d55d24e71a687f70e261667491adf6e2552c1b5fb5b3",
+      "graph_result": null,
+      "id": "DET-F0",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 2,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "event_node_actions",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/event_node_actions.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "6df46ab0b3744a89b588d55d24e71a687f70e261667491adf6e2552c1b5fb5b3",
+      "graph_result": null,
+      "id": "DET-F1",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 3,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_C"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "AUTHENTIC_NODE_PROPOSAL_UNIVERSE"
+      ],
+      "branch": "event_node_actions",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "evidence_basis": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE",
+      "evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "graph_result": null,
+      "id": "DET-F2",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T06:55:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-PARKB-SWEEP",
+      "priority": 2,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "AUTHENTIC_NODE_PROPOSAL_UNIVERSE"
+      ],
+      "branch": "event_node_actions",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "evidence_basis": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE",
+      "evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "graph_result": null,
+      "id": "DET-F3",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T06:55:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-PARKB-SWEEP",
+      "priority": 2,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "NEW_NAMED_MECHANISM_REQUIRED"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/ga_h1_zero_wrfeat_graph/44b6/report.json",
+      "evidence_basis": "human-promoted 44b6 graph kill",
+      "evidence_sha256": "530117276bbea4911c4ed2422a6b5b2d6cfc76120dfb28bd8a0185f85b19619d",
+      "graph_result": null,
+      "human_authorized": true,
+      "id": "R0",
+      "kill_line": "already fired at 44b6; 6bba and CV57 remain closed",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "named_mechanism": "H1-ZWRFEAT",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 4,
+      "resume_condition": "Never re-screen zero-filled wrfeat; require a new named representation.",
+      "tier": "DEAD"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "graph_result": null,
+      "id": "R1",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 3,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_C"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "AUTHENTIC_COMPLETE_MASK_OR_WRFEAT"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "evidence_basis": "No authenticated complete mask/wrfeat identity join is banked; raw Zarr intensity remains ineligible as a mask. This is an acquisition hold, not a morphology result.",
+      "evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "graph_result": null,
+      "id": "R2",
+      "kill_line": "A child must pass the unchanged 44b6 graph gate before 6bba.",
+      "last_change_utc": "2026-07-28T08:40:00Z",
+      "oracle_headroom": {
+        "control": "not_measured",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-REPR-MULTI",
+      "priority": 2,
+      "resume_condition": "Supply an origin-, license-, hash-, coverage-, and join-complete authentic mask/wrfeat artifact.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "R2_AUTHENTIC_MORPHOLOGY"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "evidence_basis": "F1 real-wrfeat remains dependency-blocked on R2; no supplier probe or graph outcome opened.",
+      "evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "graph_result": null,
+      "id": "R3",
+      "kill_line": "A child must pass the unchanged 44b6 graph gate before 6bba.",
+      "last_change_utc": "2026-07-28T08:40:00Z",
+      "oracle_headroom": {
+        "control": "not_measured",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-REPR-MULTI",
+      "priority": 2,
+      "resume_condition": "R2 authenticates a complete morphology supplier and its frozen adapter.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "AUTHENTIC_DINOV2_VITS14_BUNDLE"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "evidence_basis": "Fresh preregistered scan found no exact local DINOv2 ViT-S/14 weight; source revision, weight license, and offline loader cannot all authenticate. This does not falsify the encoder family.",
+      "evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "graph_result": null,
+      "id": "R4",
+      "kill_line": "Children use the unchanged per-class separation gate and 44b6 graph gate.",
+      "last_change_utc": "2026-07-28T08:40:00Z",
+      "oracle_headroom": {
+        "control": "not_measured",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-REPR-MULTI",
+      "priority": 2,
+      "resume_condition": "Supply exact DINOv2 ViT-S/14 weights plus pinned source and license bundle and offline loader.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "R4_ENCODER_PROVENANCE"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "evidence_basis": "The frozen XY dense contract exists, but R4 has no authenticated encoder; no sample was queued.",
+      "evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "graph_result": null,
+      "id": "R5",
+      "kill_line": "Per-class separation PASS only unlocks a 44b6 graph preregistration; graph adjusted must be >=+0.005 with raw,node>=0.",
+      "last_change_utc": "2026-07-28T08:40:00Z",
+      "oracle_headroom": {
+        "control": "not_measured",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-REPR-MULTI",
+      "priority": 2,
+      "resume_condition": "R4 authenticates the exact frozen encoder bundle.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "R4_ENCODER_PROVENANCE",
+        "R5_XY_BETA_CACHE"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "evidence_basis": "The frozen tri-view/permutation contract exists, but R4 and the XY beta cache are absent; no sample was queued.",
+      "evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "graph_result": null,
+      "id": "R6",
+      "kill_line": "Common graph kill plus tri-view must beat XY and permutation under the frozen contract.",
+      "last_change_utc": "2026-07-28T08:40:00Z",
+      "oracle_headroom": {
+        "control": "not_measured",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-REPR-MULTI",
+      "priority": 2,
+      "resume_condition": "R4 authenticates the encoder and R5 produces a frozen XY beta cache.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "TERMINAL_INFRASTRUCTURE_HOLD",
+        "NO_FURTHER_AUTHORIZED_RETRY"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/TERMINAL_REPORT_V3.md",
+      "evidence_basis": "The official CELLECT checkpoint and v3 package authenticated, but the one authorized serial kernel observed no mounted file under the exact weight name and stopped before load/features. No A1/A0 metric or scientific verdict exists.",
+      "evidence_sha256": "11722692bdb8b13090b63e1b051cb2e407668087f6f4512c30416ff4370dd9c4",
+      "graph_result": null,
+      "id": "R7",
+      "kill_line": "The in-flight per-class separation contract remains authoritative; no graph follows without a class-local PASS and new human-reviewed preregistration.",
+      "last_change_utc": "2026-07-28T07:29:28Z",
+      "oracle_headroom": {
+        "control": "not_measured",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "ROOT_SERIAL_R7",
+      "priority": 2,
+      "resume_condition": "Remain PARK-B; no further launch is authorized without a new explicit human instruction and a new frozen contract.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "IMMUTABLE_REVERSE_FEATURE_SUPPLIER"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "evidence_basis": "No immutable reverse-inference feature supplier or endpoint-return contract is banked.",
+      "evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "graph_result": null,
+      "id": "R8",
+      "kill_line": "Common per-class separation and 44b6 graph gates; no threshold sweep after outcomes.",
+      "last_change_utc": "2026-07-28T08:40:00Z",
+      "oracle_headroom": {
+        "control": "not_measured",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-REPR-MULTI",
+      "priority": 2,
+      "resume_condition": "Freeze forward/reverse evidence generation and endpoint-return rule without held labels.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "NEW_TRACKLET_EVENT_EVIDENCE"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "evidence_basis": "No new tracklet/event evidence supplier is banked; pair-row-only reuse remains ineligible.",
+      "evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "graph_result": null,
+      "id": "R9",
+      "kill_line": "Common per-class separation and both-family graph gate, with matched ERM control.",
+      "last_change_utc": "2026-07-28T08:40:00Z",
+      "oracle_headroom": {
+        "control": "not_measured",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-REPR-MULTI",
+      "priority": 2,
+      "resume_condition": "Freeze a new tracklet/event evidence supplier and video-group contract.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "NEW_AUTHENTICATED_REPRESENTATION",
+        "FROZEN_LT1PCT_ADAPTER_CONTRACT"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "evidence_basis": "No separately frozen <1% adapter contract paired with new authenticated evidence is banked.",
+      "evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "graph_result": null,
+      "id": "R10",
+      "kill_line": "Common graph kill plus adapter-minus-frozen adjusted delta must be positive.",
+      "last_change_utc": "2026-07-28T08:40:00Z",
+      "oracle_headroom": {
+        "control": "not_measured",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-REPR-MULTI",
+      "priority": 2,
+      "resume_condition": "Pair a separately frozen <1% adapter with authenticated new R3/R5/R6/R7 evidence.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "COMPLETED_GOVERNANCE"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "graph_result": null,
+      "id": "G0",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 1,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_A"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "COMPLETED_N1_ENABLER"
+      ],
+      "branch": "representation_and_governance",
+      "compiler": {
+        "batch_orderings": "2/2 PASS",
+        "implementation_sha256": "457f6607a493d51d972913fa155d687e9ffc4045475605bc109a4ca9e90124f5",
+        "interface_sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865",
+        "negative_fixtures": "7/7 REJECTED",
+        "single_action_kinds": "6/6 PASS",
+        "swap_growth_mib": 0.0,
+        "tests_sha256": "09107306fbdea2078d5a73006bde6215a242779ae9245015e365181dd48bee97",
+        "unit_tests": "10/10 PASS"
+      },
+      "evidence_artifact": "reports/g02/screening/tiered_surface/n1_feasibility_compiler/N1_FREEZE_REPORT.json",
+      "evidence_basis": "N1 GO: 100% structural validity",
+      "evidence_sha256": "a27fdf5597d0ac66d3d0f1c85689a5cc03b16d0155684b765d441dab6117786d",
+      "graph_result": null,
+      "id": "G1",
+      "kill_line": "any invalid or nondeterministic action fails closed",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "ROOT",
+      "priority": 1,
+      "resume_condition": "Frozen and complete; expose only this exact interface to Phase 1.",
+      "tier": "PARK_A"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "graph_result": null,
+      "id": "G2",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 2,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "SERIAL_GPU_AUTHORIZATION"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "graph_result": null,
+      "id": "G3",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 1,
+      "resume_condition": "Open only one root-recorded GPU authorization at a time.",
+      "tier": "PARK_A"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "EXECUTION_DISCIPLINE_NOT_SCIENTIFIC_ARM"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "graph_result": null,
+      "id": "G4",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 1,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_A"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "CV57_PASS",
+        "EXPLICIT_HUMAN_SUBMISSION_APPROVAL"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "evidence_basis": "P0-adjusted banked branch register",
+      "evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "graph_result": null,
+      "id": "G5",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 1,
+      "resume_condition": "Require a passing CV57 package and explicit human approval.",
+      "tier": "PARK_A"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "OWNER_FORBIDS_RUNPOD"
+      ],
+      "branch": "representation_and_governance",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "evidence_basis": "PARK_OWNER_FORBIDS_RUNPOD",
+      "evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "graph_result": null,
+      "id": "G6",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T06:55:00Z",
+      "oracle_headroom": {
+        "control": "not_measured_or_governance",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "SA-PARKB-SWEEP",
+      "priority": 2,
+      "resume_condition": "Do not open; RunPod is forbidden by the owner.",
+      "tier": "PARK_B"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "REALIZER_REQUIRED"
+      ],
+      "branch": "atomic_p0",
+      "evidence_artifact": "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+      "evidence_basis": "exact fit117 P0 action-class oracle",
+      "evidence_sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06",
+      "graph_result": null,
+      "id": "ADD-O0",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T00:00:00Z",
+      "oracle_headroom": {
+        "control": "CG0_fit117",
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 3,
+      "resume_condition": "Follow the node-specific frozen branch contract before outcomes open.",
+      "tier": "PARK_C"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "atomic_p0",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_delete/graph_result.json",
+      "evidence_basis": "Exact P0 fit117 conservative retention/no-link beta; 44b6 adjusted -0.000127119, raw -0.000131807, node 0; invalid actions 0; 6bba gated closed",
+      "evidence_sha256": "28517a7c9170cedbf550d55395f38ac330888949ead7467086c3e306c7f7485a",
+      "graph_result": {
+        "44b6": {
+          "adj": -0.00012711897487494017,
+          "node": 0.0,
+          "raw": -0.00013180696930725766
+        }
+      },
+      "id": "DELETE-O0",
+      "kill_line": "PARK-C exact instantiation: 44b6 adjusted and raw graph deltas are negative",
+      "last_change_utc": "2026-07-27T18:19:37Z",
+      "oracle_headroom": {
+        "control": "CG0_fit117",
+        "family_44b6_dS": 0.08877378690902493,
+        "family_6bba_dS": 0.07483987337673481
+      },
+      "owner_agent": "SA-DELETE",
+      "priority": 3,
+      "resume_condition": "Only a new named retention/deletion mechanism with a newly locked contract; do not rerun this exact 13-parameter instantiation",
+      "tier": "PARK_C"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "REPRESENTATION_SEPARATION_GATE_PASS"
+      ],
+      "branch": "atomic_p0",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_swap/result_44b6_postrepair_v1/report.json",
+      "evidence_basis": "one exact-regret instantiation failed 44b6 at ~0; surface intact pending a representation that clears the Task-2 gate.",
+      "evidence_sha256": "62953d270ae383c9bacdea9ab33a3f6980358a31a329b219447460abd5604864",
+      "graph_result": {
+        "44b6": {
+          "adj": -0.0003102875275311501,
+          "node": 0.0,
+          "raw": -0.00029659222678224406
+        }
+      },
+      "id": "SWAP-O0",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T03:13:02Z",
+      "latest_instantiation": {
+        "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_swap/result_44b6_postrepair_v1/report.json",
+        "evidence_sha256": "62953d270ae383c9bacdea9ab33a3f6980358a31a329b219447460abd5604864",
+        "id": "SA-SWAP-EXACT-REGRET-PHASE1",
+        "reason": "44b6 adjusted and raw graph deltas were negative; 6bba and CV57 remained closed",
+        "tier": "PARK_C"
+      },
+      "oracle_headroom": {
+        "control": "CG0_fit117",
+        "family_44b6_dS": 0.075827918,
+        "family_6bba_dS": 0.059735
+      },
+      "owner_agent": "UNASSIGNED_PHASE1",
+      "priority": 1,
+      "resume_condition": "Only a new named occupied-swap realizer using a representation supplier that passes the frozen Phase-2 separation falsifier; then run the unchanged 44b6 graph gate.",
+      "tier": "PARK_A"
+    },
+    {
+      "banked": true,
+      "blocked_on": [
+        "ZERO_SWAP_AUTHENTIC_UNIVERSE_EXECUTION",
+        "COMPLETE_AUTHENTIC_NODE_PROPOSAL_UNIVERSE",
+        "FALSE_NODE_STRESS_CURVE"
+      ],
+      "branch": "atomic_p0",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+      "evidence_basis": "The frozen 36-video raw contract authenticated, but all three attempts completed zero videos; the bounded CPU attempt hit the binding +24.5 MiB swap-growth guard before any metric opened.",
+      "evidence_sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d",
+      "graph_result": null,
+      "id": "NODETOPO-O0",
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "last_change_utc": "2026-07-28T07:26:37Z",
+      "latest_audit_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+      "latest_audit_sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d",
+      "latest_audit_verdict": "PARK_RESOURCE_GUARD",
+      "oracle_headroom": {
+        "control": "CG0_fit117",
+        "family_44b6_dS": 0.009812493435202185,
+        "family_6bba_dS": 0.02404
+      },
+      "owner_agent": "SA-NODETOPO",
+      "priority": 1,
+      "resume_condition": "A new named resource-safe execution mechanism or root-approved environment satisfies unchanged zero-swap-growth and five-hour guards for the frozen raw-universe contract.",
+      "tier": "PARK_A"
+    }
+  ],
+  "objective": "S(G)=weighted_adjusted_edge_Jaccard + 0.1*division_Jaccard",
+  "phase": "PHASE1_BARRIER_COMPLETE",
+  "phase1_worktrees_manifest": {
+    "path": "reports/g02/screening/tiered_surface/phase1_worktrees_manifest.json",
+    "sha256": "f88524685301da8a365f09b04efced23f83485e621e49459f62905b06fad7a63"
+  },
+  "plan_sha256": "a322724e77dd77f53c36e918e5345e86e8394a3848033a9a2225c21924e75116",
+  "rollup": {
+    "DEAD": 1,
+    "PARK_A": 13,
+    "PARK_B": 22,
+    "PARK_C": 9
+  },
+  "schema_version": 1,
+  "updated_utc": "2026-07-28T07:30:00Z"
+}

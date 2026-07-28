@@ -1,0 +1,15 @@
+{
+  "census_sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003",
+  "checks": {
+    "all_commits_scope_clean": true,
+    "all_evidence_hashes_resolved": true,
+    "all_proposed_moves_adjudicated": true,
+    "lane_count": 4,
+    "memo_quarantine": true,
+    "rollup_unchanged": true,
+    "uncited_tier_moves": 0
+  },
+  "decisions_sha256": "9fed2429b16d1d286dc722c78e74842ecae0b65577608b100250d0dc4c008f8d",
+  "schema": "celltrack-alpha.wave2-root-validation.v1",
+  "status": "PASS"
+}

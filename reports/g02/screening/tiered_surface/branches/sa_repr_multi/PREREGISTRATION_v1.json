@@ -1,0 +1,220 @@
+{
+  "schema": "g02.sa-repr-multi.preregistration.v1",
+  "status": "FROZEN_BEFORE_SUPPLIER_SCAN_OR_OUTCOME_OPEN",
+  "frozen_utc": "2026-07-28T08:30:00Z",
+  "lane": "SA-REPR-MULTI",
+  "objective": "Authenticate the next dense/R-family representation suppliers and freeze a supplier-agnostic, per-class 44b6 separation-gate population without running a supplier, GPU job, graph, 6bba, or CV57.",
+  "chronology": {
+    "supplier_scan_started": false,
+    "new_supplier_feature_outcome_opened": false,
+    "new_supplier_probe_outcome_opened": false,
+    "graph_outcome_opened": false,
+    "gpu_launched": false,
+    "external_acquisition": false
+  },
+  "write_scope": "reports/g02/screening/tiered_surface/branches/sa_repr_multi",
+  "frozen_read_only_inputs": {
+    "n1_interface": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/n1_feasibility_compiler/interface_v1.json",
+      "sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865"
+    },
+    "grouped_folds": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/grouped_3fold_audit20_v1.json",
+      "sha256": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769"
+    },
+    "p0": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+      "sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06"
+    },
+    "locked_plan": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/campaign_narrowing_and_hypothesis_dag_v1.md",
+      "sha256": "a322724e77dd77f53c36e918e5345e86e8394a3848033a9a2225c21924e75116"
+    },
+    "alignment": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/ALIGNMENT.md",
+      "sha256": "eda3840ca4decf1fbc9943dcd872800852cf1ff52e0923136adb51b4f2ea6b37"
+    },
+    "scope_manifest": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/SCOPE_MANIFEST.md",
+      "sha256": "066fb71b8ead255ff061a7aa75283df27c367e08aa8fd0a0b91677537a0a7d49"
+    },
+    "per_class_amendment": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/PREREGISTRATION_v2_per_class.json",
+      "sha256": "c3c86ec91307fc19a393f060912b50fe95fe42a0d68102508d154c3fe498458c"
+    },
+    "population_manifest": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/run_v1/population_manifest.json",
+      "sha256": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c"
+    },
+    "f0_feature_contract": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/top50_parallel_dags/runs/20260727_top50_six_01/f0_triview_dense_ta/N0_feature_contract.json",
+      "sha256": "5a41c125e66f2e6611ef262f8e3a03970921831a4fa1144ed36274ab567be547"
+    },
+    "f0_prior_weight_audit": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/top50_parallel_dags/runs/20260727_top50_six_01/f0_triview_dense_ta/N0_weights_license_manifest.json",
+      "sha256": "b15c491b1166e9f6c5a1bef3d776bd84016f29eb5273603dc1dd2d0bf06803e6"
+    }
+  },
+  "population_freeze": {
+    "family": "44b6",
+    "classes": [
+      "delete",
+      "occupied_swap"
+    ],
+    "source": "Exact Phase-1 N1-valid, fit-only population already materialized under the frozen per-class amendment.",
+    "copy_policy": "Do not copy or mutate the 43 MiB banked population. Emit a complete path/size/SHA-256 inventory and an aggregate digest in this lane.",
+    "identity_key": [
+      "split",
+      "video_id",
+      "frame",
+      "row_id",
+      "source_id",
+      "target_id"
+    ],
+    "labels": "Exact single-action delta S(G); beneficial iff delta > 0 and harmful iff delta <= 0.",
+    "folds": "Five identity-grouped OOF folds already encoded in every population shard.",
+    "forbidden_fields_for_supplier_generation": [
+      "oracle_delta_S",
+      "oracle_label",
+      "official_score",
+      "held_family_label",
+      "cv57_membership"
+    ],
+    "integrity_requirements": {
+      "all_manifest_files_present": true,
+      "all_manifest_hashes_exact": true,
+      "no_duplicate_identity_class_pairs": true,
+      "finite_arrays": true,
+      "fold_values": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "feature_request_population_endpoint_exactness": true,
+      "class_totals_match_manifest": true
+    }
+  },
+  "authoritative_comparison_rules_unchanged": {
+    "verdict_unit": "supplier x action_class",
+    "both_class_reporting_required": true,
+    "cross_class_conjunction": false,
+    "arms": {
+      "B0": "incumbent frozen features",
+      "A1": "incumbent plus true supplier features",
+      "A0": "incumbent plus within-frame-permuted supplier features"
+    },
+    "probe": "class-balanced standardized ridge least-squares binary rank probe, lambda 0.01, deterministic float64",
+    "metrics": [
+      "beneficial-versus-harmful ROC AUC",
+      "beneficial-action retention at exact CG0 per-video FP budget"
+    ],
+    "every_fold_thresholds": {
+      "auc_absolute_floor": 0.65,
+      "auc_min_absolute_lift_over_B0": 0.05,
+      "auc_min_absolute_lift_over_A0": 0.03,
+      "retention_absolute_floor": 0.15,
+      "retention_min_absolute_lift_over_B0": 0.05,
+      "retention_min_absolute_lift_over_A0": 0.03,
+      "per_video_fp_budget_violations": 0,
+      "population_coverage": 1.0,
+      "nonfinite_feature_or_score_count": 0,
+      "duplicate_or_invalid_action_count": 0,
+      "provenance_and_license_pass": true
+    },
+    "pass_semantics": "Only unlock a newly frozen supplier x action_class 44b6 graph-gate preregistration for human review. No tier promotion and no graph authorization.",
+    "fail_semantics": "Park only the named supplier x action_class instantiation PARK-C. Do not kill the supplier family or the other action class.",
+    "invalid_semantics": "Any provenance, population, fold, alignment, metric, resource, or integrity violation produces no scientific verdict."
+  },
+  "fixed_supplier_audit_universe": [
+    {
+      "node": "R2",
+      "candidate": "H3-AUTHENTIC-MORPHOLOGY",
+      "required_artifact": "Authentic per-detection mask or aligned wrfeat with origin/license and complete identity join."
+    },
+    {
+      "node": "R3",
+      "candidate": "F1-REAL-WRFEAT",
+      "required_artifact": "R2-qualified morphology plus frozen Trackastra-compatible adapter."
+    },
+    {
+      "node": "R4",
+      "candidate": "F0-DINOV2-VITS14-PROVENANCE",
+      "required_artifact": "Exact DINOv2 ViT-S/14 weight, pinned source revision/tree, code and weight licenses, offline loader."
+    },
+    {
+      "node": "R5",
+      "candidate": "F0-XY-DENSE-TA",
+      "required_artifact": "R4-qualified encoder under the frozen XY crop/view contract."
+    },
+    {
+      "node": "R6",
+      "candidate": "F0-TRIVIEW-DENSE-TA",
+      "required_artifact": "R4-qualified encoder under the frozen XY/XZ/YZ contract and permutation control."
+    },
+    {
+      "node": "R7",
+      "candidate": "F2-CELLECT-PUBLISHED-64D-V1",
+      "required_artifact": "Already authenticated and separately dispatched; audit identity only, never queue a duplicate sample."
+    },
+    {
+      "node": "R8",
+      "candidate": "C3-BIDIR-CYCLE",
+      "required_artifact": "Frozen forward and reverse feature supplier with endpoint-return rule and no held labels."
+    },
+    {
+      "node": "R9",
+      "candidate": "ENV-GROUPDRO-TRACKLET",
+      "required_artifact": "New tracklet/event evidence supplier; pair-row-only reuse is ineligible."
+    },
+    {
+      "node": "R10",
+      "candidate": "PEFT-44B6-ADAPTER",
+      "required_artifact": "A newly authenticated R3/R5/R6/R7 supplier and a separate <1% adapter contract; no full-backbone training."
+    }
+  ],
+  "supplier_authentication_gate": {
+    "required": [
+      "exact immutable weight/payload SHA-256",
+      "pinned source revision and source-tree or implementation SHA-256",
+      "locally readable code and weight license evidence",
+      "offline no-network loader",
+      "point-compatible endpoint feature interface",
+      "finite deterministic repeated witness",
+      "complete fit-only endpoint coverage plan",
+      "no pseudo-mask, held-label, graph, 6bba, or CV57 dependence"
+    ],
+    "name_match_alone_is_insufficient": true,
+    "missing_artifact_semantics": "NOT_READY, not a scientific failure and not a tier move"
+  },
+  "sample_queue_rule": {
+    "queue_only_if_authenticated": true,
+    "projection_required_hours_lt": 5.0,
+    "projection_basis": "Authenticated measured same-implementation throughput plus explicit packaging and retry margin; never a literature runtime guess.",
+    "hard_kill_hours_if_later_authorized": 5.0,
+    "scope": "Exact frozen 44b6 population endpoint sample only; no full cache.",
+    "authorization_requested_here": false,
+    "authorization_held_here": false,
+    "r7_duplicate_queue_forbidden": true
+  },
+  "hard_stops": [
+    "GPU or Kaggle launch",
+    "GPU authorization request or hold",
+    "RunPod",
+    "public submission",
+    "graph execution",
+    "6bba",
+    "CV57",
+    "DEAD promotion",
+    "tier census edit",
+    "LIVE_STATE edit",
+    "LEDGER edit",
+    "budget edit",
+    "pseudo-mask creation",
+    "memo C2 or Branch-B number used for a tier decision",
+    "scope violation",
+    "swap growth"
+  ],
+  "expected_terminal": "READY_QUEUE if one or more non-R7 suppliers pass authentication and have an authenticated <5 h projection; otherwise PARK_NOT_READY while preserving all affected R-family nodes at their current tiers."
+}

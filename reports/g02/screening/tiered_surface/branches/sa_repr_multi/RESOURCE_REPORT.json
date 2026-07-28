@@ -1,0 +1,81 @@
+{
+  "schema": "g02.sa-repr-multi.resource-report.v1",
+  "status": "COMPLETE_CPU_ONLY",
+  "idle_preflight": {
+    "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/IDLE_PREFLIGHT.json",
+    "sha256": "a8b4d0faa610df1b6a133b74e53472eda99369cdda053c50324d551b95624510",
+    "elapsed_seconds": 45.06679329200415,
+    "peak_guard_rss_gib": 0.01849365234375,
+    "swap_growth_mib": 0.0,
+    "swap_metric": "cumulative vm_stat Swapouts pages converted to MiB"
+  },
+  "focused_tests": {
+    "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/TEST_GUARD.json",
+    "sha256": "2df4bc146652f79508c376988fc3a2a1dbdd5f8d375bb654ebcffefc8b6239d6",
+    "tests_passed": 5,
+    "tests_failed": 0,
+    "elapsed_seconds": 0.4409652079921216,
+    "peak_child_rss_gib": 0.0368499755859375,
+    "swap_growth_mib": 0.0
+  },
+  "population_and_provenance_audit": {
+    "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/AUDIT_GUARD.json",
+    "sha256": "750938ac0235f009a9128b0f91cfe98b3ad2e19367f0860178c4ada3e52903a0",
+    "elapsed_seconds": 1.7742978750029579,
+    "peak_child_rss_gib": 0.046234130859375,
+    "swap_growth_mib": 0.0,
+    "population_bytes_hashed_and_validated": 44729626,
+    "population_and_request_files_validated": 154
+  },
+  "artifact_validation": {
+    "guard_path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/VALIDATION_GUARD_v2.json",
+    "elapsed_seconds": 0.11330579101922922,
+    "peak_child_rss_gib": 0.019378662109375,
+    "swap_growth_mib": 0.0,
+    "checks_passed": 28,
+    "checks_failed": 0
+  },
+  "instrumentation_fail_closed_repair_log": [
+    {
+      "attempt": 1,
+      "failure": "psutil unavailable",
+      "scientific_or_population_work_started": false,
+      "output_promoted": false
+    },
+    {
+      "attempt": 2,
+      "failure": "sandbox blocked sysctl vm.swapusage",
+      "scientific_or_population_work_started": false,
+      "output_promoted": false
+    },
+    {
+      "attempt": 3,
+      "failure": "vm_stat parser escaped whitespace incorrectly",
+      "scientific_or_population_work_started": false,
+      "output_promoted": false
+    },
+    {
+      "attempt": 4,
+      "failure": "sandbox blocked ps process-tree sampling from Python",
+      "scientific_or_population_work_started": false,
+      "output_promoted": false
+    },
+    {
+      "attempt": 5,
+      "failure": "first artifact validator treated required integer duplicate-count zero as a false Boolean",
+      "scientific_or_population_work_started": false,
+      "output_promoted": false
+    }
+  ],
+  "external_resource_use": {
+    "gpu_hours": 0.0,
+    "kaggle_runs": 0,
+    "gpu_authorizations_requested": 0,
+    "gpu_authorizations_held": 0,
+    "runpod_runs": 0,
+    "submissions": 0,
+    "external_downloads": 0,
+    "external_services": 0,
+    "estimated_cost_usd": 0.0
+  }
+}

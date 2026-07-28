@@ -1,0 +1,432 @@
+{
+  "elapsed_seconds": 0.013077582989353687,
+  "external_actions": {
+    "gpu": false,
+    "kaggle": false,
+    "runpod": false,
+    "submission": false
+  },
+  "family_execution": {
+    "44b6": false,
+    "6bba": false,
+    "CV57": false
+  },
+  "identity_checks_passed": 22,
+  "input_authentication": {
+    "reports/g02/grouped_3fold_audit20_v1.json": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769",
+    "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06",
+    "reports/g02/screening/tiered_surface/n1_feasibility_compiler/N1_FREEZE_REPORT.json": "a27fdf5597d0ac66d3d0f1c85689a5cc03b16d0155684b765d441dab6117786d",
+    "reports/g02/screening/tiered_surface/tier_census.json": "768810ba949c37ab998ded83d99d47b9d9d6add6a57f5ff5340cf55bcf37994e"
+  },
+  "max_rss_mib": 24.21875,
+  "memo_quarantine": {
+    "C2": true,
+    "branch_b_66_of_223": true,
+    "numbers_used_for_tiering": 0
+  },
+  "owner_agent": "SA-PARKB-SWEEP",
+  "park_b_nodes_tested": 22,
+  "plan_sha256": "a322724e77dd77f53c36e918e5345e86e8394a3848033a9a2225c21924e75116",
+  "proposed_moves": [
+    {
+      "from": "PARK_B",
+      "id": "GAP-F1",
+      "to": "PARK_C"
+    },
+    {
+      "from": "PARK_B",
+      "id": "DET-F0",
+      "to": "PARK_C"
+    },
+    {
+      "from": "PARK_B",
+      "id": "G2",
+      "to": "PARK_A"
+    }
+  ],
+  "results": [
+    {
+      "evidence_identity": "PASS",
+      "falsifier": "Require a frozen C0 edge/no-link assignment-cost and MAP identity contract; quarantine unbanked C2 numbers.",
+      "from_tier": "PARK_B",
+      "id": "AE-P5",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/association_expansion.md",
+      "source_evidence_sha256": "37dd4b9a31b5b8cf420dc6744c97d5165bc29faa83cd3d7990ebdafffbc6f5be",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "evidence_identity": "PASS",
+      "falsifier": "Require immutable forward/reverse endpoint-return evidence and a disabled-cycle identity control.",
+      "from_tier": "PARK_B",
+      "id": "AE-P6",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/association_expansion.md",
+      "source_evidence_sha256": "37dd4b9a31b5b8cf420dc6744c97d5165bc29faa83cd3d7990ebdafffbc6f5be",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "evidence_identity": "PASS",
+      "falsifier": "Require a frozen phase/template tracklet identity join with no held labels.",
+      "from_tier": "PARK_B",
+      "id": "AE-P7",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/association_expansion.md",
+      "source_evidence_sha256": "37dd4b9a31b5b8cf420dc6744c97d5165bc29faa83cd3d7990ebdafffbc6f5be",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "evidence_identity": "PASS",
+      "falsifier": "Require authenticated dense-embedding weights, source, license, and offline loader.",
+      "from_tier": "PARK_B",
+      "id": "AE-P8",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/association_expansion.md",
+      "source_evidence_sha256": "37dd4b9a31b5b8cf420dc6744c97d5165bc29faa83cd3d7990ebdafffbc6f5be",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "evidence_identity": "PASS",
+      "falsifier": "Require an authenticated frozen backbone and immutable adapter target before PEFT.",
+      "from_tier": "PARK_B",
+      "id": "AE-P9",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/association_expansion.md",
+      "source_evidence_sha256": "37dd4b9a31b5b8cf420dc6744c97d5165bc29faa83cd3d7990ebdafffbc6f5be",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "blocked_on": [
+        "ASSOCIATION_CONTINUITY_PASS",
+        "AUTHENTIC_PRETRAINED_FORK_INPUT"
+      ],
+      "evidence_identity": "PASS",
+      "falsifier": "Check banked both-family association continuity and authentic pretrained fork input.",
+      "from_tier": "PARK_B",
+      "id": "DIV-F2",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/event_node_actions.md",
+      "source_evidence_sha256": "6df46ab0b3744a89b588d55d24e71a687f70e261667491adf6e2552c1b5fb5b3",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "decision_evidence_artifact": "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+      "decision_evidence_sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06",
+      "evidence_identity": "PASS",
+      "falsifier": "Compare the banked one-gap action-class oracle against the binding +0.005 both-family floor.",
+      "from_tier": "PARK_B",
+      "id": "GAP-F1",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_C",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/event_node_actions.md",
+      "source_evidence_sha256": "6df46ab0b3744a89b588d55d24e71a687f70e261667491adf6e2552c1b5fb5b3",
+      "support": {
+        "44b6": {
+          "adj_edge_jaccard": 0.003638840028941659,
+          "division_jaccard": 0.0,
+          "edge_jaccard": 0.0036419629884766325,
+          "node_recall": 0.00118003130653066,
+          "score": 0.003638840028941659
+        },
+        "6bba": {
+          "adj_edge_jaccard": 0.004424175906171723,
+          "division_jaccard": 0.0,
+          "edge_jaccard": 0.004561595570049426,
+          "node_recall": 0.0013507397529992637,
+          "score": 0.004424175906171723
+        }
+      },
+      "tier_move_proposed": true,
+      "verdict": "PROPOSE_B_TO_C_WEAK_BANKED_CLASS_SUPPORT"
+    },
+    {
+      "blocked_on": [
+        "AUTHENTIC_NODE_PROPOSAL_UNIVERSE"
+      ],
+      "evidence_identity": "PASS",
+      "falsifier": "Require a provenance-pinned full candidate restoration universe and baseline-topology join.",
+      "from_tier": "PARK_B",
+      "id": "NODERESTORE-O0",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/PROVENANCE_AUDIT.json",
+      "source_evidence_sha256": "481504fc0ca2e744ab08794f8cbb8d38ee2f5299d969c45e4035dc33cd951dd6",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "decision_evidence_artifact": "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+      "decision_evidence_sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06",
+      "evidence_identity": "PASS",
+      "falsifier": "Check the banked free node-add class oracle for nonzero score and node-recall support.",
+      "from_tier": "PARK_B",
+      "id": "DET-F0",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_C",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/event_node_actions.md",
+      "source_evidence_sha256": "6df46ab0b3744a89b588d55d24e71a687f70e261667491adf6e2552c1b5fb5b3",
+      "support": {
+        "44b6": {
+          "adj_edge_jaccard": 0.0,
+          "division_jaccard": 0.0,
+          "edge_jaccard": 0.0,
+          "node_recall": 0.0,
+          "score": 0.0
+        },
+        "6bba": {
+          "adj_edge_jaccard": 0.0,
+          "division_jaccard": 0.0,
+          "edge_jaccard": 0.0,
+          "node_recall": 0.0,
+          "score": 0.0
+        }
+      },
+      "tier_move_proposed": true,
+      "verdict": "PROPOSE_B_TO_C_ZERO_BANKED_CLASS_SUPPORT"
+    },
+    {
+      "blocked_on": [
+        "AUTHENTIC_NODE_PROPOSAL_UNIVERSE"
+      ],
+      "evidence_identity": "PASS",
+      "falsifier": "Require an authentic proposal universe before learned detection expansion.",
+      "from_tier": "PARK_B",
+      "id": "DET-F2",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/event_node_actions.md",
+      "source_evidence_sha256": "6df46ab0b3744a89b588d55d24e71a687f70e261667491adf6e2552c1b5fb5b3",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "blocked_on": [
+        "AUTHENTIC_NODE_PROPOSAL_UNIVERSE"
+      ],
+      "evidence_identity": "PASS",
+      "falsifier": "Require authentic proposals and a frozen topology-complete node-action join.",
+      "from_tier": "PARK_B",
+      "id": "DET-F3",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/event_node_actions.md",
+      "source_evidence_sha256": "6df46ab0b3744a89b588d55d24e71a687f70e261667491adf6e2552c1b5fb5b3",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "blocked_on": [
+        "OWNER_PROVENANCE_COMPLETE_MASK_ARTIFACT"
+      ],
+      "evidence_identity": "PASS",
+      "falsifier": "Revalidate the banked authentic-mask/wrfeat provenance audit; pseudo-masks forbidden.",
+      "from_tier": "PARK_B",
+      "id": "R2",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr/provenance_manifest.json",
+      "source_evidence_sha256": "e7b9f7f14dade5581613e32c2b3ab5c98dd6d40b7c5c1cba4fcc8d2e0b56165d",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "blocked_on": [
+        "R2"
+      ],
+      "evidence_identity": "PASS",
+      "falsifier": "Require R2 authentic morphology provenance before real-wrfeat support can open.",
+      "from_tier": "PARK_B",
+      "id": "R3",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "source_evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "blocked_on": [
+        "AUTHENTIC_DINO_OR_SAM_ENCODER"
+      ],
+      "evidence_identity": "PASS",
+      "falsifier": "Require exact encoder weight/source/license and an offline loader.",
+      "from_tier": "PARK_B",
+      "id": "R4",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr/provenance_manifest.json",
+      "source_evidence_sha256": "e7b9f7f14dade5581613e32c2b3ab5c98dd6d40b7c5c1cba4fcc8d2e0b56165d",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "blocked_on": [
+        "R4"
+      ],
+      "evidence_identity": "PASS",
+      "falsifier": "Require R4 provenance before the frozen XY dense-feature smoke.",
+      "from_tier": "PARK_B",
+      "id": "R5",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "source_evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "blocked_on": [
+        "R4",
+        "R5"
+      ],
+      "evidence_identity": "PASS",
+      "falsifier": "Require R4 plus an immutable XY beta before tri-view support.",
+      "from_tier": "PARK_B",
+      "id": "R6",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "source_evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "blocked_on": [
+        "PHASE2_CONSUMER_PREREGISTRATION"
+      ],
+      "evidence_identity": "PASS",
+      "falsifier": "Require complete supplier packaging and a root-frozen consumer population; do not use invalid GPU attempts as science.",
+      "from_tier": "PARK_B",
+      "id": "R7",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr/FROZEN_SUPPLIER_CONTRACT_v1.json",
+      "source_evidence_sha256": "fffb09c2865fd70010f5d93d5db9eb4cca48bac851c9abe2f77bbc9b27e83e70",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "evidence_identity": "PASS",
+      "falsifier": "Require reusable forward/reverse evidence and immutable endpoint-return identities.",
+      "from_tier": "PARK_B",
+      "id": "R8",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "source_evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "evidence_identity": "PASS",
+      "falsifier": "Require frozen environment groups with adequate per-group support and no held-label derivation.",
+      "from_tier": "PARK_B",
+      "id": "R9",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "source_evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "blocked_on": [
+        "AUTHENTIC_NEW_REPRESENTATION"
+      ],
+      "evidence_identity": "PASS",
+      "falsifier": "Require an authentic new frozen representation before a PEFT target can be identified.",
+      "from_tier": "PARK_B",
+      "id": "R10",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "source_evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "tier_move_proposed": false,
+      "verdict": "PARK_SUPPORT_OR_IDENTITY_PREREQUISITE"
+    },
+    {
+      "decision_evidence_artifacts": [
+        {
+          "path": "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+          "sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/n1_feasibility_compiler/N1_FREEZE_REPORT.json",
+          "sha256": "a27fdf5597d0ac66d3d0f1c85689a5cc03b16d0155684b765d441dab6117786d"
+        }
+      ],
+      "evidence_identity": "PASS",
+      "falsifier": "Check frozen N1 feasibility identity plus banked positive P0 swap/delete support.",
+      "from_tier": "PARK_B",
+      "id": "G2",
+      "memo_numbers_used": false,
+      "n1_status": "GO",
+      "proposed_tier": "PARK_A",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "source_evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "support": {
+        "delete": {
+          "44b6": {
+            "adj_edge_jaccard": 0.08101621115144919,
+            "division_jaccard": 0.07757575757575758,
+            "edge_jaccard": 0.08061251662030067,
+            "node_recall": 0.0,
+            "score": 0.08877378690902493
+          },
+          "6bba": {
+            "adj_edge_jaccard": 0.07206693493306471,
+            "division_jaccard": 0.027729384436701508,
+            "edge_jaccard": 0.07291374813115326,
+            "node_recall": 0.0,
+            "score": 0.07483987337673481
+          }
+        },
+        "swap": {
+          "44b6": {
+            "adj_edge_jaccard": 0.07582789132186107,
+            "division_jaccard": 0.0,
+            "edge_jaccard": 0.07544750294380742,
+            "node_recall": 0.0,
+            "score": 0.07582789132186107
+          },
+          "6bba": {
+            "adj_edge_jaccard": 0.0597304438719668,
+            "division_jaccard": 4.873175604882922e-05,
+            "edge_jaccard": 0.0608255679175449,
+            "node_recall": 0.0,
+            "score": 0.05973531704757162
+          }
+        }
+      },
+      "tier_move_proposed": true,
+      "verdict": "PROPOSE_B_TO_A_POSITIVE_BANKED_SUPPORT_AND_N1_IDENTITY"
+    },
+    {
+      "evidence_identity": "PASS",
+      "falsifier": "Verify the owner RunPod prohibition; no execution edge may open.",
+      "from_tier": "PARK_B",
+      "id": "G6",
+      "memo_numbers_used": false,
+      "proposed_tier": "PARK_B",
+      "source_evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "source_evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "tier_move_proposed": false,
+      "verdict": "PARK_OWNER_FORBIDS_RUNPOD"
+    }
+  ],
+  "schema": "celltrack-alpha.parkb-support-sweep.v1",
+  "status": "VERDICT_BARRIER",
+  "unchanged_park_b": 19
+}

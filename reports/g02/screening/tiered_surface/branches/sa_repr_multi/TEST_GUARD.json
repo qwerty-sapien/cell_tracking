@@ -1,0 +1,22 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "reports/g02/screening/tiered_surface/branches/sa_repr_multi/test_audit_repr_multi.py"
+  ],
+  "elapsed_seconds": 0.4409652079921216,
+  "forced_stop_on_swap_growth": false,
+  "gpu": false,
+  "peak_process_tree_rss_gib": 0.0368499755859375,
+  "returncode": 0,
+  "schema": "g02.sa-repr-multi.resource-guard.v1",
+  "status": "PASS",
+  "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.078s\n\nOK\n",
+  "stdout": "",
+  "swap_end_mib": 4324.125,
+  "swap_growth_mib": 0.0,
+  "swap_metric": "cumulative vm_stat Swapouts pages converted to MiB",
+  "swap_peak_mib": 4324.125,
+  "swap_start_mib": 4324.125
+}
