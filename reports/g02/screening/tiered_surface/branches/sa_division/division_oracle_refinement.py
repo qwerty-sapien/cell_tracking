@@ -31,7 +31,7 @@ PINNED = {
     "p0": (
         ROOT
         / "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
-        "8ad548c134c419e2e76b8661848e90493d674731ceb34ab231c5f18c8889c06",
+        "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06",
     ),
     "d1_preregistration": (
         ROOT
