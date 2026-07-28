@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/Users/agent/Desktop/cell_tracking/.venv313/bin/python",
+    "reports/g02/screening/tiered_surface/branches/sa_division/division_oracle_refinement.py",
+    "--output",
+    "reports/g02/screening/tiered_surface/branches/sa_division/oracle_refinement_results.json"
+  ],
+  "elapsed_seconds": 0.3370630741119385,
+  "ending_swap_mib": 3612.0,
+  "external_action": false,
+  "gpu_action": false,
+  "initial_swap_mib": 3612.0,
+  "minimum_system_memory_free_percent": 41.0,
+  "peak_process_tree_rss_gib": 0.0045013427734375,
+  "peak_swap_mib": 3612.0,
+  "return_code": 0,
+  "schema": "celltrack-alpha.u0-t4canon-guard.v1",
+  "status": "PASS",
+  "stop_reason": "completed",
+  "swap_growth_mib": 0.0
+}

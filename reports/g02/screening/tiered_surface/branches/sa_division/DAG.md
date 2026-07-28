@@ -3,7 +3,7 @@
 Date: 2026-07-28  
 Owner: `SA-DIVISION`  
 Write scope: `reports/g02/screening/tiered_surface/branches/sa_division/` only  
-Status: dependency audit active; division fitting closed
+Status: oracle diagnostic complete; dependency PARK; division fitting closed
 
 ## Objective and immutable order
 
@@ -36,6 +36,11 @@ different arms. P0 division-oracle headroom, proposal metrics, CV57-only evidenc
 the external memo's C2/K-best values, and its Branch-B `66/223` audit cannot satisfy
 the dependency.
 
+The banked P0 division-fork action may be refined as a diagnostic after the
+dependency fails closed. Its exact combined-score decomposition and D1
+division-Jaccard envelope do not fit the D1 arm, execute either family, or
+promote a node.
+
 ## Hard stops
 
 - No division fitting, model training, held-out candidate scoring, `44b6`, `6bba`,
@@ -46,4 +51,3 @@ the dependency.
 - No DEAD mechanism rescreen, plan amendment, GPU, Kaggle, submission, RunPod,
   external service, or sibling live-output read.
 - Every local run requires a fresh 45-second idle preflight and zero-swap guard.
-

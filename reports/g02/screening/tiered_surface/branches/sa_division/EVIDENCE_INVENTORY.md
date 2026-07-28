@@ -62,3 +62,35 @@ structural tests had passed and swap growth was zero. The corrected comparison c
 the runtime field subset plus the pinned implementation hash; the fresh-preflight
 retry passed all tests.
 
+## Division-oracle refinement artifacts
+
+The refinement consumes only the authenticated P0 diagnostic after asserting
+the banked dependency remains closed.
+
+| Artifact | SHA-256 | Result |
+|---|---|---|
+| `ORACLE_REFINEMENT_PREREGISTRATION.md` | `1a78b2bb6572a16b51ecdc54366423d53d9d1c6678a52c538c56dd7434cb87d4` | diagnostic calculation and failure boundary frozen |
+| `division_oracle_refinement.py` | `089d00f0df93c7b2f8033bdca15419dc92173e2c66f46a362c653ae1c4c34064` | exact P0/D1 audit implementation |
+| `oracle_refinement_results.json` | `aded494fd19aca50a9123dfdbcccfd37448709330f8449e76984359833c44c22` | `PASS_DIAGNOSTIC_PARK_DEPENDENCY`, 10/10 |
+| `oracle_preflight_retry2.json` | `fd760fbe935d1be7636e813aad01412c1a7c310659c5556c404d820930b775bb` | 45.674 s, zero swap growth |
+| `oracle_guard_retry2.json` | `8a2014c2df11eb5639c48cf0cfc68f001eb05f7ab9c9c4f603429677ae0bc858` | PASS, 0.337 s, peak RSS 0.0045 GiB, zero swap growth |
+| `oracle_barrier_preflight.json` | `bfa564e8c728d3fe3176a8c1216e5b6412ef27d31211d578db544c4ac895cc7f` | 45.546 s, zero swap growth |
+| `oracle_barrier_guard.json` | `7622eac4a7595dec5e3830e5fc5e693a154ab3ce555283cd743cb337e6fa13b6` | barrier PASS, 0.645 s, peak RSS 0.0220 GiB, zero swap growth |
+
+The first two guarded attempts stopped at input authentication before P0 was
+parsed because of expected-digest transcription errors. They wrote no result,
+opened no fit or held outcome, and recorded zero swap growth:
+
+| Attempt artifact | SHA-256 | Status |
+|---|---|---|
+| `oracle_guard.json` | `2263a59c40bf0747209a3fad7d6597f70ed1f7050370b2c0ce293dee28bead85` | `FAIL_CLOSED` |
+| `oracle_guard_retry1.json` | `71139173a2da6babd67774f4ea92b0b8b08b3e2fdb1a3b05f7c6c31a01888e1d` | `FAIL_CLOSED` |
+| `ORACLE_REFINEMENT_REPAIR_V2.md` | `e9a789126f04fd2274493802ac9551b6c54d07766cd4e4b972217e8ce1833db4` | exact indexed repair frozen before successful retry |
+
+The P0 control remains fit117 CG0, not APNCC. Its exact division-fork oracle
+has combined-score deltas `+0.014723031693` on `44b6` and
+`+0.021405055770` on `6bba`, but division Jaccards `0.146666666667` and
+`0.215277777778` both remain below the unchanged D1 GO threshold `0.30`.
+Holding oracle TP/FN fixed, reaching `0.30` would require at least 39 and 82
+fewer division FPs respectively. These are diagnostics, not a realization
+claim or promotion gate.

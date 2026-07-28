@@ -59,3 +59,32 @@ Resume only when the root coordinator supplies one banked arm path+SHA with exac
 passing vectors on both families. This terminal artifact does not grant fitting
 authority.
 
+## Follow-on division-oracle refinement
+
+The banked dependency was reasserted at exactly zero qualifying arms before
+the P0 diagnostic was consumed. The frozen D1 arm identities, grammar, stable
+order, thresholds, and dry-validation boundary remain unchanged.
+
+The exact fit117-CG0 P0 `division_fork` diagnostic recomputed:
+
+| Family | Combined `ΔS` | Adjusted / raw / node delta | Division Jaccard | D1 GO `>=0.30` | Minimum FP reduction at fixed TP/FN |
+|---|---:|---:|---:|---:|---:|
+| `44b6` | `+0.014723031693` | `+0.001389698359 / +0.001375521786 / 0` | `0.146666666667` | no | 39 |
+| `6bba` | `+0.021405055770` | `+0.001271006215 / +0.001287100359 / 0` | `0.215277777778` | no | 82 |
+
+The FP reductions are counterfactual envelope calculations only. The P0 action
+is a banked fit117-CG0 oracle, not APNCC and not a forecast. Neither family
+meets D1's unchanged division-Jaccard GO threshold, and diagnostics cannot
+promote or reopen fitting.
+
+The successful guarded retry passed 10/10 checks after a fresh 45.674-second
+preflight, then ran for 0.337 seconds at 0.0045 GiB peak process-tree RSS with
+zero swap growth. Two earlier attempts failed closed at expected-hash
+authentication before P0 parsing; both had zero swap growth and no result.
+
+Evidence: `oracle_refinement_results.json` @
+`aded494fd19aca50a9123dfdbcccfd37448709330f8449e76984359833c44c22`.
+
+Final verdict remains **PARK_DEPENDENCY** with no tier move. Model fitting,
+held-family execution, CV57, GPU/Kaggle, submission, RunPod, external mutation,
+plan amendment, and DEAD action remain false.
