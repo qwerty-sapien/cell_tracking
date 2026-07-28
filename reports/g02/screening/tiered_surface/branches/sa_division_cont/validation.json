@@ -1,0 +1,196 @@
+{
+  "artifact_hashes": {
+    "PREREGISTRATION.md": "01083c8d68c324bee09f6e9b4f9f680ee2cc7243ecabc4800de33c2b3066b064",
+    "continuity_target_spec.json": "0926ab647915ad4e2e790252c040867e0bbc45a396155cecfe7f5813d6efe221",
+    "derive_continuity_targets.py": "7055f79fe700b8d48c067f82a26a06433f73a378619879ffa44c07790aee2532"
+  },
+  "checks": [
+    {
+      "evidence": "6d1a2754bbe597d53c29863290cba51225d3138b002b83ac4d4ad9c5d306c119",
+      "name": "source_pin",
+      "passed": true
+    },
+    {
+      "evidence": 38,
+      "name": "event_count",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "direct_only_missing_persistence": 2,
+        "family_44b6": 9,
+        "family_6bba": 29,
+        "fragmented_events": 38,
+        "late_fork_equivalence_available": 36,
+        "motifs": {
+          "DOUBLE_DAUGHTER_REPARENT_DIRECT": 1,
+          "SINGLE_DAUGHTER_REPARENT_DIRECT": 37
+        }
+      },
+      "name": "family_partition",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "DOUBLE_DAUGHTER_REPARENT_DIRECT": 1,
+        "SINGLE_DAUGHTER_REPARENT_DIRECT": 37
+      },
+      "name": "motif_partition",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "direct_only_missing_persistence": 2,
+        "family_44b6": 9,
+        "family_6bba": 29,
+        "fragmented_events": 38,
+        "late_fork_equivalence_available": 36,
+        "motifs": {
+          "DOUBLE_DAUGHTER_REPARENT_DIRECT": 1,
+          "SINGLE_DAUGHTER_REPARENT_DIRECT": 37
+        }
+      },
+      "name": "late_equivalence_partition",
+      "passed": true
+    },
+    {
+      "evidence": [
+        "train:44b6_267148e4|gt-divider:3|event:0",
+        "train:44b6_341df25f|gt-divider:12|event:0",
+        "train:44b6_74d0c52e|gt-divider:58|event:0",
+        "train:44b6_996155de|gt-divider:59|event:0",
+        "train:44b6_d2f34f90|gt-divider:102|event:0",
+        "train:44b6_d2f34f90|gt-divider:136|event:1",
+        "train:44b6_d5e7d891|gt-divider:86|event:0",
+        "train:44b6_d5e7d891|gt-divider:456|event:1",
+        "train:44b6_deabac95|gt-divider:14|event:0",
+        "train:6bba_07e24132|gt-divider:120|event:0",
+        "train:6bba_07e24132|gt-divider:231|event:1",
+        "train:6bba_2312ac41|gt-divider:157|event:0",
+        "train:6bba_2312ac41|gt-divider:284|event:1",
+        "train:6bba_2819ca14|gt-divider:596|event:0",
+        "train:6bba_3abfe10a|gt-divider:662|event:0",
+        "train:6bba_4ffd3da3|gt-divider:245|event:0",
+        "train:6bba_4ffd3da3|gt-divider:649|event:2",
+        "train:6bba_61ecbe65|gt-divider:207|event:0",
+        "train:6bba_6321a359|gt-divider:79|event:0",
+        "train:6bba_6ca87370|gt-divider:526|event:0",
+        "train:6bba_705ec2c9|gt-divider:262|event:0",
+        "train:6bba_786893ac|gt-divider:35|event:0",
+        "train:6bba_786893ac|gt-divider:405|event:1",
+        "train:6bba_786893ac|gt-divider:1154|event:2",
+        "train:6bba_7af54fde|gt-divider:575|event:0",
+        "train:6bba_7af54fde|gt-divider:610|event:1",
+        "train:6bba_7f87b3d8|gt-divider:201|event:0",
+        "train:6bba_7f87b3d8|gt-divider:369|event:1",
+        "train:6bba_87289e13|gt-divider:576|event:0",
+        "train:6bba_8b7818bf|gt-divider:19|event:0",
+        "train:6bba_8b7818bf|gt-divider:217|event:1",
+        "train:6bba_b204cac7|gt-divider:611|event:0",
+        "train:6bba_b204cac7|gt-divider:780|event:1",
+        "train:6bba_bb9f20c3|gt-divider:565|event:0",
+        "train:6bba_bb9f20c3|gt-divider:895|event:1",
+        "train:6bba_bb9f20c3|gt-divider:1660|event:2",
+        "train:6bba_ebdf3b34|gt-divider:184|event:0",
+        "train:6bba_ebdf3b34|gt-divider:745|event:1"
+      ],
+      "name": "event_key_uniqueness",
+      "passed": true
+    },
+    {
+      "evidence": 38,
+      "name": "wave2_action_identity",
+      "passed": true
+    },
+    {
+      "evidence": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "name": "direct_edges_binary",
+      "passed": true
+    },
+    {
+      "evidence": 39,
+      "name": "direct_add_count",
+      "passed": true
+    },
+    {
+      "evidence": 27,
+      "name": "direct_delete_count",
+      "passed": true
+    },
+    {
+      "evidence": 36,
+      "name": "late_connectivity",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "association_arm_must_be_label_free": true,
+        "cv57_fitting": false,
+        "family_splicing": false,
+        "fitting_locked": true,
+        "graph_scoring": false,
+        "oracle_only": true,
+        "qualifying_dependency": "one named association-continuity arm must pass adjusted >= +0.005 with raw/node >= 0 on both 44b6 and 6bba and increase label-free connected fork opportunities"
+      },
+      "name": "fitting_locked",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "budget_debit": false,
+        "cellect_touched": false,
+        "cpu_local_only": true,
+        "dead_action": false,
+        "gpu": false,
+        "kaggle": false,
+        "runpod": false,
+        "submission": false
+      },
+      "name": "no_forbidden_actions",
+      "passed": true
+    }
+  ],
+  "passed": 13,
+  "schema": "celltrack-alpha.sa-division-continuity-validation.v1",
+  "status": "PASS",
+  "total": 13
+}

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "python3",
+    "/private/tmp/g02_cpu_wave3_20260729.L4fUgf/sa_division_cont/reports/g02/screening/tiered_surface/branches/sa_division_cont/validate_targets.py"
+  ],
+  "elapsed_seconds": 0.1131167919957079,
+  "ending_swap_mib": 6739.5625,
+  "external_action": false,
+  "forced_stop_on_swap_growth": false,
+  "gpu_action": false,
+  "initial_swap_mib": 6739.5625,
+  "peak_process_tree_rss_gib": 0.0190277099609375,
+  "peak_swap_mib": 6739.5625,
+  "preflight_path": "/private/tmp/g02_cpu_wave3_20260729.L4fUgf/sa_division_cont/reports/g02/screening/tiered_surface/branches/sa_division_cont/validation_preflight.json",
+  "preflight_sha256": "354ea6439596ccb69d7c31659e34dd99b3401c5d420f94f56df1f34406e7fd1c",
+  "returncode": 0,
+  "schema": "celltrack-alpha.sa-division-deep-resource-guard.v1",
+  "status": "PASS",
+  "stdout": "{\"status\": \"PASS\", \"passed\": 13, \"total\": 13}\n",
+  "swap_growth_mib": 0.0
+}
