@@ -1,0 +1,18 @@
+{
+  "elapsed_seconds": 45.6156924579991,
+  "final_swap_mib": 1701.81,
+  "initial_swap_mib": 1701.81,
+  "load_average_before_audit": [
+    5.689453125,
+    4.73486328125,
+    4.197265625
+  ],
+  "minimum_memory_free_percent": 19.695154825846355,
+  "peak_swap_mib": 1701.81,
+  "required_idle_seconds": 45.0,
+  "samples": 46,
+  "schema": "celltrack-alpha.local-idle-preflight.v2",
+  "started_epoch_seconds": 1785233054.147585,
+  "status": "PASS_ZERO_SWAP_GROWTH",
+  "swap_growth_mib": 0.0
+}

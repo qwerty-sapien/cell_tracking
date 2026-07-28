@@ -1,0 +1,25 @@
+{
+  "command": [
+    "/Users/agent/Desktop/cell_tracking/.venv313/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "reports/g02/screening/tiered_surface/branches/sa_assoc_cycle",
+    "-p",
+    "test_*.py"
+  ],
+  "elapsed_seconds": 0.11410079101915471,
+  "forced_stop_on_swap_growth": false,
+  "gpu": false,
+  "peak_child_rss_gib": 0.0238189697265625,
+  "returncode": 0,
+  "schema": "g02.sa-assoc-cycle.resource-guard.v1",
+  "status": "PASS",
+  "stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.002s\n\nOK\n",
+  "stdout": "",
+  "swap_end_mib": 6350.625,
+  "swap_growth_mib": 0.0,
+  "swap_peak_mib": 6350.625,
+  "swap_start_mib": 6350.625
+}

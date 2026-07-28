@@ -1,0 +1,24 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "-v",
+    "test_audit_division_oracle.py"
+  ],
+  "elapsed_seconds": 0.11534737498732284,
+  "ending_swap_mib": 6350.625,
+  "external_action": false,
+  "forced_stop_on_swap_growth": false,
+  "gpu_action": false,
+  "initial_swap_mib": 6350.625,
+  "peak_process_tree_rss_gib": 0.024566650390625,
+  "peak_swap_mib": 6350.625,
+  "preflight_path": "/private/tmp/g02_cpu_wave2_20260728.alodU7/sa_division_deep/reports/g02/screening/tiered_surface/branches/sa_division_deep/preflight.json",
+  "preflight_sha256": "4ab1e51bc1b42fe5d9e03396dead748ecba25edf1bdc6993bf2e2414bffd3270",
+  "returncode": 0,
+  "schema": "celltrack-alpha.sa-division-deep-resource-guard.v1",
+  "status": "PASS",
+  "stdout": "test_component_identity_is_order_independent (test_audit_division_oracle.ComponentAuditTests.test_component_identity_is_order_independent) ... ok\ntest_missing_role_node_fails_closed (test_audit_division_oracle.ComponentAuditTests.test_missing_role_node_fails_closed) ... ok\ntest_present_connected_without_local_fork (test_audit_division_oracle.ComponentAuditTests.test_present_connected_without_local_fork) ... ok\ntest_present_fragmented (test_audit_division_oracle.ComponentAuditTests.test_present_fragmented) ... ok\ntest_role_missing (test_audit_division_oracle.ComponentAuditTests.test_role_missing) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n",
+  "swap_growth_mib": 0.0
+}

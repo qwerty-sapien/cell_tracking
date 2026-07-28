@@ -1,0 +1,642 @@
+{
+  "committed_register_packaging_audit": {
+    "reports/g02/screening/tiered_surface/branches/association_expansion.md": {
+      "eligible_as_transition_evidence": false,
+      "present_in_root_commit": false
+    },
+    "reports/g02/screening/tiered_surface/branches/event_node_actions.md": {
+      "eligible_as_transition_evidence": false,
+      "present_in_root_commit": false
+    },
+    "reports/g02/screening/tiered_surface/branches/representation_and_governance.md": {
+      "eligible_as_transition_evidence": false,
+      "present_in_root_commit": false
+    }
+  },
+  "compute": {
+    "audit_elapsed_seconds": 0.2819797499978449,
+    "audit_final_swap_mib": 1701.81,
+    "audit_initial_swap_mib": 1701.81,
+    "audit_swap_growth_mib": 0.0,
+    "max_rss_mib": 22.3125,
+    "preflight_elapsed_seconds": 45.6156924579991,
+    "preflight_status": "PASS_ZERO_SWAP_GROWTH",
+    "preflight_swap_growth_mib": 0.0
+  },
+  "cpu_results": [
+    {
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        }
+      ],
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "details": {
+        "committed_association_register_present": false
+      },
+      "falsifier": "Find a committed node-specific C0 edge/no-link assignment-cost and MAP identity contract.",
+      "from_tier": "PARK_B",
+      "id": "AE-P5",
+      "memo_numbers_used": false,
+      "outcome": "PARK_MISSING_COMMITTED_NODE_CONTRACT",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false
+    },
+    {
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        }
+      ],
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "details": {
+        "committed_association_register_present": false
+      },
+      "falsifier": "Find a committed immutable forward/reverse endpoint-return contract and disabled-cycle control.",
+      "from_tier": "PARK_B",
+      "id": "AE-P6",
+      "memo_numbers_used": false,
+      "outcome": "PARK_MISSING_COMMITTED_NODE_CONTRACT",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false
+    },
+    {
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        }
+      ],
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "details": {
+        "committed_association_register_present": false
+      },
+      "falsifier": "Find a committed phase/template tracklet identity join frozen without held labels.",
+      "from_tier": "PARK_B",
+      "id": "AE-P7",
+      "memo_numbers_used": false,
+      "outcome": "PARK_MISSING_COMMITTED_NODE_CONTRACT",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false
+    },
+    {
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_division/oracle_refinement_results.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "aded494fd19aca50a9123dfdbcccfd37448709330f8449e76984359833c44c22"
+        }
+      ],
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "details": {
+        "fitting_gate_open": false,
+        "qualifying_association_arm_count": 0,
+        "tier_move_in_evidence": false
+      },
+      "falsifier": "Check committed both-family association-continuity qualification and authentic fork-input readiness.",
+      "from_tier": "PARK_B",
+      "id": "DIV-F2",
+      "memo_numbers_used": false,
+      "outcome": "PARK_DEPENDENCY",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false
+    },
+    {
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/wave2_barrier_decisions.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "9fed2429b16d1d286dc722c78e74842ecae0b65577608b100250d0dc4c008f8d"
+        }
+      ],
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "details": {
+        "root_barrier_reason": "Reject PARK-B->PARK-C: its frozen rule demotes only after the first fixed new bridge mechanism fails 44b6. This lane ran no mechanism or graph; P0 gap-oracle headroom below +0.005 is not a realizer result."
+      },
+      "falsifier": "Require a committed named bridge-realizer result; reject P0 class headroom as a substitute.",
+      "from_tier": "PARK_B",
+      "id": "GAP-F1",
+      "memo_numbers_used": false,
+      "outcome": "PARK_PRIOR_MOVE_REJECTED_NO_REALIZER_RESULT",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false
+    },
+    {
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d"
+        }
+      ],
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "details": {
+        "completed_video_count": 0,
+        "raw_universe_complete": false,
+        "scientific_result": null,
+        "terminal_verdict": "PARK_RESOURCE_GUARD"
+      },
+      "falsifier": "Require a committed complete authentic restoration universe under the zero-swap guard.",
+      "from_tier": "PARK_B",
+      "id": "NODERESTORE-O0",
+      "memo_numbers_used": false,
+      "outcome": "PARK_RESOURCE_GUARD_NO_SCIENTIFIC_RESULT",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false
+    },
+    {
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/wave2_barrier_decisions.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "9fed2429b16d1d286dc722c78e74842ecae0b65577608b100250d0dc4c008f8d"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d"
+        }
+      ],
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "details": {
+        "root_barrier_reason": "Reject PARK-B->PARK-C: the detection-family parent remains PARK-B when an individual child fails, and no authentic node-add/node-restore universe completed. SA-NODETOPO consumed zero videos and no metric."
+      },
+      "falsifier": "Require a committed named detector/restoration result, not a free-node P0 class value.",
+      "from_tier": "PARK_B",
+      "id": "DET-F0",
+      "memo_numbers_used": false,
+      "outcome": "PARK_PRIOR_MOVE_REJECTED_NO_AUTHENTIC_UNIVERSE",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false
+    },
+    {
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d"
+        }
+      ],
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "details": {
+        "completed_video_count": 0,
+        "raw_universe_complete": false
+      },
+      "falsifier": "Require a committed complete authentic proposal universe before learned detection expansion.",
+      "from_tier": "PARK_B",
+      "id": "DET-F2",
+      "memo_numbers_used": false,
+      "outcome": "PARK_AUTHENTIC_UNIVERSE_INCOMPLETE",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false
+    },
+    {
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d"
+        }
+      ],
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "details": {
+        "completed_video_count": 0,
+        "raw_universe_complete": false
+      },
+      "falsifier": "Require committed authentic proposals plus a topology-complete node-action join.",
+      "from_tier": "PARK_B",
+      "id": "DET-F3",
+      "memo_numbers_used": false,
+      "outcome": "PARK_AUTHENTIC_UNIVERSE_INCOMPLETE",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false
+    },
+    {
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ],
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "details": {
+        "authentication": "NOT_READY",
+        "reason": "No authenticated complete mask/wrfeat identity join is banked; raw Zarr intensity is not a mask."
+      },
+      "falsifier": "Authenticate complete real-mask/wrfeat provenance, coverage, and identity join.",
+      "from_tier": "PARK_B",
+      "id": "R2",
+      "memo_numbers_used": false,
+      "outcome": "PARK_AUTHENTIC_INPUT_NOT_READY",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false
+    },
+    {
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ],
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "details": {
+        "authentication": "NOT_READY_DEPENDENCY_R2",
+        "reason": "Authentic R2 morphology is absent."
+      },
+      "falsifier": "Require committed R2 authentication before opening real-wrfeat support.",
+      "from_tier": "PARK_B",
+      "id": "R3",
+      "memo_numbers_used": false,
+      "outcome": "PARK_DEPENDENCY_R2",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false
+    },
+    {
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ],
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "details": {
+        "authentication": "NOT_READY",
+        "reason": "No immutable reverse-inference supplier or endpoint-return contract is banked.",
+        "reverse_inference_run": false
+      },
+      "falsifier": "Require a committed immutable reverse supplier and endpoint-return contract; do not run reverse inference here.",
+      "from_tier": "PARK_B",
+      "id": "R8",
+      "memo_numbers_used": false,
+      "outcome": "PARK_REVERSE_SUPPLIER_NOT_READY",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false
+    },
+    {
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/wave2_barrier_decisions.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "9fed2429b16d1d286dc722c78e74842ecae0b65577608b100250d0dc4c008f8d"
+        }
+      ],
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "details": {
+        "root_barrier_reason": "Reject PARK-B->PARK-A: promotion requires G1 plus a common both-family graph pass and positive exact regret versus no-op. Identity/support checks and P0 action headroom do not satisfy that transition."
+      },
+      "falsifier": "Require a committed common both-family graph pass plus positive exact regret versus no-op.",
+      "from_tier": "PARK_B",
+      "id": "G2",
+      "memo_numbers_used": false,
+      "outcome": "PARK_PRIOR_MOVE_REJECTED_NO_GRAPH_OR_REGRET_RESULT",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false
+    },
+    {
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        }
+      ],
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "details": {
+        "runpod_action": false,
+        "scientific_transition": false
+      },
+      "falsifier": "Verify the owner RunPod prohibition remains closed without execution.",
+      "from_tier": "PARK_B",
+      "id": "G6",
+      "memo_numbers_used": false,
+      "outcome": "PARK_OWNER_FORBIDS_RUNPOD",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false
+    }
+  ],
+  "external_actions": {
+    "budget_debit": false,
+    "cellect": false,
+    "gpu": false,
+    "kaggle": false,
+    "runpod": false,
+    "submission": false
+  },
+  "family_execution": {
+    "44b6": false,
+    "6bba": false,
+    "CV57": false
+  },
+  "forbidden_actions": {
+    "cv57": false,
+    "dead_promotion": false,
+    "graph_run": false,
+    "root_single_writer_mutation": false
+  },
+  "input_authentication": {
+    "5a805c2f7240e30c572644d3d5f0e733add04769:reports/g02/screening/tiered_surface/branches/sa_division/oracle_refinement_results.json": {
+      "committed": true,
+      "pass": true,
+      "sha256": "aded494fd19aca50a9123dfdbcccfd37448709330f8449e76984359833c44c22"
+    },
+    "5a805c2f7240e30c572644d3d5f0e733add04769:reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json": {
+      "committed": true,
+      "pass": true,
+      "sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d"
+    },
+    "5a805c2f7240e30c572644d3d5f0e733add04769:reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json": {
+      "committed": true,
+      "pass": true,
+      "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+    },
+    "5a805c2f7240e30c572644d3d5f0e733add04769:reports/g02/screening/tiered_surface/tier_census.json": {
+      "committed": true,
+      "pass": true,
+      "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+    },
+    "5a805c2f7240e30c572644d3d5f0e733add04769:reports/g02/screening/tiered_surface/wave2_barrier_decisions.json": {
+      "committed": true,
+      "pass": true,
+      "sha256": "9fed2429b16d1d286dc722c78e74842ecae0b65577608b100250d0dc4c008f8d"
+    },
+    "reports/g02/grouped_3fold_audit20_v1.json": {
+      "pass": true,
+      "read_only_root": "/Users/agent/Desktop/cell_tracking",
+      "sha256": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769"
+    },
+    "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json": {
+      "pass": true,
+      "read_only_root": "/Users/agent/Desktop/cell_tracking",
+      "sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06"
+    },
+    "reports/g02/screening/campaign_narrowing_and_hypothesis_dag_v1.md": {
+      "pass": true,
+      "read_only_root": "/Users/agent/Desktop/cell_tracking",
+      "sha256": "a322724e77dd77f53c36e918e5345e86e8394a3848033a9a2225c21924e75116"
+    },
+    "reports/g02/screening/tiered_surface/ALIGNMENT.md": {
+      "pass": true,
+      "read_only_root": "/Users/agent/Desktop/cell_tracking",
+      "sha256": "eda3840ca4decf1fbc9943dcd872800852cf1ff52e0923136adb51b4f2ea6b37"
+    },
+    "reports/g02/screening/tiered_surface/SCOPE_MANIFEST.md": {
+      "pass": true,
+      "read_only_root": "/Users/agent/Desktop/cell_tracking",
+      "sha256": "066fb71b8ead255ff061a7aa75283df27c367e08aa8fd0a0b91677537a0a7d49"
+    },
+    "reports/g02/screening/tiered_surface/n1_feasibility_compiler/interface_v1.json": {
+      "pass": true,
+      "read_only_root": "/Users/agent/Desktop/cell_tracking",
+      "sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865"
+    }
+  },
+  "inventory": {
+    "cpu_testable": 14,
+    "park_b_total": 22,
+    "skipped_weight_or_gpu_gated_representation": 8
+  },
+  "memo_quarantine": {
+    "C2_or_K_best_numbers": true,
+    "branch_b_66_of_223": true,
+    "numbers_used_for_tiering": 0
+  },
+  "owner_agent": "SA-PARKB-SWEEP",
+  "proposed_moves": [],
+  "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+  "schema": "celltrack-alpha.parkb-support-sweep.v2",
+  "skipped_representation": [
+    {
+      "cellect_touched": false,
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        }
+      ],
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "gpu_requested": false,
+      "id": "AE-P8",
+      "proposed_tier": "PARK_B",
+      "reason": "Dense microscopy embedding node requires authenticated encoder weights and representation compute.",
+      "tier_move_proposed": false
+    },
+    {
+      "cellect_touched": false,
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        }
+      ],
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "gpu_requested": false,
+      "id": "AE-P9",
+      "proposed_tier": "PARK_B",
+      "reason": "PEFT adapter node requires an authenticated frozen backbone and fitting.",
+      "tier_move_proposed": false
+    },
+    {
+      "cellect_touched": false,
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ],
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "gpu_requested": false,
+      "id": "R4",
+      "proposed_tier": "PARK_B",
+      "reason": "No exact local DINOv2 ViT-S/14 weight was found; source revision, weight license, and offline loader therefore cannot all authenticate.",
+      "tier_move_proposed": false
+    },
+    {
+      "cellect_touched": false,
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ],
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "gpu_requested": false,
+      "id": "R5",
+      "proposed_tier": "PARK_B",
+      "reason": "The frozen crop/view contract exists, but R4 has no authenticated encoder.",
+      "tier_move_proposed": false
+    },
+    {
+      "cellect_touched": false,
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ],
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "gpu_requested": false,
+      "id": "R6",
+      "proposed_tier": "PARK_B",
+      "reason": "The frozen tri-view/permutation contract exists, but R4 and the XY beta cache are absent.",
+      "tier_move_proposed": false
+    },
+    {
+      "cellect_touched": false,
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ],
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "gpu_requested": false,
+      "id": "R7",
+      "proposed_tier": "PARK_B",
+      "reason": "CELLECT remains on its separately governed packaging/authorization track; this CPU lane cannot touch it.",
+      "tier_move_proposed": false
+    },
+    {
+      "cellect_touched": false,
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ],
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "gpu_requested": false,
+      "id": "R9",
+      "proposed_tier": "PARK_B",
+      "reason": "Group-robust tracklet representation requires new frozen event evidence and fitting.",
+      "tier_move_proposed": false
+    },
+    {
+      "cellect_touched": false,
+      "citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ],
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "gpu_requested": false,
+      "id": "R10",
+      "proposed_tier": "PARK_B",
+      "reason": "No separately frozen <1% adapter contract paired with new authenticated evidence is banked.",
+      "tier_move_proposed": false
+    }
+  ],
+  "status": "VERDICT_BARRIER",
+  "transition_evidence_policy": {
+    "committed_root_required": true,
+    "path_and_sha_required": true,
+    "prior_quarantined_fragment_used_for_transition": false,
+    "sibling_live_or_unmerged_output_used": false,
+    "uncited_moves": 0
+  },
+  "unchanged_park_b": 22
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "updated_utc": "2026-07-28T11:45:00Z",
+  "proposal_only": true,
+  "nodes": [
+    {
+      "id": "DIV-F1",
+      "branch": "event_node_actions",
+      "owner_agent": "SA-DIVISION-DEEP",
+      "tier": "PARK_A",
+      "tier_move_proposed": false,
+      "banked": true,
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_division_deep/oracle_audit_v2.json",
+      "evidence_sha256": "6d1a2754bbe597d53c29863290cba51225d3138b002b83ac4d4ad9c5d306c119",
+      "evidence_basis": "CV57 diagnostic found 38/42 strict-role-present events fragmented, 1/42 role-present component-spanning without a local fork, and 3/42 role missing; 39/39 diagnostic fork actions compiled through frozen N1; D1 persistence selected 36 with 3 missing-persistence suppressions and zero duplicate survivors; no scorer or graph run",
+      "graph_result": null,
+      "priority": 1,
+      "blocked_on": [
+        "ASSOCIATION_CONTINUITY_BOTH_FAMILIES"
+      ],
+      "resume_condition": "one root-authenticated named association arm passes adjusted >=+0.005 with raw/node nonnegative on both families and positive connected-fork-opportunity delta",
+      "kill_line": "after dependency opens, stop on 44b6 if division Jaccard <=0.15, any adjusted/raw/node delta is negative, combined delta is nonpositive, or any duplicate survives",
+      "last_change_utc": "2026-07-28T11:45:00Z"
+    }
+  ],
+  "quarantined_memo_numbers_used": false,
+  "dead_verdict": false
+}

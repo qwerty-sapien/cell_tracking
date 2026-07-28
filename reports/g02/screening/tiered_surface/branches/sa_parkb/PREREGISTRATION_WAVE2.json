@@ -1,0 +1,124 @@
+{
+  "schema": "celltrack-alpha.parkb-support-sweep-preregistration.v2",
+  "status": "FROZEN_BEFORE_WAVE2_SUPPORT_OUTCOMES",
+  "frozen_utc": "2026-07-28T09:57:54Z",
+  "owner_agent": "SA-PARKB-SWEEP",
+  "branch": "codex/sa-parkb-deep-wave2",
+  "write_scope": "reports/g02/screening/tiered_surface/branches/sa_parkb/**",
+  "objective": "Apply the cheapest identity/support falsifier to every CPU-testable current PARK_B node and inventory every skipped weight/GPU-gated representation node without opening a graph or external-compute gate.",
+  "current_census_contract": {
+    "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+    "path": "reports/g02/screening/tiered_surface/tier_census.json",
+    "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003",
+    "expected_park_b_count": 22
+  },
+  "frozen_shared_inputs": {
+    "alignment": {
+      "path": "reports/g02/screening/tiered_surface/ALIGNMENT.md",
+      "sha256": "eda3840ca4decf1fbc9943dcd872800852cf1ff52e0923136adb51b4f2ea6b37"
+    },
+    "scope_manifest": {
+      "path": "reports/g02/screening/tiered_surface/SCOPE_MANIFEST.md",
+      "sha256": "066fb71b8ead255ff061a7aa75283df27c367e08aa8fd0a0b91677537a0a7d49"
+    },
+    "locked_plan": {
+      "path": "reports/g02/screening/campaign_narrowing_and_hypothesis_dag_v1.md",
+      "sha256": "a322724e77dd77f53c36e918e5345e86e8394a3848033a9a2225c21924e75116"
+    },
+    "n1_interface": {
+      "path": "reports/g02/screening/tiered_surface/n1_feasibility_compiler/interface_v1.json",
+      "sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865"
+    },
+    "grouped_folds": {
+      "path": "reports/g02/grouped_3fold_audit20_v1.json",
+      "sha256": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769"
+    },
+    "p0": {
+      "path": "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+      "sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06"
+    }
+  },
+  "evidence_policy": {
+    "tier_transition_requires": "Node-specific decision evidence must exist in the committed root tree at 5a805c2f7240e30c572644d3d5f0e733add04769 and be cited by path plus SHA-256.",
+    "missing_committed_register": "Fail closed at PARK_B; an untracked live-root register is context only and cannot support a transition.",
+    "prior_parkb_fragment": "The earlier PARK-B fragment is quarantined and cannot support any Wave-2 tier transition.",
+    "sibling_outputs": "No sibling live or unmerged output may be read or cited. Committed root artifacts present in the frozen root commit may be audited read-only.",
+    "support_only": "P0 headroom or missing prerequisites alone cannot stand in for a named realizer graph result.",
+    "legal_proposals": [
+      "PARK_B->PARK_A",
+      "PARK_B->PARK_C"
+    ],
+    "dead": "FORBIDDEN"
+  },
+  "predeclared_inventory": {
+    "cpu_testable": [
+      "AE-P5",
+      "AE-P6",
+      "AE-P7",
+      "DIV-F2",
+      "GAP-F1",
+      "NODERESTORE-O0",
+      "DET-F0",
+      "DET-F2",
+      "DET-F3",
+      "R2",
+      "R3",
+      "R8",
+      "G2",
+      "G6"
+    ],
+    "skipped_weight_or_gpu_gated_representation": [
+      "AE-P8",
+      "AE-P9",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "R9",
+      "R10"
+    ],
+    "cpu_testable_count": 14,
+    "skipped_count": 8,
+    "total_count": 22
+  },
+  "predeclared_falsifiers": {
+    "AE-P5": "Committed-tree presence of a node-specific C0 edge/no-link assignment-cost and MAP identity contract.",
+    "AE-P6": "Committed-tree presence of an immutable forward/reverse endpoint-return contract and disabled-cycle identity control.",
+    "AE-P7": "Committed-tree presence of a frozen phase/template tracklet identity join without held-label derivation.",
+    "DIV-F2": "Committed evidence of both-family association continuity and an authentic pretrained fork input; absence parks and cannot demote.",
+    "GAP-F1": "Committed node-specific named bridge-realizer result; P0 class headroom alone is not transition evidence.",
+    "NODERESTORE-O0": "Committed terminal proof of a complete authentic restoration universe under the zero-swap guard.",
+    "DET-F0": "Committed node-specific named detector/restoration result; a free-node P0 class value alone is not transition evidence.",
+    "DET-F2": "Committed proof of a complete authentic proposal universe before learned detection expansion.",
+    "DET-F3": "Committed proof of authentic proposals plus a topology-complete node-action join.",
+    "R2": "Committed provenance/coverage/join authentication for complete real masks or wrfeat; raw intensity and pseudo-masks are rejected.",
+    "R3": "Committed R2 authentication sufficient to open a real-wrfeat child.",
+    "R8": "Committed immutable reverse-feature supplier and endpoint-return contract on existing cache; no reverse inference is run in this lane.",
+    "G2": "Committed node-specific common both-family graph pass plus positive exact regret versus no-op.",
+    "G6": "Owner prohibition remains closed; this is a governance identity check and never a scientific demotion."
+  },
+  "decision_rules": {
+    "B_to_A": "Propose only when the predeclared node-specific committed positive condition is satisfied.",
+    "B_to_C": "Propose only after a committed named realizer falsification or explicit complete identity failure meets the node contract.",
+    "unchanged": "Missing inputs, missing committed transition evidence, resource holds, dependency holds, and skipped representation work remain PARK_B.",
+    "no_move_is_valid": true
+  },
+  "memo_quarantine": {
+    "C2_or_K_best_numbers": true,
+    "branch_b_66_of_223": true,
+    "may_tier": false
+  },
+  "compute_contract": {
+    "preflight_idle_seconds": 45,
+    "swap_growth_mib_required": 0.0,
+    "cpu_cache_only": true,
+    "graph_runs": 0,
+    "gpu": false,
+    "kaggle": false,
+    "budget_debit": false,
+    "cellect": false,
+    "runpod": false,
+    "submission": false,
+    "cv57": false
+  }
+}

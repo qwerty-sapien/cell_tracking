@@ -1,0 +1,47 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-gen-resource-receipts.v1",
+  "status": "PASS_ZERO_SWAP_GROWTH",
+  "device": "cpu",
+  "initial_attempt": {
+    "preflight": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo_gen/idle_preflight.json",
+      "sha256": "aa63336cadcefcf6029f0d8e0675e13def1d6329827197869ae266880da22c3e",
+      "elapsed_seconds": 45.11909198760986,
+      "swap_growth_mib": 0.0
+    },
+    "guard": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo_gen/resource_guard.json",
+      "sha256": "556bd8d321087b33aa60b638709b562cb74e9e860cf9e91aa2e1ff6c397048ae",
+      "status": "FAIL_WALL_CLOCK",
+      "elapsed_seconds": 7514.619369983673,
+      "peak_process_tree_rss_gib": 0.6164703369140625,
+      "swap_growth_mib": 0.0,
+      "durable_product": "complete 36-video raw universe; no partial scientific metric"
+    }
+  },
+  "bounded_resume": {
+    "preflight": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo_gen/idle_preflight_resume.json",
+      "sha256": "235a2b077252e8a426239ed1cf7e615693651d72f91ee46a410e909f70b328a5",
+      "elapsed_seconds": 45.251261949539185,
+      "swap_growth_mib": 0.0
+    },
+    "guard": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo_gen/resource_guard_resume.json",
+      "sha256": "936c1398c74441fee9e9616e7a631a6d1c7ceff8a9de223610f8f35af5e6c134",
+      "status": "PASS",
+      "elapsed_seconds": 293.5387451648712,
+      "peak_process_tree_rss_gib": 1.317779541015625,
+      "minimum_system_memory_free_percent": 36.0,
+      "swap_growth_mib": 0.0
+    }
+  },
+  "external_actions": {
+    "gpu": false,
+    "kaggle": false,
+    "budget_debit": false,
+    "runpod": false,
+    "submission": false,
+    "network": false
+  }
+}

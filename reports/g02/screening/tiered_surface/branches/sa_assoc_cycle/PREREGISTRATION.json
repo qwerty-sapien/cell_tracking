@@ -1,0 +1,86 @@
+{
+  "schema": "g02.sa-assoc-cycle.preregistration.v1",
+  "status": "FROZEN_BEFORE_ASSOC_CYCLE_CAPABILITY_AUDIT",
+  "frozen_utc": "2026-07-28T13:30:00+08:00",
+  "node": "AE-P6",
+  "representation_node": "R8",
+  "objective": "Screen a genuinely bidirectional forward/reverse Trackastra endpoint-return consensus through the frozen fit-only 44b6 separation design before any graph spend.",
+  "write_scope": "reports/g02/screening/tiered_surface/branches/sa_assoc_cycle/",
+  "frozen_inputs": [
+    {
+      "path": "reports/g02/trackastra_h1_feature_cache/report.json",
+      "sha256": "d52a4a42cf16c4e43d146d1cebfde68192db095c7cf6dfa3cfd9b7e4d820c0cf",
+      "role": "existing forward Trackastra cache"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/PREREGISTRATION_v3_per_class_authenticated_weight.json",
+      "sha256": "9fb030bdcffbf95e242c71aa8b2c14bf8254b42730acbb489d66e2fe35a3310e",
+      "role": "frozen separation design"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/run_v1/population_manifest.json",
+      "sha256": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c",
+      "role": "exact fit-only 44b6 action population"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/run_v3/b0_sealed.json",
+      "sha256": "a9ce8c0be5afe4c2d2bfb37f3878691956ea458964788776af2ae9358f6b4ff2",
+      "role": "sealed both-class B0"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/association_expansion.md",
+      "sha256": "37dd4b9a31b5b8cf420dc6744c97d5165bc29faa83cd3d7990ebdafffbc6f5be",
+      "role": "AE-P6 branch contract"
+    }
+  ],
+  "authentic_bidirectional_supplier": {
+    "required": [
+      "immutable forward and reverse inference artifact hashes",
+      "same detection and time-axis identity in both directions",
+      "explicit source-target reversal followed by exact endpoint-return to the canonical forward pair",
+      "separate forward and returned-reverse scores; neither may be synthesized by sign flip, transpose, duplication, or scalar recalibration",
+      "explicit no-link and division break handling",
+      "complete 44b6 population endpoint coverage",
+      "deterministic repeated witness"
+    ],
+    "cycle_signal": "For canonical edge u_t->v_t+1, combine the authentic forward score with the authentic reversed-run score for v_rev->u_rev after endpoint return; include agreement, minimum, and absolute disagreement descriptors.",
+    "disabled_cycle_beta": "Capacity-matched arm with every new cycle descriptor exactly zero.",
+    "permutation_control": "Within-video, within-transition deterministic permutation of returned-reverse descriptors, node-consistent where endpoints repeat.",
+    "forward_only_is_ineligible": true
+  },
+  "separation_gate": {
+    "population": "exact frozen fit-only 44b6 delete and occupied-swap actions",
+    "folds": 5,
+    "B0": "sealed incumbent features",
+    "A1": "B0 plus authentic cycle descriptors",
+    "A0": "B0 plus deterministic returned-reverse permutation control",
+    "auc_absolute_floor": 0.65,
+    "auc_min_lift_over_B0": 0.05,
+    "auc_min_lift_over_A0": 0.03,
+    "retention_absolute_floor": 0.15,
+    "retention_min_lift_over_B0": 0.05,
+    "retention_min_lift_over_A0": 0.03,
+    "all_five_folds_required": true,
+    "per_video_fp_budget_violations": 0
+  },
+  "decision": {
+    "missing_authentic_reverse_supplier": "PARK_NOT_READY; retain PARK-B and emit no scientific separation verdict",
+    "separation_fail": "PARK_C proposal for this exact bidirectional instantiation only",
+    "separation_pass": "HOLD_FOR_HUMAN_REVIEW of a newly frozen 44b6 graph preregistration; no tier promotion and no graph execution here"
+  },
+  "hard_stops": [
+    "graph execution",
+    "6bba",
+    "CV57",
+    "GPU or Kaggle launch",
+    "Kaggle budget mutation",
+    "CELLECT access or mutation",
+    "submission",
+    "RunPod",
+    "DEAD",
+    "synthetic reverse score",
+    "held-label-dependent supplier construction",
+    "swap growth",
+    "root single-writer mutation"
+  ]
+}

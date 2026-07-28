@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/Users/agent/Desktop/cell_tracking/.venv/bin/python",
+    "validate_artifacts.py"
+  ],
+  "elapsed_seconds": 0.21895858299103566,
+  "ending_swap_mib": 6350.625,
+  "external_action": false,
+  "forced_stop_on_swap_growth": false,
+  "gpu_action": false,
+  "initial_swap_mib": 6350.625,
+  "peak_process_tree_rss_gib": 0.0206298828125,
+  "peak_swap_mib": 6350.625,
+  "preflight_path": "/private/tmp/g02_cpu_wave2_20260728.alodU7/sa_division_deep/reports/g02/screening/tiered_surface/branches/sa_division_deep/preflight_retry6.json",
+  "preflight_sha256": "7950b1787ce67102885777af33ec158a498cc69d1e2388ab4b8abd5af0c890c3",
+  "returncode": 0,
+  "schema": "celltrack-alpha.sa-division-deep-resource-guard.v1",
+  "status": "PASS",
+  "stdout": "{\"status\": \"PASS\", \"passed\": 25, \"total\": 25}\n",
+  "swap_growth_mib": 0.0
+}

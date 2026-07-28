@@ -1,0 +1,33 @@
+{
+  "schema": "g02.sa-assoc-cycle.governance-receipt.v1",
+  "lane": "SA-ASSOC-CYCLE",
+  "receipt_kind": "CORRECTIVE_TERMINAL_GOVERNANCE_RECEIPT",
+  "governance_inputs": [
+    {
+      "path": "reports/g02/screening/tiered_surface/ALIGNMENT.md",
+      "sha256": "eda3840ca4decf1fbc9943dcd872800852cf1ff52e0923136adb51b4f2ea6b37",
+      "observed_sha256": "eda3840ca4decf1fbc9943dcd872800852cf1ff52e0923136adb51b4f2ea6b37",
+      "verified": true,
+      "access": "READ_ONLY"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/SCOPE_MANIFEST.md",
+      "sha256": "066fb71b8ead255ff061a7aa75283df27c367e08aa8fd0a0b91677537a0a7d49",
+      "observed_sha256": "066fb71b8ead255ff061a7aa75283df27c367e08aa8fd0a0b91677537a0a7d49",
+      "verified": true,
+      "access": "READ_ONLY"
+    }
+  ],
+  "attestations": {
+    "governance_inputs_read_before_this_corrective_terminal_receipt": true,
+    "governance_inputs_frozen_and_unmodified": true,
+    "write_scope": "reports/g02/screening/tiered_surface/branches/sa_assoc_cycle/",
+    "write_scope_respected": true,
+    "external_action": false,
+    "gpu_action": false,
+    "kaggle_action": false,
+    "cellect_action": false,
+    "graph_action": false
+  },
+  "disposition": "PASS"
+}

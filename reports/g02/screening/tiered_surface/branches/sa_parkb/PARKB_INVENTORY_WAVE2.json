@@ -1,0 +1,474 @@
+{
+  "cpu_testable_count": 14,
+  "current_park_b_count": 22,
+  "nodes": [
+    {
+      "branch": "association_expansion",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "census_evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "from_tier": "PARK_B",
+      "id": "AE-P5",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        }
+      ]
+    },
+    {
+      "branch": "association_expansion",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "census_evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "from_tier": "PARK_B",
+      "id": "AE-P6",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        }
+      ]
+    },
+    {
+      "branch": "association_expansion",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "census_evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "from_tier": "PARK_B",
+      "id": "AE-P7",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        }
+      ]
+    },
+    {
+      "branch": "association_expansion",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "census_evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "id": "AE-P8",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        }
+      ]
+    },
+    {
+      "branch": "association_expansion",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "census_evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "id": "AE-P9",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        }
+      ]
+    },
+    {
+      "branch": "event_node_actions",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "census_evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "from_tier": "PARK_B",
+      "id": "DIV-F2",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_division/oracle_refinement_results.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "aded494fd19aca50a9123dfdbcccfd37448709330f8449e76984359833c44c22"
+        }
+      ]
+    },
+    {
+      "branch": "event_node_actions",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/event_node_actions.md",
+      "census_evidence_sha256": "6df46ab0b3744a89b588d55d24e71a687f70e261667491adf6e2552c1b5fb5b3",
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "from_tier": "PARK_B",
+      "id": "GAP-F1",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/wave2_barrier_decisions.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "9fed2429b16d1d286dc722c78e74842ecae0b65577608b100250d0dc4c008f8d"
+        }
+      ]
+    },
+    {
+      "branch": "event_node_actions",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+      "census_evidence_sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d",
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "from_tier": "PARK_B",
+      "id": "NODERESTORE-O0",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d"
+        }
+      ]
+    },
+    {
+      "branch": "event_node_actions",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/event_node_actions.md",
+      "census_evidence_sha256": "6df46ab0b3744a89b588d55d24e71a687f70e261667491adf6e2552c1b5fb5b3",
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "from_tier": "PARK_B",
+      "id": "DET-F0",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/wave2_barrier_decisions.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "9fed2429b16d1d286dc722c78e74842ecae0b65577608b100250d0dc4c008f8d"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d"
+        }
+      ]
+    },
+    {
+      "branch": "event_node_actions",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "census_evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "from_tier": "PARK_B",
+      "id": "DET-F2",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d"
+        }
+      ]
+    },
+    {
+      "branch": "event_node_actions",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "census_evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "from_tier": "PARK_B",
+      "id": "DET-F3",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d"
+        }
+      ]
+    },
+    {
+      "branch": "representation_and_governance",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "census_evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "from_tier": "PARK_B",
+      "id": "R2",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ]
+    },
+    {
+      "branch": "representation_and_governance",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "census_evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "from_tier": "PARK_B",
+      "id": "R3",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ]
+    },
+    {
+      "branch": "representation_and_governance",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "census_evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "id": "R4",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ]
+    },
+    {
+      "branch": "representation_and_governance",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "census_evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "id": "R5",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ]
+    },
+    {
+      "branch": "representation_and_governance",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "census_evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "id": "R6",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ]
+    },
+    {
+      "branch": "representation_and_governance",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/TERMINAL_REPORT_V3.md",
+      "census_evidence_sha256": "11722692bdb8b13090b63e1b051cb2e407668087f6f4512c30416ff4370dd9c4",
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "id": "R7",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ]
+    },
+    {
+      "branch": "representation_and_governance",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "census_evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "from_tier": "PARK_B",
+      "id": "R8",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ]
+    },
+    {
+      "branch": "representation_and_governance",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "census_evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "id": "R9",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ]
+    },
+    {
+      "branch": "representation_and_governance",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+      "census_evidence_sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7",
+      "classification": "SKIP_WEIGHT_OR_GPU_GATED_REPRESENTATION",
+      "from_tier": "PARK_B",
+      "id": "R10",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/branches/sa_repr_multi/SUPPLIER_PROVENANCE_AUDIT.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "64492bcc0278f6d609cf4b2a72a12109b380842aed963847aaa830991962b1e7"
+        }
+      ]
+    },
+    {
+      "branch": "representation_and_governance",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/representation_and_governance.md",
+      "census_evidence_sha256": "cdcc7214c7fe70c51a08d96a861a46920779107ad13b38dd002997ec5fb8a153",
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "from_tier": "PARK_B",
+      "id": "G2",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        },
+        {
+          "path": "reports/g02/screening/tiered_surface/wave2_barrier_decisions.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "9fed2429b16d1d286dc722c78e74842ecae0b65577608b100250d0dc4c008f8d"
+        }
+      ]
+    },
+    {
+      "branch": "representation_and_governance",
+      "census_evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS.json",
+      "census_evidence_sha256": "f20516757cc7e27149b36efae0071ee084a0c14aba9befbb96fe9893a79ea70c",
+      "classification": "CPU_TESTABLE_IDENTITY_OR_SUPPORT",
+      "from_tier": "PARK_B",
+      "id": "G6",
+      "proposed_tier": "PARK_B",
+      "tier_move_proposed": false,
+      "wave2_citations": [
+        {
+          "path": "reports/g02/screening/tiered_surface/tier_census.json",
+          "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+          "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+        }
+      ]
+    }
+  ],
+  "root_census": {
+    "path": "reports/g02/screening/tiered_surface/tier_census.json",
+    "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+    "sha256": "83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003"
+  },
+  "root_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+  "schema": "celltrack-alpha.parkb-inventory.v2",
+  "skipped_weight_or_gpu_gated_representation_count": 8,
+  "status": "COMPLETE"
+}

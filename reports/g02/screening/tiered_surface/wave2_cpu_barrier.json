@@ -1,0 +1,145 @@
+{
+  "base_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+  "external_actions": {
+    "cellect_write_or_launch": false,
+    "gpu": false,
+    "graph_run": false,
+    "kaggle_budget_debit": false,
+    "kaggle_launch": false,
+    "runpod": false,
+    "submission": false
+  },
+  "frozen_inputs": {
+    "fit_provenance_sha256": "6a9139bf281b98d2c3869c8f12f80fb9655f85ba1c0f7f91f0a51acd7c37f14f",
+    "grouped_folds_sha256": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769",
+    "n1_interface_sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865",
+    "n1_tests_sha256": "09107306fbdea2078d5a73006bde6215a242779ae9245015e365181dd48bee97",
+    "p0_sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06"
+  },
+  "human_review_gate": {
+    "node": "NODETOPO-O0",
+    "reason": "Generator prerequisite is authentic and N1-compiled, but no graph run is authorized by this barrier.",
+    "status": "HOLD"
+  },
+  "lane_receipts": {
+    "SA-ASSOC-CYCLE": {
+      "commits": [
+        "f92dd8d6b8933a4863e7732b8d02193d969604f2",
+        "17c8d6e64d1bab326a53574caf39cc9b72ce5927"
+      ],
+      "fragment": "reports/g02/screening/tiered_surface/branches/sa_assoc_cycle/state_fragment.json",
+      "fragment_sha256": "b756ac7d2f19d2d5f15890e37818d8da4918cb5148ac9504a8a9a0905baabd69",
+      "governance_receipt": "reports/g02/screening/tiered_surface/branches/sa_assoc_cycle/GOVERNANCE_RECEIPT.json",
+      "governance_receipt_sha256": "22fbf93621bf88f3bda1eafbc0f17b700d0b1bf91c21cb2ac8299be119870e79",
+      "outcome": "PARK_NOT_READY_MISSING_AUTHENTIC_REVERSE",
+      "preflight_elapsed_seconds": 45.24888762499904,
+      "preflight_swap_growth_mib": 0.0,
+      "terminal": "reports/g02/screening/tiered_surface/branches/sa_assoc_cycle/TERMINAL_REPORT.md",
+      "terminal_sha256": "c78ffd85c78e9b8904a432466a4b63206a67750d11d65c56f4a207c68bf9523a",
+      "validation": "reports/g02/screening/tiered_surface/branches/sa_assoc_cycle/VALIDATION.json",
+      "validation_sha256": "b33d9d2cd9b81c4428d16c3d657dc9521ba15abed3786f24b0253da61032f9a1"
+    },
+    "SA-DIVISION-DEEP": {
+      "commits": [
+        "3f38a52403018257b2e8e66fc7a2b92d59551173",
+        "50bc0e087b3a2c15d2399e0036483b80ac5f0f4f"
+      ],
+      "fragment": "reports/g02/screening/tiered_surface/branches/sa_division_deep/state_fragment.json",
+      "fragment_sha256": "0726a4f4d76799204f1cca5deddb11d0f569ce1fb4c1f9e62fd497449ed9d705",
+      "governance_receipt": "reports/g02/screening/tiered_surface/branches/sa_division_deep/INPUT_HASH_RECEIPTS.json",
+      "governance_receipt_sha256": "f5d70041e698c6e7db6a290378100b4121ef99f7d7a5f74c0bda8fd69512cd87",
+      "outcome": "PARK_DEPENDENCY",
+      "preflight_elapsed_seconds": 45.19622512499336,
+      "preflight_swap_growth_mib": 0.0,
+      "terminal": "reports/g02/screening/tiered_surface/branches/sa_division_deep/TERMINAL_REPORT.md",
+      "terminal_sha256": "8a787c02ac34c6ce44c800889c728ddba28d40c27c9eaa82e0bbc7564188047f",
+      "validation": "reports/g02/screening/tiered_surface/branches/sa_division_deep/validation_v2.json",
+      "validation_sha256": "ef88bc5639f5dc5dda75e40a9bdcc9dfbe12c2e5d5df90a4fb30530288353d2d"
+    },
+    "SA-NODETOPO-GEN": {
+      "commits": [
+        "cd7f24d30ed17bac9940432a90213a87a1f68e78",
+        "cf703b5cc30d0bdab941a7cb59e67894e55440a6",
+        "9151934e410fed17cf367afead28ee1558c7ef77"
+      ],
+      "fragment": "reports/g02/screening/tiered_surface/branches/sa_nodetopo_gen/state_fragment.json",
+      "fragment_sha256": "2a2f3be97cff3e034d2e52bee444bf4bd8c80d1bc05e6a705b2de0c9aa894fdb",
+      "governance_receipt": "reports/g02/screening/tiered_surface/branches/sa_nodetopo_gen/GOVERNANCE_RECEIPT.json",
+      "governance_receipt_sha256": "f93031b7388d7a2e02c47558905b7072cfec630250739cdf7162939fdf80ec95",
+      "outcome": "GO_AUTHENTIC_GENERATOR_PREREQUISITE_HUMAN_GRAPH_HOLD",
+      "preflight_elapsed_seconds": 45.251261949539185,
+      "preflight_swap_growth_mib": 0.0,
+      "terminal": "reports/g02/screening/tiered_surface/branches/sa_nodetopo_gen/TERMINAL_REPORT.md",
+      "terminal_sha256": "71d9d6c1f4c16c3f1be6ee332f760edfc3ec8800b52b702eaee2fa9556203af0",
+      "validation": "reports/g02/screening/tiered_surface/branches/sa_nodetopo_gen/VALIDATION.json",
+      "validation_sha256": "ac7c49255bb1c0cbf1d73783b346a84a21d9e1e632277ddc5878ae41f21fb9a2"
+    },
+    "SA-PARKB-SWEEP": {
+      "commits": [
+        "479059283825204c1e47fe7d8151716ac1603977"
+      ],
+      "fragment": "reports/g02/screening/tiered_surface/branches/sa_parkb/state_fragment_wave2.json",
+      "fragment_sha256": "c232aa45361b938cb046f99cbb1541b833dcdf058951a98631564c66ed61027e",
+      "governance_receipt": "reports/g02/screening/tiered_surface/branches/sa_parkb/PREREGISTRATION_WAVE2.json",
+      "governance_receipt_sha256": "ca0494b3662ab8831de69f628a84242e1f433396a7d5e8cea67e5eb0ad5ffce6",
+      "outcome": "VERDICT_BARRIER_NO_TIER_MOVE",
+      "preflight_elapsed_seconds": 45.6156924579991,
+      "preflight_swap_growth_mib": 0.0,
+      "terminal": "reports/g02/screening/tiered_surface/branches/sa_parkb/TERMINAL_REPORT_WAVE2.md",
+      "terminal_sha256": "e9f793ffba77635dc12befbd297dc15c467bff1369a28763c0caa198ed16284a",
+      "validation": "reports/g02/screening/tiered_surface/branches/sa_parkb/VALIDATION_WAVE2.json",
+      "validation_sha256": "a729b969e0db342b6cb97aecf247b55354f66d77c2e2d5ac8b539011f256f0c6"
+    }
+  },
+  "reconciliation": {
+    "accepted_tier_moves": [],
+    "collision_safe_transformations": [
+      {
+        "banked_path": "reports/g02/screening/tiered_surface/branches/sa_parkb/state_fragment_wave2.json",
+        "byte_identical_to_commit_blob": true,
+        "lane": "SA-PARKB-SWEEP",
+        "reason": "Preserve the earlier untracked PARK-B fragment at its existing path without overwrite.",
+        "sha256": "c232aa45361b938cb046f99cbb1541b833dcdf058951a98631564c66ed61027e",
+        "source_commit": "479059283825204c1e47fe7d8151716ac1603977",
+        "source_path": "reports/g02/screening/tiered_surface/branches/sa_parkb/state_fragment.json"
+      }
+    ],
+    "cpu_testable_park_b_nodes_audited": 14,
+    "dead_promotions": 0,
+    "final_rollup": {
+      "DEAD": 1,
+      "PARK_A": 13,
+      "PARK_B": 22,
+      "PARK_C": 9
+    },
+    "gpu_or_weight_gated_nodes_skipped": 8,
+    "initial_rollup": {
+      "DEAD": 1,
+      "PARK_A": 13,
+      "PARK_B": 22,
+      "PARK_C": 9
+    },
+    "memo_c2_branch_b_numbers_used": 0,
+    "rejected_uncited_tier_moves": [],
+    "specific_fragment_precedence": [
+      "SA-ASSOC-CYCLE over SA-PARKB-SWEEP for AE-P6 and R8",
+      "SA-NODETOPO-GEN over SA-PARKB-SWEEP for NODERESTORE-O0"
+    ],
+    "tier_census_sha256": "a52d3dd32a46e1dbf19007f4d2fb07562ddffb7b8b7509b07ea987d5080a8759",
+    "uncited_tier_move_count": 0
+  },
+  "schema": "celltrack-alpha.cpu-wave2-barrier.v1",
+  "shared_governance": {
+    "alignment": {
+      "path": "reports/g02/screening/tiered_surface/ALIGNMENT.md",
+      "sha256": "eda3840ca4decf1fbc9943dcd872800852cf1ff52e0923136adb51b4f2ea6b37"
+    },
+    "policy": "Each lane carries an explicit receipt for both frozen governance inputs.",
+    "scope_manifest": {
+      "path": "reports/g02/screening/tiered_surface/SCOPE_MANIFEST.md",
+      "sha256": "066fb71b8ead255ff061a7aa75283df27c367e08aa8fd0a0b91677537a0a7d49"
+    }
+  },
+  "status": "PASS_ALL_LANES_BANKED_GRAPH_HUMAN_HELD",
+  "updated_utc": "2026-07-28T16:04:51Z"
+}

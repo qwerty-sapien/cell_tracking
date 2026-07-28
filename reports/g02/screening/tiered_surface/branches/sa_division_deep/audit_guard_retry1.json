@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/Users/agent/Desktop/cell_tracking/.venv/bin/python",
+    "audit_division_oracle.py",
+    "--output",
+    "oracle_audit.json"
+  ],
+  "elapsed_seconds": 3.0095854999963194,
+  "ending_swap_mib": 6350.625,
+  "external_action": false,
+  "forced_stop_on_swap_growth": false,
+  "gpu_action": false,
+  "initial_swap_mib": 6350.625,
+  "peak_process_tree_rss_gib": 0.1181182861328125,
+  "peak_swap_mib": 6350.625,
+  "preflight_path": "/private/tmp/g02_cpu_wave2_20260728.alodU7/sa_division_deep/reports/g02/screening/tiered_surface/branches/sa_division_deep/preflight_retry1.json",
+  "preflight_sha256": "290d2b85cb985793289f1f9934d0ba737c4512db2e4385baf83f7c9e84bc5970",
+  "returncode": 1,
+  "schema": "celltrack-alpha.sa-division-deep-resource-guard.v1",
+  "status": "FAIL",
+  "stdout": "Traceback (most recent call last):\n  File \"/private/tmp/g02_cpu_wave2_20260728.alodU7/sa_division_deep/reports/g02/screening/tiered_surface/branches/sa_division_deep/audit_division_oracle.py\", line 404, in <module>\n    raise SystemExit(main())\n                     ~~~~^^\n  File \"/private/tmp/g02_cpu_wave2_20260728.alodU7/sa_division_deep/reports/g02/screening/tiered_surface/branches/sa_division_deep/audit_division_oracle.py\", line 398, in main\n    payload = run(args.output)\n  File \"/private/tmp/g02_cpu_wave2_20260728.alodU7/sa_division_deep/reports/g02/screening/tiered_surface/branches/sa_division_deep/audit_division_oracle.py\", line 306, in run\n    classification, component_audit = classify_roles(\n                                      ~~~~~~~~~~~~~~^\n        bool(coverage[\"role_covered\"]),\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<2 lines>...\n        component,\n        ^^^^^^^^^^\n    )\n    ^\n  File \"/private/tmp/g02_cpu_wave2_20260728.alodU7/sa_division_deep/reports/g02/screening/tiered_surface/branches/sa_division_deep/audit_division_oracle.py\", line 159, in classify_roles\n    raise AssertionError(\"frozen matched role references a missing prediction node\")\nAssertionError: frozen matched role references a missing prediction node\n",
+  "swap_growth_mib": 0.0
+}

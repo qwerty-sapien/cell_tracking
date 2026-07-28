@@ -1,0 +1,148 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-gen-preregistration.v1",
+  "status": "FROZEN_BEFORE_GENERATOR_OUTCOMES",
+  "frozen_utc": "2026-07-28T09:56:53Z",
+  "node": "NODETOPO-O0 authentic raw-Zarr proposal prerequisite",
+  "mechanism": "BLOCKPEAK-RESTORE-V1",
+  "objective": "Build a deterministic fit-only raw-image node-proposal universe, then compile a bounded node-restoration-only action population through frozen N1. No graph score is run.",
+  "scope": {
+    "family": "44b6",
+    "identity_count": 36,
+    "fit_only": true,
+    "held_graph_run": false,
+    "graph_score_run": false,
+    "model_fit": false,
+    "detector_modified": false,
+    "pseudo_masks_used": false,
+    "second_family_opened": false
+  },
+  "frozen_inputs": {
+    "human_locked_plan": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/campaign_narrowing_and_hypothesis_dag_v1.md",
+      "sha256": "a322724e77dd77f53c36e918e5345e86e8394a3848033a9a2225c21924e75116"
+    },
+    "n1_interface": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/n1_feasibility_compiler/interface_v1.json",
+      "sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865"
+    },
+    "n1_implementation": {
+      "path": "/Users/agent/Desktop/cell_tracking/src/celltrack_alpha/action_compiler.py",
+      "sha256": "457f6607a493d51d972913fa155d687e9ffc4045475605bc109a4ca9e90124f5"
+    },
+    "grouped_folds": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/grouped_3fold_audit20_v1.json",
+      "sha256": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769"
+    },
+    "p0": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+      "sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06"
+    },
+    "fit_provenance": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/fit_provenance_v1.json",
+      "sha256": "6a9139bf281b98d2c3869c8f12f80fb9655f85ba1c0f7f91f0a51acd7c37f14f"
+    },
+    "fit105_identity_source": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/h1_existing_cache_feature_report.json",
+      "sha256": "d52a4a42cf16c4e43d146d1cebfde68192db095c7cf6dfa3cfd9b7e4d820c0cf"
+    },
+    "fit117_baseline_manifest": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/fitcache_117/manifest.json",
+      "sha256": "20ef8056bea8afb60f76cf99357c7b62215b2db6c408d78a1c3ba21c41431a33"
+    },
+    "dataset_registry": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/dataset_registry_v1.json",
+      "sha256": "21f3b3f8bad0324474d4065dda87a89ca2ea6cc770349c426b9399faa6982158"
+    },
+    "raw_archive": {
+      "path": "/Users/agent/Desktop/cell_tracking/data/kaggle/raw/biohub-cell-tracking-during-development.zip",
+      "bytes": 87393127165,
+      "sha256_banked_in_p0": "538ed8a4d7b6669fa948865f947ed43c23aba7ee006fea8826d6ddd1277dfd19",
+      "central_directory_sha256": "5edffe5596e0918f92336ffb269b17df4f2e5f41b55a67bfa01e0253d58cdc77",
+      "entry_count": 24886
+    }
+  },
+  "raw_generator_contract": {
+    "name": "BLOCKPEAK-RESTORE-V1",
+    "input": "every raw frame in the exact 36 fit105 44b6 Zarr arrays",
+    "block_shape_zyx_voxels": [4, 16, 16],
+    "threshold": "dataset Zarr attribute image_statistics.quantiles['0.999']; frozen metadata, never fit labels",
+    "peak": "one C-order argmax per complete nonoverlapping block",
+    "frame_order": "t ascending",
+    "candidate_order": "intensity descending, then z/y/x ascending",
+    "max_candidates_per_frame": 64,
+    "identity": "sha256(split,family,dataset,t,z,y,x,intensity,generator)",
+    "raw_bank_fields": ["dataset", "t", "z", "y", "x", "intensity", "identity_sha256"],
+    "labels_in_raw_bank": false,
+    "masks_used": false,
+    "detector_change": false,
+    "streaming": "one frame and one video at a time; raw banks are frozen before the fit-GT audit pass"
+  },
+  "coverage_identity_gate": {
+    "required_videos": 36,
+    "required_frames": "all raw array frames for every identity",
+    "required_replay": "byte-identical regeneration of first and last frame per video",
+    "required_raw_bank_fields_exact": true,
+    "failure": "any input/hash/coverage/identity/replay mismatch fails closed"
+  },
+  "fit_only_identity_audit": {
+    "phase": "after raw-bank hashes are frozen",
+    "positive_definition": "one-to-one minimum-distance same-time fit-GT assignment within 7 um",
+    "false_definition": "raw proposal not selected by that assignment",
+    "hard_false_definition": "false proposal with nearest same-time fit GT strictly greater than 14 um, or a frame without fit GT",
+    "leakage_rule": "fit GT may annotate and choose false stress actions only after raw generation; it never changes raw coordinates, inclusion, order, or identity"
+  },
+  "node_restoration_contract": {
+    "action_kind": "restore_topology",
+    "eligible_candidate": "false proposal at 1<=t<T-1",
+    "topology_join": "nearest baseline node at t-1 and t+1, each within 16 um",
+    "conflict_proof": "declare every baseline edge outgoing from the predecessor or incoming to the successor as expected_conflict_edges",
+    "population_order": "candidate identity SHA-256 ascending",
+    "compatibility": "greedy exact ownership of added node/edges, replaced source/target, and removed edges",
+    "population_cap": 50,
+    "n1_validation": "compile every retained action singly and compile every per-video budget batch through interface 2a72950c...f865",
+    "action_types_allowed": ["restore_topology"],
+    "action_types_forbidden": ["noop", "add_node", "add_edge", "delete_edges", "swap", "division_fork"]
+  },
+  "false_node_budget_stress": {
+    "budgets": [0, 1, 2, 5, 10, 20, 50],
+    "construction": "first k globally ordered mutually compatible false-proposal restoration actions",
+    "reported_diagnostics": ["affected_videos", "added_nodes", "added_edges", "removed_edges", "N1 batch hashes", "N1 graph hashes"],
+    "official_scorer_run": false,
+    "graph_metric_run": false,
+    "tier_gate": false
+  },
+  "decision_lines": {
+    "generator_go": "36/36 identities and all frames covered; exact raw-bank schema; all deterministic replays equal",
+    "generator_park": "any coverage, identity, input, or determinism failure",
+    "population_go": "50 mutually compatible false-node restoration actions and 50/50 frozen-N1 single-action validity plus all budget batches valid",
+    "population_park": "fewer than 50 actions or any frozen-N1 rejection",
+    "tier_move": "none; this prerequisite can only unblock NODETOPO-O0 for a later human-reviewed graph gate"
+  },
+  "resource_guard": {
+    "device": "cpu",
+    "idle_preflight_seconds": 45,
+    "maximum_swap_growth_mib": 0,
+    "fail_closed_on_swap_growth": true,
+    "maximum_wall_seconds": 7200,
+    "maximum_inflight_frames": 1
+  },
+  "forbidden": [
+    "Kaggle",
+    "GPU",
+    "RunPod",
+    "CELLECT",
+    "budget debit",
+    "submission",
+    "CV57",
+    "6bba",
+    "held graph scoring",
+    "pseudo-masks",
+    "detector modification",
+    "DEAD",
+    "root single-writer edits",
+    "sibling live outputs",
+    "old partial NODETOPO metrics",
+    "memo C2/K-best numbers",
+    "memo Branch-B 66/223 numbers"
+  ]
+}

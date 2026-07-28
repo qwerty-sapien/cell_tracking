@@ -1,0 +1,21 @@
+{
+  "allowed_prefix": "reports/g02/screening/tiered_surface/branches/sa_parkb/",
+  "base_commit": "5a805c2f7240e30c572644d3d5f0e733add04769",
+  "changed_paths": [
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/IDLE_PREFLIGHT_WAVE2.json",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/PARKB_INVENTORY_WAVE2.json",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/PATH_ALLOWLIST_AUDIT_WAVE2.json",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/PREREGISTRATION_WAVE2.json",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/PROPOSED_LEDGER_ROWS_WAVE2.md",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/RESOURCE_RECEIPT_WAVE2.json",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/SUPPORT_FALSIFIERS_WAVE2.json",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/TERMINAL_REPORT_WAVE2.md",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/VALIDATION_WAVE2.json",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/run_parkb_wave2.py",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/state_fragment.json",
+    "reports/g02/screening/tiered_surface/branches/sa_parkb/validate_parkb_wave2.py"
+  ],
+  "out_of_scope_paths": [],
+  "schema": "celltrack-alpha.worktree-path-allowlist.v2",
+  "status": "PASS"
+}

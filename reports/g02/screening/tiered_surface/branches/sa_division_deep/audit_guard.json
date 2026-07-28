@@ -1,0 +1,23 @@
+{
+  "command": [
+    "python3",
+    "audit_division_oracle.py",
+    "--output",
+    "oracle_audit.json"
+  ],
+  "elapsed_seconds": 0.44134433299768716,
+  "ending_swap_mib": 6350.625,
+  "external_action": false,
+  "forced_stop_on_swap_growth": false,
+  "gpu_action": false,
+  "initial_swap_mib": 6350.625,
+  "peak_process_tree_rss_gib": 0.0468902587890625,
+  "peak_swap_mib": 6350.625,
+  "preflight_path": "/private/tmp/g02_cpu_wave2_20260728.alodU7/sa_division_deep/reports/g02/screening/tiered_surface/branches/sa_division_deep/preflight.json",
+  "preflight_sha256": "4ab1e51bc1b42fe5d9e03396dead748ecba25edf1bdc6993bf2e2414bffd3270",
+  "returncode": 1,
+  "schema": "celltrack-alpha.sa-division-deep-resource-guard.v1",
+  "status": "FAIL",
+  "stdout": "Traceback (most recent call last):\n  File \"/private/tmp/g02_cpu_wave2_20260728.alodU7/sa_division_deep/reports/g02/screening/tiered_surface/branches/sa_division_deep/audit_division_oracle.py\", line 404, in <module>\n    raise SystemExit(main())\n                     ~~~~^^\n  File \"/private/tmp/g02_cpu_wave2_20260728.alodU7/sa_division_deep/reports/g02/screening/tiered_surface/branches/sa_division_deep/audit_division_oracle.py\", line 398, in main\n    payload = run(args.output)\n  File \"/private/tmp/g02_cpu_wave2_20260728.alodU7/sa_division_deep/reports/g02/screening/tiered_surface/branches/sa_division_deep/audit_division_oracle.py\", line 323, in run\n    row[\"oracle_action\"] = compile_oracle_action(\n                           ~~~~~~~~~~~~~~~~~~~~~^\n        identity, event_index, nodes, edges, selected\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/private/tmp/g02_cpu_wave2_20260728.alodU7/sa_division_deep/reports/g02/screening/tiered_surface/branches/sa_division_deep/audit_division_oracle.py\", line 215, in compile_oracle_action\n    from celltrack_alpha.action_compiler import (  # type: ignore\n    ...<4 lines>...\n    )\n  File \"/Users/agent/Desktop/cell_tracking/src/celltrack_alpha/__init__.py\", line 3, in <module>\n    from .pipeline import predict_dataset_window\n  File \"/Users/agent/Desktop/cell_tracking/src/celltrack_alpha/pipeline.py\", line 12, in <module>\n    from scipy.ndimage import gaussian_filter\nModuleNotFoundError: No module named 'scipy'\n",
+  "swap_growth_mib": 0.0
+}

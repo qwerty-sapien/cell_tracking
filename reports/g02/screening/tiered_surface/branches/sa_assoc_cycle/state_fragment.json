@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "agent": "SA-ASSOC-CYCLE",
+  "branch": "codex/sa-assoc-cycle-wave2",
+  "verdict": "PARK_NOT_READY_MISSING_AUTHENTIC_REVERSE",
+  "memo_quarantine": true,
+  "tier_moves_proposed": 0,
+  "family_execution": {
+    "44b6_separation_ran": false,
+    "44b6_graph_ran": false,
+    "6bba_ran": false,
+    "cv57_ran": false
+  },
+  "forbidden_scope": {
+    "budget_write": false,
+    "cellect_action": false,
+    "dead_promotion": false,
+    "gpu_action": false,
+    "kaggle_action": false,
+    "ledger_write": false,
+    "live_state_write": false,
+    "census_write": false,
+    "runpod_action": false,
+    "submission_action": false
+  },
+  "nodes": [
+    {
+      "id": "AE-P6",
+      "branch": "association_expansion",
+      "owner_agent": "SA-ASSOC-CYCLE",
+      "tier": "PARK_B",
+      "banked": true,
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_assoc_cycle/AUDIT_RESULT.json",
+      "evidence_sha256": "22e0c7189fa1d5ea58ae91b1e5bd2fc798a8846aa4066b7ea73221190437a617",
+      "evidence_basis": "All 36 existing fit-only 44b6 forward feature files authenticated, but the cache declares exactly one Trackastra margin and no authentic reverse-inference or endpoint-return contract; no separation outcome opened.",
+      "oracle_headroom": {
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0,
+        "control": "not_measured"
+      },
+      "graph_result": null,
+      "kill_line": "An authentic cycle supplier must first beat sealed B0 and permutation control under the unchanged all-five-fold separation line; any PASS only opens human review of a 44b6 graph preregistration.",
+      "resume_condition": "Freeze an immutable authentic reverse-inference cache plus exact endpoint-return/no-link contract.",
+      "blocked_on": [
+        "IMMUTABLE_REVERSE_FEATURE_SUPPLIER",
+        "ENDPOINT_RETURN_CONTRACT"
+      ],
+      "priority": 2,
+      "last_change_utc": "2026-07-28T13:32:00+08:00"
+    },
+    {
+      "id": "R8",
+      "branch": "representation_and_governance",
+      "owner_agent": "SA-ASSOC-CYCLE",
+      "tier": "PARK_B",
+      "banked": true,
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_assoc_cycle/AUDIT_RESULT.json",
+      "evidence_sha256": "22e0c7189fa1d5ea58ae91b1e5bd2fc798a8846aa4066b7ea73221190437a617",
+      "evidence_basis": "The existing forward cache is complete and authentic but cannot serve as a bidirectional supplier without new reverse inference; synthetic reversal is prohibited.",
+      "oracle_headroom": {
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0,
+        "control": "not_measured"
+      },
+      "graph_result": null,
+      "kill_line": "Common frozen separation and 44b6 graph gates; no graph follows without a supplier-local separation PASS and human-reviewed preregistration.",
+      "resume_condition": "Freeze an immutable authentic reverse-inference cache plus exact endpoint-return/no-link contract.",
+      "blocked_on": [
+        "IMMUTABLE_REVERSE_FEATURE_SUPPLIER",
+        "ENDPOINT_RETURN_CONTRACT"
+      ],
+      "priority": 2,
+      "last_change_utc": "2026-07-28T13:32:00+08:00"
+    }
+  ]
+}

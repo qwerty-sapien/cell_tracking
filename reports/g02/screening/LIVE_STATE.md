@@ -11,7 +11,7 @@ points at the authoritative artifacts; it does not replace them.
 - Bet ledger (root coordinator is the sole writer): `LEDGER.md`.
 - Scorer / CV57→public transfer gate: `p0_parity.md`.
 
-## Current frontier (as of 2026-07-28)
+## Current frontier (as of 2026-07-29)
 - **N1 FEASIBILITY COMPILER GO / PHASE 1 BARRIER COMPLETE.** The immutable
   compiler accepts explicit no-op/add/delete/swap/fork/topology-restore actions,
   proves complete incident-conflict ownership, validates endpoints/time/degree/no-
@@ -22,7 +22,7 @@ points at the authoritative artifacts; it does not replace them.
   `tiered_surface/n1_feasibility_compiler/N1_FREEZE_REPORT.json`.
 - **TIER CENSUS / NO LIVE RUN:** machine state
   `tiered_surface/tier_census.json` at SHA-256
-  `83a00a886116912c0aa15e1e0073d45f89cbf0da4b4ab1c3e465c09206643003`
+  `a52d3dd32a46e1dbf19007f4d2fb07562ddffb7b8b7509b07ea987d5080a8759`
   records **LIVE 0 / PARK-A 13 / PARK-B 22 / PARK-C 9 / DEAD 1**. The five
   mandatory disjoint worktrees passed the collective root barrier at exact clean
   commits and were merged scope-only. DELETE-O0 moved PARK-A→PARK-C after its
@@ -33,6 +33,22 @@ points at the authoritative artifacts; it does not replace them.
   AE-P1/AE-P2 families remain rejected. R7's CELLECT supplier remains PARK-B.
   Manifest `f8852468…7a63`; barrier `5fef02ee…9349`; decisions
   `edba055b…0da1`; **uncited tier moves 0**.
+- **CPU-ONLY WAVE-2 BARRIER COMPLETE / NODETOPO GRAPH HUMAN-HELD.**
+  `SA-NODETOPO-GEN` authenticated all 36 fit105 44b6 Zarrs and 3,600 frames,
+  froze 107,370 label-free proposals plus an exact 50-action
+  `restore_topology` population across 24 videos, and passed frozen N1 for
+  50/50 singles and 55/55 nonempty budget batches. `SA-DIVISION-DEEP` found
+  **38/42 CV57 divisions present-but-fragmented**, one role-present
+  component-spanning event without a local fork, and three role-missing events;
+  39/39 diagnostic actions compiled, while fitting remains locked behind a
+  both-family association-continuity pass. `SA-PARKB-SWEEP` audited 14
+  CPU-testable PARK-B nodes, skipped eight weight/GPU-gated representation
+  nodes, and proposed no move. Optional `SA-ASSOC-CYCLE` authenticated 36/36
+  forward-cache files but found no immutable reverse supplier, so separation
+  and graph stayed closed. Barrier `c60799d9…c63f3`; validation
+  `6a467695…5c0f8` (**48/48 PASS**). Accepted and uncited tier moves are 0/0;
+  census stays 0/13/22/9/1. No graph, GPU, Kaggle launch/debit, CELLECT write,
+  RunPod, submission, or DEAD action occurred.
 - **CONCURRENT CPU WAVE / ROOT BARRIER PASS.** PARK-B support/identity sweep
   `3bb73ef`, representation population/provenance `cefd106`, division refinement
   `0bfa879`, and authentic raw-node universe `27b7220` are terminal. Representation
@@ -155,6 +171,14 @@ PARK-B / NOT SCORED.
   `tiered_surface/kaggle_budget.json` at SHA-256
   `2e02bc4f…1fc6` reconciles **2.5761/30.0 kernel-h used**, **27.4239 h remaining**,
   no active authorization; RunPod forbidden and submission human-gated.
+- CPU-only Wave-2 NODETOPO prerequisite: **36/36 videos, 3,600/3,600 frames,
+  107,370 proposals, 106,668 false proposals, 100,983 topology-joinable,
+  50 restoration actions across 24 videos**, with 0 MiB swap growth. The graph
+  gate remains human-held.
+- CPU-only Wave-2 division diagnostic: **38/42 present-but-fragmented,
+  1/42 present/component-spanning without a local fork, 3/42 role-missing**;
+  39/39 diagnostic N1 actions compiled, 36 persistent actions selected, three
+  missing-persistence actions suppressed, and zero duplicate survivors.
 - H1 external usage: two human-created datasets; two failed timing-kernel versions, one
   passing smoke, and one completed full-cache kernel. Banked completed use is
   **2.1170 kernel-h** (≤**4.2340 allocated T4-GPU-h**), **0 submissions**. The
@@ -201,6 +225,19 @@ Frozen C1 conflict-set attention (`C1-TA-HOCT-LITE`) is DEAD at its 44b6 graph g
 do not run 6bba or re-screen it without a new named mechanism.
 
 ## Log (newest first)
+- 2026-07-29 — CPU-only Wave-2 **ROOT BARRIER PASS / GRAPH HOLD**:
+  banked exact clean lane commits `3f38a524`+`50bc0e08`,
+  `cd7f24d3`+`cf703b5c`+`9151934e`, `47905928`, and
+  `f92dd8d6`+`17c8d6e6`; all lane paths are
+  disjoint and all four preflights exceeded 45 seconds with zero swap growth.
+  NODETOPO froze an authentic 50-action restoration population, division
+  quantified 38/42 strict present-but-fragmented CV57 events, PARK-B proposed
+  no moves, and association-cycle stopped before separation because authentic
+  reverse evidence is absent. Barrier validation passed 48/48, including
+  per-lane `ALIGNMENT.md`/`SCOPE_MANIFEST.md` receipts; accepted/uncited
+  moves remain 0/0 and census remains 0/13/22/9/1. The NODETOPO graph gate is
+  held for human review. No GPU, Kaggle launch/debit, CELLECT action, RunPod,
+  submission, DEAD promotion, or graph run occurred. (Codex root)
 - 2026-07-28 — Concurrent CPU wave **ROOT BARRIER PASS**: all four clean,
   scope-only lane commits were collected; evidence hashes and memo quarantine
   validated. SA-REPR-MULTI froze 154 exact shards but queued zero new suppliers;
