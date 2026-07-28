@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "updated_utc": "2026-07-28T18:44:32Z",
+  "plan_sha256": "a322724e77dd77f53c36e918e5345e86e8394a3848033a9a2225c21924e75116",
+  "objective": "S(G)=weighted_adjusted_edge_Jaccard + 0.1*division_Jaccard",
+  "gate": "44b6->6bba->CV57; adj>=+0.005 both families; raw,node>=0",
+  "lane_id": "fidelity_literature",
+  "lane_verdict": "METHOD_SOURCES_VERIFIED_DIAGNOSTIC_ONLY",
+  "proposal_only": true,
+  "summary": "Six primary sources support the component methods and delimit transfer. The implemented design is repeated finite-population subsampling without replacement, not an ordinary iid bootstrap. Design weights support additive sufficient-statistic expansion but do not imply unbiased nonlinear graph scores. Empirical fidelity outcomes remain unopened.",
+  "forbidden_scope": {
+    "candidate_decomposition_opened": false,
+    "subsample_outcome_opened": false,
+    "fidelity_table_opened": false,
+    "graph_run": false,
+    "family_6bba_run": false,
+    "cv57_used": false,
+    "submission_action": false,
+    "runpod_action": false,
+    "kaggle_action": false,
+    "gpu_action": false,
+    "budget_debit_hours": 0.0,
+    "dead_rescreen": false,
+    "sibling_live_output_used": false,
+    "root_single_writer_mutation": false
+  },
+  "method_evidence": {
+    "artifact": "reports/g02/screening/tiered_surface/subsample_fidelity/lanes/literature/METHOD_CITATIONS.json",
+    "artifact_sha256": "a6ef08b0116c6666656a6263ca9ddef1dd258e8204da7f828ec439b07ee389e9",
+    "primary_sources_verified": 6,
+    "domains": [
+      "bootstrap/resampling",
+      "subsampling",
+      "stratified resampling",
+      "finite-population sampling without replacement",
+      "stratified probability sampling",
+      "Spearman rank correlation"
+    ],
+    "outcome_claim": null
+  },
+  "uncited_tier_moves": 0,
+  "nodes": [],
+  "census_delta_proposed": {
+    "LIVE": 0,
+    "PARK_A": 0,
+    "PARK_B": 0,
+    "PARK_C": 0,
+    "DEAD": 0
+  },
+  "live_state_log_proposal": "2026-07-29 — Video-subsample literature lane verified six primary methodology sources. The frozen procedure is repeated design-weighted finite-population subsampling without replacement; inverse-probability weights justify additive sufficient-statistic expansion, not unbiased nonlinear graph scores. No outcomes, tier move, graph, CV57, GPU, external action, or budget debit opened. Diagnostics never gate."
+}
