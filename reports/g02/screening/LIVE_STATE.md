@@ -12,6 +12,18 @@ points at the authoritative artifacts; it does not replace them.
 - Scorer / CV57→public transfer gate: `p0_parity.md`.
 
 ## Current frontier (as of 2026-07-29)
+- **VIDEO-SUBSAMPLE FIDELITY UNSAFE / ROOT BARRIER COMPLETE.** A
+  pre-outcome common-universe amendment standardized APNCC, C1, H1-ZWRFEAT,
+  SA-DELETE, SA-SWAP, and NODETOPO on the already-opened 36-video held-44b6
+  gate and common CG0 reference. All fragment hashes and eight aggregate
+  replays matched within `1e-12`; 12 cells each used 10,000 fixed-seed
+  finite-population draws. **0/12 were usable.** At `k=12`, all schemes reached
+  median rho `0.828571`, but sign agreement was only `0.813733–0.820683` and
+  maximum 95% width was `0.023017–0.023308`, failing the `0.9` and `<0.005`
+  gates. No `SUBSAMPLE_CONTRACT` exists; full frozen 44b6 remains mandatory for
+  every promotion. Table `67cf33ed…9a3b9`; barrier
+  `tiered_surface/subsample_fidelity/BARRIER_REPORT.json`. No tier move, GPU,
+  Kaggle, budget debit, RunPod, submission, DEAD, plan, N1, folds, or P0 action.
 - **N1 FEASIBILITY COMPILER GO / PHASE 1 BARRIER COMPLETE.** The immutable
   compiler accepts explicit no-op/add/delete/swap/fork/topology-restore actions,
   proves complete incident-conflict ownership, validates endpoints/time/degree/no-
@@ -200,6 +212,11 @@ authorized bounded R5 endpoint-feature materialization has not run.
 | closed | `DELETE-O0` | PARK-C | exact retention beta `−0.000127119/−0.000131807/0` | materially new named deletion mechanism |
 
 ## Key numbers
+- Retrospective screening-fidelity node: **6 candidates / 36 common held-44b6
+  videos / 12 cells / 10,000 draws per cell / 0 usable**. Best-rank `k=12`
+  simple random had rho `0.828571`, sign agreement `0.820683`, and maximum 95%
+  width `0.023057`; the narrowest `k=12` width was still `0.023017` under
+  residual-top10. Thresholds remain `|rho|>=0.8`, sign `>=0.9`, width `<0.005`.
 - Baseline local `0.873150` → public `0.877`. Banked APNCC local `0.881522` → **public `0.881`**.
 - User-supplied top-50 bar is public `0.910`; coarse transfer maps it to a planning
   range of local `≈0.9255–0.9422`. Edge-only current-pool projection (`~0.896`) is
@@ -293,6 +310,17 @@ Frozen C1 conflict-set attention (`C1-TA-HOCT-LITE`) is DEAD at its 44b6 graph g
 do not run 6bba or re-screen it without a new named mechanism.
 
 ## Log (newest first)
+- 2026-07-29 — Video-subsample fidelity **SUBSAMPLING_UNSAFE / ROOT BARRIER
+  PASS**: preregistration `c0d2de2a…ac5e` and pre-outcome common36 amendment
+  `3c497948…673fc` preceded every draw. Six standardized banked candidates
+  replayed exactly on held 44b6; all fragment hashes and eight aggregates
+  matched within `1e-12`. Across `k={3,5,8,12}`, three schemes, and 10,000
+  fixed-seed draws/cell, 0/12 passed. `k=12` cleared rank only
+  (`rho=0.828571`); sign was `0.813733–0.820683` and max width
+  `0.023017–0.023308`. No contract, tier move, GPU, Kaggle, budget debit,
+  RunPod, submission, DEAD, plan, N1, folds, or P0 action. Table
+  `67cf33ed…9a3b9`; independent replay `12dcdcb2…bb6f`. (Codex root + three
+  isolated lanes)
 - 2026-07-29 — CELLECT R7 **PRIVATE ASSET V4 READY / AUTHENTICATED BYTE-EXACT
   ROUND-TRIP PASS / NO LAUNCH**: owner reauthentication in computer-use cmux
   restored status/upload access and created version 4. `ListDatasetFiles` and
