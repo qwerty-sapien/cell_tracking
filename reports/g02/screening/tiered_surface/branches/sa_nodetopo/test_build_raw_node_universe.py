@@ -7,6 +7,7 @@ import importlib.util
 from pathlib import Path
 import sys
 import tempfile
+import time
 import unittest
 
 import numpy as np
@@ -139,6 +140,40 @@ class RawNodeUniverseTest(unittest.TestCase):
         self.assertEqual(MODULE.BUDGETS, (0, 1, 2, 5, 10, 20, 50))
         self.assertEqual(MODULE.ROUTE, "balanced_compact")
         self.assertEqual(MODULE.FAMILY, "44b6")
+
+    def test_threaded_window_preserves_serial_rows_and_node_ids(self) -> None:
+        def detect(frame: int) -> tuple[int, list[object]]:
+            time.sleep(0.001 * (3 - frame % 3))
+            rows = [
+                MODULE.CandidateRow(
+                    "44b6_synthetic",
+                    local_id,
+                    frame,
+                    0,
+                    frame,
+                    local_id,
+                    "0x1p+0",
+                    ("raw",),
+                )
+                for local_id in range(1, frame % 3 + 2)
+            ]
+            return frame, rows
+
+        serial = [detect(frame) for frame in range(8)]
+        threaded = list(
+            MODULE.ordered_thread_map(detect, range(8), max_workers=4)
+        )
+        self.assertEqual(serial, threaded)
+        serial_global = []
+        threaded_global = []
+        for source, target in ((serial, serial_global), (threaded, threaded_global)):
+            next_node_id = 1
+            for frame, rows in source:
+                assigned, next_node_id = MODULE.assign_global_node_ids(
+                    rows, next_node_id
+                )
+                target.extend((frame, row.payload()) for row in assigned)
+        self.assertEqual(serial_global, threaded_global)
 
 
 if __name__ == "__main__":

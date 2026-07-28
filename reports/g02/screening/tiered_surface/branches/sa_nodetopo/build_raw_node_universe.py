@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter, defaultdict
+from concurrent.futures import Future, ThreadPoolExecutor
 from dataclasses import dataclass
 import gzip
 import hashlib
@@ -74,6 +75,7 @@ POSITIVE_RADIUS_UM = 7.0
 HARD_FALSE_RADIUS_UM = 14.0
 TOPOLOGY_RADIUS_UM = 8.0
 PER_VIDEO_HEAP_CAP = 4096
+MAX_INFLIGHT_FRAMES = 4
 
 
 class NodeUniverseError(RuntimeError):
@@ -252,6 +254,64 @@ def candidate_from_node(node: Any) -> CandidateRow:
         score_hex=float(node.score).hex(),
         sources=tuple(sorted(str(value) for value in node.sources)),
     )
+
+
+def assign_global_node_ids(
+    candidates: Sequence[CandidateRow], next_node_id: int
+) -> tuple[list[CandidateRow], int]:
+    rows = [
+        CandidateRow(
+            dataset=value.dataset,
+            node_id=next_node_id + index,
+            t=value.t,
+            z=value.z,
+            y=value.y,
+            x=value.x,
+            score_hex=value.score_hex,
+            sources=value.sources,
+        )
+        for index, value in enumerate(candidates)
+    ]
+    return rows, next_node_id + len(rows)
+
+
+def ordered_thread_map(
+    function: Any,
+    values: Iterable[Any],
+    *,
+    max_workers: int = MAX_INFLIGHT_FRAMES,
+) -> Iterable[Any]:
+    if max_workers <= 0:
+        raise ValueError("max_workers must be positive")
+    iterator = iter(values)
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        pending: list[Future[Any]] = []
+        for _ in range(max_workers):
+            try:
+                pending.append(executor.submit(function, next(iterator)))
+            except StopIteration:
+                break
+        while pending:
+            future = pending.pop(0)
+            yield future.result()
+            try:
+                pending.append(executor.submit(function, next(iterator)))
+            except StopIteration:
+                pass
+
+
+def detect_frame_job(job: tuple[Any, ...]) -> tuple[int, list[CandidateRow]]:
+    volume, dataset, t, attrs, scale_zyx, route = job
+    nodes, _ = detect_candidates_one_timepoint(
+        volume=volume,
+        dataset=dataset,
+        t=t,
+        attrs=attrs,
+        scale_zyx=scale_zyx,
+        config=route,
+        next_node_id=1,
+    )
+    return int(t), [candidate_from_node(node) for node in nodes]
 
 
 def gzip_jsonl(path: Path, rows: Iterable[Mapping[str, Any]]) -> tuple[str, int]:
@@ -669,18 +729,31 @@ def run(output: Path) -> dict[str, Any]:
                 with gzip.GzipFile(
                     filename="", mode="wb", fileobj=raw_handle, mtime=0
                 ) as zipped:
-                    for t in range(int(raw_array.shape[0])):
-                        volume = np.asarray(raw_array[t])
-                        nodes, next_node_id = detect_candidates_one_timepoint(
-                            volume=volume,
-                            dataset=dataset,
-                            t=t,
-                            attrs=attrs,
-                            scale_zyx=scale,
-                            config=route,
-                            next_node_id=next_node_id,
+                    jobs = (
+                        (
+                            np.asarray(raw_array[t]),
+                            dataset,
+                            t,
+                            attrs,
+                            scale,
+                            route,
                         )
-                        candidates = [candidate_from_node(node) for node in nodes]
+                        for t in range(int(raw_array.shape[0]))
+                    )
+                    for expected_t, (t, local_candidates) in enumerate(
+                        ordered_thread_map(
+                            detect_frame_job,
+                            jobs,
+                            max_workers=MAX_INFLIGHT_FRAMES,
+                        )
+                    ):
+                        if t != expected_t:
+                            raise NodeUniverseError(
+                                f"threaded frame order drifted: expected={expected_t} actual={t}"
+                            )
+                        candidates, next_node_id = assign_global_node_ids(
+                            local_candidates, next_node_id
+                        )
                         frame_counts.append(len(candidates))
                         frame_hasher = hashlib.sha256()
                         for candidate in candidates:
@@ -718,7 +791,7 @@ def run(output: Path) -> dict[str, Any]:
                             if record is not None:
                                 support["topology_joinable_hard_false"] += 1
                                 heap_keep_smallest(heap, record, PER_VIDEO_HEAP_CAP)
-                        del volume, nodes, candidates, positive, hard_false, nearest
+                        del local_candidates, candidates, positive, hard_false, nearest
             action_heaps[identity] = heap
 
             replay: dict[str, Any] = {}
@@ -731,12 +804,16 @@ def run(output: Path) -> dict[str, Any]:
                     attrs=attrs,
                     scale_zyx=scale,
                     config=route,
-                    next_node_id=1 + sum(frame_counts[:t]),
+                    next_node_id=1,
+                )
+                replay_candidates, _ = assign_global_node_ids(
+                    [candidate_from_node(node) for node in replay_nodes],
+                    1 + sum(frame_counts[:t]),
                 )
                 replay_hasher = hashlib.sha256()
-                for node in replay_nodes:
+                for candidate in replay_candidates:
                     replay_hasher.update(
-                        canonical_json_bytes(candidate_from_node(node).payload())
+                        canonical_json_bytes(candidate.payload())
                     )
                 actual = replay_hasher.hexdigest()
                 replay[str(t)] = {
@@ -923,7 +1000,8 @@ def run(output: Path) -> dict[str, Any]:
         "execution": {
             "device": "cpu",
             "elapsed_seconds": time.perf_counter() - started,
-            "stream_one_frame_at_a_time": True,
+            "maximum_inflight_frames": MAX_INFLIGHT_FRAMES,
+            "ordered_frame_serialisation": True,
             "stream_one_video_at_a_time": True,
         },
     }
