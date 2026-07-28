@@ -1,0 +1,43 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-gate-execution-repair.v1",
+  "created_utc": "2026-07-28T17:27:50Z",
+  "status": "FROZEN_BEFORE_RETRY",
+  "failed_attempt": {
+    "guard_artifact": "local_run_guard.json",
+    "guard_status": "FAIL_COMMAND",
+    "completed_scoring_videos": 36,
+    "single_n1_replays": 50,
+    "batch_n1_replays": 24,
+    "swap_growth_mib": 0.0,
+    "result_artifact_emitted": false,
+    "scientific_verdict_emitted": false,
+    "failure": "JSON serialization rejected non-finite per-video diagnostic division fields"
+  },
+  "repair": {
+    "scope": "execution-only JSON encoding",
+    "change": "recursively encode non-finite diagnostic floats as JSON null",
+    "population_changed": false,
+    "input_receipts_changed": false,
+    "n1_compilation_changed": false,
+    "official_metric_changed": false,
+    "aggregation_changed": false,
+    "gate_thresholds_changed": false,
+    "tier_semantics_changed": false
+  },
+  "repair_artifacts": {
+    "evaluate_graph_gate.py": "f4eb517fc4f777c5c33bbb9d4cba1401b77c7097d409d7185a1c2855c0b68722",
+    "test_gate.py": "7d168e69d21b1dc4b64b4c3a01599e717836c8549f853b643a59519ab902867e",
+    "failed_guard_sha256": "942e5e97d4f616a5610d3e642fa4242c9975dd3d55922130c7808203180e2ad8",
+    "failed_preflight_sha256": "a0421b3bc0a2e1ea5191e3bf04c0af95a22cd898231b98d1d3bd1c1d610f732c",
+    "synthetic_tests": "5/5 PASS"
+  },
+  "retry_contract": {
+    "fresh_45_second_preflight": true,
+    "zero_swap_growth": true,
+    "family": "44b6",
+    "second_family_closed": true,
+    "cv57_closed": true,
+    "cpu_local_only": true,
+    "preserve_failed_guard": true
+  }
+}

@@ -60,6 +60,18 @@ def canonical_bytes(value: Any) -> bytes:
     ).encode("ascii")
 
 
+def json_safe(value: Any) -> Any:
+    if isinstance(value, float) and not math.isfinite(value):
+        return None
+    if isinstance(value, Mapping):
+        return {str(key): json_safe(child) for key, child in value.items()}
+    if isinstance(value, list):
+        return [json_safe(child) for child in value]
+    if isinstance(value, tuple):
+        return [json_safe(child) for child in value]
+    return value
+
+
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -442,7 +454,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         raise GateError(f"refusing to overwrite: {args.output}")
     report = run()
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_bytes(canonical_bytes(report))
+    args.output.write_bytes(canonical_bytes(json_safe(report)))
     print(
         json.dumps(
             {

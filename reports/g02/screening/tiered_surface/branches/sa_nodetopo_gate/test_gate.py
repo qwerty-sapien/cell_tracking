@@ -3,9 +3,10 @@
 
 from __future__ import annotations
 
+import math
 import unittest
 
-from evaluate_graph_gate import gate_decision, graph_action
+from evaluate_graph_gate import gate_decision, graph_action, json_safe
 
 
 GATE = {
@@ -89,6 +90,12 @@ class GateTests(unittest.TestCase):
         }
         self.assertFalse(gate_decision(baseline, raw_fail, GATE)["passed"])
         self.assertFalse(gate_decision(baseline, node_fail, GATE)["passed"])
+
+    def test_nonfinite_diagnostic_is_serialized_as_null(self) -> None:
+        self.assertEqual(
+            json_safe({"metric": math.nan, "nested": [math.inf, 1.0]}),
+            {"metric": None, "nested": [None, 1.0]},
+        )
 
 
 if __name__ == "__main__":
