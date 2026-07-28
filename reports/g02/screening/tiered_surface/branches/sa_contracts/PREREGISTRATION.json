@@ -1,0 +1,51 @@
+{
+  "schema": "celltrack-alpha.sa-contracts-wave3-preregistration.v1",
+  "status": "FROZEN_BEFORE_CONTRACT_RESOLUTION",
+  "created_utc": "2026-07-29T00:00:00Z",
+  "scope": {
+    "nodes": [
+      "AE-P5",
+      "AE-P7",
+      "AE-P8",
+      "AE-P9",
+      "G2"
+    ],
+    "write_scope": "reports/g02/screening/tiered_surface/branches/sa_contracts/",
+    "shared_state_write": false,
+    "graph_run": false,
+    "held_outcome_access": false,
+    "fitting": false
+  },
+  "frozen_inputs": {
+    "n1_interface": {
+      "path": "reports/g02/screening/tiered_surface/n1_feasibility_compiler/interface_v1.json",
+      "sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865"
+    },
+    "grouped_folds": {
+      "path": "reports/g02/grouped_3fold_audit20_v1.json",
+      "sha256": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769"
+    },
+    "p0": {
+      "path": "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+      "sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06"
+    },
+    "tier_census": {
+      "path": "reports/g02/screening/tiered_surface/tier_census.json",
+      "sha256": "a52d3dd32a46e1dbf19007f4d2fb07562ddffb7b8b7509b07ea987d5080a8759"
+    }
+  },
+  "decision_rules": {
+    "b_to_a": "Require a committed node-specific contract plus positive banked P0 headroom for every affected action class; representation nodes additionally require authenticated weights and their node-specific smoke.",
+    "b_to_c": "Require a cited negative exact instantiation; scope the demotion to that instantiation and never the broader family.",
+    "unchanged": "A satisfied support identity without the node-specific transition evidence leaves PARK-B unchanged."
+  },
+  "hard_stops": {
+    "dead": true,
+    "gpu": true,
+    "kaggle": true,
+    "runpod": true,
+    "submission": true,
+    "plan_amendment": true,
+    "cellect": true
+  }
+}

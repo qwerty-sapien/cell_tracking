@@ -1,0 +1,72 @@
+{
+  "checks": [
+    {
+      "actual": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865",
+      "check": "pin:reports/g02/screening/tiered_surface/n1_feasibility_compiler/interface_v1.json",
+      "pass": true
+    },
+    {
+      "actual": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769",
+      "check": "pin:reports/g02/grouped_3fold_audit20_v1.json",
+      "pass": true
+    },
+    {
+      "actual": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06",
+      "check": "pin:reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+      "pass": true
+    },
+    {
+      "actual": "62953d270ae383c9bacdea9ab33a3f6980358a31a329b219447460abd5604864",
+      "check": "pin:reports/g02/screening/tiered_surface/branches/sa_swap/result_44b6_postrepair_v1/report.json",
+      "pass": true
+    },
+    {
+      "check": "json:PREREGISTRATION.json",
+      "pass": true
+    },
+    {
+      "check": "json:AE_P5_C0_ASSIGNMENT_CONTRACT.json",
+      "pass": true
+    },
+    {
+      "check": "json:AE_P7_PHASE_TEMPLATE_CONTRACT.json",
+      "pass": true
+    },
+    {
+      "check": "json:SUPPORT_IDENTITY_RESOLUTION.json",
+      "pass": true
+    },
+    {
+      "check": "json:state_fragment.json",
+      "pass": true
+    },
+    {
+      "check": "five_nodes_exact",
+      "pass": true
+    },
+    {
+      "check": "p5_positive_banked_class",
+      "pass": true
+    },
+    {
+      "check": "p7_positive_banked_class",
+      "pass": true
+    },
+    {
+      "check": "g2_exact_scope",
+      "pass": true
+    },
+    {
+      "check": "g2_graph_fail",
+      "pass": true
+    },
+    {
+      "check": "hard_stops",
+      "pass": true
+    }
+  ],
+  "passed": 15,
+  "schema": "celltrack-alpha.sa-contracts-validation.v1",
+  "status": "PASS",
+  "total": 15
+}

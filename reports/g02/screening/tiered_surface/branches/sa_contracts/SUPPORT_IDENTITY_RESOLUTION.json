@@ -1,0 +1,94 @@
+{
+  "schema": "celltrack-alpha.sa-contracts-support-identity-resolution.v1",
+  "status": "COMPLETE_CONTRACT_REVIEW_NO_OUTCOME",
+  "created_utc": "2026-07-29T01:30:00Z",
+  "nodes": {
+    "AE-P5": {
+      "support_identity": "RESOLVED",
+      "contract": {
+        "path": "reports/g02/screening/tiered_surface/branches/sa_contracts/AE_P5_C0_ASSIGNMENT_CONTRACT.json",
+        "sha256": "930a3be10f260598f485e6df9e601a8d5ca13a19421ec2f1d97f5a3e6e583767"
+      },
+      "banked_action_class": {
+        "name": "complete N1-valid occupied-conflict swap",
+        "p0_path": "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+        "p0_sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06",
+        "family_44b6_score_delta": 0.07582789132186107,
+        "family_6bba_score_delta": 0.05973531704757162
+      },
+      "proposal": "PARK_B_TO_PARK_A",
+      "remaining_block": "Implement the frozen C0/C2 rule and emit rank-1 output before the 44b6 graph gate."
+    },
+    "AE-P7": {
+      "support_identity": "RESOLVED",
+      "contract": {
+        "path": "reports/g02/screening/tiered_surface/branches/sa_contracts/AE_P7_PHASE_TEMPLATE_CONTRACT.json",
+        "sha256": "ac53b228d3f8b8213e1c5ad001b74d132a0f962bb9bf60cd73bb81f95d78cbeb"
+      },
+      "banked_action_class": {
+        "name": "complete N1-valid occupied-conflict swap",
+        "p0_path": "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+        "p0_sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06",
+        "family_44b6_score_delta": 0.07582789132186107,
+        "family_6bba_score_delta": 0.05973531704757162
+      },
+      "proposal": "PARK_B_TO_PARK_A",
+      "remaining_block": "Run only a fit-train105 identity/runtime smoke, then preregister the unchanged 44b6 graph gate."
+    },
+    "AE-P8": {
+      "support_identity": "PARTIALLY_RESOLVED",
+      "existing_feature_contract": {
+        "path": "reports/g02/screening/tiered_surface/branches/sa_repr/F0_FEATURE_CONTRACT_v1.json",
+        "sha256": "5a41c125a51f78c3db9cd24c9333e22645f8f1d7cab148517d5f17299a85f7f4"
+      },
+      "existing_weight_manifest": {
+        "path": "reports/g02/screening/tiered_surface/branches/sa_repr/F0_WEIGHTS_MANIFEST_v1.json",
+        "sha256": "b15c491b4a6a2f616eb5e14335f0063ce42e67c2601d1dc3861359f699827c55"
+      },
+      "proposal": "UNCHANGED_PARK_B",
+      "reason": "The adapter identity is committed, but this snapshot contains no authenticated DINOv2 ViT-S/14 bundle and no node-specific smoke. A sibling acquisition lane may independently remove the supplier block at the root barrier."
+    },
+    "AE-P9": {
+      "support_identity": "PARTIALLY_RESOLVED",
+      "trackastra_source": {
+        "path": "reports/g02/screening/tiered_surface/branches/sa_parkb/TRACKASTRA_ASSET_AUDIT_WAVE2.json",
+        "sha256": "2f809076eb19da42fa208bfed3e224979552fd73e7b95aa641c84aa1ce877a12"
+      },
+      "candidate_contract": {
+        "path": "reports/g02/screening/tiered_surface/branches/sa_parkb/GENERIC_LORA_CANDIDATE_CONTRACT.json",
+        "sha256": "8eb9d02dcd76cf700bb7625698971c26921734f8e5629f579709051b91087a8a"
+      },
+      "proposal": "UNCHANGED_PARK_B",
+      "reason": "The authentic Trackastra identity and a generic LoRA candidate are banked, but the exact adapter module target, parameter cap, frozen feature-to-action join, and fitting authorization are not. Inventing those choices here would be a plan amendment."
+    },
+    "G2": {
+      "support_identity": "RESOLVED_FOR_ONE_EXACT_INSTANTIATION",
+      "instantiation": "SA-SWAP-W1-EXACT-REGRET",
+      "preregistration": {
+        "path": "reports/g02/screening/tiered_surface/branches/sa_swap/PREREGISTRATION.json",
+        "sha256": "00e6036ef076482a39266d797c5fea3e2e4845ba4262c8532cfe70bb8ccb4628"
+      },
+      "graph_result": {
+        "path": "reports/g02/screening/tiered_surface/branches/sa_swap/result_44b6_postrepair_v1/report.json",
+        "sha256": "62953d270ae383c9bacdea9ab33a3f6980358a31a329b219447460abd5604864",
+        "family": "44b6",
+        "adjusted_delta": -0.0003102875275311501,
+        "raw_delta": -0.00029659222678224406,
+        "node_recall_delta": 0.0
+      },
+      "proposal": "PARK_B_TO_PARK_C_EXACT_INSTANTIATION_ONLY",
+      "reason": "The exact regret/rank-1 instantiation failed adjusted and raw graph gates. This does not falsify decision-focused training, AE-P1, AE-P2, or any differently named regret mechanism."
+    }
+  },
+  "governance": {
+    "graph_run": false,
+    "held_outcome_access": false,
+    "fitting": false,
+    "gpu": false,
+    "kaggle": false,
+    "runpod": false,
+    "budget_debit": false,
+    "dead": false,
+    "shared_state_write": false
+  }
+}

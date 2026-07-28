@@ -1,0 +1,113 @@
+{
+  "schema": "celltrack-alpha.ae-p7-phase-template-contract.v1",
+  "status": "FROZEN_CONTRACT_ONLY_NO_OUTCOME",
+  "node": "AE-P7",
+  "mechanism": "phase-correlation multi-frame tracklet template on N1-valid occupied conflicts",
+  "objective": "weighted_adjusted_edge_jaccard + 0.1 * division_jaccard",
+  "scope": {
+    "source_partition": "fit-train105",
+    "first_scored_family": "44b6",
+    "raw_zarrs_read_only": true,
+    "held_labels_select_contract": false,
+    "fitting_authorized": false,
+    "graph_run_authorized": false,
+    "cv57": false
+  },
+  "pins": {
+    "n1_interface": {
+      "path": "reports/g02/screening/tiered_surface/n1_feasibility_compiler/interface_v1.json",
+      "sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865"
+    },
+    "grouped_folds": {
+      "path": "reports/g02/grouped_3fold_audit20_v1.json",
+      "sha256": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769"
+    },
+    "p0": {
+      "path": "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+      "sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06"
+    },
+    "apncc_gain": {
+      "path": "reports/g02/screening/selected_graph_appearance_direct_v1.md",
+      "sha256": "e35dce193b9415b0f78b97bfe5bde5d2f2fedb44c8f59a1ff04335cc22f1ceb4"
+    },
+    "residual": {
+      "path": "reports/g02/screening/appearance_residual_headroom_v1.md",
+      "sha256": "228920331e9a1c7d6f099fb69a274299d7f88704c20f85963cf799f60960a8d8"
+    }
+  },
+  "identity_join": {
+    "point_key": [
+      "split",
+      "video_id",
+      "frame",
+      "submission_node_id",
+      "z",
+      "y",
+      "x"
+    ],
+    "tracklet_source": "the frozen APNCC input graph only",
+    "predecessor_walk": "follow at most two unique incoming APNCC edges from the candidate source; stop on missing, nonunique, or nonconsecutive time",
+    "successor_walk": "follow at most two unique outgoing APNCC edges from the candidate destination; stop on missing, nonunique, division, or nonconsecutive time",
+    "temporal_window": "up to three source-side frames ending at t and three destination-side frames beginning at t+1",
+    "held_labels": "forbidden from the join, crop, template, feature, and threshold"
+  },
+  "image_contract": {
+    "physical_extent_zyx_um": [
+      13.0,
+      13.0,
+      13.0
+    ],
+    "sampling_spacing_um": 0.40625,
+    "sampling_grid_zyx": [
+      33,
+      33,
+      33
+    ],
+    "interpolation": "trilinear float32 with border replication",
+    "per_video_intensity": "clip read-only raw voxels to fit-video q0.01/q0.99 and map to [0,1]",
+    "template": "voxelwise median over the available, coordinate-centered crops in each side's frozen tracklet window",
+    "apodization": "separable periodic Hann window in Z, Y, and X",
+    "phase_correlation": "float64 FFT cross-power spectrum normalized by max(abs(product), 1e-12), inverse FFT, deterministic lexicographic tie-break on equal peaks",
+    "subvoxel_refinement": "three-point parabolic interpolation independently per axis, clipped to [-0.5,0.5] voxel",
+    "features": [
+      "peak_value",
+      "peak_to_second_peak_ratio excluding Chebyshev radius 1",
+      "subvoxel_shift_zyx_um",
+      "wrapped_peak_boundary_flag",
+      "source_template_frame_count",
+      "destination_template_frame_count"
+    ]
+  },
+  "action_scope": {
+    "allowed": "only complete N1-valid occupied-conflict swap actions already in the frozen P0-positive swap class",
+    "forbidden": [
+      "free shell edge",
+      "gap expansion",
+      "geometry-only or constant-velocity selection",
+      "raw phase peak as a graph-cost knob",
+      "partial edge edit"
+    ],
+    "missing_template": "fall back exactly to centered pair APNCC"
+  },
+  "controls": {
+    "primary": "exact APNCC graph",
+    "beta": "centered pair APNCC feature under the identical action population",
+    "phase_disabled": "template features zeroed with population and head unchanged"
+  },
+  "gate": {
+    "44b6": {
+      "adjusted_delta": ">= +0.005",
+      "raw_delta": ">= 0",
+      "node_recall_delta": ">= 0"
+    },
+    "order": "44b6 -> 6bba -> CV57",
+    "phase_metrics_gate": false
+  },
+  "literature": [
+    {
+      "citation": "Guizar-Sicairos, Thurman, and Fienup, Optics Letters 2008",
+      "doi": "10.1364/OL.33.000156",
+      "transfer": "subpixel registration, not biological identity or G-02 graph gain"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "schema": "celltrack-alpha.ae-p5-c0-assignment-contract.v1",
+  "status": "FROZEN_CONTRACT_ONLY_NO_OUTCOME",
+  "node": "AE-P5",
+  "mechanism": "C2-KBEST-STABILITY over complete N1-valid occupied-conflict actions",
+  "objective": "weighted_adjusted_edge_jaccard + 0.1 * division_jaccard",
+  "scope": {
+    "source_partition": "fit-train105",
+    "first_scored_family": "44b6",
+    "held_labels_select_contract": false,
+    "implementation_authorized": false,
+    "graph_run_authorized": false,
+    "cv57": false
+  },
+  "pins": {
+    "u0_contract": {
+      "path": "reports/g02/screening/top50_parallel_dags/branches/u0_t4canon/results/u0_t4canon_contract_draft.json",
+      "sha256": "08cd90e5d67f0bf9c7822caa1a057f767b5e7e66e0889fcde04ef317cfc016c1"
+    },
+    "u0_owner_lock": {
+      "path": "reports/g02/screening/top50_parallel_dags/runs/20260727_top50_six_01/G2_owner_resolution.md",
+      "sha256": "2333d2ff7971fcbceafe67e77d1005f1bfd006112c7ca3683cb414e76f4cdf54"
+    },
+    "n1_interface": {
+      "path": "reports/g02/screening/tiered_surface/n1_feasibility_compiler/interface_v1.json",
+      "sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865"
+    },
+    "trackastra_feature_report": {
+      "path": "reports/g02/trackastra_h1_feature_cache/report.json",
+      "sha256": "d52a4a42cf16c4e43d146d1cebfde68192db095c7cf6dfa3cfd9b7e4d820c0cf"
+    },
+    "apncc_control": {
+      "path": "reports/g02/appearance_direct_swap_contract_v1.json",
+      "sha256": "cee547ed7a82d1bf7f6afe8cbbc3cc9d554181f9e19e87d319a5350863718cf7"
+    },
+    "grouped_folds": {
+      "path": "reports/g02/grouped_3fold_audit20_v1.json",
+      "sha256": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769"
+    },
+    "p0": {
+      "path": "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+      "sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06"
+    }
+  },
+  "c0_identity": {
+    "unit": "one complete N1-valid occupied-conflict graph action",
+    "component": "transitive closure of actions sharing any owned source, destination, incumbent edge, challenger edge, or no-op endpoint",
+    "feasible_assignment": "a subset of component actions with pairwise-disjoint N1 ownership whose deterministic N1 batch compiles; the empty subset is always the explicit no-op",
+    "edge_evidence": "the authenticated 49th feature: normalized frozen Trackastra challenger association minus incumbent association for the exact conflict row",
+    "action_cost": "negative sum of the action's authenticated Trackastra challenger-minus-incumbent margins",
+    "no_op_cost": 0.0,
+    "map": "minimum total float64 action cost over feasible assignments",
+    "tie_break": "total_cost, then lexicographically sorted tuple of canonical N1 action SHA-256 values",
+    "rank1_output": "apply the MAP action set as one deterministic N1 batch to the exact APNCC input graph",
+    "missing_or_nonfinite_evidence": "whole component falls back byte-semantically to APNCC",
+    "forbidden": [
+      "learned or family-specific cost coefficient",
+      "score normalization selected from held outcomes",
+      "adaptive no-link penalty",
+      "partial action application",
+      "edge-only feasibility",
+      "graph-cost sweep"
+    ]
+  },
+  "c2_fixed_rule": {
+    "k": 8,
+    "ordered_by": [
+      "total_cost_ascending",
+      "canonical_assignment_tuple_ascending"
+    ],
+    "introduce_membership_minimum": "7/8",
+    "remove_membership_maximum": "1/8",
+    "min_marginal_tolerance": "100 * eps(float64) * max(1, abs(C_best))",
+    "fallback": "whole component to APNCC if fewer than eight feasible assignments, any constrained solve is infeasible, or any proposed edit fails the membership/min-marginal conjunction"
+  },
+  "controls": {
+    "primary": "exact APNCC",
+    "beta": "same-cost C0 rank-1/MAP assignment",
+    "disabled_c2": "C0 MAP output byte-semantically unchanged"
+  },
+  "gate": {
+    "44b6": {
+      "adjusted_delta": ">= +0.005",
+      "raw_delta": ">= 0",
+      "node_recall_delta": ">= 0",
+      "positive_attribution_over_c0": true
+    },
+    "order": "44b6 -> 6bba -> CV57",
+    "stability_metrics_gate": false
+  },
+  "literature": [
+    {
+      "citation": "Murty, Operations Research 1968",
+      "doi": "10.1287/opre.16.3.682",
+      "transfer": "ranked assignment enumeration, not evidence of G-02 gain"
+    },
+    {
+      "citation": "Lawler, Management Science 1972",
+      "doi": "10.1287/mnsc.18.7.401",
+      "transfer": "K-best partitioning, not a cell-tracking cost model"
+    }
+  ]
+}
