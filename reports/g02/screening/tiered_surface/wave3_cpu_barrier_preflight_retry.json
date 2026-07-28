@@ -1,0 +1,11 @@
+{
+  "elapsed_seconds": 45.239778082992416,
+  "gpu": false,
+  "required_seconds": 45.0,
+  "schema": "g02.sa-reverse.idle-preflight.v1",
+  "status": "PASS",
+  "swap_end_mib": 8199.4375,
+  "swap_growth_mib": 0.0,
+  "swap_peak_mib": 8199.4375,
+  "swap_start_mib": 8199.4375
+}
