@@ -1,0 +1,23 @@
+{
+  "assertions": {
+    "aggregate_reproduction_checks": 8,
+    "aggregate_tolerance": 1e-12,
+    "candidate_diagnostic_rows": 72,
+    "candidates": 6,
+    "cells": 12,
+    "draw_matrix_hashes": 12,
+    "draws_per_cell": 10000,
+    "estimator_unit_tests": 6,
+    "scientific_artifacts_byte_identical_on_second_run": true,
+    "subsample_contract_absent": true,
+    "video_count": 36
+  },
+  "key_input_sha256": {
+    "common36_decomposition.json": "21c25cac997511493810757bf17a8cbf73d73be8a991a9ad076b697905064777",
+    "fidelity_tables.json": "67cf33ed6cf6da351b8f2d1a4c42562c6b5637ef75354c149c12ef4eb2c9a3b9"
+  },
+  "schema": "g02.subsample-fidelity.data-lane.v1.validation",
+  "status": "PASS",
+  "universe_sha256": "855947ecd1720ce1be9a2803bc714a2133be29341971d8b9fddee892d6caaa61",
+  "verdict": "SUBSAMPLING_UNSAFE"
+}

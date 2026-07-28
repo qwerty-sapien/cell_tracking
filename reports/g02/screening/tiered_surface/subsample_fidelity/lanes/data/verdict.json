@@ -1,0 +1,6 @@
+{
+  "contract_emitted": false,
+  "reason": "No (k, scheme) passed all preregistered thresholds with positive rank direction.",
+  "selected_pair": null,
+  "verdict": "SUBSAMPLING_UNSAFE"
+}
