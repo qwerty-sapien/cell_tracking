@@ -1,0 +1,153 @@
+{
+  "ambient_empty_checkout_deletions_excluded_from_authored_lane_scope": true,
+  "authored_lane_paths": [
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/ASSET_AUDIT.json",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/AUDIT_GUARD.json",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/COMPUTE_REQUEST.json",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/ENDPOINT_RETURN_CONTRACT.json",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/IDLE_PREFLIGHT.json",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/PREREGISTRATION.json",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/PROPOSED_LEDGER_ROWS.md",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/SCOPE_AUDIT.json",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/TERMINAL_REPORT.md",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/TEST_GUARD.json",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/VALIDATION.json",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/VALIDATION_GUARD.json",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/audit_reverse_supplier.py",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/resource_guard.py",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/state_fragment.json",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/test_audit_reverse_supplier.py",
+    "reports/g02/screening/tiered_surface/branches/sa_reverse/validate_artifacts.py"
+  ],
+  "base_commit": "a8c65b41ed83c400f8aa3e935ef0952e42f995b1",
+  "checks": [
+    {
+      "name": "prereg_frozen",
+      "pass": true
+    },
+    {
+      "name": "expected_stop",
+      "pass": true
+    },
+    {
+      "name": "forward_complete",
+      "pass": true
+    },
+    {
+      "name": "forward_counts",
+      "pass": true
+    },
+    {
+      "name": "sparse_cache_complete",
+      "pass": true
+    },
+    {
+      "name": "source_authenticated",
+      "pass": true
+    },
+    {
+      "name": "checkpoint_absent",
+      "pass": true
+    },
+    {
+      "name": "reverse_absent",
+      "pass": true
+    },
+    {
+      "name": "genuine_inference_required",
+      "pass": true
+    },
+    {
+      "name": "synthetic_reverse_false",
+      "pass": true
+    },
+    {
+      "name": "endpoint_return_exact",
+      "pass": true
+    },
+    {
+      "name": "separate_model_pass",
+      "pass": true
+    },
+    {
+      "name": "no_link_exact",
+      "pass": true
+    },
+    {
+      "name": "division_not_hard_veto",
+      "pass": true
+    },
+    {
+      "name": "compute_not_launched",
+      "pass": true
+    },
+    {
+      "name": "cpu_bounded",
+      "pass": true
+    },
+    {
+      "name": "no_outcomes",
+      "pass": true
+    },
+    {
+      "name": "no_tier_move",
+      "pass": true
+    },
+    {
+      "name": "audit_hash_cited",
+      "pass": true
+    },
+    {
+      "name": "contract_hash_cited",
+      "pass": true
+    },
+    {
+      "name": "request_hash_cited",
+      "pass": true
+    },
+    {
+      "name": "preflight_45s",
+      "pass": true
+    },
+    {
+      "name": "zero_swap",
+      "pass": true
+    },
+    {
+      "name": "focused_tests",
+      "pass": true
+    },
+    {
+      "name": "guarded_audit",
+      "pass": true
+    },
+    {
+      "name": "no_forbidden_action",
+      "pass": true
+    },
+    {
+      "name": "lane_files_present",
+      "pass": true
+    },
+    {
+      "name": "lane_path_allowlist",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 28,
+  "key_artifact_sha256": {
+    "ASSET_AUDIT.json": "8d4affd049515b26446c98ad8d2eb3a155396f8dacca127d0118734197c9a777",
+    "AUDIT_GUARD.json": "e891c1f75e200b025221042be0a322541d9d6cd4b6a296733ed1bdb725236da4",
+    "COMPUTE_REQUEST.json": "1c7cf49122c88826fc44128184ff27bfbc28a9c32e5004adf33e92d4e342927f",
+    "ENDPOINT_RETURN_CONTRACT.json": "4eaf9d8f13eb0121d804be4252e6b53667ae65f7955c3eadf858d257804fd294",
+    "IDLE_PREFLIGHT.json": "828cb55ac207d93dd04868a0a62b2d93019c4902e553bee6c718aaad89944c92",
+    "PREREGISTRATION.json": "0c559bac5725cda4f81d28e6804eb125eaa9420dc2c8bb7614fe4948ca3a5b06",
+    "PROPOSED_LEDGER_ROWS.md": "14bd8c97ef2310e56704a3111db98132d66cf76b605d88cdcffc1d07d5b14226",
+    "TERMINAL_REPORT.md": "fa49f73f0204a693536f84fb1bc9fe9a1632dcdf90e60020908a6a447ba4500e",
+    "TEST_GUARD.json": "1d68fbefb3f465a3bb5baa9de6a6d930369912eee637ad6fc786b73538ed5ea1",
+    "state_fragment.json": "47df0dc098417f0d1cc5e2e3eef46f617c2bb1cf6b005b09a15ff5511e9429ae"
+  },
+  "schema": "g02.sa-reverse.validation.v1",
+  "status": "PASS"
+}

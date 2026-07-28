@@ -1,0 +1,89 @@
+{
+  "schema": "g02.sa-reverse.bounded-compute-request.v1",
+  "status": "REQUESTED_NOT_AUTHORIZED_NOT_LAUNCHED",
+  "request_to": "root orchestrator / human checkpoint custodian",
+  "purpose": "Materialize one authentic reversed-time Trackastra supplier for the frozen 36-video fit-only 44b6 population. This is inference only and produces no scientific separation or graph outcome.",
+  "blocking_prerequisite": {
+    "item": "exact authenticated Trackastra ctc v0.3.0 checkpoint",
+    "current_local_status": "ABSENT_AT_ALL_KNOWN_PINNED_PATHS",
+    "release_archive_bytes": 101957234,
+    "release_archive_sha256": "2ede08481b2e1f4ea23a41dd3001e2151ecbce7d978be9829ad230f0a60aea0e",
+    "model_member_sha256": "24c290ce74289ee6dac952a3355c9fb7a0a477fda3012656a2c6d80af892981f",
+    "parameter_count": 27456880,
+    "tensor_count": 280,
+    "tensor_bytes": 109827520,
+    "required_action": "Provide or materialize the already authenticated archive/member at an ephemeral local path; fail before load on either hash mismatch. This request does not authorize an unpinned download."
+  },
+  "inputs": [
+    {
+      "path": "reports/g02/trackastra_h1_feature_cache/report.json",
+      "sha256": "d52a4a42cf16c4e43d146d1cebfde68192db095c7cf6dfa3cfd9b7e4d820c0cf",
+      "coverage": "36 videos / 3,539 transitions / 84,883 proposals / 121,534 rows",
+      "authenticated_feature_bytes": 36225668,
+      "access": "read-only"
+    },
+    {
+      "path": "/private/tmp/trackastra-h1-fit105-cache-v1/cache_dataset_manifest.json",
+      "sha256": "ff7b205f58ad70c69954fed1c3e60a100d246c1e374a849c6ea7183934e98f28",
+      "coverage": "36 .bhc plus 36 .json files for exactly the same 44b6 identities",
+      "authenticated_44b6_bytes": 678781416,
+      "access": "read-only"
+    },
+    {
+      "path": "/private/tmp/trackastra-h1-full-cache-output/trackastra-source",
+      "source_commit": "fb265888c8fce2ac16a362ebf182ccd5ea48e936",
+      "license": "BSD-3-Clause",
+      "license_sha256": "cc9ea92a72a63101ff425cc525faeace28ec9fc9c658a0fc01daf236e06326c9",
+      "access": "read-only"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_reverse/ENDPOINT_RETURN_CONTRACT.json",
+      "sha256": "4eaf9d8f13eb0121d804be4252e6b53667ae65f7955c3eadf858d257804fd294",
+      "access": "read-only contract"
+    }
+  ],
+  "algorithm": [
+    "Verify every frozen input, source file, license, checkpoint, and 44b6 cache file by SHA-256 before model construction.",
+    "Restore the 280 tensors with the existing mmap/meta safe loader; model.eval(), torch.inference_mode(), deterministic algorithms, seed 20260725, CPU only.",
+    "For each frozen transition, reuse exactly the forward required-endpoint union, 1,024-token membership, and node identities. Map time as t_rev=min(t)+max(t)-t; preserve z,y,x.",
+    "Execute Trackastra on reversed-time coordinates. For canonical u_t->v_t+1, return the separately inferred A_reverse[v,u] by node-id lookup.",
+    "Compute the pinned quiet-softmax no-link residual and the exact row-aligned reverse margin/cycle descriptors in ENDPOINT_RETURN_CONTRACT.json.",
+    "Write one atomic compressed NPZ per video; repeat train:44b6_0db75fae (99 calls) and require array_equal; publish the canonical manifest only after 36/36 plus repeat pass."
+  ],
+  "projection": {
+    "basis": "banked CPU projection 4,368 seconds for 5,824 calls, including 1.5x safety; this request has 3,539 calls plus a 99-call repeat witness",
+    "cpu_inference_calls": 3638,
+    "cpu_seconds": 2728.5,
+    "cpu_hours": 0.7579166666666667,
+    "cpu_hard_wall_hours": 1.5,
+    "gpu_hours": 0,
+    "gpu_requested": false,
+    "ram_cap_gib": 4.0,
+    "swap_growth_mib": 0,
+    "input_bytes_already_local": 715007084,
+    "additional_working_disk_cap_mib": 512,
+    "published_output_cap_mib": 128,
+    "raw_zarr_access": false,
+    "v45_coload": false
+  },
+  "exact_outputs": [
+    "36 content-hashed reverse supplier NPZ files",
+    "one repeated witness NPZ for train:44b6_0db75fae",
+    "canonical manifest with input/source/checkpoint/output SHA-256 receipts",
+    "execution guard with elapsed time, peak RSS, swap start/peak/end, and zero forbidden actions",
+    "coverage report proving 36/36 identities, 3,539/3,539 transitions, 84,883/84,883 proposals, and 121,534/121,534 rows"
+  ],
+  "guards": [
+    "new 45-second idle preflight immediately before load",
+    "zero swap growth; terminate and quarantine all partial outputs on first growth",
+    "CPU only; no GPU, Kaggle, budget debit, RunPod, upload, or network acquisition",
+    "one video at a time; never co-load V45 or raw images",
+    "no labels, graph fragments, held outcomes, 6bba, or CV57",
+    "no forward negation, transpose, duplication, or scalar recalibration",
+    "no separation run until the orchestrator freezes and hash-pins the complete supplier",
+    "no partial cache is admissible evidence",
+    "no tier move or DEAD decision"
+  ],
+  "on_completion": "Return to a later barrier for supplier authentication only. The unchanged separation gate remains a separate operation and any PASS would only unblock a supplier-specific 44b6 graph preregistration.",
+  "on_failure": "Retain AE-P6 and R8 at PARK-B; report capability failure, preserve no partial scientific metric, and do not open separation or graph."
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "agent": "SA-REVERSE-SUPPLIER",
+  "branch": "codex/sa-reverse-wave3",
+  "verdict": "PARK_NOT_READY_BOUNDED_COMPUTE_REQUEST",
+  "memo_quarantine": true,
+  "tier_moves_proposed": 0,
+  "supplier_state_change": "ENDPOINT_RETURN_CONTRACT_FROZEN_REVERSE_CACHE_NOT_MATERIALIZED",
+  "family_execution": {
+    "44b6_reverse_inference_ran": false,
+    "44b6_separation_ran": false,
+    "44b6_graph_ran": false,
+    "6bba_ran": false,
+    "cv57_ran": false
+  },
+  "forbidden_scope": {
+    "budget_write": false,
+    "cellect_action": false,
+    "dead_promotion": false,
+    "gpu_action": false,
+    "kaggle_action": false,
+    "ledger_write": false,
+    "live_state_write": false,
+    "census_write": false,
+    "runpod_action": false,
+    "submission_action": false
+  },
+  "artifacts": {
+    "capability_audit": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_reverse/ASSET_AUDIT.json",
+      "sha256": "8d4affd049515b26446c98ad8d2eb3a155396f8dacca127d0118734197c9a777"
+    },
+    "endpoint_return_contract": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_reverse/ENDPOINT_RETURN_CONTRACT.json",
+      "sha256": "4eaf9d8f13eb0121d804be4252e6b53667ae65f7955c3eadf858d257804fd294"
+    },
+    "compute_request": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_reverse/COMPUTE_REQUEST.json",
+      "sha256": "1c7cf49122c88826fc44128184ff27bfbc28a9c32e5004adf33e92d4e342927f"
+    }
+  },
+  "nodes": [
+    {
+      "id": "AE-P6",
+      "branch": "association_expansion",
+      "owner_agent": "SA-REVERSE-SUPPLIER",
+      "tier": "PARK_B",
+      "banked": true,
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_reverse/ASSET_AUDIT.json",
+      "evidence_sha256": "8d4affd049515b26446c98ad8d2eb3a155396f8dacca127d0118734197c9a777",
+      "evidence_basis": "The endpoint-return/no-link contract is now exact and the 36-video forward plus sparse caches and pinned source authenticate, but the exact checkpoint and every immutable reverse cache are absent locally. Genuine reversed-time inference is required and was not run.",
+      "oracle_headroom": {
+        "family_44b6_dS": null,
+        "family_6bba_dS": null,
+        "control": "not_measured"
+      },
+      "graph_result": null,
+      "kill_line": "Only a complete hash-pinned authentic supplier may enter the unchanged all-five-fold separation gate; a PASS would only unblock a supplier-specific 44b6 graph preregistration.",
+      "resume_condition": "Approve the bounded CPU request, provide the exact hash-pinned checkpoint locally, and freeze 36/36 authentic reversed-time outputs under ENDPOINT_RETURN_CONTRACT.json.",
+      "blocked_on": [
+        "EXACT_LOCAL_TRACKASTRA_CHECKPOINT",
+        "AUTHENTIC_REVERSED_TIME_INFERENCE",
+        "IMMUTABLE_REVERSE_CACHE"
+      ],
+      "priority": 2,
+      "last_change_utc": "2026-07-29T01:22:00+08:00"
+    },
+    {
+      "id": "R8",
+      "branch": "representation_and_governance",
+      "owner_agent": "SA-REVERSE-SUPPLIER",
+      "tier": "PARK_B",
+      "banked": true,
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_reverse/ASSET_AUDIT.json",
+      "evidence_sha256": "8d4affd049515b26446c98ad8d2eb3a155396f8dacca127d0118734197c9a777",
+      "evidence_basis": "No reverse score was synthesized. A genuine model pass with reversed time coordinates is necessary; exact endpoint return A_reverse[v,u], quiet-softmax no-link residuals, division exceptions, row keys, controls, and deterministic witnesses are frozen.",
+      "oracle_headroom": {
+        "family_44b6_dS": null,
+        "family_6bba_dS": null,
+        "control": "not_measured"
+      },
+      "graph_result": null,
+      "kill_line": "Common frozen separation and 44b6 graph gates remain closed until a complete reverse supplier is banked.",
+      "resume_condition": "Approve the bounded CPU request, provide the exact hash-pinned checkpoint locally, and freeze 36/36 authentic reversed-time outputs under ENDPOINT_RETURN_CONTRACT.json.",
+      "blocked_on": [
+        "EXACT_LOCAL_TRACKASTRA_CHECKPOINT",
+        "AUTHENTIC_REVERSED_TIME_INFERENCE",
+        "IMMUTABLE_REVERSE_CACHE"
+      ],
+      "priority": 2,
+      "last_change_utc": "2026-07-29T01:22:00+08:00"
+    }
+  ]
+}

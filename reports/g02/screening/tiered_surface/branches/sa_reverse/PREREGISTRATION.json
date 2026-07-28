@@ -1,0 +1,92 @@
+{
+  "schema": "g02.sa-reverse.preregistration.v1",
+  "status": "FROZEN_BEFORE_CAPABILITY_AUDIT_NO_HELD_OUTCOME_OPENED",
+  "frozen_utc": "2026-07-29T01:18:00+08:00",
+  "agent": "SA-REVERSE-SUPPLIER",
+  "branch": "codex/sa-reverse-wave3",
+  "write_scope": "reports/g02/screening/tiered_surface/branches/sa_reverse/",
+  "objective": "Authenticate and, only if already locally executable without new inference authority, materialize genuine reversed-time Trackastra evidence for AE-P6/R8. Never derive reverse evidence by negating, transposing, duplicating, or recalibrating the forward margin.",
+  "frozen_inputs": [
+    {
+      "path": "reports/g02/screening/tiered_surface/n1_feasibility_compiler/interface_v1.json",
+      "sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865"
+    },
+    {
+      "path": "src/celltrack_alpha/action_compiler.py",
+      "sha256": "457f6607a493d51d972913fa155d687e9ffc4045475605bc109a4ca9e90124f5"
+    },
+    {
+      "path": "reports/g02/grouped_3fold_audit20_v1.json",
+      "sha256": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769"
+    },
+    {
+      "path": "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+      "sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06"
+    },
+    {
+      "path": "reports/g02/trackastra_h1_feature_cache/report.json",
+      "sha256": "d52a4a42cf16c4e43d146d1cebfde68192db095c7cf6dfa3cfd9b7e4d820c0cf"
+    },
+    {
+      "path": "reports/g02/trackastra_pretrained_asset_audit_v1.json",
+      "sha256": "2f809076fa570388d114f2f2bfe0a9be7dd5186cda41d67b3992127f10fa0132"
+    },
+    {
+      "path": "/private/tmp/trackastra-h1-fit105-cache-v1/cache_dataset_manifest.json",
+      "sha256": "ff7b205f58ad70c69954fed1c3e60a100d246c1e374a849c6ea7183934e98f28"
+    },
+    {
+      "path": "/private/tmp/trackastra-h1-full-cache-output/trackastra_h1_run_manifest.json",
+      "sha256": "548bbac49af6e2170d4ce8f562a26ac7ce9b14433d29d8e10673e0797d4e8d10"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/PREREGISTRATION_v3_per_class_authenticated_weight.json",
+      "sha256": "9fb030bdcffbf95e242c71aa8b2c14bf8254b42730acbb489d66e2fe35a3310e"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/run_v1/population_manifest.json",
+      "sha256": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/run_v3/b0_sealed.json",
+      "sha256": "a9ce8c0be5afe4c2d2bfb37f3878691956ea458964788776af2ae9358f6b4ff2"
+    }
+  ],
+  "checkpoint_requirement": {
+    "release_archive_sha256": "2ede08481b2e1f4ea23a41dd3001e2151ecbce7d978be9829ad230f0a60aea0e",
+    "model_member_sha256": "24c290ce74289ee6dac952a3355c9fb7a0a477fda3012656a2c6d80af892981f",
+    "tensor_count": 280,
+    "parameter_count": 27456880,
+    "tensor_bytes": 109827520,
+    "safe_loader": "stream-authenticated mmap weights plus meta-device construction and assign-in-place restoration",
+    "unpinned_or_pickle-unsafe_load_forbidden": true
+  },
+  "decision_order": [
+    "Authenticate frozen governance, forward features, sparse detection cache, pinned source, license, and checkpoint.",
+    "If the exact checkpoint and a complete reverse cache are already local, validate the endpoint-return contract before any separation outcome.",
+    "If genuine reverse inference is required, STOP before inference and emit one bounded compute request; no synthetic reverse, separation, graph, second family, or tier move.",
+    "Only after a later orchestrator freezes a genuine reverse supplier may the unchanged existing separation contract open."
+  ],
+  "scientific_gate": {
+    "separation_contract_unchanged": true,
+    "all_five_folds_required": true,
+    "pass_only_unblocks_supplier_specific_44b6_graph_preregistration": true,
+    "graph_execution_authorized": false,
+    "tier_promotion_authorized": false
+  },
+  "hard_stops": [
+    "reverse inference without a separately authorized compute request",
+    "synthetic reverse evidence",
+    "separation outcome without a complete immutable supplier",
+    "graph execution",
+    "6bba",
+    "CV57",
+    "GPU",
+    "Kaggle launch or budget debit",
+    "RunPod",
+    "submission",
+    "DEAD",
+    "plan amendment",
+    "shared single-writer mutation"
+  ]
+}
