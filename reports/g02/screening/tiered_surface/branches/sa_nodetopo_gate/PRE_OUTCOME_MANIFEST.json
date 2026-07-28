@@ -1,0 +1,35 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-gate-pre-outcome-manifest.v1",
+  "created_utc": "2026-07-28T17:21:23Z",
+  "status": "FROZEN_BEFORE_HELD_OUTCOME",
+  "artifacts": {
+    "PREREGISTRATION.json": "858f1bc08a141814babc26ecdaeae53a0425b343b74804f4817b6a9e5d617997",
+    "evaluate_graph_gate.py": "259d84493e5b9d42c4bf3eba2634025cffad9b17adeb344dd0d8208816f6dc44",
+    "run_preflight.py": "ed1440db95e46edcb2ef2de809d4c2adb5741dbed8f73b24f18080152980a573",
+    "run_guarded.py": "6fb42be35bfda2209c170bc1843c81b3d93c0b979dab2597117ceed25052b904",
+    "test_gate.py": "a1d915940d595a1cabfc575c6335f2bf6de8ee48deec042cadc26d13d7b073ef"
+  },
+  "authentication_dry_run": {
+    "fit105_44b6_identities": 36,
+    "action_rows": 50,
+    "affected_identities": 24,
+    "action_kind": "restore_topology",
+    "frozen_receipt_count": 15,
+    "outcomes_opened": false,
+    "status": "PASS"
+  },
+  "synthetic_tests": {
+    "passed": 4,
+    "total": 4,
+    "held_graph_scoring": false
+  },
+  "forbidden_actions": {
+    "gpu": false,
+    "kaggle": false,
+    "budget_debit": false,
+    "runpod": false,
+    "submission": false,
+    "dead": false,
+    "plan_amendment": false
+  }
+}
