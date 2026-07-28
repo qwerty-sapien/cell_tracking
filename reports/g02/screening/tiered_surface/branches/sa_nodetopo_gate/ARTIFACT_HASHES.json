@@ -1,0 +1,26 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-gate-artifact-hashes.v1",
+  "created_utc": "2026-07-28T17:31:38Z",
+  "artifacts": {
+    "PREREGISTRATION.json": "858f1bc08a141814babc26ecdaeae53a0425b343b74804f4817b6a9e5d617997",
+    "PRE_OUTCOME_MANIFEST.json": "c0a6638056e31607d8f15fdb88c389649c5a1e5161bdc89b89686f3eb13ffa8a",
+    "EXECUTION_REPAIR.json": "de9acdea1c8ff5dea54703877dcb4b12769e89e465faff2b3da514c0ea374b18",
+    "RESULT_44B6.json": "fb9202586242f506a7cd8437d780bc93ba1fcfe5de957e22de8d6a2e73f94834",
+    "idle_preflight.json": "a0421b3bc0a2e1ea5191e3bf04c0af95a22cd898231b98d1d3bd1c1d610f732c",
+    "local_run_guard.json": "942e5e97d4f616a5610d3e642fa4242c9975dd3d55922130c7808203180e2ad8",
+    "idle_preflight_retry.json": "41d71457d4f495ee9a4f6eaf2ce72329c6e345150f7ec2b2144be503d3c92586",
+    "local_run_guard_retry.json": "002d672c4652222e57cf04a7cf970fb68a51874ffc3f718aa3607bb492916363",
+    "RESOURCE_RECEIPTS.json": "ec54b237e52d32037658c9a15e9b331d73c555dee282cda1ef6e8c0010c09ced",
+    "TERMINAL_REPORT.md": "540adb67b5fb53cf2d25524ad70ac86524c4fb20dafa3ca9102f7b73497b31ac",
+    "PROPOSED_LEDGER_ROWS.md": "9b67f125b7e1c1c88b8ea48a334f208850392299085c11cf82d830e64d877f01",
+    "state_fragment.json": "b544c4b7b52c6fa55f10fda661e89dc6575b193752b64737fd0740c747931424",
+    "validate_artifacts.py": "4d43d7395db04bd02c17427c626c47612d44f3b50a86844a120c2a20a79e2b88",
+    "VALIDATION.json": "6f87905b9ae200c56eee1a27b28e5715c27b9037697807b658eec9db501579b3"
+  },
+  "result_vector": {
+    "adjusted_edge_jaccard_delta": -0.000003436150368130164,
+    "raw_edge_jaccard_delta": 0.0,
+    "node_recall_delta": 0.0,
+    "verdict": "KILL_44B6_STOP"
+  }
+}
