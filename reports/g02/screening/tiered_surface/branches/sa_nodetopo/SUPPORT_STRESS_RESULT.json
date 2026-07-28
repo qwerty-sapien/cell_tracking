@@ -1,41 +1,12 @@
 {
-  "schema": "celltrack-alpha.sa-nodetopo-support-stress.v1",
-  "status": "PARK_PREREQUISITE",
-  "proposal_support": {
-    "legacy_candidate_rows": 15240,
-    "unique_candidate_identities": 14280,
-    "identity_conflicts": 0,
-    "fit105_44b6_dataset_coverage": {
-      "covered_partial": 4,
-      "required": 36,
-      "temporal_extent_per_legacy_dataset_frames": 3,
-      "complete": false
-    },
-    "fit105_6bba_dataset_coverage": {
-      "covered_partial": 3,
-      "required": 69,
-      "complete": false,
-      "gate_opened": false
-    },
-    "extracted_raw_zarrs": {
-      "total": 12,
-      "44b6": 3,
-      "6bba": 9,
-      "fit105_overlap": 10,
-      "complete_fit105_coverage": false
-    },
-    "embedded_gt_join_columns_present": [
-      "label",
-      "label_status",
-      "matched_gt_id",
-      "nearest_gt_um"
-    ],
-    "labels_used_for_candidate_selection": false
-  },
-  "background": {
-    "exact_unlabeled_background_available": false,
-    "p0_definition": "UNDEFINED: no banked node proposal generator",
-    "p0_raw_background_actions": null
+  "schema": "celltrack-alpha.sa-nodetopo-support-stress.v2",
+  "status": "PARK_RESOURCE_GUARD",
+  "scientific_result": null,
+  "raw_universe": {
+    "required_fit105_44b6_videos": 36,
+    "completed_videos": 0,
+    "complete": false,
+    "partial_metric_consumed": false
   },
   "preregistered_false_node_stress_budgets": [
     0,
@@ -49,21 +20,20 @@
   "stress_curve": {
     "executed": false,
     "points": [],
-    "reason": "the deterministic harmful-node order cannot be instantiated without a complete immutable background universe; fabricating background actions is forbidden"
-  },
-  "controls": {
-    "noop_graph_run": false,
-    "isolated_node_add_graph_run": false,
-    "topology_complete_restore_graph_run": false,
-    "reason": "the candidate prerequisite failed before any held-family graph outcome opened"
+    "reason": "The authentic raw proposal universe did not complete before the binding zero-swap-growth resource guard fired."
   },
   "graph_vectors": {
     "44b6": null,
     "6bba": null
   },
-  "verdict": "PARK_NO_COMPLETE_AUTHENTIC_CANDIDATE_UNIVERSE",
+  "family_gates": {
+    "44b6": "NOT_OPENED_RESOURCE_GUARD",
+    "6bba": "NOT_OPENED",
+    "cv57": "NOT_OPENED"
+  },
+  "tier_move_proposed": false,
   "source": {
-    "audit_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/PROVENANCE_AUDIT.json",
-    "audit_sha256": "481504fc0ca2e744ab08794f8cbb8d38ee2f5299d969c45e4035dc33cd951dd6"
+    "artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+    "sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d"
   }
 }

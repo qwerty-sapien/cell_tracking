@@ -1,0 +1,35 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-wave2-validation.v1",
+  "validated_utc": "2026-07-28T07:26:37Z",
+  "status": "PASS",
+  "focused_tests": {
+    "command": "/Users/agent/Desktop/cell_tracking/.venv313/bin/python -m unittest reports/g02/screening/tiered_surface/branches/sa_nodetopo/test_build_raw_node_universe.py",
+    "tests_run": 6,
+    "failures": 0,
+    "errors": 0,
+    "canonical_equivalence_covered": true,
+    "equivalence_claim": "The synthetic ordered serial and bounded four-frame threaded paths emit identical canonical rows and node IDs; no scientific Python-vs-C++ metric was opened."
+  },
+  "json_parse": {
+    "all_branch_json_parsed": true
+  },
+  "hash_validation": {
+    "attempt_note_hashes_match": true,
+    "preflight_hashes_match": true,
+    "terminal_guard_hash_matches": true,
+    "terminal_evidence_sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d"
+  },
+  "scientific_boundary": {
+    "completed_video_count": 0,
+    "partial_metric_consumed": false,
+    "authoritative_comparison_rules_changed": false,
+    "44b6_ran": false,
+    "6bba_ran": false,
+    "cv57_ran": false
+  },
+  "tier_validation": {
+    "NODETOPO-O0": "PARK_A",
+    "NODERESTORE-O0": "PARK_B",
+    "tier_move_proposed": false
+  }
+}

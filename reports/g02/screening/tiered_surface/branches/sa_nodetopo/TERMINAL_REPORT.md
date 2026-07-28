@@ -1,61 +1,48 @@
 # SA-NODETOPO terminal report
 
-Verdict: **PARK_NO_COMPLETE_AUTHENTIC_CANDIDATE_UNIVERSE**
+Verdict: **PARK_RESOURCE_GUARD**
 
 ## Outcome
 
-The N4 prerequisite was executed as a deterministic provenance audit, not stopped at
-planning. All frozen pins matched. The immutable preregistration was committed at
-`1abc8c7` before a score or held-family outcome opened.
+The preregistered raw-image node-proposal universe authenticated the exact frozen
+fit105 44b6 population (36 videos), frozen baseline coverage, and raw-archive central
+directory before execution. It reused the passing `balanced_compact` raw-image probe
+configuration on all frames and used no pseudo-mask, segmentation, GT coordinate, or
+label-dependent candidate filter.
 
-The audit authenticated a label-independent legacy proposal procedure, but not an
-honest full proposal universe:
+No scientific result opened. Across three attempts, **zero videos completed**. Every
+partial file is quarantined as unusable, and no partial metric was consumed:
 
-- legacy persisted tables: 15,240 rows / 14,280 canonical identities / zero identity
-  coordinate conflicts;
-- partial fit105 coverage: 4/36 44b6 and 3/69 6bba datasets, one three-frame clip per
-  dataset;
-- embedded GT-derived fields are present in those training artifacts and were excluded
-  from selection;
-- extracted raw evidence: 12 training Zarrs, 10 overlapping fit105, not full coverage;
-- exact full-universe unlabeled background: absent;
-- candidate-to-baseline incident-topology/conflict join: absent.
+- attempt 1 exposed pathological candidate-by-full-graph N1 compilation;
+- attempt 2 made serial forward progress but projected beyond the frozen five-hour
+  execution wall;
+- attempt 3 used a tested bounded four-frame CPU window and was terminated by the
+  binding zero-swap-growth guard after 295.544 seconds.
 
-P0 itself reports the node-restore background as undefined with a null count. Its GT
-oracle was not used as a proposal source. No coordinates, masks, candidates, edges, or
-background actions were fabricated.
+The terminal guard observed swap rise from 3604.0 to 3628.5 MiB (**+24.5 MiB**), peak
+process-tree RSS of **0.739 GiB**, and minimum system free memory of **33%**. Its
+immediately preceding fail-fast preflight passed for 45.502 seconds with zero swap
+growth and 42% minimum free memory. The two earlier preflights also passed with zero
+swap growth.
 
-## N1 validity and controls
+## Scientific boundary
 
-The frozen N1 implementation compiled one complete synthetic `restore_topology`
-transaction and rejected its isolated coordinate-only counterpart. This validates the
-interface semantics only. Zero real candidate actions were emitted because the real
-identity/topology join is absent.
+The authentic proposal universe is incomplete. Therefore the frozen false-node stress
+budgets `[0, 1, 2, 5, 10, 20, 50]` were not scored, no 44b6 graph vector exists, and
+the 6bba and CV57 gates remained closed. Authoritative comparison rules, N1 semantics,
+candidate ordering, labels, and scorer were not changed.
 
-The no-op, isolated-node-add, topology-restore score controls and false-node stress
-curve were not run: constructing them without the complete background bank would
-violate the preregistration. Consequently there is no 44b6 graph vector, 6bba remained
-closed, and CV57 remained closed.
+No tier move is proposed. `NODETOPO-O0` remains PARK-A on its separately banked P0
+headroom, and `NODERESTORE-O0` remains PARK-B. This is not a DEAD verdict and does not
+authorize GPU, Kaggle, RunPod, submission, or a second-family run.
 
-## Verification
+## Evidence and resume condition
 
-- Focused audit tests: **7/7 PASS**.
-- Fresh idle preflight: **45.451 s**, swap growth **0 MiB**.
-- Guarded test+audit run: **PASS**, swap growth **0 MiB**.
-- First guarded attempt: stopped before tests because system Python lacked SciPy;
-  recorded separately with swap growth **0 MiB**. The repository environment was then
-  used after a fresh preflight.
-- No audit/test/CV57 data, held graph score, external service, Kaggle GPU, RunPod,
-  submission, sibling output, DEAD rescreen, or root single-writer mutation occurred.
-- Memo C2 values and Branch-B values remained quarantined and unused.
+The authoritative terminal evidence is `RAW_UNIVERSE_TERMINAL_v2.json` at
+`54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d`.
+The guard artifact is `raw_universe_guard_retry3_v2.json` at
+`9215e605f8b36bd3cdece69628e5dd40af5b1f323326cbb1e6dc0704b23c1df7`.
 
-## State
-
-No tier move is proposed. `NODETOPO-O0` retains its P0-banked PARK-A headroom while
-blocked on an authentic candidate universe. `NODERESTORE-O0` remains PARK-B. No
-`GPU_REQUEST.json` is emitted because there is no complete authenticated candidate path
-or credible end-to-end projection.
-
-Resume condition: root freezes, by hash, a full fit105 label-independent candidate bank,
-an exact deployment background, and a candidate-to-baseline join that enumerates every
-added incident edge and displaced conflict under N1.
+Resume only with a new named resource-safe execution mechanism or a root-approved
+environment that satisfies the unchanged zero-swap-growth preflight and five-hour
+wall. Do not consume any quarantined partial artifact.

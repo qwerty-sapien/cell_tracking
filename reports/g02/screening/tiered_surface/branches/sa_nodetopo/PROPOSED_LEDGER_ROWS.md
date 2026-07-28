@@ -2,9 +2,8 @@
 
 | ID | status | banked evidence | result | next condition |
 |---|---|---|---|---|
-| `NODETOPO-O0-PREREQ` | `PARK` (no tier move) | `PROVENANCE_AUDIT.json` @ `481504fc0ca2e744ab08794f8cbb8d38ee2f5299d969c45e4035dc33cd951dd6` | Authentic legacy generation procedure found, but only partial three-frame artifacts cover 4/36 fit105 44b6 datasets; exact background and baseline incident-topology join are absent. Zero real N1 actions; no graph score. | Freeze full fit105 label-independent candidates, exact background, and immutable topology join. |
-| `NODETOPO-O0-N1-CONTRACT` | `PASS_DIAGNOSTIC` | `N1_ACTION_VALIDITY_EVIDENCE.json` @ `6067e5de4cbb2d8c3cae7e0ebdd586027bfc9e54ac590261baec59dd38dd4d3a` | Frozen N1 compiles a complete synthetic node+incident-topology action and rejects isolated coordinate-only restoration. Not scientific evidence. | Apply unchanged semantics only after the real candidate prerequisite passes. |
+| `NODETOPO-O0-RAW-UNIVERSE-V2` | `PARK_RESOURCE_GUARD` (no tier move) | `RAW_UNIVERSE_TERMINAL_v2.json` @ `54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d` | Exact 36-video 44b6 population and archive authenticated. Three attempts completed zero videos. Serial execution exceeded the projected five-hour wall; the bounded four-frame CPU repair terminated at +24.5 MiB swap growth. No raw universe, stress point, graph metric, or family gate opened; no partial metric consumed. | New named resource-safe mechanism or root-approved environment must pass unchanged zero-swap-growth preflight and five-hour wall. |
+| `NODETOPO-O0-RAW-UNIVERSE-GUARD` | `HARD_STOP` | `raw_universe_guard_retry3_v2.json` @ `9215e605f8b36bd3cdece69628e5dd40af5b1f323326cbb1e6dc0704b23c1df7` | 295.544 s; swap 3604.0→3628.5 MiB; peak process-tree RSS 0.739 GiB; minimum free memory 33%; process terminated before first video completed. | Do not retry the same execution mechanism or consume quarantined partials. |
 
-Coordinator note: retain `NODETOPO-O0` PARK-A on P0 headroom and
-`NODERESTORE-O0` PARK-B. Do not infer a tier move, a GPU request, a 44b6 result,
-or any DEAD verdict.
+Coordinator note: retain `NODETOPO-O0` PARK-A and `NODERESTORE-O0` PARK-B.
+Do not infer a tier move, a scientific result, a DEAD verdict, or GPU authorization.

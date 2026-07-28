@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/Users/agent/Desktop/cell_tracking/.venv313/bin/python",
+    "/private/tmp/g02_phase1_20260728/sa_nodetopo/reports/g02/screening/tiered_surface/branches/sa_nodetopo/build_raw_node_universe.py",
+    "--output",
+    "/private/tmp/g02_phase1_20260728/sa_nodetopo/reports/g02/screening/tiered_surface/branches/sa_nodetopo/raw_universe_result_v2"
+  ],
+  "elapsed_seconds": 295.5437259674072,
+  "ending_swap_mib": 3628.5,
+  "external_action": false,
+  "gpu_action": false,
+  "initial_swap_mib": 3604.0,
+  "kaggle_action": false,
+  "minimum_system_memory_free_percent": 33.0,
+  "output": "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/resource_tracker.py:324: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-lsp6ckm9'}\n  warnings.warn(\n",
+  "peak_process_tree_rss_gib": 0.7388916015625,
+  "peak_swap_mib": 3628.5,
+  "preflight_path": "/private/tmp/g02_phase1_20260728/sa_nodetopo/reports/g02/screening/tiered_surface/branches/sa_nodetopo/raw_universe_idle_preflight_retry3_v2.json",
+  "preflight_sha256": "e22f2dd4554116bfd673b567f2afdda940fcf0a8dfffc25177b8061a09fb0697",
+  "returncode": -15,
+  "runpod_action": false,
+  "schema": "celltrack-alpha.sa-nodetopo-raw-universe-guard.v1",
+  "status": "FAIL_SWAP_GROWTH",
+  "submission_action": false,
+  "swap_growth_mib": 24.5,
+  "wall_clock_limit_seconds": 18000
+}

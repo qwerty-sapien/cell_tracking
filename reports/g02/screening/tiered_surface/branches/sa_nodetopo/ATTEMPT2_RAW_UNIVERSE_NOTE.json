@@ -9,7 +9,8 @@
   "partial_artifacts": [
     {
       "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/raw_universe_attempt2_invalid/raw_universe/videos/train__44b6_0db75fae.jsonl.gz",
-      "bytes_at_stop": 117785,
+      "final_bytes": 117667,
+      "sha256": "3c809c28c831cb622c4f51e9cbc2121c42fd27525101258059da13f36130a544",
       "usable": false
     }
   ],
