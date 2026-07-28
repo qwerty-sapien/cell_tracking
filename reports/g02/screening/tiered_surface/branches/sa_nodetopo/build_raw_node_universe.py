@@ -395,12 +395,11 @@ def build_action(
         replace_incoming_to=(target,),
         expected_conflict_edges=conflicts,
     )
-    compiled = compile_action(graph, action)
     return ActionRecord(
         identity=identity,
         candidate_identity_sha256=candidate.identity_sha256,
         action=action,
-        removed_edges=compiled.removed_edges,
+        removed_edges=conflicts,
     )
 
 
@@ -522,6 +521,22 @@ def score_curve(
             baseline_rows[identity] = official_metric_row(nodes, edges, gt, scale)
     baseline_summary = official_summary([baseline_rows[value] for value in identities])
     baseline_vector = metric_vector(baseline_summary)
+    single_compile_count = 0
+    for record in selected:
+        try:
+            compiled = compile_action(
+                baseline_graphs[record.identity], record.action
+            )
+        except ActionCompileError as exc:
+            raise NodeUniverseError(
+                "frozen N1 rejected a retained false-node action "
+                f"{record.action.action_id}: {exc}"
+            ) from exc
+        if compiled.before_graph_sha256 == compiled.after_graph_sha256:
+            raise NodeUniverseError(
+                f"retained action is observation-null: {record.action.action_id}"
+            )
+        single_compile_count += 1
 
     cache: dict[tuple[str, int], tuple[dict[str, Any], dict[str, Any]]] = {}
     curve: list[dict[str, Any]] = []
@@ -587,6 +602,8 @@ def score_curve(
         "summary": baseline_summary,
         "vector": baseline_vector,
         "video_rows": baseline_rows,
+        "retained_single_compile_count": single_compile_count,
+        "retained_single_compile_reject_count": 0,
     }
 
 
@@ -691,18 +708,13 @@ def run(output: Path) -> dict[str, Any]:
                         ):
                             if not bool(is_hard_false):
                                 continue
-                            try:
-                                record = build_action(
-                                    identity,
-                                    candidate,
-                                    graph,
-                                    scale,
-                                    indices,
-                                )
-                            except ActionCompileError as exc:
-                                raise NodeUniverseError(
-                                    f"frozen N1 rejected a constructed action for {identity}: {exc}"
-                                ) from exc
+                            record = build_action(
+                                identity,
+                                candidate,
+                                graph,
+                                scale,
+                                indices,
+                            )
                             if record is not None:
                                 support["topology_joinable_hard_false"] += 1
                                 heap_keep_smallest(heap, record, PER_VIDEO_HEAP_CAP)
@@ -881,10 +893,15 @@ def run(output: Path) -> dict[str, Any]:
             "pooled_heap_action_count": len(pooled),
             "mutually_compatible_action_count": len(selected),
             "ownership_rejections_before_50": dict(rejected),
-            "single_compile_count": int(
+            "single_compile_count": baseline[
+                "retained_single_compile_count"
+            ],
+            "single_compile_reject_count": baseline[
+                "retained_single_compile_reject_count"
+            ],
+            "structurally_joinable_hard_false_count": int(
                 total_support["topology_joinable_hard_false"]
             ),
-            "single_compile_reject_count": 0,
             "action_bank_path": str(action_bank_path),
             "action_bank_sha256": action_bank_sha,
             "action_bank_count": action_bank_count,
