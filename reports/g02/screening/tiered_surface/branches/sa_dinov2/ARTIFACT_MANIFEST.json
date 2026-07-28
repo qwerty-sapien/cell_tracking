@@ -1,0 +1,83 @@
+{
+  "schema": "g02.sa-dinov2-wave3.artifact-manifest.v1",
+  "status": "COMPLETE",
+  "generated_utc": "2026-07-28T17:21:51Z",
+  "files": [
+    {
+      "path": "PREREGISTRATION.json",
+      "bytes": 7337,
+      "sha256": "ae481d29c62a3c5e11305230b582e7c9ab6492b665f32b319c43b007ae38611c"
+    },
+    {
+      "path": "SOURCE_LICENSE_RECEIPT.json",
+      "bytes": 2915,
+      "sha256": "fd9edd0102aed6c4c1e8e53c7cbee6dc1e322c416f4873be9bc539d70aa4ba24"
+    },
+    {
+      "path": "WEIGHT_PIN_MANIFEST.json",
+      "bytes": 1617,
+      "sha256": "424071779e1e8ddea305fc5b499a41a88ab348e95eeef7364bb09129f5a94c4b"
+    },
+    {
+      "path": "SAFE_LOAD_RESULT.json",
+      "bytes": 2422,
+      "sha256": "b7efbda4031c91a410a8f022350330c6b03f8a254703fce8578dcd990e723ee5"
+    },
+    {
+      "path": "validate_dinov2_vits14.py",
+      "bytes": 11237,
+      "sha256": "8481d598aaecc27c49a79b1b9bb60184a3c873d214f117b8e8524a0534996566"
+    },
+    {
+      "path": "test_validate_dinov2_vits14.py",
+      "bytes": 2470,
+      "sha256": "0efed86c8862252d793f46d7ff57ec818cd1e1ed4712517b067ceeb7984f40a9"
+    },
+    {
+      "path": "R5_XY_BETA_STAGING_CONTRACT.json",
+      "bytes": 6346,
+      "sha256": "c8e3df7739a3691b6ad9c93234ecc8db9696992c126de3ff343def38a93d5610"
+    },
+    {
+      "path": "dinov2_xy_action_featurizer.py",
+      "bytes": 4141,
+      "sha256": "f93a202a7e662859f92442a4a6932ad371af513c65627838f2ebfd7bfecb9b49"
+    },
+    {
+      "path": "test_dinov2_xy_action_featurizer.py",
+      "bytes": 3179,
+      "sha256": "bff9231949a01d0bc6372d5611070b1d0ba661cf913215dc740b688a7b36bc86"
+    },
+    {
+      "path": "state_fragment.json",
+      "bytes": 6310,
+      "sha256": "7aaebd890a5365c53e04a1af26e01a3e83c4e806312c1fbca4db5bf0a87f6cfe"
+    },
+    {
+      "path": "PROPOSED_LEDGER_ROW.md",
+      "bytes": 1676,
+      "sha256": "65842c2f8827e6e3eda40f4c9d26b37e2c158a28a8e6ddd26ad12cbb988136d5"
+    },
+    {
+      "path": "TERMINAL_REPORT.md",
+      "bytes": 3599,
+      "sha256": "34c3ce8b7dcdbebe487ed3e013a722946e5782ee0ba269722e6b93ceac0dc67b"
+    },
+    {
+      "path": "VALIDATION.json",
+      "bytes": 2926,
+      "sha256": "143dfaeb2ef18cbab04d5c29023fafa4c51263f09f06a4b352534bb077c6f28c"
+    },
+    {
+      "path": "SCOPE_AUDIT.json",
+      "bytes": 1388,
+      "sha256": "9a3c3c5293120a0da063e83bb4436864981a12ac48a25856163f85dd4fa654d8"
+    }
+  ],
+  "external_checkpoint": {
+    "committed": false,
+    "path": "/private/tmp/g02_dinov2_assets/sha256-b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9/dinov2_vits14_pretrain.pth",
+    "bytes": 88283115,
+    "sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9"
+  }
+}
