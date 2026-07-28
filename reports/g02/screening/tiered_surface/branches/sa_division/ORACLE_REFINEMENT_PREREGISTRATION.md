@@ -31,7 +31,7 @@ All shared inputs are read-only absolute paths under
 | N1 interface | `2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865` |
 | N1 implementation | `457f6607a493d51d972913fa155d687e9ffc4045475605bc109a4ca9e90124f5` |
 | grouped folds | `ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769` |
-| P0 action-class oracle | `8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5f18c8889c06` |
+| P0 action-class oracle | `8ad548c134c419e2e76b8661848e90493d674731ceb34ab231c5f18c8889c06` |
 | D1 preregistration | `34b2aa020099e14ad7a73820d97e9baefadec386e0e2d9acbd7ab5c1cb07620f` |
 | D1 arm manifest | `327af0d29dbde19172a61bf396b951d150040bb357c3fbba90e79249035e4776` |
 | banked SA-DIVISION dependency audit | `38990d30d4b30ea7afbf99e0a655b0150c34a73fdd4918f93178316d9d9e3c76` |
@@ -73,3 +73,11 @@ For each family, take only P0's frozen control and `division_fork` rows and:
 The only successful terminal status is
 `PASS_DIAGNOSTIC_PARK_DEPENDENCY`. Any mismatch is an error and opens no
 scientific surface.
+
+## Frozen erratum
+
+The initial commit duplicated one `a` in the P0 digest (`...ceb34aab...`).
+The first guarded attempt failed at authentication before loading the P0 JSON.
+`ORACLE_REFINEMENT_REPAIR.md` freezes the exact one-character correction to the
+already-banked digest (`...ceb34ab...`) before the retry; no calculation,
+threshold, input path, or scientific rule changed.
