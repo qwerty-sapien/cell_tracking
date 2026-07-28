@@ -1,0 +1,886 @@
+{
+  "aggregate_replay_absolute_errors": {
+    "APNCC": 0.0,
+    "C1": 0.0,
+    "H1-ZWRFEAT": 0.0,
+    "SA-SWAP": 0.0
+  },
+  "artifact_sha256": {
+    "amended_decomposition_rows.json": "e42e1a6caf9016fafed34598adcb06973048342cc4bbb710d002da72101ede60",
+    "amended_guard_retry.json": "8b0af9bb4bde3d05c34223e96daf508df32bc4ddb3207bf42f599d3df277138e",
+    "amended_reproduction.json": "43fce5d9d88a5ad72902b0a9ec26a07a41465f2a6e021dac2287b5c62cdaae07",
+    "amended_source_manifest.json": "01f375c6dbc160de0c9091a0997087419c6510513bb200bacbf65d7cd158a836"
+  },
+  "candidate_order": [
+    "APNCC",
+    "C1",
+    "H1-ZWRFEAT",
+    "SA-DELETE",
+    "SA-SWAP",
+    "NODETOPO"
+  ],
+  "checked_cells": [
+    {
+      "candidate_order": [
+        "APNCC",
+        "C1",
+        "H1-ZWRFEAT",
+        "SA-DELETE",
+        "SA-SWAP",
+        "NODETOPO"
+      ],
+      "draw_matrix": {
+        "dtype": "little-endian-float64",
+        "order": "C",
+        "sha256": "67029ed1b56af506d350aebad008702f58a6ee0b8ff39b597384784af45533df",
+        "shape": [
+          10000,
+          6
+        ]
+      },
+      "draw_zero": {
+        "allocation": {
+          "ALL": 3
+        },
+        "design_weights": [
+          {
+            "identity": "train:44b6_c15fded2",
+            "weight": 12.0
+          },
+          {
+            "identity": "train:44b6_d754aa59",
+            "weight": 12.0
+          },
+          {
+            "identity": "train:44b6_db3c847b",
+            "weight": 12.0
+          }
+        ],
+        "video_ids": [
+          "train:44b6_c15fded2",
+          "train:44b6_d754aa59",
+          "train:44b6_db3c847b"
+        ]
+      },
+      "k": 3,
+      "maximum_candidate_95pct_width": 0.06261186940537158,
+      "median_spearman_rho": 0.4857142857142857,
+      "pooled_sign_agreement": 0.68285,
+      "scheme": "simple_random",
+      "seed_uint64": 6788270665500927273,
+      "usable": false
+    },
+    {
+      "candidate_order": [
+        "APNCC",
+        "C1",
+        "H1-ZWRFEAT",
+        "SA-DELETE",
+        "SA-SWAP",
+        "NODETOPO"
+      ],
+      "draw_matrix": {
+        "dtype": "little-endian-float64",
+        "order": "C",
+        "sha256": "458f7686698bfefcbd2cd28533820f123b91de0b1a345adb3ef08830cf8026a2",
+        "shape": [
+          10000,
+          6
+        ]
+      },
+      "draw_zero": {
+        "allocation": {
+          "REST": 2,
+          "TOP10": 1
+        },
+        "design_weights": [
+          {
+            "identity": "train:44b6_3a861e03",
+            "weight": 10.0
+          },
+          {
+            "identity": "train:44b6_415c0a3a",
+            "weight": 13.0
+          },
+          {
+            "identity": "train:44b6_d754aa59",
+            "weight": 13.0
+          }
+        ],
+        "video_ids": [
+          "train:44b6_3a861e03",
+          "train:44b6_415c0a3a",
+          "train:44b6_d754aa59"
+        ]
+      },
+      "k": 3,
+      "maximum_candidate_95pct_width": 0.05721646802687292,
+      "median_spearman_rho": 0.4857142857142857,
+      "pooled_sign_agreement": 0.6817,
+      "scheme": "residual_top10",
+      "seed_uint64": 3978915223654173806,
+      "usable": false
+    },
+    {
+      "candidate_order": [
+        "APNCC",
+        "C1",
+        "H1-ZWRFEAT",
+        "SA-DELETE",
+        "SA-SWAP",
+        "NODETOPO"
+      ],
+      "draw_matrix": {
+        "dtype": "little-endian-float64",
+        "order": "C",
+        "sha256": "97c38d2b892e6957bf851762b7723b56bbfd9080c9d91044653a27d23453679a",
+        "shape": [
+          10000,
+          6
+        ]
+      },
+      "draw_zero": {
+        "allocation": {
+          "44b6|REST": 2,
+          "44b6|TOP10": 1
+        },
+        "design_weights": [
+          {
+            "identity": "train:44b6_5f15d135",
+            "weight": 10.0
+          },
+          {
+            "identity": "train:44b6_e28840c6",
+            "weight": 13.0
+          },
+          {
+            "identity": "train:44b6_eb2880fc",
+            "weight": 13.0
+          }
+        ],
+        "video_ids": [
+          "train:44b6_5f15d135",
+          "train:44b6_e28840c6",
+          "train:44b6_eb2880fc"
+        ]
+      },
+      "k": 3,
+      "maximum_candidate_95pct_width": 0.05734677445362435,
+      "median_spearman_rho": 0.4857142857142857,
+      "pooled_sign_agreement": 0.6803833333333333,
+      "scheme": "family_residual",
+      "seed_uint64": 7155271506246106942,
+      "usable": false
+    },
+    {
+      "candidate_order": [
+        "APNCC",
+        "C1",
+        "H1-ZWRFEAT",
+        "SA-DELETE",
+        "SA-SWAP",
+        "NODETOPO"
+      ],
+      "draw_matrix": {
+        "dtype": "little-endian-float64",
+        "order": "C",
+        "sha256": "a2d1488bec9abef1ffc3b295cbd18a7c081f24cd6f12ded66576ee70056c941d",
+        "shape": [
+          10000,
+          6
+        ]
+      },
+      "draw_zero": {
+        "allocation": {
+          "ALL": 5
+        },
+        "design_weights": [
+          {
+            "identity": "train:44b6_1d530831",
+            "weight": 7.2
+          },
+          {
+            "identity": "train:44b6_5f15d135",
+            "weight": 7.2
+          },
+          {
+            "identity": "train:44b6_7e557709",
+            "weight": 7.2
+          },
+          {
+            "identity": "train:44b6_808952d6",
+            "weight": 7.2
+          },
+          {
+            "identity": "train:44b6_e31261b4",
+            "weight": 7.2
+          }
+        ],
+        "video_ids": [
+          "train:44b6_1d530831",
+          "train:44b6_5f15d135",
+          "train:44b6_7e557709",
+          "train:44b6_808952d6",
+          "train:44b6_e31261b4"
+        ]
+      },
+      "k": 5,
+      "maximum_candidate_95pct_width": 0.044304593768289297,
+      "median_spearman_rho": 0.6,
+      "pooled_sign_agreement": 0.7360833333333333,
+      "scheme": "simple_random",
+      "seed_uint64": 1353310222773112938,
+      "usable": false
+    },
+    {
+      "candidate_order": [
+        "APNCC",
+        "C1",
+        "H1-ZWRFEAT",
+        "SA-DELETE",
+        "SA-SWAP",
+        "NODETOPO"
+      ],
+      "draw_matrix": {
+        "dtype": "little-endian-float64",
+        "order": "C",
+        "sha256": "400c7b5a16b47a63218fcc81e10bbaece538756353b99d2d49098190101db732",
+        "shape": [
+          10000,
+          6
+        ]
+      },
+      "draw_zero": {
+        "allocation": {
+          "REST": 4,
+          "TOP10": 1
+        },
+        "design_weights": [
+          {
+            "identity": "train:44b6_144b256d",
+            "weight": 6.5
+          },
+          {
+            "identity": "train:44b6_587a1e22",
+            "weight": 6.5
+          },
+          {
+            "identity": "train:44b6_8f5ab931",
+            "weight": 10.0
+          },
+          {
+            "identity": "train:44b6_e28840c6",
+            "weight": 6.5
+          },
+          {
+            "identity": "train:44b6_e29f0176",
+            "weight": 6.5
+          }
+        ],
+        "video_ids": [
+          "train:44b6_144b256d",
+          "train:44b6_587a1e22",
+          "train:44b6_8f5ab931",
+          "train:44b6_e28840c6",
+          "train:44b6_e29f0176"
+        ]
+      },
+      "k": 5,
+      "maximum_candidate_95pct_width": 0.04724138725706354,
+      "median_spearman_rho": 0.5428571428571428,
+      "pooled_sign_agreement": 0.7242166666666666,
+      "scheme": "residual_top10",
+      "seed_uint64": 17077347961088691761,
+      "usable": false
+    },
+    {
+      "candidate_order": [
+        "APNCC",
+        "C1",
+        "H1-ZWRFEAT",
+        "SA-DELETE",
+        "SA-SWAP",
+        "NODETOPO"
+      ],
+      "draw_matrix": {
+        "dtype": "little-endian-float64",
+        "order": "C",
+        "sha256": "2b22e5eaecdb8eb4d37471eb1451feb3071a9d8f83c9790f72eb5bdbc1c65c3f",
+        "shape": [
+          10000,
+          6
+        ]
+      },
+      "draw_zero": {
+        "allocation": {
+          "44b6|REST": 4,
+          "44b6|TOP10": 1
+        },
+        "design_weights": [
+          {
+            "identity": "train:44b6_40c45f5a",
+            "weight": 6.5
+          },
+          {
+            "identity": "train:44b6_551a5dba",
+            "weight": 10.0
+          },
+          {
+            "identity": "train:44b6_7e557709",
+            "weight": 6.5
+          },
+          {
+            "identity": "train:44b6_81c256f0",
+            "weight": 6.5
+          },
+          {
+            "identity": "train:44b6_90724892",
+            "weight": 6.5
+          }
+        ],
+        "video_ids": [
+          "train:44b6_40c45f5a",
+          "train:44b6_551a5dba",
+          "train:44b6_7e557709",
+          "train:44b6_81c256f0",
+          "train:44b6_90724892"
+        ]
+      },
+      "k": 5,
+      "maximum_candidate_95pct_width": 0.04726879026071247,
+      "median_spearman_rho": 0.5428571428571428,
+      "pooled_sign_agreement": 0.7258,
+      "scheme": "family_residual",
+      "seed_uint64": 56367241437955842,
+      "usable": false
+    },
+    {
+      "candidate_order": [
+        "APNCC",
+        "C1",
+        "H1-ZWRFEAT",
+        "SA-DELETE",
+        "SA-SWAP",
+        "NODETOPO"
+      ],
+      "draw_matrix": {
+        "dtype": "little-endian-float64",
+        "order": "C",
+        "sha256": "07e7de9d81fd6136300246ed2f1b6e5f0275dbac8688fda1e9b4afe0aa3b14f7",
+        "shape": [
+          10000,
+          6
+        ]
+      },
+      "draw_zero": {
+        "allocation": {
+          "ALL": 8
+        },
+        "design_weights": [
+          {
+            "identity": "train:44b6_0db75fae",
+            "weight": 4.5
+          },
+          {
+            "identity": "train:44b6_1d530831",
+            "weight": 4.5
+          },
+          {
+            "identity": "train:44b6_415c0a3a",
+            "weight": 4.5
+          },
+          {
+            "identity": "train:44b6_81c256f0",
+            "weight": 4.5
+          },
+          {
+            "identity": "train:44b6_90724892",
+            "weight": 4.5
+          },
+          {
+            "identity": "train:44b6_9bfa6a0a",
+            "weight": 4.5
+          },
+          {
+            "identity": "train:44b6_db3c847b",
+            "weight": 4.5
+          },
+          {
+            "identity": "train:44b6_eb2880fc",
+            "weight": 4.5
+          }
+        ],
+        "video_ids": [
+          "train:44b6_0db75fae",
+          "train:44b6_1d530831",
+          "train:44b6_415c0a3a",
+          "train:44b6_81c256f0",
+          "train:44b6_90724892",
+          "train:44b6_9bfa6a0a",
+          "train:44b6_db3c847b",
+          "train:44b6_eb2880fc"
+        ]
+      },
+      "k": 8,
+      "maximum_candidate_95pct_width": 0.031277818703335986,
+      "median_spearman_rho": 0.7714285714285715,
+      "pooled_sign_agreement": 0.7772833333333333,
+      "scheme": "simple_random",
+      "seed_uint64": 5355373003257527042,
+      "usable": false
+    },
+    {
+      "candidate_order": [
+        "APNCC",
+        "C1",
+        "H1-ZWRFEAT",
+        "SA-DELETE",
+        "SA-SWAP",
+        "NODETOPO"
+      ],
+      "draw_matrix": {
+        "dtype": "little-endian-float64",
+        "order": "C",
+        "sha256": "c9fe5ac8b0bc65dbe784252099e5e21fd658195f7c8bfab0c7e99f3feaf7bb5c",
+        "shape": [
+          10000,
+          6
+        ]
+      },
+      "draw_zero": {
+        "allocation": {
+          "REST": 6,
+          "TOP10": 2
+        },
+        "design_weights": [
+          {
+            "identity": "train:44b6_0db75fae",
+            "weight": 4.333333333333333
+          },
+          {
+            "identity": "train:44b6_808952d6",
+            "weight": 4.333333333333333
+          },
+          {
+            "identity": "train:44b6_8f5ab931",
+            "weight": 5.0
+          },
+          {
+            "identity": "train:44b6_949adeb1",
+            "weight": 5.0
+          },
+          {
+            "identity": "train:44b6_abf82518",
+            "weight": 4.333333333333333
+          },
+          {
+            "identity": "train:44b6_c771cb04",
+            "weight": 4.333333333333333
+          },
+          {
+            "identity": "train:44b6_cf8fed6b",
+            "weight": 4.333333333333333
+          },
+          {
+            "identity": "train:44b6_d78e09d9",
+            "weight": 4.333333333333333
+          }
+        ],
+        "video_ids": [
+          "train:44b6_0db75fae",
+          "train:44b6_808952d6",
+          "train:44b6_8f5ab931",
+          "train:44b6_949adeb1",
+          "train:44b6_abf82518",
+          "train:44b6_c771cb04",
+          "train:44b6_cf8fed6b",
+          "train:44b6_d78e09d9"
+        ]
+      },
+      "k": 8,
+      "maximum_candidate_95pct_width": 0.031167347056850366,
+      "median_spearman_rho": 0.7714285714285715,
+      "pooled_sign_agreement": 0.7788833333333334,
+      "scheme": "residual_top10",
+      "seed_uint64": 11924108083629863702,
+      "usable": false
+    },
+    {
+      "candidate_order": [
+        "APNCC",
+        "C1",
+        "H1-ZWRFEAT",
+        "SA-DELETE",
+        "SA-SWAP",
+        "NODETOPO"
+      ],
+      "draw_matrix": {
+        "dtype": "little-endian-float64",
+        "order": "C",
+        "sha256": "5b3f6853ccf373e3d5ed14e7073b2125b38d7d7946e87d1faf963bb3285723b4",
+        "shape": [
+          10000,
+          6
+        ]
+      },
+      "draw_zero": {
+        "allocation": {
+          "44b6|REST": 6,
+          "44b6|TOP10": 2
+        },
+        "design_weights": [
+          {
+            "identity": "train:44b6_40c45f5a",
+            "weight": 4.333333333333333
+          },
+          {
+            "identity": "train:44b6_415c0a3a",
+            "weight": 4.333333333333333
+          },
+          {
+            "identity": "train:44b6_587a1e22",
+            "weight": 4.333333333333333
+          },
+          {
+            "identity": "train:44b6_5f15d135",
+            "weight": 5.0
+          },
+          {
+            "identity": "train:44b6_a2bb48bb",
+            "weight": 5.0
+          },
+          {
+            "identity": "train:44b6_abf82518",
+            "weight": 4.333333333333333
+          },
+          {
+            "identity": "train:44b6_c15fded2",
+            "weight": 4.333333333333333
+          },
+          {
+            "identity": "train:44b6_d754aa59",
+            "weight": 4.333333333333333
+          }
+        ],
+        "video_ids": [
+          "train:44b6_40c45f5a",
+          "train:44b6_415c0a3a",
+          "train:44b6_587a1e22",
+          "train:44b6_5f15d135",
+          "train:44b6_a2bb48bb",
+          "train:44b6_abf82518",
+          "train:44b6_c15fded2",
+          "train:44b6_d754aa59"
+        ]
+      },
+      "k": 8,
+      "maximum_candidate_95pct_width": 0.03070115869158163,
+      "median_spearman_rho": 0.7714285714285715,
+      "pooled_sign_agreement": 0.7751,
+      "scheme": "family_residual",
+      "seed_uint64": 13905378753518785248,
+      "usable": false
+    },
+    {
+      "candidate_order": [
+        "APNCC",
+        "C1",
+        "H1-ZWRFEAT",
+        "SA-DELETE",
+        "SA-SWAP",
+        "NODETOPO"
+      ],
+      "draw_matrix": {
+        "dtype": "little-endian-float64",
+        "order": "C",
+        "sha256": "7948c98b6ee3eced68acdcaaef87c5881950762472bb3461acc31aee7c782d7a",
+        "shape": [
+          10000,
+          6
+        ]
+      },
+      "draw_zero": {
+        "allocation": {
+          "ALL": 12
+        },
+        "design_weights": [
+          {
+            "identity": "train:44b6_12dfb391",
+            "weight": 3.0
+          },
+          {
+            "identity": "train:44b6_18ced818",
+            "weight": 3.0
+          },
+          {
+            "identity": "train:44b6_1d530831",
+            "weight": 3.0
+          },
+          {
+            "identity": "train:44b6_587a1e22",
+            "weight": 3.0
+          },
+          {
+            "identity": "train:44b6_808952d6",
+            "weight": 3.0
+          },
+          {
+            "identity": "train:44b6_90724892",
+            "weight": 3.0
+          },
+          {
+            "identity": "train:44b6_97725144",
+            "weight": 3.0
+          },
+          {
+            "identity": "train:44b6_abf82518",
+            "weight": 3.0
+          },
+          {
+            "identity": "train:44b6_d29c9ab2",
+            "weight": 3.0
+          },
+          {
+            "identity": "train:44b6_d78e09d9",
+            "weight": 3.0
+          },
+          {
+            "identity": "train:44b6_db3c847b",
+            "weight": 3.0
+          },
+          {
+            "identity": "train:44b6_e31261b4",
+            "weight": 3.0
+          }
+        ],
+        "video_ids": [
+          "train:44b6_12dfb391",
+          "train:44b6_18ced818",
+          "train:44b6_1d530831",
+          "train:44b6_587a1e22",
+          "train:44b6_808952d6",
+          "train:44b6_90724892",
+          "train:44b6_97725144",
+          "train:44b6_abf82518",
+          "train:44b6_d29c9ab2",
+          "train:44b6_d78e09d9",
+          "train:44b6_db3c847b",
+          "train:44b6_e31261b4"
+        ]
+      },
+      "k": 12,
+      "maximum_candidate_95pct_width": 0.023057322995739548,
+      "median_spearman_rho": 0.8285714285714286,
+      "pooled_sign_agreement": 0.8206833333333333,
+      "scheme": "simple_random",
+      "seed_uint64": 1367637727343376157,
+      "usable": false
+    },
+    {
+      "candidate_order": [
+        "APNCC",
+        "C1",
+        "H1-ZWRFEAT",
+        "SA-DELETE",
+        "SA-SWAP",
+        "NODETOPO"
+      ],
+      "draw_matrix": {
+        "dtype": "little-endian-float64",
+        "order": "C",
+        "sha256": "6acc4c38f4d56b70c904dd66f7aa49c76e95c495cb884cdc614c1f8429f8174f",
+        "shape": [
+          10000,
+          6
+        ]
+      },
+      "draw_zero": {
+        "allocation": {
+          "REST": 9,
+          "TOP10": 3
+        },
+        "design_weights": [
+          {
+            "identity": "train:44b6_0db75fae",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_144b256d",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_1574802b",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_1d530831",
+            "weight": 3.3333333333333335
+          },
+          {
+            "identity": "train:44b6_40c45f5a",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_7e557709",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_808952d6",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_90724892",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_949adeb1",
+            "weight": 3.3333333333333335
+          },
+          {
+            "identity": "train:44b6_a2bb48bb",
+            "weight": 3.3333333333333335
+          },
+          {
+            "identity": "train:44b6_c15fded2",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_e35b117d",
+            "weight": 2.888888888888889
+          }
+        ],
+        "video_ids": [
+          "train:44b6_0db75fae",
+          "train:44b6_144b256d",
+          "train:44b6_1574802b",
+          "train:44b6_1d530831",
+          "train:44b6_40c45f5a",
+          "train:44b6_7e557709",
+          "train:44b6_808952d6",
+          "train:44b6_90724892",
+          "train:44b6_949adeb1",
+          "train:44b6_a2bb48bb",
+          "train:44b6_c15fded2",
+          "train:44b6_e35b117d"
+        ]
+      },
+      "k": 12,
+      "maximum_candidate_95pct_width": 0.023092529433107467,
+      "median_spearman_rho": 0.8285714285714286,
+      "pooled_sign_agreement": 0.8175666666666667,
+      "scheme": "residual_top10",
+      "seed_uint64": 13757832481950769246,
+      "usable": false
+    },
+    {
+      "candidate_order": [
+        "APNCC",
+        "C1",
+        "H1-ZWRFEAT",
+        "SA-DELETE",
+        "SA-SWAP",
+        "NODETOPO"
+      ],
+      "draw_matrix": {
+        "dtype": "little-endian-float64",
+        "order": "C",
+        "sha256": "33f81297d0343ef107c4f304288f495f89666baf2f075e22b71b09c750236ff1",
+        "shape": [
+          10000,
+          6
+        ]
+      },
+      "draw_zero": {
+        "allocation": {
+          "44b6|REST": 9,
+          "44b6|TOP10": 3
+        },
+        "design_weights": [
+          {
+            "identity": "train:44b6_1574802b",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_18ced818",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_1d530831",
+            "weight": 3.3333333333333335
+          },
+          {
+            "identity": "train:44b6_40c45f5a",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_551a5dba",
+            "weight": 3.3333333333333335
+          },
+          {
+            "identity": "train:44b6_5740d24b",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_808952d6",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_a2bb48bb",
+            "weight": 3.3333333333333335
+          },
+          {
+            "identity": "train:44b6_d754aa59",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_db3c847b",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_e31261b4",
+            "weight": 2.888888888888889
+          },
+          {
+            "identity": "train:44b6_e35b117d",
+            "weight": 2.888888888888889
+          }
+        ],
+        "video_ids": [
+          "train:44b6_1574802b",
+          "train:44b6_18ced818",
+          "train:44b6_1d530831",
+          "train:44b6_40c45f5a",
+          "train:44b6_551a5dba",
+          "train:44b6_5740d24b",
+          "train:44b6_808952d6",
+          "train:44b6_a2bb48bb",
+          "train:44b6_d754aa59",
+          "train:44b6_db3c847b",
+          "train:44b6_e31261b4",
+          "train:44b6_e35b117d"
+        ]
+      },
+      "k": 12,
+      "maximum_candidate_95pct_width": 0.022962039420375814,
+      "median_spearman_rho": 0.8285714285714286,
+      "pooled_sign_agreement": 0.8153833333333333,
+      "scheme": "family_residual",
+      "seed_uint64": 11409485249024903050,
+      "usable": false
+    }
+  ],
+  "checks": {
+    "acceptance_rule_reapplied": true,
+    "all_120000_draws_recomputed": true,
+    "all_cell_metrics_recomputed": true,
+    "all_draw_zero_lists_recomputed": true,
+    "all_full_scores_and_deltas_recomputed": true,
+    "top10_residual_stratum_recomputed": true,
+    "zero_swap_guard_passed": true
+  },
+  "schema": "g02.subsample-fidelity.amended-validation-checks.v1",
+  "selected_contract": null,
+  "status": "PASS",
+  "usable_cell_count": 0,
+  "verdict": "SUBSAMPLING_UNSAFE"
+}
