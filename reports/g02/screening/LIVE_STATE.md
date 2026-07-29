@@ -135,7 +135,7 @@ points at the authoritative artifacts; it does not replace them.
   after 10,922.910 s / 0.997 GiB / 0 MiB swap with no terminal artifact or
   exposed outcome. Swap and restore remain pending; no aggregate
   requirement/verdict exists yet.
-- **DINOV2 R5 KAGGLE-CPU V3 TERMINAL INVALID / CPU LANE CLOSED.** The unchanged
+- **DINOV2 R5 KAGGLE-CPU V3 INVALID / TITLE-DERIVED CPU RUN ACTIVE.** The unchanged
   source revision `7764ea0f…5fc8`, tree `2a27257b…f43`, checkpoint
   `b938bf1b…0cd9` (88,283,115 B), XY-beta contract, 77 requests,
   1,391,458 actions, and 1,417,863 unique endpoints are packaged under a
@@ -170,8 +170,16 @@ points at the authoritative artifacts; it does not replace them.
   pushed once, then failed closed inside step 0 at 0.992640 s because it found
   no exact private-dataset manifest. No dependency install, model load,
   inference, or outcome ran. V3 used 0.0022130 CPU-h; cumulative recorded CPU
-  use is 0.1847631 h and GPU use remains 2.9035 h. The CPU lane is closed with
-  no retry. Receipt `sa_dinov2/KAGGLE_CPU_V3_TERMINAL_INVALID.json`.
+  use is 0.1847631 h and GPU use remains 2.9035 h. Receipt
+  `sa_dinov2/KAGGLE_CPU_V3_TERMINAL_INVALID.json`. A causal lineage-promotion
+  push then exposed title/ID slug drift: Kaggle accepted it under actual ID
+  `g02-dinov2-r5-cpu-promoted-preflight/2`. That CPU-only run remains RUNNING
+  after 379.003 s, beyond all prior 0.86–225.61 s step-0 failures; because its
+  code cannot begin pip/model work before step 0 passes, neither the missing-
+  manifest nor traversal signature recurred. KFG-15/16 now bind preflight to
+  kernel ID and reject title/ID drift; shared tests pass 14/14 plus real
+  missing/empty-manifest tests 2/2. No additional CPU launch is permitted;
+  active CPU usage awaits its terminal receipt.
 - **VIDEO-SUBSAMPLE FIDELITY UNSAFE / ROOT BARRIER COMPLETE.** A
   pre-outcome common-universe amendment standardized APNCC, C1, H1-ZWRFEAT,
   SA-DELETE, SA-SWAP, and NODETOPO on the already-opened 36-video held-44b6
@@ -214,8 +222,8 @@ points at the authoritative artifacts; it does not replace them.
   `two_supplier_comparison_v2_run_v6/TWO_SUPPLIER_COMPARISON.json`
   (`006b88ac…410c`) records zero PASS, zero FAIL, zero PARK-C moves, and zero
   graph unlocks; both R5 and R7 remain PARK-B.
-  The human-prioritized DINOv2 Kaggle GPU transport is now locally
-  **PRELAUNCH-READY / NOT AUTHORIZED YET** in an isolated lane. Its generated
+  The human-prioritized DINOv2 Kaggle GPU transport is now
+  **LAUNCHED ONCE / RUNNING**. Its generated
   kernel is one self-contained file; step 0's first call recursively prints
   every `/kaggle/input` file with byte size and SHA-256 before decoding or
   resolving any embedded contract. An opaque expanded-mount fixture resolves
@@ -231,8 +239,14 @@ points at the authoritative artifacts; it does not replace them.
   campaign kernels terminal ERROR and no new GPU kernel. The sole authorized
   version-1 GPU run is now RUNNING under
   `DINOV2-R5-SEPARATION-GPU-V1`, with no second push permitted, against 27.0965
-  h remaining before terminal debit. No outcome or verdict has occurred;
-  CELLECT remains launch-closed until this DINO lane reports.
+  h remaining before terminal debit. CELLECT bleed-stop v1 is locally
+  **MOUNT-PASS / NOT LAUNCHED**: the generated kernel embeds all 77 request
+  semantics and required content pins, resolves an opaque 83-file
+  Kaggle-expanded fixture with no external bundle or request manifest, and
+  fails closed on missing or duplicate content. Its post-step0 science suffix
+  is unchanged; independent/shared tests pass 7/7 and 24/24. No DINO outcome
+  or verdict has occurred, and CELLECT remains launch-closed until this DINO
+  lane reports.
 - **N1 FEASIBILITY COMPILER GO / PHASE 1 BARRIER COMPLETE.** The immutable
   compiler accepts explicit no-op/add/delete/swap/fork/topology-restore actions,
   proves complete incident-conflict ownership, validates endpoints/time/degree/no-
@@ -549,6 +563,24 @@ Frozen C1 conflict-set attention (`C1-TA-HOCT-LITE`) is DEAD at its 44b6 graph g
 do not run 6bba or re-screen it without a new named mechanism.
 
 ## Log (newest first)
+- 2026-07-30 — CELLECT bleed-stop v1 **LOCAL MOUNT PASS / NO LAUNCH**:
+  the single-file kernel embeds the 77 request records and every required
+  content pin. An opaque 83-file expanded-tar mount with the raw checkpoint
+  member and zero manifest files passes; downloaded layout also passes and
+  missing/duplicate objects fail closed. Post-step0 science is unchanged;
+  independent/shared tests pass 7/7 and 24/24. No upload, authorization,
+  kernel, debit, outcome, or verdict; CELLECT stays launch-closed until DINO
+  Lane A reports. Receipt `cellect_bleed_stop_v1/TERMINAL_LOCAL_PASS.json`.
+  (Codex root)
+- 2026-07-30 — DINOv2 promoted Kaggle CPU run **RUNNING >379 s / PRIOR
+  STEP-0 FAMILY NOT REPEATED**: v3 first exposed cross-kernel preflight scope
+  at 0.992640 s (0.002213 CPU-h / 0 GPU-h). The causal promotion was accepted
+  under Kaggle's title-derived ID; KFG-16 now rejects that drift before future
+  pushes. The sole active CPU run is past every prior startup failure and
+  therefore passed its own step 0 before heavy work. Registry is 20 incidents /
+  16 families; shared tests 14/14 plus real missing/empty-manifest tests 2/2.
+  No further CPU launch, CPU terminal debit, submission, RunPod, graph, tier,
+  threshold, DEAD, or plan action.
 - 2026-07-30 — DINOv2 Kaggle GPU v1 **LAUNCHED ONCE / RUNNING**:
   the owner client confirmed kernel version 1 successfully pushed; the first
   authenticated status is `KernelWorkerStatus.RUNNING`. Authorization
