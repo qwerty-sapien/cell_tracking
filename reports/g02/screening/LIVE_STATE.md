@@ -11,7 +11,167 @@ points at the authoritative artifacts; it does not replace them.
 - Bet ledger (root coordinator is the sole writer): `LEDGER.md`.
 - Scorer / CV57→public transfer gate: `p0_parity.md`.
 
-## Current frontier (as of 2026-07-29)
+## Current frontier (as of 2026-07-30)
+- **AUTHENTIC REVERSE TRACKASTRA TERMINAL / NO GRAPH UNLOCK.** Owner-cmux SDK
+  retrieval authenticated the exact historical `model.pt` `24c290ce…981f`
+  and `ctc.zip.bin` `2ede0848…a0e`. Genuine reversed-time inference with
+  endpoint return `A_reverse[v,u]` is complete on frozen fit-only 44b6:
+  36 videos / 3,539 transitions / 84,883 proposals / 121,534 rows, repeat
+  witness array-identical, manifest `654cb499…6fe1`. A zero-swap guard stopped
+  one partial attempt after an external swapout increase; authenticated resume
+  verified 29 files and materialized only seven missing videos, then passed
+  with 0 MiB swap growth. This supplier is **NON-GT-IDENTIFIABLE**. Under the
+  unchanged sealed five-fold gate, delete A1 retention was `0–0.003268` and
+  occupied-swap retention was `0` in every fold; both supplier×class units
+  received the evaluator token `FAIL_PARK_C`. No tier move is applied or
+  proposed, AE-P6/R8 remain unchanged, and graph, 6bba, CV57, tier, DEAD, plan,
+  kernel, GPU, and submission remain closed. Raw result `bd1c3d55…f46e`.
+- **DIVISION VALUE DIAGNOSTIC TERMINAL / FITTING LOCKED.** The 38 exact frozen
+  Wave-3 repair bundles give a combined-score ceiling of `+0.092067842`
+  **[GT-DEPENDENT]**, with division TP/FP/FN `38/0/4`, Jaccard `0.904762`,
+  adjusted/raw/node deltas `+0.001591651/+0.001607525/0`. The deployment-time
+  audit assigns only **1/38** events to current-pool tier (a), worth
+  `+0.002406490` **[NON-GT-IDENTIFIABLE]** even at perfect selection, below
+  the `+0.005` actionability target. The remaining 37/38 require an unbuilt
+  stronger representation; their `+0.092067842` (a+b) value is a
+  representation-conditioned upper bound **[NON-GT-IDENTIFIABLE]**, not a
+  realized selector gain. DAG-2 division status is
+  `NOT_EVALUABLE_NO_DIVISION_SELECTOR`; no amendment proposal or tier move.
+  Division fitting remains locked. Report:
+  `tiered_surface/branches/sa_division_value/FINAL_REPORT.md`.
+- **CELLECT SINGLE-BUNDLE INTEGRITY PASS / NO KERNEL LAUNCH.** The 77 frozen
+  request shards (1,391,458 actions) and unchanged population manifest
+  `4ab7bb23…76f0f` are now consolidated with the byte-exact v4 checkpoint,
+  safe loader, and three wheels in the sole private input dataset. A first
+  version-5 packaging attempt was rejected because the CLI skipped the nested
+  request directory; corrected version 6 flattens the request filenames and is
+  READY. Owner-cmux download plus the existing verifier authenticated all 87
+  files byte-exact under bundle manifest `ae3bc9b2…7fecd3`; the expanded
+  checkpoint remains `f3e8e730…89ce5`. Kernel metadata now names only
+  `g02-cellect-r7-published-assets-v1`. Universal pure-stdlib step 0 authenticates
+  the bundle, positive request count, population manifest, checkpoint, safe
+  loader, request payloads, and wheels before NumPy/Torch/pip/model work; local
+  valid preflight took 0.0545 s and focused tests pass 21/21, including
+  missing/empty request manifests aborting under 5 s. No kernel, GPU debit,
+  submission, RunPod, graph, full cache, threshold, gate, tier, or DEAD action.
+- **SELECTOR-REQUIREMENT DIAGNOSTIC TERMINAL / HUMAN REVIEW REQUIRED.** Isolated
+  delete and occupied-swap are valid and complete on frozen 44b6. Delete:
+  1,345,497 / 1,118 beneficial, oracle-best adjusted delta `+0.081897667`,
+  140/140 noise runs. Occupied swap: 45,961 / 134 beneficial, oracle-best
+  `+0.018571397` at prefix 32,768 / applied support 29,574, 140/140 noise
+  runs. Its repaired guard ran 2,221.571 s at 1.017 GiB RSS and 0 MiB swap.
+  Restore is valid and complete at 50 actions / 0 beneficial: oracle-best is
+  the zero-action point (`0` adjusted delta), so +0.005 is infeasible on the
+  frozen population and AUC/retention is undefined rather than estimable.
+  Its guard ran 349.107 s at 1.115 GiB RSS and 0 MiB swap.
+  A concurrent transport-only source generalization was accepted under local
+  repair 5 after a restore launch failed closed before its child process; the
+  local root and frozen ZipStore remain unchanged and 22/22 tests pass.
+  Mean +0.005 requires delete AUC `0.85` / retention `0.020394` at prefix
+  16,384 and occupied-swap AUC `0.90` / retention `0.067910` at prefix 1,024.
+  Robust p05 requires delete AUC `0.90` / retention `0.044946` and swap AUC
+  `0.95` / retention `0.147388`. Frozen AUC `0.65` / retention `0.15` is
+  **TOO LENIENT** for both feasible classes; restore is
+  `NOT_APPLICABLE_POPULATION_LIMIT`. Amendment proposed, not applied;
+  independent validation passes 8/8 at 0 MiB swap. No threshold or tier change.
+- **SELECTOR-REQUIREMENT KAGGLE-CPU TERMINAL INVALID / NO RETRY.**
+  The frozen DAG-2 population, folds, probe, scorer, 7×20 AUC/seed grid,
+  supports, thresholds, and three action classes are unchanged. A pre-outcome
+  transport amendment replaces only fixed macOS paths, the local ZIP store, and
+  swap guard with a 16 GiB Kaggle CPU session (`enable_gpu:false`) reading the
+  competition's extracted Zarrs. The private input archive contains 336 members,
+  62 offline wheels, 1,391,458 frozen edge actions, and all exact baseline
+  fragments; SHA-256 is `4bb1c4a6…e6da3`. Pure-stdlib step 0 pins that archive,
+  population `4ab7bb23…76f0f`, positive action/wheel counts, and all 41 required
+  competition videos before extraction, pip, NumPy, zarr, tracksdata, or scorer
+  work. Focused scientific tests remain 22/22 PASS. The owner-cmux upload
+  created READY assets version 7 as a temporary CPU carrier. The owner's manual
+  download verified all 335 frozen inventory records; Kaggle expanded only
+  `action_population.jsonl.gz`, whose downloaded plain bytes deterministically
+  recompress to original SHA `6be1c77b…a5324`. Repaired pure-stdlib step 0
+  validates every expanded member and this reversible transform in 0.592 s.
+  Private kernel `g02-selector-requirement-cpu-run-v1` version 1 used CPU only
+  and stopped at 0.858 s before step 0 because Kaggle packaged only the declared
+  code file, not its sibling preflight module. No input, dependency, scorer, or
+  scientific outcome was consumed. Its 0.0019269 CPU-h is recorded separately;
+  GPU budget remains exactly 2.8847 used / 27.1153 remaining. Execution repair
+  1 was locked before v2 and only inlined the unchanged preflight. V2 stopped
+  inside step 0 at 197.23 s: Python 3.12 emitted a platform OS byte in the
+  deterministic gzip header, and hashing the entire 595 MiB mounted expansion
+  violated the first-seconds envelope. No pip, imports, inputs, or outcomes were
+  consumed. V2 used 0.0565042 CPU-h; cumulative CPU is 0.0584311 h and GPU
+  budget remains exactly 2.8847 used / 27.1153 remaining. Execution repair 2
+  is locked before v3: normalize the gzip OS byte and use the manually
+  byte-verified pinned inventory for exact presence/size checks plus manifest,
+  inventory, population, and reversible-gzip hashes. Local step 0 is 0.0222 s;
+  science and all downstream deep pin checks are unchanged. V3 stopped before
+  heavy work because Kaggle lazy-mount traversal took 225.61 s and exceeded the
+  five-second envelope. Across v1–v3, no dependency install, scorer, or outcome
+  ran; **0.123161 CPU-h / 0 GPU-h** is recorded. The requested Kaggle rerun is
+  terminal infrastructure-invalid with no scientific verdict and no retry.
+  The unused v4 port is locally repaired and **WITHDRAWN**: its declared code
+  file contains and time-asserts step 0 before 5 s; a twice-reproduced
+  630,323,200-byte uncompressed tar accepts Kaggle-expanded directories and
+  verifies 375 members by SHA-256 without any container round-trip. Genuine
+  member drift fails closed; transport/existing tests pass 4/4 and 14/14. No
+  CPU dataset upload or kernel v4 occurred. Receipt
+  `selector_requirement_44b6/KAGGLE_CPU_PORT_WITHDRAWAL_V4.json`.
+- **SELECTOR-REQUIREMENT LOCAL HISTORY / SUPERSEDED BY CPU ROUTE.** The
+  original and streamed-lifetime processes remain invalid at +16.31 MiB and
+  +1,567.69 MiB swap with no consumed output. Native-goal continuation has
+  frozen execution repairs 3–4: delete, occupied-swap, restore-topology, and
+  aggregation run as separate freshly guarded processes; the swap stage removes
+  the heavyweight training-module import while preserving source-equivalent
+  frozen matching/conflict semantics. Repair 4 changes only swap compiler
+  receipts: each greedy conflict-disjoint set is compiled as one equivalent
+  frozen N1 SWAP primitive union instead of an atomic batch that revalidated
+  the full baseline per action. A direct fixture proves identical final graph
+  hash. Scientific inputs, 7×20 AUC/seed grid,
+  supports, compiler/scorer, thresholds, and tiers are unchanged. Focused tests
+  pass 22/22. The isolated delete class is now valid and complete:
+  1,345,497 actions / 1,118 beneficial, 140/140 noise runs, oracle-best
+  adjusted delta `+0.081897667` at prefix 2,048, 286.858 s guard, 1.081 GiB
+  peak RSS, and 0 MiB swap. The superseded swap receipt attempt was stopped
+  after 10,922.910 s / 0.997 GiB / 0 MiB swap with no terminal artifact or
+  exposed outcome. Swap and restore remain pending; no aggregate
+  requirement/verdict exists yet.
+- **DINOV2 R5 KAGGLE-CPU V3 TERMINAL INVALID / CPU LANE CLOSED.** The unchanged
+  source revision `7764ea0f…5fc8`, tree `2a27257b…f43`, checkpoint
+  `b938bf1b…0cd9` (88,283,115 B), XY-beta contract, 77 requests,
+  1,391,458 actions, and 1,417,863 unique endpoints are packaged under a
+  pre-outcome CPU transport amendment. The 148,679,264-byte archive
+  (`580499a2…ca40`) has 167 members, three offline wheels, the exact population
+  `4ab7bb23…76f0f`, and a binary official-source checkout. Pure-stdlib step 0
+  passes locally in 0.003668 s before pip/NumPy/Torch/zarr/model/inference.
+  The owner-cmux upload created READY private assets version 8 as a temporary
+  CPU carrier. The owner's manual download verified all 166 frozen inventory
+  records byte-exact; Kaggle only expanded the inner bundle ZIP, with no
+  missing, unexpected, or transformed payload. Receipt `2898e481…e487`.
+  Private kernel `g02-dinov2-r5-cpu-run-v1` version 1 stopped before heavy work
+  because recursive manifest discovery traversed the large lazy-mounted
+  competition tree and breached the five-second step-0 envelope at 190.30 s.
+  No pip, model load, inference, or outcome ran. Terminal usage is 0.0548687
+  CPU-h / 0 GPU-h; cumulative CPU is 0.1780297 h and the GPU budget is
+  unchanged. Execution repair 1 is locked before v2: use the exact private
+  dataset manifest path, with all science and limits unchanged. The manually
+  verified v8 expansion passes repaired step 0 locally in 0.0020515 s. V2 did
+  not repeat the traversal failure; it stopped at 0.913 s because the repair
+  used `/kaggle/input/<slug>` instead of Kaggle's evidenced private mount
+  `/kaggle/input/datasets/<owner>/<slug>`. No heavy work or outcome ran. V2
+  used 0.0022223 CPU-h / 0 GPU-h. The cross-campaign audit now records 17
+  incidents in 14 root-cause families, including exact error/log hashes and a
+  same-signature no-retry rule. A dedicated immutable dataset now owns this
+  lane. Remote Kaggle preflight authenticated the owner-qualified mount,
+  1,391,458 requests, 77 request and 77 population files, three wheels,
+  checkpoint/source/input/population hashes, and GPU-disabled metadata in
+  0.054277 s before heavy work. The shared launch guard and 12/12 regression
+  fixtures pass; the real DINO step 0 passes 2/2 missing/empty-manifest
+  fail-closed tests under five seconds. CPU-only scientific kernel v3 was
+  pushed once, then failed closed inside step 0 at 0.992640 s because it found
+  no exact private-dataset manifest. No dependency install, model load,
+  inference, or outcome ran. V3 used 0.0022130 CPU-h; cumulative recorded CPU
+  use is 0.1847631 h and GPU use remains 2.9035 h. The CPU lane is closed with
+  no retry. Receipt `sa_dinov2/KAGGLE_CPU_V3_TERMINAL_INVALID.json`.
 - **VIDEO-SUBSAMPLE FIDELITY UNSAFE / ROOT BARRIER COMPLETE.** A
   pre-outcome common-universe amendment standardized APNCC, C1, H1-ZWRFEAT,
   SA-DELETE, SA-SWAP, and NODETOPO on the already-opened 36-video held-44b6
@@ -24,6 +184,54 @@ points at the authoritative artifacts; it does not replace them.
   every promotion. Table `67cf33ed…9a3b9`; barrier
   `tiered_surface/subsample_fidelity/BARRIER_REPORT.json`. No tier move, GPU,
   Kaggle, budget debit, RunPod, submission, DEAD, plan, N1, folds, or P0 action.
+- **TWO-SUPPLIER BAKE-OFF ACTIVE / CELLECT INVALID / GRAPH BARRIER CLOSED.**
+  The prior DINOv2 and CELLECT attempts remain infrastructure-INVALID, not
+  scientific failures. Their shared frozen gate `9fb030bd…3310e`, sealed B0
+  `a9ce8c0b…b4ff2`, population `4ab7bb23…76f0`, folds, probe, and thresholds
+  are unchanged. The stale DAG-2-null reference is superseded by run_v6
+  requirement surface `6e62a29c…6c71b`: mean/robust-p05 AUC requirements are
+  delete **0.85/0.90** and occupied swap **0.90/0.95**. SWAP-O0 stays PARK-A,
+  but its compiler-valid 44b6 ceiling basis is corrected from legacy CG0
+  `+0.075828` to run_v6 **`+0.018571397`**. CELLECT N2 now passes on the
+  owner-downloaded v6 payload: repaired shared step 0 resolves the bundle,
+  request manifest, and all 77 request shards uniquely by pinned content,
+  authenticating 1,391,458 frozen actions in 0.101 s before heavy work.
+  Opaque names/parents and fail-closed fixtures pass 24/24 shared plus 7/7
+  independent tests; the self-contained kernel compiles. The sole v6 T4 run
+  then failed closed in step 0 at 3.956 s because the exact private-dataset
+  mount exposed zero matches for the pinned bundle manifest. No heavy import,
+  checkpoint load, 64-tile projection, feature, B0/A1/A0, or outcome occurred;
+  CELLECT is infrastructure-INVALID with no verdict and no retry. Conservative
+  debit is 0.0188 GPU-h, leaving 27.0965 h and no active authorization. DINO
+  local class-isolated MPS delete passed a fresh 45.209 s zero-swap preflight
+  and authenticated a 4.36294 h full-class projection after two released
+  videos, but its guard terminated at 7,877.258 s after 22/41 videos when swap
+  grew 140.875 MiB. There is no delete class manifest; partial shards are
+  quarantined, occupied swap and aggregation stayed closed, and no outcome was
+  consumed. DINOv2 is resource-INVALID with no verdict/no retry. No graph
+  contract/run, training, full cache, 6bba, CV57, submission, RunPod, tier
+  move, PARK-C, or threshold change has occurred. Final cross-read
+  `two_supplier_comparison_v2_run_v6/TWO_SUPPLIER_COMPARISON.json`
+  (`006b88ac…410c`) records zero PASS, zero FAIL, zero PARK-C moves, and zero
+  graph unlocks; both R5 and R7 remain PARK-B.
+  The human-prioritized DINOv2 Kaggle GPU transport is now locally
+  **PRELAUNCH-READY / NOT AUTHORIZED YET** in an isolated lane. Its generated
+  kernel is one self-contained file; step 0's first call recursively prints
+  every `/kaggle/input` file with byte size and SHA-256 before decoding or
+  resolving any embedded contract. An opaque expanded-mount fixture resolves
+  the 77 requests, pinned checkpoint `b938bf1b…0cd9`, official source tar, and
+  three wheels uniquely by content hash; missing and duplicate hashes fail
+  closed, and embedded A1/A0 feature math is array-identical to the frozen
+  implementation. The dataset contains no external bundle manifest and no
+  partial features. All 724,634 quarantined MPS rows are pre-outcome discarded
+  because MPS→CUDA numerical equivalence is unproven and no class manifest
+  exists. Both classes will be recomputed; no held-fold partial can leak.
+  Private assets `onebitbrain/g02-dinov2-r5-gpu-assets-v1` are READY at version
+  1 after 82 successful payload receipts. Serial prelaunch found both prior
+  campaign kernels terminal ERROR and no new GPU kernel; the root has opened
+  the sole authorization `DINOV2-R5-SEPARATION-GPU-V1` against 27.0965 h
+  remaining. No kernel launch, debit, outcome, or verdict has occurred;
+  CELLECT remains launch-closed until this DINO lane reports.
 - **N1 FEASIBILITY COMPILER GO / PHASE 1 BARRIER COMPLETE.** The immutable
   compiler accepts explicit no-op/add/delete/swap/fork/topology-restore actions,
   proves complete incident-conflict ownership, validates endpoints/time/degree/no-
@@ -34,7 +242,7 @@ points at the authoritative artifacts; it does not replace them.
   `tiered_surface/n1_feasibility_compiler/N1_FREEZE_REPORT.json`.
 - **TIER CENSUS / NO LIVE RUN:** machine state
   `tiered_surface/tier_census.json` at SHA-256
-  `4c7b6735cb2b03abdae3e1780e7b207a6e14ea237e199126ca47e7a9de944aa7`
+  `2d8299ee24b9402b7d57246dbd311c50ec45d695acc0420eb413476367eda22f`
   records **LIVE 0 / PARK-A 15 / PARK-B 19 / PARK-C 10 / DEAD 1**.
   Wave-3 accepted three cited moves: AE-P5 and AE-P7 PARK-B→PARK-A after
   exact contracts plus positive occupied-swap P0 headroom, and G2 PARK-B→PARK-C
@@ -104,7 +312,7 @@ points at the authoritative artifacts; it does not replace them.
   every authenticated Kaggle CLI list, push, or submit must run through
   computer-use cmux, where the owner's real session lives; the agent-shell token
   must never be used for those operations.
-- **CELLECT R7 SEPARATION / REMOTE BYTE-EXACT PASS / NO LAUNCH.** The authenticated-weight
+- **CELLECT R7 SEPARATION / V4 TERMINAL INVALID.** The authenticated-weight
   per-class amendment is frozen at `9fb030bd…3310e`; exact fit-only 44b6 populations completed under
   guard with delete **1,345,497 / 1,118 beneficial** and occupied-swap
   **45,961 / 134 beneficial** actions. The official checkpoint matches pinned
@@ -129,9 +337,13 @@ points at the authoritative artifacts; it does not replace them.
   session recovered all seven assets. Kaggle expanded the uncompressed tar during
   materialization; the safe-ASCII checkpoint round-tripped at exactly
   **10,197,221 B** and SHA-256 `f3e8e730…89ce5`, with all other payload hashes
-  exact. Focused tests are **17/17 PASS**. No kernel or submission command ran.
-  Infrastructure-fix contract `a1e6180a…3398`; remote receipt
-  `4aa00106…ecd0`; R7 remains PARK-B.
+  exact. Focused tests are **17/17 PASS**. The subsequently authorized v4
+  kernel authenticated that checkpoint at step 0 but discovered zero frozen
+  request files and stopped before feature computation. Its 0.3086 kernel-h
+  debit makes the cumulative CELLECT invalid-run debit **0.7677 kernel-h**. No
+  A1/A0 or scientific verdict exists; R7 remains PARK-B. Infrastructure-fix
+  contract `a1e6180a…3398`; remote receipt `4aa00106…ecd0`; v4 terminal receipt
+  `phase2_separation_gate/run_v4/TERMINAL.json`.
 - **H0 DONE** — proposal-only screening **BANNED** (no proxy `|ρ|≥0.5`). Every candidate now
   routes straight to the **44b6-first held-fit graph gate**; proposal metrics may be reported, never gate.
 - **GA-H1-ZWRFEAT-GRAPH DEAD — 44b6 GRAPH KILL.** The human-authorized parity
@@ -182,9 +394,11 @@ per-class amendment is frozen at `tiered_surface/branches/sa_repr/phase2_separat
 the feature run remains **INVALID** before supplier outcomes. The direct v3
 checkpoint transport is proven byte-changing rather than absent. Private asset
 v4 is READY and its authenticated cmux download proves a byte-exact safe-ASCII
-checkpoint after Kaggle expands the uncompressed tar. The infrastructure barrier
-is cleared, but the feature kernel remains unlaunched and requires a separate
-human launch authorization.
+checkpoint after Kaggle expands the uncompressed tar. The one authorized v4
+launch is now terminal INVALID before feature computation because it found zero
+frozen feature requests; the authorization is closed and debited 0.3086
+kernel-h. The independent DINOv2 R5 local path is also terminal
+INVALID_RESOURCE. Neither supplier has A1/A0 metrics or a scientific verdict.
 On the exact fit-only Phase-1
 N1-valid delete and occupied-swap populations, every class/fold must clear
 A1 AUC `≥0.65`, `≥B0+0.05`, `≥A0+0.03` and CG0-budget retention `≥0.15`,
@@ -194,8 +408,8 @@ unlocks a supplier-class-specific 44b6 graph contract; it is not a promotion.
 No further retry, A1/A0 evaluation, full cache, graph, 6bba, or CV57 run is authorized. Division still
 requires one association-continuity arm passing both families. C2 remains
 unscored, but its newly exact AE-P5 contract is PARK-A pending implementation
-and rank-1 output. DINOv2 is an authenticated second supplier; its separately
-authorized bounded R5 endpoint-feature materialization has not run.
+and rank-1 output. DINOv2 remains an authenticated second supplier at PARK-B;
+its authorized local materialization path closed INVALID_RESOURCE.
 
 ## Census / fallback queue
 
@@ -205,13 +419,28 @@ authorized bounded R5 endpoint-feature materialization has not run.
 | 1 | `AE-P7` | PARK-A | no graph; exact phase-template contract committed | `+0.075828`; fit105 identity/runtime smoke |
 | 1 | `AE-P1` | PARK-A | broader mechanism unscored; failed exact realizers do not demote it | `+0.075828`; newly named realizer only |
 | 2 | `AE-P2` | PARK-A | broader mechanism unscored; failed exact realizers do not demote it | `+0.075828`; newly named realizer only |
-| gated | `SWAP-O0` | PARK-A | exact-regret instantiation `−0.000310288/−0.000296592/0` (PARK-C breadcrumb) | `+0.075828`; representation falsifier PASS |
-| gated | `R5` DINOv2 XY | PARK-B | source/weight/load authenticated; feature and graph unrun | bounded endpoint-feature authorization |
-| gated | `R7` CELLECT | PARK-B | official weight + B0 authenticated; v4 remote checkpoint byte-exact; A1/A0 INVALID/unrun, graph unrun | separate human authorization for unchanged falsifier launch |
+| gated | `SWAP-O0` | PARK-A | exact-regret instantiation `−0.000310288/−0.000296592/0` (PARK-C breadcrumb) | compiler-valid run_v6 ceiling `+0.018571397` (`6e62a29c…6c71b`); representation falsifier PASS |
+| gated | `R5` DINOv2 XY | PARK-B | source/weight/load authenticated; local materialization INVALID_RESOURCE before features | new human-reviewed compute design only |
+| gated | `R7` CELLECT | PARK-B | consolidated v6 bundle byte-exact; A1/A0 still unrun | wait for both authorized Kaggle-CPU lanes, then one bounded GPU bake-off |
 | closed | `G2` exact regret | PARK-C | `−0.000310288/−0.000296592/0` | new named decision-focused mechanism only |
 | closed | `DELETE-O0` | PARK-C | exact retention beta `−0.000127119/−0.000131807/0` | materially new named deletion mechanism |
 
 ## Key numbers
+- Selector-requirement diagnostic: **2/2 fresh preflights PASS at zero growth;
+  2/2 scientific executions INVALID_RESOURCE**, at 722.620 s / 1.904 GiB /
+  +16.31 MiB swap and 1,034.259 s / 1.453 GiB / +1,567.69 MiB swap. **0 result
+  files from those attempts**. Repair-3 delete is separately **COMPLETE** at
+  1,345,497 / 1,118, oracle-best `+0.081897667`, 140/140 seeds, 1.081 GiB RSS,
+  and 0 MiB swap. A superseded swap receipt attempt produced no artifact/outcome
+  before an intentional stop at 10,922.910 s, 0.997 GiB RSS, and 0 MiB swap;
+  repair 4's primitive-union equivalence test passes and the full suite is
+  22/22. Repaired occupied swap is **COMPLETE** at 45,961 / 134,
+  oracle-best `+0.018571397`, 140/140 seeds, 1.017 GiB RSS, and 0 MiB swap.
+  Restore is **COMPLETE / CLASS-DEGENERATE** at 50 / 0 beneficial with oracle
+  ceiling `0`; AUC/retention is undefined. Final mean requirements are delete
+  AUC 0.85 / retention 0.020394 and swap AUC 0.90 / retention 0.067910; both
+  frozen-gate verdicts are **TOO LENIENT**. Barrier is
+  `HUMAN_REVIEW_REQUIRED`; no threshold or tier change.
 - Retrospective screening-fidelity node: **6 candidates / 36 common held-44b6
   videos / 12 cells / 10,000 draws per cell / 0 usable**. Best-rank `k=12`
   simple random had rho `0.828571`, sign agreement `0.820683`, and maximum 95%
@@ -239,8 +468,17 @@ authorized bounded R5 endpoint-feature materialization has not run.
   `−0.0003102875/−0.0002965922/0`; both stopped at 44b6.
 - Tier census is **0/15/19/10/1** over 45 nodes. Weekly Kaggle budget artifact
   `tiered_surface/kaggle_budget.json` at SHA-256
-  `2e02bc4f…1fc6` reconciles **2.5761/30.0 kernel-h used**, **27.4239 h remaining**,
-  no active authorization; RunPod forbidden and submission human-gated.
+  `e50cf1f0…763b5` reconciles **2.9035/30.0 kernel-h used**, **27.0965 h remaining**
+  after the terminal 0.0188-hour CELLECT v6 debit; no authorization remains active.
+  RunPod is forbidden and submission human-gated.
+- Two-supplier separation: common frozen population is **1,345,497 delete /
+  1,118 beneficial** and **45,961 occupied-swap / 134 beneficial**, across five
+  identical OOF folds. CELLECT N2 authenticated 77 request shards / 1,391,458
+  actions locally, but its sole v6 run failed in step 0 before features.
+  DINOv2 stopped on +140.875 MiB swap after 22/41 delete shards; all 724,634
+  partial rows are quarantined. Neither supplier opened B0/A1/A0, so the frozen
+  0.65/0.15 gate and run_v6 measured requirements are NOT EVALUATED for all
+  four supplier×class cells. Both remain PARK-B; comparison `006b88ac…410c`.
 - CPU-only Wave-2 NODETOPO prerequisite: **36/36 videos, 3,600/3,600 frames,
   107,370 proposals, 106,668 false proposals, 100,983 topology-joinable,
   50 restoration actions across 24 videos**, with 0 MiB swap growth. Its graph
@@ -310,6 +548,300 @@ Frozen C1 conflict-set attention (`C1-TA-HOCT-LITE`) is DEAD at its 44b6 graph g
 do not run 6bba or re-screen it without a new named mechanism.
 
 ## Log (newest first)
+- 2026-07-30 — DINOv2 Kaggle GPU **SERIAL AUTHORIZED / NOT LAUNCHED**:
+  self-contained assets version 1 is READY with 82/82 successful uploads;
+  local expanded-mount hash resolution and the 4.957520 h conservative
+  projection pass. Both prior campaign kernels are terminal ERROR, the new
+  slug is absent from the owner run list, and the budget opens exactly one
+  authorization against 27.0965 h remaining. No launch, debit, feature,
+  outcome, or verdict yet; CELLECT remains launch-closed. (Codex root)
+- 2026-07-30 — DINOv2 Kaggle CPU v3 **TERMINAL INFRASTRUCTURE-INVALID /
+  CPU LANE CLOSED**: live status is ERROR; step 0 failed at 0.992640 s with
+  `exact DINOv2 private-dataset manifest missing`. No dependency install,
+  model load, inference, outcome, or GPU use occurred. V3 used 0.0022130 CPU-h;
+  no retry is allowed and Kaggle GPU remains reserved for the 44b6 supplier
+  bake-off. (Codex root)
+- 2026-07-30 — Selector Kaggle CPU v4 port **LOCALLY REPAIRED / WITHDRAWN**:
+  live v3 status is ERROR and its terminal log confirms the 225.608 s step-0
+  envelope failure before heavy work. The single code file now inlines and
+  time-asserts step 0; the repeated uncompressed-tar build
+  `bdd63c43…9801` verifies expanded members only and fails closed on genuine
+  member mismatch. Tests pass 4/4 transport plus 14/14 existing. The valid
+  zero-swap local DAG-2 result remains authoritative; no selector CPU upload,
+  v4 launch, or new debit occurred. (Codex root)
+- 2026-07-30 — DINOv2 Kaggle CPU v3 **LAUNCHED after remote preflight PASS**:
+  dedicated lane-owned dataset mount authenticated the exact checkpoint,
+  source, population, 1,391,458 requests, 77+77 shards, and three wheels in
+  0.054277 s with no heavy work and GPU disabled. Shared launch guard and 12/12
+  failure-family fixtures plus 2/2 real missing/empty-manifest tests pass; v3
+  was pushed exactly once. This launch-state entry is superseded by the
+  terminal v3 entry above. Cross-campaign
+  audit records 17 incidents / 14 root causes with exact messages/log hashes
+  and forbids unchanged-signature retries. CPU preflight use is 0.0022981 h;
+  GPU budget remains 2.9035 used / 27.0965 remaining. No submission, RunPod,
+  graph, tier, threshold, DEAD, or plan action.
+- 2026-07-30 — DINOv2 Kaggle GPU package **LOCAL MOUNT PASS / NO LAUNCH**:
+  the single-file kernel's first parent call is a full recursive mounted-input
+  size/SHA listing. Under opaque expanded paths, content hashes uniquely
+  resolved 77 requests, the exact weight, source tar, and three wheels; missing
+  and duplicate hashes fail closed. Frozen feature math and A0 permutation are
+  array-identical. The versioned dataset payload has no external bundle
+  manifest and reuses 0/724,634 quarantined MPS rows. No remote action,
+  authorization, debit, outcome, or verdict; Lane B remains launch-closed.
+  (Codex root)
+- 2026-07-30 — DINOv2 CPU v2 **INVALID before heavy work** at 0.913 s:
+  exact manifest lookup used the wrong private-dataset mount convention.
+  No pip/model/inference/outcome; 0.0022223 CPU-h / 0 GPU-h. Human authorized
+  a new version only after aggregating all Kaggle errors into shared prevention.
+- 2026-07-29 — Authentic reverse Trackastra **N3 FAIL BOTH / TERMINAL**:
+  unchanged sealed five-fold separation gave delete A1 retention
+  `0–0.003268` and occupied-swap retention `0` in all folds; both evaluator
+  tokens are `FAIL_PARK_C`, with no tier move applied or proposed and no graph
+  unlock. Raw result `bd1c3d55…f46e`. (Codex root)
+- 2026-07-30 — Two-supplier cross-read v2 **TERMINAL / GRAPH BARRIER CLOSED**:
+  identical frozen population/folds/probe were preserved, but neither supplier
+  produced a complete feature manifest. All four supplier×class cells are
+  INVALID/NOT EVALUATED against both the frozen gate and run_v6 requirements.
+  Zero PASS, zero FAIL, zero PARK-C moves, and zero graph unlocks; R5/R7 stay
+  PARK-B. Comparison `006b88ac…410c`. (Codex root)
+- 2026-07-29 — Authentic reverse Trackastra **N1–N2 PASS / N3 OPEN**:
+  genuine CPU reverse inference completed exact frozen 44b6 coverage
+  `36/3539/84883/121534`; repeat arrays are identical and manifest is
+  `654cb499…6fe1`. Authenticated resume after a swap-growth stop reused only
+  29 verified files and materialized seven missing videos; final guard had
+  0 MiB swap growth. Supplier is **NON-GT-IDENTIFIABLE**; no graph or tier move.
+- 2026-07-29 — DINOv2 local MPS **TERMINAL RESOURCE-INVALID / NO RETRY**:
+  after a valid 4.362940 h projection, the delete class guard stopped at
+  7,877.258 s / 2.483 GiB peak RSS when swap grew 140.875 MiB. Only 22/41
+  feature shards existed; no class manifest, occupied-swap run, aggregation,
+  B0/A1/A0, metric, or verdict opened. Partial shards are quarantined; R5 stays
+  PARK-B and there is no PARK-C or graph unlock. Guard `11e215f2…595938`.
+  (Codex root)
+- 2026-07-29 — Authentic reverse Trackastra **N0 PASS**: owner-cmux SDK
+  download authenticated both historical assets by content SHA and confirmed
+  the archive member equals the standalone model. No listing gate, mutation, or
+  kernel action; N1–N3 opened under the existing frozen contracts.
+- 2026-07-29 — DINOv2 local MPS delete **PROJECTION PASS / RUNNING**: fresh
+  host preflight ran 45.209 s at zero swap growth; two complete per-video
+  releases authenticated a 4.362940 h full-class projection from 49,643 /
+  1,399,860 exact unique endpoints. No outcome or aggregation opened; the
+  class-isolated worker continues with swapouts unchanged. (Codex root)
+- 2026-07-29 — CELLECT N3 v6 **TERMINAL INFRASTRUCTURE-INVALID / NO RETRY**:
+  step 0 found zero pinned bundle-manifest matches beneath the exact private
+  dataset mount and aborted at kernel-log time 3.956 s. No heavy import,
+  checkpoint, projection, feature, B0/A1/A0, or scientific outcome. Conservative
+  debit 0.0188 GPU-h; weekly state is 2.9035 used / 27.0965 remaining with no
+  active authorization. CELLECT has no verdict and no PARK-C move. (Codex root)
+- 2026-07-29 — CELLECT N3 v6 **RUNNING**: the single permitted T4 run was
+  created at 13:55:13Z after serial budget and hash preflight passed. Scope is
+  only the 1,391,458 frozen 44b6 endpoint requests; it must project `<5 h`
+  after 64 tile jobs or abort and self-stops before the 5 h hard limit. No
+  debit or scientific result yet. (Codex root)
+- 2026-07-29 — CELLECT N3 **SERIAL AUTHORIZATION RECORDED** after N2 PASS:
+  exactly one v6 T4 run may compute only frozen 44b6 endpoint features. Budget
+  precheck is 2.8847/30.0 GPU-h used and 27.1153 remaining; the run must
+  authenticate a `<5 h` projection after 64 tile jobs or abort and has a 5 h
+  hard limit. No launch or debit yet. (Codex root)
+- 2026-07-29 — CELLECT two-supplier N2 **PASS / N3 STILL CLOSED**: the shared
+  step-0/kernel transport repair resolves the exact bundle, request manifest,
+  and 77 request payloads by pinned content hash, with structured frozen class
+  and identity records. The real owner-downloaded v6 payload yielded 1,391,458
+  actions in 0.101 s before heavy work; opaque-name/parent and fail-closed tests
+  pass 24/24 + 7/7 and the self-contained kernel compiles. No authenticated
+  `<5 h` end-to-end projection exists yet, so no authorization, launch, debit,
+  feature, scientific verdict, graph, tier, or threshold action. (Codex root)
+- 2026-07-29 — Authentic reverse Trackastra **STOP_N0**: the exact historical
+  checkpoint was absent under the frozen local authentication audit (265 archive
+  indexes plus exact name/size/cache searches). N1–N3 stayed closed; zero
+  reverse calls/rows, no fabricated reverse evidence, no separation result, and
+  AE-P6/R8 remain PARK-B.
+- 2026-07-29 — Two-supplier bake-off **N0 RECONCILED / ACTIVE**: the historical
+  comparison's DAG-2-null references now cite valid run_v6 requirement surface
+  `6e62a29c…6c71b`. Mean/robust-p05 AUC requirements are delete 0.85/0.90 and
+  occupied swap 0.90/0.95; frozen separation thresholds remain unchanged.
+  SWAP-O0 remains PARK-A, while its 44b6 headroom basis is corrected from the
+  legacy CG0 `+0.075828` diagnostic to the compiler-valid run_v6 ceiling
+  `+0.018571397`. No tier, DEAD, graph, threshold, new GPU/Kaggle
+  authorization, budget, submission, RunPod, training, full-cache, 6bba, or
+  CV57 action. (Codex root)
+- 2026-07-29 — Launched the single DINOv2 CPU v2 retry under locked exact-path
+  execution repair 1. Status RUNNING; frozen science unchanged, GPU/TPU/internet
+  disabled, and no GPU debit.
+- 2026-07-29 — DINOv2 CPU v1 **INVALID before heavy work**: recursive manifest
+  discovery traversed the lazy-mounted competition tree and step 0 exceeded
+  five seconds at 190.30 s. No pip/model/inference/outcome; 0.0548687 CPU-h,
+  zero GPU debit. Locked one exact-path-only v2 repair; local step 0 0.0020515 s.
+- 2026-07-29 — Human emphasized schedule pressure and directed aggressive use
+  of eligible Kaggle compute: quota conservation is no longer an optimization
+  goal. Scientific gates, serial authorization, per-run hard kills, submission,
+  RunPod, full-cache, and plan-amendment hard stops remain unchanged.
+- 2026-07-29 — Launched DINOv2 R5 private Kaggle kernel v1 after the manual v8
+  byte-exact pass. Status RUNNING; CPU only, GPU/TPU/internet disabled, 11.5 h
+  soft stop. No GPU debit, submission, or RunPod action.
+- 2026-07-29 — Manual owner download of private assets v8 passed byte-exact
+  DINOv2 CPU-bundle verification: 166/166 frozen inventory records, exact
+  checkpoint/source/population/77 requests/three wheels, zero extra or missing
+  payloads. Kaggle only expanded the inner ZIP. No kernel launch or budget use.
+- 2026-07-29 — Private assets version 8 is READY as the temporary DINOv2 R5
+  CPU carrier. It contains the 148,679,264-byte archive `580499a2…ca40`,
+  pinned source/weight/population/77 requests and three wheels; optimized local
+  step 0 passes in 0.003668 s. Awaiting manual v8 round-trip; no kernel launch.
+- 2026-07-29 — Selector Kaggle CPU rerun **TERMINAL INVALID / NO RETRY**:
+  v3 failed closed before heavy work when lazy-mount traversal exceeded the
+  five-second step-0 envelope. V1–v3 total 0.123161 CPU-h / 0 GPU-h; no
+  dependency install, scorer, aggregate, threshold, tier, or scientific result.
+- 2026-07-29 — Locked and locally verified the DINOv2 R5 Kaggle CPU transport
+  before outcomes: 167-member archive `580499a2…ca40`, exact weight/source/
+  population/77 requests, step 0 at 0.226 s, 9/9 focused tests, GPU disabled.
+  No DINO dataset version or kernel yet.
+- 2026-07-29 — Selector Kaggle CPU v3 confirmed RUNNING under execution repair
+  2. The push client hung after server acceptance and was released only after a
+  separate owner-shell status confirmed version 3; no duplicate launch.
+- 2026-07-29 — Selector Kaggle CPU v2 **INVALID inside step 0** at 197.23 s:
+  Python 3.12 gzip header OS-byte drift plus an overbroad 595 MiB full rehash.
+  No heavy work/outcome; 0.0565042 CPU-h recorded, zero GPU debit. V3 repair is
+  limited to cross-version gzip normalization and first-seconds inventory use.
+- 2026-07-29 — Launched selector Kaggle CPU v2 under locked single-file
+  execution repair 1; `enable_gpu:false`, science unchanged, no GPU debit.
+- 2026-07-29 — Selector Kaggle CPU v1 **INVALID before step 0**:
+  `ModuleNotFoundError` for the sibling preflight at 0.858 s because Kaggle
+  packaged only `code_file`. No inputs or outcomes consumed; 0.0019269 CPU-h
+  recorded separately, zero GPU debit. Repair is single-file inlining only.
+- 2026-07-29 — Launched private selector-requirement CPU kernel v1 after manual
+  v7 round-trip and 0.592 s expanded-input preflight verification;
+  `enable_gpu:false`, no GPU debit, no submission, and no RunPod action.
+- 2026-07-29 — Manual owner download of private assets v7 passed logical
+  byte-exact verification for all 335 inventory records. Kaggle's sole
+  transform expanded one deterministic gzip; `gzip.compress(level=9,mtime=0)`
+  reproduces frozen SHA `6be1c77b…a5324`. Expanded-input step 0 passes in
+  0.592 s before heavy work. No kernel or GPU debit.
+- 2026-07-29 — Division-value DAG **TERMINAL / DIAGNOSTIC HALT**: exact
+  38-event ceiling `+0.092067842` [GT-DEPENDENT], but current-pool tier (a) is
+  1/38 and only `+0.002406490` [NON-GT-IDENTIFIABLE] at perfect selection.
+  Tier (b) requires an unbuilt stronger representation and has no measured
+  selector/AUC/retention surface. The +0.005 condition is therefore infeasible
+  for (a) and achievability is unestablished for (a+b). No amendment proposal,
+  fitting unlock, tier/plan/DEAD action, GPU, Kaggle, budget debit, RunPod,
+  submission, N1, fold, or P0 change. (Codex root)
+- 2026-07-29 — Owner-cmux upload created READY private assets v7 containing
+  only the selector CPU carrier. Status JSON confirms version 7 READY, but the
+  CLI download stopped at the known private `GetDatasetMetadata` 403 before any
+  bytes; repeated download attempts are halted for manual owner verification.
+  No kernel launched. CELLECT v6 must be restored as latest before its GPU run.
+- 2026-07-29 — Locked the DAG-2 Kaggle CPU transport amendment before any
+  remote outcome and built its 394,376,773-byte private archive
+  (`4bb1c4a6…e6da3`; 336 members; 62 wheels; 41 frozen 44b6 videos);
+  `enable_gpu:false`, 16 GiB, pure-stdlib step 0, and 22/22 tests verified. No
+  remote launch or GPU debit yet.
+- 2026-07-29 — CELLECT single-bundle Task 1 **PASS / NO LAUNCH**: corrected
+  private dataset v6 is READY and owner-cmux round-trip verified 87/87 files
+  byte-exact under `ae3bc9b2…7fecd3`, including 77 frozen request shards,
+  1,391,458 actions, population `4ab7bb23…76f0f`, checkpoint
+  `f3e8e730…89ce5`, and all wheels. The incomplete v5 directory-skip attempt is
+  quarantined. Kernel metadata has one dataset source; universal step 0 passes
+  locally in 0.0545 s and 21/21 focused tests include <5 s missing/empty
+  request aborts. No kernel, GPU debit, submission, RunPod, graph, full cache,
+  tier, threshold, or DEAD action.
+- 2026-07-29 — Selector-requirement diagnostic **TERMINAL /
+  HUMAN_REVIEW_REQUIRED**: mean +0.005 requirements are delete AUC 0.85 /
+  retention 0.020394 / prefix 16,384 and occupied-swap AUC 0.90 / retention
+  0.067910 / prefix 1,024; robust p05 requires 0.90 / 0.044946 and 0.95 /
+  0.147388 respectively. Frozen 0.65 / 0.15 is TOO LENIENT for both. Restore
+  is population-infeasible (50 / 0 beneficial). Independent validation passes
+  8/8 with all three direct official oracle-point matches and 0 MiB swap.
+  Amendment proposed but not applied; no tier, threshold, plan, LEDGER, DEAD,
+  GPU/Kaggle/RunPod/submission, 6bba, CV57, or external action occurred.
+  Terminal `selector_requirement_44b6/run_v6/`; review `reviews_v1/final/`.
+  (Codex root)
+- 2026-07-29 — Selector-requirement **EXECUTION REPAIR 6 FROZEN AFTER
+  CLASSES / BEFORE AGGREGATE**: the aggregate loader now accepts zero noise
+  runs only for an explicitly one-class degenerate population and continues to
+  require exact 7×20 coverage for mixed-label classes. True-degenerate
+  acceptance and false-degenerate rejection pass; full suite 24/24. No score,
+  requirement rule, threshold, tier, plan, LEDGER, DEAD, GPU/Kaggle/RunPod/
+  submission, 6bba, CV57, or external action changed. (Codex root)
+- 2026-07-29 — Selector-requirement `restore_topology` stage **COMPLETE /
+  VALID CLASS-DEGENERATE**: the exact frozen population has 50 actions / 0
+  beneficial, and the oracle-best is the zero-action point with adjusted/raw/
+  node delta `0/0/0`; +0.005 is therefore infeasible and controlled AUC/
+  retention is undefined, so no synthetic noise runs were emitted. The fresh
+  guard ran 349.107 s at 1.115 GiB RSS and 0 MiB swap; terminal class SHA is
+  `03443bb2…281f22a`. Aggregate requirements remain pending. No tier,
+  threshold, plan, LEDGER, DEAD, GPU/Kaggle/RunPod/submission, 6bba, CV57, or
+  external action occurred. (Codex root)
+- 2026-07-29 — Selector-requirement local **EXECUTION REPAIR 5 FROZEN AFTER
+  SWAP / BEFORE RESTORE**: a restore launch failed closed before its child
+  process when concurrent transport work generalized shared source paths.
+  The accepted source transition defaults to the same local root and frozen
+  ZipStore, preserves repair 4, and passes the full 22/22 suite; a separate
+  local manifest pins it without modifying the concurrent transport manifest.
+  No restore outcome, tier, threshold, plan, LEDGER, DEAD,
+  GPU/Kaggle/RunPod/submission, 6bba, CV57, or external action occurred.
+  Repair `EXECUTION_REPAIR_5.json`; manifest
+  `EXECUTION_MANIFEST_LOCAL_V5.json`. (Codex root)
+- 2026-07-29 — Selector-requirement repair-4 `occupied_swap` stage **COMPLETE /
+  VALID**: exact frozen population 45,961 actions / 134 beneficial, 140/140
+  deterministic AUC runs, and oracle-best adjusted/raw/node delta
+  `+0.018571397/+0.018473552/0` at prefix 32,768 / applied support 29,574.
+  The fresh guarded process ran 2,221.571 s at 1.017 GiB peak RSS and 0 MiB
+  swap; terminal class SHA is `c37b8e0b…1eddfb03`. Restore and aggregate
+  requirements remain pending. No tier, threshold, plan, LEDGER, DEAD,
+  GPU/Kaggle/RunPod/submission, 6bba, CV57, or external action occurred.
+  (Codex root)
+- 2026-07-29 — Selector-requirement **EXECUTION REPAIR 4 FROZEN BEFORE
+  OCCUPIED-SWAP OUTCOMES**: the atomic swap receipt path was stopped with no
+  terminal artifact after 10,922.910 s because full-baseline validation per
+  selected action made the 140-run stage non-viable inside the five-hour guard.
+  Peak RSS was 0.997 GiB and swap growth 0 MiB. The repair compiles each
+  already conflict-disjoint selected set as one exact primitive-union SWAP
+  through the unchanged frozen N1 compiler; a direct test matches the atomic
+  batch final graph hash, and the full focused suite passes 22/22. Rankings,
+  populations, support/AUC/seed grids, scorer, thresholds, tiers, and the valid
+  delete result are unchanged. No tier, threshold, plan, LEDGER, DEAD,
+  GPU/Kaggle/RunPod/submission, 6bba, CV57, or external action occurred.
+  Repair `selector_requirement_44b6/EXECUTION_REPAIR_4.json`. (Codex root)
+- 2026-07-29 — Selector-requirement repair-3 `delete` stage **COMPLETE /
+  VALID**: exact frozen population 1,345,497 actions / 1,118 beneficial,
+  140/140 deterministic AUC runs, and oracle-best adjusted/raw/node delta
+  `+0.081897667/+0.081489580/0` at prefix/support 2,048. The fresh guarded
+  process ran 286.858 s at 1.081 GiB peak RSS and 0 MiB swap; terminal class
+  SHA is `edae5bfd…a69dda3`. Swap/restore and aggregate requirements remain
+  pending. No tier, threshold, plan, LEDGER, DEAD, GPU/Kaggle/RunPod/submission,
+  6bba, CV57, or external action occurred. (Codex root)
+- 2026-07-29 — Selector-requirement diagnostic **RESUMED / EXECUTION REPAIR 3
+  FROZEN PRE-OUTCOME**: after two invalid zero-result processes, the active
+  native goal realigned to one fresh zero-swap process per action class plus a
+  guarded aggregate. The lightweight swap path removes Torch/training imports
+  and reimplements only frozen input authentication, official matching,
+  topology, edge classification, and conflict ownership; all scientific
+  populations, AUC targets, 20 seeds, supports, compiler/scorer rules, targets,
+  and frozen gates are unchanged. Focused tests pass 21/21. No resumed outcome,
+  tier/threshold/plan/LEDGER/DEAD move, GPU/Kaggle/RunPod/submission, 6bba,
+  CV57, or external action exists. Repair
+  `selector_requirement_44b6/EXECUTION_REPAIR_3.json`. (Codex root)
+- 2026-07-29 — Two-supplier separation **TERMINAL INVALID / GRAPH BARRIER
+  CLOSED**. DINOv2 R5 closed `INVALID_RESOURCE_NO_VERDICT` after both guarded
+  local paths stopped on swap growth before a feature shard. The one authorized
+  CELLECT v4 kernel authenticated checkpoint SHA `f3e8e730…89ce5` at step 0,
+  then stopped before feature computation with `FeatureError: no frozen feature
+  requests found`. Its 1,110.781-second run debited 0.3086 kernel-h; weekly
+  budget is now 2.8847 used / 27.1153 remaining, SHA `4dfecb95…b5b2`. Neither
+  supplier has A1/A0 metrics or a per-class scientific verdict; both remain
+  PARK-B, not PARK-C. No retry, graph preregistration/run, full cache, training,
+  6bba, CV57, submission, RunPod, DEAD, plan, tier, or LEDGER change occurred.
+  (Codex root)
+- 2026-07-29 — `SELECTOR-REQUIREMENT-44B6-DIAGNOSTIC` is terminal
+  **INVALID_RESOURCE / NO VERDICT**. A preregistered exact dose/noise runner
+  passed 17/17 focused tests and two fresh zero-swap preflights. Attempt 1 grew
+  swap +16.31 MiB at 1.904 GiB peak RSS before any result file; one documented
+  class-lifetime streaming repair preserved all scientific inputs/rules but
+  attempt 2 grew +1,567.69 MiB at 1.453 GiB peak RSS. Both were killed, their
+  empty outputs quarantined, and no partial curve consumed. Delete,
+  occupied-swap, and restore-topology requirements and AUC 0.65 / retention
+  0.15 sufficiency remain unmeasured. No tier, threshold, plan, LEDGER, DEAD,
+  GPU/Kaggle/RunPod/submission, 6bba, CV57, or external action occurred; any
+  retry needs human review. Barrier
+  `selector_requirement_44b6/RESOURCE_BARRIER.json`. (Codex root)
 - 2026-07-29 — Video-subsample fidelity **SUBSAMPLING_UNSAFE / ROOT BARRIER
   PASS**: preregistration `c0d2de2a…ac5e` and pre-outcome common36 amendment
   `3c497948…673fc` preceded every draw. Six standardized banked candidates
@@ -321,6 +853,48 @@ do not run 6bba or re-screen it without a new named mechanism.
   RunPod, submission, DEAD, plan, N1, folds, or P0 action. Table
   `67cf33ed…9a3b9`; independent replay `12dcdcb2…bb6f`. (Codex root + three
   isolated lanes)
+- 2026-07-29 — CELLECT v4 **REMOTE RUN LAUNCHED / IN FLIGHT**: after the
+  zero-remote-effect filename repair, computer-use cmux successfully pushed
+  `onebitbrain/g02-cellect-r7-separation-v1` version 4 at
+  2026-07-28T19:06:40.866162Z. First authenticated status is RUNNING. This is the
+  one authorized run; no retry remains. The monitor enforces the frozen kernel's
+  `<5 h` projection and 4 h 55 m self-stop, with a 5 h outer limit. No feature
+  result, debit, graph contract/run, full cache, training, 6bba, CV57,
+  submission, or RunPod action exists yet. (Codex root)
+- 2026-07-29 — CELLECT v4 cmux launch **LOCAL CLI REJECTION / ZERO REMOTE
+  EFFECT**: serial prelaunch passed at 27.4239 h remaining, but the first push
+  command exited in 0.691 s before network dispatch because Kaggle CLI requires
+  the canonical filename `kernel-metadata.json`. No kernel version/run or debit
+  exists. A byte-exact canonical metadata copy at SHA `4d214527…7264` is the
+  execution-only staging repair; kernel `1c8a6961…e58`, gate, B0, population,
+  labels, and folds are unchanged. The one authorized remote run remains unused;
+  no retry is allowed after a remote run is created. (Codex root)
+- 2026-07-29 — DINOv2 R5 local materialization **TERMINAL
+  INVALID_RESOURCE / NO VERDICT**: the integrated retry's 45.108-second
+  preflight passed at zero growth, then model initialization caused
+  +254.3125 MiB system swap growth in 9.765 s at 0.436 GiB child RSS. The guard
+  terminated it before any endpoint shard and quarantined an empty partial
+  directory. Together with attempt 1's pre-load +21.3125 MiB handoff growth,
+  this closes the authorized local path. R5 remains PARK-B; it is not PARK-C
+  because no A1/A0 or scientific gate outcome exists. No DINO Kaggle fallback,
+  graph, full cache, training, 6bba, CV57, submission, budget debit, or RunPod
+  action occurred. (Codex root)
+- 2026-07-29 — DINOv2 R5 local attempt 1 **FAIL-CLOSED / RESOURCE GUARD**:
+  exact MPS forward benchmark projected 0.62 h for 1,417,863 endpoints and the
+  45.019-second idle preflight passed at zero growth, but system swapouts rose
+  21.3125 MiB in the handoff before model load; the guard terminated the child
+  after 0.271 s at 0.069 GiB peak RSS. No output directory, endpoint feature,
+  A1/A0, verdict, graph, full cache, training, 6bba, CV57, submission, Kaggle
+  debit, or RunPod action exists. One integrated preflight/launch execution
+  repair will fail closed on any further growth. (Codex root)
+- 2026-07-29 — Two-supplier separation **AUTHORIZED / ACTIVE**: owner opened
+  local CPU/MPS DINOv2 R5 endpoint-feature materialization first and exactly one
+  serial CELLECT v4 Kaggle feature run against unchanged gate
+  `9fb030bd…3310e` and sealed B0 `a9ce8c0b…b4ff2`. CELLECT prelaunch budget is
+  27.4239 kernel-h with `<5 h` authenticated projection and hard 5 h kill;
+  scope is the exact 44b6 separation population only. No launch, feature,
+  outcome, debit, graph contract/run, full cache, training, 6bba, CV57,
+  submission, or RunPod action has occurred. (Codex root)
 - 2026-07-29 — CELLECT R7 **PRIVATE ASSET V4 READY / AUTHENTICATED BYTE-EXACT
   ROUND-TRIP PASS / NO LAUNCH**: owner reauthentication in computer-use cmux
   restored status/upload access and created version 4. `ListDatasetFiles` and

@@ -1,0 +1,110 @@
+{
+  "active_authorizations": [
+    {
+      "authorized_utc": "2026-07-29T17:54:15Z",
+      "hard_kill_elapsed_h": 5.0,
+      "id": "DINOV2-R5-SEPARATION-GPU-V1",
+      "kernel": "onebitbrain/g02-dinov2-r5-gpu-bakeoff-v1",
+      "maximum_runs": 1,
+      "projected_kernel_h": 4.957519901597405,
+      "scope": "exact frozen 44b6 DINOv2 XY-beta separation-population endpoint features only",
+      "status": "AUTHORIZED_NOT_YET_LAUNCHED"
+    }
+  ],
+  "authorization_policy": "serial root-recorded authorizations only; projected <5h may auto-open after scientific and integrity gates; projected >=5h requires human",
+  "auto_approve_projected_under_h": 5.0,
+  "budget_kernel_h": 30.0,
+  "cpu_hours": {
+    "sessions": [
+      {
+        "cpu_h": 0.0019269,
+        "enable_gpu": false,
+        "id": "SELECTOR-REQUIREMENT-CPU-V1",
+        "status": "error_kernel_source_sibling_not_packaged_before_step0"
+      },
+      {
+        "cpu_h": 0.0565042,
+        "enable_gpu": false,
+        "id": "SELECTOR-REQUIREMENT-CPU-V2",
+        "status": "error_step0_python312_gzip_header_and_slow_full_bundle_hash"
+      },
+      {
+        "cpu_h": 0.0647299,
+        "enable_gpu": false,
+        "id": "SELECTOR-REQUIREMENT-CPU-V3",
+        "status": "error_step0_lazy_mount_exceeded_five_second_envelope_terminal_no_retry"
+      },
+      {
+        "cpu_h": 0.0548687,
+        "enable_gpu": false,
+        "id": "DINOV2-R5-CPU-V1",
+        "status": "error_step0_recursive_input_discovery_exceeded_five_second_envelope"
+      },
+            {
+                "cpu_h": 0.0022223,
+                "enable_gpu": false,
+                "id": "DINOV2-R5-CPU-V2",
+                "status": "error_step0_wrong_private_dataset_mount_root"
+            },
+            {
+                "cpu_h": 0.0022981,
+                "enable_gpu": false,
+                "id": "DINOV2-R5-REMOTE-MOUNT-PREFLIGHT-V1",
+                "status": "completed_remote_step0_pass_0.054277081_seconds"
+            },
+            {
+                "cpu_h": 0.002213,
+                "enable_gpu": false,
+                "id": "DINOV2-R5-CPU-V3",
+                "status": "error_step0_cross_kernel_preflight_scope_leak_same_missing_manifest_signature_no_same_target_retry"
+            }
+        ],
+        "used": 0.1847631
+  },
+  "debits": [
+    {
+      "id": "H1-ZWRFEAT-SMOKE3",
+      "kernel_h": 0.0822,
+      "status": "completed"
+    },
+    {
+      "id": "H1-ZWRFEAT-FULL-CACHE",
+      "kernel_h": 2.0348,
+      "status": "completed"
+    },
+    {
+      "id": "CELLECT-R7-SEPARATION-SAMPLE-V1",
+      "kernel_h": 0.0035,
+      "status": "error_packaging_missing_zarr_before_feature_compute"
+    },
+    {
+      "id": "CELLECT-R7-SEPARATION-SAMPLE-V2",
+      "kernel_h": 0.2731,
+      "status": "error_infrastructure_missing_weight_before_feature_compute"
+    },
+    {
+      "id": "CELLECT-R7-SEPARATION-SAMPLE-V3",
+      "kernel_h": 0.1825,
+      "status": "error_infrastructure_missing_mounted_weight_before_feature_compute"
+    },
+    {
+      "id": "CELLECT-R7-SEPARATION-V4",
+      "kernel_h": 0.3086,
+      "status": "error_feature_request_discovery_before_feature_compute_no_retry"
+    },
+    {
+      "id": "CELLECT-R7-SEPARATION-V6",
+      "kernel_h": 0.0188,
+      "status": "error_step0_exact_dataset_mount_missing_pinned_bundle_manifest_no_retry"
+    }
+  ],
+  "hard_kill_elapsed_h": 5.0,
+  "public_submission": "EXPLICIT_HUMAN_APPROVAL_REQUIRED",
+  "remaining_kernel_h": 27.0965,
+  "runpod": "FORBIDDEN",
+  "schema": "celltrack-alpha.kaggle-weekly-budget.v1",
+  "updated_utc": "2026-07-29T17:54:15Z",
+  "used_kernel_h": 2.9035,
+  "week_end_utc_exclusive": "2026-08-03T00:00:00Z",
+  "week_start_utc": "2026-07-27T00:00:00Z"
+}

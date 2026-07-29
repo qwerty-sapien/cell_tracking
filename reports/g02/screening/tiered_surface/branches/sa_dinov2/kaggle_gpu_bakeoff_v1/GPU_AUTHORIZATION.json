@@ -1,0 +1,62 @@
+{
+  "schema": "celltrack-alpha.serial-gpu-authorization.v1",
+  "status": "AUTHORIZED_NOT_YET_LAUNCHED",
+  "authorized_utc": "2026-07-29T17:54:15Z",
+  "authorization_id": "DINOV2-R5-SEPARATION-GPU-V1",
+  "human_authorization": "ONE bounded DINOv2 Kaggle run after package, content-resolution, serial-budget, and projection checks; hard 5h kill.",
+  "root_authorizer": "Codex root orchestrator under explicit human instruction",
+  "kernel": "onebitbrain/g02-dinov2-r5-gpu-bakeoff-v1",
+  "required_kernel_version": 1,
+  "asset_dataset": "onebitbrain/g02-dinov2-r5-gpu-assets-v1",
+  "asset_dataset_version": 1,
+  "asset_dataset_status": "READY",
+  "scope": "exact frozen 44b6 separation-population DINOv2 XY-beta endpoint features for delete and occupied-swap only",
+  "maximum_remote_runs": 1,
+  "machine": "Kaggle GPU",
+  "projection": {
+    "projected_hours_with_margin": 4.957519901597405,
+    "must_be_strictly_less_than_hours": 5.0,
+    "soft_stop_seconds": 17940,
+    "hard_kill_seconds": 18000
+  },
+  "budget_before": {
+    "artifact_sha256": "5e3b2b47a5600a80e9cf35226fac785f3fc8b9e712ba9f56e1cda2b4afa6568f",
+    "used_kernel_hours": 2.9035,
+    "remaining_kernel_hours": 27.0965,
+    "active_authorizations": 0,
+    "maximum_authorized_debit_hours": 5.0
+  },
+  "serial_prelaunch": {
+    "new_kernel_absent_from_owner_run_list": true,
+    "prior_dinov2_kernel_status": "KernelWorkerStatus.ERROR",
+    "prior_cellect_kernel_status": "KernelWorkerStatus.ERROR",
+    "owner_run_list_sha256": "deb5ec8fe2f0ac0258db8cabb1dcbb6c7498ac0f7bba7d105047f73f6c142363",
+    "prior_dinov2_status_sha256": "a5df06eeae3415e259741d1acd9cfdf1170462cb376ab5969b429d0018b4f144",
+    "prior_cellect_status_sha256": "129dd54b7ad646fad3e7d91763e19a11f8941ca56e510e6d78626d60ebc42d38"
+  },
+  "pins": {
+    "kernel_sha256": "4062afdb835f55e36d6d7aefb9a5b139991da56d9cdae4949ac8df2dc6d8c817",
+    "kernel_metadata_sha256": "a04a1eace27d6b5f87a70339ecc8713160e38a274a9062d172fffc6c19721603",
+    "local_mount_validation_sha256": "49b5f79150aa1188d9ba6494694f41210e72bb7d2a6a1495d597725778f9b5d3",
+    "partial_reuse_decision_sha256": "28428bfded31c895039cd6316216ff182d547915e445053fe217584ea8ef9217",
+    "prelaunch_projection_sha256": "b49ab1d69c32fbe6d62c5e506107a21d2edde564ef1da3cbdca12274da123448",
+    "remote_dataset_registration_sha256": "ff42f082815b9cc4ffcca14ad1af1193557613fed41dcb8f0a21a3fcc07981ca",
+    "preregistration_sha256": "9fb030bdcffbf95e242c71aa8b2c14bf8254b42730acbb489d66e2fe35a3310e",
+    "sealed_B0_sha256": "a9ce8c0be5afe4c2d2bfb37f3878691956ea458964788776af2ae9358f6b4ff2"
+  },
+  "allowed_external_actions": [
+    "Push exactly private Kaggle kernel version 1.",
+    "Poll status and download the terminal log and exact endpoint-feature outputs.",
+    "Debit actual or conservative terminal runtime exactly once."
+  ],
+  "forbidden": {
+    "additional_retry": true,
+    "training": true,
+    "full_pool_cache": true,
+    "graph": true,
+    "family_6bba": true,
+    "cv57": true,
+    "submission": true,
+    "runpod": true
+  }
+}
