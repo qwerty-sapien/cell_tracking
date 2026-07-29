@@ -8,7 +8,9 @@
       "maximum_runs": 1,
       "projected_kernel_h": 4.957519901597405,
       "scope": "exact frozen 44b6 DINOv2 XY-beta separation-population endpoint features only",
-      "status": "AUTHORIZED_NOT_YET_LAUNCHED"
+      "launched_utc": "2026-07-29T17:55:29Z",
+      "remote_run_count": 1,
+      "status": "RUNNING"
     }
   ],
   "authorization_policy": "serial root-recorded authorizations only; projected <5h may auto-open after scientific and integrity gates; projected >=5h requires human",
@@ -103,7 +105,7 @@
   "remaining_kernel_h": 27.0965,
   "runpod": "FORBIDDEN",
   "schema": "celltrack-alpha.kaggle-weekly-budget.v1",
-  "updated_utc": "2026-07-29T17:54:15Z",
+  "updated_utc": "2026-07-29T17:55:29Z",
   "used_kernel_h": 2.9035,
   "week_end_utc_exclusive": "2026-08-03T00:00:00Z",
   "week_start_utc": "2026-07-27T00:00:00Z"

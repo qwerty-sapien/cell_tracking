@@ -1,0 +1,13 @@
+{
+  "schema": "celltrack-alpha.dinov2-kaggle-gpu-push-receipt.v1",
+  "authorization_id": "DINOV2-R5-SEPARATION-GPU-V1",
+  "kernel": "onebitbrain/g02-dinov2-r5-gpu-bakeoff-v1",
+  "kernel_version": 1,
+  "launched_utc": "2026-07-29T17:55:29Z",
+  "remote_run_count": 1,
+  "push_exit_observation": "Kernel version 1 successfully pushed.",
+  "push_log_sha256": "ebe01544669d89c246d0b823abe57b060b1f99cc763bfba734caa09358974b09",
+  "initial_status": "KernelWorkerStatus.RUNNING",
+  "initial_status_sha256": "f44728fe587d200bbe95a3b53c7a0f33a999758d6b7ed5b55a605612bac3286c",
+  "additional_push_forbidden": true
+}

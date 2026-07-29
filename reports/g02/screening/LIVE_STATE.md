@@ -228,9 +228,10 @@ points at the authoritative artifacts; it does not replace them.
   exists. Both classes will be recomputed; no held-fold partial can leak.
   Private assets `onebitbrain/g02-dinov2-r5-gpu-assets-v1` are READY at version
   1 after 82 successful payload receipts. Serial prelaunch found both prior
-  campaign kernels terminal ERROR and no new GPU kernel; the root has opened
-  the sole authorization `DINOV2-R5-SEPARATION-GPU-V1` against 27.0965 h
-  remaining. No kernel launch, debit, outcome, or verdict has occurred;
+  campaign kernels terminal ERROR and no new GPU kernel. The sole authorized
+  version-1 GPU run is now RUNNING under
+  `DINOV2-R5-SEPARATION-GPU-V1`, with no second push permitted, against 27.0965
+  h remaining before terminal debit. No outcome or verdict has occurred;
   CELLECT remains launch-closed until this DINO lane reports.
 - **N1 FEASIBILITY COMPILER GO / PHASE 1 BARRIER COMPLETE.** The immutable
   compiler accepts explicit no-op/add/delete/swap/fork/topology-restore actions,
@@ -548,6 +549,13 @@ Frozen C1 conflict-set attention (`C1-TA-HOCT-LITE`) is DEAD at its 44b6 graph g
 do not run 6bba or re-screen it without a new named mechanism.
 
 ## Log (newest first)
+- 2026-07-30 — DINOv2 Kaggle GPU v1 **LAUNCHED ONCE / RUNNING**:
+  the owner client confirmed kernel version 1 successfully pushed; the first
+  authenticated status is `KernelWorkerStatus.RUNNING`. Authorization
+  `DINOV2-R5-SEPARATION-GPU-V1` is now consumed, a second push is forbidden,
+  and 27.0965 h remains before terminal debit. No feature, outcome, verdict,
+  graph, training, full cache, 6bba, CV57, submission, or RunPod action yet;
+  CELLECT stays launch-closed. (Codex root)
 - 2026-07-30 — DINOv2 Kaggle GPU **SERIAL AUTHORIZED / NOT LAUNCHED**:
   self-contained assets version 1 is READY with 82/82 successful uploads;
   local expanded-mount hash resolution and the 4.957520 h conservative
