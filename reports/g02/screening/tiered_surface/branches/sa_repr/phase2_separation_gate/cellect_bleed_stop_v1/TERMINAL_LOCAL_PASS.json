@@ -1,0 +1,57 @@
+{
+  "schema": "celltrack-alpha.cellect-bleed-stop-terminal.v1",
+  "status": "LOCAL_MOUNT_PASS_NO_LAUNCH",
+  "decision": "CELLECT remains scientifically unevaluated and launch-closed pending the DINOv2 Lane-A terminal report.",
+  "runtime_contract": {
+    "external_bundle_manifest_required": false,
+    "external_request_manifest_required": false,
+    "embedded_request_file_count": 77,
+    "embedded_request_count": 1391458,
+    "expanded_mount_file_count": 83,
+    "expanded_checkpoint_member_resolved_by_content": true,
+    "opaque_names_and_parents": true,
+    "missing_required_content": "FAIL_CLOSED",
+    "duplicate_required_content": "FAIL_CLOSED"
+  },
+  "frozen_science": {
+    "post_step0_science_code_unchanged": true,
+    "post_step0_science_code_sha256": "7583c9b69331dfe3cc65e18a5f7badf89acb641794a86fc2dab1cf98f7464046",
+    "population_changed": false,
+    "folds_changed": false,
+    "probe_changed": false,
+    "thresholds_changed": false
+  },
+  "validation": {
+    "generated_kernel_compile": "PASS",
+    "expanded_mount_positive": "PASS",
+    "downloaded_layout_compatibility": "PASS",
+    "independent_content_discovery_tests": "7/7 PASS",
+    "shared_cellect_tests": "24/24 PASS",
+    "heavy_imports_before_step0": false
+  },
+  "pins": {
+    "kernel_sha256": "7637a8e33fae0065a1a29e55615fc148a325600910ee0ad94606a1084e61d5c9",
+    "embedded_asset_contract_sha256": "e84a62dc12a92fdb323ac4a5edf2927a8a33163d16f1ca06f213a2a9320c3bba",
+    "build_receipt_sha256": "9a610eed21a5a2a943b2b311273e05920397795563db58a859f83f4ec2fc8859",
+    "local_mount_validation_sha256": "7ad094f6cebaecce8f47f987237bff2cbb6c31f15d8b238ae2d64abd93b6b03d",
+    "preregistration_sha256": "9fb030bdcffbf95e242c71aa8b2c14bf8254b42730acbb489d66e2fe35a3310e",
+    "population_manifest_sha256": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c"
+  },
+  "remote_actions": {
+    "dataset_upload": false,
+    "kernel_launch": false,
+    "gpu_authorization": false,
+    "gpu_debit_hours": 0,
+    "submission": false,
+    "runpod": false
+  },
+  "hard_stops": {
+    "training": true,
+    "full_pool_cache": true,
+    "graph": true,
+    "family_6bba": true,
+    "cv57": true,
+    "submission": true,
+    "runpod": true
+  }
+}

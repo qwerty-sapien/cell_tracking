@@ -1,0 +1,35 @@
+{
+  "class_action_counts": {
+    "delete": 1345497,
+    "occupied_swap": 45961
+  },
+  "class_file_counts": {
+    "delete": 41,
+    "occupied_swap": 36
+  },
+  "downloaded_layout_compatibility": "PASS",
+  "duplicate_required_content": "FAIL_CLOSED",
+  "embedded_asset_contract_sha256": "e84a62dc12a92fdb323ac4a5edf2927a8a33163d16f1ca06f213a2a9320c3bba",
+  "expanded_mount_fixture": {
+    "checkpoint_transport": "expanded_raw_member_opaque_name",
+    "external_bundle_manifest_present": false,
+    "external_request_manifest_present": false,
+    "file_count": 83,
+    "unique_hash_count": 83
+  },
+  "expanded_mount_positive": "PASS",
+  "external_bundle_manifest_required": false,
+  "external_request_manifest_required": false,
+  "gpu_authorization": false,
+  "gpu_debit_hours": 0,
+  "heavy_imports_before_step0": false,
+  "kernel_launch": false,
+  "kernel_sha256": "7637a8e33fae0065a1a29e55615fc148a325600910ee0ad94606a1084e61d5c9",
+  "missing_required_content": "FAIL_CLOSED",
+  "post_step0_science_code_sha256": "7583c9b69331dfe3cc65e18a5f7badf89acb641794a86fc2dab1cf98f7464046",
+  "post_step0_science_code_unchanged": true,
+  "request_count": 1391458,
+  "request_file_count": 77,
+  "schema": "celltrack-alpha.cellect-bleed-stop-mounted-validation.v1",
+  "status": "PASS_SELF_CONTAINED_MOUNTED_LAYOUT"
+}
