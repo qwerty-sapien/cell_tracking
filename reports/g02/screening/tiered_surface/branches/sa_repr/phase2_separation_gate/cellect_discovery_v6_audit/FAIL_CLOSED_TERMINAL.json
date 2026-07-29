@@ -1,0 +1,109 @@
+{
+  "audited_utc": "2026-07-29",
+  "current_shared_step0_actual_download": {
+    "heavy_work_started": false,
+    "request_count": 1391458,
+    "request_file_count": 77,
+    "status": "PASS_ALL_REQUIRED_INPUTS"
+  },
+  "decision": {
+    "kernel_launch_authorized": false,
+    "n2_clears_n3_request": false,
+    "required_next_barrier": "ORCHESTRATOR_SHARED_KERNEL_REPAIR_AND_REVERIFY"
+  },
+  "elapsed_seconds": 0.15092200000071898,
+  "forbidden_actions": {
+    "authenticated_or_network_command": false,
+    "authorization": false,
+    "cv57": false,
+    "dead": false,
+    "family_6bba": false,
+    "full_pool_cache": false,
+    "gpu_debit": false,
+    "graph": false,
+    "kernel_launch": false,
+    "runpod": false,
+    "submission": false,
+    "tier_move": false,
+    "training": false
+  },
+  "inputs": {
+    "download_root": "/private/tmp/cellect-r7-v6-cmux-roundtrip.20260729/download",
+    "pins": {
+      "bundle_manifest_sha256": "ae3bc9b2bbf5e7b4e544bcb44159a2fc0d6250b3178a81192f2d8e9f867fecd3",
+      "population_manifest_sha256": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c",
+      "request_count": 1391458,
+      "request_file_count": 77,
+      "request_manifest_sha256": "82111af54e92a4118efbaea4ed0e5aef770f08a252df8e9f868ecea03b81bc83"
+    },
+    "shared_kernel_path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/kaggle_cellect_action_features.py",
+    "shared_kernel_sha256": "6db26d631eb8058da6f5d44bf71b2873f899b2c4f0f9043c2be747824eb7eed1",
+    "shared_step0_path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/kaggle_step0_preflight.py",
+    "shared_step0_sha256": "0d0972467303f0ed25ae41bff4a355c385e83907bc23e463bdf4b2f92bd21204"
+  },
+  "opaque_name_parent_invariance": {
+    "prototype_status": "PASS_UNIQUE_CONTENT_DISCOVERY",
+    "request_count": 1391458,
+    "request_file_count": 77,
+    "shared_step0_error": "expected exactly one consolidated_bundle_manifest.json, found 0",
+    "shared_step0_status": "FAIL_CLOSED"
+  },
+  "orchestrator_patch_plan": [
+    "Port this prototype's unique SHA-256 plus byte-count resolver into the shared pure-stdlib step 0.",
+    "Pin the request-manifest SHA-256 in the kernel and discover it by content, not filename.",
+    "Return structured request records carrying action_class, identity, action_count, bytes, sha256, and resolved_path.",
+    "Change the kernel consumer to use record action_class/identity and resolved_path; never infer semantics from parent/stem.",
+    "Add opaque-name/parent, missing, empty, duplicate, and wrong-hash tests to the shared 21-test suite.",
+    "Run the repaired shared step 0 on the owner-downloaded v6 payload before any authorization or launch."
+  ],
+  "projection": {
+    "hours": null,
+    "note": "The historical 0.0545-second step-0 pass is discovery timing, not an authenticated end-to-end GPU projection.",
+    "status": "NOT_AVAILABLE_NO_V6_RUNTIME_PROJECTION"
+  },
+  "prototype_content_addressed_discovery": {
+    "class_action_counts": {
+      "delete": 1345497,
+      "occupied_swap": 45961
+    },
+    "class_file_counts": {
+      "delete": 41,
+      "occupied_swap": 36
+    },
+    "heavy_work_started": false,
+    "inventory_file_count": 87,
+    "request_count": 1391458,
+    "request_file_count": 77,
+    "status": "PASS_UNIQUE_CONTENT_DISCOVERY",
+    "structured_record_fields": [
+      "action_class",
+      "action_count",
+      "bytes",
+      "identity",
+      "ordinal",
+      "resolved_path",
+      "sha256"
+    ]
+  },
+  "root_cause": "The v6 payload is complete and uniquely content-addressable, but the shared step-0 locates the bundle manifest by canonical filename and request payloads by manifest-relative paths. The kernel consumer then reconstructs action_class and identity from transport paths instead of using frozen manifest metadata.",
+  "schema": "celltrack-alpha.cellect-v6-independent-discovery-audit.v1",
+  "shared_kernel_contract_audit": {
+    "bundle_manifest_discovery_by_expected_content_hash": false,
+    "consumer_uses_structured_action_class": false,
+    "consumer_uses_structured_identity": false,
+    "observed_exact_manifest_filename_dependency": true,
+    "observed_manifest_relative_payload_dependency": true,
+    "observed_path_derived_action_class": true,
+    "observed_path_derived_identity": true,
+    "order_markers": {
+      "model_load": 16205,
+      "numpy_import": 6888,
+      "pip_call": 7086,
+      "step0_call": 6438,
+      "torch_import": 6907
+    },
+    "pre_heavy_order_pass": true,
+    "request_payload_resolution_by_expected_content_hash": false
+  },
+  "status": "FAIL_CLOSED_SHARED_KERNEL_NOT_CONTENT_ADDRESSED"
+}

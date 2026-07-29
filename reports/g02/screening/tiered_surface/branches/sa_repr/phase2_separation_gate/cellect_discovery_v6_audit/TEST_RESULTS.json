@@ -1,0 +1,34 @@
+{
+  "schema": "celltrack-alpha.cellect-v6-discovery-test-results.v1",
+  "status": "PASS_28_OF_28_WITH_N2_CONTRACT_GAP",
+  "audited_utc": "2026-07-29",
+  "independent_prototype_tests": {
+    "command": "python3 -m unittest -v test_content_addressed_step0.py",
+    "passed": 7,
+    "failed": 0,
+    "tests": [
+      "positive opaque names and parents",
+      "missing bundle manifest",
+      "empty request manifest",
+      "duplicate bundle-manifest content",
+      "wrong request-manifest hash",
+      "duplicate request-payload content",
+      "wrong request-payload hash"
+    ],
+    "implementation_sha256": "fb377020c466dd49def49ee5a7a26ed5466339c529468992abd2655f010d8476",
+    "test_sha256": "cbb4ddd2a3ce36c4940af1fb93cb7e4b0be741f87f84b0d794685ad1c63b1986"
+  },
+  "shared_suite": {
+    "command": "/Users/agent/Desktop/cell_tracking/.venv313/bin/python -B -m unittest -v test_cellect_separation.py",
+    "passed": 21,
+    "failed": 0,
+    "test_sha256": "3030518b353b95d748c1ffe0a6c3838ebc83b843fb155863d9bd4221d53173fc",
+    "qualification": "The shared suite passes but has no opaque-name/parent test for the request manifest or request payloads and no test that the kernel consumes structured action_class and identity."
+  },
+  "total": {
+    "passed": 28,
+    "failed": 0
+  },
+  "network_or_authenticated_action": false,
+  "kernel_launch": false
+}
