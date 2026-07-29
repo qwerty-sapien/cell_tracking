@@ -1,0 +1,21 @@
+{
+  "schema": "celltrack-alpha.dinov2-local-cpu-projection.v2",
+  "status": "INVALID_RESOURCE_PROJECTION_NO_SCIENTIFIC_VERDICT",
+  "action_class": "delete",
+  "device": "cpu",
+  "authenticated_projection_hours": 10.86,
+  "projection_limit_hours": 5.0,
+  "elapsed_seconds": 119.35897016525269,
+  "peak_child_rss_gib": 0.5107269287109375,
+  "swap_growth_mib": 0.0,
+  "feature_shards_emitted": 0,
+  "scientific_result_emitted": false,
+  "guard_receipt": "run/guard_delete.json",
+  "fresh_preflight_receipt": "run/preflight_delete.json",
+  "next_action": "One coordinator-authorized local MPS execution after a new 45-second zero-swap-growth preflight, preserving all scientific inputs and the five-hour projection stop.",
+  "retry_blind": false,
+  "thresholds_changed": false,
+  "external_action": false,
+  "kaggle_action": false,
+  "runpod_action": false
+}

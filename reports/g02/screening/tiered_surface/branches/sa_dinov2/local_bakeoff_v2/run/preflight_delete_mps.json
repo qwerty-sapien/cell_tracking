@@ -1,0 +1,13 @@
+{
+  "elapsed_seconds": 45.17038011550903,
+  "external_action": false,
+  "kaggle_action": false,
+  "observed_utc": "2026-07-29T13:38:47.295776Z",
+  "runpod_action": false,
+  "schema": "celltrack-alpha.dinov2-local-idle-preflight.v2",
+  "status": "PASS_ZERO_SWAP_GROWTH",
+  "swap_end_mib": 52756.578125,
+  "swap_growth_mib": 0.0,
+  "swap_peak_mib": 52756.578125,
+  "swap_start_mib": 52756.578125
+}

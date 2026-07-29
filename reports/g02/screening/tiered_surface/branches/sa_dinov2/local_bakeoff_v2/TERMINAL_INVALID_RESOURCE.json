@@ -1,0 +1,76 @@
+{
+  "schema": "celltrack-alpha.dinov2-local-bakeoff-terminal.v2",
+  "status": "INVALID_RESOURCE_NO_VERDICT",
+  "supplier_id": "F0-DINOV2-VITS14-XY-V1",
+  "node": "R5",
+  "terminal_date": "2026-07-29",
+  "frozen_inputs": {
+    "amendment_sha256": "9fb030bdcffbf95e242c71aa8b2c14bf8254b42730acbb489d66e2fe35a3310e",
+    "sealed_B0_sha256": "a9ce8c0be5afe4c2d2bfb37f3878691956ea458964788776af2ae9358f6b4ff2",
+    "population_manifest_sha256": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c",
+    "supplier_contract_sha256": "c8e3df7739a3691b6ad9c93234ecc8db9696992c126de3ff343def38a93d5610",
+    "run_v6_requirement_surface_sha256": "6e62a29ce3effdd2a3748716a9843f10f5f5954a322d10547f7a4cafc4d6c71b"
+  },
+  "delete": {
+    "status": "INVALID_RESOURCE_NO_VERDICT",
+    "fresh_preflight": {
+      "path": "run/preflight_delete_mps_host.json",
+      "sha256": "0fa0ff79ce9f3839a783fa6b1b03fa1c459444cf8b1df8dd28ae02918f37760d",
+      "elapsed_seconds": 45.209169149398804,
+      "swap_growth_mib": 0.0
+    },
+    "guard": {
+      "path": "run/guard_delete_mps_host.json",
+      "sha256": "11e215f202df2e2459a84c4997a76c04c9093519b1e5a7167e64135c17595938",
+      "status": "FAIL_SWAP_GROWTH",
+      "elapsed_seconds": 7877.258127689362,
+      "peak_child_rss_gib": 2.482696533203125,
+      "swap_start_mib": 52756.578125,
+      "swap_peak_mib": 52897.453125,
+      "swap_end_mib": 52897.453125,
+      "swap_growth_mib": 140.875,
+      "forced_stop": true
+    },
+    "partial_quarantine": {
+      "path": "run/features/delete.invalid_resource_partial",
+      "file_count": 22,
+      "action_rows": 724634,
+      "bytes": 39537823,
+      "consumable": false,
+      "class_manifest_exists": false
+    },
+    "A1_A0_evaluated": false,
+    "frozen_gate_verdict": null,
+    "measured_requirement_comparison": null
+  },
+  "occupied_swap": {
+    "status": "NOT_RUN_BINDING_RESOURCE_STOP",
+    "reason": "Delete subprocess swap growth invoked the campaign hard stop and no-retry rule.",
+    "feature_files": 0,
+    "A1_A0_evaluated": false,
+    "frozen_gate_verdict": null,
+    "measured_requirement_comparison": null
+  },
+  "aggregation": {
+    "status": "NOT_RUN",
+    "sealed_B0_opened_for_evaluation": false,
+    "outcomes_consumed": false
+  },
+  "scientific_verdict": null,
+  "tier": "PARK_B_UNCHANGED",
+  "tier_move": null,
+  "park_c": false,
+  "graph_preregistration_unlocked": false,
+  "barrier": "CLOSED",
+  "retry_permitted_by_this_artifact": false,
+  "thresholds_changed": false,
+  "training": false,
+  "full_pool_cache": false,
+  "graph": false,
+  "family_6bba": false,
+  "cv57": false,
+  "submission": false,
+  "kaggle": false,
+  "runpod": false,
+  "shared_state_written": false
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "updated_utc": "2026-07-29T14:54:00Z",
+  "lane_verdict": "INVALID_RESOURCE_NO_VERDICT",
+  "supplier_id": "F0-DINOV2-VITS14-XY-V1",
+  "node": "R5",
+  "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_dinov2/local_bakeoff_v2/TERMINAL_INVALID_RESOURCE.json",
+  "evidence_sha256": "184d647bc742a67ae80ac9f989caa1a86ee1fe97604aa867dcc026edfdc84649",
+  "frozen_gate": {
+    "amendment_sha256": "9fb030bdcffbf95e242c71aa8b2c14bf8254b42730acbb489d66e2fe35a3310e",
+    "sealed_B0_sha256": "a9ce8c0be5afe4c2d2bfb37f3878691956ea458964788776af2ae9358f6b4ff2",
+    "population_manifest_sha256": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c",
+    "changed": false
+  },
+  "class_results": {
+    "delete": {
+      "status": "INVALID_RESOURCE_NO_VERDICT",
+      "frozen_gate_verdict": null,
+      "A1_A0_evaluated": false
+    },
+    "occupied_swap": {
+      "status": "NOT_RUN_BINDING_RESOURCE_STOP",
+      "frozen_gate_verdict": null,
+      "A1_A0_evaluated": false
+    }
+  },
+  "nodes": [
+    {
+      "id": "R5",
+      "tier": "PARK_B",
+      "tier_move_proposed": null,
+      "evidence_sha256": "184d647bc742a67ae80ac9f989caa1a86ee1fe97604aa867dcc026edfdc84649",
+      "evidence_basis": "Infrastructure resource invalid with no complete class feature manifest and no A1/A0 scientific evaluation.",
+      "resume_condition": "A new human-named resource mechanism or environment; this exact local repair must not be retried blind."
+    }
+  ],
+  "census_delta_proposed": {
+    "LIVE": 0,
+    "PARK_A": 0,
+    "PARK_B": 0,
+    "PARK_C": 0,
+    "DEAD": 0
+  },
+  "uncited_tier_moves": 0,
+  "graph_preregistration_unlocked": false,
+  "shared_state_written": false,
+  "ledger_written": false,
+  "kaggle_action": false,
+  "runpod_action": false,
+  "submission_action": false,
+  "dead_action": false
+}

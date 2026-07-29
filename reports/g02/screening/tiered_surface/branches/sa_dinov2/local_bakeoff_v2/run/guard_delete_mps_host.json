@@ -1,0 +1,33 @@
+{
+  "captured_output": "/private/tmp/g02_dinov2_source_7764ea0/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)\n  warnings.warn(\"xFormers is not available (SwiGLU)\")\n/private/tmp/g02_dinov2_source_7764ea0/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)\n  warnings.warn(\"xFormers is not available (Attention)\")\n/private/tmp/g02_dinov2_source_7764ea0/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)\n  warnings.warn(\"xFormers is not available (Block)\")\n1/41 train:44b6_0c582fdc endpoints=29232 q01=90.000000 q99=1942.000000\n2/41 train:44b6_0db75fae endpoints=18486 q01=0.000000 q99=1641.000000\n3/41 train:44b6_12dfb391 endpoints=50294 q01=91.000000 q99=2002.000000\n4/41 train:44b6_144b256d endpoints=32334 q01=129.000000 q99=1828.000000\n5/41 train:44b6_1574802b endpoints=20662 q01=7.000000 q99=1301.000000\n6/41 train:44b6_18ced818 endpoints=80345 q01=90.000000 q99=2276.000000\n7/41 train:44b6_1d530831 endpoints=39739 q01=70.000000 q99=2643.000000\n8/41 train:44b6_2a2eff9f endpoints=43139 q01=40.000000 q99=1418.000000\n9/41 train:44b6_3a861e03 endpoints=38086 q01=51.000000 q99=1584.000000\n10/41 train:44b6_40c45f5a endpoints=36141 q01=49.000000 q99=3386.000000\n11/41 train:44b6_415c0a3a endpoints=36373 q01=36.000000 q99=1705.000000\n12/41 train:44b6_551a5dba endpoints=36819 q01=37.000000 q99=3371.000000\n13/41 train:44b6_5740d24b endpoints=12918 q01=0.000000 q99=2360.000000\n14/41 train:44b6_587a1e22 endpoints=18879 q01=8.000000 q99=1046.000000\n15/41 train:44b6_5f15d135 endpoints=25851 q01=75.000000 q99=2642.000000\n16/41 train:44b6_706092f0 endpoints=31715 q01=213.000000 q99=1964.000000\n17/41 train:44b6_7e557709 endpoints=48316 q01=47.000000 q99=1621.000000\n18/41 train:44b6_808952d6 endpoints=16443 q01=39.000000 q99=1005.000000\n19/41 train:44b6_81c256f0 endpoints=11348 q01=22.000000 q99=820.000000\n20/41 train:44b6_8f5ab931 endpoints=29858 q01=50.000000 q99=2301.000000\n21/41 train:44b6_90724892 endpoints=25160 q01=24.000000 q99=1989.000000\n22/41 train:44b6_949adeb1 endpoints=42496 q01=53.000000 q99=2189.000000\n/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/resource_tracker.py:324: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-x7lwd3wr'}\n  warnings.warn(\n",
+  "command": [
+    "/Users/agent/Desktop/cell_tracking/.venv313/bin/python",
+    "run_class.py",
+    "--action-class",
+    "delete",
+    "--output",
+    "run/features/delete",
+    "--device",
+    "mps",
+    "--crop-batch",
+    "64",
+    "--forward-batch",
+    "64"
+  ],
+  "elapsed_seconds": 7877.258127689362,
+  "external_action": false,
+  "forced_stop_on_swap_growth": true,
+  "gpu_action": false,
+  "kaggle_action": false,
+  "peak_child_rss_gib": 2.482696533203125,
+  "preflight_path": "/private/tmp/g02_two_supplier_bakeoff_20260729/dinov2/reports/g02/screening/tiered_surface/branches/sa_dinov2/local_bakeoff_v2/run/preflight_delete_mps_host.json",
+  "returncode": -15,
+  "runpod_action": false,
+  "schema": "celltrack-alpha.dinov2-local-resource-guard.v2",
+  "status": "FAIL_SWAP_GROWTH",
+  "submission_action": false,
+  "swap_end_mib": 52897.453125,
+  "swap_growth_mib": 140.875,
+  "swap_peak_mib": 52897.453125,
+  "swap_start_mib": 52756.578125
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "celltrack-alpha.dinov2-local-bakeoff-validation.v2",
+  "status": "PASS_TERMINAL_INVALID_RESOURCE",
+  "validated_date": "2026-07-29",
+  "focused_tests": {
+    "status": "PASS",
+    "passed": 41,
+    "failed": 0,
+    "groups": {
+      "local_repair_and_run_v6_cross_read": 8,
+      "frozen_materializer": 3,
+      "frozen_featurizer": 6,
+      "frozen_gate_and_cellect_step0": 24
+    }
+  },
+  "json_validation": {
+    "status": "PASS",
+    "files": 15
+  },
+  "current_source_sha256": {
+    "constants.py": "c5117ea92209ef3126c437242c57c799c4af1f42e79f424cfee57c401da32559",
+    "run_class.py": "55fd21e646193cbf984a7d1110d75cb13605d899a2af08e079a5d1aadca99b97",
+    "resource_guard.py": "eb27d3d991646c30c1c4d722d80560d0db9a36c9b38c78156cdaceb3bdef8834",
+    "aggregate_evaluate.py": "9dec35e357740b7745e2181eef67333df9e5b99cf0f4dbc84960493a6c7b4d04",
+    "test_local_bakeoff_v2.py": "30f2ffa022ba8d1ead8fd220cfe436526b3ce0a0272a5e4373098879989b096e"
+  },
+  "terminal_artifacts": {
+    "TERMINAL_INVALID_RESOURCE.json": "184d647bc742a67ae80ac9f989caa1a86ee1fe97604aa867dcc026edfdc84649",
+    "TERMINAL_REPORT.md": "0f36260657254a56992c28b51539c2d1f65e4323859b372c4b04ea29d30df9db",
+    "state_fragment.json": "08abb6b409261546fbad918bc59e9eff641689b78a2dfc7076a33017a7fc7be4",
+    "PROPOSED_LEDGER_ROW.md": "99e68e144eab34a13e47de4daf5cd7202cb7e8cd627c85306961fbfc9cc3401e",
+    "PARTIAL_QUARANTINE_MANIFEST.json": "eab67434cd82ea8644ecdd89f176324d1a028371b36e445444e2a619f3a1bd76"
+  },
+  "binding_guard": {
+    "receipt_sha256": "11e215f202df2e2459a84c4997a76c04c9093519b1e5a7167e64135c17595938",
+    "status": "FAIL_SWAP_GROWTH",
+    "elapsed_seconds": 7877.258127689362,
+    "peak_child_rss_gib": 2.482696533203125,
+    "swap_growth_mib": 140.875,
+    "forced_stop": true
+  },
+  "partial_quarantine": {
+    "file_count": 22,
+    "action_rows": 724634,
+    "bytes": 39537823,
+    "hash_inventory_complete": true,
+    "binary_files_banked": false,
+    "consumable": false
+  },
+  "scientific_outcome_consumed": false,
+  "occupied_swap_run": false,
+  "aggregation_run": false,
+  "tier_move": false,
+  "graph_unlock": false,
+  "threshold_change": false,
+  "shared_state_write": false,
+  "ledger_write": false,
+  "kaggle_action": false,
+  "runpod_action": false,
+  "submission_action": false
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "celltrack-alpha.dinov2-local-mps-context.v2",
+  "status": "INVALID_EXECUTION_CONTEXT_NO_SCIENTIFIC_VERDICT",
+  "action_class": "delete",
+  "device": "mps",
+  "error": "MPS unavailable in sandboxed execution context",
+  "elapsed_seconds": 4.137600898742676,
+  "peak_child_rss_gib": 0.246612548828125,
+  "swap_growth_mib": 0.0,
+  "feature_shards_emitted": 0,
+  "scientific_result_emitted": false,
+  "guard_receipt": "run/guard_delete_mps.json",
+  "fresh_preflight_receipt": "run/preflight_delete_mps.json",
+  "next_action": "Use the identical command in the authenticated host execution context after a new fresh zero-swap-growth preflight.",
+  "retry_blind": false,
+  "resource_failure": false,
+  "thresholds_changed": false,
+  "external_action": false,
+  "kaggle_action": false,
+  "runpod_action": false
+}
