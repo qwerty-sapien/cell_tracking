@@ -1,0 +1,6 @@
+{
+  "schema": "celltrack-alpha.live-state-fragment.v1",
+  "status": "PROPOSED_NOT_APPLIED",
+  "frontier": "DINOv2 Kaggle GPU v1 is TERMINAL INFRASTRUCTURE-INVALID / NO RETRY. First-action inventory authenticated 24,968 files / 87.726 GB and step 0 resolved all 77 requests, checkpoint, source, wheels, and competition root. Pip then rejected the content-hash wheel basename before dependency completion, model/worker/features, or B0/A1/A0. Debit 0.3989 GPU-h; 26.6976 h remain. Both classes have no verdict; R5 remains PARK-B and graph stays closed.",
+  "log": "2026-07-30 — DINOv2 Kaggle GPU v1 TERMINAL INFRASTRUCTURE-INVALID / NO RETRY: full mounted inventory and content-addressed step 0 passed; invalid content-hash wheel basename failed before worker/model/science. Zero feature manifests, no B0/A1/A0 or verdict, debit 0.3989 GPU-h, 26.6976 h remain, no PARK-C or graph unlock."
+}

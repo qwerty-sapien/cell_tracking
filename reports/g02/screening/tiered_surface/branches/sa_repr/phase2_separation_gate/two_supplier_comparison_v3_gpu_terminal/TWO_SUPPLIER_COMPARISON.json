@@ -1,0 +1,191 @@
+{
+  "schema": "celltrack-alpha.two-supplier-separation-comparison.v3",
+  "status": "TERMINAL_BOTH_SUPPLIERS_INVALID_NO_SCIENTIFIC_VERDICT",
+  "created_utc": "2026-07-29T18:22:05Z",
+  "frozen_identity": {
+    "preregistration_sha256": "9fb030bdcffbf95e242c71aa8b2c14bf8254b42730acbb489d66e2fe35a3310e",
+    "sealed_B0_sha256": "a9ce8c0be5afe4c2d2bfb37f3878691956ea458964788776af2ae9358f6b4ff2",
+    "population_manifest_sha256": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c",
+    "fold_count": 5,
+    "probe": "unchanged frozen weighted ridge probe",
+    "execution_order": [
+      "B0_SEALED",
+      "A1_INCUMBENT_PLUS_SUPPLIER",
+      "A0_WITHIN_FRAME_PERMUTED_CONTROL"
+    ],
+    "changed": false,
+    "opened_in_this_bakeoff": false
+  },
+  "population": {
+    "delete": {
+      "actions": 1345497,
+      "beneficial": 1118,
+      "primary_class": true,
+      "run_v6_oracle_ceiling": 0.0818976668050011
+    },
+    "occupied_swap": {
+      "actions": 45961,
+      "beneficial": 134,
+      "primary_class": false,
+      "run_v6_compiler_valid_oracle_ceiling": 0.01857139664048635
+    },
+    "delete_to_swap_oracle_value_ratio": 4.409881948590828
+  },
+  "frozen_gate": {
+    "per_fold_all_required": true,
+    "auc": {
+      "absolute_floor": 0.65,
+      "lift_over_B0": 0.05,
+      "lift_over_A0": 0.03
+    },
+    "retention": {
+      "absolute_floor": 0.15,
+      "lift_over_B0": 0.05,
+      "lift_over_A0": 0.03
+    },
+    "per_video_fp_budget": true,
+    "controls_pass_fail": true,
+    "amended": false
+  },
+  "run_v6_measured_requirements": {
+    "source_sha256": "6e62a29ce3effdd2a3748716a9843f10f5f5954a322d10547f7a4cafc4d6c71b",
+    "reporting_only": true,
+    "delete": {
+      "mean": {
+        "auc": 0.85,
+        "retention": 0.02039355992844365
+      },
+      "robust_p05": {
+        "auc": 0.9,
+        "retention": 0.044946332737030414
+      }
+    },
+    "occupied_swap": {
+      "mean": {
+        "auc": 0.9,
+        "retention": 0.06791044776119404
+      },
+      "robust_p05": {
+        "auc": 0.95,
+        "retention": 0.14738805970149255
+      }
+    }
+  },
+  "suppliers": {
+    "dinov2_vits14_xy_beta": {
+      "supplier_id": "F0-DINOV2-VITS14-XY-V1",
+      "terminal_status": "INVALID_INFRASTRUCTURE_NO_SCIENTIFIC_VERDICT_NO_RETRY",
+      "terminal_sha256": "0ba7f5114ddf927a73670c1b01636d61cc77b204c3dfde6745d2becc087aeca5",
+      "remote_execution": {
+        "remote_run_count": 1,
+        "step0_status": "PASS",
+        "inventory_file_count": 24968,
+        "inventory_bytes": 87725717409,
+        "inventory_elapsed_seconds": 1242.975764806,
+        "request_files_resolved": 77,
+        "partial_reused_rows": 0,
+        "failure": "pip rejected content-hash-prefixed wheel basename",
+        "worker_spawned": false,
+        "model_loaded": false,
+        "feature_shards_written": 0,
+        "class_manifests_written": 0,
+        "conservative_debit_kernel_h": 0.3989
+      },
+      "per_class": {
+        "delete": {
+          "verdict": "INVALID_INFRASTRUCTURE_NO_VERDICT",
+          "frozen_auc_0_65_retention_0_15": "NOT_EVALUATED",
+          "run_v6_auc_mean_0_85_p05_0_90": "NOT_EVALUATED",
+          "run_v6_retention_mean_0_020394_p05_0_044946": "NOT_EVALUATED"
+        },
+        "occupied_swap": {
+          "verdict": "INVALID_INFRASTRUCTURE_NO_VERDICT",
+          "frozen_auc_0_65_retention_0_15": "NOT_EVALUATED",
+          "run_v6_auc_mean_0_90_p05_0_95": "NOT_EVALUATED",
+          "run_v6_retention_mean_0_067910_p05_0_147388": "NOT_EVALUATED"
+        }
+      },
+      "B0_A1_A0_opened": false,
+      "tier_before": "PARK-B",
+      "tier_after": "PARK-B",
+      "park_c": false,
+      "graph_preregistration_unlocked": false
+    },
+    "cellect_r7": {
+      "supplier_id": "R7-CELLECT-AUTHENTICATED-V4-V6-TRANSPORT",
+      "scientific_terminal_status": "INVALID_INFRASTRUCTURE_NO_SCIENTIFIC_VERDICT_NO_RETRY",
+      "scientific_terminal_sha256": "38bee6a0825270722bad083ea537cbd26a4d88c7162fb61956ed8f1a65a439ec",
+      "bleed_stop_status": "LOCAL_MOUNT_PASS_NO_LAUNCH",
+      "bleed_stop_terminal_sha256": "3c7f509d885f1b0d8e150ff9ba1a47cbd38994a5dc74af25c136eb66f0c586f8",
+      "bleed_stop_validation_sha256": "7ad094f6cebaecce8f47f987237bff2cbb6c31f15d8b238ae2d64abd93b6b03d",
+      "bleed_stop": {
+        "embedded_request_files": 77,
+        "embedded_request_count": 1391458,
+        "expanded_mount_files": 83,
+        "external_manifest_files_required": 0,
+        "missing_content": "FAIL_CLOSED",
+        "duplicate_content": "FAIL_CLOSED",
+        "post_step0_science_unchanged": true,
+        "new_remote_run_count": 0,
+        "new_gpu_debit_h": 0
+      },
+      "per_class": {
+        "delete": {
+          "verdict": "INVALID_INFRASTRUCTURE_NO_VERDICT",
+          "frozen_auc_0_65_retention_0_15": "NOT_EVALUATED",
+          "run_v6_auc_mean_0_85_p05_0_90": "NOT_EVALUATED",
+          "run_v6_retention_mean_0_020394_p05_0_044946": "NOT_EVALUATED"
+        },
+        "occupied_swap": {
+          "verdict": "INVALID_INFRASTRUCTURE_NO_VERDICT",
+          "frozen_auc_0_65_retention_0_15": "NOT_EVALUATED",
+          "run_v6_auc_mean_0_90_p05_0_95": "NOT_EVALUATED",
+          "run_v6_retention_mean_0_067910_p05_0_147388": "NOT_EVALUATED"
+        }
+      },
+      "B0_A1_A0_opened": false,
+      "tier_before": "PARK-B",
+      "tier_after": "PARK-B",
+      "park_c": false,
+      "graph_preregistration_unlocked": false
+    }
+  },
+  "cross_read": {
+    "identical_population_folds_probe": true,
+    "scientific_supplier_comparison_available": false,
+    "reason": "Neither supplier produced a complete authenticated per-class feature manifest, so sealed B0, A1, and A0 remained closed.",
+    "delete_primary_weighting_applied": true,
+    "delete_value_ratio_over_swap": 4.409881948590828,
+    "frozen_gate_verdict": "NO_PASS_FAIL_VERDICT_FOR_EITHER_SUPPLIER",
+    "measured_requirement_verdict": "NOT_EVALUATED_FOR_EITHER_SUPPLIER"
+  },
+  "decision": {
+    "dinov2": "REMAIN_PARK_B_INVALID_NO_VERDICT",
+    "cellect": "REMAIN_PARK_B_INVALID_NO_VERDICT",
+    "pass_count": 0,
+    "fail_count": 0,
+    "park_c_moves": 0,
+    "graph_preregistrations_unlocked": 0,
+    "gpu_retry_authorized": false,
+    "cellect_launch_authorized": false,
+    "barrier": "HALT_FOR_HUMAN_REVIEW_NO_GRAPH_CONTRACT"
+  },
+  "budget": {
+    "dinov2_gpu_v1_debit_h": 0.3989,
+    "used_kernel_h": 3.3024,
+    "remaining_kernel_h": 26.6976,
+    "active_gpu_authorizations": 0
+  },
+  "forbidden_actions_observed": {
+    "training": false,
+    "full_pool_cache": false,
+    "graph_contract": false,
+    "graph_run": false,
+    "family_6bba": false,
+    "cv57": false,
+    "submission": false,
+    "runpod": false,
+    "threshold_change": false,
+    "dead_promotion": false
+  }
+}

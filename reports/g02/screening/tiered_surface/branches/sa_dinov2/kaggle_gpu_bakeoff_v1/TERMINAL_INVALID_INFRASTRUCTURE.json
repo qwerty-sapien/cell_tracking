@@ -1,0 +1,93 @@
+{
+  "schema": "celltrack-alpha.dinov2-kaggle-gpu-terminal.v1",
+  "status": "INVALID_INFRASTRUCTURE_NO_SCIENTIFIC_VERDICT_NO_RETRY",
+  "authorization_id": "DINOV2-R5-SEPARATION-GPU-V1",
+  "kernel": "onebitbrain/g02-dinov2-r5-gpu-bakeoff-v1",
+  "kernel_version": 1,
+  "remote_run_count": 1,
+  "terminal_observed_utc": "2026-07-29T18:19:25Z",
+  "root_cause": "All mounted inputs resolved by content and step 0 passed, but pip rejected the content-hash-prefixed wheel basename as an invalid wheel filename before dependency installation or any worker/model/scientific work.",
+  "error": {
+    "type": "RuntimeContractError",
+    "message": "offline dependency installation failed",
+    "pip_message": "wheel-2a3175ce74a06109ff9307d90a230f81215cbac9a751f4d1c6194644b8204f9d.whl is not a valid wheel filename",
+    "kernel_failure_seconds": 1246.705842427,
+    "kernel_log_end_seconds": 1251.440971684,
+    "orchestrator_conservative_elapsed_seconds": 1436,
+    "conservative_debit_kernel_h": 0.3989
+  },
+  "step0": {
+    "status": "PASS",
+    "first_action": "FULL_RECURSIVE_MOUNT_INVENTORY_WITH_SIZE_AND_SHA256",
+    "inventory_file_count": 24968,
+    "inventory_bytes": 87725717409,
+    "inventory_elapsed_seconds": 1242.975764806,
+    "request_files_resolved": 77,
+    "wheels_resolved": 3,
+    "checkpoint_resolved": true,
+    "source_tar_resolved": true,
+    "competition_root_resolved": true,
+    "external_bundle_manifest_used": false,
+    "partial_reused_rows": 0
+  },
+  "chronology": {
+    "prelaunch_passed": true,
+    "remote_run_created": true,
+    "mount_inventory_completed": true,
+    "content_resolution_completed": true,
+    "step0_passed": true,
+    "dependency_install_started": true,
+    "dependency_install_completed": false,
+    "source_extracted": false,
+    "worker_spawned": false,
+    "model_loaded": false,
+    "runtime_projection_reached": false,
+    "feature_shards_written": 0,
+    "class_manifests_written": 0,
+    "B0_opened": false,
+    "A1_opened": false,
+    "A0_opened": false,
+    "scientific_outcome_consumed": false
+  },
+  "pins": {
+    "terminal_json_sha256": "7957256457b5d5e33b3b7b60b7c666d6db1e7e6048fd5d1586e3aff61916d54c",
+    "step0_pass_sha256": "4c59710fb595fb00629791e4b37dfc7de2c1b4343ae37515a97a3c9c8bb7557f",
+    "mount_inventory_sha256": "81438a820b62bca0b4f4a591cd0f8894b125a0d9ae095b2fb7591a23170041fc",
+    "downloaded_kernel_log_sha256": "9f5794936be83d8bf17c1891ad8cbd9c75f8add9b234ca0baf26e98c2693d522",
+    "cli_terminal_log_sha256": "047fdba13ffabed93a9a32f408146bdcc64c90d2ac5ea334f72992ca8b79df29",
+    "kernel_sha256": "4062afdb835f55e36d6d7aefb9a5b139991da56d9cdae4949ac8df2dc6d8c817",
+    "preregistration_sha256": "9fb030bdcffbf95e242c71aa8b2c14bf8254b42730acbb489d66e2fe35a3310e",
+    "sealed_B0_sha256": "a9ce8c0be5afe4c2d2bfb37f3878691956ea458964788776af2ae9358f6b4ff2",
+    "population_manifest_sha256": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c"
+  },
+  "per_class": {
+    "delete": {
+      "verdict": "INVALID_INFRASTRUCTURE_NO_VERDICT",
+      "frozen_gate_comparison": "NOT_EVALUATED",
+      "run_v6_requirement_comparison": "NOT_EVALUATED"
+    },
+    "occupied_swap": {
+      "verdict": "INVALID_INFRASTRUCTURE_NO_VERDICT",
+      "frozen_gate_comparison": "NOT_EVALUATED",
+      "run_v6_requirement_comparison": "NOT_EVALUATED"
+    }
+  },
+  "decision": {
+    "tier_before": "PARK-B",
+    "tier_after": "PARK-B",
+    "park_c": false,
+    "graph_preregistration_unlocked": false,
+    "retry_authorized": false
+  },
+  "hard_stops": {
+    "training": true,
+    "full_pool_cache": true,
+    "graph": true,
+    "family_6bba": true,
+    "cv57": true,
+    "submission": true,
+    "runpod": true,
+    "threshold_change": true,
+    "dead_promotion": true
+  }
+}

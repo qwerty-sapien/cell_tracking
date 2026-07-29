@@ -223,7 +223,7 @@ points at the authoritative artifacts; it does not replace them.
   (`006b88ac…410c`) records zero PASS, zero FAIL, zero PARK-C moves, and zero
   graph unlocks; both R5 and R7 remain PARK-B.
   The human-prioritized DINOv2 Kaggle GPU transport is now
-  **LAUNCHED ONCE / RUNNING**. Its generated
+  **TERMINAL INFRASTRUCTURE-INVALID / NO RETRY**. Its generated
   kernel is one self-contained file; step 0's first call recursively prints
   every `/kaggle/input` file with byte size and SHA-256 before decoding or
   resolving any embedded contract. An opaque expanded-mount fixture resolves
@@ -237,16 +237,19 @@ points at the authoritative artifacts; it does not replace them.
   Private assets `onebitbrain/g02-dinov2-r5-gpu-assets-v1` are READY at version
   1 after 82 successful payload receipts. Serial prelaunch found both prior
   campaign kernels terminal ERROR and no new GPU kernel. The sole authorized
-  version-1 GPU run is now RUNNING under
-  `DINOV2-R5-SEPARATION-GPU-V1`, with no second push permitted, against 27.0965
-  h remaining before terminal debit. CELLECT bleed-stop v1 is locally
+  version-1 GPU run completed the 24,968-file / 87.726 GB inventory in
+  1,242.976 s, resolved all 77 requests, weight, source, wheels, and competition
+  root, and emitted step-0 PASS. It then failed closed because pip rejected the
+  content-hash-prefixed wheel basename, before dependency completion,
+  source/model/worker work, features, B0/A1/A0, or outcome. Conservative debit
+  is 0.3989 GPU-h; 26.6976 h remain and no GPU authorization is active.
+  CELLECT bleed-stop v1 is locally
   **MOUNT-PASS / NOT LAUNCHED**: the generated kernel embeds all 77 request
   semantics and required content pins, resolves an opaque 83-file
   Kaggle-expanded fixture with no external bundle or request manifest, and
   fails closed on missing or duplicate content. Its post-step0 science suffix
-  is unchanged; independent/shared tests pass 7/7 and 24/24. No DINO outcome
-  or verdict has occurred, and CELLECT remains launch-closed until this DINO
-  lane reports.
+  is unchanged; independent/shared tests pass 7/7 and 24/24. Neither supplier
+  has a scientific verdict; CELLECT has no launch authorization.
 - **N1 FEASIBILITY COMPILER GO / PHASE 1 BARRIER COMPLETE.** The immutable
   compiler accepts explicit no-op/add/delete/swap/fork/topology-restore actions,
   proves complete incident-conflict ownership, validates endpoints/time/degree/no-
@@ -563,6 +566,24 @@ Frozen C1 conflict-set attention (`C1-TA-HOCT-LITE`) is DEAD at its 44b6 graph g
 do not run 6bba or re-screen it without a new named mechanism.
 
 ## Log (newest first)
+- 2026-07-30 — Two-supplier separation cross-read v3 **TERMINAL / GRAPH
+  CLOSED**: DINO GPU and the prior CELLECT launch are infrastructure-INVALID;
+  CELLECT's zero-manifest expanded-mount repair is local-only PASS. No complete
+  class manifest exists, so all four supplier×class cells are NOT EVALUATED
+  against the unchanged frozen gate or run_v6 requirements. DELETE remains
+  primary at ~4.41× swap value. Zero PASS, FAIL, PARK-C, or graph unlock;
+  DINO debit 0.3989 GPU-h leaves 26.6976 h. Comparison
+  `two_supplier_comparison_v3_gpu_terminal/TWO_SUPPLIER_COMPARISON.json`
+  (`06477396…7126`). (Codex root)
+- 2026-07-30 — DINOv2 Kaggle GPU v1 **TERMINAL INFRASTRUCTURE-INVALID /
+  NO RETRY**: first-action inventory authenticated 24,968 files / 87.726 GB in
+  1,242.976 s and step 0 resolved all 77 requests, weight, source, three wheels,
+  and competition root with zero partial reuse. Pip then rejected the
+  content-hash-prefixed wheel basename before dependency completion,
+  source/model/worker work, features, B0/A1/A0, or outcome. Debit 0.3989 GPU-h;
+  26.6976 h remain with no GPU authorization. Both classes are INVALID with no
+  PASS/FAIL, PARK-C, or graph unlock. Receipt
+  `kaggle_gpu_bakeoff_v1/TERMINAL_INVALID_INFRASTRUCTURE.json`. (Codex root)
 - 2026-07-30 — CELLECT bleed-stop v1 **LOCAL MOUNT PASS / NO LAUNCH**:
   the single-file kernel embeds the 77 request records and every required
   content pin. An opaque 83-file expanded-tar mount with the raw checkpoint

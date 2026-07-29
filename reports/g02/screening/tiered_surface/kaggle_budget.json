@@ -1,23 +1,20 @@
 {
-  "active_authorizations": [
-    {
-      "authorized_utc": "2026-07-29T17:54:15Z",
-      "hard_kill_elapsed_h": 5.0,
-      "id": "DINOV2-R5-SEPARATION-GPU-V1",
-      "kernel": "onebitbrain/g02-dinov2-r5-gpu-bakeoff-v1",
-      "maximum_runs": 1,
-      "projected_kernel_h": 4.957519901597405,
-      "scope": "exact frozen 44b6 DINOv2 XY-beta separation-population endpoint features only",
-      "launched_utc": "2026-07-29T17:55:29Z",
-      "remote_run_count": 1,
-      "status": "RUNNING"
-    }
-  ],
+  "active_authorizations": [],
   "authorization_policy": "serial root-recorded authorizations only; projected <5h may auto-open after scientific and integrity gates; projected >=5h requires human",
-  "auto_approve_projected_under_h": 5.0,
-  "budget_kernel_h": 30.0,
-  "cpu_hours": {
-    "sessions": [
+    "auto_approve_projected_under_h": 5.0,
+    "budget_kernel_h": 30.0,
+    "cpu_hours": {
+        "active_sessions": [
+            {
+                "actual_kernel_id": "onebitbrain/g02-dinov2-r5-cpu-promoted-preflight",
+                "cpu_h": null,
+                "enable_gpu": false,
+                "id": "DINOV2-R5-CPU-PROMOTED-V2",
+                "kernel_version": 2,
+                "status": "running_past_all_prior_step0_failure_windows_terminal_debit_pending"
+            }
+        ],
+        "sessions": [
       {
         "cpu_h": 0.0019269,
         "enable_gpu": false,
@@ -98,15 +95,20 @@
       "id": "CELLECT-R7-SEPARATION-V6",
       "kernel_h": 0.0188,
       "status": "error_step0_exact_dataset_mount_missing_pinned_bundle_manifest_no_retry"
+    },
+    {
+      "id": "DINOV2-R5-SEPARATION-GPU-V1",
+      "kernel_h": 0.3989,
+      "status": "error_invalid_content_hash_wheel_basename_after_step0_before_model_or_features_no_retry"
     }
   ],
   "hard_kill_elapsed_h": 5.0,
   "public_submission": "EXPLICIT_HUMAN_APPROVAL_REQUIRED",
-  "remaining_kernel_h": 27.0965,
+  "remaining_kernel_h": 26.6976,
   "runpod": "FORBIDDEN",
   "schema": "celltrack-alpha.kaggle-weekly-budget.v1",
-  "updated_utc": "2026-07-29T17:55:29Z",
-  "used_kernel_h": 2.9035,
+  "updated_utc": "2026-07-29T18:19:25Z",
+  "used_kernel_h": 3.3024,
   "week_end_utc_exclusive": "2026-08-03T00:00:00Z",
   "week_start_utc": "2026-07-27T00:00:00Z"
 }
