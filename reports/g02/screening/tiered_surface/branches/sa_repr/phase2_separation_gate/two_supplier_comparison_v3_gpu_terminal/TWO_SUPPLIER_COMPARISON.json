@@ -91,6 +91,18 @@
         "class_manifests_written": 0,
         "conservative_debit_kernel_h": 0.3989
       },
+      "prior_cpu_execution_reconciled": {
+        "attempt": "DINOV2-R5-CPU-PROMOTED-V2",
+        "terminal_status": "INVALID_RESOURCE_PROJECTION_NO_SCIENTIFIC_VERDICT_NO_RETRY",
+        "terminal_receipt_sha256": "e90768006c6caddc6ac078a78d54fa0e14eb889e28e7b5cee122a167e9e1ef90",
+        "step0_status": "PASS",
+        "step0_seconds": 0.05348280599991995,
+        "authenticated_projection_hours": 38.662,
+        "result_manifest_present": false,
+        "scientific_outcome_consumed": false,
+        "cpu_debit_h": 0.1163353,
+        "gpu_debit_h": 0.0
+      },
       "per_class": {
         "delete": {
           "verdict": "INVALID_INFRASTRUCTURE_NO_VERDICT",
@@ -172,9 +184,15 @@
   },
   "budget": {
     "dinov2_gpu_v1_debit_h": 0.3989,
-    "used_kernel_h": 3.3024,
-    "remaining_kernel_h": 26.6976,
-    "active_gpu_authorizations": 0
+    "repo_accounted_used_kernel_h": 3.3024,
+    "repo_accounted_remaining_kernel_h": 26.6976,
+    "authenticated_conservative_effective_used_gpu_h": 4.1889,
+    "authenticated_conservative_remaining_gpu_h": 25.8111,
+    "capacity_gate_remaining_gpu_h": 25.8111,
+    "dinov2_cpu_promoted_v2_debit_h": 0.1163353,
+    "cumulative_cpu_h": 0.3010984,
+    "active_gpu_authorizations": 0,
+    "active_cpu_sessions": 0
   },
   "forbidden_actions_observed": {
     "training": false,

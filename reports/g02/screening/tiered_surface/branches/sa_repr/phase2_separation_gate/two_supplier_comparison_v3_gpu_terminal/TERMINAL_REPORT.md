@@ -5,7 +5,7 @@ population, five folds, probe, and sealed B0→A1→A0 order.
 
 | Supplier | Delete | Occupied swap | Transport result | State |
 |---|---|---|---|---|
-| DINOv2 ViT-S/14 XY-beta | INVALID / not evaluated | INVALID / not evaluated | Kaggle step 0 passed all 77 requests, then pip rejected the content-hash wheel basename before model or features | PARK-B |
+| DINOv2 ViT-S/14 XY-beta | INVALID / not evaluated | INVALID / not evaluated | GPU step 0 passed all 77 requests, then pip rejected the content-hash wheel basename; the earlier CPU run also terminalized after step 0 when its authenticated projection was 38.662 h | PARK-B |
 | CELLECT R7 | INVALID / not evaluated | INVALID / not evaluated | Prior v6 launch remains invalid; new embedded-pin, zero-manifest expanded-mount preflight passes locally, with no launch authorization | PARK-B |
 
 The frozen AUC/retention floors (`0.65/0.15`) and all lift/control clauses are
@@ -21,5 +21,9 @@ create a verdict without measurements.
 
 There are zero PASS, zero FAIL, zero PARK-C moves, and zero graph
 preregistration unlocks. The frozen graph barrier remains closed. The one DINO
-GPU authorization is consumed and debited 0.3989 h; 26.6976 h remain. No
-additional GPU run or CELLECT launch is authorized.
+GPU authorization is consumed and debited 0.3989 h. The repo debit subtotal is
+3.3024 h used / 26.6976 h remaining, but the capacity gate uses the lower
+owner-authenticated basis: **25.8111 GPU-h remaining**. The reconciled earlier
+CPU attempt adds 0.1163353 CPU-h, for 0.3010984 cumulative CPU-h; no CPU session
+or GPU authorization remains active. No additional GPU run or CELLECT launch is
+authorized.

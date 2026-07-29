@@ -135,7 +135,7 @@ points at the authoritative artifacts; it does not replace them.
   after 10,922.910 s / 0.997 GiB / 0 MiB swap with no terminal artifact or
   exposed outcome. Swap and restore remain pending; no aggregate
   requirement/verdict exists yet.
-- **DINOV2 R5 KAGGLE-CPU V3 INVALID / TITLE-DERIVED CPU RUN ACTIVE.** The unchanged
+- **DINOV2 R5 KAGGLE-CPU TRANSPORT TERMINAL / NO ACTIVE CPU RUN.** The unchanged
   source revision `7764ea0f…5fc8`, tree `2a27257b…f43`, checkpoint
   `b938bf1b…0cd9` (88,283,115 B), XY-beta contract, 77 requests,
   1,391,458 actions, and 1,417,863 unique endpoints are packaged under a
@@ -173,13 +173,14 @@ points at the authoritative artifacts; it does not replace them.
   use is 0.1847631 h and GPU use remains 2.9035 h. Receipt
   `sa_dinov2/KAGGLE_CPU_V3_TERMINAL_INVALID.json`. A causal lineage-promotion
   push then exposed title/ID slug drift: Kaggle accepted it under actual ID
-  `g02-dinov2-r5-cpu-promoted-preflight/2`. That CPU-only run remains RUNNING
-  after 379.003 s, beyond all prior 0.86–225.61 s step-0 failures; because its
-  code cannot begin pip/model work before step 0 passes, neither the missing-
-  manifest nor traversal signature recurred. KFG-15/16 now bind preflight to
+  `g02-dinov2-r5-cpu-promoted-preflight/2`. Owner-authenticated reconciliation
+  now confirms that run is terminal ERROR. Its step 0 passed in 0.053483 s for
+  all 77 requests / 1,391,458 actions, then the authenticated local projection
+  was 38.662 h and failed closed before a result manifest or scientific
+  outcome. It debits 0.1163353 CPU-h / 0 GPU-h; cumulative recorded CPU use is
+  0.3010984 h and no CPU session remains active. KFG-15/16 bind preflight to
   kernel ID and reject title/ID drift; shared tests pass 14/14 plus real
-  missing/empty-manifest tests 2/2. No additional CPU launch is permitted;
-  active CPU usage awaits its terminal receipt.
+  missing/empty-manifest tests 2/2. No additional CPU launch is permitted.
 - **VIDEO-SUBSAMPLE FIDELITY UNSAFE / ROOT BARRIER COMPLETE.** A
   pre-outcome common-universe amendment standardized APNCC, C1, H1-ZWRFEAT,
   SA-DELETE, SA-SWAP, and NODETOPO on the already-opened 36-video held-44b6
@@ -218,10 +219,8 @@ points at the authoritative artifacts; it does not replace them.
   quarantined, occupied swap and aggregation stayed closed, and no outcome was
   consumed. DINOv2 is resource-INVALID with no verdict/no retry. No graph
   contract/run, training, full cache, 6bba, CV57, submission, RunPod, tier
-  move, PARK-C, or threshold change has occurred. Final cross-read
-  `two_supplier_comparison_v2_run_v6/TWO_SUPPLIER_COMPARISON.json`
-  (`006b88ac…410c`) records zero PASS, zero FAIL, zero PARK-C moves, and zero
-  graph unlocks; both R5 and R7 remain PARK-B.
+  move, PARK-C, or threshold change has occurred. The superseded v2 cross-read
+  recorded zero PASS, zero FAIL, zero PARK-C moves, and zero graph unlocks.
   The human-prioritized DINOv2 Kaggle GPU transport is now
   **TERMINAL INFRASTRUCTURE-INVALID / NO RETRY**. Its generated
   kernel is one self-contained file; step 0's first call recursively prints
@@ -242,14 +241,26 @@ points at the authoritative artifacts; it does not replace them.
   root, and emitted step-0 PASS. It then failed closed because pip rejected the
   content-hash-prefixed wheel basename, before dependency completion,
   source/model/worker work, features, B0/A1/A0, or outcome. Conservative debit
-  is 0.3989 GPU-h; 26.6976 h remain and no GPU authorization is active.
+  is 0.3989 GPU-h. The earlier CPU-promoted run is also now terminal:
+  owner-authenticated status is ERROR; step 0 passed in 0.053483 s, then its
+  authenticated projection was 38.662 h and failed closed with no result
+  manifest or outcome. It debits 0.1163353 CPU-h. No external session or GPU
+  authorization remains active. The repo GPU-debit subtotal is 3.3024 h used /
+  26.6976 h remaining, while launch capacity uses the lower owner-authenticated
+  postrun balance, **25.8111 GPU-h**. Exact pushed code, inventory, step-0
+  receipt, terminal payload, and logs are banked under
+  `kaggle_gpu_bakeoff_v1/terminal_evidence/`.
   CELLECT bleed-stop v1 is locally
   **MOUNT-PASS / NOT LAUNCHED**: the generated kernel embeds all 77 request
   semantics and required content pins, resolves an opaque 83-file
   Kaggle-expanded fixture with no external bundle or request manifest, and
   fails closed on missing or duplicate content. Its post-step0 science suffix
   is unchanged; independent/shared tests pass 7/7 and 24/24. Neither supplier
-  has a scientific verdict; CELLECT has no launch authorization.
+  has a scientific verdict; CELLECT has no launch authorization. The canonical
+  cross-read is
+  `two_supplier_comparison_v3_gpu_terminal/TWO_SUPPLIER_COMPARISON.json`
+  (`39fb452b…9383`): all four cells remain NOT EVALUATED, both suppliers remain
+  PARK-B, and no graph preregistration is unlocked.
 - **N1 FEASIBILITY COMPILER GO / PHASE 1 BARRIER COMPLETE.** The immutable
   compiler accepts explicit no-op/add/delete/swap/fork/topology-restore actions,
   proves complete incident-conflict ownership, validates endpoints/time/degree/no-
@@ -486,17 +497,22 @@ its authorized local materialization path closed INVALID_RESOURCE.
   `−0.0003102875/−0.0002965922/0`; both stopped at 44b6.
 - Tier census is **0/15/19/10/1** over 45 nodes. Weekly Kaggle budget artifact
   `tiered_surface/kaggle_budget.json` at SHA-256
-  `e50cf1f0…763b5` reconciles **2.9035/30.0 kernel-h used**, **27.0965 h remaining**
-  after the terminal 0.0188-hour CELLECT v6 debit; no authorization remains active.
+  `7ef0a044…5ad1` records the repo GPU-debit subtotal **3.3024/30.0 kernel-h
+  used / 26.6976 h remaining** and cumulative CPU use **0.3010984 h**.
+  Authorization capacity uses the lower owner-authenticated postrun balance,
+  **25.8111 GPU-h**. No GPU authorization or CPU session remains active.
   RunPod is forbidden and submission human-gated.
 - Two-supplier separation: common frozen population is **1,345,497 delete /
   1,118 beneficial** and **45,961 occupied-swap / 134 beneficial**, across five
   identical OOF folds. CELLECT N2 authenticated 77 request shards / 1,391,458
   actions locally, but its sole v6 run failed in step 0 before features.
-  DINOv2 stopped on +140.875 MiB swap after 22/41 delete shards; all 724,634
-  partial rows are quarantined. Neither supplier opened B0/A1/A0, so the frozen
-  0.65/0.15 gate and run_v6 measured requirements are NOT EVALUATED for all
-  four supplier×class cells. Both remain PARK-B; comparison `006b88ac…410c`.
+  DINOv2's sole GPU run passed its full mount/content step 0, then failed before
+  model/features on an invalid content-hash wheel basename; its earlier CPU run
+  also terminalized after step 0 on a 38.662 h projection. All 724,634 local
+  partial rows remain discarded. Neither supplier opened B0/A1/A0, so the
+  frozen 0.65/0.15 gate and run_v6 measured requirements are NOT EVALUATED for
+  all four supplier×class cells. Both remain PARK-B; canonical comparison
+  `39fb452b…9383`.
 - CPU-only Wave-2 NODETOPO prerequisite: **36/36 videos, 3,600/3,600 frames,
   107,370 proposals, 106,668 false proposals, 100,983 topology-joinable,
   50 restoration actions across 24 videos**, with 0 MiB swap growth. Its graph
@@ -566,22 +582,31 @@ Frozen C1 conflict-set attention (`C1-TA-HOCT-LITE`) is DEAD at its 44b6 graph g
 do not run 6bba or re-screen it without a new named mechanism.
 
 ## Log (newest first)
+- 2026-07-30 — Two-supplier accounting **RECONCILED / BARRIER CLOSED**:
+  owner-authenticated status confirms the earlier DINO CPU-promoted run is
+  ERROR. Its step 0 passed in 0.053483 s before a 38.662 h projection failed
+  closed; no result manifest or outcome, 0.1163353 CPU-h / 0 GPU-h. No external
+  session remains active. The repo GPU subtotal remains 3.3024 h used /
+  26.6976 h remaining, but capacity now uses the lower authenticated 25.8111 h
+  balance. Exact GPU terminal evidence is banked. Four supplier×class cells
+  remain NOT EVALUATED; zero PARK-C or graph unlock. (Codex root)
 - 2026-07-30 — Two-supplier separation cross-read v3 **TERMINAL / GRAPH
   CLOSED**: DINO GPU and the prior CELLECT launch are infrastructure-INVALID;
   CELLECT's zero-manifest expanded-mount repair is local-only PASS. No complete
   class manifest exists, so all four supplier×class cells are NOT EVALUATED
   against the unchanged frozen gate or run_v6 requirements. DELETE remains
   primary at ~4.41× swap value. Zero PASS, FAIL, PARK-C, or graph unlock;
-  DINO debit 0.3989 GPU-h leaves 26.6976 h. Comparison
+  DINO debit 0.3989 GPU-h; the reconciled capacity balance is 25.8111 h. Comparison
   `two_supplier_comparison_v3_gpu_terminal/TWO_SUPPLIER_COMPARISON.json`
-  (`06477396…7126`). (Codex root)
+  (`39fb452b…9383`). (Codex root)
 - 2026-07-30 — DINOv2 Kaggle GPU v1 **TERMINAL INFRASTRUCTURE-INVALID /
   NO RETRY**: first-action inventory authenticated 24,968 files / 87.726 GB in
   1,242.976 s and step 0 resolved all 77 requests, weight, source, three wheels,
   and competition root with zero partial reuse. Pip then rejected the
   content-hash-prefixed wheel basename before dependency completion,
   source/model/worker work, features, B0/A1/A0, or outcome. Debit 0.3989 GPU-h;
-  26.6976 h remain with no GPU authorization. Both classes are INVALID with no
+  the lower authenticated capacity balance is 25.8111 h with no GPU
+  authorization. Both classes are INVALID with no
   PASS/FAIL, PARK-C, or graph unlock. Receipt
   `kaggle_gpu_bakeoff_v1/TERMINAL_INVALID_INFRASTRUCTURE.json`. (Codex root)
 - 2026-07-30 — CELLECT bleed-stop v1 **LOCAL MOUNT PASS / NO LAUNCH**:

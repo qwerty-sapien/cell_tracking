@@ -4,16 +4,7 @@
     "auto_approve_projected_under_h": 5.0,
     "budget_kernel_h": 30.0,
     "cpu_hours": {
-        "active_sessions": [
-            {
-                "actual_kernel_id": "onebitbrain/g02-dinov2-r5-cpu-promoted-preflight",
-                "cpu_h": null,
-                "enable_gpu": false,
-                "id": "DINOV2-R5-CPU-PROMOTED-V2",
-                "kernel_version": 2,
-                "status": "running_past_all_prior_step0_failure_windows_terminal_debit_pending"
-            }
-        ],
+        "active_sessions": [],
         "sessions": [
       {
         "cpu_h": 0.0019269,
@@ -56,9 +47,17 @@
                 "enable_gpu": false,
                 "id": "DINOV2-R5-CPU-V3",
                 "status": "error_step0_cross_kernel_preflight_scope_leak_same_missing_manifest_signature_no_same_target_retry"
+            },
+            {
+                "actual_kernel_id": "onebitbrain/g02-dinov2-r5-cpu-promoted-preflight",
+                "cpu_h": 0.1163353,
+                "enable_gpu": false,
+                "id": "DINOV2-R5-CPU-PROMOTED-V2",
+                "kernel_version": 2,
+                "status": "error_authenticated_projection_38_662h_exceeds_bound_after_step0_no_result_manifest_no_retry"
             }
         ],
-        "used": 0.1847631
+        "used": 0.3010984
   },
   "debits": [
     {
@@ -103,11 +102,19 @@
     }
   ],
   "hard_kill_elapsed_h": 5.0,
+  "authenticated_capacity_basis": {
+    "basis": "prelaunch owner-authenticated Kaggle weekly GPU usage rounded to 2dp, less the conservative DINOv2 GPU v1 debit",
+    "prelaunch_authenticated_remaining_gpu_h_rounded": 26.21,
+    "dinov2_gpu_v1_conservative_debit_h": 0.3989,
+    "conservative_effective_used_gpu_h": 4.1889,
+    "conservative_remaining_gpu_h": 25.8111,
+    "capacity_gate_uses_minimum_of_repo_and_authenticated_remaining": true
+  },
   "public_submission": "EXPLICIT_HUMAN_APPROVAL_REQUIRED",
   "remaining_kernel_h": 26.6976,
   "runpod": "FORBIDDEN",
   "schema": "celltrack-alpha.kaggle-weekly-budget.v1",
-  "updated_utc": "2026-07-29T18:19:25Z",
+  "updated_utc": "2026-07-29T18:38:00Z",
   "used_kernel_h": 3.3024,
   "week_end_utc_exclusive": "2026-08-03T00:00:00Z",
   "week_start_utc": "2026-07-27T00:00:00Z"

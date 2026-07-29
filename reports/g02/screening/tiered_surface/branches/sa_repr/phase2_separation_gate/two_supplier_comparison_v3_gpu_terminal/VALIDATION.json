@@ -1,0 +1,85 @@
+{
+  "schema": "celltrack-alpha.two-supplier-separation-validation.v3",
+  "status": "PASS_TERMINAL_ACCOUNTING_AND_BARRIER",
+  "validated_utc": "2026-07-29T18:40:00Z",
+  "scope": "Terminal validation only; neither supplier produced a scientific separation result.",
+  "frozen_inputs": {
+    "preregistration_sha256": "9fb030bdcffbf95e242c71aa8b2c14bf8254b42730acbb489d66e2fe35a3310e",
+    "sealed_B0_sha256": "a9ce8c0be5afe4c2d2bfb37f3878691956ea458964788776af2ae9358f6b4ff2",
+    "population_manifest_sha256": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c",
+    "run_v6_requirement_surface_sha256": "6e62a29ce3effdd2a3748716a9843f10f5f5954a322d10547f7a4cafc4d6c71b",
+    "changed": false
+  },
+  "terminal_artifacts": {
+    "two_supplier_comparison_sha256": "39fb452bf723e040b95651eb0d4c97795c0aae725027b709461572cfbc479383",
+    "dinov2_gpu_terminal_sha256": "0ba7f5114ddf927a73670c1b01636d61cc77b204c3dfde6745d2becc087aeca5",
+    "dinov2_cpu_terminal_receipt_sha256": "e90768006c6caddc6ac078a78d54fa0e14eb889e28e7b5cee122a167e9e1ef90",
+    "cellect_local_terminal_sha256": "3c7f509d885f1b0d8e150ff9ba1a47cbd38994a5dc74af25c136eb66f0c586f8",
+    "cellect_mounted_layout_validation_sha256": "7ad094f6cebaecce8f47f987237bff2cbb6c31f15d8b238ae2d64abd93b6b03d",
+    "kaggle_budget_sha256": "7ef0a044f481d4ef7bd06598dd66ba7f77cc7db854eb628110e21d9eb0135ad1"
+  },
+  "banked_gpu_evidence": {
+    "exact_pushed_kernel_sha256": "4062afdb835f55e36d6d7aefb9a5b139991da56d9cdae4949ac8df2dc6d8c817",
+    "kernel_metadata_sha256": "bac3b7a905a401d17095ace87db4af3b69def0a1e2ed5a9c946f8abbae28516d",
+    "remote_terminal_sha256": "7957256457b5d5e33b3b7b60b7c666d6db1e7e6048fd5d1586e3aff61916d54c",
+    "step0_pass_sha256": "4c59710fb595fb00629791e4b37dfc7de2c1b4343ae37515a97a3c9c8bb7557f",
+    "mount_inventory_sha256": "81438a820b62bca0b4f4a591cd0f8894b125a0d9ae095b2fb7591a23170041fc",
+    "downloaded_kernel_log_sha256": "9f5794936be83d8bf17c1891ad8cbd9c75f8add9b234ca0baf26e98c2693d522",
+    "owner_cli_terminal_log_sha256": "047fdba13ffabed93a9a32f408146bdcc64c90d2ac5ea334f72992ca8b79df29"
+  },
+  "focused_tests": {
+    "dinov2_kaggle_gpu_bakeoff": {
+      "passed": 5,
+      "failed": 0
+    },
+    "cellect_independent_content_discovery": {
+      "passed": 7,
+      "failed": 0
+    },
+    "cellect_shared_separation_suite": {
+      "passed": 24,
+      "failed": 0
+    }
+  },
+  "remote_closure": {
+    "active_gpu_authorizations": 0,
+    "active_cpu_sessions": 0,
+    "dinov2_gpu_feature_shards": 0,
+    "dinov2_gpu_class_manifests": 0,
+    "dinov2_cpu_result_manifest_present": false,
+    "cellect_new_remote_runs": 0,
+    "B0_A1_A0_opened": false,
+    "scientific_outcome_consumed": false
+  },
+  "budget": {
+    "repo_accounted_used_gpu_h": 3.3024,
+    "repo_accounted_remaining_gpu_h": 26.6976,
+    "authenticated_conservative_effective_used_gpu_h": 4.1889,
+    "authenticated_conservative_remaining_gpu_h": 25.8111,
+    "capacity_gate_remaining_gpu_h": 25.8111,
+    "cumulative_cpu_h": 0.3010984
+  },
+  "verdict_validation": {
+    "supplier_class_cells": 4,
+    "evaluated_cells": 0,
+    "pass_cells": 0,
+    "fail_cells": 0,
+    "park_c_moves": 0,
+    "graph_preregistrations_unlocked": 0,
+    "dinov2_state": "PARK-B",
+    "cellect_state": "PARK-B",
+    "barrier": "HALT_FOR_HUMAN_REVIEW_NO_GRAPH_CONTRACT"
+  },
+  "forbidden_actions_observed": {
+    "training": false,
+    "full_pool_cache": false,
+    "family_6bba": false,
+    "cv57": false,
+    "submission": false,
+    "runpod": false,
+    "threshold_change": false,
+    "dead_promotion": false,
+    "graph_contract": false,
+    "graph_run": false
+  }
+}
