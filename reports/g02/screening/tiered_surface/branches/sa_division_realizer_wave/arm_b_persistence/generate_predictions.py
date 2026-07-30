@@ -315,12 +315,14 @@ def enumerate_video(
         child_margin = child_runner / max(cost, 1.0e-12)
         if min(parent_margin, child_margin) < 1.25:
             continue
-        row["mutual_best_margin"] = min(parent_margin, child_margin)
+        margin = min(parent_margin, child_margin)
+        row["mutual_best_margin"] = margin if math.isfinite(margin) else None
+        row["_sort_margin"] = margin
         selected_raw.append(row)
     selected_raw.sort(
         key=lambda row: (
             -int(row["branch_survival_depth"]),
-            -float(row["mutual_best_margin"]),
+            -float(row["_sort_margin"]),
             float(row["normalized_locality_cost"]),
             str(row["candidate_key"]),
         )
