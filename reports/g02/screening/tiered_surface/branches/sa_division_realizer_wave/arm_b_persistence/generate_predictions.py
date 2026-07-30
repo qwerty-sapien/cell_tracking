@@ -160,6 +160,38 @@ def enumerate_video(
         if int(nodes[target]["t"]) - int(nodes[source]["t"]) == 1
     ]
     radius = quantile_p95(one_frame_lengths)
+    eligible_child2_by_time: dict[int, list[int]] = {}
+    for child2 in sorted(nodes):
+        parents2 = incoming.get(child2, [])
+        grandchildren2 = outgoing.get(child2, [])
+        if len(parents2) != 1 or len(grandchildren2) != 1:
+            continue
+        parent2 = parents2[0]
+        grandchild2 = grandchildren2[0]
+        successors2 = outgoing.get(grandchild2, [])
+        if (
+            len(successors2) != 1
+            or len(incoming.get(grandchild2, [])) != 1
+            or len(outgoing.get(parent2, [])) != 1
+        ):
+            continue
+        successor2 = successors2[0]
+        if not (
+            int(nodes[grandchild2]["t"]) == int(nodes[child2]["t"]) + 1
+            and int(nodes[successor2]["t"]) == int(nodes[grandchild2]["t"]) + 1
+        ):
+            continue
+        eligible_child2_by_time.setdefault(int(nodes[child2]["t"]), []).append(child2)
+    spatial: dict[int, dict[tuple[int, int, int], list[int]]] = {}
+    for frame, child_ids in eligible_child2_by_time.items():
+        buckets: dict[tuple[int, int, int], list[int]] = {}
+        for child_id in child_ids:
+            key = tuple(
+                math.floor(float(nodes[child_id][axis]) / radius)
+                for axis in ("z", "y", "x")
+            )
+            buckets.setdefault(key, []).append(child_id)
+        spatial[frame] = buckets
     raw: list[dict[str, Any]] = []
     for parent in sorted(nodes):
         children1 = outgoing.get(parent, [])
@@ -182,8 +214,27 @@ def enumerate_video(
             and int(nodes[successor1]["t"]) == int(nodes[grandchild1]["t"]) + 1
         ):
             continue
-        for child2 in sorted(nodes):
-            if child2 == child1 or int(nodes[child2]["t"]) != int(nodes[child1]["t"]):
+        frame = int(nodes[child1]["t"])
+        parent_bucket = tuple(
+            math.floor(float(nodes[parent][axis]) / radius)
+            for axis in ("z", "y", "x")
+        )
+        local_child2: list[int] = []
+        for dz in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for dx in (-1, 0, 1):
+                    local_child2.extend(
+                        spatial.get(frame, {}).get(
+                            (
+                                parent_bucket[0] + dz,
+                                parent_bucket[1] + dy,
+                                parent_bucket[2] + dx,
+                            ),
+                            [],
+                        )
+                    )
+        for child2 in sorted(local_child2):
+            if child2 == child1:
                 continue
             parents2 = incoming.get(child2, [])
             grandchildren2 = outgoing.get(child2, [])
@@ -207,8 +258,11 @@ def enumerate_video(
                 and int(nodes[successor2]["t"]) == int(nodes[grandchild2]["t"]) + 1
             ):
                 continue
+            parent_to_child2 = distance(nodes[parent], nodes[child2])
+            if parent_to_child2 > radius:
+                continue
             distances = (
-                distance(nodes[parent], nodes[child2]),
+                parent_to_child2,
                 distance(nodes[child1], nodes[child2]),
                 distance(nodes[child1], nodes[grandchild2]),
             )
