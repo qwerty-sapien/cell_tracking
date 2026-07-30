@@ -22,6 +22,8 @@ results-*.zip
 **/fragments/
 **/control_fragments/
 **/candidate_fragments/
+/reports/g02/screening/tiered_surface/branches/sa_swap/**/alpha_fragments/
+/reports/g02/screening/tiered_surface/branches/sa_swap/**/beta_fragments/
 kaggle_kernel/*/cache/
 kaggle_kernel/*/features/
 **/submission.csv
@@ -30,3 +32,18 @@ kaggle_kernel/*/features/
 # Tracked CSV caches over GitHub's 100MB limit (also git rm --cached'd from the index)
 reports/g02/fitcache_remote/fc01_v3/bh9out/fit.csv
 reports/g02/fitcache_remote/fc00_v3/bh9out/fit.csv
+
+# Exact paths automatically excluded by the 100 MB Git guard
+/kaggle_kernel/bhcv57out_v3/cv57.csv
+*.zip
+
+# Generated run and kernel output directories
+**/output/
+**/outputs/
+**/*_output/
+**/*_output_*/
+*external/*
+.*/*
+reports/*
+kaggle_kernel/*
+_*/*

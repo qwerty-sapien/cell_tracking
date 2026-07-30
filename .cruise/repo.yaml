@@ -1,8 +1,0 @@
-schema_version: 1
-kind: cruise_repository_name
-name: celllineage3d
-repository_root: /Users/agent/Desktop/cell_tracking
-assigned_by: cruise_l1
-worker_level: 1
-model: gpt-5.6-luna
-reasoning_effort: medium

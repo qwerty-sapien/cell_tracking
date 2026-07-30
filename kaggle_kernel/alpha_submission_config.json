@@ -1,9 +1,0 @@
-{
-  "allow_division_route": false,
-  "calibration_policy": "No fold-specific calibration is applied to Kaggle test data.",
-  "model_package": "celltrack_alpha",
-  "output_offset_override": null,
-  "route": "auto",
-  "scoring_calibration": null,
-  "submission_split": "test"
-}
