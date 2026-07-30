@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Evaluate sealed Arm-A predictions through frozen N1 and official 44b6 scoring."""
+"""Evaluate sealed Arm-D consensus through frozen N1 and official 44b6 scoring."""
 
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ import warnings
 
 
 EXPECTED_PREDICTION_SHA256 = (
-    "55fdd22e8f171e2afa243791b90433f9ebf4ab8d9cf9ec3722f9ffc6f14c4108"
+    "f0b3e4a8e0e534d2107ae8f1fa5bad5cf6428647ae56f8a22558d5bf3539aaa4"
 )
 EXPECTED_TARGET_SHA256 = (
     "0926ab647915ad4e2e790252c040867e0bbc45a396155cecfe7f5813d6efe221"
@@ -190,7 +190,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     ):
         raise EvaluationError("prediction was not sealed before evaluation")
     predictions = load_json(predictions_path)
-    if predictions.get("status") != "SEALED_BEFORE_EVALUATION":
+    if predictions.get("status") != "SEALED_BEFORE_TARGET_EVALUATION":
         raise EvaluationError("prediction status drifted")
     selected = list(predictions.get("predictions", ()))
     if any(not str(row.get("identity", "")).startswith("train:44b6_") for row in selected):
@@ -248,7 +248,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     for row in selected:
         by_identity[str(row["identity"])].append(row)
     if any(len(rows) > 1 for rows in by_identity.values()):
-        raise EvaluationError("Arm A per-video cap violated")
+        raise EvaluationError("Arm D per-video consensus cap violated")
 
     candidate_rows: dict[str, dict[str, Any]] = {
         identity: dict(row) for identity, row in baseline_rows.items()
@@ -260,7 +260,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             row = rows[0]
             action_payload = row["action"]
             action = GraphAction(
-                action_id=f"armA.{str(row['candidate_key'])[:24]}",
+                action_id=f"armD.{str(row['candidate_key'])[:24]}",
                 kind=ActionKind.DIVISION_FORK,
                 add_edges=tuple(tuple(int(value) for value in pair) for pair in action_payload["add_edges"]),
                 replace_outgoing_from=tuple(
@@ -339,13 +339,13 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     }
     result = {
         "schema": "celltrack-alpha.division-realizer-result.v1",
-        "arm": "A",
-        "name": "geometry_motion",
+        "arm": "D",
+        "name": "HIGH_PRECISION_UNANIMOUS_CONSENSUS",
         "status": "COMPLETE_44B6_BARRIER",
         "verdict": "PASS" if all(pass_checks.values()) else "FAIL_PARK_C",
         "prediction": {
             "selected_count": len(selected),
-            "candidate_universe": predictions["candidate_universe"],
+            "candidate_universe": predictions.get("consensus", {}),
             "prediction_sha256": observed_hashes["predictions_sha256"],
             "duplicate_survivors": duplicate_survivors,
         },
