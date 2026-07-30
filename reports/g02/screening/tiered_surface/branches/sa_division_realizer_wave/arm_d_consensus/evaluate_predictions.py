@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 from collections import defaultdict
+from contextlib import nullcontext
 import hashlib
 import json
 import math
@@ -254,7 +255,11 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         identity: dict(row) for identity, row in baseline_rows.items()
     }
     compiler_receipts: list[dict[str, Any]] = []
-    with ZipStore(raw_archive, mode="r") as store:
+    # Zarr 3.2.1 does not initialize ZipStore's close lock until a group is
+    # opened. The preregistered empty-consensus path therefore uses a null
+    # context; nonempty arms retain the exact frozen ZipStore/scorer path.
+    zip_context = ZipStore(raw_archive, mode="r") if by_identity else nullcontext(None)
+    with zip_context as store:
         for identity, rows in sorted(by_identity.items()):
             graph = graphs[identity]
             row = rows[0]
