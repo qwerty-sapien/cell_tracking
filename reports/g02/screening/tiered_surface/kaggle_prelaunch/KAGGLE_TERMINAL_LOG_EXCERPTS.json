@@ -1,0 +1,79 @@
+{
+  "schema": "celltrack-alpha.kaggle-terminal-log-excerpts.v1",
+  "scope": "Exact terminal excerpts for the six CPU-kernel failures whose complete downloaded logs were held outside the repository.",
+  "post_failure_noise": [
+    "mistune.py SyntaxWarning: invalid escape sequence",
+    "nbconvert filter_links.py SyntaxWarning: invalid escape sequence",
+    "NbConvertApp Converting notebook __script__.ipynb to html"
+  ],
+  "logs": [
+    {
+      "incident": "SELECTOR-REQUIREMENT-CPU-V1",
+      "kernel_version": 1,
+      "log_sha256": "551e2fed5dfbfafb8210b8b2e496adc64f7e1b09eccc5017106c9f96797517be",
+      "failure_time_seconds": 0.8581211,
+      "error": "ModuleNotFoundError: No module named 'kaggle_selector_step0'",
+      "excerpt": [
+        "File \"/kaggle/src/script.py\", line 18, in <module>",
+        "from kaggle_selector_step0 import run as run_step0",
+        "ModuleNotFoundError: No module named 'kaggle_selector_step0'"
+      ]
+    },
+    {
+      "incident": "SELECTOR-REQUIREMENT-CPU-V2",
+      "kernel_version": 2,
+      "log_sha256": "d9593618cc31c77e95a960561c8e38c6fafb2030d4c744749e2107a1b4314c43",
+      "failure_time_seconds": 197.232529383,
+      "error": "Step0Error: expanded gzip transport is not byte-reversible",
+      "excerpt": [
+        "File \"/kaggle/src/script.py\", line 99, in run_step0",
+        "raise Step0Error(\"expanded gzip transport is not byte-reversible\")",
+        "Step0Error: expanded gzip transport is not byte-reversible"
+      ]
+    },
+    {
+      "incident": "SELECTOR-REQUIREMENT-CPU-V3",
+      "kernel_version": 3,
+      "log_sha256": "207729bddae004038fcab3dade19d9ca79d32215736c8f772d995f56fd251264",
+      "failure_time_seconds": 225.607991906,
+      "error": "step 0 exceeded the five-second fail-closed envelope",
+      "excerpt": [
+        "step 0 exceeded the five-second fail-closed envelope"
+      ]
+    },
+    {
+      "incident": "DINOV2-R5-CPU-V1",
+      "kernel_version": 1,
+      "log_sha256": "4ce4c79949cf822508043672bcef2accba2645fcda1c5a73ad73785d59b99d9d",
+      "failure_time_seconds": 190.301099049,
+      "error": "DINOv2 step 0 exceeded the five-second envelope",
+      "excerpt": [
+        "DINOv2 step 0 exceeded the five-second envelope"
+      ]
+    },
+    {
+      "incident": "DINOV2-R5-CPU-V2",
+      "kernel_version": 2,
+      "log_sha256": "df13af417d4cb316391877ef280c11563115eddee76e558c7225116bedea916a",
+      "failure_time_seconds": 0.913516514,
+      "error": "Step0Error: exact DINOv2 private-dataset manifest missing",
+      "excerpt": [
+        "File \"/kaggle/src/script.py\", line 56, in run_step0",
+        "raise Step0Error(\"exact DINOv2 private-dataset manifest missing\")",
+        "Step0Error: exact DINOv2 private-dataset manifest missing"
+      ]
+    },
+    {
+      "incident": "DINOV2-R5-CPU-V3",
+      "kernel_version": 3,
+      "log_sha256": "38bce854e6b319c581c881a10ea47384ebab295cd860c78d71af27af8201d1ac",
+      "failure_time_seconds": 0.992640098,
+      "error": "Step0Error: exact DINOv2 private-dataset manifest missing",
+      "excerpt": [
+        "File \"/kaggle/src/script.py\", line 62, in run_step0",
+        "raise Step0Error(\"exact DINOv2 private-dataset manifest missing\")",
+        "Step0Error: exact DINOv2 private-dataset manifest missing"
+      ]
+    }
+  ]
+}

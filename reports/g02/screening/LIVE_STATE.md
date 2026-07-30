@@ -10,8 +10,104 @@ points at the authoritative artifacts; it does not replace them.
 - Plan / frontier: `campaign_narrowing_and_hypothesis_dag_v1.md` (human-locked 2026-07-25).
 - Bet ledger (root coordinator is the sole writer): `LEDGER.md`.
 - Scorer / CV57→public transfer gate: `p0_parity.md`.
+- Stop-loss doctrine, mandatory before any repeat-compute request: `MARGINAL_VALUE_GATE.md`.
+- Kaggle kernel launch reliability, mandatory before any push: `tiered_surface/kaggle_prelaunch/KAGGLE_FAILURE_AUDIT.md` and `tiered_surface/kaggle_prelaunch/kaggle_prelaunch_guard.py`.
 
 ## Current frontier (as of 2026-07-30)
+- **CELLECT LOCAL HARNESS VERIFIED / ZERO-SWAP RESOURCE BLOCK / NO VERDICT.**
+  The exact DINOv2 isolation contract is reproduced locally for CELLECT's
+  authenticated 10,197,221-byte checkpoint: 77 declared request shards,
+  one child at a time, fresh 45-second preflight, atomic checkpoints, strict
+  cumulative zero-swap baseline, and no full-pool cache. Focused tests pass
+  8/8. Five preflights each held zero growth, but every immediately following
+  shard-0 start caused positive swapout (`+488.6875`, `+3.5`, `+174.6875`,
+  `+30.625`, `+12.875 MiB`) under MPS/CPU reductions and was killed by the
+  guard. There are zero feature files, zero checkpoints, and no B0/A1/A0 run:
+  **CELLECT has no local scientific verdict.** Resume from shard 0 only during
+  a stable zero-swap host window; do not weaken the guard. The GPU stop rule is
+  honored and Kaggle debit is zero. Receipt:
+  `tiered_surface/branches/sa_repr/phase2_separation_gate/cellect_local_bakeoff_v1/BLOCKED_REPORT.json`.
+- **EXTREME-PREVALENCE OPERATING-POINT FINDING BANKED / PROPOSAL ONLY.**
+  At roughly `10^-4` beneficial-action prevalence, ROC-AUC is not diagnostic
+  of usable campaign lift: the CG0 false-positive-budget tail is binding.
+  DINOv2's real rank signal (`0.670/0.682` AUC) retained only
+  `0.0013/0.000`; Trackastra and CG1/PU/CRC exhibit the same operating-point
+  failure. Future supplier gates are proposed, for human approval, to lead
+  with precision/recall-at-budget and report AUC secondarily. No frozen gate,
+  threshold, preregistration, or verdict changed.
+- **DIVISION PLAN-AMENDMENT DOSSIER READY / HUMAN DECISION / FITTING LOCKED.**
+  The 38/42 event-level bundle table now records required edges, motif,
+  preferred late-fork equivalence, and duplicate risk. A fresh fail-closed
+  receipt reverified the banked frozen-N1 oracle execution: TP/FP/FN `38/0/4`,
+  adjusted-edge delta `+0.001591651042`, division Jaccard `0.904761904762`,
+  and exact combined delta `+0.092067841519`. This is GT-dependent ceiling
+  evidence only. The dossier proposes a 44b6-first arm for owner review but
+  performs no amendment, fit, graph run, 6bba, or CV57. **FITTING REMAINS
+  LOCKED.** Report:
+  `tiered_surface/branches/sa_division_value/PLAN_AMENDMENT_DOSSIER.md`.
+- **DINOv2 FAIL BOTH / CELLECT TRANSPORT STOP / BARRIER HELD.**
+  Attempt-6 wheel packaging is repaired with canonical PEP-427 names and
+  byte-read manifest SHA checks; targeted step 0 hashes only the checkpoint,
+  request/population manifests, and three wheels in `0.04–0.07 s`, never the
+  24,968-file competition tree. CELLECT v7 accepts the expanded uncompressed-tar
+  checkpoint and verifies member SHA `f3e8e730…89ce5`; genuine member drift
+  fails closed. Focused transport/launch tests pass 24/24. Owner-authenticated
+  remote audit acquired the exclusive lock, found zero in-flight G02 kernels
+  and zero versions of the fresh CELLECT slug, and reconciled Kaggle's
+  authoritative balance to **4.53 h used / 25.47 h remaining**; the prior
+  3.6435 h named-debit total is audit-only and the **1.65 h** local drift is a
+  correction entry. The quota-free DINOv2 v3 route completed all 77 sequential
+  one-shard processes / 1,391,458 actions
+  with atomic checkpoints and zero swap growth. The unchanged sealed
+  B0→A1→A0 gate returned **`FAIL_PARK_C` for delete and occupied-swap**:
+  A1 mean AUC/retention `0.670412/0.001307` and `0.682473/0`, respectively.
+  DINOv2 graph preregistration stays closed. CELLECT's sole stop-rule-bound v7
+  authorization was consumed by exactly one fresh version. It failed at step 0
+  after `2.167 s`: the request manifest was absent at the declared
+  `/kaggle/input/datasets/onebitbrain/...` mount. No model, feature, B0/A1/A0,
+  or scientific verdict ran. The precommitted stop rule is binding:
+  **CELLECT PARK-B blocked-on-infrastructure; GPU bake-off HALT; no seventh
+  run; human decision required before any further representation spend.**
+  Authoritative pre/post quota remained **4.53 h used / 25.47 h remaining**
+  (`0.0 h` debit). All downstream hard stops remain closed.
+- **RECALL-SUPPLY N0/N1 GO → N2 DEAD / DIVISION FROZEN-CHECKPOINT N0 PARK.**
+  The recall 44b6 full-population audit reproduced TP/FP/FN `10,341/1,064/673` and
+  found pool-present/absent FNs `47/626`; pool-absent's zero-FP adjusted ceiling is
+  `+0.052004594313` (GO at `>=+0.030`). N1 then selected the distinct
+  `NDR-FBC-ONE-OFFER` label-free raw-volume registration supplier (three primary
+  sources; 105,992 fixed fit117 offers; max `1.013459860492×` pool), but its
+  frozen fit-only `NDR-FBC-local-translation-v1` N2 realization recovered only
+  `9/290 = 3.103448%` versus the `<20%` DEAD line (inflation `1.002335090457×`).
+  The recall route is terminal; N3 is closed and this realization may not be
+  tuned or re-screened. Division N0 found `0/>=1` qualifying released frozen external
+  checkpoints: no source revision, weight byte/SHA, weight-license receipt,
+  corpus-exclusion proof, or source-published 16-GiB inference configuration was
+  authenticated, so it is PARK and N1–N3 remain closed. Both lanes remain 0 GPU-h;
+  no asset, kernel, push, submission, or tier move occurred; the root recorded the
+  node rows in `LEDGER.md`. Division fitting and the B1 association-continuity
+  prerequisite remain locked.
+- **MCC CONTOUR-RETURN SOURCE AUDIT TERMINAL / NO KAGGLE COMPUTE.** The owner
+  authorized the one public-source-only Reverse witness, but its pinned
+  Apache-2.0 source `1219b669…9041` exposes no deterministic checkpoint and
+  requires ordered-contour preprocessing plus source training. Its linked Zenodo
+  record `7754589` reports CC-BY-4.0 and three checksummed files, but a faithful
+  witness cannot fit the one-T4 <=2 GPU-h ceiling without replacing the
+  mechanism or enlarging the budget. No data download, asset, kernel, GPU,
+  campaign-data read, feature, or score occurred; this exact route is no-retry
+  terminal and cannot reopen Reverse Trackastra. Receipt:
+  `dag_prompts/2026-07-30-continuation/reverse/runs/N3_SOURCE_AUDIT_TERMINAL.md`.
+- **DPRC-O0 DINOv2-REGISTER PREFLIGHT / NO KAGGLE ACTION.** The owner
+  authorized exactly one fresh DINOv2 ViT-S/14-with-registers foreground
+  patch-cycle route, never an R5 repair/retry. Official source
+  `7764ea0f…25fc8` (Apache-2.0 license
+  `600cc67c…935b7`) and the distinct 88,291,785-byte register checkpoint
+  `f4331770…641fb` were authenticated by CMUX. No DPRC asset, kernel, model
+  load, video decode, feature, outcome, or GPU debit exists. The candidate
+  raw roots are available via the competition source, but a fresh
+  action/materialization manifest, exact foreground/channel/crop contract, and
+  local five-second preflight remain required; calibration must project the
+  complete 44b6 delete+swap route to <=4.0 GPU-h or this exact route is terminal
+  with no retry. Receipt: `dag_prompts/2026-07-30-continuation/dinov2/runs/N3_SOURCE_ASSET_RECEIPT.md`.
 - **AUTHENTIC REVERSE TRACKASTRA TERMINAL / NO GRAPH UNLOCK.** Owner-cmux SDK
   retrieval authenticated the exact historical `model.pt` `24c290ce…981f`
   and `ctc.zip.bin` `2ede0848…a0e`. Genuine reversed-time inference with
@@ -235,19 +331,25 @@ points at the authoritative artifacts; it does not replace them.
   exists. Both classes will be recomputed; no held-fold partial can leak.
   Private assets `onebitbrain/g02-dinov2-r5-gpu-assets-v1` are READY at version
   1 after 82 successful payload receipts. Serial prelaunch found both prior
-  campaign kernels terminal ERROR and no new GPU kernel. The sole authorized
-  version-1 GPU run completed the 24,968-file / 87.726 GB inventory in
+  campaign kernels terminal ERROR and no new GPU kernel. A concurrent push race
+  violated the one-run serial authorization: version 1 was already RUNNING when
+  the root launch call created byte-identical version 2. The exact latest-v2
+  terminal evidence completed the 24,968-file / 87.726 GB inventory in
   1,242.976 s, resolved all 77 requests, weight, source, wheels, and competition
   root, and emitted step-0 PASS. It then failed closed because pip rejected the
   content-hash-prefixed wheel basename, before dependency completion,
-  source/model/worker work, features, B0/A1/A0, or outcome. Conservative debit
-  is 0.3989 GPU-h. The earlier CPU-promoted run is also now terminal:
+  source/model/worker work, features, B0/A1/A0, or outcome. Version-addressed
+  private status/output is unavailable; because v1 has the same invalid pip
+  basename it cannot reach model or feature work. The full owner-authenticated
+  3.79→4.53 h quota delta, **0.74 GPU-h**, is debited for both remote runs
+  rather than only v2's independently timed 0.3989 h. The earlier CPU-promoted
+  run is also now terminal:
   owner-authenticated status is ERROR; step 0 passed in 0.053483 s, then its
   authenticated projection was 38.662 h and failed closed with no result
   manifest or outcome. It debits 0.1163353 CPU-h. No external session or GPU
-  authorization remains active. The repo GPU-debit subtotal is 3.3024 h used /
-  26.6976 h remaining, while launch capacity uses the lower owner-authenticated
-  postrun balance, **25.8111 GPU-h**. Exact pushed code, inventory, step-0
+  authorization remains active. The repo GPU-debit subtotal is 3.6435 h used /
+  26.3565 h remaining, while launch capacity uses the lower owner-authenticated
+  postrun balance, **25.47 GPU-h**. Exact pushed code, inventory, step-0
   receipt, terminal payload, and logs are banked under
   `kaggle_gpu_bakeoff_v1/terminal_evidence/`.
   CELLECT bleed-stop v1 is locally
@@ -259,7 +361,7 @@ points at the authoritative artifacts; it does not replace them.
   has a scientific verdict; CELLECT has no launch authorization. The canonical
   cross-read is
   `two_supplier_comparison_v3_gpu_terminal/TWO_SUPPLIER_COMPARISON.json`
-  (`39fb452b…9383`): all four cells remain NOT EVALUATED, both suppliers remain
+  (`454bc4e0…acf8f`): all four cells remain NOT EVALUATED, both suppliers remain
   PARK-B, and no graph preregistration is unlocked.
 - **N1 FEASIBILITY COMPILER GO / PHASE 1 BARRIER COMPLETE.** The immutable
   compiler accepts explicit no-op/add/delete/swap/fork/topology-restore actions,
@@ -454,12 +556,21 @@ its authorized local materialization path closed INVALID_RESOURCE.
 | 1 | `AE-P1` | PARK-A | broader mechanism unscored; failed exact realizers do not demote it | `+0.018571397`; newly named realizer only |
 | 2 | `AE-P2` | PARK-A | broader mechanism unscored; failed exact realizers do not demote it | `+0.018571397`; newly named realizer only |
 | gated | `SWAP-O0` | PARK-A | exact-regret instantiation `−0.000310288/−0.000296592/0` (PARK-C breadcrumb) | compiler-valid run_v6 ceiling `+0.018571397` (`6e62a29c…6c71b`); representation falsifier PASS |
-| gated | `R5` DINOv2 XY | PARK-B | source/weight/load authenticated; local materialization INVALID_RESOURCE before features | new human-reviewed compute design only |
-| gated | `R7` CELLECT | PARK-B | consolidated v6 bundle byte-exact; A1/A0 still unrun | wait for both authorized Kaggle-CPU lanes, then one bounded GPU bake-off |
+| closed | `R5` DINOv2 XY | PARK-C | local 77-shard supplier gate returned `FAIL_PARK_C` for delete and occupied-swap | no graph preregistration; new named supplier only |
+| blocked | `R7` CELLECT | PARK-B | sole v7 stopped at step 0 on missing declared Kaggle mount; no scientific verdict | infrastructure stop rule: GPU bake-off HALT, no seventh run, human decision required |
 | closed | `G2` exact regret | PARK-C | `−0.000310288/−0.000296592/0` | new named decision-focused mechanism only |
 | closed | `DELETE-O0` | PARK-C | exact retention beta `−0.000127119/−0.000131807/0` | materially new named deletion mechanism |
 
 ## Key numbers
+- CELLECT local: **5/5 fresh 45-second preflights passed at 0 MiB swap
+  growth; 5/5 shard-0 starts failed closed on positive system swapout**.
+  Shard outputs/checkpoints/gate verdict: `0/0/none`; Kaggle/GPU debit `0`.
+  Exact request plan: 77 shards / 1,391,458 actions / 217,595 tile jobs.
+- Division amendment diagnostic: banked local `0.881522`, planning range
+  `0.9255–0.9422`, gap `+0.044–+0.061`; 12/20/25 zero-FP division TP add
+  `+0.0286/+0.0476/+0.0595`, versus edge-only cap near `0.896`. Frozen-N1
+  oracle 38-bundle delta is exactly `+0.092067841519`; 25 TP with 5/10 FP
+  falls to `+0.0532/+0.0481`. Human decision pending; fitting locked.
 - Selector-requirement diagnostic: **2/2 fresh preflights PASS at zero growth;
   2/2 scientific executions INVALID_RESOURCE**, at 722.620 s / 1.904 GiB /
   +16.31 MiB swap and 1,034.259 s / 1.453 GiB / +1,567.69 MiB swap. **0 result
@@ -481,6 +592,24 @@ its authorized local materialization path closed INVALID_RESOURCE.
   width `0.023057`; the narrowest `k=12` width was still `0.023017` under
   residual-top10. Thresholds remain `|rho|>=0.8`, sign `>=0.9`, width `<0.005`.
 - Baseline local `0.873150` → public `0.877`. Banked APNCC local `0.881522` → **public `0.881`**.
+- Recall N0 full 44b6: baseline TP/FP/FN **10,341/1,064/673**; pool-present/absent
+  FNs **47/626**; zero-FP adjusted/raw/node deltas for absent
+  **`+0.052004594313/+0.051829773141/0`** (GO threshold `>=+0.030`); 10–12 µm
+  shell overlap **18/626**; 45.738 s preflight and 52.741 s audit, both 0 MiB
+  swap growth.
+- Recall N1 `NDR-FBC-ONE-OFFER`: **3** primary sources; fixed label-free fit117
+  offers **105,992** (`49,553` 44b6 / `56,439` 6bba) against pool `7,874,673`,
+  maximum multiplier **`1.013459860492×`**; 45.489 s preflight and 29.096 s count,
+  both 0 MiB swap growth.
+- Recall N2 `NDR-FBC-local-translation-v1`: **9/290 = 3.103448%** recovery
+  (DEAD `<20%`; GO `>=50%` at `<=3×`), **1,173** new offers / **502,336** pool =
+  **`1.002335090457×`**; all three fixtures failed closed, repeat SHA
+  `0eecfb95…1713f`, 45.950 s preflight and 315.815 s run at 0 MiB swap. N3 did
+  not open; a future recall route requires a new named observable/mechanism.
+- Frozen external division-checkpoint N0: **0/>=1** qualifying releases; authenticated
+  source revisions/weight SHA objects/license SHA receipts/corpus-exclusion proofs/
+  source-published 16-GiB inference configurations all **0**. Verdict **PARK**;
+  division fitting and B1 remain locked with **0** qualifying continuity arms.
 - User-supplied top-50 bar is public `0.910`; coarse transfer maps it to a planning
   range of local `≈0.9255–0.9422`. Edge-only current-pool projection (`~0.896`) is
   insufficient; 12/20/25 zero-FP division TP would add `+0.0286/+0.0476/+0.0595`.
@@ -505,22 +634,25 @@ its authorized local materialization path closed INVALID_RESOURCE.
   `ff551d8ee56503c13e769e03d7313cf1c95b26f8c779524d1095515aa40bbc22`
   after the run_v6 ceiling propagation (no tier changed). Weekly Kaggle budget artifact
   `tiered_surface/kaggle_budget.json` at SHA-256
-  `7ef0a044…5ad1` records the repo GPU-debit subtotal **3.3024/30.0 kernel-h
-  used / 26.6976 h remaining** and cumulative CPU use **0.3010984 h**.
-  Authorization capacity uses the lower owner-authenticated postrun balance,
-  **25.8111 GPU-h**. No GPU authorization or CPU session remains active.
+  `1e9efa08…f7426` mirrors the authoritative Kaggle balance **4.53/30.0
+  kernel-h used / 25.47 h remaining** and retains **3.6435 h** only as the
+  named-debit audit subtotal. The **1.65 h** drift from the earlier 2.88 h
+  tracker is recorded as a correction. Cumulative CPU use is **0.3010984 h**.
+  No GPU authorization or CPU session remains active.
   RunPod is forbidden and submission human-gated.
 - Two-supplier separation: common frozen population is **1,345,497 delete /
   1,118 beneficial** and **45,961 occupied-swap / 134 beneficial**, across five
   identical OOF folds. CELLECT N2 authenticated 77 request shards / 1,391,458
-  actions locally, but its sole v6 run failed in step 0 before features.
-  DINOv2's sole GPU run passed its full mount/content step 0, then failed before
-  model/features on an invalid content-hash wheel basename; its earlier CPU run
-  also terminalized after step 0 on a 38.662 h projection. All 724,634 local
-  partial rows remain discarded. Neither supplier opened B0/A1/A0, so the
-  frozen 0.65/0.15 gate and run_v6 measured requirements are NOT EVALUATED for
-  all four supplier×class cells. Both remain PARK-B; canonical comparison
-  `39fb452b…9383`.
+  actions locally. Its sole v7 run created exactly one fresh version, then
+  failed at step 0 after 2.167 s because the declared owner-qualified Kaggle
+  request-manifest path was absent. The stop rule parks CELLECT PARK-B
+  blocked-on-infrastructure and permits no seventh run; it has no scientific
+  verdict. DINOv2 instead completed all 77 request shards locally with atomic
+  resume and zero swap growth. Its unchanged sealed B0→A1→A0 gate returned
+  `FAIL_PARK_C` for delete (A1 mean AUC/retention `0.670412/0.001307`) and
+  occupied-swap (`0.682473/0`). No graph preregistration is unlocked for either
+  supplier; result `c58b1a58…0d41f2`, CELLECT terminal
+  `c0beda9b…5f706f7`.
 - CPU-only Wave-2 NODETOPO prerequisite: **36/36 videos, 3,600/3,600 frames,
   107,370 proposals, 106,668 false proposals, 100,983 topology-joinable,
   50 restoration actions across 24 videos**, with 0 MiB swap growth. Its graph
@@ -583,6 +715,9 @@ Deterministic recall / shell abstention (`R12SHELL`, `MGSHELL`, `TEMPBG`) · fro
 rankers (`POINTCTX`, `CROPLINK`, `TEMPRANK`, `TEMPHYBRID`, `TRACKCTX`) · scalar recal /
 threshold (`SCENCAL`, `POINTCTX-THRESH`, `APNCC-POLICY`) · hand-tuned graph-cost / motion
 knobs (`GA-SP`, `LC-P4CTRL`) · full organizer `TemporalUNet3D` (~478 T4-h).
+`NDR-FBC-local-translation-v1` is DEAD at recall N2 (`9/290 = 3.103448%` recovery);
+do not tune or re-screen it. A future recall attempt must name a different observable /
+mechanism before any node opens.
 Conditional-PARK (revisitable): detection front-end · divisions · GT-conflict gates.
 Frozen Trackastra zero-wrfeat H1 is DEAD at the 44b6 graph gate. Only the distinct,
 separately authorized authentic-mask `H3-MASK-SOURCE` provenance question remains eligible.
@@ -590,6 +725,195 @@ Frozen C1 conflict-set attention (`C1-TA-HOCT-LITE`) is DEAD at its 44b6 graph g
 do not run 6bba or re-screen it without a new named mechanism.
 
 ## Log (newest first)
+- 2026-07-30 — **CELLECT local resource block authenticated; no scientific
+  verdict.** Reproduced the DINOv2 two-stage, 45-second-preflight,
+  one-shard-process, atomic-checkpoint, strict zero-swap harness for the pinned
+  CELLECT checkpoint. Eight focused tests pass. Five zero-growth preflights
+  were followed by five shard-0 guard trips (`+3.5` to `+488.6875 MiB`);
+  zero outputs exist and B0/A1/A0 never ran. No Kaggle, GPU debit, graph,
+  full-pool cache, tier move, or DEAD action; resume is restricted to a stable
+  zero-swap host window without guard weakening. (Codex)
+- 2026-07-30 — **Operating-point methodology banked; existing gates
+  unchanged.** Recorded that ROC-AUC is non-diagnostic at roughly `10^-4`
+  prevalence when the CG0 FP budget binds, and proposed precision/recall at
+  the frozen budget as the lead statistic for future supplier gates, subject
+  to human approval. This is methodology only, not a gate amendment. (Codex)
+- 2026-07-30 — **Division amendment dossier emitted; fitting remains
+  locked.** Authenticated 38 per-event repair bundles and freshly reverified
+  the banked zero-swap frozen-N1 oracle receipt (`38/0/4`,
+  `+0.092067841519` combined), documented target-gap/FP arithmetic, B1
+  staleness, duplicate risks, and the already preregistered 44b6-first kill
+  line. No fit, plan amendment, graph, 6bba, CV57, or external action occurred;
+  owner decision is required. (Codex)
+- 2026-07-30 — **Reconciliation: recall pool-absence vs tensor reachability; stop-loss
+  doctrine; Kaggle reliability runbook.** Traced `recall/N0`'s
+  `+0.052004594313` pool-absent ceiling against the banked fit117 tensor-reachability
+  result (99.04% coverage) via `scripts/analyze_action_class_oracle.py` and
+  `achievable_headroom_v1.json`: the two are not contradictory — pool-absence is gated
+  by the deployed action vocabulary (both-ends-free `add`; node-disjoint single-hop
+  `swap`), not by candidate-tensor supply, mirroring the campaign's own prior
+  `SWAP-O0` legacy-CG0-to-`run_v6` collapse (`+0.075828 → +0.018571397`, `24.49%`
+  realized). Verdict extended to the **mechanism class**: no candidate-generation
+  supplier can clear this wall; do not fund a second generator without a new compiler
+  action-kind (compound/chained conflict-swap), which is a distinct, separately-gated
+  proposal against the frozen `GO`-status N1 compiler. Receipt:
+  `dag_prompts/2026-07-30-recall-and-division/recall/runs/N0B_RECONCILIATION.md`.
+  Generalized this into a standing pre-compute check,
+  `reports/g02/screening/MARGINAL_VALUE_GATE.md`: before any repeat-compute request,
+  state the *realistic* (precedent-adjusted) ceiling, not the raw/optimistic one, and
+  STOP at the mechanism-class level when the limiting factor is structural.
+  Separately, audited why recent Kaggle launches keep failing
+  infrastructure-only: the existing 16-family guard
+  (`tiered_surface/kaggle_prelaunch/kaggle_prelaunch_guard.py`) is real and its 14+2
+  regression fixtures pass, but it has **zero external call sites** in the repo (no
+  git hook, no wrapper, confirmed by direct grep) and its `dataset_ownership` map was
+  stale — `onebitbrain/g02-cellect-r7-separation-v1` and
+  `onebitbrain/g02-dinov2-r5-gpu-assets-v1` (the exact datasets behind the most recent
+  GPU bake-off pushes) had zero coverage. Added `KFG-17`/`KFG-18` to
+  `KAGGLE_FAILURE_REGISTRY.json`, the two missing `dataset_ownership` entries, a new
+  `check_registry_freshness.py` (real run: `FAIL_REGISTRY_STALE` before the fix,
+  `PASS` after), and `tiered_surface/kaggle_prelaunch/RELIABILITY_RUNBOOK.md` mandating
+  a logged guard receipt before every future push. Re-ran the existing 14-fixture
+  suite after the registry edit: 14/14 still pass. While this was in progress, CELLECT
+  v7 failed with the same shape of problem live (`LIVE_STATE`'s own "DINOv2 FAIL BOTH /
+  CELLECT TRANSPORT STOP" entry, above) — flagged as a candidate `KFG-19` for root to
+  formalize with exact log evidence in its own terminal report. No GPU, Kaggle asset,
+  push, submission, tier move, or `LEDGER.md` write occurred; nothing committed pending
+  owner confirmation on commit/cross-pollination scope. (Claude)
+- 2026-07-30 — Recall supply N2 **DEAD / LANE TERMINAL**: frozen fit-only 12-video
+  full-frame slice (290 pool-absent targets; 502,336 frozen candidates) yielded
+  `9/290 = 3.103448%` recovery, below the preregistered `<20%` kill line, despite
+  `1,173` new offers / `1.002335090457×` inflation. All required fixtures failed
+  closed and the byte repeat matched; the 45.950 s preflight and 315.815 s run
+  had 0 MiB swap growth. `NDR-FBC-local-translation-v1` is no-retry DEAD; N3,
+  Kaggle, GPU, asset, push, submission, and graph score remained closed. Receipt
+  `dag_prompts/2026-07-30-recall-and-division/recall/runs/N2_SUPPLY_FALSIFIER.md`.
+  (Codex root)
+- 2026-07-30 — Recall supply N1 **GO → N2**: distinct `NDR-FBC-ONE-OFFER`
+  raw-volume forward/backward-consistent registration is label-free, non-DEAD and
+  non-selector, with three primary sources and a named crowding rationale. Its
+  frozen label-free opportunity count is `105,992` fit117 offers (`49,553` 44b6,
+  `56,439` 6bba), a max `1.013459860492×` pool multiplier; its 45.489 s
+  preflight and 29.096 s count had 0 MiB swap growth. N2 now runs once on a
+  frozen fit-only slice; no GPU/Kaggle/push/submission/ledger action. Receipt
+  `dag_prompts/2026-07-30-recall-and-division/recall/runs/N1_MECHANISM_AND_CROWDING.md`.
+  (Codex root)
+- 2026-07-30 — Division frozen-external checkpoint N0 **PARK / NO PILOT**:
+  `0/>=1` releases passed the five preregistered provenance and 16-GiB conditions;
+  each verified category (source revision, weight byte/SHA, weight-license SHA,
+  corpus exclusion, and source-published 16-GiB inference configuration) is `0`.
+  The owner cmux retrieval pane was unavailable and was not retried; this cannot
+  support the universal DEAD claim. N1–N3 are closed, division fitting/B1 remain
+  locked (`0` qualifying arms), and no campaign/remote/Kaggle/GPU action occurred.
+  Receipt `dag_prompts/2026-07-30-recall-and-division/division_ckpt/runs/N0_CHECKPOINT_PROVENANCE.md`.
+  (Codex root)
+- 2026-07-30 — Recall supply N0 **GO → N1**: frozen full 44b6 reproduces
+  TP/FP/FN `10,341/1,064/673`; present/absent FNs are `47/626`, and absent's
+  zero-FP adjusted/raw/node deltas are `+0.052004594313/+0.051829773141/0`, above
+  its fixed `>=+0.030` GO bar. 10–12 µm absent overlap is `18`; fresh preflight
+  `45.738 s` and audit `52.741 s` both had 0 MiB swap growth. No GPU/Kaggle/push/
+  submission/ledger action; N1 proceeds under the same stop rules. Receipt
+  `dag_prompts/2026-07-30-recall-and-division/recall/runs/N0_POOL_RECALL_CEILING.md`.
+  (Codex root)
+- 2026-07-30 — CELLECT v7 **TRANSPORT FAILURE / STOP RULE TRIGGERED / PARK-B
+  BLOCKED-ON-INFRASTRUCTURE / NO SEVENTH RUN**: the exclusive prelaunch audit
+  authenticated 25.47 h remaining and zero target versions/in-flight G02 runs;
+  one push created exactly version 1. A transient non-JSON immediate list
+  response interrupted only the post-push receipt, so supervision recovered
+  the existing v1 without a second push and proved delta `+1`. Kernel step 0
+  failed at `2.167 s` because
+  `/kaggle/input/datasets/onebitbrain/g02-cellect-r7-published-assets-v1/action_request_manifest.json`
+  was absent. No model, feature, B0/A1/A0, or scientific verdict ran.
+  Authoritative pre/post quota stayed `4.53/25.47 h`; debit `0.0 h`. GPU
+  bake-off halted; human decision required on further representation spend.
+  No graph, 6bba, CV57, submission, RunPod, tier move, DEAD, or plan
+  amendment. Terminal `c0beda9b…5f706f7`. (Codex root)
+- 2026-07-30 — CELLECT v7 **SOLE SERIAL AUTHORIZATION OPENED / NOT YET
+  LAUNCHED** after DINOv2's local verdict: active authorization
+  `CELLECT-R7-SEPARATION-V7-ONE-SHOT` permits exactly one fresh-version GPU
+  run under the exclusive lock, authenticated projection `<5 h` after 64 tile
+  jobs, hard 5 h, and pre/post authoritative quota reconciliation from
+  25.47 h remaining. Transport failure consumes the authorization, halts the
+  GPU bake-off, parks CELLECT PARK-B blocked-on-infrastructure, and permits no
+  seventh run. No push or debit yet. (Codex root)
+- 2026-07-30 — DINOv2 R5 local separation **SCIENTIFIC COMPLETE / FAIL BOTH /
+  PARK-C**: 77 isolated MPS children materialized exactly the frozen 1,391,458
+  endpoint requests with atomic checkpoints, no full-pool cache, and 0 MiB
+  swap growth. A fresh 45.07 s evaluation preflight passed; the unchanged
+  sealed B0→A1→A0 evaluator then returned `FAIL_PARK_C` for delete
+  (A1 mean/p05 AUC `0.670412/0.611373`, mean/p05 retention
+  `0.001307/0`) and occupied-swap (`0.682473/0.628505`, `0/0`).
+  Verifier PASS; result `c58b1a58…0d41f2`. No Kaggle quota, graph,
+  6bba, CV57, submission, RunPod, tier move, DEAD, or plan amendment.
+  CELLECT's sole stop-rule-bound v7 run remains unlaunched. (Codex root)
+- 2026-07-30 — Attempt-6 packaging/serialization repair **LOCAL + REMOTE
+  PREFLIGHT PASS / NO PUSH**: both DINOv2 and CELLECT now preserve canonical
+  PEP-427 wheel names, verify wheel bytes against their manifests before
+  no-index/find-links installation, and complete declared-input-only step 0 in
+  `0.04–0.07 s` without walking the competition dataset. CELLECT accepts
+  Kaggle's expanded uncompressed-tar checkpoint by member SHA and fails closed
+  on a corrupted member. The exclusive launch-lock audit found no running G02
+  kernel and zero versions of fresh slug
+  `g02-cellect-r7-separation-v7-one-shot`. Direct quota is **4.53 h used /
+  25.47 h remaining**; the local file is now derived and records the **1.65 h**
+  correction. The 77-process resumable local DINO route is staged and tested;
+  no feature, B0/A1/A0, kernel push, GPU debit, tier move, PARK-C, or graph
+  unlock occurred. (Codex root)
+- 2026-07-30 — **OWNER DECISIONS: recall lane reopened; division frozen-checkpoint
+  pilot approved; MAIN AE-P7 and NODETOPO-neighbor pruned by the adversarial
+  review's ranking.** Rationale recorded: banked `0.881522` local needs
+  `+0.044–0.061` for public `0.910`, the in-pool re-ranking oracle is only
+  `~0.896`, and free-add/node-add oracles on the frozen population are exactly
+  `0` — so selection cannot cover the gap and candidate **supply** is the untested
+  channel. `H2` was orphaned by the `H1` 44b6 kill and never replaced. Two DAGs
+  written at `dag_prompts/2026-07-30-recall-and-division/` with pasteable dispatch
+  in its `TRIGGER.md`; recall `N0` is a free CPU measurement that partitions the
+  44b6 held edge FNs (`673`) into pool-present and pool-absent and computes each
+  partition's zero-FP oracle ceiling, with GO at `>= +0.030`. Division continuation
+  gate preregistered from `p0_parity.md`'s `0.1 * division_jaccard` and the 42
+  CV57 divisions: `>=4` zero-FP TP. Rejected readings of the `+10%` rule are
+  recorded in the node so the threshold cannot be retrofitted. No node has run;
+  no asset, kernel, GPU debit, amendment, tier move, or LEDGER write. (Claude)
+- 2026-07-30 — MCC contour-return witness **OWNER-APPROVED SOURCE AUDIT /
+  TERMINAL BEFORE COMPUTE**: CMUX authenticated source `1219b669…9041`,
+  Apache-2.0 license `cfc7749b…23d30`, and the public Zenodo-7754589 CC-BY-4.0
+  metadata/file manifest. The source provides no checkpoint and mandates
+  ordered-contour preprocessing, TFRecord conversion, and training in its
+  Python-3.6.9/TensorFlow-2.4.3/CUDA-11 environment; it cannot yield a
+  deterministic output under the owner-approved one-T4 <=2-GPU-hour ceiling.
+  No data download, asset, kernel, compute, campaign-data access, feature, or
+  outcome occurred. The exact MCC source/record/slice/budget is terminal with
+  no retry, and Reverse Trackastra remains closed. Receipt
+  `dag_prompts/2026-07-30-continuation/reverse/runs/N3_SOURCE_AUDIT_TERMINAL.md`.
+  (Codex root)
+- 2026-07-30 — DPRC-O0 DINOv2-register **OWNER AUTHORIZATION RECORDED /
+  PROVENANCE PREFLIGHT ONLY**: the owner authorized the one separately bounded
+  fresh-supplier route. CMUX authenticated the official source
+  `7764ea0f…25fc8`, Apache-2.0 license `600cc67c…935b7`, and distinct
+  official ViT-S/14-register weight `f4331770…641fb` (88,291,785 B). The
+  two timing-only calibration roots and array geometry were read from the
+  existing competition source; no archive/data upload or copy occurred. No
+  DPRC Kaggle asset/kernel/run, model load, decode, feature, scientific
+  outcome, or GPU debit exists. A fresh materialization manifest,
+  foreground/channel/crop contract, and five-second local preflight are still
+  launch blockers; any failure ends DPRC-O0 without retry. Receipt
+  `dag_prompts/2026-07-30-continuation/dinov2/runs/N3_SOURCE_ASSET_RECEIPT.md`.
+  (Codex root)
+- 2026-07-30 — DINOv2 GPU launch race **RECONCILED / SERIAL AUTHORIZATION
+  VIOLATION / NO RETRY**: a concurrent actor created authorized v1 at
+  17:55:29Z before the root launch call completed; the root's stale absence
+  check then created byte-identical v2 at remote last-run time
+  17:57:50.703Z. Two remote runs were triggered under a one-run authorization.
+  Exact latest-v2 evidence is terminal ERROR after step-0 PASS and before
+  model/features/B0/A1/A0; the shared invalid wheel basename also prevents v1
+  from reaching scientific work. Private version-addressed APIs return 404/403,
+  so no exact individual v1 runtime is asserted. Owner quota moved
+  3.79→4.53 h used; the full **0.74 GPU-h** delta is debited, yielding repo
+  3.6435/30.0 h and direct owner capacity **25.47 h**. All four supplier×class
+  cells remain NOT EVALUATED, both suppliers PARK-B, and zero PARK-C/graph
+  unlock. Reconciliation
+  `sa_dinov2/kaggle_gpu_bakeoff_v1/LAUNCH_RACE_RECONCILIATION.json`.
+  (Codex root)
 - 2026-07-30 — AE-P5 **STRUCTURALLY INERT ON FROZEN 44B6 / NO GRAPH SPEND**:
   the frozen C0/C2 rule is implemented under human implementation authorization
   and rank-1 is emitted. Over 36 shards / 45,961 occupied-conflict actions /
@@ -640,27 +964,31 @@ do not run 6bba or re-screen it without a new named mechanism.
   owner-authenticated status confirms the earlier DINO CPU-promoted run is
   ERROR. Its step 0 passed in 0.053483 s before a 38.662 h projection failed
   closed; no result manifest or outcome, 0.1163353 CPU-h / 0 GPU-h. No external
-  session remains active. The repo GPU subtotal remains 3.3024 h used /
-  26.6976 h remaining, but capacity now uses the lower authenticated 25.8111 h
-  balance. Exact GPU terminal evidence is banked. Four supplier×class cells
-  remain NOT EVALUATED; zero PARK-C or graph unlock. (Codex root)
+  session remains active. This accounting snapshot was later superseded by the
+  launch-race reconciliation at the top of this log; its 0.3989 h/25.8111 h
+  GPU figures are not current. Four supplier×class cells remain NOT EVALUATED;
+  zero PARK-C or graph unlock. (Codex root)
 - 2026-07-30 — Two-supplier separation cross-read v3 **TERMINAL / GRAPH
   CLOSED**: DINO GPU and the prior CELLECT launch are infrastructure-INVALID;
   CELLECT's zero-manifest expanded-mount repair is local-only PASS. No complete
   class manifest exists, so all four supplier×class cells are NOT EVALUATED
   against the unchanged frozen gate or run_v6 requirements. DELETE remains
-  primary at ~4.41× swap value. Zero PASS, FAIL, PARK-C, or graph unlock;
-  DINO debit 0.3989 GPU-h; the reconciled capacity balance is 25.8111 h. Comparison
+  primary at ~4.41× swap value. Zero PASS, FAIL, PARK-C, or graph unlock. The
+  later launch-race reconciliation supersedes the original debit snapshot:
+  aggregate DINO debit is 0.74 GPU-h and owner capacity is 25.47 h. Comparison
   `two_supplier_comparison_v3_gpu_terminal/TWO_SUPPLIER_COMPARISON.json`
-  (`39fb452b…9383`). (Codex root)
-- 2026-07-30 — DINOv2 Kaggle GPU v1 **TERMINAL INFRASTRUCTURE-INVALID /
-  NO RETRY**: first-action inventory authenticated 24,968 files / 87.726 GB in
+  (`454bc4e0…acf8f`). (Codex root)
+- 2026-07-30 — DINOv2 Kaggle GPU latest run **TERMINAL
+  INFRASTRUCTURE-INVALID / NO RETRY**: this evidence was initially attributed
+  to v1 and is now attributed to latest v2 after launch-race reconciliation.
+  First-action inventory authenticated 24,968 files / 87.726 GB in
   1,242.976 s and step 0 resolved all 77 requests, weight, source, three wheels,
   and competition root with zero partial reuse. Pip then rejected the
   content-hash-prefixed wheel basename before dependency completion,
-  source/model/worker work, features, B0/A1/A0, or outcome. Debit 0.3989 GPU-h;
-  the lower authenticated capacity balance is 25.8111 h with no GPU
-  authorization. Both classes are INVALID with no
+  source/model/worker work, features, B0/A1/A0, or outcome. V2's timed
+  conservative runtime is 0.3989 h; the aggregate two-run quota debit is
+  0.74 h and owner capacity is 25.47 h with no GPU authorization. Both classes
+  are INVALID with no
   PASS/FAIL, PARK-C, or graph unlock. Receipt
   `kaggle_gpu_bakeoff_v1/TERMINAL_INVALID_INFRASTRUCTURE.json`. (Codex root)
 - 2026-07-30 — CELLECT bleed-stop v1 **LOCAL MOUNT PASS / NO LAUNCH**:

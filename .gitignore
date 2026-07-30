@@ -67,3 +67,7 @@ results-*.zip
 !/reports/g02/screening/**/TERMINAL_REPORT.md
 !/reports/g02/screening/**/TERMINAL_REPORT.json
 !/reports/g02/screening/**/BARRIER.json
+!/reports/g02/screening/MARGINAL_VALUE_GATE.md
+# Kaggle launch-reliability guard: standing infra, not a per-run working file.
+!/reports/g02/screening/tiered_surface/kaggle_prelaunch/**
+/reports/g02/screening/tiered_surface/kaggle_prelaunch/**/__pycache__/

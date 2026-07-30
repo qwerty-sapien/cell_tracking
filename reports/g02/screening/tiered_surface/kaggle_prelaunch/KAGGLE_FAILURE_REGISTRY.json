@@ -1,0 +1,297 @@
+{
+  "schema": "celltrack-alpha.kaggle-failure-registry.v1",
+  "scope": "All evidenced G-02 Kaggle dataset, kernel-startup, input-mount, transport, and parity failures through 2026-07-30.",
+  "policy": {
+    "same_signature_retry": "FORBIDDEN",
+    "remote_preflight_required_before_scientific_kernel": true,
+    "private_dataset_mount_template": "/kaggle/input/datasets/{owner}/{slug}",
+    "private_dataset_must_be_lane_exclusive": true,
+    "recursive_kaggle_input_discovery": "FORBIDDEN",
+    "kernel_code_must_be_self_contained": true,
+    "heavy_import_before_step0": "FORBIDDEN",
+    "missing_or_empty_required_input": "ABORT_BEFORE_HEAVY_WORK",
+    "step0_limit_seconds": 5.0,
+    "http_403_retry": "FORBIDDEN_WITHOUT_TARGET_OR_AUTH_CHANGE"
+  },
+  "dataset_ownership": {
+    "onebitbrain/g02-cellect-r7-published-assets-v1": "CELLECT_R7_ONLY",
+    "onebitbrain/g02-dinov2-r5-cpu-input-v1": "DINOV2_R5_CPU_ONLY",
+    "onebitbrain/g02-cellect-r7-separation-v1": "CELLECT_R7_SEPARATION_ONLY",
+    "onebitbrain/g02-dinov2-r5-gpu-assets-v1": "DINOV2_R5_GPU_ONLY"
+  },
+  "families": [
+    {
+      "id": "KFG-01",
+      "name": "REMOTE_SOURCE_REGISTRATION_DRIFT",
+      "signature": "Kernel metadata omits a locally declared dataset source.",
+      "prevention": "Pull or attest remote kernel metadata and require exact dataset_sources equality before accepting a run.",
+      "incidents": [
+        {
+          "id": "H1-ZWRFEAT-SMOKE1",
+          "error": "KernelError: missing or ambiguous dataset onebitbrain/trackastra-h1-fit105-cache-v1",
+          "evidence": "reports/g02/screening/h1_smoke_attempt_1.json"
+        }
+      ]
+    },
+    {
+      "id": "KFG-02",
+      "name": "WORKING_PATH_ARTIFACT_OMISSION",
+      "signature": "Launcher expects a file under /kaggle/working that it never copied.",
+      "prevention": "Preflight every source-to-working copy and authenticate both source and destination before Stage A.",
+      "incidents": [
+        {
+          "id": "H1-ZWRFEAT-SMOKE2",
+          "error": "cache_dataset_manifest.json absent from its /kaggle/working contract path",
+          "evidence": "reports/g02/screening/LEDGER.md:92"
+        }
+      ]
+    },
+    {
+      "id": "KFG-03",
+      "name": "UNUSED_OPTIONAL_DEPENDENCY_ON_LAUNCH_PATH",
+      "signature": "Packaged source imports an unavailable optional dependency before useful work.",
+      "prevention": "Run an isolated import smoke with optional packages explicitly blocked; scientific code_file must not import unused sweep modules.",
+      "incidents": [
+        {
+          "id": "TRACKASTRA-6BBA-V1-V2",
+          "error": "optional tracksdata dependency imported through an unused sweep module",
+          "evidence": "reports/g02/screening/trackastra_6bba_feature_kernel_v1.md"
+        }
+      ]
+    },
+    {
+      "id": "KFG-04",
+      "name": "CROSS_PLATFORM_EXACT_PARITY_DRIFT",
+      "signature": "Remote Linux/Python/PyTorch result differs byte-for-byte from a local exact reference.",
+      "prevention": "Run and retain a one-video remote parity diagnostic before any full-population pass; exactness changes require a new contract.",
+      "incidents": [
+        {
+          "id": "TRACKASTRA-6BBA-V3",
+          "error": "v2 numerical parity with v1 failed for row_features",
+          "evidence": "reports/g02/screening/trackastra_6bba_feature_kernel_v1.md"
+        }
+      ]
+    },
+    {
+      "id": "KFG-05",
+      "name": "HEAVY_IMPORT_BEFORE_AUTHENTICATED_STEP0",
+      "signature": "Unavailable or heavy package imports before required inputs and offline wheels are checked.",
+      "prevention": "Static guard rejects NumPy/Torch/zarr/scipy/tracksdata imports before the STEP0 assignment.",
+      "incidents": [
+        {
+          "id": "CELLECT-R7-SEPARATION-SAMPLE-V1",
+          "error": "ModuleNotFoundError: No module named 'zarr'",
+          "log": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/kaggle_v1_error/g02-cellect-r7-separation-v1.log",
+          "log_sha256": "f8a841102c8342f64b3c5b0c4b6e45967dd893e4bce76f7a9ea59f58e8e48391"
+        }
+      ]
+    },
+    {
+      "id": "KFG-06",
+      "name": "REQUIRED_WEIGHT_ABSENT_FROM_MOUNT",
+      "signature": "The kernel starts and installs dependencies before discovering that the pinned checkpoint is absent.",
+      "prevention": "Step 0 must resolve exactly one checkpoint by pinned SHA and size before pip or heavy imports.",
+      "incidents": [
+        {
+          "id": "CELLECT-R7-SEPARATION-SAMPLE-V2",
+          "error": "FeatureError: expected one U-ext+-x3rd-149.0-4.6540.pth, found 0",
+          "log": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/kaggle_v2_error/g02-cellect-r7-separation-v1.log",
+          "log_sha256": "0405857f6197eac6c9a418bc8d9db5dc860d7b35520d393b1d6aaec18ab53fe7"
+        },
+        {
+          "id": "CELLECT-R7-SEPARATION-SAMPLE-V3",
+          "error": "FeatureError: expected one U-ext+-x3rd-149.0-4.6540.pth, found 0",
+          "log": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/run_v3/kaggle_output/g02-cellect-r7-separation-v1.log",
+          "log_sha256": "7e9ba2c97c0e84353dc9479eb05d568384ffe0759a2d2207c2d6f25aa6e06177"
+        }
+      ]
+    },
+    {
+      "id": "KFG-07",
+      "name": "SPLIT_INPUT_BUNDLE_OMITS_REQUESTS",
+      "signature": "Checkpoint authenticates but the separately managed request dataset is absent or empty.",
+      "prevention": "Checkpoint, request manifest, positive request count, population manifest, and wheels must share one content-addressed bundle for the consumer lane.",
+      "incidents": [
+        {
+          "id": "CELLECT-R7-SEPARATION-V4",
+          "error": "FeatureError: no frozen feature requests found",
+          "log": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/run_v4/kernel.log",
+          "log_sha256": "84048e6dd2315c615de0b8b32867faaf94aafe09b6b0532c81d7dbb658782861"
+        }
+      ]
+    },
+    {
+      "id": "KFG-08",
+      "name": "DATASET_CLI_NESTED_DIRECTORY_OMISSION",
+      "signature": "Dataset version is READY but nested request files were skipped during CLI packaging.",
+      "prevention": "Build a flat or archived transport, enumerate the uploaded inventory, and require a remote round-trip receipt before launch.",
+      "incidents": [
+        {
+          "id": "CELLECT-CONSOLIDATED-V5",
+          "error": "Kaggle CLI skipped the nested request directory",
+          "evidence": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/CELLECT_R7_CONSOLIDATED_V5_INVALID.json"
+        }
+      ]
+    },
+    {
+      "id": "KFG-09",
+      "name": "MUTABLE_SHARED_DATASET_WRONG_CARRIER",
+      "signature": "Multiple lanes reuse one dataset slug, so latest-version attachment exposes the wrong carrier.",
+      "prevention": "A dataset source is owned by exactly one lane; temporary CPU carriers use dedicated immutable slugs.",
+      "incidents": [
+        {
+          "id": "CELLECT-R7-SEPARATION-V6",
+          "error": "Step0InputError: bundle manifest content resolution expected one match, found 0",
+          "log": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/run_v6/kernel.log",
+          "log_sha256": "c9e92a977913a0ee47266b6c20d5f2fc06ec9f4c6935186f761494eb07185072",
+          "evidence": "At launch the shared CELLECT slug's latest version was DINOv2 carrier v8."
+        }
+      ]
+    },
+    {
+      "id": "KFG-10",
+      "name": "SIBLING_MODULE_NOT_PACKAGED",
+      "signature": "Kaggle packages code_file but not an imported sibling Python file.",
+      "prevention": "Scientific code_file must be self-contained; static guard rejects imports matching sibling .py files.",
+      "incidents": [
+        {
+          "id": "SELECTOR-REQUIREMENT-CPU-V1",
+          "error": "ModuleNotFoundError: No module named 'kaggle_selector_step0'",
+          "log_sha256": "551e2fed5dfbfafb8210b8b2e496adc64f7e1b09eccc5017106c9f96797517be",
+          "evidence": "reports/g02/screening/selector_requirement_44b6/KAGGLE_CPU_EXECUTION_REPAIR_1.json"
+        }
+      ]
+    },
+    {
+      "id": "KFG-11",
+      "name": "TRANSPORT_REENCODING_PLATFORM_BYTE",
+      "signature": "A reversible gzip check changes only the gzip OS header byte under Python 3.12.",
+      "prevention": "Normalize the deterministic gzip OS byte before comparing the frozen compressed SHA; regression-test Python-version variance.",
+      "incidents": [
+        {
+          "id": "SELECTOR-REQUIREMENT-CPU-V2",
+          "error": "Step0Error: expanded gzip transport is not byte-reversible",
+          "log_sha256": "d9593618cc31c77e95a960561c8e38c6fafb2030d4c744749e2107a1b4314c43",
+          "evidence": "reports/g02/screening/selector_requirement_44b6/KAGGLE_CPU_EXECUTION_REPAIR_2.json"
+        }
+      ]
+    },
+    {
+      "id": "KFG-12",
+      "name": "BROAD_LAZY_MOUNT_TRAVERSAL_IN_STEP0",
+      "signature": "Recursive discovery or full mounted-payload hashing violates the five-second envelope.",
+      "prevention": "No rglob, ** glob, or full-payload inventory hashing in step 0; use exact roots plus small manifest/inventory hashes and pinned sizes.",
+      "incidents": [
+        {
+          "id": "SELECTOR-REQUIREMENT-CPU-V3",
+          "error": "step 0 exceeded the five-second fail-closed envelope",
+          "log_sha256": "207729bddae004038fcab3dade19d9ca79d32215736c8f772d995f56fd251264"
+        },
+        {
+          "id": "DINOV2-R5-CPU-V1",
+          "error": "DINOv2 step 0 exceeded the five-second envelope",
+          "log_sha256": "4ce4c79949cf822508043672bcef2accba2645fcda1c5a73ad73785d59b99d9d"
+        }
+      ]
+    },
+    {
+      "id": "KFG-13",
+      "name": "WRONG_PRIVATE_DATASET_MOUNT_TEMPLATE",
+      "signature": "Code assumes /kaggle/input/<slug> instead of the evidenced owner-qualified private mount.",
+      "prevention": "Generate and statically require /kaggle/input/datasets/<owner>/<slug>; a remote preflight-only kernel must attest it before scientific launch.",
+      "incidents": [
+        {
+          "id": "DINOV2-R5-CPU-V2",
+          "error": "Step0Error: exact DINOv2 private-dataset manifest missing",
+          "log_sha256": "df13af417d4cb316391877ef280c11563115eddee76e558c7225116bedea916a",
+          "evidence": "reports/g02/screening/tiered_surface/branches/sa_dinov2/KAGGLE_CPU_V2_TERMINAL_INVALID.json"
+        }
+      ]
+    },
+    {
+      "id": "KFG-14",
+      "name": "PRIVATE_DATASET_403_WITHOUT_TARGET_CHANGE",
+      "signature": "Repeated authenticated download/status attempts return 403 for the same private target.",
+      "prevention": "Stop after the first confirmed 403; disclose the exact target and use owner UI/manual retrieval or change the authorization/target.",
+      "incidents": [
+        {
+          "id": "TRACKASTRA-6BBA-RAW-DATASET",
+          "error": "Authenticated status, files, and metadata calls returned 403 and the owner listing omitted the slug.",
+          "evidence": "reports/g02/screening/trackastra_6bba_feature_kernel_v1.md"
+        },
+        {
+          "id": "G02-PRIVATE-ASSET-MANUAL-ROUNDTRIPS",
+          "error": "Private dataset CLI download returned 403; owner manually downloaded v7 and v8.",
+          "evidence": "reports/g02/screening/selector_requirement_44b6/SELECTOR_CPU_BUNDLE_REMOTE_PASS.json"
+        },
+        {
+          "id": "DINOV2-R5-CPU-V3-REMOTE-PULL",
+          "error": "403 Client Error: Forbidden for url: https://api.kaggle.com/v1/kernels.KernelsApiService/GetKernel",
+          "log_sha256": "2a3720a8a90c6df582300bb59ae661c071148a069b1d8adb828d86c983eb3d07",
+          "evidence": "The first remote metadata pull for the exact v3 target returned 403; it was not retried."
+        }
+      ]
+    },
+    {
+      "id": "KFG-15",
+      "name": "CROSS_KERNEL_PREFLIGHT_SCOPE_LEAK",
+      "signature": "A dedicated preflight kernel sees the exact dataset, but a different scientific kernel ID with nominally identical metadata mounts no dataset.",
+      "prevention": "Remote mount attestation is valid only for the same kernel ID that will execute science; promote a passing preflight kernel lineage instead of transferring its attestation to another kernel.",
+      "incidents": [
+        {
+          "id": "DINOV2-R5-CPU-V3",
+          "error": "Step0Error: exact DINOv2 private-dataset manifest missing",
+          "failure_time_seconds": 0.992640098,
+          "log_sha256": "38bce854e6b319c581c881a10ea47384ebab295cd860c78d71af27af8201d1ac",
+          "evidence": "The separate mount-preflight kernel passed at 0.054277081 s, but scientific kernel g02-dinov2-r5-cpu-run-v1 version 3 mounted no manifest."
+        }
+      ]
+    },
+    {
+      "id": "KFG-16",
+      "name": "KERNEL_TITLE_ID_SLUG_DRIFT",
+      "signature": "The Kaggle CLI warns that the title does not resolve to the declared ID and launches under a title-derived slug.",
+      "prevention": "Static guard must require the normalized kernel title to equal the declared ID slug before push; the push receipt's URL is authoritative.",
+      "incidents": [
+        {
+          "id": "DINOV2-R5-CPU-PROMOTED-V2",
+          "warning": "Your kernel title does not resolve to the specified id. This may result in surprising behavior.",
+          "declared_kernel_id": "onebitbrain/g02-dinov2-r5-mount-preflight-v1",
+          "actual_kernel_id": "onebitbrain/g02-dinov2-r5-cpu-promoted-preflight",
+          "evidence": "/private/tmp/g02-dinov2-promoted-v2-push.txt"
+        }
+      ]
+    },
+    {
+      "id": "KFG-17",
+      "name": "DATASET_OWNERSHIP_REGISTRY_STALE",
+      "signature": "A dataset slug is created and used by a lane but never added to dataset_ownership, so the guard's ownership check cannot bind it to any lane.",
+      "prevention": "Adding a dataset_ownership entry is mandatory in the same change that creates or first pushes a new dataset slug. check_registry_freshness.py fails closed if any onebitbrain/* slug referenced in LIVE_STATE.md is absent from dataset_ownership.",
+      "incidents": [
+        {
+          "id": "REGISTRY-FRESHNESS-AUDIT-20260730",
+          "error": "FAIL_REGISTRY_STALE: onebitbrain/g02-cellect-r7-separation-v1 and onebitbrain/g02-dinov2-r5-gpu-assets-v1 referenced in LIVE_STATE.md with zero dataset_ownership coverage",
+          "evidence": "reports/g02/screening/tiered_surface/kaggle_prelaunch/check_registry_freshness.py (run 2026-07-30, pre-fix output); both slugs are the exact GPU bake-off datasets used by the most recent CELLECT and DINOv2 GPU kernel pushes."
+        }
+      ]
+    },
+    {
+      "id": "KFG-18",
+      "name": "GUARD_NOT_STRUCTURALLY_ENFORCED",
+      "signature": "kaggle_prelaunch_guard.py exists and covers KFG-01..17, but nothing prevents a kernel push that never invokes it: no git hook, no wrapper script, and no call site outside its own directory.",
+      "prevention": "Treat `python3 kaggle_prelaunch_guard.py --kernel-dir <dir> --contract <contract.json> --registry KAGGLE_FAILURE_REGISTRY.json --phase static` (exit 0) as a mandatory precondition of every kernel push, recorded by receipt hash in the pushing node's report. No push may cite 'guard exists' without a fresh receipt for that exact kernel_dir and contract.",
+      "incidents": [
+        {
+          "id": "GUARD-ENFORCEMENT-AUDIT-20260730",
+          "error": "zero external call sites for kaggle_prelaunch_guard.py; only .sample git hooks present in .git/hooks and every vendored external/*/.git/hooks",
+          "evidence": "grep -rln \"kaggle_prelaunch_guard\" excluding its own directory returned no matches; `ls .git/hooks` shows only *.sample files (2026-07-30 audit)."
+        }
+      ]
+    }
+  ],
+  "known_post_failure_noise": [
+    "mistune.py SyntaxWarning: invalid escape sequence",
+    "nbconvert filter_links.py SyntaxWarning: invalid escape sequence",
+    "NbConvertApp Converting notebook __script__.ipynb to html"
+  ]
+}
