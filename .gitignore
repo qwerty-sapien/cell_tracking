@@ -1,12 +1,16 @@
 # Large local datasets (includes the Kaggle ZIP archives)
 /data/
 
-# Local Python environment
-/.venv/
+# Local Python environments and generated Python bytecode
+/.venv*/
+**/__pycache__/
+*.py[cod]
+**/.pytest_cache/
 
 .env
 .DS_Store
 gurobi.lic
+*.log
 
 # --- Reproducible large research artifacts (keep repo text-only; unblock attestation) ---
 # Binary tensors, checkpoints, caches, archived run outputs
@@ -24,14 +28,8 @@ results-*.zip
 **/candidate_fragments/
 /reports/g02/screening/tiered_surface/branches/sa_swap/**/alpha_fragments/
 /reports/g02/screening/tiered_surface/branches/sa_swap/**/beta_fragments/
-kaggle_kernel/*/cache/
-kaggle_kernel/*/features/
 **/submission.csv
 **/cv57.csv
-
-# Tracked CSV caches over GitHub's 100MB limit (also git rm --cached'd from the index)
-reports/g02/fitcache_remote/fc01_v3/bh9out/fit.csv
-reports/g02/fitcache_remote/fc00_v3/bh9out/fit.csv
 
 # Exact paths automatically excluded by the 100 MB Git guard
 /kaggle_kernel/bhcv57out_v3/cv57.csv
@@ -42,8 +40,30 @@ reports/g02/fitcache_remote/fc00_v3/bh9out/fit.csv
 **/outputs/
 **/*_output/
 **/*_output_*/
-*external/*
-.*/*
-reports/*
-kaggle_kernel/*
-_*/*
+**/submission_result/
+**/*-out/
+
+# Local vendor, agent, archive, and kernel workspaces
+/external/
+/.agents/
+/.cruise/
+/.goal-interrogator/
+/_ARCHIVE/
+/_LATER/
+/kaggle_kernel/
+**/kaggle_kernel/
+
+# Keep reports local by default. Re-include only the compact decision record:
+# campaign state, the authoritative plan/ledger/parity contract, terminal or
+# final reports, and terminal barrier receipts.
+/reports/**
+!/reports/**/
+!/reports/g02/screening/LIVE_STATE.md
+!/reports/g02/screening/LEDGER.md
+!/reports/g02/screening/p0_parity.md
+!/reports/g02/screening/campaign_narrowing_and_hypothesis_dag_v1.md
+!/reports/g02/screening/**/FINAL_REPORT.md
+!/reports/g02/screening/**/FINAL_REPORT.json
+!/reports/g02/screening/**/TERMINAL_REPORT.md
+!/reports/g02/screening/**/TERMINAL_REPORT.json
+!/reports/g02/screening/**/BARRIER.json
