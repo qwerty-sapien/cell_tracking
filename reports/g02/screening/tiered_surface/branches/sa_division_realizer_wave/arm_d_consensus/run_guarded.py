@@ -45,6 +45,7 @@ def atomic_json(path: Path, payload: object) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
+    parser.add_argument("--arm", default="D")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--wall-minutes", type=float, default=30.0)
     parser.add_argument("--rss-gib", type=float, default=4.0)
@@ -82,7 +83,7 @@ def main() -> None:
     final_swap = swap_mib()
     payload = {
         "schema": "celltrack-alpha.guarded-execution.v1",
-        "arm": "D",
+        "arm": args.arm,
         "command": command,
         "elapsed_seconds": time.time() - started,
         "exit_code": process.returncode,
