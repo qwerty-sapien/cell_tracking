@@ -35,6 +35,7 @@ def atomic_json(path: Path, payload: object) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
+    parser.add_argument("--arm", default="D")
     parser.add_argument("--seconds", type=int, default=45)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
@@ -48,7 +49,7 @@ def main() -> None:
     final_swap = swap_mib()
     payload = {
         "schema": "celltrack-alpha.idle-preflight.v1",
-        "arm": "D",
+        "arm": args.arm,
         "requested_seconds": args.seconds,
         "elapsed_seconds": time.time() - started,
         "swap_before_mib": initial_swap,
