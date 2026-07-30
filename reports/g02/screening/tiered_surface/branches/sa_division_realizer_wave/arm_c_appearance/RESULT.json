@@ -1,0 +1,80 @@
+{
+  "arm": "C",
+  "duplicate_survivors": 0,
+  "evaluated": false,
+  "forbidden_actions": {
+    "cache_created_or_extended": false,
+    "cv57": false,
+    "dead_promotion": false,
+    "gpu": false,
+    "kaggle": false,
+    "n1": false,
+    "official_scorer": false,
+    "oracle": false,
+    "raw_archive": false,
+    "raw_images": false,
+    "repair_bundles": false,
+    "runpod": false,
+    "six_bba": false,
+    "submission": false,
+    "target": false
+  },
+  "fp_sensitivity": {
+    "25_tp_0_fp": 0.05952380952380952,
+    "25_tp_10_fp": 0.04807692307692308,
+    "25_tp_5_fp": 0.05319148936170213
+  },
+  "frozen_receipts": {
+    "cache_audit_path": "CACHE_AUDIT.json",
+    "cache_audit_sha256": "d8ce829d26bd380eb1573e60e4aa6a84cda677a331d791243719a6fb07a71fd0",
+    "guard_path": "GUARD.json",
+    "guard_sha256": "172d35741ca480bbafcc93449f5934c069226c70d1b1882cd3f3ee28c3f2b367",
+    "preflight_path": "PREFLIGHT.json",
+    "preflight_sha256": "e9ea4e0d8ef7b4aa98a3a15b824eeeda505d11fd72dcbf047de4c76b9b884514",
+    "preregistration_path": "PREREGISTRATION.json",
+    "preregistration_sha256": "77805969b5b25e62f778c4fa5960d5027da283b51f083940c6559abd415d000b"
+  },
+  "information_firewall": {
+    "cache_created_or_extended": false,
+    "official_scorer_read": false,
+    "oracle_read": false,
+    "predictions_written": false,
+    "raw_archive_read": false,
+    "raw_image_read": false,
+    "repair_bundle_read": false,
+    "started": false,
+    "target_read": false
+  },
+  "metrics": {
+    "adjusted_edge_jaccard_delta": null,
+    "combined_score_delta": null,
+    "division_fn": null,
+    "division_fp": null,
+    "division_jaccard": null,
+    "division_tp": null,
+    "node_recall_delta": null,
+    "raw_edge_jaccard_delta": null
+  },
+  "name": "appearance-intensity-redistribution-existing-cache-only",
+  "pass": false,
+  "pass_rule": "combined delta > 0, division Jaccard >= 0.30, nonnegative adjusted/raw/node deltas, and zero duplicates",
+  "reason": "No pre-existing frozen cache both covers all 21 held-44b6 identities and exposes physical intensity redistribution summaries.",
+  "resource_guard": {
+    "audit_elapsed_seconds": 3.478522300720215,
+    "audit_peak_process_rss_mib": 554.09375,
+    "audit_swap_growth_mib": 0.0,
+    "cpu_only": true,
+    "preflight_seconds": 45.48984503746033,
+    "preflight_swap_growth_mib": 0.0
+  },
+  "schema": "celltrack-alpha.division-realizer-arm-result.v1",
+  "scientific_verdict": null,
+  "status": "FAIL_CLOSED_NO_ADEQUATE_FROZEN_INTENSITY_CACHE",
+  "universe": {
+    "family": "44b6",
+    "fragments": 21,
+    "prediction_file_exists": false,
+    "selected_forks": 0,
+    "six_bba_read": false
+  }
+}
