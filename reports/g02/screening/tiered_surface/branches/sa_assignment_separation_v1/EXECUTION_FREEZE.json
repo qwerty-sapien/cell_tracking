@@ -1,0 +1,35 @@
+{
+  "schema": "celltrack-alpha.assignment-evidence-execution-freeze.v1",
+  "status": "FROZEN_BEFORE_FEATURES_OR_SCORES",
+  "frozen_utc": "2026-07-31T00:00:00Z",
+  "contract": {
+    "path": "reports/g02/screening/tiered_surface/branches/sa_assignment_separation_v1/C0_ASSIGNMENT_EVIDENCE_CONTRACT.json",
+    "sha256": "cb893facc2a9e95f3bb5ba8bb21c0dfde8f9324deeba0e72a3fa31fc03588eaf"
+  },
+  "implementation": {
+    "path": "reports/g02/screening/tiered_surface/branches/sa_assignment_separation_v1/generate_assignment_features.py",
+    "sha256": "dab7c8f3f1e6dfe0ad69e4409fb258f24237bfd6c09c600abf017cbfab5965df"
+  },
+  "pre_score_repair": {
+    "superseded_implementation_sha256": [
+      "53309f83a18f3b84306eecd2745443250babc11dbe0b882bbe998bb87da9bdb1",
+      "d6f7b8866e8445cd315861c71f6d397a48336270fd88ed155f620690089b8d3d",
+      "3a18ccb266585b7edb19d2339cdd46c28ba24f908f3ae162f4d8e4da9292f271"
+    ],
+    "failure": "NameError while serializing the manifest after all feature files were written",
+    "change": "Use Python boolean literals throughout, accept an existing feature file only after exact a1/a0 array equality with a fresh recomputation, and bind the feature manifest to the original frozen preregistration while reserving the measured amendment for the separate verdict layer.",
+    "feature_semantics_changed": false,
+    "labels_or_scores_opened": false,
+    "superseded_contract_sha256": "9d7a3e823c32a97c5a67ff381bd4d21dbdb92918cf4ace0671f65086f3ec1b80",
+    "superseded_manifest_sha256": "8e56f4229e80a4203f00080b306428ad3ba9b700663d1d94e58898d43bd7108d"
+  },
+  "population_coverage": 1.0,
+  "sampling": false,
+  "oracle_fields_forbidden": [
+    "oracle_label",
+    "oracle_delta_S"
+  ],
+  "feature_width": 8,
+  "a0_seed": "ASSIGNMENT-EVIDENCE-A0-V1",
+  "barrier": "FEATURE DERIVATION AND THE FROZEN SEPARATION EVALUATION ONLY; NO GRAPH OR TIER MOVE"
+}

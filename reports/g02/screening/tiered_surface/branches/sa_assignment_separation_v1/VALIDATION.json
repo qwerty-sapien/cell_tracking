@@ -1,0 +1,43 @@
+{
+  "action_counts": {
+    "delete": 1345497,
+    "occupied_swap": 45961
+  },
+  "artifacts": {
+    "contract": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_assignment_separation_v1/C0_ASSIGNMENT_EVIDENCE_CONTRACT.json",
+      "sha256": "cb893facc2a9e95f3bb5ba8bb21c0dfde8f9324deeba0e72a3fa31fc03588eaf"
+    },
+    "manifest": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_assignment_separation_v1/FEATURE_MANIFEST_V2.json",
+      "sha256": "41c6d31378e8f7a1e5afbea8d05274c82dffe2100497c8d47e887dc83c3ecb2b"
+    },
+    "result": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_assignment_separation_v1/SEPARATION_RESULT.json",
+      "sha256": "264f318205d7a5a97d2a9eccde81966408dc46d5d2eebe2ce36d0cedd73e994e"
+    },
+    "verdict": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_assignment_separation_v1/MEASURED_VERDICT.json",
+      "sha256": "8a204d9911ad6a9c4991decb8f3c7efa7de5dc91b84fa67b617b521308f57352"
+    }
+  },
+  "barrier": "HOLD_AFTER_PER_CLASS_VERDICTS_BEFORE_ANY_GRAPH_PREREGISTRATION_EXECUTION",
+  "checks": {
+    "all_contract_pins_match": true,
+    "barrier_closed": true,
+    "contract_frozen": true,
+    "feature_file_hashes": true,
+    "feature_shapes_and_finite": true,
+    "full_action_counts": true,
+    "manifest_contract_identity": true,
+    "measured_verdict_identity": true,
+    "per_video_budgets": true,
+    "sealed_result_identity": true
+  },
+  "schema": "celltrack-alpha.assignment-evidence-validation.v1",
+  "status": "PASS",
+  "verdicts": {
+    "delete": "FAIL_PARK_C",
+    "occupied_swap": "FAIL_PARK_C"
+  }
+}

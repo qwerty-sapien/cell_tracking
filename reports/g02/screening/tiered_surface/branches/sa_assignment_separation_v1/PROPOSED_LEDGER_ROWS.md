@@ -1,0 +1,7 @@
+# Proposed ledger rows — root review only
+These rows are proposals. They do not mutate `LEDGER.md`.
+
+| ID | Mechanism | Class | Frozen gate | Result | Evidence | Coverage / external use | State | Barrier |
+|---|---|---|---|---|---|---|---|---|
+| `C2-ASSIGNMENT-SEPARATION-DELETE-20260731` | C2 K-best/MAP assignment evidence on frozen delete actions | SCREEN / ASSIGNMENT REPRESENTATION | Per fold: A1 AUC ≥0.85, ≥B0+0.05, ≥A0+0.03; retention ≥0.020394, ≥B0+0.05, ≥A0+0.03; exact CG0 budgets | **FAIL** — A1 AUC mean 0.6702 (folds 0.6387–0.7117); mean lifts +0.0230 over B0 / +0.0216 over A0; retention mean 0.00185 | Contract `cb893fac…8eaf`; features `41c6d313…cb2b`; result `264f3182…994e`; verdict `8a204d99…7352`; validation PASS | 1,345,497/1,345,497 actions; CPU only; 0 GPU-h / 0 submissions / 0 RunPod | **PARK-C** | No graph preregistration unlocked; no tier move |
+| `C2-ASSIGNMENT-SEPARATION-SWAP-20260731` | C2 K-best/MAP assignment evidence on frozen occupied swaps | SCREEN / ASSIGNMENT REPRESENTATION | Per fold: A1 AUC ≥0.90, ≥B0+0.05, ≥A0+0.03; retention ≥0.067910, ≥B0+0.05, ≥A0+0.03; exact CG0 budgets | **FAIL** — A1 AUC mean 0.6646; A1−B0 negative in all five folds (mean −0.0165); A1−A0 mean −0.0045; retention mean 0.00588 | Same frozen supplier artifacts and validation as DELETE | 45,961/45,961 actions; CPU only; 0 GPU-h / 0 submissions / 0 RunPod | **PARK-C** | No graph preregistration unlocked; no tier move |

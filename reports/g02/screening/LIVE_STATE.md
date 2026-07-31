@@ -13,8 +13,185 @@ points at the authoritative artifacts; it does not replace them.
 - Stop-loss doctrine, mandatory before any repeat-compute request: `MARGINAL_VALUE_GATE.md`.
 - Kaggle kernel launch reliability, mandatory before any push: `tiered_surface/kaggle_prelaunch/KAGGLE_FAILURE_AUDIT.md` and `tiered_surface/kaggle_prelaunch/kaggle_prelaunch_guard.py`.
 
-## Current frontier (as of 2026-07-30)
-- **CELLECT LOCAL HARNESS VERIFIED / ZERO-SWAP RESOURCE BLOCK / NO VERDICT.**
+## Current frontier (as of 2026-07-31)
+- **G-02 TIERED-SURFACE CAMPAIGN TERMINAL / NO ACTIVE WAVE.**
+  APNCC-DIRECT remains banked at local `0.881522069960` / public `0.881`.
+  The measured selector requirements are DELETE AUC/retention
+  `0.85/0.020394` and occupied SWAP `0.90/0.067910`. Independent DINOv2
+  appearance and C2 assignment evidence converge on DELETE at
+  `0.670412/0.670235` AUC (difference `0.000176`), establishing the campaign's
+  empirical ceiling near `0.670` for the current pointwise action label.
+  Division's exact GT-dependent ceiling is `+0.092067842`, decomposed
+  `(a)/(b)/(c)=1/37/0`: only `+0.002406490` is inferable now,
+  `+0.089661334` is representation-blocked, and the GT-only tier is empty.
+  CELLECT is permanently PARK-C / scientifically UNTESTED after six
+  infrastructure failures. Machine census is LIVE/DEAD/PARK-A/PARK-B/PARK-C
+  `0/1/14/18/12`. Reopen only on a new action-labeling formulation (for
+  example batch/sequential valuation) or independent AUC `>=0.85` evidence on
+  this exact discrimination task—not another appearance encoder. No graph,
+  6bba, CV57, GPU, submission, RunPod, plan amendment, or further wave is
+  authorized. Terminal report: `TERMINAL_CAMPAIGN_REPORT.md`.
+- **PEFT §6.2 PRELAUNCH HARD STOP / CAMPAIGN-TERMINAL HOLD / ZERO
+  DEBIT.** The requested DELETE target authenticates at 1,345,497 actions /
+  1,118 beneficial with the exact 27,456,880-parameter Trackastra checkpoint,
+  but the frozen population contains only the 41 videos on outer fold 0's fit
+  side: grouped fold 1 has 21 videos / 648,405 actions and grouped fold 2 has
+  20 / 697,092; grouped fold 0 has zero. The frozen PEFT preregistration
+  requires all three outer-fold graph results and explicitly fail-closes a
+  missing fold. Its embedded five hash folds cannot be substituted
+  retroactively. Therefore no projection, dataset/kernel mutation, or launch
+  occurred. Authenticated quota remains **5.02 h used / 24.98 h remaining**.
+  The former preregistration remains an immutable historical artifact, but the
+  terminal campaign decision authorizes no amendment, completion, or launch.
+  Audit:
+  `tiered_surface/branches/sa_peft_adapter_v1/PRELAUNCH_AUDIT_20260731.json`.
+- **C2 ASSIGNMENT-EVIDENCE SEPARATION SCIENTIFIC FAIL BOTH / PARK-C /
+  GRAPH BARRIER CLOSED.** The completed hash-pinned C0/K-best contract ran
+  CPU-only at full frozen 44b6 coverage (1,345,497 delete + 45,961 occupied
+  swaps; 40,894 components; max size 6 / 21 assignments). DELETE, the primary
+  class, has mean A1 AUC `0.670235` versus binding `0.85`, with mean lifts only
+  `+0.022964` over sealed B0 and `+0.021609` over within-frame A0; no fold
+  clears the unchanged `+0.05` B0 lift. SWAP has mean A1 AUC `0.664616`
+  versus `0.90` and regresses B0 in all five folds (mean `−0.016530`).
+  Retention also fails both classes. Both supplier×class instantiations are
+  PARK-C; no graph preregistration, graph run, 6bba, CV57, GPU, submission,
+  tier move, or plan amendment is unlocked. Validation passes 10/10.
+  Report:
+  `tiered_surface/branches/sa_assignment_separation_v1/TERMINAL_REPORT.md`.
+- **CELLECT FINAL CLOSEOUT TERMINAL INFRASTRUCTURE FAIL / PERMANENT PARK-C /
+  SCIENTIFIC UNTESTED.** The one authorized private version completed the
+  mandatory first-action inventory (25,055 files / 87,797,631,517 bytes /
+  1,154.319 s) before role resolution, then failed at Step 1:
+  `safe loader content resolution expected one match, found 0`. The inventory
+  proved the mounted `g02-cellect-r7-published-assets-v1` payload was still the
+  DINOv2 carrier: the canonical wheels, frozen population, and B0 were present,
+  but both CELLECT safe-loader and checkpoint hashes had zero matches. No
+  model, feature, A1, or A0 output exists, so both classes are NOT EVALUATED.
+  Quota moved from **4.69/25.31 h** used/remaining to **5.02/24.98 h**
+  (**0.33 GPU-h debit**). The precommitted hard rule permanently closes CELLECT
+  at PARK-C as UNTESTED with no retry/further spend and no graph unlock.
+  Diagnosis:
+  `tiered_surface/branches/sa_repr/phase2_separation_gate/cellect_closeout_final_v1/TERMINAL_DIAGNOSIS.json`.
+- **DAG-4 DIVISION VALUE RECONCILED / DIAGNOSTIC HALT.** The already-complete
+  38-bundle frozen-N1 replay remains a `+0.092067841519` GT-dependent ceiling
+  (adjusted/raw/node `+0.001591651042/+0.001607524868/0`, division
+  `38/0/4`, Jaccard `0.904761904762`). Information tiers are `(a)=1`,
+  `(b)=37`, `(c)=0`; representation closure makes tier (b)
+  **UNAVAILABLE**, leaving the honest available diagnostic at only
+  `+0.002406489982`, below the `+0.005` amendment line. The banked 25-TP
+  curve is `+0.059523810/+0.053191489/+0.048076923` at `0/5/10` FP.
+  No amendment proposal, tier move, fitting action, or graph opening follows
+  from this diagnostic. Reconciliation:
+  `tiered_surface/branches/sa_division_value/REPRESENTATION_CLOSURE_RECONCILIATION.json`.
+- **DIVISION FULL-38 FALSIFIED-BY-REALIZATION / PARK-C / D NONBINDING.**
+  Plan §6.5
+  makes the complete 38-event population (`9` 44b6 + `29` 6bba) and all 57
+  authenticated fragments binding for division; per-family numbers are
+  diagnostic and association retains 44b6-first. Target-free A/B/C are
+  binding at TP/FP/FN `0/23/38`, `0/48/38`, and `0/22/38`, all Jaccard `0`
+  and zero duplicates. Clean B's full-38 adjusted/raw/node/combined deltas are
+  `+0.000029258/+0.000028813/0/+0.000029258`, but it fails the binding
+  division-Jaccard line; A/C are `-0.000022335/-0.000022463/0/-0.000022335`
+  each. Clean D's target-free 3-of-3 content is all-zero, but its clean
+  preregistration is not pinned by either pre-outcome implementation freeze;
+  D is therefore invalid/nonbinding with no retroactive freeze. C genuinely
+  tested the biological prior using a
+  476,307-byte summary-only cache over 385 candidates; all local arms used no
+  Kaggle fallback. Across three independent target-free evidence families,
+  realized beneficial division repairs are therefore `0/38`; the surface is
+  FALSIFIED-BY-REALIZATION and moves PARK-A to PARK-C without a universal DEAD
+  claim. The GT-dependent `+0.092067841519` oracle remains an exact ceiling,
+  not a promise. No PASS or downstream unlock exists. Binding report:
+  `tiered_surface/branches/sa_division_realizer_wave_v2/WAVE_TERMINAL_REPORT.md`;
+  disposition:
+  `tiered_surface/branches/sa_division_realizer_wave_v2/FALSIFIED_BY_REALIZATION_20260731.json`;
+  D adjudication:
+  `tiered_surface/branches/sa_division_realizer_wave_v2/arm_d_consensus_clean/PROVENANCE_ADJUDICATION.json`.
+- **GATE RECALIBRATION APPROVED / NODETOPO GENERATOR DIAGNOSIS CORRECTED / HOLD AT BARRIER.**
+  The supplier gate now uses measured future-supplier floors: delete AUC
+  `>=0.85` / retention `>=0.020`; occupied-swap AUC `>=0.90` / retention
+  `>=0.068`, retaining sealed B0/A0, all-five-fold, lift, and FP-budget
+  clauses. This is non-retroactive: DINOv2 delete retention `0.001307` remains
+  >15x short of `0.020`, so no failed supplier is resurrected and no tier moves.
+  AE-P6 and R8 remain PARK-B; their future distinct-supplier gate records now
+  cite the measured floors, while the failed Trackastra result remains terminal.
+  `restore_topology`'s exact generated population has 50 actions / **0
+  beneficial** / oracle ceiling `0.000`; the former `-0.000003436` result is a
+  generator failure, not a selector failure. `NODETOPO-O0` remains PARK-A; the
+  target-blind `NODETOPO-RECALL61-TARGETBLIND-GEN-V1` preregisters `>0`
+  beneficial actions plus a positive oracle ceiling before any selector. Value
+  rank: division `+0.092067842` combined ceiling, delete `+0.081897667` with
+  AUC `0.85` target, occupied-swap `+0.018571397` deprioritized. APNCC v2
+  build/guard checks are locally ready, but an authentic CPU-only Step-0 smoke
+  failed closed in `0.010967 s` before heavy work: the local support copy has
+  60 of 62 declared wheels (missing `llvmlite` and `polars_runtime_32`). A
+  remote v2's former parity-FAIL is superseded by the authenticated
+  public-archive adjudication below: transport is VALID, while graph, CV57,
+  submission, and tier conclusions remain forbidden. Barrier:
+  `selector_requirement_44b6/run_v6/RECALIBRATION_BARRIER_20260731.json`.
+- **DIVISION REALIZER WAVE TERMINAL / NO PASS / HOLD AT 44B6.**
+  All four arms were preregistered before their prediction outcomes and stopped
+  at the frozen 21-fragment 44b6 barrier with zero duplicate survivors.
+  Geometry/motion is a valid scientific FAIL: official division TP/FP/FN
+  `0/1/11`, Jaccard `0`, adjusted/raw/node deltas
+  `-0.000141523/-0.000140538/0`, combined `-0.000141523`.
+  Persistence is non-promotable because a pre-prereg structural search exposed
+  forbidden target/dossier lines; its sealed target-free predictor is retained
+  only as a diagnostic (`0/49/11`, Jaccard `0`, combined `-0.009455519`).
+  Appearance failed closed before prediction because no existing frozen cache
+  contained adequate physical intensity fields. The frozen 3-of-3 consensus
+  therefore abstained everywhere and is invalid due to missing/invalid
+  component inputs; its diagnostic arithmetic is `0/0/11`, Jaccard `0`, and
+  zero edge/node/combined deltas. No arm satisfies positive combined delta,
+  division Jaccard `>=0.30`, and no edge regression; 6bba, CV57, graph, and
+  external gates remain closed. Report:
+  `tiered_surface/branches/sa_division_realizer_wave/WAVE_TERMINAL_REPORT.md`.
+- **CPU BARRIER MERGE COMPLETE / NO TIER MOVE.** The authentic reverse
+  Trackastra supplier is now locally merged and remains `FAIL_PARK_C` on both
+  sealed classes (delete A1 retention `0–0.003268`; occupied-swap `0` in all
+  five folds), so AE-P6/R8 stay PARK-B with no graph unlock. AE-P5's
+  complete-N1 C0/C2 falsifier reconstructed 45,961 actions and 40,894
+  components, compiled 361 decisive batches with zero rejections, and emitted
+  zero edits; AE-P5 stays PARK-A pending a newly named non-inert realizer.
+  AE-P7's three-sample raw-image interface smoke is `PASS_INTERFACE_ONLY`,
+  not a selector/graph result, and remains PARK-A. DAG-2 local `run_v6` is
+  `COMPLETE` with a `HUMAN_REVIEW_REQUIRED` barrier—not `INVALID_RESOURCE`—and
+  its independent validation passes 8/8. Merge receipt:
+  `tiered_surface/branches/barrier_merge_20260731/BARRIER_MERGE.json`.
+- **APNCC-DIRECT PUBLIC-ARCHIVE PARITY PASS / TRANSPORT VALID / NO
+  SUBMISSION.**
+  The sole `onebitbrain/bhap-transport-smoke-v2/1` remote version passed Step 0
+  in `2.715378342 s`: all 62 declared wheel byte hashes, expected manifest,
+  and zero competition-path visits, then ran the banked runner (returncode 0).
+  Against the authenticated public-0.881 T4 archive `031aa5f6…7219`, the
+  263,282-row submission and all four fragments are byte-identical; non-timing
+  `run.json` fields also match. The prior 1,096-row deficit compared APNCC to
+  the wrong pre-appearance baseline (`bhsubmitout_v3`), so it is a
+  **BENIGN_FP reference-selection error**, not numeric drift. The transport
+  path is VALID; no CPU/T4 fallback or new launch is warranted. Authoritative quota moved from `4.53/25.47 h`
+  used/remaining to `4.69/25.31 h` (**0.16 GPU-h debit**). This is a terminal
+  transport result only: no submission, graph, CV57 conclusion, tier move, or
+  retry. Receipt:
+  `apncc_transport_smoke_v2/PUBLIC_ARCHIVE_PARITY_ADJUDICATION.json`.
+- **LANE 1 DIVISION-EMISSION PACKAGE READY / NO SUBMISSION.** A hash-pinned
+  post-graph kernel is ready to consume a passing 44b6 candidate receipt:
+  frozen-D1 scorer-valid fork validation and one-to-one duplicate suppression
+  feed frozen-N1 atomic division-fork compilation. Its BANKED APNCC dry run
+  emitted a divisions-ON, empty `submission.csv` with the exact scorer-input
+  graph preserved. It did not fit a candidate, rerun the scorer, push to
+  Kaggle, or submit. The completed four-arm wave produced no qualifying
+  receipt; a future route would require a new explicit human authorization.
+- **CELLECT R7 CALIBRATED SWAP GUARD ADOPTED / PERMANENT PARK-C.** Three fresh
+  60-second idle windows each measured `0.0 MiB` swapout growth, so the
+  adopted threshold is `256 MiB` (`max(256, 5× idle)`), sampled
+  continuously every 0.25 s with a 15-s sustained-growth abort and immediate
+  abort at `384 MiB`. Historical `+3.5 MiB` (and `+12.875/+30.625 MiB`) stops
+  are retired as noise-confounded; `+488.6875 MiB` exceeds the `384 MiB`
+  immediate-abort line and remains a real high-pressure signal. CELLECT is
+  therefore blocked in practice, and its separate permanent infrastructure
+  closeout forbids further spend. No rerun, scientific verdict, or tier change.
+  Receipt: `tiered_surface/branches/sa_repr/phase2_separation_gate/cellect_local_bakeoff_v1/SWAP_GUARD_ADOPTION.json`.
+- **CELLECT R7 PARK-C BLOCKED-ON-INFRASTRUCTURE / NO VERDICT / NO FURTHER SPEND.**
   The exact DINOv2 isolation contract is reproduced locally for CELLECT's
   authenticated 10,197,221-byte checkpoint: 77 declared request shards,
   one child at a time, fresh 45-second preflight, atomic checkpoints, strict
@@ -23,10 +200,13 @@ points at the authoritative artifacts; it does not replace them.
   shard-0 start caused positive swapout (`+488.6875`, `+3.5`, `+174.6875`,
   `+30.625`, `+12.875 MiB`) under MPS/CPU reductions and was killed by the
   guard. There are zero feature files, zero checkpoints, and no B0/A1/A0 run:
-  **CELLECT has no local scientific verdict.** Resume from shard 0 only during
-  a stable zero-swap host window; do not weaken the guard. The GPU stop rule is
-  honored and Kaggle debit is zero. Receipt:
-  `tiered_surface/branches/sa_repr/phase2_separation_gate/cellect_local_bakeoff_v1/BLOCKED_REPORT.json`.
+  **CELLECT has no local scientific verdict.** The owner now parks R7
+  administratively at PARK-C, blocked on both the consumed Kaggle transport
+  stop rule and local memory, with no further spend. Checkpoint size is not a
+  volumetric-inference memory proxy: activations, decoded tiles, framework
+  workspaces, allocator behavior, and host pressure can dominate the
+  10,197,221-byte weight file. Decision:
+  `tiered_surface/branches/sa_repr/phase2_separation_gate/cellect_local_bakeoff_v1/PARK_C_DECISION.json`.
 - **EXTREME-PREVALENCE OPERATING-POINT FINDING BANKED / PROPOSAL ONLY.**
   At roughly `10^-4` beneficial-action prevalence, ROC-AUC is not diagnostic
   of usable campaign lift: the CG0 false-positive-budget tail is binding.
@@ -35,16 +215,19 @@ points at the authoritative artifacts; it does not replace them.
   failure. Future supplier gates are proposed, for human approval, to lead
   with precision/recall-at-budget and report AUC secondarily. No frozen gate,
   threshold, preregistration, or verdict changed.
-- **DIVISION PLAN-AMENDMENT DOSSIER READY / HUMAN DECISION / FITTING LOCKED.**
+- **DIVISION PLAN AMENDMENT APPROVED / REALIZER WAVE NOW TERMINAL.**
   The 38/42 event-level bundle table now records required edges, motif,
   preferred late-fork equivalence, and duplicate risk. A fresh fail-closed
   receipt reverified the banked frozen-N1 oracle execution: TP/FP/FN `38/0/4`,
   adjusted-edge delta `+0.001591651042`, division Jaccard `0.904761904762`,
   and exact combined delta `+0.092067841519`. This is GT-dependent ceiling
-  evidence only. The dossier proposes a 44b6-first arm for owner review but
-  performs no amendment, fit, graph run, 6bba, or CV57. **FITTING REMAINS
-  LOCKED.** Report:
-  `tiered_surface/branches/sa_division_value/PLAN_AMENDMENT_DOSSIER.md`.
+  evidence only. Human decision §6.4 removed the association-continuity
+  prerequisite for fit-only division realizers. That authority was exercised
+  by the four separately preregistered CPU-first 44b6 arms, which are now
+  terminal with no PASS; GT bundles remained targets, never features. The
+  unchanged PASS line was combined delta `>0`, division
+  Jaccard `>=0.30`, and nonnegative adjusted/raw/node deltas with zero
+  duplicates. 6bba and CV57 remain behind this barrier.
 - **DINOv2 FAIL BOTH / CELLECT TRANSPORT STOP / BARRIER HELD.**
   Attempt-6 wheel packaging is repaired with canonical PEP-427 names and
   byte-read manifest SHA checks; targeted step 0 hashes only the checkpoint,
@@ -66,8 +249,9 @@ points at the authoritative artifacts; it does not replace them.
   after `2.167 s`: the request manifest was absent at the declared
   `/kaggle/input/datasets/onebitbrain/...` mount. No model, feature, B0/A1/A0,
   or scientific verdict ran. The precommitted stop rule is binding:
-  **CELLECT PARK-B blocked-on-infrastructure; GPU bake-off HALT; no seventh
-  run; human decision required before any further representation spend.**
+  CELLECT was then administratively moved to **PARK-C
+  blocked-on-infrastructure; GPU bake-off HALT; no seventh run; no further
+  spend**, without inventing a scientific verdict.
   Authoritative pre/post quota remained **4.53 h used / 25.47 h remaining**
   (`0.0 h` debit). All downstream hard stops remain closed.
 - **RECALL-SUPPLY N0/N1 GO → N2 DEAD / DIVISION FROZEN-CHECKPOINT N0 PARK.**
@@ -84,8 +268,9 @@ points at the authoritative artifacts; it does not replace them.
   corpus-exclusion proof, or source-published 16-GiB inference configuration was
   authenticated, so it is PARK and N1–N3 remain closed. Both lanes remain 0 GPU-h;
   no asset, kernel, push, submission, or tier move occurred; the root recorded the
-  node rows in `LEDGER.md`. Division fitting and the B1 association-continuity
-  prerequisite remain locked.
+  node rows in `LEDGER.md`. The external-checkpoint lane remains parked, but
+  its former division-fitting dependency was superseded by owner decision
+  §6.4 on 2026-07-31.
 - **MCC CONTOUR-RETURN SOURCE AUDIT TERMINAL / NO KAGGLE COMPUTE.** The owner
   authorized the one public-source-only Reverse witness, but its pinned
   Apache-2.0 source `1219b669…9041` exposes no deterministic checkpoint and
@@ -122,7 +307,7 @@ points at the authoritative artifacts; it does not replace them.
   received the evaluator token `FAIL_PARK_C`. No tier move is applied or
   proposed, AE-P6/R8 remain unchanged, and graph, 6bba, CV57, tier, DEAD, plan,
   kernel, GPU, and submission remain closed. Raw result `bd1c3d55…f46e`.
-- **DIVISION VALUE DIAGNOSTIC TERMINAL / FITTING LOCKED.** The 38 exact frozen
+- **DIVISION VALUE DIAGNOSTIC TERMINAL / FIT-ONLY DEPENDENCY UNLOCKED.** The 38 exact frozen
   Wave-3 repair bundles give a combined-score ceiling of `+0.092067842`
   **[GT-DEPENDENT]**, with division TP/FP/FN `38/0/4`, Jaccard `0.904762`,
   adjusted/raw/node deltas `+0.001591651/+0.001607525/0`. The deployment-time
@@ -131,9 +316,10 @@ points at the authoritative artifacts; it does not replace them.
   the `+0.005` actionability target. The remaining 37/38 require an unbuilt
   stronger representation; their `+0.092067842` (a+b) value is a
   representation-conditioned upper bound **[NON-GT-IDENTIFIABLE]**, not a
-  realized selector gain. DAG-2 division status is
-  `NOT_EVALUABLE_NO_DIVISION_SELECTOR`; no amendment proposal or tier move.
-  Division fitting remains locked. Report:
+  realized selector gain. DAG-2 division status was
+  `NOT_EVALUABLE_NO_DIVISION_SELECTOR`; owner-approved §6.4 later opened the
+  separately frozen 44b6-first realizer wave, which is now terminal with no
+  PASS. Report:
   `tiered_surface/branches/sa_division_value/FINAL_REPORT.md`.
 - **CELLECT SINGLE-BUNDLE INTEGRITY PASS / NO KERNEL LAUNCH.** The 77 frozen
   request shards (1,391,458 actions) and unchanged population manifest
@@ -373,9 +559,10 @@ points at the authoritative artifacts; it does not replace them.
   `tiered_surface/n1_feasibility_compiler/N1_FREEZE_REPORT.json`.
 - **TIER CENSUS / NO LIVE RUN:** machine state
   `tiered_surface/tier_census.json` at SHA-256
-  `ff551d8ee56503c13e769e03d7313cf1c95b26f8c779524d1095515aa40bbc22`
-  (was `2d8299ee…da22f` before the 2026-07-30 run_v6 ceiling propagation)
-  records **LIVE 0 / PARK-A 15 / PARK-B 19 / PARK-C 10 / DEAD 1**.
+  `29fa828f27e390034570e953ffa0dd14cbd7cd754ebbc879237905f28a8f3f5f`
+  records **LIVE 0 / PARK-A 14 / PARK-B 18 / PARK-C 12 / DEAD 1** after
+  the owner-approved R7 CELLECT PARK-B→PARK-C move and the terminal full-38
+  DIV-F1 PARK-A→PARK-C disposition.
   Wave-3 accepted three cited moves: AE-P5 and AE-P7 PARK-B→PARK-A after
   exact contracts plus positive occupied-swap P0 headroom, and G2 PARK-B→PARK-C
   for the exact `SA-SWAP-W1-EXACT-REGRET` instantiation only. AE-P1/AE-P2 and
@@ -395,8 +582,8 @@ points at the authoritative artifacts; it does not replace them.
   stops on a missing exact checkpoint/reverse cache with a bounded
   **0.758 CPU-h / 0 GPU-h** request. Division continuity now has exact bundles
   for all 38 fragmented events (39 adds, 27 net deletes; 36 late equivalents);
-  fitting stays locked. No GPU, Kaggle, budget debit, RunPod, submission, DEAD,
-  plan, or CELLECT action occurred.
+  its then-current fitting lock is superseded by §6.4. No GPU, Kaggle, budget
+  debit, RunPod, submission, DEAD, plan, or CELLECT action occurred in that wave.
 - **CPU-ONLY WAVE-2 BARRIER COMPLETE / NODETOPO 44b6 GRAPH KILL.**
   `SA-NODETOPO-GEN` authenticated all 36 fit105 44b6 Zarrs and 3,600 frames,
   froze 107,370 label-free proposals plus an exact 50-action
@@ -410,8 +597,8 @@ points at the authoritative artifacts; it does not replace them.
   `SA-DIVISION-DEEP` found
   **38/42 CV57 divisions present-but-fragmented**, one role-present
   component-spanning event without a local fork, and three role-missing events;
-  39/39 diagnostic actions compiled, while fitting remains locked behind a
-  both-family association-continuity pass. `SA-PARKB-SWEEP` audited 14
+  39/39 diagnostic actions compiled; its then-current fitting dependency is
+  superseded by the 2026-07-31 §6.4 amendment. `SA-PARKB-SWEEP` audited 14
   CPU-testable PARK-B nodes, skipped eight weight/GPU-gated representation
   nodes, and proposed no move. Optional `SA-ASSOC-CYCLE` authenticated 36/36
   forward-cache files but found no immutable reverse supplier, so separation
@@ -473,7 +660,8 @@ points at the authoritative artifacts; it does not replace them.
   kernel authenticated that checkpoint at step 0 but discovered zero frozen
   request files and stopped before feature computation. Its 0.3086 kernel-h
   debit makes the cumulative CELLECT invalid-run debit **0.7677 kernel-h**. No
-  A1/A0 or scientific verdict exists; R7 remains PARK-B. Infrastructure-fix
+  A1/A0 or scientific verdict exists; R7's historical PARK-B state here is
+  superseded by the 2026-07-31 administrative PARK-C decision. Infrastructure-fix
   contract `a1e6180a…3398`; remote receipt `4aa00106…ecd0`; v4 terminal receipt
   `phase2_separation_gate/run_v4/TERMINAL.json`.
 - **H0 DONE** — proposal-only screening **BANNED** (no proxy `|ρ|≥0.5`). Every candidate now
@@ -519,49 +707,72 @@ points at the authoritative artifacts; it does not replace them.
   N1–N5 stayed closed. GPU, Kaggle, RunPod,
   submission, push, and external mutation remain closed.
 
-## The one live lever
-Phase 1 is closed. The supplier-agnostic **R-SEPARATION-FALSIFIER-44B6**
-per-class amendment is frozen at `tiered_surface/branches/sa_repr/phase2_separation_gate/`
-(`9fb030bd…3310e`). Its exact 44b6 populations and both-class B0 are banked, but
-the feature run remains **INVALID** before supplier outcomes. The direct v3
-checkpoint transport is proven byte-changing rather than absent. Private asset
-v4 is READY and its authenticated cmux download proves a byte-exact safe-ASCII
-checkpoint after Kaggle expands the uncompressed tar. The one authorized v4
-launch is now terminal INVALID before feature computation because it found zero
-frozen feature requests; the authorization is closed and debited 0.3086
-kernel-h. The independent DINOv2 R5 local path is also terminal
-INVALID_RESOURCE. Neither supplier has A1/A0 metrics or a scientific verdict.
-On the exact fit-only Phase-1
-N1-valid delete and occupied-swap populations, every class/fold must clear the
-**measured binding floors** (amendment v4, 2026-07-30): A1 AUC `≥0.85` (delete) /
-`≥0.90` (occupied swap) and CG0-budget retention `≥0.020394` (delete) /
-`≥0.067910` (occupied swap), plus the unchanged `≥B0+0.05` / `≥A0+0.03` lifts on
-both metrics, with exact per-video budgets and full integrity. This supersedes the
-frozen `0.65`/`0.15` absolute floors: AUC is **tightened**, retention is
-**relaxed**, because run_v6 measured what the `+0.005` target actually requires.
-Trackastra's prior AUC `0.918491` still led to a failed graph, so PASS only
-unlocks a supplier-class-specific 44b6 graph contract; it is not a promotion.
-No further retry, A1/A0 evaluation, full cache, graph, 6bba, or CV57 run is authorized. Division still
-requires one association-continuity arm passing both families. C2 remains
-unscored, but its newly exact AE-P5 contract is PARK-A pending implementation
-and rank-1 output. DINOv2 remains an authenticated second supplier at PARK-B;
-its authorized local materialization path closed INVALID_RESOURCE.
+## Terminal lever state
 
-## Census / fallback queue
+There is **no live lever**. The supplier-agnostic
+`R-SEPARATION-FALSIFIER-44B6` contract, its exact 1,391,458-action population,
+sealed B0, folds, alignment control, probe, and measured requirements remain
+banked as evidence. DINOv2 completed the full population and failed both
+classes; C2 assignment evidence independently completed the same population
+and failed both classes; CELLECT is permanently PARK-C / UNTESTED after six
+infrastructure failures. No supplier-specific graph contract is open.
+
+The representation and division findings close the current pointwise
+beneficial-action formulation: independent evidence families converge near
+DELETE AUC `0.670`, below `0.85`, while 37/38 division events worth
+`+0.089661334` require a stronger representation and none are GT-only. This
+surface can reopen only for a new action-labeling estimand or independent
+exact-task evidence of AUC `>=0.85`. Another appearance encoder does not
+qualify. `TERMINAL_CAMPAIGN_REPORT.md` is authoritative for the closeout.
+
+## Final census / closed fallback registry
+
+This registry is descriptive, not an executable queue. The terminal reopening
+condition above governs every future proposal.
 
 | Queue | Surface | Tier | 44b6 evidence | Headroom / next condition |
 |---:|---|---|---|---|
-| 1 | `AE-P5` | PARK-A | no graph; exact C0/C2 contract committed | `+0.018571397`; implement frozen rule and emit rank-1 |
+| closed | `AE-P5` | PARK-A parent / PARK-C C2 instantiation | full assignment-evidence separation failed both classes | new action-labeling formulation or independent exact-task AUC `>=0.85` evidence |
 | 1 | `AE-P7` | PARK-A | no graph; exact phase-template contract committed | `+0.018571397`; fit105 identity/runtime smoke |
 | 1 | `AE-P1` | PARK-A | broader mechanism unscored; failed exact realizers do not demote it | `+0.018571397`; newly named realizer only |
 | 2 | `AE-P2` | PARK-A | broader mechanism unscored; failed exact realizers do not demote it | `+0.018571397`; newly named realizer only |
 | gated | `SWAP-O0` | PARK-A | exact-regret instantiation `−0.000310288/−0.000296592/0` (PARK-C breadcrumb) | compiler-valid run_v6 ceiling `+0.018571397` (`6e62a29c…6c71b`); representation falsifier PASS |
 | closed | `R5` DINOv2 XY | PARK-C | local 77-shard supplier gate returned `FAIL_PARK_C` for delete and occupied-swap | no graph preregistration; new named supplier only |
-| blocked | `R7` CELLECT | PARK-B | sole v7 stopped at step 0 on missing declared Kaggle mount; no scientific verdict | infrastructure stop rule: GPU bake-off HALT, no seventh run, human decision required |
+| closed | `R7` CELLECT | PARK-C | six infrastructure failures; no scientific verdict | permanent no-further-spend / scientifically UNTESTED |
 | closed | `G2` exact regret | PARK-C | `−0.000310288/−0.000296592/0` | new named decision-focused mechanism only |
 | closed | `DELETE-O0` | PARK-C | exact retention beta `−0.000127119/−0.000131807/0` | materially new named deletion mechanism |
 
 ## Key numbers
+- Terminal standing: APNCC-DIRECT local `0.881522069960` / public `0.881`.
+  The action-selector requirements are DELETE `0.85/0.020394` and occupied
+  SWAP `0.90/0.067910` AUC/retention. DINOv2 and assignment DELETE AUCs are
+  `0.670412/0.670235`; their `0.000176` separation supports the campaign's
+  empirical pointwise-label ceiling near `0.670`.
+- Terminal division decomposition: GT-dependent ceiling `+0.092067842`;
+  tier (a) `1/38`, `+0.002406490`; tier (b) `37/38`, `+0.089661334`,
+  representation-blocked; tier (c) `0/38`, `0`, EMPTY.
+- Terminal census: **LIVE/DEAD/PARK-A/PARK-B/PARK-C `0/1/14/18/12`** over
+  45 parent nodes. CELLECT is permanent PARK-C / UNTESTED after six
+  infrastructure failures. No external action or further wave is authorized.
+- Division-realizer 44b6 wave: A official `0/1/11`, Jaccard `0`, combined
+  `-0.000141523` (valid FAIL); B diagnostic `0/49/11`, Jaccard `0`, combined
+  `-0.009455519` (information-firewall INVALID); C not scored (no adequate
+  frozen intensity cache); D diagnostic `0/0/11`, Jaccard `0`, combined `0`
+  (invalid/missing component inputs). Duplicate survivors: `0/0/0/0`.
+  Realized-FP sensitivity remains: 25 TP with 0/5/10 FP contributes
+  `+0.0595/+0.0532/+0.0481`.
+- APNCC-direct transport smoke v1: manifest `779aa8d3…606b`; one non-submitting
+  GPU push reported v1 (no second push recorded). Remote Step 0 **FAIL_CLOSED** at `5.061967561 s`
+  (limit `5.0 s`, overage `0.061967561 s`), `heavy_work_started=false`, and no
+  transport receipt/CSV/fragments. Quota pre/post **4.53/25.47 h** with `0.0 h`
+  debit; fix is the Step-0 full-input SHA timing path.
+- APNCC-direct transport smoke v2: hardened Step 0 **PASS** at `2.715378342 s`
+  (manifest `779aa8d3…606b`, 62 wheel byte hashes, positive `264,378` request
+  count, zero competition-path visits), but the runner output is **FAIL**:
+  `263,282/128,873/134,409` rows/edges/nodes vs required
+  `264,378/129,495/134,883`; all four fragment SHA-256s differ. Quota
+  `4.53/25.47 -> 4.69/25.31 h` used/remaining (`0.16 GPU-h`). No submission or
+  retry; the most important repair layer is exact remote runner parity.
 - CELLECT local: **5/5 fresh 45-second preflights passed at 0 MiB swap
   growth; 5/5 shard-0 starts failed closed on positive system swapout**.
   Shard outputs/checkpoints/gate verdict: `0/0/none`; Kaggle/GPU debit `0`.
@@ -570,7 +781,14 @@ its authorized local materialization path closed INVALID_RESOURCE.
   `0.9255–0.9422`, gap `+0.044–+0.061`; 12/20/25 zero-FP division TP add
   `+0.0286/+0.0476/+0.0595`, versus edge-only cap near `0.896`. Frozen-N1
   oracle 38-bundle delta is exactly `+0.092067841519`; 25 TP with 5/10 FP
-  falls to `+0.0532/+0.0481`. Human decision pending; fitting locked.
+  falls to `+0.0532/+0.0481`. Human amendment approved; the four 44b6-first
+  fit-only realizer arms are now terminal with no PASS, and 6bba/CV57 remain
+  closed.
+- Lane 1 division package identity
+  `4673a59079b7b9e72bbe261f6a62e2dcf004854e0d0657838bb56ddd144facf7`:
+  banked APNCC 36-fragment empty-divisions-on round trip wrote 2,415,478 rows,
+  canonical graph `e3ada186…f8c5`, and CSV SHA `26ee9c44…edbd9`; zero score
+  change is by exact scorer-input graph identity (no scorer rerun).
 - Selector-requirement diagnostic: **2/2 fresh preflights PASS at zero growth;
   2/2 scientific executions INVALID_RESOURCE**, at 722.620 s / 1.904 GiB /
   +16.31 MiB swap and 1,034.259 s / 1.453 GiB / +1,567.69 MiB swap. **0 result
@@ -629,10 +847,10 @@ its authorized local materialization path closed INVALID_RESOURCE.
 - Phase-1 graph outcomes: DELETE-O0 adjusted/raw/node
   `−0.0001271190/−0.0001318070/0`; SA-SWAP exact-regret
   `−0.0003102875/−0.0002965922/0`; both stopped at 44b6.
-- Tier census is **0/15/19/10/1** over 45 nodes; machine state
+- Tier census is **0/14/18/12/1** over 45 nodes; machine state
   `tiered_surface/tier_census.json` is now SHA-256
-  `ff551d8ee56503c13e769e03d7313cf1c95b26f8c779524d1095515aa40bbc22`
-  after the run_v6 ceiling propagation (no tier changed). Weekly Kaggle budget artifact
+  `29fa828f27e390034570e953ffa0dd14cbd7cd754ebbc879237905f28a8f3f5f`
+  after the R7 CELLECT and full-38 DIV-F1 terminal moves. Weekly Kaggle budget artifact
   `tiered_surface/kaggle_budget.json` at SHA-256
   `1e9efa08…f7426` mirrors the authoritative Kaggle balance **4.53/30.0
   kernel-h used / 25.47 h remaining** and retains **3.6435 h** only as the
@@ -640,19 +858,18 @@ its authorized local materialization path closed INVALID_RESOURCE.
   tracker is recorded as a correction. Cumulative CPU use is **0.3010984 h**.
   No GPU authorization or CPU session remains active.
   RunPod is forbidden and submission human-gated.
-- Two-supplier separation: common frozen population is **1,345,497 delete /
+- Final supplier separation: common frozen population is **1,345,497 delete /
   1,118 beneficial** and **45,961 occupied-swap / 134 beneficial**, across five
-  identical OOF folds. CELLECT N2 authenticated 77 request shards / 1,391,458
-  actions locally. Its sole v7 run created exactly one fresh version, then
-  failed at step 0 after 2.167 s because the declared owner-qualified Kaggle
-  request-manifest path was absent. The stop rule parks CELLECT PARK-B
-  blocked-on-infrastructure and permits no seventh run; it has no scientific
-  verdict. DINOv2 instead completed all 77 request shards locally with atomic
-  resume and zero swap growth. Its unchanged sealed B0→A1→A0 gate returned
+  identical OOF folds. CELLECT is permanent PARK-C / UNTESTED after six
+  infrastructure failures and has no scientific verdict. DINOv2 completed all
+  77 request shards locally with atomic resume and zero swap growth. Its
+  unchanged sealed B0→A1→A0 gate returned
   `FAIL_PARK_C` for delete (A1 mean AUC/retention `0.670412/0.001307`) and
-  occupied-swap (`0.682473/0`). No graph preregistration is unlocked for either
-  supplier; result `c58b1a58…0d41f2`, CELLECT terminal
-  `c0beda9b…5f706f7`.
+  occupied-swap (`0.682473/0`). C2 assignment evidence independently returned
+  `FAIL_PARK_C` for delete (`0.670235/0.001851`) and occupied swap
+  (`0.664616/0.005882`). No graph preregistration is unlocked; DINO result
+  `c58b1a58…0d41f2`, assignment result `264f3182…994e`, CELLECT terminal
+  diagnosis `4a9e2088…2c855`.
 - CPU-only Wave-2 NODETOPO prerequisite: **36/36 videos, 3,600/3,600 frames,
   107,370 proposals, 106,668 false proposals, 100,983 topology-joinable,
   50 restoration actions across 24 videos**, with 0 MiB swap growth. Its graph
@@ -725,6 +942,257 @@ Frozen C1 conflict-set attention (`C1-TA-HOCT-LITE`) is DEAD at its 44b6 graph g
 do not run 6bba or re-screen it without a new named mechanism.
 
 ## Log (newest first)
+- 2026-07-31 — **G-02 TIERED-SURFACE CAMPAIGN TERMINAL / APNCC BANKED /
+  NO FURTHER WAVES.** Frozen `TERMINAL_CAMPAIGN_REPORT.md`
+  (`9b0a7819…1a961`): APNCC-DIRECT remains local `0.881522069960` / public
+  `0.881`; run_v6 requires DELETE `0.85/0.020394` and occupied SWAP
+  `0.90/0.067910`; DINOv2 and assignment evidence converge at DELETE AUC
+  `0.670412/0.670235`, supporting an empirical ceiling near `0.670` for the
+  current pointwise action label. Division decomposes to GT ceiling
+  `+0.092067842`, tier (a) `1/38` / `+0.002406490`, tier (b) `37/38` /
+  `+0.089661334` representation-blocked, tier (c) EMPTY. CELLECT is permanent
+  PARK-C / UNTESTED after six infrastructure failures. Final parent-node
+  census is LIVE/DEAD/PARK-A/PARK-B/PARK-C `0/1/14/18/12`. Reopen only on a
+  new action-labeling formulation or independent exact-task AUC `>=0.85`
+  evidence—not another appearance encoder. No experiment, graph, GPU,
+  submission, RunPod, plan amendment, or external action occurred.
+- 2026-07-31 — **PEFT PRELAUNCH INVALID / NO LAUNCH; DIVISION SURFACE
+  PARK-C.** The exact DELETE population has no grouped-fold-0 actions, so it
+  cannot satisfy the frozen three-outer-fold result and missing-fold
+  fail-closed clauses. No projection, Kaggle mutation, GPU debit, or
+  submission occurred; quota re-authenticated at `5.02/24.98 h`
+  used/remaining. Division is recorded FALSIFIED-BY-REALIZATION after valid
+  A/B/C each realized 0/38 TP; the `+0.092067841519` GT oracle remains a
+  ceiling. (Codex root)
+- 2026-07-31 — **C2 ASSIGNMENT-EVIDENCE FULL-POPULATION FAIL BOTH / PARK-C /
+  BARRIER HELD.** Frozen C0 MAP/min-marginal/K-best features covered all
+  1,391,458 actions without sampling or oracle-field access. DELETE A1 mean AUC
+  `0.670235` (mean lifts `+0.022964` B0 / `+0.021609` A0) misses `0.85` and
+  every-fold lift/retention conjunction; SWAP A1 mean `0.664616` misses `0.90`
+  and regresses B0 in 5/5 folds. Both units are `FAIL_PARK_C`; validation
+  10/10; no graph or downstream gate opened. (Codex root)
+- 2026-07-31 — **FULL-38 INDEPENDENT REVIEW PASS / D FAIL-CLOSED /
+  BARRIER HELD.** An independent recount reproduced binding A/B/C at
+  `0/23/38`, `0/48/38`, and `0/22/38`, all Jaccard `0`; no arm passes.
+  Clean D's empty target-free intersection is `INVALID_NONBINDING` because its
+  preregistration was absent from both pre-outcome freezes. The PEFT-only
+  preregistration now pins the actual grouped three-fold artifact exactly
+  (`ddb313cb…8769`, declared/actual count `3`) and remains unlaunched. APNCC
+  transport and correct public-T4 archive identity independently pass; no
+  submission, fallback, downstream unlock, or other hard-stop change occurred.
+  Review `9ec635c…d1fe5`. (Independent reviewer + Codex root)
+- 2026-07-31 — **DIVISION CLEAN B/D TERMINAL / NO PASS / BARRIER HELD.**
+  A fresh forbidden-read worker sealed 48 target-free persistence proposals
+  across all 57 graphs with zero duplicates and zero swapout growth; the
+  target-side full-38 evaluation returned B `0/48/38`, Jaccard `0`, despite a
+  tiny `+0.000029258` combined graph delta. Clean 3-of-3 D content abstained
+  at `0/0/38`, but a postrun audit fail-closed it as nonbinding because its
+  clean preregistration was absent from the pre-outcome freeze; no retroactive
+  freeze was made. A/C remain `0/23/38` and `0/22/38`. No valid arm passes,
+  no downstream unlock exists, and PEFT remains preregistered but unlaunched.
+  (Codex root)
+- 2026-07-31 — **APNCC PUBLIC-T4 ARCHIVE IDENTITY PASS / TRANSPORT VALID.**
+  The v2 submission and all four fragments are byte-identical to authenticated
+  `results-bhap.zip` (`031aa5f6…7219`), the T4 artifact that scored public
+  `0.881`; non-timing run fields and proposal/cap counts match exactly. The
+  apparent 1,096-row deficit came from the wrong pre-APNCC baseline reference,
+  not threshold drift, and is classified `BENIGN_FP`. No CPU/T4 fallback,
+  relaunch, or submission. (Codex root)
+- 2026-07-31 — **SWAP GUARD CALIBRATION ADOPTED / CELLECT NO-SPEND.** Adopted
+  `256 MiB`, 0.25-s monitoring, 15-s sustained abort, and 384-MiB immediate
+  abort. The `+3.5 MiB` stops are retired as noise-confounded; `+488.6875 MiB`
+  remains a genuine immediate abort, so CELLECT stays permanently PARK-C with
+  no further spend or tier/scientific action. (Human owner + Codex root)
+- 2026-07-31 — **DIVISION B/D FIREWALL CORRECTION / CLEAN RERUN ACTIVE.**
+  Root discovered after scoring that its fresh B design followed prior access
+  to the target schema. The authentic `0/53/38` arithmetic and derived empty D
+  consensus are quarantined as diagnostic-only, not terminal evidence. A and C
+  remain valid. A fresh no-history worker is now preregistering B under an
+  explicit forbidden-read firewall; the binding wave report is pending. No
+  external or downstream action opened. (Codex root)
+- 2026-07-31 — **DIVISION FULL-38 WAVE TERMINAL / NO PASS / BARRIER HELD.**
+  Target-isolated A/B/C/D completed on all 38 repair events and all 57 graphs:
+  `0/23/38`, `0/53/38`, `0/22/38`, and `0/0/38`, with Jaccard `0` and zero
+  duplicate survivors throughout. C's first real appearance screen used only a
+  476,307-byte bounded summary cache and all local arms had zero swap growth.
+  No arm passes; PEFT §6.2 remains preregistered but unlaunched, with its
+  unchanged 4.8-hour projection reconciled to the current 24.98-hour balance.
+  No downstream or external action opened. (Codex root)
+- 2026-07-31 — **APNCC VALID CSV TRANSPORT PASS / CV57 BYTE-PARITY FAIL.**
+  The immutable wrapper ERROR is retained: all four T4 fragments differ from
+  the local bank. A separate raw-test-derived validator nevertheless proves
+  that the downloaded 263,282-row four-dataset `submission.csv` is structurally
+  valid with zero graph/schema errors. This satisfies the end-to-end artifact
+  transport requirement but permits no CV57 scientific claim, scored
+  submission, or retry. The APNCC debit remains 0.16 GPU-h. (Codex root)
+- 2026-07-31 — **CELLECT FINAL CLOSEOUT TERMINAL / PERMANENT PARK-C /
+  SCIENTIFIC UNTESTED.** The sole authorized version completed the required
+  25,055-file / 87.798-GB full SHA inventory before resolution, then found zero
+  copies of the CELLECT safe loader (and the inventory also contains zero
+  checkpoint matches). The mounted payload was the DINOv2 carrier. No model,
+  feature, A1, A0, or per-class number exists. Authoritative debit is 0.33
+  GPU-h; balance is 5.02 h used / 24.98 h remaining. The one-run
+  infrastructure-failure rule permanently forbids CELLECT retry/further spend
+  and unlocks no graph contract. (Codex root)
+- 2026-07-31 — **CELLECT FINAL CLOSEOUT V1 LAUNCHED / ONE VERSION / RUNNING.**
+  The fresh self-contained kernel passed local expanded-mount discovery,
+  canonical-wheel validation, inline shared guard, zero-existing-version,
+  zero-in-flight, and authoritative quota checks, then created exactly remote
+  v1 under the 5 h timeout. A post-push list lag interrupted the first local
+  supervisor; direct status recovery attached to the same running v1 with no
+  second push. Authorization is consumed; prelaunch quota is 4.69 h used /
+  25.31 h remaining. No outcome or postrun debit yet. (Codex root)
+- 2026-07-31 — **DAG-4 DIVISION VALUE RECONCILIATION COMPLETE / NO AMENDMENT.**
+  The 38-bundle frozen-N1 replay and information decomposition were executed
+  and independently validated. GT ceiling is
+  `+0.092067841519`; tier (a) is 1 event / `+0.002406489982`; tier (b) is 37
+  events and now explicitly UNAVAILABLE after representation closure; tier
+  (c) is empty. The exact 25-TP sensitivity at 0/5/10 FP is
+  `+0.059523810/+0.053191489/+0.048076923`. Tier (a) misses the `+0.005`
+  materiality line, so no amendment proposal or tier move. (Codex root)
+- 2026-07-31 — **DIVISION-ONLY FULL-38 SCOPE CORRECTION / PEFT §6.2 OPEN,
+  NOT LAUNCHED.** Human decision §6.5 makes the combined 9+29-event population
+  binding for division while leaving association 44b6-first unchanged; old Arm
+  A 0/9 is now INCONCLUSIVE-UNDERPOWERED. Fresh target-isolated A/B/C/D
+  preregistrations were sealed. The plan's frozen-failure precondition is
+  satisfied, so a frozen-backbone `<1%` adapter node was preregistered at
+  `4.8` T4-h with nested-OOF graph-delta selection and no full fine-tune. No
+  outcome, GPU launch, submission, RunPod, full-pool cache, or downstream
+  unlock occurred. (Human owner + Codex root)
+- 2026-07-31 — **APNCC V2 INDEPENDENT REVIEW PASS / BARRIER HELD.** Read-only
+  review confirms hardened Step 0, the exact all-four-fragment parity failure,
+  no leaderboard submission/retry, authoritative `0.16 GPU-h` debit, and the
+  proposal-only CELLECT `256 MiB` continuous/sustained guard. The runner's
+  local `mode=submit` only wrote the unattested local CSV; it did not submit to
+  Kaggle. No scientific, tier, or barrier change. (Independent review + Codex root)
+- 2026-07-31 — **APNCC V2 TERMINAL TRANSPORT FAIL / NO RETRY.** The sole
+  remote v2 run passed full Step 0 in `2.715378342 s` (62 wheels, zero
+  competition-path visits) and ran the banked runner, but the first 44b6 CSV
+  fragment failed exact parity (`50,545` vs `50,711` rows). Quota reconciled
+  `4.53→4.69 h` used / `25.47→25.31 h` remaining: **0.16 GPU-h debit**. No
+  submission, graph, CV57 result, tier action, or retry; barrier remains held.
+  (Codex root)
+- 2026-07-31 — **APNCC V2 CPU STEP-0 SMOKE FAIL-CLOSED / REMOTE RUNNING
+  RECONCILED.** The authentic local support copy has 60/62 declared wheels,
+  missing exact `llvmlite-0.47.0…manylinux_2_17_x86_64.whl` and
+  `polars_runtime_32-1.42.0…manylinux2014_x86_64.whl`; the generated kernel
+  stopped in `0.010967 s` with `heavy_work_started=false`. A read-only owner
+  status query independently confirmed remote `bhap-transport-smoke-v2/1` is
+  RUNNING, so the barrier is now held for terminal transport/output/quota
+  evidence—not authorization. No submission, graph, CV57 conclusion, or tier
+  action. (Codex root)
+- 2026-07-31 — **CELLECT SWAP-GUARD CALIBRATION / PROPOSAL ONLY.** Three
+  fresh 60-second idle windows each showed 0.0 MiB system swapout growth.
+  Proposed future-only guard is `max(256 MiB, 5× observed idle) = 256 MiB`,
+  0.25-s monitoring, 15-s sustained-growth hard abort, and immediate abort at
+  1.5× (`384 MiB`). The historical +3.5 MiB stop was below the banked
+  10.06–54.87 MiB idle drift and is noise-confounded; +488.6875 MiB remains a
+  real high-pressure signal. CELLECT stays PARK-C with no rerun, tier move,
+  spend, or scientific verdict. (Codex root)
+- 2026-07-31 — **APNCC-DIRECT TRANSPORT SMOKE V2 LAUNCHED / NO SUBMISSION.**
+  Root rebuilt the requested `779aa8d3…606b` carrier with full declared-input
+  byte-SHA verification, one support dataset, offline install, serial launch
+  fence, and zero Step-0 competition-path visits. Step-0 elapsed time is now a
+  60-second warning, while missing/mismatched input, non-positive request
+  count, manifest drift, and a competition-path visit remain hard failures.
+  Kaggle accepted fresh v1 of the v2 slug after a 4.53 h used / 25.47 h
+  remaining prelaunch reconciliation. The run is active; no output acceptance
+  or competition submission has occurred. (Codex root)
+- 2026-07-31 — **APNCC V2 LOCAL ATTESTATION REPAIRED / BARRIER STILL HELD.**
+  Independent review found stale internal BUILD_RECEIPT/INLINE_LAUNCH_GUARD
+  hashes in the local-readiness record. Both were refreshed from a clean local
+  rebuild/guard run; the barrier validator now checks the nested pins and
+  passes, and focused v2 tests explicitly isolate v2 imports from sibling v1
+  modules. No Kaggle request, GPU action, budget debit, submission, graph, or
+  tier action occurred. (Codex root)
+- 2026-07-31 — **ACTIVE SUPPLIER-GATE RECORD UPDATED / NO RESURRECTION.**
+  AE-P6 and R8 remain PARK-B. Their future distinct-supplier records now cite
+  the approved delete `0.85/0.020` and occupied-swap `0.90/0.068` all-fold
+  gate, while the failed authentic Trackastra result remains terminal and is
+  not re-evaluated. No graph, tier, DEAD, or external action. (Codex root)
+- 2026-07-31 — **APPROVED MEASURED-GATE RECALIBRATION / NODETOPO CAUSAL
+  CORRECTION / HOLD.** Human-approved future supplier floors are delete AUC
+  `0.85` / retention `0.020` and occupied-swap AUC `0.90` / retention `0.068`;
+  historic supplier verdicts stay immutable (DINOv2 delete retention `0.001307`
+  is >15x short), no tiers move. `run_v6` establishes the 50-action
+  `restore_topology` population had 0 beneficial actions and oracle `0.000`, so
+  `NODETOPO-O0`'s old tiny negative graph result is generator—not selector—
+  failure; it stays PARK-A with a target-blind 61-target recovery-generator
+  preregistration and no selector. Measured surface order is division
+  `+0.092067842`, delete `+0.081897667`, then occupied-swap `+0.018571397`.
+  APNCC v2 local build/guard/tests PASS; remote GPU launch was not started
+  pending an unambiguous exception to the prior CPU-only/no-Kaggle constraint.
+  Receipt: `selector_requirement_44b6/run_v6/RECALIBRATION_BARRIER_20260731.json`.
+  (Codex root)
+- 2026-07-31 — **DIVISION REALIZER WAVE TERMINAL / NO PASS / HOLD 44B6.**
+  Four separately preregistered CPU-first arms stopped at 44b6 with zero
+  duplicate survivors. A geometry/motion validly failed (`0/1/11`, Jaccard
+  `0`, combined `-0.000141523`). B persistence is fail-closed and
+  non-promotable because of pre-prereg forbidden operator exposure; its sealed
+  target-free output remains diagnostic only (`0/49/11`, combined
+  `-0.009455519`). C appearance stopped before prediction because no adequate
+  frozen intensity cache exists. D's frozen 3-of-3 consensus abstained
+  everywhere and is invalid due to B/C component status; its raw zero-delta
+  metrics are diagnostic only. Independent review verdict:
+  `FAIL_CLOSED_PARTIAL_WAVE_INTEGRITY / HOLD_44B6`. No 6bba, CV57, graph,
+  submission, GPU, RunPod, full-pool cache, DEAD, or further plan action.
+  Report `tiered_surface/branches/sa_division_realizer_wave/WAVE_TERMINAL_REPORT.md`.
+  (Codex root)
+- 2026-07-31 — **CPU BARRIER MERGE COMPLETE / NO TIER MOVE.** Imported the
+  byte-pinned authentic reverse terminal evidence (both frozen classes fail);
+  reran AE-P5 with complete N1 ownership (45,961 actions, 361 decisive batch
+  compiles, zero emitted edits); validated AE-P7's bounded raw-image smoke;
+  and confirmed DAG-2 local `run_v6` is a valid complete requirement surface
+  behind human review, distinct from its stale remote transport invalidity.
+  AE-P5/P6/P7/R8 tiers remain PARK-A/PARK-B/PARK-A/PARK-B. Receipt:
+  `tiered_surface/branches/barrier_merge_20260731/BARRIER_MERGE.json`.
+- 2026-07-31 — **APNCC-DIRECT TRANSPORT SMOKE FAIL / NO SUBMISSION.** Root
+  rebuilt the requested banked `779aa8d3…606b` package with one consolidated
+  support dataset, canonical PEP-427 wheel names and byte-SHA checks, offline
+  `--no-index --find-links`, exact test-store cardinality, an inline pre-heavy
+  Step 0, and a shared serialized launch fence. Kaggle accepted exactly v1 of
+  `onebitbrain/bhap-transport-smoke-v1`; Kaggle accepted a push reported as v1
+  and no second push is recorded. It failed closed at Step 0 in `5.061967561 s`
+  (hard limit `5.0 s`),
+  with `heavy_work_started=false`. The
+  banked runner never started and neither a submission CSV nor CV57-parity
+  fragments exists; no competition submission or retry occurred. Authoritative
+  quota before/after was 4.53 h used / 25.47 h remaining (0.0 h debit).
+  Failing layer: complete input-verification timing budget. Receipt:
+  `apncc_transport_smoke_v1/TERMINAL_DIAGNOSIS.json`. (Codex root)
+- 2026-07-31 — **LANE 1 DIVISION-EMISSION PACKAGE READY / NO SUBMISSION.**
+  Built hash-pinned division-capable post-graph kernel
+  `4673a59079b7b9e72bbe261f6a62e2dcf004854e0d0657838bb56ddd144facf7`
+  (manifest `tiered_surface/branches/sa_division/LANE1_DIVISION_PACKAGE_MANIFEST.json`).
+  Reused byte-pinned frozen D1 evidence (14/14 official fixtures, 51/51
+  invariant counterfactuals, zero duplicate survivors) without scorer rerun;
+  D1 persistence/one-to-one suppression feeds atomic frozen-N1 `division_fork`.
+  Banked APNCC 44b6's 36-fragment dry run emitted divisions-on empty
+  `kaggle_kernel/g02_division_lane1/dry_run/submission.csv`
+  (SHA `26ee9c44…edbd9`, 2,415,478 rows), preserving canonical scorer-input
+  graph `e3ada186…f8c5` and score change `0.0`. No candidate fitting/new
+  science, Kaggle push, or submission occurred. A non-empty receipt must
+  attest 44b6 combined `>0`, division Jaccard `>=0.30`, nonnegative
+  adjusted/raw/node deltas, and zero duplicates. (Codex)
+- 2026-07-31 — **OWNER PLAN AMENDMENT APPROVED / DIVISION FIT-ONLY
+  DEPENDENCY UNLOCKED.** Amended
+  `campaign_narrowing_and_hypothesis_dag_v1.md` §6.4 using the frozen-N1
+  `38/0/4`, Jaccard `0.904761904762`, combined `+0.092067841519` ceiling,
+  edge-only `~0.896` cap, six near-zero association mechanisms, and four
+  operating-point representation failures. Only the association-continuity
+  prerequisite is removed. Four CPU-first arms are authorized 44b6-first with
+  GT targets excluded from features, frozen N1/scorer, zero duplicates, and
+  the unchanged positive-combined/`>=0.30`/nonnegative-edge PASS line. 6bba,
+  CV57, submission, GPU, RunPod, full-pool cache, and DEAD action remain
+  closed. (Human owner + Codex root)
+- 2026-07-31 — **CELLECT R7 PARK-C BLOCKED-ON-INFRASTRUCTURE / NO FURTHER
+  SPEND.** The owner combined the consumed Kaggle transport stop rule with
+  five zero-preflight/positive-shard-start local swap-guard failures. No
+  feature, checkpoint, B0/A1/A0, or scientific verdict exists. Recorded that
+  a 10,197,221-byte checkpoint does not predict volumetric-inference memory,
+  where activations/tiles/workspaces/allocators dominate. Census moves
+  PARK-B→PARK-C administratively; no DEAD, GPU, Kaggle, RunPod, submission, or
+  graph action. (Human owner + Codex root)
 - 2026-07-30 — **CELLECT local resource block authenticated; no scientific
   verdict.** Reproduced the DINOv2 two-stage, 45-second-preflight,
   one-shard-process, atomic-checkpoint, strict zero-swap harness for the pinned

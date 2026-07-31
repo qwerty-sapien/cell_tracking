@@ -1,0 +1,2149 @@
+{
+  "amendment_sha256": "9fb030bdcffbf95e242c71aa8b2c14bf8254b42730acbb489d66e2fe35a3310e",
+  "barrier": "HOLD_FOR_HUMAN_REVIEW_BEFORE_ANY_GRAPH_PREREGISTRATION_EXECUTION",
+  "both_class_reporting_complete": true,
+  "cross_class_conjunction": false,
+  "execution": {
+    "cv57": false,
+    "elapsed_seconds": 4.67352687503444,
+    "family_6bba": false,
+    "full_pool_cache": false,
+    "graph": false,
+    "runpod": false,
+    "submission": false
+  },
+  "execution_order": [
+    "B0_SEALED",
+    "A1",
+    "A0"
+  ],
+  "feature_manifest": {
+    "path": "reports/g02/screening/tiered_surface/branches/sa_assignment_separation_v1/FEATURE_MANIFEST_V2.json",
+    "sha256": "41c6d31378e8f7a1e5afbea8d05274c82dffe2100497c8d47e887dc83c3ecb2b"
+  },
+  "results": {
+    "delete": {
+      "action_class": "delete",
+      "actions": 1345497,
+      "beneficial": 1118,
+      "folds": [
+        {
+          "arms": {
+            "A0": {
+              "auc": 0.6660548292127328,
+              "retention": 0.0032679738562091504,
+              "selected_beneficial": 1,
+              "selected_harmful": 47,
+              "videos": [
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_0db75fae",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 10,
+                  "budget_pass": true,
+                  "identity": "train:44b6_12dfb391",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 10
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_1d530831",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_3a861e03",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 2,
+                  "budget_pass": true,
+                  "identity": "train:44b6_81c256f0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 2
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_949adeb1",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 4,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c15fded2",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 4
+                },
+                {
+                  "budget": 4,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d78e09d9",
+                  "selected_beneficial": 1,
+                  "selected_harmful": 4
+                }
+              ]
+            },
+            "A1": {
+              "auc": 0.6723857112611741,
+              "retention": 0.0032679738562091504,
+              "selected_beneficial": 1,
+              "selected_harmful": 47,
+              "videos": [
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_0db75fae",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 10,
+                  "budget_pass": true,
+                  "identity": "train:44b6_12dfb391",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 10
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_1d530831",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_3a861e03",
+                  "selected_beneficial": 1,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 2,
+                  "budget_pass": true,
+                  "identity": "train:44b6_81c256f0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 2
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_949adeb1",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 4,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c15fded2",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 4
+                },
+                {
+                  "budget": 4,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d78e09d9",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 4
+                }
+              ]
+            },
+            "B0": {
+              "auc": 0.6650387228915734,
+              "retention": 0.0032679738562091504,
+              "selected_beneficial": 1,
+              "selected_harmful": 47,
+              "videos": [
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_0db75fae",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 10,
+                  "budget_pass": true,
+                  "identity": "train:44b6_12dfb391",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 10
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_1d530831",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_3a861e03",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 2,
+                  "budget_pass": true,
+                  "identity": "train:44b6_81c256f0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 2
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_949adeb1",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 4,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c15fded2",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 4
+                },
+                {
+                  "budget": 4,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d78e09d9",
+                  "selected_beneficial": 1,
+                  "selected_harmful": 4
+                }
+              ]
+            }
+          },
+          "beneficial": 306,
+          "checks": {
+            "auc_absolute_floor": true,
+            "auc_lift_over_A0": false,
+            "auc_lift_over_B0": false,
+            "per_video_fp_budget": true,
+            "retention_absolute_floor": false,
+            "retention_lift_over_A0": false,
+            "retention_lift_over_B0": false
+          },
+          "harmful": 244159,
+          "held_actions": 244465,
+          "held_fold": 0,
+          "lifts": {
+            "A1_minus_A0_auc": 0.006330882048441233,
+            "A1_minus_A0_retention": 0.0,
+            "A1_minus_B0_auc": 0.007346988369600682,
+            "A1_minus_B0_retention": 0.0
+          },
+          "pass": false
+        },
+        {
+          "arms": {
+            "A0": {
+              "auc": 0.6942847857223539,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 34,
+              "videos": [
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_0c582fdc",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_144b256d",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_587a1e22",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 10,
+                  "budget_pass": true,
+                  "identity": "train:44b6_7e557709",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 10
+                },
+                {
+                  "budget": 9,
+                  "budget_pass": true,
+                  "identity": "train:44b6_cf8fed6b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 9
+                }
+              ]
+            },
+            "A1": {
+              "auc": 0.7116839892666464,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 34,
+              "videos": [
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_0c582fdc",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_144b256d",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_587a1e22",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 10,
+                  "budget_pass": true,
+                  "identity": "train:44b6_7e557709",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 10
+                },
+                {
+                  "budget": 9,
+                  "budget_pass": true,
+                  "identity": "train:44b6_cf8fed6b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 9
+                }
+              ]
+            },
+            "B0": {
+              "auc": 0.6957300008044831,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 34,
+              "videos": [
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_0c582fdc",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_144b256d",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_587a1e22",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 10,
+                  "budget_pass": true,
+                  "identity": "train:44b6_7e557709",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 10
+                },
+                {
+                  "budget": 9,
+                  "budget_pass": true,
+                  "identity": "train:44b6_cf8fed6b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 9
+                }
+              ]
+            }
+          },
+          "beneficial": 99,
+          "checks": {
+            "auc_absolute_floor": true,
+            "auc_lift_over_A0": false,
+            "auc_lift_over_B0": false,
+            "per_video_fp_budget": true,
+            "retention_absolute_floor": false,
+            "retention_lift_over_A0": false,
+            "retention_lift_over_B0": false
+          },
+          "harmful": 173397,
+          "held_actions": 173496,
+          "held_fold": 1,
+          "lifts": {
+            "A1_minus_A0_auc": 0.017399203544292585,
+            "A1_minus_A0_retention": 0.0,
+            "A1_minus_B0_auc": 0.015953988462163338,
+            "A1_minus_B0_retention": 0.0
+          },
+          "pass": false
+        },
+        {
+          "arms": {
+            "A0": {
+              "auc": 0.5930394322170182,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 61,
+              "videos": [
+                {
+                  "budget": 16,
+                  "budget_pass": true,
+                  "identity": "train:44b6_18ced818",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 16
+                },
+                {
+                  "budget": 9,
+                  "budget_pass": true,
+                  "identity": "train:44b6_2a2eff9f",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 9
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_415c0a3a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_551a5dba",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 2,
+                  "budget_pass": true,
+                  "identity": "train:44b6_5740d24b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 2
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_706092f0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 5,
+                  "budget_pass": true,
+                  "identity": "train:44b6_90724892",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 5
+                },
+                {
+                  "budget": 1,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d754aa59",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 1
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_eb2880fc",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                }
+              ]
+            },
+            "A1": {
+              "auc": 0.6386829474913089,
+              "retention": 0.005988023952095809,
+              "selected_beneficial": 1,
+              "selected_harmful": 61,
+              "videos": [
+                {
+                  "budget": 16,
+                  "budget_pass": true,
+                  "identity": "train:44b6_18ced818",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 16
+                },
+                {
+                  "budget": 9,
+                  "budget_pass": true,
+                  "identity": "train:44b6_2a2eff9f",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 9
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_415c0a3a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_551a5dba",
+                  "selected_beneficial": 1,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 2,
+                  "budget_pass": true,
+                  "identity": "train:44b6_5740d24b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 2
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_706092f0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 5,
+                  "budget_pass": true,
+                  "identity": "train:44b6_90724892",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 5
+                },
+                {
+                  "budget": 1,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d754aa59",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 1
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_eb2880fc",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                }
+              ]
+            },
+            "B0": {
+              "auc": 0.5969111339068716,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 61,
+              "videos": [
+                {
+                  "budget": 16,
+                  "budget_pass": true,
+                  "identity": "train:44b6_18ced818",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 16
+                },
+                {
+                  "budget": 9,
+                  "budget_pass": true,
+                  "identity": "train:44b6_2a2eff9f",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 9
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_415c0a3a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_551a5dba",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 2,
+                  "budget_pass": true,
+                  "identity": "train:44b6_5740d24b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 2
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_706092f0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 5,
+                  "budget_pass": true,
+                  "identity": "train:44b6_90724892",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 5
+                },
+                {
+                  "budget": 1,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d754aa59",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 1
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_eb2880fc",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                }
+              ]
+            }
+          },
+          "beneficial": 167,
+          "checks": {
+            "auc_absolute_floor": false,
+            "auc_lift_over_A0": true,
+            "auc_lift_over_B0": false,
+            "per_video_fp_budget": true,
+            "retention_absolute_floor": false,
+            "retention_lift_over_A0": false,
+            "retention_lift_over_B0": false
+          },
+          "harmful": 311692,
+          "held_actions": 311859,
+          "held_fold": 2,
+          "lifts": {
+            "A1_minus_A0_auc": 0.04564351527429078,
+            "A1_minus_A0_retention": 0.005988023952095809,
+            "A1_minus_B0_auc": 0.04177181358443738,
+            "A1_minus_B0_retention": 0.005988023952095809
+          },
+          "pass": false
+        },
+        {
+          "arms": {
+            "A0": {
+              "auc": 0.6744491350048466,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 46,
+              "videos": [
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_40c45f5a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_808952d6",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_97725144",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 11,
+                  "budget_pass": true,
+                  "identity": "train:44b6_a2bb48bb",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 11
+                },
+                {
+                  "budget": 9,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c50204e0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 9
+                },
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_db3c847b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e28840c6",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                }
+              ]
+            },
+            "A1": {
+              "auc": 0.6786351081836397,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 46,
+              "videos": [
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_40c45f5a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_808952d6",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_97725144",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 11,
+                  "budget_pass": true,
+                  "identity": "train:44b6_a2bb48bb",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 11
+                },
+                {
+                  "budget": 9,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c50204e0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 9
+                },
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_db3c847b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e28840c6",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                }
+              ]
+            },
+            "B0": {
+              "auc": 0.6656455911723603,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 46,
+              "videos": [
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_40c45f5a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_808952d6",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_97725144",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 11,
+                  "budget_pass": true,
+                  "identity": "train:44b6_a2bb48bb",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 11
+                },
+                {
+                  "budget": 9,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c50204e0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 9
+                },
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_db3c847b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e28840c6",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                }
+              ]
+            }
+          },
+          "beneficial": 195,
+          "checks": {
+            "auc_absolute_floor": true,
+            "auc_lift_over_A0": false,
+            "auc_lift_over_B0": false,
+            "per_video_fp_budget": true,
+            "retention_absolute_floor": false,
+            "retention_lift_over_A0": false,
+            "retention_lift_over_B0": false
+          },
+          "harmful": 238577,
+          "held_actions": 238772,
+          "held_fold": 3,
+          "lifts": {
+            "A1_minus_A0_auc": 0.004185973178793101,
+            "A1_minus_A0_retention": 0.0,
+            "A1_minus_B0_auc": 0.012989517011279372,
+            "A1_minus_B0_retention": 0.0
+          },
+          "pass": false
+        },
+        {
+          "arms": {
+            "A0": {
+              "auc": 0.6153021536870865,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 73,
+              "videos": [
+                {
+                  "budget": 4,
+                  "budget_pass": true,
+                  "identity": "train:44b6_1574802b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 4
+                },
+                {
+                  "budget": 5,
+                  "budget_pass": true,
+                  "identity": "train:44b6_5f15d135",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 5
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_8f5ab931",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_95029e92",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_9bfa6a0a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_abf82518",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_b2c44266",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c771cb04",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d29c9ab2",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e29f0176",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 15,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e31261b4",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 15
+                },
+                {
+                  "budget": 4,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e35b117d",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 4
+                }
+              ]
+            },
+            "A1": {
+              "auc": 0.649789218398236,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 73,
+              "videos": [
+                {
+                  "budget": 4,
+                  "budget_pass": true,
+                  "identity": "train:44b6_1574802b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 4
+                },
+                {
+                  "budget": 5,
+                  "budget_pass": true,
+                  "identity": "train:44b6_5f15d135",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 5
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_8f5ab931",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_95029e92",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_9bfa6a0a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_abf82518",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_b2c44266",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c771cb04",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d29c9ab2",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e29f0176",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 15,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e31261b4",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 15
+                },
+                {
+                  "budget": 4,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e35b117d",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 4
+                }
+              ]
+            },
+            "B0": {
+              "auc": 0.6130315554488449,
+              "retention": 0.002849002849002849,
+              "selected_beneficial": 1,
+              "selected_harmful": 73,
+              "videos": [
+                {
+                  "budget": 4,
+                  "budget_pass": true,
+                  "identity": "train:44b6_1574802b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 4
+                },
+                {
+                  "budget": 5,
+                  "budget_pass": true,
+                  "identity": "train:44b6_5f15d135",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 5
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_8f5ab931",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_95029e92",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_9bfa6a0a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 6,
+                  "budget_pass": true,
+                  "identity": "train:44b6_abf82518",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 6
+                },
+                {
+                  "budget": 8,
+                  "budget_pass": true,
+                  "identity": "train:44b6_b2c44266",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 8
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c771cb04",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 7,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d29c9ab2",
+                  "selected_beneficial": 1,
+                  "selected_harmful": 7
+                },
+                {
+                  "budget": 3,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e29f0176",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 3
+                },
+                {
+                  "budget": 15,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e31261b4",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 15
+                },
+                {
+                  "budget": 4,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e35b117d",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 4
+                }
+              ]
+            }
+          },
+          "beneficial": 351,
+          "checks": {
+            "auc_absolute_floor": false,
+            "auc_lift_over_A0": true,
+            "auc_lift_over_B0": false,
+            "per_video_fp_budget": true,
+            "retention_absolute_floor": false,
+            "retention_lift_over_A0": false,
+            "retention_lift_over_B0": false
+          },
+          "harmful": 376554,
+          "held_actions": 376905,
+          "held_fold": 4,
+          "lifts": {
+            "A1_minus_A0_auc": 0.034487064711149484,
+            "A1_minus_A0_retention": 0.0,
+            "A1_minus_B0_auc": 0.03675766294939109,
+            "A1_minus_B0_retention": -0.002849002849002849
+          },
+          "pass": false
+        }
+      ],
+      "harmful": 1344379,
+      "pass": false,
+      "verdict": "FAIL_PARK_C"
+    },
+    "occupied_swap": {
+      "action_class": "occupied_swap",
+      "actions": 45961,
+      "beneficial": 134,
+      "folds": [
+        {
+          "arms": {
+            "A0": {
+              "auc": 0.6241053243179395,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_0db75fae",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_12dfb391",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_1d530831",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_3a861e03",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_81c256f0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_949adeb1",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c15fded2",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d78e09d9",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            },
+            "A1": {
+              "auc": 0.6165520587916052,
+              "retention": 0.029411764705882353,
+              "selected_beneficial": 1,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_0db75fae",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_12dfb391",
+                  "selected_beneficial": 1,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_1d530831",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_3a861e03",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_81c256f0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_949adeb1",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c15fded2",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d78e09d9",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            },
+            "B0": {
+              "auc": 0.6255419132811053,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_0db75fae",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_12dfb391",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_1d530831",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_3a861e03",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_81c256f0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_949adeb1",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c15fded2",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d78e09d9",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            }
+          },
+          "beneficial": 34,
+          "checks": {
+            "auc_absolute_floor": false,
+            "auc_lift_over_A0": false,
+            "auc_lift_over_B0": false,
+            "per_video_fp_budget": true,
+            "retention_absolute_floor": false,
+            "retention_lift_over_A0": false,
+            "retention_lift_over_B0": false
+          },
+          "harmful": 9213,
+          "held_actions": 9247,
+          "held_fold": 0,
+          "lifts": {
+            "A1_minus_A0_auc": -0.007553265526334285,
+            "A1_minus_A0_retention": 0.029411764705882353,
+            "A1_minus_B0_auc": -0.008989854489500071,
+            "A1_minus_B0_retention": 0.029411764705882353
+          },
+          "pass": false
+        },
+        {
+          "arms": {
+            "A0": {
+              "auc": 0.8302624936900556,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_144b256d",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_587a1e22",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_7e557709",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_cf8fed6b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            },
+            "A1": {
+              "auc": 0.8253407370015143,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_144b256d",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_587a1e22",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_7e557709",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_cf8fed6b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            },
+            "B0": {
+              "auc": 0.8370772337203433,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_144b256d",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_587a1e22",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_7e557709",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_cf8fed6b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            }
+          },
+          "beneficial": 7,
+          "checks": {
+            "auc_absolute_floor": true,
+            "auc_lift_over_A0": false,
+            "auc_lift_over_B0": false,
+            "per_video_fp_budget": true,
+            "retention_absolute_floor": false,
+            "retention_lift_over_A0": false,
+            "retention_lift_over_B0": false
+          },
+          "harmful": 3396,
+          "held_actions": 3403,
+          "held_fold": 1,
+          "lifts": {
+            "A1_minus_A0_auc": -0.004921756688541223,
+            "A1_minus_A0_retention": 0.0,
+            "A1_minus_B0_auc": -0.011736496718828926,
+            "A1_minus_B0_retention": 0.0
+          },
+          "pass": false
+        },
+        {
+          "arms": {
+            "A0": {
+              "auc": 0.6297822113220719,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_18ced818",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_415c0a3a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_551a5dba",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_5740d24b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_90724892",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d754aa59",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_eb2880fc",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            },
+            "A1": {
+              "auc": 0.6152736825668017,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_18ced818",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_415c0a3a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_551a5dba",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_5740d24b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_90724892",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d754aa59",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_eb2880fc",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            },
+            "B0": {
+              "auc": 0.6223006053257645,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_18ced818",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_415c0a3a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_551a5dba",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_5740d24b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_90724892",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d754aa59",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_eb2880fc",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            }
+          },
+          "beneficial": 22,
+          "checks": {
+            "auc_absolute_floor": false,
+            "auc_lift_over_A0": false,
+            "auc_lift_over_B0": false,
+            "per_video_fp_budget": true,
+            "retention_absolute_floor": false,
+            "retention_lift_over_A0": false,
+            "retention_lift_over_B0": false
+          },
+          "harmful": 9897,
+          "held_actions": 9919,
+          "held_fold": 2,
+          "lifts": {
+            "A1_minus_A0_auc": -0.0145085287552702,
+            "A1_minus_A0_retention": 0.0,
+            "A1_minus_B0_auc": -0.0070269227589627725,
+            "A1_minus_B0_retention": 0.0
+          },
+          "pass": false
+        },
+        {
+          "arms": {
+            "A0": {
+              "auc": 0.6512470131421745,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_40c45f5a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_808952d6",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_97725144",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_a2bb48bb",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c50204e0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_db3c847b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e28840c6",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            },
+            "A1": {
+              "auc": 0.6334637211653341,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_40c45f5a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_808952d6",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_97725144",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_a2bb48bb",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c50204e0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_db3c847b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e28840c6",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            },
+            "B0": {
+              "auc": 0.6647970085470085,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_40c45f5a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_808952d6",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_97725144",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_a2bb48bb",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c50204e0",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_db3c847b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e28840c6",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            }
+          },
+          "beneficial": 31,
+          "checks": {
+            "auc_absolute_floor": false,
+            "auc_lift_over_A0": false,
+            "auc_lift_over_B0": false,
+            "per_video_fp_budget": true,
+            "retention_absolute_floor": false,
+            "retention_lift_over_A0": false,
+            "retention_lift_over_B0": false
+          },
+          "harmful": 11232,
+          "held_actions": 11263,
+          "held_fold": 3,
+          "lifts": {
+            "A1_minus_A0_auc": -0.017783291976840365,
+            "A1_minus_A0_retention": 0.0,
+            "A1_minus_B0_auc": -0.0313332873816744,
+            "A1_minus_B0_retention": 0.0
+          },
+          "pass": false
+        },
+        {
+          "arms": {
+            "A0": {
+              "auc": 0.610108362974605,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_1574802b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_5f15d135",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_8f5ab931",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_9bfa6a0a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_abf82518",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c771cb04",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d29c9ab2",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e29f0176",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e31261b4",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e35b117d",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            },
+            "A1": {
+              "auc": 0.6324509885019439,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_1574802b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_5f15d135",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_8f5ab931",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_9bfa6a0a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_abf82518",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c771cb04",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d29c9ab2",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e29f0176",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e31261b4",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e35b117d",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            },
+            "B0": {
+              "auc": 0.6560137314914385,
+              "retention": 0.0,
+              "selected_beneficial": 0,
+              "selected_harmful": 0,
+              "videos": [
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_1574802b",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_5f15d135",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_8f5ab931",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_9bfa6a0a",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_abf82518",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_c771cb04",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_d29c9ab2",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e29f0176",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e31261b4",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                },
+                {
+                  "budget": 0,
+                  "budget_pass": true,
+                  "identity": "train:44b6_e35b117d",
+                  "selected_beneficial": 0,
+                  "selected_harmful": 0
+                }
+              ]
+            }
+          },
+          "beneficial": 40,
+          "checks": {
+            "auc_absolute_floor": false,
+            "auc_lift_over_A0": false,
+            "auc_lift_over_B0": false,
+            "per_video_fp_budget": true,
+            "retention_absolute_floor": false,
+            "retention_lift_over_A0": false,
+            "retention_lift_over_B0": false
+          },
+          "harmful": 12089,
+          "held_actions": 12129,
+          "held_fold": 4,
+          "lifts": {
+            "A1_minus_A0_auc": 0.0223426255273389,
+            "A1_minus_A0_retention": 0.0,
+            "A1_minus_B0_auc": -0.023562742989494567,
+            "A1_minus_B0_retention": 0.0
+          },
+          "pass": false
+        }
+      ],
+      "harmful": 45827,
+      "pass": false,
+      "verdict": "FAIL_PARK_C"
+    }
+  },
+  "schema": "celltrack-alpha.cellect-separation-result.v1",
+  "sealed_B0": {
+    "path": "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/run_v3/B0_SEALED.json",
+    "sha256": "a9ce8c0be5afe4c2d2bfb37f3878691956ea458964788776af2ae9358f6b4ff2"
+  },
+  "status": "COMPLETE"
+}
