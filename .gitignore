@@ -68,6 +68,11 @@ results-*.zip
 !/reports/g02/screening/**/TERMINAL_REPORT.json
 !/reports/g02/screening/**/BARRIER.json
 !/reports/g02/screening/MARGINAL_VALUE_GATE.md
+!/reports/g03/screening/LIVE_STATE.md
+!/reports/g03/screening/LEDGER.md
+!/reports/g03/screening/ARCHITECTURE_DOSSIER_*.md
+!/reports/g03/screening/PHASE1_RESUME_PREREGISTRATION_*.md
+!/reports/g03/screening/PHASE1_LAUNCH_CONTRACT_*.json
 # Kaggle launch-reliability guard: standing infra, not a per-run working file.
 !/reports/g02/screening/tiered_surface/kaggle_prelaunch/**
 /reports/g02/screening/tiered_surface/kaggle_prelaunch/**/__pycache__/

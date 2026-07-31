@@ -1,0 +1,60 @@
+{
+  "schema": "celltrack-alpha.g03-phase1-launch-contract.v1",
+  "status": "LOCKED_PRE_GPU",
+  "preregistration": {
+    "path": "reports/g03/screening/PHASE1_RESUME_PREREGISTRATION_20260731.md",
+    "sha256": "14479178a4f63e7f2fac3bfaee239e6f856e23054babeb1fffc1098c437552b3"
+  },
+  "source_hashes": {
+    "scripts/build_g03_phase1_resume_proof.py": "b5cbc6b7a8e2dd7401c83ef81828b36e614148578615b62f9f299bfc857cc60c",
+    "scripts/g03_checkpoint_resume.py": "cb0d1de34b5db9a50fea57f5406c68e6baaa0e559fa8266e016c9cccaa333d61",
+    "scripts/g03_phase1_a.py": "e484c572a87180a0e35108a74f4bbcd64b8c022ab22af352b3fb460384e60fd3",
+    "scripts/g03_phase1_b.py": "eef394be83413b0592b8bce1333152bc31712e11a43b04aed1c82d35f9764a4a",
+    "scripts/g03_resume_torch.py": "0d6de8494511985e49fd20c60cf7764f57e1af73adb75526d88c9089c0e8343e"
+  },
+  "runtime_source_bundle_sha256": "ab465b684d1ef3183a65fa945bd6270018520dfa1fdfe92d3ce907ecfb8def2a",
+  "kernels": {
+    "a": {
+      "id": "onebitbrain/g03-phase1-resume-a-v1",
+      "package_contract_sha256": "d6cc6a793f91035d7bfd0a342d4d2ec5853cf12a5e699d03c4ba2e5504b4d4e1",
+      "metadata_sha256": "faf7ffc0f31a7e443268ba2256e62e3a31954d5a746f38cac8e7c2f2155dc578",
+      "dataset_sources": []
+    },
+    "b": {
+      "id": "onebitbrain/g03-phase1-resume-b-v1",
+      "package_contract_sha256": "3e4aa0906852449b0860eb38c61f5048ad7b0e91c278464ca9b9234139f0aa71",
+      "metadata_sha256": "1adeb382d9e8d7e75823a5436c289e391ccaa174d1fe72fbb76089fae8d82bbe",
+      "dataset_sources": [
+        "onebitbrain/g03-phase1-handoff-v1",
+        "onebitbrain/trackastra-h1-fit105-cache-v1"
+      ]
+    }
+  },
+  "handoff": {
+    "id": "g03-phase1-a-to-b-v1",
+    "dataset_id": "onebitbrain/g03-phase1-handoff-v1",
+    "publication": "atomic MANIFEST + INVENTORY + READY with full SHA-256 tree verification"
+  },
+  "held_fit_emission": {
+    "source_dataset": "onebitbrain/trackastra-h1-fit105-cache-v1",
+    "manifest_sha256": "ff7b205f58ad70c69954fed1c3e60a100d246c1e374a849c6ea7183934e98f28",
+    "family": "44b6",
+    "identity_count": 36,
+    "expected_structural_delta": {
+      "adjusted_edge_jaccard": 0.0,
+      "raw_edge_jaccard": 0.0,
+      "node_recall": 0.0
+    },
+    "official_frozen_graph_objective_evaluated": false,
+    "selection_authorized": false
+  },
+  "limits": {
+    "phase1_total_t4_hours_max": 20.0,
+    "a_minimum_training_seconds": 3600.0,
+    "checkpoint_interval_seconds": 600.0,
+    "session_cap_hours": 12.0,
+    "sustained_swapout_limit_bytes": 268435456,
+    "sustain_seconds": 15.0,
+    "retry_permitted": false
+  }
+}
