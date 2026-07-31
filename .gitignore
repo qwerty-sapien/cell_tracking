@@ -73,6 +73,8 @@ results-*.zip
 !/reports/g03/screening/ARCHITECTURE_DOSSIER_*.md
 !/reports/g03/screening/PHASE1_RESUME_PREREGISTRATION_*.md
 !/reports/g03/screening/PHASE1_LAUNCH_CONTRACT_*.json
+!/reports/g03/screening/PHASE1_TRANSPORT_REPAIR_*.md
+!/reports/g03/screening/PHASE1_TRANSPORT_REPAIR_*.json
 # Kaggle launch-reliability guard: standing infra, not a per-run working file.
 !/reports/g02/screening/tiered_surface/kaggle_prelaunch/**
 /reports/g02/screening/tiered_surface/kaggle_prelaunch/**/__pycache__/
