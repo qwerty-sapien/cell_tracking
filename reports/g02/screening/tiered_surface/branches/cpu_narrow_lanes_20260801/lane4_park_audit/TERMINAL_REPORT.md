@@ -1,7 +1,8 @@
 # Lane 4 — dependency-park audit
 
-**Verdict:** `PASS_COMPLETE_NO_TIER_MOVES`  
-**Scope:** all 35 current `tier_census.json` rows with a nonempty `blocked_on` field  
+**Verdict:** `PASS_COMPLETE_NO_TIER_MOVES`
+
+**Scope:** all 35 current `tier_census.json` rows with a nonempty `blocked_on` field
 **External/graph actions:** none
 
 ## Result
