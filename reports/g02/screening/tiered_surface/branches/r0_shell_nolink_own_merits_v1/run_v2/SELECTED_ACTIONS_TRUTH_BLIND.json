@@ -1,0 +1,72 @@
+{
+  "actions": [
+    {
+      "action": "add_edge_remove_none",
+      "features": {
+        "distance_um": 10.017172754824587,
+        "pair_ncc": 0.9443529844284058,
+        "source_no_link_probability": 0.4239722310597341
+      },
+      "held_fold": 0,
+      "identity": "train:44b6_e29f0176",
+      "raw_score": 1.0889030830295192,
+      "source_frame": 36,
+      "source_id": 7685,
+      "tail_probability": 0.006578947368421052,
+      "target_id": 7911,
+      "topology": 0
+    },
+    {
+      "action": "add_edge_remove_none",
+      "features": {
+        "distance_um": 10.017172754824587,
+        "pair_ncc": 0.9272187352180481,
+        "source_no_link_probability": 0.4609331428164905
+      },
+      "held_fold": 2,
+      "identity": "train:44b6_c15fded2",
+      "raw_score": 0.9419290352200786,
+      "source_frame": 22,
+      "source_id": 4870,
+      "tail_probability": 0.010526315789473684,
+      "target_id": 5097,
+      "topology": 0
+    },
+    {
+      "action": "add_edge_remove_none",
+      "features": {
+        "distance_um": 10.531203634912773,
+        "pair_ncc": 0.8358384370803833,
+        "source_no_link_probability": 0.32590265637930416
+      },
+      "held_fold": 2,
+      "identity": "train:44b6_c771cb04",
+      "raw_score": 0.9085504396914315,
+      "source_frame": 71,
+      "source_id": 30018,
+      "tail_probability": 0.010526315789473684,
+      "target_id": 30352,
+      "topology": 0
+    },
+    {
+      "action": "add_edge_remove_none",
+      "features": {
+        "distance_um": 10.405076885828379,
+        "pair_ncc": 0.7340219020843506,
+        "source_no_link_probability": 0.19272175639275577
+      },
+      "held_fold": 2,
+      "identity": "train:44b6_c771cb04",
+      "raw_score": 0.9044156350288923,
+      "source_frame": 0,
+      "source_id": 260,
+      "tail_probability": 0.010526315789473684,
+      "target_id": 635,
+      "topology": 0
+    }
+  ],
+  "budget": 4,
+  "mechanism": "R0-SHELL-FREEFREE-OOF-APPEARANCE-NOLINK-B4-V1",
+  "schema": "g02.r0-shell-freefree.selected-actions.v1",
+  "status": "sealed_before_ground_truth_open"
+}

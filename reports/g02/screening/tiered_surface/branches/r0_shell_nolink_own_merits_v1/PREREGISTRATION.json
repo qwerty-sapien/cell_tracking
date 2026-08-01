@@ -1,0 +1,99 @@
+{
+  "schema": "g02.r0-shell-oof-appearance-nolink.preregistration.v1",
+  "status": "locked_before_model_scores_or_selected_actions",
+  "date": "2026-08-01",
+  "mechanism": "R0-SHELL-FREEFREE-OOF-APPEARANCE-NOLINK-B4-V1",
+  "source_commit": "c493a676bfc415aa4f221eb51469c410307238c9",
+  "scope": {
+    "family": "44b6",
+    "partition": "fit-train105",
+    "video_count": 36,
+    "shell_distance_um": [10.0, 12.0],
+    "neighbor_cap": 8,
+    "candidate_eligibility": "topology_code == 0: source has no selected outgoing edge and target has no selected incoming edge",
+    "candidate_exclusion": "occupied-endpoint shell background and division truth labels; division truth remains label-hidden and counts false if selected",
+    "validation12_access": false,
+    "six_bba_access": false,
+    "cv57_access": false,
+    "kaggle_action": false,
+    "gpu_action": false,
+    "runpod_action": false,
+    "submission_action": false
+  },
+  "input_sha256": {
+    "shell_prepare_report": "cb882835d9b33bcad016684f988ea81e2fff3713432cbde0dadc9b6879cd6386",
+    "appearance_report": "8183f347bd89f3405dfdb7e14e564f2b285ef624ab6bd6f5e12d7460b43f7aa8",
+    "reachability_report": "22a70e0b750d3d59bdd92ca5a82967d35c5d866fafe1c867dbb09b936efc2803",
+    "selected_graph_conflict_prepare": "3965145141c8b58a6b844ed9f9bcee651589fde03785aec6767175dfc1612f1e"
+  },
+  "outer_folds": {
+    "count": 5,
+    "assignment": "int(sha256(identity)[:8],16)%5",
+    "calibration_fold": "(outer_fold+1)%5",
+    "fit_folds": "the other three folds"
+  },
+  "model": {
+    "kind": "standardized class-balanced ridge least squares with unpenalized intercept",
+    "ridge_lambda": 0.01,
+    "standard_deviation_floor": 1e-6,
+    "positive_total_weight": 0.5,
+    "background_total_weight": 0.5,
+    "standardization": "weighted mean and variance using the class-balanced row weights",
+    "hyperparameter_search": false,
+    "features": [
+      "pair_ncc",
+      "source_no_link_probability",
+      "distance_um"
+    ]
+  },
+  "calibration": {
+    "kind": "label-blind one-sided empirical tail probability within topology-0 calibration rows",
+    "formula": "(1+count(calibration_score>=held_score))/(1+n_calibration)"
+  },
+  "selection": {
+    "accepted_budget": 4,
+    "ranking": ["tail_probability_ascending", "raw_score_descending", "identity", "source_id", "target_id"],
+    "node_disjoint_scope": "challenger endpoints",
+    "fewer_than_budget": "KILL_EARLY"
+  },
+  "precision_gate": {
+    "minimum_precision": 1.0,
+    "minimum_correct": 4,
+    "denominator": 4,
+    "failure_action": "KILL_EARLY_GRAPH_UNOPENED"
+  },
+  "marginal_value_gate": {
+    "banked_apncc_edge_counts": {
+      "edge_tp": 10327,
+      "edge_fp": 958,
+      "edge_fn": 687,
+      "edge_denominator": 11972
+    },
+    "perfect_edit_count": 4,
+    "maximum_raw_edge_jaccard_delta": 0.0003341129,
+    "maximum_official_node_adjustment_factor": 1.1,
+    "maximum_adjusted_edge_jaccard_delta": 0.0003675242,
+    "maximum_node_recall_delta": 0.0,
+    "applicable_adjusted_floor": 0.005,
+    "graph_physically_capable_of_floor": false,
+    "graph_execution": "closed_in_all_precision_outcomes",
+    "executed_candidate": "zero-edit no-op",
+    "executed_delta_vector_adjusted_raw_node": [0.0, 0.0, 0.0]
+  },
+  "graph_gate": {
+    "minimum_adjusted_edge_jaccard_delta": 0.005,
+    "minimum_raw_edge_jaccard_delta": 0.0,
+    "minimum_node_recall_delta": 0.0,
+    "require_observation_distinct": true,
+    "execution_authorized": false,
+    "reason": "four perfect add-only edits have adjusted ceiling 0.0003675242 below 0.005",
+    "six_bba_after_pass": false,
+    "cv57_after_pass": false
+  },
+  "properties": {
+    "appearance_grounded": "raw 3-D patch NCC in the three-feature contract",
+    "narrow": "pre-existing free/free no-link context within the 10-12 um shell and four actions",
+    "node_disjoint": "greedy challenger-endpoint disjointness",
+    "recall_preserving": "add-only action; unchanged nodes; nonnegative raw and node promotion gates; early failure is no-op"
+  }
+}

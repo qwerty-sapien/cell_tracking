@@ -1,0 +1,67 @@
+{
+  "schema": "g02.r0-shell-freefree.execution-repair.v1",
+  "status": "FROZEN_BEFORE_RETRY",
+  "date": "2026-08-01",
+  "mechanism": "R0-SHELL-FREEFREE-OOF-APPEARANCE-NOLINK-B4-V1",
+  "repair_class": "execution_only_resumability",
+  "trigger": {
+    "attempt": "run_v1",
+    "guard_receipt": "GUARD.json",
+    "guard_receipt_sha256": "138733f3534a77cbc7c3062d323ec4b94874dd0f7e32da6151b9d7ffcc00967f",
+    "status": "KILL_SWAP_GROWTH",
+    "completed_video_computations_before_kill": 10,
+    "swap_growth_bytes": 39321600,
+    "minimum_free_pages": 1786,
+    "child_returncode": -15,
+    "run_v1_files_written": 0,
+    "selected_actions_written": false,
+    "ground_truth_opened": false,
+    "precision_written": false,
+    "graph_outcome_written": false
+  },
+  "repair": {
+    "description": "atomic per-video label-blind candidate-score shards plus an atomic derived manifest",
+    "resume_authentication": [
+      "exact shard schema and mechanism",
+      "unchanged preregistration SHA-256",
+      "identity-specific fold model plus calibration fingerprint",
+      "exact prepared topology-0 and full-shell row counts",
+      "candidate schema, finite values, topology, action, fold, and pair uniqueness",
+      "shard SHA-256 in the manifest",
+      "recursive rejection of label, correct, precision, selected, or graph fields"
+    ],
+    "partial_shard_guarantees": {
+      "selected_action_emitted": false,
+      "ground_truth_opened": false,
+      "precision_emitted": false,
+      "graph_outcome_emitted": false
+    }
+  },
+  "scientific_contract": {
+    "preregistration_json_sha256": "3822ceea710d22a4326eb61775e85243e1a54faeb9c656c157b8ad8893416a2d",
+    "changed": false,
+    "unchanged_fields": [
+      "model",
+      "features",
+      "five-fold nesting",
+      "topology-0 population",
+      "empirical upper-tail calibration",
+      "rank order",
+      "B4 budget",
+      "video-scoped node-disjoint selection",
+      "truth seal and precision gate",
+      "marginal-value graph closure"
+    ]
+  },
+  "repaired_artifact_sha256": {
+    "evaluate_r0_shell_nolink.py": "ff6bd0e12bcca6c2fb70b141e70b2cbdac89a307fc0be115b868d51706704f79",
+    "test_r0_shell_nolink.py": "f89ec3996eb3739d59f1b32c28cf8abb1c0388b4175e62f1c1207ccac556f16a",
+    "run_guarded.py": "90cdbf0fc5be1b640ca4dc67d6b7d6e8ff2b05575093dbb9552a004bb76a69e2"
+  },
+  "verification": {
+    "tests_run": 10,
+    "tests_passed": 10,
+    "python_compile_passed": true
+  },
+  "retry_policy": "fresh clean 45-second zero-swap preflight, then unchanged continuous zero-swap guard; accumulate only authenticated label-blind shards"
+}
