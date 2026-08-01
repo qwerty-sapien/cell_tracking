@@ -1,0 +1,121 @@
+{
+  "schema": "g02.reverse-endpoint-consensus-audit.result.v1",
+  "status": "TERMINAL_FAIL_LITERAL_CONSENSUS_GRAPH_NOT_OPEN",
+  "observation_distinct_question": true,
+  "distinction_from_terminal_supplier_screen": "The banked terminal experiment learned on reverse/cycle descriptors over the full action population. This audit fit and ranked nothing; it applied a fixed literal returned-endpoint predicate and canonical tiny-support abstention.",
+  "authentic_supplier": {
+    "name": "TRACKASTRA-AUTHENTIC-REVERSE-44B6-V1",
+    "classification": "NON-GT-IDENTIFIABLE",
+    "checkpoint_sha256": "24c290ce74289ee6dac952a3355c9fb7a0a477fda3012656a2c6d80af892981f",
+    "reverse_manifest_sha256": "654cb499d65db137d71e3915850d4bc94a5373660cb2026507ad070275fb6fe1",
+    "videos": 36,
+    "transitions": 3539,
+    "proposals": 84883,
+    "rows": 121534,
+    "repeat_array_equal": true,
+    "endpoint_return": "For exact forward (u_t,v_t+1), consume separately inferred A_reverse[index(v),index(u)].",
+    "synthetic_negation_or_transposition": false
+  },
+  "literal_rule": {
+    "population": 45961,
+    "action_class": "occupied_swap",
+    "forward_margin_min": 0.5,
+    "reverse_margin_min": 0.5,
+    "reverse_return_over_null_min": 0.25,
+    "ranking": false,
+    "literal_threshold_candidates": 268,
+    "canonical_selected": 53,
+    "selected_videos": 29,
+    "support_fraction": 0.00115315158503949,
+    "disabled_reverse_selected": 0,
+    "per_video_cap": 2,
+    "global_cap": 64
+  },
+  "structural_validation": {
+    "selected_actions": 53,
+    "selected_videos": 29,
+    "removed_edges": 106,
+    "all_node_disjoint": true,
+    "all_n1_batches_accepted": true,
+    "all_edited_graphs_observation_distinct": true,
+    "graph_scored": false
+  },
+  "selected_label_gate": {
+    "beneficial": 0,
+    "nonpositive": 53,
+    "strictly_negative": 0,
+    "exactly_neutral": 53,
+    "precision_for_positive_delta": 0.0,
+    "sum_oracle_delta_S": 0.0,
+    "min_oracle_delta_S": 0.0,
+    "max_oracle_delta_S": 0.0,
+    "graph_gate_open": false,
+    "reason": "The preregistered gate required at least four beneficial and zero nonpositive actions; all 53 selected swaps were individually score-neutral."
+  },
+  "edit_set": {
+    "label_blind_screened_edits": 53,
+    "deployed_edits": 0,
+    "candidate_graph": "exact APNCC no-op"
+  },
+  "exact_44b6_vector": {
+    "graph_execution": "NOT_OPENED_BY_PREREGISTERED_LABEL_GATE",
+    "baseline": {
+      "adjusted_edge_jaccard": 0.8665345260361912,
+      "raw_edge_jaccard": 0.862596057467424,
+      "node_recall": 0.9926180002844743
+    },
+    "candidate": {
+      "adjusted_edge_jaccard": 0.8665345260361912,
+      "raw_edge_jaccard": 0.862596057467424,
+      "node_recall": 0.9926180002844743
+    },
+    "delta_adjusted_raw_node": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "justification": "The post-label deployment set is empty by the frozen gate; scorer input is exactly the APNCC baseline."
+  },
+  "properties": {
+    "appearance_grounded": {
+      "satisfied": false,
+      "reason": "The authentic historical Trackastra interface used twelve zero-filled wrfeat channels. It is learned bidirectional association evidence, but this realization has no physical image-appearance input and therefore cannot honestly satisfy the requested appearance-grounded property."
+    },
+    "narrow": {
+      "satisfied": true,
+      "reason": "53/45,961 actions (0.1153%) were sealed, with no ranking and a hard cap of 64."
+    },
+    "node_disjoint": {
+      "satisfied": true,
+      "reason": "Exact candidate and removed-edge endpoint ownership is disjoint; frozen N1 accepted all 29 nonempty video batches."
+    },
+    "recall_preserving": {
+      "satisfied": true,
+      "reason": "The tested primitive was SWAP only (one replacement edge for occupied conflicts, invariant node set); the deployed no-op preserves the baseline exactly."
+    }
+  },
+  "downstream": {
+    "AE-P6_unblocked": false,
+    "R8_unblocked": false,
+    "C3_unblocked": false,
+    "reason": "The literal high-precision gate failed and the 44b6 graph did not open. The older full-population supplier failure remains terminal."
+  },
+  "forbidden_actions": {
+    "inference_rerun": false,
+    "graph_score": false,
+    "family_6bba": false,
+    "cv57": false,
+    "kaggle": false,
+    "gpu": false,
+    "submission": false,
+    "tier_move": false,
+    "shared_state_write": false
+  },
+  "pins": {
+    "preregistration_sha256": "9d0c578b4ef09de25556096c4d31857aa14be6646183755d9954e86311d36b91",
+    "selection_sha256": "1ef8f3ed56f04567bd23ab87ad79582a0e39b859c01890b0fe3ce562cfd3e6c8",
+    "selection_freeze_sha256": "a9e7451f6d789e910401a80d898d8eff5fe8c4169eaade7d02ac4adef33aec2f",
+    "label_gate_sha256": "aad015e283de8a19824e8717641e7f6d80079420e372d5c70f5f63122029cdf3",
+    "n1_validation_sha256": "7b855abf566e5325225b2c01c89b4246e951ff842ba27cbfe17b515c433710de"
+  }
+}
