@@ -1,0 +1,27 @@
+{
+  "candidate_control_byte_identity": true,
+  "candidate_fragments_verified": 36,
+  "downstream_actions": {
+    "cv57_run": false,
+    "family_6bba_run": false,
+    "gpu_action": false,
+    "kaggle_action": false,
+    "submission_action": false
+  },
+  "edit_set_size": 0,
+  "exact_delta": {
+    "adjusted_edge_jaccard": 0.0,
+    "node_recall": 0.0,
+    "raw_edge_jaccard": 0.0
+  },
+  "guard_sha256": "589b784b7522c008936be22c15a67d910f43adb8456b6c3f2d5f811622207c4d",
+  "property_sieve": {
+    "appearance_grounded": true,
+    "narrow": true,
+    "node_disjoint": true,
+    "recall_preserving": true
+  },
+  "result_sha256": "29507dacaabf24370c680829f7e86e062d0eb4110784306ae0905865d608e938",
+  "schema": "celltrack-alpha.a7-phase-tracklet-terminal-validation.v1",
+  "status": "PASS"
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "celltrack-alpha.a7-execution-repair.v1",
+  "repair_id": "A7-EXECUTION-REPAIR-3",
+  "recorded_at": "2026-08-02T00:55:00+08:00",
+  "status": "SEALED_BEFORE_ZERO_EDIT_RECOVERY",
+  "scientific_admissibility": {
+    "prior_execution": "GUARD_RETRY_2 ran 327.93610345898196 seconds with zero swap growth and exited only at the RESULT edge-count serialization KeyError.",
+    "code_path_order": "The frozen runner calls exact_score, exact/algebra parity, and APNCC parity before the failing edge-count dictionary is constructed.",
+    "sealed_graph_artifacts": "All 36 compiled candidate fragments exist. Recovery is accepted only if every candidate SHA-256 equals the pinned APNCC control fragment SHA-256 for the same identity.",
+    "consequence": "Byte-identical candidate/control fragments prove an empty edit set and make adjusted, raw, and node metric deltas exactly zero without replaying the official scorer."
+  },
+  "authenticated_inputs": {
+    "prior_scientific_runner_sha256": "d0335deaefc69e2747f2880e736e803fe02515c56cb75e31cb684c7b9bd8ac3d",
+    "prior_guard_receipt_sha256": "99a0cb5dc7c96bbf6da2169f9631f2b3e98ba0eb66ede8cbc81ba46465b6a5c9",
+    "feature_manifest_sha256": "6b59a3fc421094cf4c8c8fd34b7fe4ec8b8aeed0449048902cd4d3649d1518a6",
+    "execution_repair_2_sha256": "39514364f474f4f4b77ea75ca9f38e45d69e6a9f2d3f0ff4ee0ab05964e8b438",
+    "recovery_script_sha256": "557577bbc7d8c9ddf5eaaa7ea61495a20aed5d8a0a8b79056fb532c72530aea3"
+  },
+  "guard_extension": {
+    "before_sha256": "89ce5f6f0aab6590e4b4779235b4b20ff1fd5465564dfe900f24d2cd7de4b202",
+    "after_sha256": "acc1b2ccc48518e69d653cd0796a1de866f599fee42e485d183d0f4a21c60e28",
+    "change": "Add a recover dispatch target only.",
+    "unchanged": "The 45-second exact zero-swap preflight, continuous zero-swap equality check, 7,200-second hard kill, receipt schema, and fail-closed behavior are unchanged."
+  },
+  "recovery_contract": {
+    "official_scorer_replay": false,
+    "feature_recomputation": false,
+    "selection_refit": false,
+    "threshold_or_budget_change": false,
+    "result_write_once": true,
+    "acceptance_condition": "36 of 36 candidate fragment hashes equal their pinned APNCC controls; otherwise fail closed without RESULT.json."
+  }
+}
