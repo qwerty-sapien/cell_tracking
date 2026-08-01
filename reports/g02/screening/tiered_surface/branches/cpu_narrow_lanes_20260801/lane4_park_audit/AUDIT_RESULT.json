@@ -1,0 +1,98 @@
+{
+  "schema": "g02.park_audit.result.v1",
+  "lane": "LANE4-PARK-AUDIT-20260801",
+  "verdict": "PASS_COMPLETE_NO_TIER_MOVES",
+  "source_census_sha256": "43a4ca7fd006bb851ab0fe7cf81e921f20ef7688a662ff58959f69936de95dc0",
+  "blocked_rows_expected": 35,
+  "blocked_rows_audited": 35,
+  "edit_set_size": 0,
+  "graph": {
+    "executed": false,
+    "identity_reason": "audit-only lane; no graph or candidate mutation",
+    "delta_adjusted_raw_node": [0.0, 0.0, 0.0]
+  },
+  "properties": {
+    "appearance_grounded": "NOT_APPLICABLE_NO_EVIDENCE_SUPPLIER",
+    "narrow": true,
+    "node_disjoint": true,
+    "recall_preserving": true
+  },
+  "cause_counts": {
+    "EVIDENCE": 22,
+    "DEPENDENCY": 4,
+    "GOVERNANCE_CONTROL": 6,
+    "OWNER_POLICY": 1,
+    "DELEGATED_OWNER_OVERRIDE": 2
+  },
+  "banked_evidence": [
+    {
+      "path": "reports/g02/screening/TERMINAL_CAMPAIGN_REPORT.md",
+      "sha256": "9b0a7819095293a720613775fce715c80de08ce6af1ca02edfee0999d131a961"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_reverse_authentic/SEPARATION_RESULT_ACTUAL.json",
+      "sha256": "bd1c3d553bdfbf8ce3547ca87e346a485d96c3698d1918540263eadf68bbf46e"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_dinov2/local_bakeoff_v3/TERMINAL_REPORT.json",
+      "sha256": "538514df2a7b7554247543413c68209e5c413d866a9c229e2bb7ad1cafbab81e"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_peft_adapter_v1/TERMINAL_REPORT.md",
+      "sha256": "98f40d30809aa368382eb68748ad7dc9782f5ae9c77322e178906236ad2a62a5"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_division_realizer_wave_v2/FALSIFIED_BY_REALIZATION_20260731.json",
+      "sha256": "663655c13ab6754660fb1274e2add5f8c37c7f4b372885c8a569f8f90010f749"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo_recovery_generator/NODETOPO_GENERATOR_DIAGNOSIS_20260731.json",
+      "sha256": "44d8f7a1d6527e0269f3910b3ca2bbf16690d7101ca42f168e2ff8a8ce48b0c8"
+    },
+    {
+      "path": "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json",
+      "sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06"
+    },
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/raw3d_nolink_mve_v1/STAGE0_RESULT.json",
+      "sha256": "e651688be773a91cb7ac838a64e349951d38b450dfb607a8c0e36e25616a238a"
+    }
+  ],
+  "rows": [
+    {"id":"AE-P0","cause":"GOVERNANCE_CONTROL","basis":"completed P0 enabler","cheapest_own_merits_falsifier":"none; reuse the frozen control","tier_move_proposed":false},
+    {"id":"AE-P3","cause":"DELEGATED_OWNER_OVERRIDE","basis":"the owner opened the distinct tiny-budget shell no-link lane in Lane 3","cheapest_own_merits_falsifier":"Lane 3 fixed-budget nested precision gate","tier_move_proposed":false},
+    {"id":"AE-P5","cause":"EVIDENCE","basis":"fixed K=8 realizer compiled 361 decisive batches and emitted zero edits","cheapest_own_merits_falsifier":"a newly named non-inert realizer only; no K retune","tier_move_proposed":false},
+    {"id":"AE-P6","cause":"EVIDENCE","basis":"authentic reverse supplier failed both sealed classes","cheapest_own_merits_falsifier":"distinct authentic cycle mechanism only","tier_move_proposed":false},
+    {"id":"AE-P8","cause":"EVIDENCE","basis":"the formerly missing DINOv2 materialization completed and failed both classes","cheapest_own_merits_falsifier":"none under the terminal another-encoder stop; require independent exact-task evidence","tier_move_proposed":false},
+    {"id":"AE-P9","cause":"EVIDENCE","basis":"the exact <1% PEFT realization completed and missed the graph/retention gates","cheapest_own_merits_falsifier":"new representation premise, not more capacity on the same backbone","tier_move_proposed":false},
+    {"id":"DIV-O0","cause":"EVIDENCE","basis":"association dependency was amended away and target-free full-38 realizers produced 0/38 TP","cheapest_own_merits_falsifier":"new named division evidence with positive frozen support","tier_move_proposed":false},
+    {"id":"DIV-F0","cause":"EVIDENCE","basis":"full-38 target-free realizers failed after the dependency amendment","cheapest_own_merits_falsifier":"new named division evidence with positive frozen support","tier_move_proposed":false},
+    {"id":"DIV-F1","cause":"EVIDENCE","basis":"three valid target-free families produced 0/38 TP","cheapest_own_merits_falsifier":"new named evidence family; no replay of A/B/C","tier_move_proposed":false},
+    {"id":"DIV-F2","cause":"DEPENDENCY","basis":"no qualifying authentic pretrained fork input exists","cheapest_own_merits_falsifier":"for any candidate checkpoint, a three-video 44b6 scorer-valid fork-emission smoke; kill on zero valid fork support before fitting","tier_move_proposed":false},
+    {"id":"GAP-F1","cause":"EVIDENCE","basis":"the gap oracle ceiling is below +0.005 and no realizer result can repair that structural shortfall","cheapest_own_merits_falsifier":"none; marginal-value STOP unless a new action kind changes the ceiling","tier_move_proposed":false},
+    {"id":"NODEADD-O0","cause":"EVIDENCE","basis":"free/node-add exact P0 value is zero","cheapest_own_merits_falsifier":"none within the frozen action population","tier_move_proposed":false},
+    {"id":"NODERESTORE-O0","cause":"EVIDENCE","basis":"BLOCKPEAK-RESTORE-V1 had zero beneficial actions and failed 44b6","cheapest_own_merits_falsifier":"new target-blind generator must first show positive oracle support","tier_move_proposed":false},
+    {"id":"DET-F0","cause":"EVIDENCE","basis":"authentic NODETOPO universe completed but the 50-action realization had zero beneficial actions","cheapest_own_merits_falsifier":"new named detector generator with positive frozen support before selection","tier_move_proposed":false},
+    {"id":"DET-F2","cause":"EVIDENCE","basis":"authentic generator completion found no beneficial restoration population","cheapest_own_merits_falsifier":"new named detector generator with positive frozen support before selection","tier_move_proposed":false},
+    {"id":"DET-F3","cause":"EVIDENCE","basis":"authentic generator completion found no beneficial restoration population","cheapest_own_merits_falsifier":"new named detector generator with positive frozen support before selection","tier_move_proposed":false},
+    {"id":"R0","cause":"DELEGATED_OWNER_OVERRIDE","basis":"the DEAD zero-wrfeat mechanism remains closed; Lane 3 owns a separately named shell no-link mechanism","cheapest_own_merits_falsifier":"Lane 3 fixed tiny-budget precision gate","tier_move_proposed":false},
+    {"id":"R2","cause":"DEPENDENCY","basis":"no authentic complete mask/wrfeat artifact is banked","cheapest_own_merits_falsifier":"three-video provenance/license/hash/join/coverage audit of any candidate artifact; stop before labels if any field fails","tier_move_proposed":false},
+    {"id":"R3","cause":"DEPENDENCY","basis":"real morphology cannot run without R2 authentic inputs","cheapest_own_merits_falsifier":"three-video exact node-join plus nonconstant morphology/invariance smoke against the DEAD zero-wrfeat control","tier_move_proposed":false},
+    {"id":"R5","cause":"EVIDENCE","basis":"DINOv2 exact full 44b6 supplier screen failed both classes","cheapest_own_merits_falsifier":"none for the exact supplier","tier_move_proposed":false},
+    {"id":"R6","cause":"EVIDENCE","basis":"its XY upstream was completed and failed; another appearance encoder does not reopen the terminal surface","cheapest_own_merits_falsifier":"independent exact-task high-precision evidence before any tri-view build","tier_move_proposed":false},
+    {"id":"R7","cause":"EVIDENCE","basis":"six infrastructure failures plus explicit no-further-spend decision","cheapest_own_merits_falsifier":"none without a materially different owner-approved infrastructure contract","tier_move_proposed":false},
+    {"id":"R8","cause":"EVIDENCE","basis":"authentic reverse endpoint evidence failed both sealed classes","cheapest_own_merits_falsifier":"distinct authentic cycle mechanism only","tier_move_proposed":false},
+    {"id":"R9","cause":"DEPENDENCY","basis":"no new tracklet/event supplier is banked","cheapest_own_merits_falsifier":"join Lane 1 phase-template features to occupied conflicts only, freeze a tiny budget, and kill on low sealed precision before any graph","tier_move_proposed":false},
+    {"id":"R10","cause":"EVIDENCE","basis":"the exact frozen-backbone PEFT realization completed and failed","cheapest_own_merits_falsifier":"new authenticated evidence premise, not adapter scaling","tier_move_proposed":false},
+    {"id":"G0","cause":"GOVERNANCE_CONTROL","basis":"completed T4 governance","cheapest_own_merits_falsifier":"none","tier_move_proposed":false},
+    {"id":"G1","cause":"GOVERNANCE_CONTROL","basis":"completed N1 compiler enabler","cheapest_own_merits_falsifier":"none","tier_move_proposed":false},
+    {"id":"G2","cause":"EVIDENCE","basis":"exact scorer-regret realization failed 44b6 adjusted/raw","cheapest_own_merits_falsifier":"materially new decision-focused mechanism only","tier_move_proposed":false},
+    {"id":"G3","cause":"GOVERNANCE_CONTROL","basis":"serial GPU authorization lock","cheapest_own_merits_falsifier":"none","tier_move_proposed":false},
+    {"id":"G4","cause":"GOVERNANCE_CONTROL","basis":"execution discipline, not a scientific arm","cheapest_own_merits_falsifier":"none","tier_move_proposed":false},
+    {"id":"G5","cause":"GOVERNANCE_CONTROL","basis":"CV57/submission control","cheapest_own_merits_falsifier":"none","tier_move_proposed":false},
+    {"id":"G6","cause":"OWNER_POLICY","basis":"RunPod is explicitly forbidden","cheapest_own_merits_falsifier":"none under current authority","tier_move_proposed":false},
+    {"id":"ADD-O0","cause":"EVIDENCE","basis":"exact P0 add value is zero","cheapest_own_merits_falsifier":"none within the frozen action vocabulary","tier_move_proposed":false},
+    {"id":"SWAP-O0","cause":"EVIDENCE","basis":"exact-regret graph failed and all completed independent suppliers missed the sealed high-precision surface","cheapest_own_merits_falsifier":"new high-precision local evidence premise only","tier_move_proposed":false},
+    {"id":"NODETOPO-O0","cause":"EVIDENCE","basis":"target-blind generator diagnosis found zero beneficial actions and zero oracle ceiling","cheapest_own_merits_falsifier":"new target-blind generator must show positive support before selection","tier_move_proposed":false}
+  ]
+}

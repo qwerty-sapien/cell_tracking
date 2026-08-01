@@ -1,0 +1,37 @@
+{
+  "schema": "g02.cpu_narrow_lane.preregistration.v1",
+  "lane": "LANE4-PARK-AUDIT-20260801",
+  "frozen_before_audit_output": true,
+  "objective": "Classify every current machine row with a nonempty blocked_on field as EVIDENCE, DEPENDENCY, GOVERNANCE_CONTROL, OWNER_POLICY, or DELEGATED_OWNER_OVERRIDE using newer banked evidence, and give the cheapest own-merits falsifier for every true DEPENDENCY row.",
+  "governing_lesson": {
+    "rank_order": "local node-disjoint swap > global re-solve > broad cost bonus >> full cost replacement",
+    "design_consequence": "The audit may propose only narrow, high-precision, local, recall-preserving falsifiers; it may not propose a whole-pool rescore or rerank."
+  },
+  "frozen_source": {
+    "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/tier_census.json",
+    "sha256": "43a4ca7fd006bb851ab0fe7cf81e921f20ef7688a662ff58959f69936de95dc0"
+  },
+  "classification_rule": {
+    "EVIDENCE": "A banked scientific or resource outcome now supports the park, including when it supersedes a stale machine dependency.",
+    "DEPENDENCY": "The scientific mechanism has not received its own outcome because a missing input or upstream artifact still blocks it.",
+    "GOVERNANCE_CONTROL": "The row is an enabling or execution control, not a scientific candidate.",
+    "OWNER_POLICY": "The owner has explicitly forbidden the resource or action.",
+    "DELEGATED_OWNER_OVERRIDE": "The owner explicitly opened a separately named current lane; this audit does not prejudge it."
+  },
+  "hard_disqualifiers": [
+    "any tier move",
+    "any graph, 6bba, CV57, GPU, Kaggle, RunPod, or submission action",
+    "any proposal that rescored or reranked a complete action pool",
+    "any repeat of a DEAD or terminal mechanism without a new name",
+    "any scientific conclusion drawn from an absent dependency"
+  ],
+  "local_validation": [
+    "cover every tier_census row whose blocked_on array is nonempty",
+    "exactly one cause class per covered row",
+    "a nonempty cheapest_own_merits_falsifier for every DEPENDENCY row",
+    "tier_move_proposed is false for every row",
+    "lane edit_set_size is zero and graph delta is the exact no-op vector"
+  ],
+  "kill_line": "Fail the audit if coverage is incomplete, any tier move is proposed, or any dependency row lacks a bounded own-merits falsifier.",
+  "selection_and_graph_access": "none"
+}
