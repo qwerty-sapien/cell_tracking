@@ -605,6 +605,30 @@ class RoutingTests(unittest.TestCase):
         decision = route_for_profile(profile, default_route_configs())
         self.assertEqual(decision.label, "clean_point")
 
+    def test_auto_route_rejects_partial_config_map_with_clear_error(self) -> None:
+        profile = ScenarioProfile(
+            dataset="synthetic",
+            t_start=0,
+            t_end=3,
+            sampled_timepoints=(0, 1, 2),
+            foreground_fraction=0.02,
+            bright_candidate_density=50.0,
+            dark_candidate_density=45.0,
+            both_candidate_density=60.0,
+            median_nn_um=8.0,
+            temporal_delta=0.01,
+            division_motif_rate=0.0,
+            intensity_p999=1000.0,
+            estimated_total_nodes=1000.0,
+        )
+        config = default_route_configs()["clean_point"]
+        with self.assertRaisesRegex(ValueError, "complete config map"):
+            route_for_profile(profile, {"clean_point": config})
+        forced = route_for_profile(
+            profile, {"clean_point": config}, forced_label="clean_point"
+        )
+        self.assertEqual(forced.label, "clean_point")
+
 
 if __name__ == "__main__":
     unittest.main()

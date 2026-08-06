@@ -1,0 +1,44 @@
+{
+  "schema": "celltrack-alpha.trackastra-asset-provenance.v1",
+  "status": "RESCUED_FROM_VOLATILE_TMP_HASHES_VERIFIED",
+  "created_utc": "2026-07-31T12:10:00Z",
+  "created_by": "Claude, node K0 of dag_prompts/2026-07-31-gpu-window",
+  "purpose": "Durable custody of the authenticated frozen Trackastra backbone required by the campaign plan section 6.2 PEFT escalation (sa_peft_adapter_v1).",
+  "why_this_node_existed": "Both objects existed only under /private/tmp/trackastra-owner-roundtrip.20260729/resolved/, which does not survive a reboot on macOS. The repo's trackastra-6bba-assets-v1/ directory was empty. Loss would have required another owner-authenticated cmux SDK retrieval.",
+  "source_path": "/private/tmp/trackastra-owner-roundtrip.20260729/resolved",
+  "retrieval_lineage": "Owner-authenticated cmux SDK retrieval, 2026-07-29, recorded in LIVE_STATE.md under 'AUTHENTIC REVERSE TRACKASTRA TERMINAL'.",
+  "objects": [
+    {
+      "name": "model.pt",
+      "bytes": 109906058,
+      "sha256": "24c290ce74289ee6dac952a3355c9fb7a0a477fda3012656a2c6d80af892981f",
+      "base_parameter_count": 27456880,
+      "role": "frozen association backbone; all base weights non-trainable under the PEFT preregistration"
+    },
+    {
+      "name": "ctc.zip",
+      "bytes": 101957234,
+      "sha256": "2ede08481b2e1f4ea23a41dd3001e2151ecbce7d978be9829ad230f0a60aea0e",
+      "role": "companion CTC archive from the same authenticated retrieval"
+    }
+  ],
+  "independent_authentication": {
+    "artifact": "reports/g02/screening/tiered_surface/branches/sa_peft_adapter_v1/PRELAUNCH_AUDIT_20260731.json",
+    "field": "authenticated_inputs.trackastra_checkpoint",
+    "agreement": "That audit authenticated this exact model.pt sha256, byte count, and 27,456,880 base parameter count at the /private/tmp path on 2026-07-31T03:56:43Z. This receipt records the identical identity at the durable path."
+  },
+  "verification": {
+    "method": "shasum -a 256 run against the copied files after the copy completed",
+    "verified_utc": "2026-07-31T12:10:00Z",
+    "model_pt_match": true,
+    "ctc_zip_match": true,
+    "note": "No re-serialization, conversion, or re-save was performed. The pinned hash is the identity; CELLECT already lost a run to byte-changing direct .pth transport."
+  },
+  "git": {
+    "tracked": false,
+    "ignored_by": [".gitignore:17 (*.pt)", ".gitignore:36 (*.zip)"],
+    "note": "Weights are 211,863,292 bytes total and must not enter git. This PROVENANCE.json is tracked; the payloads are not."
+  },
+  "source_originals": "Left in place at /private/tmp; this copy is additive and did not delete them.",
+  "authorizes": "Nothing. This is a custody receipt only. It does not authorize a Kaggle asset, kernel, push, GPU debit, graph run, or submission."
+}

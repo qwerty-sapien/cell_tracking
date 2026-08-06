@@ -294,19 +294,6 @@ def nested_partitions(
     return result
 
 
-def _windows_for(
-    windows: Sequence[ProposalWindow], identities: set[str]
-) -> list[ProposalWindow]:
-    result = [window for window in windows if window.identity in identities]
-    observed = {window.identity for window in result}
-    if observed != identities:
-        missing = sorted(identities - observed)
-        raise PointContextOOFGraphGateError(
-            f"window coverage is incomplete: {missing}"
-        )
-    return result
-
-
 def _load_partition_windows(
     prepare: Mapping[str, Any],
     *,

@@ -55,7 +55,18 @@ class SubmissionGraph:
         return SubmissionGraph(self.dataset, dict(self.nodes), list(self.edges))
 
 
-def read_submission(path: Path) -> dict[str, SubmissionGraph]:
+def read_submission(
+    path: Path,
+    *,
+    max_outdegree: int | None = 2,
+) -> dict[str, SubmissionGraph]:
+    """Read a submission while preserving the default competition-safe topology checks.
+
+    ``max_outdegree=None`` is deliberately an opt-in parser policy for
+    faithfully evaluating an externally authored graph whose scorer accepts
+    higher-degree parents.  It does not weaken the default used by APNCC and
+    all ordinary calibration/submission paths.
+    """
     graphs: dict[str, SubmissionGraph] = {}
     with path.open("r", encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
@@ -81,7 +92,7 @@ def read_submission(path: Path) -> dict[str, SubmissionGraph]:
                 )
             else:
                 raise ValueError(f"unexpected row_type {row['row_type']!r}")
-    validate_graphs(graphs)
+    validate_graphs(graphs, max_outdegree=max_outdegree)
     return graphs
 
 
@@ -128,7 +139,13 @@ def write_submission(graphs: dict[str, SubmissionGraph], path: Path) -> None:
                 row_id += 1
 
 
-def validate_graphs(graphs: dict[str, SubmissionGraph]) -> None:
+def validate_graphs(
+    graphs: dict[str, SubmissionGraph],
+    *,
+    max_outdegree: int | None = 2,
+) -> None:
+    if max_outdegree is not None and max_outdegree < 0:
+        raise ValueError("max_outdegree must be non-negative or None")
     if not graphs:
         raise ValueError("submission contains no datasets")
     for dataset, graph in graphs.items():
@@ -152,8 +169,12 @@ def validate_graphs(graphs: dict[str, SubmissionGraph]) -> None:
             outdegree[source.node_id] += 1
         if any(value > 1 for value in indegree.values()):
             raise ValueError(f"dataset {dataset} contains a merge")
-        if any(value > 2 for value in outdegree.values()):
-            raise ValueError(f"dataset {dataset} contains out-degree greater than two")
+        if max_outdegree is not None and any(
+            value > max_outdegree for value in outdegree.values()
+        ):
+            raise ValueError(
+                f"dataset {dataset} contains out-degree greater than {max_outdegree}"
+            )
 
 
 def _distance_um(a: SubmissionNode, b: SubmissionNode) -> float:

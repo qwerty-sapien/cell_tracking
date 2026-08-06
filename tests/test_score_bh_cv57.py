@@ -89,9 +89,9 @@ class CV57ScoreTests(unittest.TestCase):
 
     def test_postpatch_scorer_is_attested_by_green_parity_ledger(self) -> None:
         evidence = score_bh_cv57.validate_revalidated_scorer(
-            ROOT / "reports/g02/scorer_parity_v1.json"
+            score_bh_cv57.DEFAULT_SCORER_PARITY
         )
-        self.assertEqual(evidence["fixture_count"], 7)
+        self.assertEqual(evidence["fixture_count"], 9)
         self.assertEqual(
             evidence["official_checkout"],
             "075fc5f5a52d11077f9dc2b074644618f26939e2",

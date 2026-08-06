@@ -1,0 +1,66 @@
+{
+  "schema": "celltrack-alpha.g03-phase1-prelaunch.v1",
+  "status": "TERMINAL_PHASE1_HARD_FAIL",
+  "recorded_utc": "2026-07-31",
+  "worktree": {
+    "path": "/private/tmp/g03_phase1_resume_proof",
+    "branch": "codex/g03-phase1-resume-proof",
+    "commit": "05c1c6de566abad84257bbdb33ff258c6ecf6f9a",
+    "clean_after_build": true
+  },
+  "frozen_sources": {
+    "runtime_bundle_sha256": "ab465b684d1ef3183a65fa945bd6270018520dfa1fdfe92d3ce907ecfb8def2a",
+    "cmux_ops_sha256": "722893ac1bbadfb10551c3c7187b6b68b9e352c5e3cb1904264f418843c1b30d",
+    "cmux_ops_tests_sha256": "d036dbf6aee8b4ef768723ee6ad1fa162dfe1c22a4fad205841c9b01fdb0f1fe"
+  },
+  "local_verification": {
+    "phase1_integrity_and_package_tests": "6/6 PASS",
+    "cmux_ops_tests": "25/25 PASS",
+    "python_compile": "PASS",
+    "package_output": "/private/tmp/g03_phase1_packages_05c1c6d",
+    "package_source_bundle_sha256": "ab465b684d1ef3183a65fa945bd6270018520dfa1fdfe92d3ce907ecfb8def2a"
+  },
+  "kernel_a": {
+    "id": "onebitbrain/g03-phase1-resume-a-v1",
+    "version": 1,
+    "package": "/private/tmp/g03_phase1_packages_05c1c6d/a",
+    "metadata_sha256": "faf7ffc0f31a7e443268ba2256e62e3a31954d5a746f38cac8e7c2f2155dc578",
+    "contract_sha256": "d6cc6a793f91035d7bfd0a342d4d2ec5853cf12a5e699d03c4ba2e5504b4d4e1"
+  },
+  "push": {
+    "action_receipt": "phase1_ops/kernel_push_2026-07-31T154141157251Z.json",
+    "action_receipt_sha256": "a642a54623b49c9c5f3d086ecfd23e087cf31d56449b24f16b53c757c720456f",
+    "quota_pre_receipt": "phase1_ops/quota_2026-07-31T154139144664Z.json",
+    "quota_post_receipt": "phase1_ops/quota_2026-07-31T154143548792Z.json",
+    "immediate_authoritative_debit_h": 0.0,
+    "terminal_quota_reconciliation_required": true
+  },
+  "terminal": {
+    "kernel_status": "ERROR",
+    "output_receipt": "phase1_ops/kernel_output_2026-07-31T154228356894Z.json",
+    "output_receipt_sha256": "0ec6ae1f5c83d7c9877e4bdb7f94c6f726915c14b1148949d5156d68dad5a915",
+    "output_log_sha256": "e1c5370d1bba55d7f6aa65257616de19459cf0d60045222d6743eab56be7caed",
+    "root_cause": "Kaggle executed only code_file; g03_resume_torch was not vendored into script.py, causing ModuleNotFoundError at 0.70 s before Torch import or training",
+    "post_terminal_quota": {
+      "used_h": 5.43,
+      "remaining_h": 24.57,
+      "total_h": 30.0,
+      "receipt": "phase1_ops/quota_2026-07-31T154239488561Z.json",
+      "receipt_sha256": "70822344d69c5cb7ba00152495c6fdce968cf4985350c5901173b754d4531ad8"
+    },
+    "authoritative_debit_h": 0.0,
+    "no_retry": true,
+    "campaign_decision": "G03_STOPPED_PER_PHASE1_HARD_KILL"
+  },
+  "authoritative_quota_preflight": {
+    "used_h": 5.43,
+    "remaining_h": 24.57,
+    "total_h": 30.0,
+    "refresh_at": "2026-08-01T00:00:00Z",
+    "receipt": "phase1_ops/quota_2026-07-31T154114643790Z.json",
+    "receipt_sha256": "fd88f39ea8ef006c2c4a59cfff684ab6b24a3a8b2a800fb5c174f7fed19485c3"
+  },
+  "next_action": "none: Phase 1 A v1 terminally failed before resume proof; the preregistered no-retry hard kill stops G-03",
+  "gpu_action": false,
+  "submission_action": false
+}

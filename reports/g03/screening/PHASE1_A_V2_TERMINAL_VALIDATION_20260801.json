@@ -1,0 +1,44 @@
+{
+  "schema": "celltrack-alpha.g03-phase1-a-v2-terminal-validation.v1",
+  "status": "PASS_A_HANDOFF_READY",
+  "remote": {
+    "kernel_id": "onebitbrain/g03-phase1-resume-a-v2",
+    "kernel_version": 1,
+    "status": "COMPLETE",
+    "observed_wall_seconds": 11089.499375687
+  },
+  "receipt": {
+    "sha256": "a78965a5850d065ffbacfd3b2d55cdc0cd919c2011c8457f5fa7c9eefbbaa298",
+    "contract_sha256": "079301bdac0184cbbf7dbe427fa6b6b81dce4d87553ba6304f29dd2369849e5a",
+    "selection_authorized": false,
+    "training_seconds": 3600.0002290509997,
+    "global_step": 1953711,
+    "reference_final_global_step": 3907422,
+    "swap_growth_bytes": 0
+  },
+  "handoff": {
+    "handoff_id": "g03-phase1-a-to-b-v2",
+    "verification": "PASS_EXACT_DECLARED_TREE",
+    "tree_sha256": "73a6cc566ba91894cd1da0ace59581ffa89ba63cd324b829c6e2ed860b5b56ac",
+    "manifest_sha256": "af2c079470935661479efc5e2f5ee2302df512d3a7f57268db0cbcd0ee7dd7ef",
+    "inventory_sha256": "377509fe16d9664b227cccfcf7856957505b70a53b01388397cce7b8a00cbe00",
+    "ready_sha256": "2a2e34ae1530e45817823e42c3dd49976caf7d14c80edc946d7b92acdd96cd5f",
+    "checkpoint_bytes": 3174314,
+    "checkpoint_sha256": "8a6c28675f929b613cdbaba69618aaf4cbd2db06f0f761e54a5f4a52100e134e",
+    "declared_file_count": 3,
+    "undeclared_file_count": 0
+  },
+  "log_sha256": "32b433cd13f207ccbf9119cff97143a55cd32d5d577297aad5ef826917238681",
+  "quota": {
+    "current_used_h": 0.0,
+    "current_remaining_h": 30.0,
+    "current_refresh_at": "2026-08-08T00:00:00",
+    "old_window_exact_debit": "UNRESOLVABLE_ACROSS_WEEKLY_REFRESH"
+  },
+  "gate": {
+    "b_v2_handoff_publication_and_launch": "PERMITTED_UNDER_EXISTING_PREREGISTRATION",
+    "phase2": "CLOSED_PENDING_B_V2",
+    "submission": "NOT_ELIGIBLE",
+    "official_frozen_graph_objective_evaluated": false
+  }
+}

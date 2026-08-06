@@ -31,6 +31,8 @@ RETIRED_BASELINE = {
     "effective_division_enabled": True,
 }
 
+DEFAULT_SCORER_PARITY = ROOT / "reports/g02/scorer_parity_v2.json"
+
 
 class CV57ScoreError(ValueError):
     """The exact CV57 score contract was not satisfied."""
@@ -58,7 +60,7 @@ def validate_revalidated_scorer(path: Path) -> dict[str, Any]:
     report = _load_object(path, "scorer parity ledger")
     fixture = report.get("fixture_report")
     expected = report.get("source_hashes")
-    if report.get("artifact") != "scorer_parity_v1" or not isinstance(fixture, dict):
+    if report.get("artifact") != "scorer_parity_v2" or not isinstance(fixture, dict):
         raise CV57ScoreError("scorer parity ledger has the wrong schema")
     if fixture.get("overall_pass") is not True or fixture.get("edge_only_overall_pass") is not True:
         raise CV57ScoreError("scorer parity ledger is not green")

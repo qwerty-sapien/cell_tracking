@@ -42,12 +42,12 @@ Statuses: `DONE` is implemented and locally verified; `READY` can be delegated w
 - **Risks:** Fixed detections bypass segmentation; engineered trajectories are easier than microscopy.
 - **Primary sources:** [CTC evaluation methodology](https://celltrackingchallenge.net/evaluation-methodology/), [CTC Cell Linking Benchmark](https://public.celltrackingchallenge.net/documents/Cell%20Linking%20Benchmark.pdf).
 
-## CT-005 — Ultrack import failure control
+## CT-005 — Ultrack import failure control (archived)
 
-- **Status:** DONE
+- **Status:** ARCHIVED WITH UNUSED ULTRACK PROTOTYPE
 - **Evidence:** Missing-backend and simulated `builtin | None` type-crash tests return actionable `RuntimeError` messages.
 - **Dependencies:** None.
-- **File scope:** `src/celltrack_ultrack/core.py`, `tests/test_ultrack_backend.py`.
+- **File scope:** `_ARCHIVE/unused_ultrack/src/celltrack_ultrack/core.py`, `_ARCHIVE/unused_ultrack/tests/test_ultrack_backend.py`.
 - **Acceptance tests:** Missing Ultrack and import-time `TypeError` are wrapped; unrelated missing subdependencies are not misreported as an absent top-level package.
 - **Risks:** This controls failure; it does not make unsupported Python/Ultrack combinations compatible.
 - **Primary sources:** [Ultrack repository](https://github.com/royerlab/ultrack), [Ultrack paper](https://doi.org/10.1038/s41592-025-02778-0).
@@ -72,12 +72,12 @@ Statuses: `DONE` is implemented and locally verified; `READY` can be delegated w
 - **Risks:** Tiny or near-isotropic instances have unstable orientation; intensity drift is modality-dependent; unnormalized features can dominate costs.
 - **Primary sources:** [btrack feature guidance](https://btrack.readthedocs.io/en/stable/), [TrackMate LAP documentation](https://imagej.net/plugins/trackmate/trackers/lap-trackers).
 
-## CT-103 — Supported Ultrack environment and real short-clip run
+## CT-103 — Supported Ultrack environment and real short-clip run (closed)
 
-- **Status:** BLOCKED
+- **Status:** CLOSED; REQUIRES A NEW NAMED MECHANISM TO REOPEN
 - **Evidence:** Current Python is 3.14.6 and Ultrack is absent; only foreground/contour and controlled-error paths are locally testable.
 - **Dependencies:** A separate supported Python environment approved by the user; no mutation of the current `.venv`; an already local short clip.
-- **File scope:** Environment manifest outside source, `src/celltrack_ultrack/core.py`, `scripts/run_ultrack_zip_cv.py`, new tests/reports.
+- **File scope:** Archived evidence is under `_ARCHIVE/unused_ultrack/`; no active source or runner remains.
 - **Acceptance tests:** Import/version recorded; no unexpected download; candidate count nonzero; solver status and optimality gap captured; graph invariants pass; foreground/contour quality inspected; runtime and peak memory reported.
 - **Risks:** Solver licensing, package incompatibility, full-clip materialization, poor contour maps, and windowed suboptimality.
 - **Primary sources:** [Ultrack repository](https://github.com/royerlab/ultrack), [Ultrack paper](https://doi.org/10.1038/s41592-025-02778-0).

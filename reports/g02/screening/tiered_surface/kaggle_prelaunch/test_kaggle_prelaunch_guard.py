@@ -53,6 +53,12 @@ class PrelaunchGuardTest(unittest.TestCase):
             "EXPECTED_REQUEST_COUNT = 1391458\n"
             "EXPECTED_REQUEST_FILE_COUNT = 77\n"
             "EXPECTED_WHEEL_COUNT = 3\n"
+            "RUN_LOG_PATH = 'RUN_LOG.jsonl'\n"
+            "def inventory_input(): pass\n"
+            "def log_lookup(): pass\n"
+            "def stage_end(): pass\n"
+            "def preprocess_counts(): pass\n"
+            "def _run_failure(): pass\n"
             "def run_step0():\n"
             f"    return Path('{MOUNT}')\n"
             "STEP0 = run_step0()\n"
@@ -66,6 +72,7 @@ class PrelaunchGuardTest(unittest.TestCase):
         payload = {
             "kernel_id": "onebitbrain/test",
             "remote_preflight_kernel_id": "onebitbrain/test",
+            "remote_preflight_mode": "inline_step0_before_heavy_work",
             "lane_owner": "DINOV2_R5_CPU_ONLY",
             "dataset_sources": [DATASET],
             "exclusive_dataset_source": DATASET,
@@ -79,6 +86,14 @@ class PrelaunchGuardTest(unittest.TestCase):
             "population_file_count": 77,
             "wheel_count": 3,
             "step0_limit_seconds": 5.0,
+            "run_logging": {
+                "schema": "celltrack-alpha.run-log.v1",
+                "stdout_jsonl": True,
+                "persisted_with_artifacts": True,
+                "download_on_success": True,
+                "inventory_before_resolution": True,
+                "failure_traceback_with_state": True,
+            },
             "code_sha256": guard.sha256(code),
             "kernel_properties": {
                 "enable_gpu": False,
@@ -112,8 +127,31 @@ class PrelaunchGuardTest(unittest.TestCase):
 
     def test_valid_static_and_launch_contracts_pass(self) -> None:
         source = self.valid_source()
-        self.assertEqual(self.run_guard(source)["status"], "PASS")
-        self.assertEqual(self.run_guard(source, "launch")["status"], "PASS")
+        static = self.run_guard(source)
+        inline = self.run_guard(source, "inline")
+        launch = self.run_guard(source, "launch")
+        self.assertEqual(static["status"], "PASS")
+        self.assertFalse(static["eligible"])
+        self.assertEqual(inline["status"], "PASS")
+        self.assertTrue(inline["eligible"])
+        self.assertEqual(launch["status"], "PASS")
+        self.assertTrue(launch["eligible"])
+        self.assertEqual(
+            launch["metadata_sha256"],
+            guard.sha256(self.kernel / "kernel-metadata.json"),
+        )
+        self.assertEqual(launch["kernel_dir"], str(self.kernel.resolve()))
+        self.assertEqual(len(launch["contract_sha256"]), 64)
+        self.assertEqual(len(launch["registry_sha256"]), 64)
+
+    def test_launch_attestation_respects_the_gpu_contract(self) -> None:
+        source = self.valid_source()
+        self.metadata["enable_gpu"] = True
+        contract = self.contract(source)
+        contract["kernel_properties"]["enable_gpu"] = True
+        contract["remote_preflight_attestation"]["enable_gpu"] = True
+        result = guard.check_kernel(self.kernel, contract, self.registry, "launch")
+        self.assertEqual(result["status"], "PASS")
 
     def test_recursive_discovery_is_rejected(self) -> None:
         source = self.valid_source().replace(
@@ -146,6 +184,14 @@ class PrelaunchGuardTest(unittest.TestCase):
         result = self.run_guard(source)
         self.assertIn("dataset_sources drift", result["failures"])
 
+    def test_declared_kernel_source_drift_is_rejected(self) -> None:
+        source = self.valid_source()
+        self.metadata["kernel_sources"] = ["onebitbrain/source-a"]
+        contract = self.contract(source)
+        contract["kernel_sources"] = ["onebitbrain/source-b"]
+        result = guard.check_kernel(self.kernel, contract, self.registry, "static")
+        self.assertIn("kernel_sources drift", result["failures"])
+
     def test_cross_lane_dataset_ownership_is_rejected(self) -> None:
         source = self.valid_source()
         self.registry["dataset_ownership"][DATASET] = "CELLECT_R7_ONLY"
@@ -163,6 +209,19 @@ class PrelaunchGuardTest(unittest.TestCase):
         contract["remote_preflight_attestation"]["step0_elapsed_seconds"] = 5.0
         result = guard.check_kernel(self.kernel, contract, self.registry, "launch")
         self.assertIn("exceeded step-0 limit", " ".join(result["failures"]))
+
+    def test_warning_only_step0_allows_elapsed_time_but_not_competition_access(self) -> None:
+        source = self.valid_source()
+        contract = self.contract(source)
+        contract["step0_elapsed_is_hard_failure"] = False
+        contract["step0_limit_seconds"] = 60.0
+        contract["step0_competition_path_visits"] = 0
+        contract["remote_preflight_attestation"]["step0_elapsed_seconds"] = 61.0
+        contract["remote_preflight_attestation"]["competition_path_visits"] = 0
+        self.assertEqual(guard.check_kernel(self.kernel, contract, self.registry, "launch")["status"], "PASS")
+        contract["remote_preflight_attestation"]["competition_path_visits"] = 1
+        result = guard.check_kernel(self.kernel, contract, self.registry, "launch")
+        self.assertIn("competition-path visit drift", " ".join(result["failures"]))
 
     def test_zero_request_count_is_rejected(self) -> None:
         source = self.valid_source()

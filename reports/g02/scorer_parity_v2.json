@@ -1,0 +1,29 @@
+{
+  "artifact": "scorer_parity_v2",
+  "created_utc": "2026-08-03T00:00:00Z",
+  "reason": "Re-freeze after official zero-edge parity repair; scorer_parity_v1 remains immutable historical evidence.",
+  "schema_version": 2,
+  "supersedes": "reports/g02/scorer_parity_v1.json",
+  "fixture_report": {
+    "overall_pass": true,
+    "edge_only_overall_pass": true,
+    "official_checkout": "075fc5f5a52d11077f9dc2b074644618f26939e2",
+    "verification_command": ".venv313/bin/pytest -q -p no:cacheprovider tests/test_official_scorer_parity.py tests/test_g02_integrity.py",
+    "cases": [
+      "gt_self_with_adjusted_node_count_penalty",
+      "nonconsecutive_edge_is_dropped",
+      "distance_miss",
+      "duplicate_edges",
+      "division_self",
+      "division_missing_fork",
+      "shared_child_malformed_forks",
+      "empty_prediction_zero_recall",
+      "node_only_prediction_zero_recall"
+    ]
+  },
+  "source_hashes": {
+    "src/celltrack_alpha/official_eval.py": "b80f402c1a253814132e9dbc6d328f4ac47cb174b3f43bd98f5306fbd8899333",
+    "external/kaggle-cell-tracking-competition/src/tracking_cellmot/metrics.py": "cfdd596e3f8909cca14db0682889738b19ff75c3808b3773175aba9367ca7444",
+    "external/kaggle-cell-tracking-competition/src/tracking_cellmot/division_metrics.py": "0635c38621a38f1eb4b55a302b4a817a88e9094930dfc2dab16faeeee60f4dc9"
+  }
+}

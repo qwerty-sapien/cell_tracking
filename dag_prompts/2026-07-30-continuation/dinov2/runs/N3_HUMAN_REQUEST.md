@@ -1,15 +1,21 @@
 # N3 — owner decision required: DPRC-O0
 
 Date: 2026-07-30 (Asia/Singapore)
-Verdict: **HUMAN-DECISION — no action authorized**
+Verdict: **OWNER AUTHORIZATION RECORDED — preflight continues; no Kaggle action yet**
 
-## Requested decision
+The owner authorized this one bounded DPRC-O0 route with “DINOv2: go ahead.”
+The authenticated source/weight receipt is
+[`N3_SOURCE_ASSET_RECEIPT.md`](N3_SOURCE_ASSET_RECEIPT.md). This remains a
+distinct fresh-supplier experiment, never an R5 repair or retry. The remaining
+input/foreground/crop and five-second preflight gates remain mandatory before
+any Kaggle asset, kernel, or compute action.
 
-May the owner authorize at most one new, bounded Kaggle GPU experiment named
-DPRC-O0 after reviewing and approving its fresh source/asset manifest? Approval
-would cover the protocol in
-[N2_KAGGLE_PROTOCOL_DRAFT.md](N2_KAGGLE_PROTOCOL_DRAFT.md), not any R5 repair
-or retry. Declining, or any fail-closed condition, creates no launch.
+## Recorded decision
+
+The owner authorized at most one new, bounded Kaggle GPU experiment named
+DPRC-O0 after the fresh source/asset manifest is complete. Authorization covers
+the protocol in [N2_KAGGLE_PROTOCOL_DRAFT.md](N2_KAGGLE_PROTOCOL_DRAFT.md),
+not any R5 repair or retry. A fail-closed condition creates no launch.
 
 ## Mechanism and provenance to approve before any external action
 

@@ -1,4 +1,4 @@
-# G-02 Live State — shared source of truth
+# G-02 Live State — archived source of truth
 
 **Update protocol.** Single live status doc for the G-02 cell-tracking campaign, shared by
 **Claude and Codex**. READ IT FIRST each session. UPDATE IT after any state change (a node
@@ -13,38 +13,673 @@ points at the authoritative artifacts; it does not replace them.
 - Stop-loss doctrine, mandatory before any repeat-compute request: `MARGINAL_VALUE_GATE.md`.
 - Kaggle kernel launch reliability, mandatory before any push: `tiered_surface/kaggle_prelaunch/KAGGLE_FAILURE_AUDIT.md` and `tiered_surface/kaggle_prelaunch/kaggle_prelaunch_guard.py`.
 
-## Current frontier (as of 2026-07-31)
+## Current global status (as of 2026-08-06)
+
+- **COLAB DIVISION PARENT-EVENT THREE-CELL RESUME PASS / TRAINING BLOCKED.** The actual
+  Biohub competition rules permit external models and therefore a privately
+  transported Colab-trained weight dataset, subject to competition-data privacy
+  and reproducibility obligations; the named public support pack was not used as
+  authority. The exact V32 `(1,4,4)` stride carrier is complete and independently
+  reverified: 199 videos / 19,900 `(64,64,64)` uint16 frames, 151 parent events,
+  302 daughter edges, 10,433,331,200 image bytes, manifest
+  `6048f8d7…e6a121`. G-03's complete state/atomic publication/swap boundary is
+  ported into exactly three manual Colab cells: mount/install/manifest-bound
+  semantic resume, training with a 600-second checkpoint callback, and terminal
+  checkpoint plus full-JSONL publication. Fifteen focused tests pass. Each
+  session records its assigned GPU at start and end; hours are kept in exact
+  device buckets and never naively summed or mixed with Kaggle. Exact runtime
+  matches retain the bit-identical claim; changed devices can resume only with
+  an explicit `NO_BIT_IDENTICAL_CLAIM` continuity receipt. A disconnect-open
+  ledger row is conservatively closed at the next manual start using its last
+  checkpoint plus one cadence (or the six-hour ceiling if none is attributable). There is no
+  activity injection, browser driver, scripted session cycling, or account
+  multiplexing. Colab hours remain `{}` and Kaggle hours were not touched. The deployment gate is frozen at
+  top-22 `>=5 TP / <=17 FP`, precision `>=5/22`, AP lift `>=8462x`, never
+  AUROC. The owner clarification classifies this >2-frame tensor/temporal head
+  with shape-compatible spatial initialization only as a new architecture, not
+  V32 weight refinement; no waiver is required and V32 stays immutable. Exact
+  objective finalization and all training remain fail-closed because
+  `V32_RESIDUAL_ERROR_TAXONOMY.json` and a measured timing receipt have not landed. The active V32
+  remote run was not queried, killed, mutated, or cadence-changed. Records:
+  `tiered_surface/branches/division_temporal_colab_v1/`.
+
+- **CAPACITY GAP NOT ESTABLISHED / RUNPOD PLANNING ONLY / PARKED-COMPUTE
+  RE-ADJUDICATED.** The supplied quota snapshot leaves `24.73-7.67=17.06`
+  unreserved T4-h after V32. The new detector's exact architecture and schedule
+  await the taxonomy, so its measured total projection is `UNESTABLISHED` and
+  committed split is Kaggle `0.0 h`, Colab `{}` by model, RunPod `0.0 h`.
+  A frozen 30--60 minute same-workload T4 timing receipt decides allocation:
+  `<=17.06 h` means Kaggle-only; larger projections may use a separately
+  benchmarked device remainder. The owner-indicated SGD 20 RunPod envelope is
+  planning input, not per-run approval. At current listed A100 rates it buys at
+  most about 11.15 PCIe or 10.41 SXM hours before storage, but the locked
+  campaign's existing USD 10 cap remains effective until explicitly amended
+  (about 7.19/6.71 hours). DPRC-O0's distinct
+  `<=4 h` preflight may resume preparation but remains launch-blocked on its
+  manifest/crop-contract/5-second checks. Crop-wrfeat remains `PARK-COST`
+  (`195.59/659.856 T4-h`), full organizer training remains DEAD (~478 T4-h),
+  and DINOv2 R5 remains scientific `FAIL_PARK_C`; compute alone reopens none of
+  them. Report: `tiered_surface/branches/division_temporal_colab_v1/CAPACITY_AND_PARKED_COMPUTE_ADJUDICATION_20260805.md`.
+
+- **V32 UNSHARDED VERSION 1 REPLICATION PASS / CV57 0.914358 / PROOF REF
+  55272130 COMPLETE WITH BLANK SCORE / REPAIR EVIDENCE BLOCKED / CAP2 VERSION 1 RUNNING.** Prompt B
+  abolishes sharding: historic S00--S02 outputs are diagnostic evidence only,
+  are never reassembled, and receive no retry. Fresh slug
+  `onebitbrain/g02-public-temporalunet-v32-unsharded-v2` exact Version 1 was
+  pushed at `2026-08-04T13:41Z` after a 162-identity immutable V32 package,
+  inline prelaunch PASS, and `79 passed, 3 subtests passed` focused suite.
+  The kernel is one end-to-end execution with no wall-clock kill. Its
+  authenticated `6.8 h` projection passes the owner `<8 h` auto-approval gate;
+  the canonical locked ledger reserved `7.67 h` against authoritative quota
+  `5.27/24.73 h` used/remaining, with no launch-time debit. The first permitted
+  `2026-08-04T14:44Z` and `20:01Z` status receipts report `RUNNING`. The
+  permitted `2026-08-05T00:00Z` read of that same slug returned Kaggle
+  `kernels.get` permission denied instead of a worker state, so the last
+  authoritative state remains `RUNNING`; terminality is not established and
+  the `7.67 h` reservation remains active. No retry is allowed inside the
+  hourly window. At `08:11Z`, the next scheduled probe was rejected before
+  process creation because the sandbox approval service disconnected; CMUX did
+  not run and no new Kaggle receipt exists. This control failure will not be
+  bypassed. The later exact-slug probe at `2026-08-05T12:22Z` reports
+  `COMPLETE`. Exact Version 1 output downloaded through CMUX and authenticates
+  to the package: 162 datasets, 6,261,255 rows, 3,191,037 nodes, 3,070,218
+  edges, submission SHA `c61784c3…ab446`. Competition-faithful validation
+  preserves two degree-3 parents (max outdegree 3) and logs both parent/daughter
+  sets; no graph mutation occurred. Fresh quota `11.70/18.30 h`
+  used/remaining establishes a `6.43 h` debit; the `7.67 h` reservation is
+  released and zero active reservations remain. The downloaded Kaggle log is
+  retained; the pre-existing missing persisted-JSONL caveat remains explicit.
+  The one authorized frozen CV57 score is `0.914358473021`, above reported
+  public `0.908--0.911` and APNCC `0.881522069960` by `+0.032836403061`.
+  This clears replication/local submission eligibility but remains below the
+  separate `0.916` weight-refinement gate, so no refinement is opened.
+  APNCC-versus-V32 taxonomy is published and reproduces all 57 score rows with
+  zero mismatches. V32 reduces ordinary-association residual events
+  `2459→1931` and fragmentation FN `1482→1053`; division remains the dominant
+  score ceiling and worsens as deployed error count `42→108` (`3/69/39`
+  TP/FP/FN). A hidden-test-compatible immutable artifact and fresh one-shot
+  lifecycle predicate are now required before submission; the public output
+  may not be copied. G1 is a later independently constructed arm and its APNCC
+  delta is not additive. Fresh hidden-test package `onebitbrain/g02-v32-submit`
+  contains the same pinned V32 source/weights, dynamic four-video test discovery,
+  no public identities or output rows, and persisted JSONL logging. Static/inline
+  guards plus the `0.91` local gate pass. Exact Version 1 launched at `12:54Z`
+  with a `0.30 h` projection and `0.50 h` reservation against unchanged quota
+  `11.70/18.30 h`; it is exact-slug `COMPLETE` at `13:57Z`. Exact Version 1
+  output passes fresh validation: four dynamically discovered hidden datasets,
+  235,198 rows, 119,616 nodes, 115,582 edges, no copied public output, no
+  pinned public identities, max outdegree two, and authenticated persisted
+  JSONL SHA `86becd3c…f4e6d`. Submission SHA is `11ff6284…e88b1` and the fresh
+  one-shot predicate passed after a fail-closed path-spelling revalidation fix
+  (`73 passed, 3 subtests passed`). It was consumed exactly once by the
+  code-output lifecycle; new submission ref `55272130` is authenticated
+  `COMPLETE` with both score fields blank, with no retry permitted. The
+  authenticated API provides neither rejection detail nor version-specific
+  failed output: `/1`, `/2`, and `/3` status `COMPLETE`, but each output and
+  version-qualified log request returns the same retained successful CSV/log
+  (log SHA `3fea029c…354454`) and each historical source pull is HTTP 403.
+  Its retained log performed full recursive input hashing and has no failure
+  event, so hashing is not exonerated or implicated. No bisection package was pushed. The eight-stage source-forward ladder is locally built
+  and static/inline-guarded; historical tracebacks and rejected CSVs remain
+  required before its pristine control launch. Evidence:
+  `tiered_surface/branches/public_temporalunet_baseline_v1/submission_repair_v32/EVIDENCE_RETRIEVAL_20260806.md`.
+  Authoritative quota `11.93/18.07 h`
+  used/remaining establishes a `0.23 h` hidden debit; the `0.50 h` reservation
+  is released and zero active reservations remain. The automation-control API timed out on three update attempts and
+  its persisted prompt remains stale; future continuation must follow this
+  section and query only `onebitbrain/g02-v32-submit`, never the completed
+  unsharded-public slug. The separately requested cap-to-two arm is now the
+  sole active production node: unsharded
+  slug `onebitbrain/g02-public-temporalunet-v32-cap2-unsharded-v1`, package
+  SHA `1ac9e1c2…bbd86`, source SHA `d27e246e…e6a81`, static/inline guards PASS,
+  and current focused verification `90 passed, 3 subtests passed`. It leaves the pristine safe-division
+  routine unchanged, applies only the postlink `outdegree>2` top-two V32
+  `edge_sort_key` rule, preserves all other edge order, and persists every
+  affected parent/ranking. Full replay is required because the baseline
+  CSV/logs discarded edge probabilities and raw GEFFs. Exact Version 1 launched
+  at `14:06Z` after the proof submission attempt, a fresh absent-slug check, and
+  unchanged quota `11.93/18.07 h`; 7.67 h is reserved and initial exact-slug
+  status is `RUNNING` at `14:07Z`. Monitor at most hourly. On terminal PASS,
+  score `public_v32_cap2` exactly once on frozen CV57; this experimental arm is
+  not submission-authorized.
+  **Provenance correction:** the pinned pristine notebook SHA
+  `3f995a97…b7847d` contains `add_safe_divisions_postlink` and zero
+  `outdegree` references, so the prior local outdegree-two rejection was
+  stricter than the competition behavior, not a V32 defect. Baseline validation
+  now preserves the emitted graph and logs every parent above degree two
+  (`dataset`, parent id, outdegree, daughters); no routine is patched. A
+  cap-to-two/highest-scoring-daughters arm is a separately receipted experiment
+  after the baseline score, never a silent repair. Provenance:
+  `tiered_surface/branches/public_temporalunet_baseline_v1/V32_OUTDEGREE_PROVENANCE_20260804.json`.
+  **Immutable logging caveat:** the launched source hash `932e0b12…f8e03`
+  predates the subsequent persisted `RUN_LOG.jsonl` contract. It cannot be
+  retrofitted without changing Version 1; terminal authentication will retain
+  every available downloaded log/receipt and label the missing structured-log
+  binding explicitly rather than falsely claiming it passed. This is a logging
+  finding, not a model or graph failure. Record:
+  `tiered_surface/branches/public_temporalunet_baseline_v1/V32_UNSHARDED_V2_LOGGING_GAP_20260804.json`.
+
+- **G04 DATA-PATHOLOGY G1 STANDING / CROP-WRFEAT PARK-COST.** A complete
+  203-video CPU census finds 967 exact frozen transitions and 227 frame-global
+  shifts over the fixed 10-um pool radius. On exact APNCC CV57, frame-level
+  registration before candidate construction raises adjusted score
+  `0.881522069960→0.886764420260` (`+0.005242350300`) and improves edge
+  TP/FP/FN `34320/2459/1948→34389/2308/1879`; frozen identity alone and stride
+  parity are exact score no-ops. Reachability on 75 flagged CV57 transitions
+  improves `209/311→259/311`; 90/93 GA-R12REACH shell positives on flagged
+  fit-only transitions return inside 10 um. A7 remains closed: G1 is one
+  whole-frame transform before the pool, never a candidate feature. The fixed
+  crop-level real-wrfeat pilot failed with 12/243 unmatched and 199/243
+  boundary-truncated masks, projecting 766.233 CPU-h for CV57. Geometry audit
+  now measures unique-object p99 Z/Y/X extents `23.3/39.3/34.9` voxels versus
+  the old `16/32/32` crop; the preregistered repair uses recentered
+  `32/64/64` crops plus one `48/96/96` fallback. The exact three-frame /
+  916-detection T4 pilot passed genuine CUDA batching and serial/batch-one
+  label parity. Its two independent frames are `673/673` valid with zero
+  boundary/empty masks; all-frame totals are `914/916` valid, 1 boundary and
+  1 empty, with fallback recovering 50/52. Throughput is `0.938601 s/detection`;
+  exact-count/dense-frame CV57 projections are `293.262/599.869 T4-h`, and the
+  preregistered conservative result is `659.856 T4-h` (combined held-fit105+
+  CV57 `1875.361 h`) versus 27.24 h remaining. Coverage is repaired but the
+  full-run budget gate fails. The lane is `PARK-COST`, not evidence-parked or
+  DEAD: geometry, recentering, fallback, CUDA batching, and coverage proof are
+  banked for reuse if Trackastra/wrfeat becomes relevant again. No fourth
+  throughput configuration is allowed without a new named architecture that
+  removes per-detection tri-orientation redundancy, so no feature production
+  or score follows.
+  The common transform is now standing at APNCC, Trackastra/wrfeat and
+  synthetic-division construction seams; a distinct V32 replay patch is ready
+  but remains score-blocked on full immutable V32 authentication. Reports:
+  `../../g04/lanes/data_pathology_repair/TERMINAL_REPORT.md` and
+  `../../g04/lanes/global_jump_crop_wrfeat_v2/`. The owner-approved APNCC+G1
+  public-transfer package passed dynamic-inventory/raw-Zarr parity and its
+  fail-closed launch guard. Fresh slug `onebitbrain/g1jump-submit` exact Version
+  1 completed; its output re-authenticated byte-exact to the local raw-parity
+  candidate (`366a12d6…8c8`, 263,260 rows). The canonical `6.0 h` reservation
+  is released at authoritative quota `5.27/24.73 h` used/remaining (a `0.17 h`
+  debit). The one-shot registry is consumed by exactly one competition
+  submission, ref `55221497`, is terminal COMPLETE at displayed public `0.881`.
+  Thus local `+0.005242350300` transferred as `+0.000` at public display
+  precision. This is local-to-public anchor 2 and materially weakens reliance
+  on CV57-only corrections for public advancement. No V32 status read or
+  cadence change occurred; the terminal monitor is stopped.
+
+- **REPOSITORY DEBUG / KAGGLE SUBMISSION LIFECYCLE HARDENED.** The invalid
+  public-copy G04 transport is archived and registered as `KFG-25`; refs
+  `54890576` and `55201829` are the same public-identity/hidden-rerun failure
+  family. Code-output submission now requires an exact-version output receipt,
+  hidden-test-compatible predicate, canonical consumed-on-attempt claim, and
+  exactly one reconciled new ref. Direct predicates are also one-shot; latest
+  kernel status, finite quota/ledger reservations, trusted CLI credentials,
+  OS-held serial-lock ownership, and kernel-bound terminal reservation evidence
+  fail closed. Active pytest collection is 1,237 with zero errors. The canonical
+  uncapped suite is reviewed-green at 1,198 PASS / 39 strict XFAIL / 267
+  subtests / zero failures; the earlier 25-red audit was only a capped prefix.
+  Four active defects were fixed and all 39 retired nodes have exact lifecycle
+  reasons. Focused
+  reliability/scorer/guard/oracle verification is 100 PASS plus 7 subtests. The full/edge-only
+  zero-edge scorer path now matches the evaluator. Mixed-cost sparse tie noise
+  is fixed; retired banked LAPJV parity is a strict XFAIL for filler-dependent
+  equal-cost tie propagation. Full
+  audit: `../../../code_quality/REPO_DEBUG_AUDIT_20260803.md`. No Kaggle,
+  RunPod, or full crop-wrfeat action occurred.
+
+- **GPU GOVERNANCE AMENDMENT LANDED / SHARED 30 H LEDGER RETAINED.** ALIGNMENT
+  now supersedes the former 5 h runtime-kill/sharding rule: authenticated Kaggle
+  projections below 8 h are auto-approved with no per-run wall-clock kill;
+  projections of 8 h or more require an explicit literature-cited human-approval
+  pitch. The canonical shared ledger remains the mandatory prelaunch 30 h/week
+  budget check. The amendment records that six-way sharding of a 6.8 h job added
+  an error-prone reassembly layer and yielded invalid outdegree-three parents.
+  Comprehensive structured stdout plus persisted/downloaded run logs are now
+  mandatory for every local and Kaggle run. Inspected ALIGNMENT SHA-256 is
+  `64d1f96e…4c0f9`. No GPU action occurred.
+
+- **DEFAULT POST-SCORING VISUAL REVIEW READY / DIAGNOSTIC ONLY / NO GATE
+  CHANGE.** The stable CPU `latest` bundle applies the exact four-category
+  selector to APNCC CV57: 9 unique clips after deduplication, with all category
+  tags retained. Each 100-frame MP4 is exactly `15.000 s` by default
+  (`6.6667 fps`); HUD metrics/corners, target duration, exact FPS override, and
+  default/all scope are CLI-configurable. The `16,558,395`-byte default bundle
+  is below 1 GB, validates 9/9, and reuses 9/9 media on an identical input hash.
+  Frozen/global-jump census boundaries are shown on video and timeline; sparse
+  GT and exact edge/division error semantics are unchanged. `scoreall.py`
+  refreshes default scope only after score publication. The explicit manual
+  all-scope CV57 bundle is now rendered and validated at 57/57 clips,
+  `90,888,617` bytes, `15.000 s`/clip; it remains diagnostic-only. Entry
+  points: `../../g04/post_scoring_visual_review/latest/index.html` and
+  `../../g04/post_scoring_visual_review/full_catalog_20260804/index.html`.
+
+- **SYNTH-DIV-SIM2REAL-V2 EVENT DETECTION PARK-C / CONDITIONAL PAIR ASSET
+  BANKED / CTC PARK-A-PERMISSION.** Prompt 2
+  opens one observation-distinct sim-to-real division
+  lane using Jose Freitas's author-declared CC0 synthetic lineage labels, not
+  another sparse-real or hand-threshold ranker. Explorer v6 and generator v3
+  notebook sources are locally acquired and SHA-256 pinned. The full version-3
+  output authenticated at 3,716 files / 19,868,008,592 bytes, tree SHA-256
+  `9a87684a…029865ec`; structural validation reproduced 1,539 static volumes,
+  2,174 sequences, 4,056,226 nodes, and 165,267 divisions without materializing
+  image arrays. V1 then failed closed before fitting: one `seq_0019` labelled
+  daughter pair fell outside its literal nearest-8 universe. Amendment 2 parks
+  that realization and freezes `SYNTH-DIV-SIM2REAL-v2-REACHABLE`: nearest-8
+  stays fixed, only unreachable forks leave the pair-head loss, all parents
+  remain in the event-head loss. The full authenticated audit passed:
+  165,148/165,267 (`99.927995%`) forks reachable overall, with train,
+  validation, and synthetic-test each above `99.92%`; only 119 pair-head rows
+  are excluded. The one frozen local CPU fit completed in `4521.04 s` over
+  3,674,104 pair and 2,616,835 event examples. Model JSON/array hashes are
+  `53b36d96…d21dd82` / `d979a308…cfff652`; strict reload passed. The first
+  truth-blind serial fit117 fragment projected beyond the four-hour cap and was
+  stopped at `296.26 s` with zero shards/GT. Execution amendment 3 freezes four
+  independent per-video workers plus exact serial/parallel byte equivalence;
+  no scientific model, feature, candidate, threshold, or gate changes. Its
+  first full attempt reached 91/117 atomic shards but no manifest in
+  `14545.63 s`; the coordinator terminated only its over-cap processes after
+  confirming the executor exception path left workers alive. No GT opened.
+  Amendment 4 freezes one read-only cache of the identical physical-coordinate
+  product plus bounded worker termination. The pre-change NPZ hash remains
+  exact, 31 focused tests pass, and the formerly `296.26 s` fragment now seals
+  the same 845,628-row NPZ/hash in at most 40 s. Generator freeze V4 opens one
+  fresh four-worker fit117 attempt under the unchanged `14400 s` cap. That
+  attempt completed in `1135.49 s`: 117/117 videos and 80,013,717 truth-blind
+  candidates are frozen in manifest SHA `029061b1…036b4`, with `contains_labels=false`
+  and `gt_archive_opened=false`. No cap extension was needed. The unchanged
+  fit117 real-GT evaluation completed in `1509.17 s`: global beneficial-action
+  AUROC `0.889300580471` passes the frozen `0.85` line, with 65 beneficial
+  candidates and 65/83 exact-fork reachability. AP is only `0.000019093115`;
+  44b6/6bba AUROC is `0.843482493424/0.895217431438`. More decisively, every
+  one of the frozen 19×6 deployment policies selects zero actions: all scores
+  lie below `0.0005`, so the complete frontier is `TP/FP/FN=0/0/83`, Jaccard
+  `0.0` for all 114 rows. This invokes the preregistered zero-real-TP hard
+  failure. Lower thresholds, score shifts, and post-GT recalibration are
+  forbidden; the exact instantiation is PARK-C before graph integration.
+  Before any payload read or model outcome, the lane froze 4.07%→0.26% loss
+  reweighting, geometry/lineage/motion-only features, the published
+  `1.86/+0.30/7.24` priors, a real beneficial-action AUROC `>=0.85` gate, and
+  the full moderate-FP frontier. The decisive V32 integration dependency is
+  moot for this instantiation because the hard failure stops first; APNCC is
+  legacy control only. Codex task `019fc6b9-0154-7be1-8b37-7159cb6f5da8` is the sole
+  authoritative watcher for the synthetic real-GT AUROC gate and the sole
+  writer of the synthetic-on-V32 integration. The separate V32 continuation
+  owns only base production/authentication and its contracted V32/G1 scoring;
+  it has no synthetic-gate or synthetic-integration dispatch. CTC archives are
+  registered restricted and excluded because official terms require written
+  permission for non-CTC public scientific use; citation alone is insufficient
+  for this Kaggle training use. The post-outcome split is precise: the
+  parent-event head is random (AUROC/AP `0.521521/3.1367e-5`) under a
+  geometry/lineage/motion-only contract that excluded raw appearance, while the
+  conditional daughter-pair head is a working banked asset
+  (`0.897081/0.368520`). Record “division event detection has no working
+  mechanism; conditional daughter assignment is solved,” not “division is
+  unreachable.” CTC real divisions are the leading appearance-event data
+  candidate only after written organizer permission (`PARK-A-PERMISSION`).
+  Until an authorized event detector clears 5 TP / <=17 FP in top 22 and
+  AP-lift `>=8462x`, redirect mechanism effort to ordinary association
+  (`+0.061628263275`). Real
+  labels were used only by the sealed one-shot evaluation; no integrated graph,
+  combined score, visualizer refresh, GPU, submission, or RunPod action exists.
+
+- **OWNER-SUPERSEDED PUBLIC TEMPORALUNET3D BASELINE ADOPTION ACTIVE.** This is
+  not a re-screen of the DEAD from-scratch TemporalUNet3D mechanism: the owner
+  superseded that scope with the independently trained public pipeline. Kaggle
+  notebook exact Version 32 (`scriptVersionId=337501010`, public `0.911`,
+  successful `18m57s` T4x2) is pinned locally at SHA
+  `3f995a97…b7847d`. Its primary public checkpoint is byte-identical to the
+  existing support pack (`12f6881e…e771`), and the independently trained seed
+  314159 checkpoint is authenticated at `9bac2fa0…e305f`. Frozen held-fit and
+  CV57 reproduction has not yet run, so APNCC `0.881522069960` remains the
+  base/legacy control and FINAL slot 1; no machinery has been re-pointed and no
+  new submission is authorized yet. The public pipeline is substrate/ensemble
+  only: weight refinement is forbidden below exact local `0.916`. Exact
+  one-video V32 parity-smoke kernel
+  `onebitbrain/g02-public-temporalunet-v32-smoke-v1` Version 1 is terminal
+  **PASS**: exact public/checkpoint/runtime bindings, 50,304 nodes, 48,724
+  edges, 99,028 rows, and strict graph validation with zero errors, warnings,
+  merges, or outdegree violations. Prediction took `284.650 s`; the rounded
+  debit was `0.11 h`, leaving `28.63/30.00 h`. This opens only the sharded
+  immutable-weight 162-video reproduction. All 18 disjoint 27-video packages
+  for V32, single-seed, and detection-only blend pass inline prelaunch. V32
+  shard 0 fresh-slug Version 1 is terminal **PASS**: 27/27 exact datasets,
+  541,109 nodes, 521,261 edges, 1,420 dividing nodes, and 1,062,370 rows;
+  prediction took `3264.467 s`, strict graph/output validation passed, and the
+  terminal debit is `1.14 h`. Frozen-official early scoring of those same 27
+  videos gives native division TP/FP/FN `2/52/23`, Jaccard `0.025974`; the
+  nine CV57 videos give `1/11/12`, Jaccard `0.041667`. Native branching is
+  therefore neither absent nor usable as-is: 92% of GT divisions remain FN and
+  52/54 scored predictions are FP, so the synthetic lane must add recall and
+  aggressively refine precision. V32 shard 1 exact fresh Version 1 launched
+  with code `a4e17b04…c4568`, shard manifest `5676398b…d752`, and a
+  10,800-second whole-kernel kill, then completed in `3323.533 s`. Exact
+  terminal validation passed 27/27 datasets, 468,656 nodes, 449,831 edges,
+  1,039 dividing nodes, and 918,487 rows. Its reservation was released under
+  the canonical lock after authoritative quota moved `2.76/27.24→3.88/26.12 h`
+  used/remaining, a `1.12 h` debit. Shard 2's frozen package and explicit
+  fresh-Version-1 predicate passed, but the bracketed launcher refused locally
+  before `kernels push`: the newly hardened lifecycle guard treated Kaggle's
+  normal fresh-slug denial as unparseable. No remote version was created and
+  no GPU debit occurred; the temporary `3.0 h` reservation auto-released, so
+  quota remains `3.88/26.12 h` used/remaining with zero active reservations.
+  The exact-v1 lifecycle is repaired and passes 54 focused / 61 combined tests.
+  In the next hourly window, the bracket's under-lock check was the sole target
+  status read, proved fresh-slug absence, and push receipt
+  `3d61d30d…0c7492` confirms shard 2 exact Version 1. Its immutable code is
+  `97fa08fa…4c6fe1`, package manifest `288a877b…327847`, shard manifest
+  `df876107…c8f1cf`, and whole-kernel kill 10,800 seconds. Immediate quota stayed
+  `3.88/26.12 h` used/remaining; the canonical `3.0 h` reservation is active
+  and will remain until terminal evidence plus authoritative quota
+  reconciliation. Launch record `FULL_PUBLIC_V32_S02_LAUNCH.json`
+  (`6b49ad89…5c6cb9`). The following hourly receipt found shard 2 COMPLETE, but
+  strict graph validation rejected its exact Version-1 output: two parents
+  have outdegree 3 and all other indegree/outdegree constraints pass. Shards 0
+  and 1 revalidate PASS under the current validator. Authoritative quota moved
+  `3.88/26.12→5.10/24.90 h` used/remaining (`1.22 h` debit); the reservation is
+  released with zero active reservations. Terminal adjudication
+  `FULL_PUBLIC_V32_S02_TERMINAL_ADJUDICATION.json` (`ee24311c…7aea97`). Shard 3
+  is blocked pending a frozen packaging-only feasibility repair; no retry is
+  authorized yet.
+  The four-way scorer audit reproduces APNCC CV57 exactly and now
+  separates detection, ordinary association, matched-lineage fragmentation,
+  and division. Kaggle ref `55203439` is terminal COMPLETE at public `0.881`,
+  tying APNCC's displayed score despite local `0.881635476737` versus
+  `0.881522069960`. Control-anchoring the local `+0.000113406777` gain at
+  APNCC's displayed `0.881` projects `0.881113407`, which still displays
+  `0.881`. This interval-censored hidden-population observation does not justify
+  changing frozen scorer arithmetic; local and public are recorded separately,
+  and APNCC remains FINAL slot 1.
+
+- **G-04 BELOW-MEDIAN REFRAME / LANE-A PUBLIC TIE / LANE-B KAGGLE-INFEASIBLE.** Public `0.881` is
+  approximately rank `1100/1800`, below median; the prior conclusion that the
+  achievable surface is exhausted is withdrawn.  G-04 optimizes exact frozen CV57
+  combined score above APNCC `0.881522069960`.  Association continuity, 44b6-first,
+  legacy `+0.005`, near-zero-FP division operation, and the local `0.89` submission
+  floor do not gate these lanes.  Lane A completed its exact 57-video official
+  sweep: baseline reproduced `0.881522069960`; `unfiltered_geometry_cap5` applied
+  239 forks and scored `0.881635476737` (`+0.000113406777`) with division
+  `0/11/42`, so the gain is edge-only.  Its observation-distinct four-test-video
+  artifact validates cleanly (15 forks; SHA `da73c754…84509`).  After a guarded
+  direct-file HTTP 400 with no entry, the byte-identical artifact was transported
+  through authenticated CPU/no-network code kernel version 1 and submitted as
+  Kaggle ref `55201829`.  It terminated unscored with Kaggle's generic
+  incorrect-format error (`total_bytes=0`); exact graph parsing still passes,
+  because that public-only copy kernel could not cover Kaggle's hidden rerun.
+  A replacement exact-APNCC-plus-cap5 kernel passed raw-Zarr byte parity and 27
+  tests, completed as exact version 1, and returned the byte-identical candidate.
+  Terminal validation passed all package/runtime/output gates and created the
+  one authorized code submission as ref `55203439`; it is COMPLETE at public
+  `0.881`, a displayed tie with APNCC rather than a public improvement. The
+  frozen scorer is unchanged: one three-decimal hidden-population result cannot
+  separate display precision, population shift, and arithmetic bias. No retry
+  is authorized.
+  Lane B's authenticated `cyto3` one-frame CPU
+  pilot produced 171 explicitly labelled computed masks and matched `234/243`
+  detections at radius 15; radius 30 covers `243/243` and is preregistered with
+  per-row match distance/mode.  The pilot is not production-manifest eligible;
+  Its authenticated 223,211,151-byte CPython-3.12 runtime carrier is now READY
+  as exact dataset version 1 and passed a 30/30-file byte-exact round trip.
+  The timing package's declared CV57-cache dataset did not exist remotely; a
+  safety review rejected exporting the 595 MB local derived cache.  The revised
+  raw-only timing kernel instead authenticated organizer-hosted raw Zarr and all
+  runtime files at Step 0, then failed closed after `75.597 s` because one
+  computed region emitted a non-finite feature.  This is not a valid frame-time
+  measurement and does not unlock production.  Exact-raw/config CPU reproduction
+  identified planar labels `26/42/99` with finite native wrfeat and only legacy
+  scikit-image solidity equal to `inf`.  The changed-signature v2 defines solidity
+  as voxel-cell volume divided by the physical 3-D hull of half-voxel corners,
+  with no sentinel; native Trackastra wrfeat12 is unchanged.  Its fresh-slug
+  four-file package passes 37 tests plus static/inline guards and completed as
+  exact fresh-slug version 1.  Its two label/feature payloads are byte-identical;
+  repeats took `43.460/42.774 s` after `30.217 s` initialization, yielding
+  CV57/held-fit105 steady projections of `67.734/124.767 T4-h` and combined
+  worst `195.586 T4-h`.  Full Kaggle production is therefore closed against
+  `28.74 h` remaining.  The official StarDist package supplies no generic
+  pretrained 3-D model, and no alternative authenticated 3-D weights exist
+  locally; RunPod is the remaining compute path and requires explicit owner
+  approval.  Authoritative quota is now `1.26/30.00 h`; exact per-kernel
+  attribution is deferred until all remote accounting settles.  Complete wrfeat coverage,
+  held-fit105, and CV57 remain pending.
+  Each observation-distinct lane winner with
+  local `S>0.881522069960` is authorized for one submission under the standing
+  serial/prelaunch/monitoring controls.  RunPod remains owner-gated.  Amendment:
+  `../../../g04/screening/OWNER_REFRAME_20260803.md`.
+
+- **G-03 OWNER-AMENDED ORTHOGONAL LANES / NO G-02 REOPENING.** The owner funded
+  one fixed G-03 h005 held-fit36 slope read and CPU-only orthogonal screens; this
+  does not reopen any archived G-02 mechanism. G-03's trained raw-intensity fork
+  probe failed its first-fit cross-family 44b6 ceiling (precision/recall
+  `0.454545/0.555556` at `0.5`; best precision at required recall `0.5`) and
+  stopped before final 38 access, GPU, or graph integration. The classical dense
+  deformable-field screen completed the unchanged frozen 44b6 B0/A1/A0 gate and
+  returned `FAIL_PARK_C` for both DELETE and occupied SWAP; learned displacement
+  is closed with zero GPU. H005's corrected private carrier and inline prelaunch guard are
+  sealed; its single training-kernel version 1 passed remote STEP0, then failed
+  before training because the launcher declared but did not install the canonical
+  wheel set and the base image lacked `zarr`. There is no checkpoint, score, or
+  slope; the rounded infrastructure debit is `0.01 h` and current quota is
+  `1.02/28.98 h`. V1 is invalid rather than scientific. A private 14-wheel
+  runtime carrier is READY and the mandatory CPU-only install/import/decode
+  probe version 1 passed exact wheel, numeric-stack, and fixed 6bba raw+GEFF
+  checks with zero GPU-quota movement. The unchanged-core sole V2 passed its
+  release guards, but its exact four-source GPU worker failed at top-level
+  STEP0 because the runtime manifest was absent or byte-divergent. The frozen
+  check did not emit observed mount facts to distinguish those cases. No output
+  file, dependency install, scientific import, CUDA allocation, data access,
+  optimizer step, checkpoint, held-fit36/CV57 score, or slope exists. V2 debit
+  is `0.00 h`; quota remains `1.02/28.98 h`. No V3 is authorized, so Lane 0 is
+  infrastructure-terminal, h030 is not evaluable or funded, and its 25 h remain
+  preserved.
+  No G-02 gate, DEAD status, tier, CV57
+  action, or submission changed.
+
+- **G-03 PHASE-2 H000 RECONCILED / NO G-02 REOPENING.** The distinct G-03
+  crop adapter now has exact-zero `Linear(48,12)` output at h000. Canonical
+  re-decoding of the frozen native CUDA banks reproduced all 36 held-fit44b6
+  zero-feature graphs byte-for-byte and scored `0.7630876414338513`. This does
+  not conflict with the archived native `0.829194058080`, which is a CV57
+  measurement on a different population. The G-03 Branch-B dossier fails, so
+  h005/h030 remain unfunded with zero new GPU-hours. No G-02 candidate, DEAD
+  mechanism, graph gate, tier, CV57 action, or submission reopened.
+
+- **OWNER BARRIER DISPOSITION ACCEPTED / A7 SEPARATION FAIL / NO GATE CHANGE.**
+  The owner accepted the gate-validity recommendation to retract the prior R9 and
+  AE-P3/R0 evidence-park reclassifications and accepted all five D3 “no”
+  recommendations; none of those historical mechanisms is reopened. After the G-03
+  R4 scorer was killed, the exact frozen separation protocol evaluated A7's own
+  45,961 occupied-swap candidates with 134 positives. Adding only the original
+  phase/template `action_margin` produced A1 per-fold AUC
+  `0.627866/0.828496/0.610208/0.659067/0.654961`, zero CG0 retention in all folds,
+  and no passing AUC lift over sealed B0 or within-video/frame-permuted A0. It fails
+  the occupied-swap `0.90/0.067910` requirement in every fold and is now parked on
+  evidence rather than on its former threshold abstention. No FIT threshold, edit
+  set, graph, 6bba, CV57, GPU, submission, or tier move opened. The requested
+  `node >= -0.002` future-gate package is draft-only in G-03 and has not been applied;
+  adjusted `>=+0.005` and raw `>=0` remain unchanged, and zero historical verdicts
+  change.
+
+- **DURABLE CEILING-FIRST / ATOMIC-RECEIPT MONITORING RULES ADOPTED / NO GATE
+  CHANGE.** `tiered_surface/ALIGNMENT.md` now requires an oracle ceiling before
+  any sweep, lattice, or search is funded; a ceiling below the promotion gate
+  permits only an explicitly labelled, wall-clock-capped diagnostic. Long jobs
+  with atomic receipts are waited on rather than interval-polled, with at most
+  one status check per hour, no unchanged-state emission, and liveness checks
+  only after a failed receipt/status check. The `+0.005` gate is unchanged.
+
+- **44B6-FIRST GATE VALIDITY FAILURE / OWNER BARRIER / NO GATE CHANGE.** On the
+  exact common 36-video held-44b6 set, banked APNCC-DIRECT versus its exact
+  pre-APNCC `c=0.25` control is adjusted/raw/node
+  **`+0.006949544395/+0.006411258660/-0.001307630206`**. It therefore would
+  have **FAILED** the locked `>=+0.005/0/0` three-component gate on node recall,
+  despite being the campaign's only confirmed full-CV57 win (`+0.008372`). The
+  44b6-first vector gate is not a valid universal filter for CV57 improvement.
+  This finding changes no gate or tier and opens no CV57 read; owner review is
+  required. D2 exact action oracles find A7 `134/45,961` beneficial and R0
+  `5/38,081` beneficial, so their near-empty selections were threshold misses,
+  not evidence-negative candidate universes. Reverse literal consensus is
+  genuinely evidence-negative at its fixed contract: all 268 literal passes
+  and all 53 sealed actions have exact zero delta. The earlier terminal join's
+  evidence reclassification of R9 and AE-P3/R0 is retracted; the cited park-audit
+  census remains **`22/4/6/1/2`** evidence/dependency/control/policy/owner-override.
+  No tier move follows. Report:
+  `tiered_surface/diagnostics/gate_validity_abstention_oracle_20260802/REPORT.md`.
+- **OWNER-OPENED NARROW CPU LANES TERMINAL / ZERO DEPLOYED EDITS / NO TIER
+  MOVES.** A7 phase-template abstained on all 45,961 occupied-conflict swaps
+  and is an exact APNCC no-op. Literal authentic reverse consensus sealed 53
+  node-disjoint swaps but found `0/53` beneficial, so its graph gate stayed
+  closed. The distinct R0 free/free shell no-link falsifier screened 38,081 of
+  2,514,005 held-44b6 shell rows, then failed fixed-budget precision at `0/4`;
+  it also deployed zero edits. Exact adjusted/raw/node deltas are `0/0/0` for
+  all three scientific lanes. The parallel park-audit snapshot classified all
+  35 blocked rows as evidence/dependency/control/policy/owner-override
+  `22/4/6/1/2`. The later exact candidate-universe oracle diagnostic supersedes
+  the terminal join's A7/R0 cause reclassifications; final remains
+  `22/4/6/1/2`, with zero tier moves. All
+  work was CPU-only; no Kaggle, GPU, RunPod, 6bba, CV57, or
+  submission action occurred. Reports:
+  `tiered_surface/branches/a7_phase_template_v1/TERMINAL_REPORT.md`,
+  `tiered_surface/branches/reverse_endpoint_consensus_audit_v1/TERMINAL_REPORT.md`,
+  `tiered_surface/branches/r0_shell_nolink_own_merits_v1/TERMINAL_REPORT.md`, and
+  `tiered_surface/branches/cpu_narrow_lanes_20260801/lane4_park_audit/TERMINAL_REPORT.md`.
+- **GLOBAL-REASSIGN ORACLE TERMINAL / COMPILER ESCALATION / PROPOSAL ONLY.**
+  The full 36-video local-CPU GT-dependent node passed both frozen controls and
+  measured T2∞ `+0.09641286660426185` [GT-DEPENDENT] versus T3
+  `+0.10497364637634421` [GT-DEPENDENT]. Section 4 is
+  `CONTINUE_PROPOSAL_ONLY`: precedent-adjusted `+0.01906337599412862`
+  [GT-DEPENDENT] before raw T2∞−T0 `+0.0778414699637755` [GT-DEPENDENT].
+  Terminal status remains `ESCALATE_COMPILER_INEXPRESSIBLE`: five retained
+  division anchors are valid same-chain remove-and-readds that the frozen batch
+  compiler cannot express, not under-merged chains. All T2 depths are identical;
+  histogram `{1:453,2:6}` [GT-DEPENDENT] makes single-install endpoint legality,
+  not chain depth, the binding constraint. Written proposal only; no campaign
+  action is authorized. Report:
+  `../../../dag_prompts/2026-08-01-global-reassign-oracle/runs/N0_GLOBAL_REASSIGN_ORACLE.md`.
+- **G-02 ARCHIVED / OWNER-SCOPED NATIVE-BASE EXCEPTION TERMINAL / NO
+  IMPROVEMENT.** The frozen fit105 run scored all 108 names (76 distinct graphs)
+  and irrevocably selected `r08_c08_a035_off` before CV57. The sole authorized
+  CV57 measurement is complete on the already-downloaded 57-video bank: native
+  combined/adjusted `0.829194058080`, raw `0.834460844608`, node recall
+  `0.987196658416`, edge TP/FP/FN `32564/2756/3704`, and division
+  TP/FP/FN/Jaccard `0/0/42/0`. This is `-0.052328011880` versus APNCC
+  `0.881522069960`. Native predicted zero forks, so the preregistered hybrid is
+  graph-identical to APNCC and ties it exactly. Independent pre/post audits pass
+  all 57 hashes, one-time access markers, identities, graph parses, and ranking
+  arithmetic. No alternative, tuning, repeat, GPU, Kaggle action, RunPod, or
+  submission occurred. The result does not affect G-03 Phase 1. Terminal SHA
+  `0add0c3f…60af95a`.
+
+## Archived G-02 frontier (as of 2026-08-02)
+- **OWNER-SCOPED NATIVE SCORER EXCEPTION TERMINAL / CV57 MEASURED ONCE / REJECT.** The
+  unchanged frozen implementation completed all 105 APNCC control fragments; the
+  preserved 66 are byte-identical to the recomputation. Exact fit105 control is
+  combined/adjusted `0.860516437125`, raw `0.867176587961`, node recall
+  `0.988149479570`, and division TP/FP/FN/Jaccard `0/0/76/0`. The frozen
+  108-variant run exactly scored all 108 names (76 observation-distinct graphs).
+  Frozen selection irrevocably chose `r08_c08_a035_off`: combined/adjusted
+  `0.811024400045`, raw `0.817224994691`, recall `0.979235194777`, division
+  `0/0/76/0`, and `-0.049492037080` versus identical-population APNCC. Its
+  no-fork hybrid is exactly APNCC on fit105 (`0.860516437125`). The selection was
+  sealed before CV57. Independent validation passes all 108 names and 105
+  identities; fit results SHA is `36d6aa95…a31a3f9`. Remote selected-only v1
+  and final infrastructure-only v2 both failed Step 0 before cache/model/GT/
+  graph/scorer access, leaving the single measurement unused. The complete
+  authenticated cache/checkpoint/source were already local; exact CPU inference
+  first reproduced the frozen T4 graph on 3/3 fit-only parity cases. The one
+  selected CV57 graph was then materialized and scored exactly once: native
+  `0.829194058080` (`-0.052328011880` versus APNCC), with division `0/0/42/0`.
+  Zero predicted forks make the hybrid an exact APNCC no-op at `0.881522069960`.
+  No GPU was scientifically justified, and no alternative, tuning, repeat,
+  submission, or G-03 change occurred. Terminal:
+  `tiered_surface/branches/sa_native_base_wave_v1/CV57_LOCAL_TERMINAL_REPORT.json`.
+- **NATIVE-BASE V1 TERMINAL / QUARANTINED UNSCORED BY G-03 SUPERSESSION.** The
+  fresh-slug Trackastra fit105 v1 completed with exact version delta `0→1` in
+  `1297.886 s`. Its downloaded bank passes independent SHA/schema validation:
+  `105/105` video files (`36` 44b6 + `69` 6bba), `2,732,827` nodes,
+  `12,523,336` candidate edges, `26,166` inference calls, peak `1,024` tokens,
+  and zero reported errors. Authoritative quota moved **5.06/24.94 →
+  5.43/24.57 h used/remaining**, a **0.37 GPU-h** debit; the shared launch lock
+  is released. A supervisor false negative resulted only from checking the
+  download root instead of the nested report path and is adjudicated in
+  `tiered_surface/branches/sa_native_base_wave_v1/TERMINAL_OUTPUT_ADJUDICATION.json`.
+  The newer owner's G-03 charter arrived before any native graph materialization
+  or score read. The bank is therefore quarantined **UNSCORED**: no 108-variant
+  sweep, selection, hybrid, CV57, dataset publication, or submission occurred.
+  The local APNCC control was stopped at `66/105`; partial fragments are preserved
+  and no partial score was consumed.
+  Lane B is abandoned with zero new spend because no changed CELLECT checkpoint
+  carrier exists after the terminal 25,055-file inventory found zero matches; it
+  remains scientifically UNTESTED. Public submission still requires explicit human
+  approval; RunPod is forbidden. Branch:
+  `tiered_surface/branches/sa_native_base_wave_v1/`.
+- **RAW3D-NOLINK-MVE STAGE 0 TERMINAL / PARK-C / CAMPAIGN CONSOLIDATE.** The
+  owner-approved scoped plan amendment (§6.6) opened the zero-weight CPU probe,
+  which completed the exact frozen DELETE
+  population (`41` videos / `1,345,497` actions / `1,118` beneficial) in
+  `254.704 s`. Raw-3D A1 mean/fold-floor AUC is
+  `0.677967209/0.599374874`; mean/full-population CG0-budget retention is
+  `0.006094647/0.004472272` (`5/1,118`). It improves DINOv2 mean AUC by
+  `+0.007555465` and beats its A0 control by `+0.031393472`, so crude raw
+  intensity contains some real pair information, but it fails both frozen
+  `0.680411743` advance clauses and the measured `0.85/0.020394` surface.
+  Stage 1 asset/provenance authentication therefore stays closed; no
+  acquisition, weights, training, GPU, graph, 6bba, CV57, or submission is
+  authorized. Trackastra fine-tuning remains unrecommended. Report:
+  `tiered_surface/branches/raw3d_nolink_mve_v1/TERMINAL_REPORT.md`.
+- **BANKED 0.881 CANDIDATE EXPLICITLY SELECTED AS FINAL.** Kaggle's
+  authenticated Submissions state moved from `0/2` auto-selection candidates
+  to `1/2` with `onebitbrain/bhap-submit` v1 checked. This binds submission
+  ref `54942864` (public `0.881`, local `0.881522069960`, package
+  `779aa8d3…606b`) as an explicit final rather than relying on the platform
+  default. Competition deadline is **2026-09-29 23:59 UTC**. No new
+  submission, slot, or GPU quota was consumed. Receipt:
+  `KAGGLE_FINAL_SELECTION_20260731.md`.
 - **G-02 TIERED-SURFACE CAMPAIGN TERMINAL / NO ACTIVE WAVE.**
   APNCC-DIRECT remains banked at local `0.881522069960` / public `0.881`.
   The measured selector requirements are DELETE AUC/retention
   `0.85/0.020394` and occupied SWAP `0.90/0.067910`. Independent DINOv2
   appearance and C2 assignment evidence converge on DELETE at
-  `0.670412/0.670235` AUC (difference `0.000176`), establishing the campaign's
-  empirical ceiling near `0.670` for the current pointwise action label.
+  `0.670412/0.670235` AUC; the distinct crude raw-3D probe raises the empirical
+  best only to `0.677967`, still `0.172033` short of the measured AUC need and
+  with a `0.599375` fold floor.
   Division's exact GT-dependent ceiling is `+0.092067842`, decomposed
   `(a)/(b)/(c)=1/37/0`: only `+0.002406490` is inferable now,
   `+0.089661334` is representation-blocked, and the GT-only tier is empty.
   CELLECT is permanently PARK-C / scientifically UNTESTED after six
   infrastructure failures. Machine census is LIVE/DEAD/PARK-A/PARK-B/PARK-C
-  `0/1/14/18/12`. Reopen only on a new action-labeling formulation (for
+  `0/1/14/18/13`. Reopen only on a new action-labeling formulation (for
   example batch/sequential valuation) or independent AUC `>=0.85` evidence on
-  this exact discrimination task—not another appearance encoder. No graph,
-  6bba, CV57, GPU, submission, RunPod, plan amendment, or further wave is
-  authorized. Terminal report: `TERMINAL_CAMPAIGN_REPORT.md`.
-- **PEFT §6.2 PRELAUNCH HARD STOP / CAMPAIGN-TERMINAL HOLD / ZERO
-  DEBIT.** The requested DELETE target authenticates at 1,345,497 actions /
-  1,118 beneficial with the exact 27,456,880-parameter Trackastra checkpoint,
-  but the frozen population contains only the 41 videos on outer fold 0's fit
-  side: grouped fold 1 has 21 videos / 648,405 actions and grouped fold 2 has
-  20 / 697,092; grouped fold 0 has zero. The frozen PEFT preregistration
-  requires all three outer-fold graph results and explicitly fail-closes a
-  missing fold. Its embedded five hash folds cannot be substituted
-  retroactively. Therefore no projection, dataset/kernel mutation, or launch
-  occurred. Authenticated quota remains **5.02 h used / 24.98 h remaining**.
-  The former preregistration remains an immutable historical artifact, but the
-  terminal campaign decision authorizes no amendment, completion, or launch.
-  Audit:
-  `tiered_surface/branches/sa_peft_adapter_v1/PRELAUNCH_AUDIT_20260731.json`.
+  this exact discrimination task—not another appearance encoder. The sole
+  owner-reopened §6.2 PEFT and RAW3D Stage-0 exceptions both completed and
+  failed; there is again no active wave. Standing Kaggle authorization does not itself open a node;
+  RunPod remains forbidden. Terminal report:
+  `TERMINAL_CAMPAIGN_REPORT.md`.
+- **PEFT TERMINAL AUTHORITY RECONCILED / 12:27 RECORD CURRENT.** The 12:04
+  `BLOCKED_BY_TERMINAL_CAMPAIGN_AUTHORITY` receipt is preserved as a
+  correct-at-time historical snapshot, but it is not current. The owner's
+  pre-outcome 12:12 Amendment A explicitly overrode that closeout for
+  `sa_peft_adapter_v1` only and selected the five nonempty frozen hash folds;
+  the serial push followed at 12:19 and the sole v1 terminalized at 12:27.
+  Amendment A (`4c4890ee…e63e01`) supplied owner authority; the byte-identical
+  remote runtime amendment (`a5b72dbc…1093a`) supplied the executed split.
+  The Amendment A `recorded_utc` suffix is malformed, but filesystem +08
+  chronology and machine prelaunch/push/terminal receipts establish the
+  pre-outcome order. Current quota recheck remains **5.06 h used / 24.94 h
+  remaining**, confirming the banked `0.04 T4-h` debit. Seal:
+  `tiered_surface/branches/sa_peft_adapter_v1/AUTHORITY_SUPERSESSION_20260731.md`.
+- **PEFT §6.2 TERMINAL FAIL / CASE B BACKBONE STOP SIGNAL / PARK-C.** The sole
+  T4 v1 completed the fixed 100:1 DELETE probe in `145.680 s` after inline Step
+  0 authenticated 90 members in `1.500973 s` with zero competition visits.
+  Version delta is exactly `0→1`; authoritative quota moved
+  **5.02/24.98 → 5.06/24.94 h used/remaining** (`0.04` T4-h debit). Training
+  used all `1,118` positives plus `111,800` fixed negatives; evaluation scored
+  all `1,345,497` actions. Descriptive epoch AUC rose
+  `0.448881→0.634749`, but AUC was forbidden as a selector. Nested graph-only
+  selection chose epochs `1/2/2/2/2`, yielding selected AUC `0.496495`
+  versus incumbent `0.502` and frozen case-B cutoff `0.552`. Retention is
+  `3/1,118 = 0.002683` versus measured `0.020394`. Adjusted/raw/node graph
+  deltas are `+0.000133827/+0.000133160/0`; the binding `+0.005` adjusted
+  line fails. This exact PEFT realization is PARK-C, and more capacity on this
+  frozen backbone is not indicated. Independent replay passes all 15 checks.
+  6bba, CV57, transport packaging, submission, and any full fine-tune remain
+  closed. Report:
+  `tiered_surface/branches/sa_peft_adapter_v1/TERMINAL_REPORT.md`.
 - **C2 ASSIGNMENT-EVIDENCE SEPARATION SCIENTIFIC FAIL BOTH / PARK-C /
   GRAPH BARRIER CLOSED.** The completed hash-pinned C0/K-best contract ran
   CPU-only at full frozen 44b6 coverage (1,345,497 delete + 45,961 occupied
@@ -743,6 +1378,141 @@ condition above governs every future proposal.
 | closed | `DELETE-O0` | PARK-C | exact retention beta `−0.000127119/−0.000131807/0` | materially new named deletion mechanism |
 
 ## Key numbers
+- **Public-frontier calibration (2026-08-06, `public_solution_landscape_survey_v1.md`).**
+  Live LB snapshot 2026-08-05T19:22:39, 2,019 teams: max `0.948`, **zero teams ≥0.95**,
+  4 teams ≥0.94, 95 teams above our CV57 `0.914358` (rank ~96). The public 0.952–0.969
+  notebook badges are stale pre-patch metric-exploit artifacts (host patch `aa65e90`,
+  2026-07-17) and must not be used as targets. Best clean public author: pilkwang `0.921`
+  (+0.007 over us). Our CV57 division term: `1 TP / 11 FP / 12 FN`, J=`0.0417`, 368 forks
+  emitted against 13 GT divisions → ≈`0.096` of the 0.1-weighted division term unclaimed.
+- Division-parent capacity: Kaggle `24.73 h` remaining minus V32 reservation
+  `7.67 h` leaves `17.06 T4-h`; post-taxonomy model projection is not yet
+  measured. Current committed split: Kaggle `0.0`, Colab `{}` by exact GPU
+  model, RunPod `0.0 h`. RunPod SGD 20 planning envelope is not a launch
+  approval. Colab durability cadence is `600 s`, manual session target `4--6 h`.
+- V32 unsharded replication (local PASS; hidden Version 1 running): 162 frozen identities in one immutable
+  V32 package; authenticated projection `6.8 h < 8 h`; ledger reservation
+  `7.67 h`; authoritative launch bracket `5.27/24.73→5.27/24.73 h`
+  used/remaining. The three authenticated 27-video V32 precedents total
+  `10,028.512203 s`, a linear prediction-only `5.571396 h` for 162; the
+  owner-amended whole-run projection carries the remaining materialization and
+  terminal-output allowance. Exact Version 1 output is authenticated at
+  162 datasets / 6,261,255 rows / 3,191,037 nodes / 3,070,218 edges; two
+  degree-3 parents are preserved and fully logged. Quota is `11.70/18.30 h`,
+  exact debit `6.43 h`, and zero reservations remain. Exact frozen CV57 is
+  `0.914358473021` versus public `0.908--0.911` and APNCC `0.881522069960`
+  (`+0.032836403061`); score receipt `8827cd15…93c2`. Taxonomy is PASS 57/57
+  with zero replay mismatches, V32 ordinary-association events `1931`,
+  fragmentation FN `1053`, and division `3/69/39`; comparison
+  `8b72d8d3…ef07`. Fresh hidden package `4435e834…a03` / source
+  `5193d060…b619d` discovers exactly four mounted test Zarrs dynamically and
+  cannot copy public output; Version 1 is launched under a `0.50 h` active
+  reservation and `0.30 h` projection, with no launch-time quota debit.
+  Terminal output predicate/submission and the separate cap-to-two experiment
+  remain pending; no V32+G1 result exists. The immutable active
+  source has no persisted JSONL run-log binding, so that irrecoverable logging
+  gap will be reported independently of replication validity.
+- G04 hidden-rerun identity audit: no additional live code-submission path
+  hard-codes mounted test identities. The only match is the registry-quarantined
+  historical copy transport; APNCC submit mode and the G04 postprocessor both
+  enumerate the mounted `test/*.zarr` population and require exact inventory
+  agreement. Ref `55203439` already supplies the one end-to-end blind-rerun
+  canary: it terminalized COMPLETE at public `0.881`. A duplicate identical
+  launch is forbidden by the frozen one-shot/no-retry contract. Focused
+  dynamic-discovery/guard/lifecycle suite: `21/21` PASS. Report:
+  `../../g04/lanes/division_permissive/SUBMISSION_PATH_IDENTITY_AUDIT_20260803.md`.
+- Data pathology: all-archive frozen/jump `967/227`; CV57 frozen/jump
+  `282/75`; G1 exact `0.886764420260`, delta `+0.005242350300`, edge
+  `34389/2308/1879`; flagged-pair reachable GT continuations
+  `209/311→259/311`; GA-R12REACH flagged shell rescue `90/93`. F1 and exact
+  stride parity both delta zero. Crop-wrfeat v1 `231/243` finite,
+  `199/243` boundary-contact, `766.233` projected CV57 CPU-h: terminal.
+- `VELOCITY-AWARE-CANDIDATE-WINDOW-v1` is now integrity-repaired and exact-
+  scored on the G1 base. The actual fit117 G1-selected graph conserves
+  `456−90=366` with predecessor vectors, G1 shifts, graph-endpoint presence,
+  and cap-eight ranks sealed. Fixed-r10/cap8 recentering clears its ceiling
+  (67 new true continuations, 98/366 residual-shell retention, `0.993272×`
+  background burden) but loses 61 other true continuations. Exact CV57
+  adjusted/raw/node is `0.880534473728/0.885184801739/0.990377056057`, delta
+  `−0.006229946531/−0.006276210289/0` versus G1, edge TP/FP/FN
+  `34200/2368/2068`. The realization is PARK-C / no submission; G1 remains the
+  positive. Report:
+  `../../g04/lanes/velocity_aware_candidate_window_20260804/REPORT.md`.
+- **Division requirement surface measured / daughter head banked / event head
+  PARK-C.** Exact sealed
+  re-analysis finds a material `+0.005` division contribution needs at least
+  5 TP / <=17 FP in the first 22 actions (precision@22 `>=0.2273`) and a
+  conservative deployment AP-lift floor `8462x` versus the pair denominator;
+  the frozen model has only `18.41x`. Its event head is AUROC/AP
+  `0.521521/3.1367e-5` over 2,858,003 parents, whereas its conditional pair
+  head is `0.897081/0.368520` over 2,292 pairs. Of 18 unreachable divisions,
+  11 are detection-universe absent, 4 nearest-8 absent, 3 pair-universe
+  absent; synthetic has no r10 gate. Division itself is not unreachable:
+  conditional daughter assignment is solved, while division-event detection
+  has no working mechanism under the appearance-free contract. CTC real
+  divisions are the leading appearance-event dependency but remain
+  `PARK-A-PERMISSION` because official terms require written permission for
+  this non-CTC public scientific use; citation alone is insufficient. Until an
+  authorized event detector reaches the measured deployment operating point,
+  redirect work to ordinary association (`+0.061628263275`). Receipt:
+  `../../g04/lanes/synth_div_sim2real_v1/REQUIREMENT_SURFACE_V1.json`.
+- CV57 residual taxonomy (exclusive 57/57 matcher replay): edge
+  `FP/FN=2459/1948` partitions into ordinary association `2459 FP`, detection
+  `466 FN`, and matched-lineage fragmentation `1482 FN`; division is `42 FN`.
+  Exact Shapley impacts are `+0.061628263275/+0.017446063106/+0.039403603659/
+  +0.100000000000` respectively. Division is the largest total-score ceiling,
+  ordinary association the largest edge surface; the all-categories theoretical
+  ceiling is `1.100000000000` (`+0.218477930040`), not a deployable projection.
+  Report: `../../g04/lanes/cv57_residual_error_taxonomy_20260804/REPORT.md`.
+- Active-path P1 seam: `pipeline.py` now delegates only its existing
+  validation/input normalization to `pipeline_inputs.py`, preserving public API
+  and a deterministic `predict_dataset_window` graph-SHA fixture. Focused
+  validation/routing/solver/import/compile checks pass; no generated, archived,
+  or PARK-COST module changed. The active final-output audit also confirms both
+  `scoreall --submission` and `--frags` are strict before scoring; six malformed
+  edge-contract regressions cover both loaders. Receipts:
+  `../../../code_quality/lane4_pipeline_p1_20260804/RECEIPT.md` and
+  `../../../code_quality/lane4_pipeline_p1_20260804/FINAL_ARTIFACT_STRICTNESS.md`.
+- G-03-only Phase-2 h000 reconciliation: held-fit36 zero-feature
+  `0.7630876414338513`, `36/36` graphs byte-identical, versus archived G-02
+  native CV57 `0.829194058080` on a different population; no G-02 gate change,
+  allocation, or reopening.
+- Narrow CPU lanes: A7 support/applied `0/0` from 45,961 occupied swaps;
+  reverse literal consensus sealed/applied `53/0` with `0/53` beneficial; R0
+  shell sealed/applied `4/0` with precision `0/4` over 38,081 free/free rows
+  inside 2,514,005 held-44b6 shell rows. Every deployed candidate is the exact
+  APNCC no-op at adjusted/raw/node
+  `0.8665345260361912/0.8625960574674240/0.9926180002844743`, delta `0/0/0`.
+  Exact own-universe oracles are A7 `134/45,961`, reverse literal-pass
+  `0/268` (all neutral), and R0 `5/38,081`; therefore A7/R0 were
+  selector-abstention misses while reverse consensus is evidence-negative.
+  Park audit remains 35/35 classified at `22/4/6/1/2`; the prior terminal
+  cross-lane reclassification to `25/3/6/1/0` is retracted. Zero tier moves.
+- Global-reassign ceiling: T2∞ adjusted `+0.09641286660426185`
+  [GT-DEPENDENT], T3 `+0.10497364637634421` [GT-DEPENDENT], same 465
+  correct-edge installs [GT-DEPENDENT], and only `+0.00856077977208236`
+  [GT-DEPENDENT] from T3's extra 245 FP deletions [GT-DEPENDENT]. T2 reaches
+  `91.84482956666014%` [GT-DEPENDENT] of T3. Histogram `{1:453,2:6}`
+  [GT-DEPENDENT] shows the unlock is single-install endpoint legality, not
+  chain depth. Section 4 is proposal-only, with terminal frozen-compiler
+  escalation.
+- Training feasibility: PEFT descriptive AUC plateau `0.633477→0.634749`
+  over epochs 6–8 versus required `0.85`; graph-selected epochs
+  `1/2/2/2/2`, selected AUC `0.496495`, and adjusted/raw/node deltas
+  `+0.000133827/+0.000133160/0`. Trackastra safe end-to-end MVE is
+  `4.05–5.96 T4-h`, while an honest one-seed five-fold selection run is
+  `~7–20 h`. Compact warm-started raw-3D is provisionally `2–6 T4-h` after a
+  zero-GPU compatible-asset gate and `<=0.25 h` matched calibration. The
+  banked 30,057-parameter crop linker is CPU-cheap but DEAD and cannot be
+  retried. Exactly two decision options remain; recommendation is Option 1's
+  asset gate only, but the plan is not amended and no fit is authorized.
+- Kaggle standing authorization: authenticated quota `5.06/24.94 h`
+  used/remaining of `30.00 h`, refresh `2026-08-01T00:00:00Z`; recent
+  campaign kernels all terminal. Latest scored submission is public `0.881`;
+  the only ready CSV is byte-identical (`6944ed58…bea3`) and was not
+  resubmitted. Productive launches/submissions no longer need a repeated
+  access prompt, but still require an approved node/candidate and all serial,
+  quota, integrity, kill, and monitoring gates.
 - Terminal standing: APNCC-DIRECT local `0.881522069960` / public `0.881`.
   The action-selector requirements are DELETE `0.85/0.020394` and occupied
   SWAP `0.90/0.067910` AUC/retention. DINOv2 and assignment DELETE AUCs are
@@ -753,7 +1523,7 @@ condition above governs every future proposal.
   representation-blocked; tier (c) `0/38`, `0`, EMPTY.
 - Terminal census: **LIVE/DEAD/PARK-A/PARK-B/PARK-C `0/1/14/18/12`** over
   45 parent nodes. CELLECT is permanent PARK-C / UNTESTED after six
-  infrastructure failures. No external action or further wave is authorized.
+  infrastructure failures. No active scientific wave is approved.
 - Division-realizer 44b6 wave: A official `0/1/11`, Jaccard `0`, combined
   `-0.000141523` (valid FAIL); B diagnostic `0/49/11`, Jaccard `0`, combined
   `-0.009455519` (information-firewall INVALID); C not scored (no adequate
@@ -768,11 +1538,11 @@ condition above governs every future proposal.
   debit; fix is the Step-0 full-input SHA timing path.
 - APNCC-direct transport smoke v2: hardened Step 0 **PASS** at `2.715378342 s`
   (manifest `779aa8d3…606b`, 62 wheel byte hashes, positive `264,378` request
-  count, zero competition-path visits), but the runner output is **FAIL**:
-  `263,282/128,873/134,409` rows/edges/nodes vs required
-  `264,378/129,495/134,883`; all four fragment SHA-256s differ. Quota
-  `4.53/25.47 -> 4.69/25.31 h` used/remaining (`0.16 GPU-h`). No submission or
-  retry; the most important repair layer is exact remote runner parity.
+  count, zero competition-path visits). The `263,282`-row CSV and all four
+  fragments are byte-identical to the authenticated public-`0.881` APNCC T4
+  archive; the former mismatch used the wrong pre-APNCC reference. Quota
+  `4.53/25.47 -> 4.69/25.31 h` used/remaining (`0.16 GPU-h`). Transport is
+  valid; no duplicate submission or retry.
 - CELLECT local: **5/5 fresh 45-second preflights passed at 0 MiB swap
   growth; 5/5 shard-0 starts failed closed on positive system swapout**.
   Shard outputs/checkpoints/gate verdict: `0/0/none`; Kaggle/GPU debit `0`.
@@ -852,12 +1622,12 @@ condition above governs every future proposal.
   `29fa828f27e390034570e953ffa0dd14cbd7cd754ebbc879237905f28a8f3f5f`
   after the R7 CELLECT and full-38 DIV-F1 terminal moves. Weekly Kaggle budget artifact
   `tiered_surface/kaggle_budget.json` at SHA-256
-  `1e9efa08…f7426` mirrors the authoritative Kaggle balance **4.53/30.0
-  kernel-h used / 25.47 h remaining** and retains **3.6435 h** only as the
+  `6fd4df91…e3c0` mirrors the authoritative Kaggle balance **5.06/30.0
+  kernel-h used / 24.94 h remaining** and retains the named debits only as the
   named-debit audit subtotal. The **1.65 h** drift from the earlier 2.88 h
   tracker is recorded as a correction. Cumulative CPU use is **0.3010984 h**.
   No GPU authorization or CPU session remains active.
-  RunPod is forbidden and submission human-gated.
+  RunPod is forbidden; productive Kaggle action has standing owner authority.
 - Final supplier separation: common frozen population is **1,345,497 delete /
   1,118 beneficial** and **45,961 occupied-swap / 134 beneficial**, across five
   identical OOF folds. CELLECT is permanent PARK-C / UNTESTED after six
@@ -942,6 +1712,1410 @@ Frozen C1 conflict-set attention (`C1-TA-HOCT-LITE`) is DEAD at its 44b6 graph g
 do not run 6bba or re-screen it without a new named mechanism.
 
 ## Log (newest first)
+
+- 2026-08-06 — **N0b FIX PREPARED AS UNAPPLIED DIFF / 9 LIVE SITES NOT 3 / SECOND
+  INDEPENDENT FAILURE MODE (H2) CONFIRMED SEVERE / NOTHING APPLIED, NO KAGGLE ACTION.**
+  Verified untouched: `scripts/`, `src/`, `kaggle_kernel/` and the prelaunch guard are
+  byte-unchanged (target-file mtimes `03:32`/`03:36`/`22:00`/`20:52` all predate the session;
+  zero occurrences of any new symbol; the `EXPECTED_TEST_COUNT` gate is still intact at
+  `:100,182`). The patch was exercised on a **scratchpad copy** of the generator, the kernel
+  regenerated, diffed, and STEP0 executed against synthetic hidden mounts.
+  **N0's fix is correct but incomplete — 9 live sites, not 3.** `REQUEST_COUNT` /
+  `REQUEST_FILE_COUNT` / `POPULATION_FILE_COUNT` (`:101-103`) are **dead code** (assigned,
+  never read); only `EXPECTED_TEST_COUNT` is live — one gate plus three telemetry labels.
+  **H2 upgraded from ~0.10 to severe and independent.** `COMPETITION_TEST` (`:112`) is a
+  single hard-coded root; `:228` unconditionally sets `BIOHUB_TEST_DIR` from it; `:311`
+  prefers that env var over the body's own two-candidate `COMP_DIR_CANDIDATES` (`:306-308`).
+  **The kernel body's mount fallback is therefore dead code in this build — there is no
+  second chance anywhere.** If Kaggle mounts the hidden test at the non-`/competitions/`
+  root, STEP0 dies regardless of cardinality. Both must be fixed together.
+  **Scoring behaviour CONFIRMED UNTOUCHED:** the regenerated-kernel diff is 7 hunks, all
+  between generated lines `101-240` of a ~3000-line file, with **zero changed bytes at or
+  below the pinned V32 notebook body**; CV57 `0.914358` is a string literal carried into the
+  receipt, not recomputed. **Expectation-setting caveat:** if the hidden set really is
+  larger, a successful resubmission scores videos we have never scored locally, so the
+  returned number is a **first observation, not a confirmation of 0.914358**.
+  **Zero-submission validation already executed:** unpatched STEP0 rejects
+  `N ∈ {0,1,3,5,17}` and dies on the alternate root; patched STEP0 passes `N ∈ {1,3,4,5,17}`
+  and the alternate root, still rejects `N=0`, and `N=4` resolves to the same root as before.
+  **KFG-26:** a name ban is rename-defeatable and a blanket `len(x)==<int>` rule yields **13
+  false positives** in the pristine V32 body; a scoped taint check was built and validated
+  instead — FAILs the shipped kernel and bisect stage 2, PASSes the fixed kernel and all
+  three scored-lineage sources, zero false positives, and the 17 existing guard tests pass
+  unmodified. **Tests:** baseline 36 passed; exactly one assertion breaks
+  (`tests/test_public_temporalunet_baseline.py:98`, `assertIn('COMPETITION_TEST = Path(')`),
+  broken by the *mount-root* half, not the cardinality half — and **no test anywhere asserts
+  the count is 4**. **Two operational blockers:** `scripts/public_temporalunet_hidden_submit.py:19`
+  hard-codes slug `onebitbrain/g02-v32-submit` and refuses any other, so a fresh slug needs
+  that constant edited; and the current generator **no longer reproduces the shipped kernel
+  byte-for-byte** (regenerated `1823973455ce…` vs shipped `5193d0609e40…`, three inert
+  deltas) — the rebuild is not "55272130 plus one line" and must be disclosed.
+  **Cheapest next step, costs nothing:** retrieve the rerun traceback for `55272130`, which
+  under H1 literally prints `STEP0 hidden inventory drift: N != 4`, revealing the true hidden
+  test count before any submission slot is spent. Report:
+  `dag_prompts/2026-08-06-alpha-hunt/runs/N0b_FIX_PATCH.md`. (Claude)
+
+- 2026-08-06 — **N1 DIVISION ALPHA GO / METRIC OPERATING POINT DERIVED / NO SPEND.**
+  Research-only read of the frozen scorer source. `tp+fn ≡ G` in `score_divisions`, so
+  **`division_jaccard = tp/(G+fp)`** exactly (verified: cv57 `1/(13+11)=0.0416667`, shard-0
+  `2/(25+52)=0.0259740`, both matching the banked file). The exact fork-acceptance threshold
+  is **`p* = J/(1+J)`** (Jaccard form of the Lipton/Elkan/Narayanaswamy F1 result) =
+  **4.00% on cv57, 2.53% on shard-0**; one division TP is worth **24 FPs** (cv57) / 38.5
+  (shard-0). Every FP channel except `malformed_forks` requires proximity to the sparse GT:
+  `tp+fp=12` of **368** forks, so **96.7% of emitted forks are never evaluated**. Derived
+  attribution: **≥7 of the 11 cv57 FPs sit in the two videos that contain ZERO GT
+  divisions** (216/368 forks, no reachable TP) and are therefore `evaluable_forks` /
+  `cross_component_forks`, not division-window rejects. The rule costing the 12 FNs is
+  `local_forks` (local-parent-anchor) acting as a **recall** constraint — ≤5 forks were ever
+  `considered`. Ceiling: banked GT oracle `38/0/4`, J `0.904761904762`, combined
+  `+0.092067841519` ⇒ detection is not binding. Code-only extension: the out-degree cap
+  lives **only in the edge path and only after FP counting** (`metrics.py:140-153`), so a
+  fork's **3rd branch is free** on the edge term while still counting for divisions.
+  Named alpha **`DIV-EVOP`** (metric-derived EV-optimal division operating policy on V32
+  edge-prob, with `DIV-K3` / `DIV-TDILATE` / `DIV-CONSERVE`); `DIV-APPEARANCE-EVENT` labelled
+  research bet (raw appearance is the one observable class never actually screened — the
+  falsified parent-event head contractually **excluded** it). Standing correction: the former
+  "near-zero-FP division operation" constraint and 3-of-3 consensus combination are provably
+  suboptimal under `J = tp/(G+fp)`; use union, not consensus. All follow-up probes (P0–P3) are
+  CPU-only on banked artifacts. No code, GPU, Kaggle, RunPod, submission, tier, DEAD, or
+  LEDGER action. Report:
+  `../../../dag_prompts/2026-08-06-alpha-hunt/runs/N1_DIVISION_ALPHA.md`.
+
+- 2026-08-06 — **CLEAN-PORT PLAN GO (CONDITIONAL) / THREE BACKLOG ITEMS RE-SCOPED / NOTHING
+  PORTED.** N2 verified all 15 patch anchors by AST harness against the *real* support-pack
+  source (`external/Tracking_Support/repo/scripts/predict_unet_transformer.py`, 677 lines,
+  md5 `a2bbd2b3…` — note two other local copies exist and are invalid: a pre-rename checkout
+  and an already-patched 933-line output). All 15 match at count=1 and compile.
+  **Corrections to the 2026-08-06 survey backlog:** (1) bidirectional harmonic fusion and
+  4-view JS edge TTA are **one atomic patch**, not two — the body hard-raises unless
+  `EDGE_TTA_MODE=js_reliability_log_pool` *and* `VIEWS=4`; (2) forward-acceleration lookahead
+  is **not free-standing** — its call site nests inside
+  `LOCAL_ASSOCIATION_RANKER_MODE == 'full_motion_assignment'` and its bonus rides a
+  ranker-blended `evidence` term, so a standalone port is an unmeasured variant; (3) the
+  0.916 author **disables DeepCenter veto and adaptive short-track rescue exactly as we do**
+  — they are not part of the 0.916 recipe, and the earlier "config-disabled upside" framing
+  came from comparing against `biohub-11` and `mige551`, which both score *below* him.
+  **Blocker B1 (compile-clean, runtime-fatal):** the `_bi_old` anchor matches our source and
+  passes `compile()`, but `_bi_new` references `_edge_tta_imgs`, which our chain never binds
+  (their dual-seed replacement ends `_edge_tta_imgs = imgs`; ours ends `del imgs`; entry `[4]`
+  also differs, the other 4 of 6 are byte-identical). Porting means editing shipped code, and
+  `compile()` does not catch it — a name-binding assertion is recommended.
+  Recommended order **M6 → M4-standalone → M3 → M4-faithful → M1+M2, M5 dropped**, organised
+  so every CPU-falsifiable item precedes the only GPU-priced one (M1+M2, ~2.4-3.0x
+  end-to-end — *reasoned from call counts, not measured*; confirm against a real V32 profile
+  before budgeting). Reverse-direction pass is shape-correct but semantically
+  out-of-distribution (model trained forward-only; author clamps the rescale ratio to
+  `[0.5, 2.0]`) — instrument how often that clamp binds on our seeds before trusting `w=0.20`.
+  No conflict with outdegree-cap-2 (ILP-enforced) or det threshold 0.96875 (identical in
+  both); only delta is `SECONDARY_DETECTION_WEIGHT` 0.5 (ours) vs 0.475 — free CPU A/B, but
+  check the ledger for the provenance of our 0.5 first. **Neither public notebook pins a test
+  count** — the `EXPECTED_TEST_COUNT=4` gate is ours alone
+  (`scripts/public_temporalunet_baseline.py:533`, `scripts/v32_submission_bisect.py:115`), so
+  this plan is cardinality-neutral but the N0 remediation remains a **hard prerequisite** or
+  every mechanism here scores zero on the hidden rerun. Report:
+  `dag_prompts/2026-08-06-alpha-hunt/runs/N2_CLEAN_PORT_PLAN.md`. (Claude)
+
+- 2026-08-06 — **UNSCORED-SUBMISSION ROOT CAUSE IDENTIFIED (H1, ~0.75) / BISECT LADDER
+  MUST NOT LAUNCH AS BUILT / NO KAGGLE ACTION TAKEN.** Our verified public score is
+  **`0.881`, rank `1111/2019`** (team `onebitbrain`); local CV57 `0.914358` has **never**
+  been publicly confirmed. Six of thirteen refs are `COMPLETE` with blank public *and*
+  private scores: `55272130, 55251996, 55212065, 55201829, 54893629, 54890576, 54717551`.
+  Forensics rule out both transport (all 13 are code submissions; direct CSV upload returns
+  HTTP 400 for this competition) and CSV schema (the retained V32 output matches
+  `sample_submission` on header, 10 columns, int dtypes, `-1` sentinels, contiguous ids;
+  graph is clean — 0 dangling edges, 0 `Δt≠1`, max outdegree 2, 0 merges).
+  **The discriminator is a hidden-rerun inventory-cardinality pin.**
+  `kaggle_kernel/g02-v32-submit/public_temporalunet_hidden_kernel.py:100,182-184` sets
+  `EXPECTED_TEST_COUNT = 4` and raises `RuntimeError("STEP0 hidden inventory drift")` at
+  import when `len(selected) != 4`. It discovers dynamically — so it truthfully passes the
+  lifecycle guard's `dynamic_test_discovery` / `public_identity_pinned` checks — then
+  hard-rejects any hidden inventory that is not exactly the public four. Kaggle's own
+  `error_description` for ref `54890576` reads: *"Your notebook hit an unhandled error while
+  rerunning your code. Note that the hidden dataset can be larger/smaller/different than the
+  public dataset"* (`reports/g02/kaggle_submission_failure_54890576_v1.json`,
+  `total_bytes=0`). Controlled pair: `bhv45-submit/1` frozen-registry → `54890576` blank;
+  same package with discovery → `bhv45-submit/3` → `54910497` **0.877**. `grep
+  EXPECTED_TEST_COUNT` matches only `scripts/public_temporalunet_baseline.py` and
+  `scripts/v32_submission_bisect.py` — **no scored kernel contains it**.
+  **URGENT: do not launch the eight-stage bisect ladder.**
+  `scripts/v32_submission_bisect.py:115,163-164` templates the identical
+  `EXPECTED_TEST_COUNT` gate into *every* stage, so under H1 all stages fail identically and
+  burn up to seven submission slots proving nothing. The full-recursive-hashing hypothesis
+  is quantitatively weak (~0.04): 408 files / 1.906 GB / 37 s at four videos, so even 10×
+  costs ~6 min. Minimal fix (rerun contract only — weights, thresholds, graph policy and
+  CV57 `0.914358` untouched): replace the `!= EXPECTED_TEST_COUNT` gate with the
+  `discover_submit_jobs` contract (`if not selected or len(set(selected)) != len(selected)`),
+  derive the four `*_COUNT` constants from `len(selected)`, resolve `COMPETITION_TEST`
+  against both mount roots, mirror into the bisect script, add a cardinality-pin refusal to
+  the lifecycle/prelaunch guards, and register **KFG-26** distinct from KFG-25. Open lead:
+  the rerun creates its own `scriptVersionId` (proved by `54890576` →
+  `scriptVersionId=336990437`), so the raw REST `competitions/submissions/list` endpoint
+  (not the CLI, which drops the fields) should carry `errorDescription` / `totalBytes` for
+  `55272130` and would reveal the true hidden test count for free. Unexplained: four refs
+  (`54717551, 54893629, 55212065, 55251996`) have zero local artifacts; `55212065` landed
+  8 min after a kernel push, consistent with notebook auto-submission silently spending
+  daily slots — unproven. Report:
+  `dag_prompts/2026-08-06-alpha-hunt/runs/N0_SUBMISSION_FORENSICS.md`. (Claude)
+
+- 2026-08-06 — **V32 SUBMISSION REPAIR EVIDENCE RETRIEVED / HISTORICAL ARTIFACT
+  ACCESS BLOCKED / NO NEW KAGGLE ACTION.** Competition ref `55272130` now lists
+  `COMPLETE` with blank public/private scores, not an explanatory scoring
+  result. Exact `g02-v32-submit/1`, `/2`, and `/3` each report `COMPLETE`, yet
+  their output downloads and version-qualified log requests are byte-identical
+  retained-success artifacts (CSV `11ff6284…e88b1`, JSONL `86becd3c…f4e6d`, log
+  `3fea029c…354454`); all historical source pulls return HTTP 403. Thus neither
+  required failed traceback nor rejected CSV was recoverable through
+  authenticated CMUX, and no cause is asserted. The
+  retained successful log did full recursive input hashing without an error.
+  A source-forward eight-stage builder is ready: byte-exact pristine control,
+  Step-0 no-hash, no-hash telemetry, four cumulative patches, then hashing
+  last; all stages pass static/inline guards and 21 focused tests. No package
+  was pushed, no submission was made, and ALIGNMENT is unchanged until the
+  final hashing-only stage actually proves causation. Evidence:
+  `tiered_surface/branches/public_temporalunet_baseline_v1/submission_repair_v32/EVIDENCE_RETRIEVAL_20260806.md`.
+  (Codex root)
+
+- 2026-08-06 — **PUBLIC 0.95–0.97 TIER IS A PATCHED METRIC EXPLOIT / RESEARCH ONLY,
+  NOTHING IMPLEMENTED.** Surveyed 18 public kernels against the official scorer
+  (`075fc5f`) and a live LB snapshot (2,019 teams, 2026-08-05T19:22:39). The entire
+  0.952–0.969 tier is one appended cell that fabricates a hub node at `t=-1000`,
+  `(z,y,x)=(-10000,-10000,-10000)` wired to every track root plus synthetic negative-time
+  forks; `xiaoleilian` labels it `METRIC EXPLOIT` in-source and measures `VAL 0.8388 ->
+  0.9203`. It satisfied the pre-patch division rules "single connected component" +
+  "contains a predicted fork", both global graph properties. Host commit `aa65e90`
+  (2026-07-17, "updating metric to patch weakly connected component exploit") replaced
+  those with local directed topology and added an out-degree≤2 cap plus a
+  `t_target-t_source==1` filter. Kaggle rescored: **0 of 2,019 teams ≥0.95, max 0.948**;
+  every hack author is now below our CV57 0.914358 (xiaoleilian 0.889, kaiwalyaatulraut
+  0.901, boristown 0.911) while clean authors are above (pilkwang 0.921, yusuketogashi
+  0.916, mige551 0.915). Our 0.914358 ranks ~96/2019. Rules §3.8.d ("unfair playing
+  practices or abuses") and §3.4.d ("altered … submissions are void") cover it; **not
+  implemented, not recommended**, and the campaign's existing anti-node-pruning principle
+  stands. **Correction (2026-08-06): "ranks ~96/2019" above is a HYPOTHETICAL placement of
+  local CV57 onto the public LB, NOT our standing. Our verified public score is `0.881`,
+  team `onebitbrain`, rank `1111/2019` — see the submission-scoring entry below.**
+  `praxel` 0.902 division calibration is **already ours verbatim** (all five
+  `SAFE_DIV_*` constants bit-identical) — no public notebook has a learned division
+  classifier, and our CV57 division term is `1 TP / 11 FP / 12 FN` (J=0.0417, 368 forks
+  emitted for 13 GT divisions), leaving ≈0.096 of headroom there. Backlog of legitimate
+  techniques absent from us: bidirectional harmonic edge fusion, 4-view JS-reliability
+  edge TTA, 22-feature local association ranker, forward-acceleration lookahead (all
+  new); DeepCenter veto and adaptive short-track rescue (present but config-disabled).
+  Report: `public_solution_landscape_survey_v1.md`. (Claude)
+
+- 2026-08-05 — **V32 CAP2 UNSHARDED VERSION 1 LAUNCHED / RUNNING / 7.67 H
+  RESERVED.** Separately preregistered immutable package `1ac9e1c2…bbd86`
+  launched as fresh slug `onebitbrain/g02-public-temporalunet-v32-cap2-unsharded-v1`
+  exact Version 1. CMUX proved slug absence, rehashed the eligible inline
+  Step-0 guard, and bracketed the push at unchanged quota `11.93/18.07 h`;
+  projection `6.8 h` is auto-approved below 8 h, with no wall-clock kill or
+  sharding. Initial exact-slug status `3c598cbe…6538` is `RUNNING`. The separate
+  launch-phase diagnostic was inapplicable/FAIL for missing remote-preflight
+  attestation and was not used as mutation authority. Score once only after
+  terminal authentication; no cap submission is authorized. (Codex root)
+
+- 2026-08-05 — **V32 PROOF SUBMISSION REF 55272130 ACCEPTED / PENDING / NO
+  RETRY.** The first predicate build failed closed because fresh validation
+  canonicalized paths while its truthful receipt retained relative spelling;
+  hashes and every substantive field matched. The lifecycle now proves the
+  recorded paths resolve to the exact predicate inputs while preserving their
+  receipt spelling; 73 focused tests pass. Fresh predicate
+  `1409662b…02ea` binds exact Version 1 output `11ff6284…e88b1` and was
+  consumed once under the serial lock. Receipt `b2bcb154…12b38` identifies
+  exactly one new ref, `55272130`; authoritative list `108742f6…e34cf`
+  reports `PENDING`. Retry is disabled. (Codex root)
+
+- 2026-08-05 — **V32 HIDDEN VERSION 1 COMPLETE + AUTHENTICATED / 0.23 H DEBIT /
+  ONE-SHOT PREDICATE OPEN.** Exact-slug CMUX status `6e4f08d5…a9bd` reports
+  `COMPLETE`; exact Version 1 download `8d4b5abb…bdde` validates four dynamically
+  discovered hidden datasets, 235,198 rows, no identity pin or public-output
+  copy, max outdegree two, and persisted JSONL `86becd3c…f4e6d`. Submission SHA
+  is `11ff6284…e88b1`. Fresh quota is `11.93/18.07 h` used/remaining, a `0.23 h`
+  debit; the `0.50 h` reservation is released and zero active reservations
+  remain. Direct upload stays forbidden; only a freshly regenerated exact
+  Version 1 one-shot predicate may submit. (Codex root)
+
+- 2026-08-05 — **V32 CAP2 EXPERIMENT PREREGISTERED / UNSHARDED PACKAGE READY /
+  NOT LAUNCHED.** The faithful baseline discarded raw GEFFs and edge
+  probabilities, so its exact highest-score ranking cannot be reconstructed.
+  A separate 162-video immutable replay now implements only the requested
+  postlink cap (`outdegree>2`, retain top two by pristine `edge_sort_key`),
+  leaves `add_safe_divisions_postlink` unchanged, preserves edge order, and
+  logs every affected parent/ranking. Package `1ac9e1c2…bbd86`, source
+  `d27e246e…e6a81`, static/inline guards and 88 focused tests pass. It remains
+  unlaunched until hidden Version 1 terminates and its reservation is
+  reconciled. (Codex root)
+
+- 2026-08-05 — **V32 HIDDEN VERSION 1 RUNNING / HEARTBEAT UPDATE API TIMED
+  OUT.** Exact-slug CMUX receipt `d031c6eb…eaaf` authenticates
+  `onebitbrain/g02-v32-submit` as `RUNNING`; the `0.50 h` reservation remains
+  active and no submission occurred. Three app-level attempts to replace the
+  now-stale heartbeat prompt did not return and made no on-disk change. Do not
+  bypass that control plane by editing automation files; subsequent work must
+  follow current LIVE_STATE and monitor only the fresh hidden slug. (Codex root)
+
+- 2026-08-05 — **V32 FRESH HIDDEN VERSION 1 LAUNCHED / 0.50 H RESERVED / NO
+  SUBMISSION YET.** Local `0.914358473021` clears the explicit `0.91` gate;
+  `0.916` remains refinement-only and no tuning opened. The fresh immutable
+  `onebitbrain/g02-v32-submit` package uses dynamic four-video test discovery,
+  contains no public/test identities or copied output, retains pinned public
+  V32 source/weights, and persists comprehensive JSONL logs. Static and inline
+  guards pass; exact Version 1 push succeeded under the canonical lock with a
+  `0.30 h` projection and `0.50 h` reservation at unchanged quota
+  `11.70/18.30 h`. Competition submission remains fail-closed until terminal
+  output authentication and a fresh one-shot predicate. Launch:
+  `tiered_surface/branches/public_temporalunet_baseline_v1/FULL_PUBLIC_V32_HIDDEN_SUBMIT_LAUNCH.json`.
+  (Codex root)
+
+- 2026-08-05 — **V32 UNSHARDED CV57 0.914358 PASS / TAXONOMY PUBLISHED / NO
+  SCORE RERUN.** The sole frozen CV57 execution published score
+  `0.914358473021`, beating the public `0.908--0.911` band and APNCC
+  `0.881522069960` by `+0.032836403061`; it preserves and logs the two
+  degree-3 parents. Its post-score taxonomy launcher failed after receipt
+  publication on a missing import, so the scorer was not rerun. The recovered
+  deterministic taxonomy passes 57/57 with zero authoritative-row mismatches
+  and the explicit competition-faithful graph policy. V32 residuals are
+  detection FN `538`, ordinary association `1911 FP + 20 FN`, fragmentation
+  `1053 FN`, and division `3/69/39` TP/FP/FN. Next is a fresh
+  hidden-test-compatible immutable submission predicate; no public output copy,
+  tuning, cap mutation, or additive G1 claim occurred. Receipts:
+  `tiered_surface/branches/public_temporalunet_baseline_v1/FULL_PUBLIC_V32_UNSHARDED_V2_CV57_SCORE.json`,
+  `../../g04/lanes/cv57_residual_error_taxonomy_20260804/V32_RESIDUAL_ERROR_TAXONOMY.json`,
+  and `tiered_surface/branches/public_temporalunet_baseline_v1/FULL_PUBLIC_V32_UNSHARDED_V2_CV57_TAXONOMY_RECOVERY.json`.
+  (Codex root)
+
+- 2026-08-05 — **V32 UNSHARDED VERSION 1 COMPLETE + AUTHENTICATED / TWO
+  DEGREE-3 PARENTS PRESERVED / RESERVATION RELEASED.** Exact-slug CMUX status
+  is `COMPLETE`; exact Version 1 output downloaded and package-bound validation
+  PASS covers 162 datasets, 6,261,255 rows, 3,191,037 nodes, and 3,070,218
+  edges. Submission SHA is `c61784c3…ab446`. The faithful public graph contains
+  exactly two degree-3 parents (max 3), each logged with daughters; nothing was
+  capped or rewritten. Downloaded Kaggle log SHA is `b6cabe09…40491`; the
+  immutable package's missing persisted JSONL is still disclosed. Fresh quota
+  `11.70/18.30 h` gives a `6.43 h` debit; the `7.67 h` reservation is released
+  with zero active reservations. Next is the one frozen CV57 score. Receipt:
+  `tiered_surface/branches/public_temporalunet_baseline_v1/FULL_PUBLIC_V32_UNSHARDED_V2_TERMINAL_AUTHENTICATION.json`.
+  (Codex root)
+
+- 2026-08-05 — **V32 STATUS PROBE BLOCKED BEFORE EXECUTION / NO NEW RECEIPT /
+  RESERVATION RETAINED.** At `08:11Z`, the sandbox approval service disconnected
+  and rejected process creation before the canonical CMUX status command ran.
+  No Kaggle read occurred and no new receipt was created; the control will not
+  be bypassed. The last authenticated state remains `RUNNING` at `20:01Z`, the
+  later `00:00Z` Kaggle response remains access-denied/nonterminal, and the
+  `7.67 h` reservation remains active. No download, reconciliation, score,
+  retry, or submission occurred. (Codex root)
+
+- 2026-08-05 — **V32 STATUS READ ACCESS-DENIED / LAST AUTHENTICATED STATE
+  RUNNING / RESERVATION RETAINED.** The single permitted `00:00Z` CMUX probe
+  of exact slug `onebitbrain/g02-public-temporalunet-v32-unsharded-v2`
+  returned Kaggle `kernels.get` permission denied and no worker state. The same
+  authenticated slug was `RUNNING` at `20:01Z`; permission denial is not
+  terminal evidence, so no download, validation, quota reconciliation, score,
+  retry, or submission occurred and the `7.67 h` reservation stays active.
+  Next read is no earlier than `01:00Z`. Receipt:
+  `tiered_surface/branches/public_temporalunet_baseline_v1/cmux_receipts/kernel_status_2026-08-05T000055614105Z.json`.
+  (Codex root)
+
+- 2026-08-05 — **COLAB THREE-CELL RESUME + DEVICE LEDGER PASS / CAPACITY GAP
+  NOT ESTABLISHED / PARKED-COMPUTE AUDIT COMPLETE.** The sanctioned notebook is
+  exactly three manual cells and contains no free-tier session automation. Cell
+  1 records the assigned GPU, pulls the immutable checkpoint by manifest hash,
+  recomputes its semantic state digest on CPU, and fails closed on absence,
+  corruption, or provenance drift. Exact-runtime resumes retain bit-identical
+  status; cross-GPU resumes are explicitly logged without that claim. Cell 2 uses the
+  600-second callback; Cell 3 publishes complete state plus full JSONL and a
+  per-device ledger receipt. Fifteen focused tests pass. With `17.06` Kaggle
+  T4-h unreserved after V32 and no frozen/timed model yet, Colab is not presently
+  capacity-justified; allocation stays `0/0/0`. The >2-frame architecture is a
+  new model outside the weight-refinement rule, so no waiver is required.
+  DPRC-O0 preparation is capacity-eligible but scientifically launch-blocked;
+  crop-wrfeat, full organizer, and identical DINO R5 remain parked/dead/failed.
+  RunPod SGD 20 is planning-only and every run still needs explicit approval.
+  No V32/Kaggle/Colab/RunPod action occurred. Evidence:
+  `tiered_surface/branches/division_temporal_colab_v1/`. (Codex root)
+
+- 2026-08-05 — **COLAB DIVISION PREPROCESS + DURABILITY HARNESS PASS / RULES
+  PASS / SCIENTIFIC TRAINING BLOCKED.** Actual Kaggle rules permit private
+  Colab-trained weight import with privacy/reproducibility conditions. The exact
+  stride `(1,4,4)` private training carrier completed and reverified at 199
+  videos, 19,900 frames, 151 parent events, 302 daughter edges, and manifest
+  `6048f8d7…e6a121`; 199/199 datasets and frames were modified, daughter
+  assignments 0. The G-03-derived checkpoint/resume, semantic state digest,
+  swap guard, full logger, and separate Colab ledger pass seven tests. Colab
+  usage is 0.0 h. All 199 datasets and 19,900 frames were modified; daughter
+  assignments modified remained 0. At this earlier checkpoint the objective was
+  pending the absent V32 taxonomy and an owner amendment; the newer entry above
+  supersedes the amendment need with the new-architecture classification. No V32/Kaggle/GPU action. Evidence:
+  `tiered_surface/branches/division_temporal_colab_v1/`. (Codex root)
+
+- 2026-08-04 — **V32 V2 IMMUTABLE RUN-LOG GAP RECORDED / NO REMOTE ACTION.**
+  Direct hash-bound source inspection shows that active Version 1 kernel source
+  `932e0b12…f8e03` predates the persisted `RUN_LOG.jsonl` logging amendment:
+  neither its source nor terminal receipt contains that binding. The kernel is
+  already running and must not be repushed or mutated. Terminal handling will
+  retain all available downloaded output/log evidence, authenticate the exact
+  V32 graph and receipts, and report `PERSISTED_STRUCTURED_RUN_LOG_UNAVAILABLE_IN_IMMUTABLE_V2` truthfully. This is not an outdegree/model defect.
+  Record: `tiered_surface/branches/public_temporalunet_baseline_v1/V32_UNSHARDED_V2_LOGGING_GAP_20260804.json`.
+  (Codex root)
+
+- 2026-08-04 — **V32 OUTDEGREE PROVENANCE RESOLVED / BASELINE POLICY
+  CORRECTED / NO REMOTE ACTION.** Immutable public notebook
+  `3f995a97…b7847d` itself contains `add_safe_divisions_postlink` (code cell
+  11) and no `outdegree` reference. Thus the former local strict outdegree-two
+  validator exceeded the competition invariant; the active unsharded Version 1
+  remains untouched, and terminal V32 validation/scoring will preserve it while
+  logging every degree-three-or-greater parent. A cap-to-two arm is explicitly
+  separate, must retain the two highest-scoring daughters, and may not be
+  invented if scores were not persisted. Evidence:
+  `tiered_surface/branches/public_temporalunet_baseline_v1/V32_OUTDEGREE_PROVENANCE_20260804.json`.
+  (Codex root)
+
+- 2026-08-04 — **V32 UNSHARDED VERSION 1 RUNNING.** The first permitted
+  hourly, read-only status check at `14:44Z` reports
+  `KernelWorkerStatus.RUNNING`; no output exists to authenticate and the `7.67 h`
+  reservation remains active. No retry, score, submission, taxonomy, or G1
+  action occurred. Receipt: `cmux_receipts/kernel_status_2026-08-04T144451846671Z.json`.
+  (Codex root)
+
+- 2026-08-04 — **V32 UNSHARDED REPLICATION VERSION 1 LAUNCHED / 6.8 H
+  AUTO-APPROVED / 7.67 H RESERVED.** Fresh V32 package V2 covers all 162 frozen
+  identities in one end-to-end run, with immutable public notebook/checkpoint
+  hashes, inline guard PASS, no merge/reassembly, and no wall-clock kill. Under
+  the canonical lock, fresh-slug absence and quota `5.27/24.73 h` authenticated;
+  `onebitbrain/g02-public-temporalunet-v32-unsharded-v2` Version 1 pushed
+  successfully with a `7.67 h` active reservation. Focused guard/baseline/CMUX
+  tests: `79 passed, 3 subtests passed`. Next is one hourly-bounded terminal
+  check, exact output authentication, frozen CV57, then conditional submission
+  and APNCC-vs-V32 taxonomy. G1 remains separate. Receipts:
+  `tiered_surface/branches/public_temporalunet_baseline_v1/FULL_PUBLIC_V32_UNSHARDED_V2_LAUNCH.json`.
+  (Codex root)
+
+- 2026-08-04 — **OWNER GPU-GOVERNANCE + COMPREHENSIVE-LOGGING AMENDMENT
+  LANDED / NO EXTERNAL ACTION.** `ALIGNMENT.md` supersedes the former 5 h
+  per-launch kill: authenticated projections `<8 h` are auto-approved without a
+  wall-clock kill; `>=8 h` needs an explicit literature-cited human-approval
+  pitch. The shared 30 h/week ledger and serial reconciliation remain binding;
+  runs may not be sharded to evade the gate. Full input inventory/SHA, lookup,
+  stage/RSS/count, preprocess examined/modified, config, traceback/state, and
+  persisted/downloaded JSONL logs are now mandatory. (Owner + Codex)
+
+- 2026-08-04 — **GLOBAL-JUMP PUBLIC TRANSFER COMPLETE AT 0.881 / LOCAL +0.005242
+  DID NOT TRANSFER / ANCHOR 2 SEALED.** Ref `55221497` is COMPLETE at displayed
+  public `0.881`, tying APNCC ref `54942864` despite exact CV57
+  `0.886764420260` versus `0.881522069960`. The output and one-shot lifecycle
+  remain authenticated; terminal receipt `2f5e33e3…1f70`. Local corrections
+  must no longer be treated as evidence for a public `0.89` gate without a
+  substrate-level transfer result. The scoped monitor is stopped; V32 was not
+  read or disturbed. (Codex root)
+
+- 2026-08-04 — **GLOBAL-JUMP APNCC EXACT V1 AUTHENTICATED / REF 55221497
+  PENDING / ONE-SHOT CONSUMED.** Fresh slug `onebitbrain/g1jump-submit` Version
+  1 completed at the first permitted G1-only hourly check. Exact output
+  validation passed dynamic test discovery and reproduced SHA-256
+  `366a12d6…8c8` / 263,260 rows. The `6.0 h` reservation is released against
+  authoritative quota `5.27/24.73 h` used/remaining (`0.17 h` debit). Exactly
+  one code-output submission was accepted as ref `55221497`; its immediate
+  state is PENDING and retry is prohibited. A 15-minute task heartbeat now
+  monitors only that ref and will seal the second transfer anchor at terminal;
+  V32 was not read or disturbed.
+  Receipts: `../../g04/lanes/data_pathology_repair/global_jump_public_transfer_v1/`.
+
+- 2026-08-04 — **VELOCITY-AWARE-CANDIDATE-WINDOW-v1 EXACT NEGATIVE /
+  PARK-C / G1 RETAINED.** After the repaired fit117 ceiling passed every gate,
+  the hash-frozen exact scorer ran on G1 CV57. All 57 frame-0 no-motion controls
+  were bit-exact with the stock scorer. Recentered adjusted/raw/node is
+  `0.880534473728/0.885184801739/0.990377056057`, delta
+  `−0.006229946531/−0.006276210289/0`; edge TP/FP/FN is
+  `34200/2368/2068`. Exact 57/57 coverage passed. This is a valid scientific
+  negative, not a plumbing block; no submission or external action follows.
+  (Codex root)
+
+- 2026-08-04 — **DIVISION ASSET CORRECTED / PAIR HEAD BANKED / EVENT HEAD
+  PARKED / CTC CITATION-ONLY READING REJECTED.** Sealed re-analysis separates a
+  working conditional daughter-pair head (AUROC/AP `0.897081/0.368520`) from a
+  random parent-event head (`0.521521/3.1367e-5`) whose contract excluded raw
+  appearance. Correct state: event detection has no working mechanism;
+  daughter assignment is solved. Official CTC terms require explicit organizer
+  permission for public non-CTC scientific use, so citation alone does not
+  authorize Biohub Kaggle training. CTC real divisions are
+  `PARK-A-PERMISSION`; with written scope-covering permission they become the
+  leading appearance-event data dependency. No CTC data was opened. (Codex root)
+
+- 2026-08-04 — **VELOCITY WINDOW FIT117 INTEGRITY REPAIRED / STRICT 366
+  CONSERVATION / MATERIAL SCORE GATE PASS.** Rebuilt the actual 117-video
+  fit117 G1-selected graph (2,878,849 nodes, 2,758,880 edges) from its exact
+  fragment/cache/example inventories; no CV57 predecessor substitution or GT
+  read occurred. The reachability replay then conserved `456−90=366` without
+  relaxing the guard and sealed predecessor vectors, prior G1 shifts, and
+  recentered cap-eight ranks for all residual rows. Fixed r10/cap8 recentering
+  adds 67 reachable true continuations, retains 98/366 residual edges, and has
+  `0.993272×` background burden; every prescorer gate passes. Exact frozen
+  scoring on the G1 CV57 base is therefore authorized and active. (Codex root)
+
+- 2026-08-04 — **GLOBAL-JUMP-CORRECTED APNCC PUBLIC TRANSFER LAUNCHED /
+  EXACT VERSION 1 / ONE-SHOT + QUOTA-BRACKETED.** Dynamic discovery over the
+  four public raw-Zarr identities reproduced an observation-distinct output
+  (`134,409` nodes, `128,851` edges, SHA `366a12d6…a8c8`) from the exact APNCC
+  parent SHA `6944ed58…bea3`; labels were not read and same-run caches/fragments
+  are mandatory. Inline prelaunch passed exact package identity
+  `95f40b68…3479`. The fresh-slug push created only Version 1 under the shared
+  lock and a conservative `6.0 h` reservation; authoritative pre/post quota
+  remained `5.10/24.90 h` used/remaining. Submission remains closed until exact
+  Version-1 terminal output re-authenticates; no V32 status read or cadence
+  change occurred. (Codex root)
+
+- 2026-08-04 — **DIVISION REQUIREMENT SURFACE / EVENT-PAIR SEPARATION /
+  PARK-C REAFFIRMED.** The sealed 80,013,717-action deployment re-analysis
+  required no refit, threshold search, graph integration, V32 read, or
+  external compute. Material `+0.005` requires 5 TP / <=17 FP in top 22
+  (precision@22 >=22.73%, AP-lift >=8462x); observed pair-action AP lift is
+  18.41x despite AUROC 0.8893. Event-head AUROC/AP is 0.521521/3.1367e-5;
+  conditional pair head is 0.897081/0.368520. The 18 unreachable divisions
+  partition 11 detection-universe / 4 nearest-8 / 3 pair-universe; r10 does
+  not exist in this frozen candidate generator. Future rare-action gates are
+  precision@k/AP-lift on the deployment denominator, never AUROC. (Codex root)
+
+- 2026-08-04 — **PUBLIC V32 SHARD 2/6 COMPLETE BUT GRAPH-INVALID / TWO
+  OUTDEGREE-3 PARENTS / RESERVATION RELEASED / SHARD 3 BLOCKED.** The one
+  scheduled hourly status read returned COMPLETE; exact Version-1 output
+  downloaded and matched its run receipt (27 videos, 625,430 nodes, 602,054
+  edges, 1,227,484 rows). Strict validation failed only at
+  `44b6_a2bb48bb:27740` and `6bba_ebdf3b34:24468`, each with three children;
+  no merge exists and max outdegree is 3. Current-code revalidation passes
+  shards 0 and 1, excluding validator drift. Fresh quota moved
+  `3.88/26.12→5.10/24.90 h` used/remaining, a `1.22 h` debit; the canonical
+  `3.0 h` reservation was released with zero active reservations. Validation
+  `373d47c1…2d9aa3`; terminal adjudication `ee24311c…7aea97`; shared ledger
+  `62f4865c…a04b2a`. Fail closed: shard 3 and scoring remain blocked pending a
+  frozen packaging-only deterministic feasibility repair; no GPU retry,
+  submission, weight refinement, RunPod, h030, or G-03 spend. (Codex root)
+
+- 2026-08-04 — **PUBLIC V32 SHARD 2/6 RUNNING / RESERVATION RETAINED / NO
+  SECOND POLL.** The one scheduled hourly status read returned RUNNING for
+  exact Version 1. Receipt `22b37f2f…c142a5`; status record
+  `tiered_surface/branches/public_temporalunet_baseline_v1/FULL_PUBLIC_V32_S02_STATUS_20260803T1717Z.json`
+  (`93f01208…67b29`). The canonical `3.0 h` reservation remains active under
+  shared ledger `c825d878…5bbdeb`; terminal output validation, quota
+  reconciliation, reservation release, and shard 3 all remain closed. No
+  further Kaggle call this hour; no submission, weight refinement, RunPod,
+  h030, G-03 spend, or score. (Codex root)
+
+- 2026-08-04 — **VELOCITY-AWARE-CANDIDATE-WINDOW-v1 CHARACTERIZED /
+  INTEGRITY-BLOCKED NO_SCORE.** This new fixed-radius per-detection recentering
+  explicitly does not re-screen DEAD radius/motion sweeps. Canonical GA-R12REACH
+  reproduces the residual `366=456−90` (44b6/6bba `37/329`), corrected-distance
+  median/IQR `10.5312/10.2774–11.3458 µm`, and r10 source/target density
+  medians `2/2`. 53 no-history sources are definitely outside r10; 313
+  prior-bearing cases lack the sealed predecessor vector, prior G1 shift, and
+  recentered cap-eight rank. Thus the prescorer gate is unevaluable and no
+  graph/scorer/external action ran. (Codex root)
+
+- 2026-08-04 — **P1 FINAL-ARTIFACT STRICTNESS AUDITED / REGRESSION-SEALED.**
+  Both active `scoreall` input gateways already validate `SubmissionGraph`
+  before any permissive diagnostic conversion; no production refactor was
+  needed. New six-subtest coverage rejects missing endpoints, duplicate edges,
+  and self edges through both aggregate and fragment loaders; the full
+  `test_scoreall.py` run passed `17` tests / `6` subtests. (Codex root)
+
+- 2026-08-04 — **P1 ACTIVE-PIPELINE VALIDATION SEAM COMPLETE.** Extracted the
+  existing window/offset validation and normalization from `pipeline.py` into
+  `pipeline_inputs.py` behind an API-preserving deterministic 14-node/7-edge
+  `predict_dataset_window` graph-SHA fixture. Pipeline `33` tests / `20`
+  subtests, routing+solver `41` tests / `19` subtests, public import, compile,
+  and diff checks pass. No archived, generated/hash-coupled, or PARK-COST
+  surface changed. (Codex root)
+
+- 2026-08-04 — **CV57 RESIDUAL TAXONOMY COMPLETE / EXCLUSIVE FOUR-WAY
+  PARTITION / NO GATE CHANGE.** Exact 57-video scorer replay reproduces
+  `2459/1948` edge FP/FN with detection `466 FN`, ordinary association `2459
+  FP`, matched-lineage fragmentation `1482 FN`, and division `42 FN`. Shapley
+  score impacts are `+0.017446063106`, `+0.061628263275`, `+0.039403603659`,
+  and `+0.100000000000`; their `1.100000000000` fully-fixed ceiling is
+  theoretical, not an approved intervention. Per-video visualizer index is
+  complete and worst-first; validation passed 57/57 exact rows, partition and
+  Shapley conservation, plus `26` tests / `23` subtests. (Codex root)
+
+- 2026-08-04 — **SYNTH-DIV REAL RANKING PASS / ZERO-TP DEPLOYMENT HARD FAIL /
+  PARK-C:** authenticated fit117 evaluation completed in `1509.17 s`. Global
+  beneficial-action AUROC `0.889300580471` passes `0.85`; 65/83 real divisions
+  have an exact candidate. But all 80,013,717 scores fall below the frozen
+  minimum `0.0005`, so all 114 threshold/cap rows select zero forks and return
+  `TP/FP/FN=0/0/83`, Jaccard `0.0`. The maximum-J, within-95%-recall, and
+  both-family-TP selection rules have no nonzero feasible policy. Adjudication
+  `879db6b1…d8221` invokes the frozen zero-real-TP hard failure; no threshold
+  relaxation, V32 integration, combined scoring, or visualizer refresh occurred.
+
+- 2026-08-04 — **FULL-CATALOG VISUAL REVIEW RENDERED / DIAGNOSTIC ONLY / NO
+  GATE CHANGE.** The requested uncapped `--scope all` APNCC CV57 bundle is
+  complete: 57/57 validated H.264 clips, default `15.000 s` pacing and HUD,
+  `90,888,617` bytes, in `292.797 s`; input SHA
+  `ff4e2372…929f08`. The low-priority request was attempted, but managed macOS
+  denied `setpriority`; BLAS caps applied and the renderer used its documented
+  four-worker fallback. Receipt:
+  `../../g04/lanes/full_catalog_visual_render_20260804/RECEIPT.md`. (Codex root)
+
+- 2026-08-04 — **PUBLIC V32 SHARD 2/6 EXACT VERSION 1 LAUNCHED / SHARED
+  3.0-H RESERVATION ACTIVE / HOURLY MONITORING ONLY.** The repaired explicit
+  fresh-v1 lifecycle passed 61 combined tests. Under the canonical cross-thread
+  lock, the bracket authenticated quota at `3.88/26.12 h` used/remaining,
+  reserved `3.0 h`, and used its own target status as this hour's sole Kaggle
+  kernel-status read. That receipt proved the private slug absent; the one push
+  then returned “Kernel version 1 successfully pushed.” Immutable code/package/
+  shard hashes are `97fa08fa…4c6fe1` / `288a877b…327847` /
+  `df876107…c8f1cf`; hard whole-kernel kill is 10,800 seconds. Immediate debit
+  is `0.00 h`; the reservation remains active until terminal evidence and fresh
+  quota reconciliation. Launch record
+  `tiered_surface/branches/public_temporalunet_baseline_v1/FULL_PUBLIC_V32_S02_LAUNCH.json`
+  (`6b49ad89…5c6cb9`), push receipt `3d61d30d…0c7492`, shared ledger
+  `c825d878…5bbdeb`. No further poll this hour; no submission, weight
+  refinement, RunPod, h030, G-03 spend, or score. (Codex root)
+
+- 2026-08-04 — **SYNTH-DIV FIT117 SCORE MANIFEST FROZEN / REAL GATE OPEN:**
+  cache-repaired four-worker generation completed all 117 videos in
+  `1135.49 s`, sealing 80,013,717 candidates (44b6 38,911,877; 6bba
+  41,101,840). Manifest SHA is `029061b1…036b4`; all 117 records pin Amendments
+  3/4, contain no labels, and attest GT unopened. The existing four-hour cap
+  was ample, so the owner-authorized eight-hour extension was not used. The
+  preregistered beneficial-action AUROC gate remains unchanged and precedes
+  every integration action.
+
+- 2026-08-03 — **SYNTH-DIV WATCHER OWNERSHIP CONSOLIDATED:** app-wide task
+  inspection found exactly one active `cell_tracking` task: authoritative task
+  `019fc6b9-0154-7be1-8b37-7159cb6f5da8`, renamed “Authoritative
+  synthetic-division AUROC + V32 integration.” It alone owns the real-GT AUROC
+  evaluation and synthetic-on-V32 integration write. The idle V32 continuation
+  owns baseline shards/authentication and V32/G1 scoring only; its dispatch
+  contains no synthetic gate/integration action. The recently updated untitled
+  chat is unrelated finance. All three internal synthetic workers are complete;
+  no second watcher remains active and none required interruption or archival.
+
+- 2026-08-03 — **PUBLIC V32 SHARD 2 PRELAUNCH REFUSED CLOSED / NO REMOTE
+  VERSION / FRESH-V1 GUARD REPAIRED / NEXT HOUR.** The frozen S02 package and
+  inline predicate passed, and fresh authenticated quota was
+  `3.88/26.12 h` used/remaining. The bracketed launch reserved `3.0 h` but
+  refused before `kernels push` because its hardened status guard did not yet
+  recognize Kaggle's exact inaccessible response for a genuinely fresh private
+  slug. It auto-released the reservation as ERROR; no kernel version was
+  created, no GPU debit occurred, and the canonical ledger has zero active
+  reservations (`21a3dd58…fac2429`). This hour contains two disclosed status
+  reads: the scheduled fresh-slug check plus the bracket's newly discovered
+  mandatory under-lock check. No retry or further Kaggle call was made. The
+  repair requires an explicit `expected_initial_kernel_version=1`, accepts only
+  the exact fresh-slug denial, and refuses every existing status including
+  COMPLETE; 54 focused and 61 combined tests pass. Next hour, the bracketed
+  launch alone supplies the one allowed target-status read. Refusal adjudication
+  `tiered_surface/branches/public_temporalunet_baseline_v1/FULL_PUBLIC_V32_S02_PRELAUNCH_REFUSAL_ADJUDICATION.json`
+  (`9e3f8547…de535`); fresh predicate `d238152c…68834`. No submission, weight
+  refinement, RunPod, h030, G-03 spend, or score occurred. (Codex root)
+
+- 2026-08-03 — **TEST-SUITE TRIAGE COMPLETE / DEFAULT REVIEWED-GREEN:** the
+  earlier 25 failures were a capped prefix; uncapped reproduction found 43.
+  Four active failures were fixed (two process-pool sandbox probes, organizer
+  shared-child division semantics, and scorer parity-v2 migration). The other
+  39 exact retired/package/fixture nodes now carry reviewed `strict=True` XFAIL
+  reasons; zero tests were deleted. Canonical result: 1,198 PASS / 39 XFAIL /
+  267 subtests / zero FAIL, with 1,237 collected. No external action. Report:
+  `../../../code_quality/TEST_SUITE_TRIAGE_20260803.md`. (Codex root)
+
+- 2026-08-03 — **G04 HIDDEN-RERUN IDENTITY AUDIT PASS / NO DUPLICATE
+  CANARY:** all live code-submission generation paths dynamically discover
+  mounted test identities (APNCC submit runner plus G04 parent/mount inventory
+  equality); the sole fixed four-public-ID transport is the already
+  `TERMINAL_INVALIDATED_NO_RETRY` KFG-25 artifact. Ref `55203439` is the
+  existing one-shot end-to-end Kaggle blind-rerun canary: terminal COMPLETE at
+  public `0.881`, with no blank/format failure. A fresh identical external
+  submission would violate the frozen one-shot/no-retry contract, so none was
+  launched. Focused dynamic-discovery, guard, and lifecycle tests passed
+  `21/21`; full audit:
+  `../../g04/lanes/division_permissive/SUBMISSION_PATH_IDENTITY_AUDIT_20260803.md`.
+  (Codex root)
+
+- 2026-08-03 — **SYNTH-DIV FIT117 ATTEMPT FAIL-CLOSED / CACHE-ONLY REPAIR
+  FROZEN:** the truth-blind four-worker attempt reached 91/117 atomic shards
+  and 1,047,476,788 bytes but published no manifest before the `14400 s` cap.
+  The pool's exception cleanup did not terminate running children, so the
+  coordinator enforced SIGTERM at `14545.63 s`; all exact processes exited and
+  no GT opened. Execution Amendment 4 (`5f87a284…9dbf3`) freezes a read-only
+  cache of the bit-identical physical-coordinate product and explicit bounded
+  child termination, with no scientific change. All 31 focused tests pass;
+  the pre-change golden NPZ remains exact, and the prior `296.26 s` fragment
+  now seals the identical 845,628-candidate NPZ in at most 40 s. Freeze V4
+  opens one fresh four-worker fit117 score attempt under the same cap.
+
+- 2026-08-03 — **CROP-WRFEAT PARK-COST / REPOSITORY DEBUG COMPLETE:** banked
+  repaired crop geometry/coverage and prohibited a fourth throughput attempt
+  without a new architecture. Archived orphaned pseudo-SSL/Ultrack and invalid
+  G04 public-copy paths; added canonical pytest roots. Repaired zero-edge scorer
+  parity, partial auto-routing validation, mixed-cost sparse assignment, and
+  central Kaggle mutation/submission lifecycle. Registered KFG-25 and all live
+  ownership slugs. Replaced stale-file deletion with an OS-held serial lock and
+  bound active reservation release to exact per-kernel terminal evidence.
+  Focused adversarial suite 100 PASS + 7 subtests; active collection 1,235. One
+  banked equal-cost gap tie and complete package-tree/ref attribution remain
+  documented P1 debt. No external action.
+
+- 2026-08-03 — **PUBLIC V32 SHARD 1/6 EXACT VERSION 1 PASS / RESERVATION
+  RELEASED / SHARD 2 DEFERRED TO NEXT HOURLY WINDOW.** The single scheduled
+  status read found COMPLETE. Download receipt `81a4c639…f89f`; strict output
+  validation passed 27/27 datasets, 468,656 nodes, 449,831 edges, 1,039
+  dividing nodes, and 918,487 rows after `3323.533 s` prediction. Validation
+  SHA `32bf52a3…354a0`. The focused harness regression was repaired by using
+  direct official `DistanceMatching` for node-only fragmentation rather than a
+  nonexistent private scorer import; all 7 module tests pass. Authoritative quota moved
+  `2.76/27.24→3.88/26.12 h` used/remaining, so the exact debit is `1.12 h` and
+  the canonical shared `3.0 h` ceiling is released with zero reservations left.
+  Shard 2 was not queried or launched: its mandatory target-version check would
+  be a second kernel-status read this hour. Terminal adjudication
+  `tiered_surface/branches/public_temporalunet_baseline_v1/FULL_PUBLIC_V32_S01_TERMINAL_ADJUDICATION.json`
+  (`155eee24…884ad1`). One sandbox DNS envelope failed before Kaggle returned
+  any status; the one successful scheduled read is separately receipted and no
+  second kernel status was obtained. No score, submission, weight refinement, RunPod, h030,
+  or G-03 action occurred. (Codex root)
+
+- 2026-08-03 — **CROP-WRFEAT RECORDED PARK-COST / COVERAGE BANKED / FOURTH
+  CONFIGURATION FORBIDDEN.** Three throughput realizations (`195.59 T4-h`,
+  `766.2 CPU-h`, `659.856 T4-h`) are operationally infeasible against the
+  `27.24 h` balance. The repaired `914/916` coverage result is retained as
+  sound reusable geometry evidence. This is neither PARK-EVIDENCE nor DEAD;
+  reopening requires a newly named architecture that eliminates redundant
+  per-detection tri-orientation fusion, with its own preregistration and bounded
+  cost gate. Decision:
+  `../../g04/lanes/global_jump_crop_wrfeat_v2/PARK_COST_DECISION.md`.
+  (Codex root)
+
+- 2026-08-03 — **PUBLIC V32 SHARD-0 NATIVE DIVISION DIAGNOSTIC COMPLETE /
+  G04 REF 55203439 PUBLIC TIE.** The exact frozen official evaluator scored all
+  27 authenticated shard-0 videos: division TP/FP/FN `2/52/23`, Jaccard
+  `0.025974`; its nine CV57 videos are `1/11/12`, Jaccard `0.041667`, and its
+  18 held-fit105 videos are `1/41/11`, Jaccard `0.018868`. The 1,420 raw
+  branching nodes contain a nonzero native signal, but 92% GT recall deficit
+  and 52/54 scored false predictions mean Prompt C must add missing events and
+  refine native precision. Artifact
+  `tiered_surface/branches/public_temporalunet_baseline_v1/FULL_PUBLIC_V32_S00_NATIVE_DIVISION_SCORE.json`
+  (`a0cd099d…de022`). The authenticated submission-history read found ref
+  `55203439` COMPLETE at public `0.881`, tying APNCC's displayed `0.881` after
+  local `0.881635476737` versus `0.881522069960`. The APNCC-anchored projection
+  is `0.881113407`, also displayed `0.881`. Frozen scorer arithmetic is
+  unchanged; this is recorded as an interval-censored transfer calibration,
+  and APNCC stays FINAL slot 1. Receipt `9d13c899…f15f`; calibration artifact
+  `G04_CAP5_PUBLIC_CALIBRATION_20260803.json`. No V32 kernel-status read, GPU,
+  launch, retry, weight refinement, RunPod, h030, or G-03 action occurred.
+  (Codex root)
+
+- 2026-08-03 — **PUBLIC V32 SHARD 1/6 EXACT VERSION 1 LAUNCHED / SHARED 3.0-H
+  RESERVATION ACTIVE.** Local package/inline hashes revalidated: code
+  `a4e17b04…c4568`, package `20c418f…a6bd07`, predicate
+  `d36064e8…6fe1bf`. The one hourly target-version query found no accessible
+  pre-existing slug; CMUX then pushed once and Kaggle assigned Version 1.
+  Push receipt `5c4e68cc…da1c37`. The same cross-thread bracket reserved `3.0 h`
+  and held authoritative quota at `2.76/27.24 h` used/remaining with zero
+  immediate debit. Shard 1 is monitor-only until the next hourly heartbeat.
+  No score, submission, weight refinement, RunPod, h030, or G-03 GPU action
+  occurred. (Codex root)
+
+- 2026-08-03 — **G04 CROP-WRFEAT BOUNDED T4 PILOT TERMINAL / COVERAGE PASS /
+  BUDGET FAIL / FULL RUN CLOSED.** Authenticated Version 1 completed in
+  `918.830 s` (`902.346 s` worker) with exact serial/batch-one label parity.
+  The preregistered independent gate passed at `673/673` valid masks with zero
+  boundary or empty masks; all 916 detections yielded 914 valid, 1 boundary,
+  and 1 empty mask, with the enlarged fallback recovering 50/52 cases.
+  Despite genuine CUDA batching, throughput was `0.938601 s/detection`; the
+  conservative CV57 projection is `659.856 T4-h` and held-fit105+CV57 is
+  `1875.361 T4-h`, versus `27.24 h` remaining. The `0.6 h` reservation was
+  released after a `0.25 h` debit. Coverage is repaired, but no full feature
+  extraction or crop-wrfeat score run is authorized. V32+G1 remains blocked on
+  all-six-shard immutable base authentication and will be measured directly,
+  never inferred from the APNCC delta. Terminal adjudication:
+  `../../g04/lanes/global_jump_crop_wrfeat_v2/CROP_GPU_PILOT_TERMINAL_ADJUDICATION.json`.
+  (Codex root)
+
+- 2026-08-03 — **SYNTH-DIV-SIM2REAL SERIAL RUNTIME STOP / FOUR-WORKER
+  EXECUTION REPAIR FROZEN.** Truth-blind fit117 generation spent `296.26 s` on
+  the first 59,650-row fragment without sealing a shard, projecting beyond the
+  14,400-second contract. It was stopped with zero candidate files and before
+  GT access. Execution amendment 3 (`3e82d991…b1a7f8`) changes only topology to
+  four independent per-video processes and requires serial/parallel candidate
+  byte equivalence. Model and all scientific gates are unchanged. (Owner +
+  Codex root)
+
+- 2026-08-03 — **REVISED DEFAULT POST-SCORING VISUAL REVIEW READY / NO GATE
+  CHANGE.** Implemented the exact four-category curated selector, 15-second
+  default pacing with direct FPS override, registry-driven HUD/corner controls,
+  cumulative edge FP/FN, default/all scopes, content-hash reuse, stable latest
+  index, and the post-publication `scoreall.py` hook. Real APNCC delivery is
+  9 deduplicated 100-frame clips / 9 category-complete cards / `16,558,395`
+  bytes; all encode to `15.000 s`, 9/9 validation passes, and a repeat build is
+  9/9 cache hits. Prompt-3 census events render at source `t` → target `t+1`.
+  Browser checks passed range-backed seeking (frame-5 marker reads frame 5),
+  390-pixel containment, and zero console errors. Tests: 47 passed plus 27
+  parameterized subtests. Entry:
+  `../../g04/post_scoring_visual_review/latest/index.html`.
+
+- 2026-08-03 — **SYNTH-DIV-SIM2REAL-V2 MODEL FROZEN BEFORE REAL LABELS.**
+  The sole full local fit completed in `4521.04 s` with 1,726 train sequences,
+  3,674,104 pair examples, and 2,616,835 event examples / 131,311 positives.
+  All event positives remained; only the preregistered 93 unreachable train
+  forks left the conditional pair loss. Strict model reload authenticated JSON
+  `53b36d96…d21dd82`, arrays `d979a308…cfff652`, and freeze report
+  `065d1308…c9c2fc`. Fit117 labels remain unopened; truth-blind score generation
+  is now allowed. (Owner + Codex root)
+
+- 2026-08-03 — **G04 CROP-WRFEAT REPAIR PREREGISTERED / BOUNDED T4 PILOT
+  VERSION 1 LAUNCHED.** A real computed-object audit measured p99 Z/Y/X
+  extents `23.3/39.3/34.9` voxels, proving the old `16/32/32` crop undersized.
+  Amendment 1 freezes intensity recentering capped at 4 um, primary
+  `32/64/64`, and a single `48/96/96` fallback. The revised lane batches
+  detections on CUDA and computes only checkpoint-native wrfeat12, excluding
+  descriptive/Qhull CPU work. Its exact 3-frame / 916-detection package passed
+  inline prelaunch and launched as
+  `onebitbrain/g04-crop-wrfeat-gpu-pilot-v1` Version 1 under a `0.6 h`
+  reservation and 30-minute worker kill; quota bracket stayed
+  `2.51/27.49 h` used/remaining at push. The remote independent gate is
+  finite-nonzero-nonboundary `>=98%`, boundary `<=10%`, empty `<=2%`, followed
+  by exact CV57/held-fit105 T4 projections. Full production and scoring remain
+  unauthorized. (Codex root)
+
+- 2026-08-03 — **PUBLIC V32 SHARD 0/6 TERMINAL PASS / RESERVATION RELEASED /
+  S01 DEFERRED TO HOURLY CADENCE.** The sole hourly status read returned
+  COMPLETE. Download and strict validation authenticated 27/27 exact datasets,
+  541,109 nodes, 521,261 edges, 1,420 dividing nodes, and 1,062,370 rows; all
+  public/checkpoint/population/runtime/no-refinement bindings pass. Prediction
+  took `3264.467 s`; validation SHA `f411b7d4…897d21`. Authoritative quota moved
+  `1.37/28.63→2.51/27.49 h` used/remaining, a `1.14 h` debit; the shared `3.0 h`
+  ceiling was released and active reservations are empty. S01 is not launched
+  this cycle because CMUX's mandatory target-version check would be a second
+  Kaggle status call inside the hour. No score, submission, G-04 re-point,
+  weight refinement, RunPod action, or G-03 GPU action occurred. (Codex root)
+
+- 2026-08-03 — **V32 CONTINUATION/INTEGRATION CONTRACT FROZEN / SHARED GPU
+  RESERVATION LEDGER ACTIVE.** Hourly polling is unchanged and no extra Kaggle
+  read occurred. The completion path now binds exact V32 CV57 scoring,
+  four-way error diagnosis, independent V32+G1 measurement, and gated G-04
+  machinery re-pointing. `scripts/cmux_ops.py` now requires a positive
+  worst-case reservation for every bracketed GPU kernel push and capacity-tests
+  all live reservations against fresh authoritative remaining quota under one
+  canonical cross-thread lock. The already-running V32 shard 0 holds `3.0 h`;
+  latest recorded quota remains `1.37/28.63 h` used/remaining. Contract SHA
+  `439e9779…c7ef8c`; 40 CMUX tests pass. No score, submission, new launch,
+  polling action, or weight refinement occurred. (Owner + Codex root)
+
+- 2026-08-03 — **G04 DATA-PATHOLOGY G1 PROMOTE LOCALLY / F1+STRIDE NO-OP /
+  CROP-WRFEAT KILL.** Complete 203-video census found 967 byte-confirmed frozen
+  transitions and 227 shifts over 10 um. Exact CV57 G1 scored
+  `0.8867644202595942` versus APNCC `0.8815220699597315`, with edge
+  `34389/2308/1879`; candidate reachability rose `209/311→259/311` and the
+  fit-only 10–12-um shell cross-check rescued 90/93 flagged positives. F1 and
+  stride parity scored delta zero. The fixed all-243 crop-wrfeat pilot failed
+  on 12 empty/unmatched and 199 boundary-truncated masks and projected 766.233
+  CPU-h for CV57, so no feature production/score followed. Thirty-four tests
+  pass; CPU only, no Kaggle/GPU/submission/RunPod action. (Codex root)
+
+- 2026-08-03 — **OWNER LOCK: NO H030 OR G-03 GPU SPEND PENDING ALIGNMENT
+  PATCH.** Direct inspection of `tiered_surface/ALIGNMENT.md` SHA
+  `aff9e656…abaff` does not show the pending patch, so confirmation is negative
+  and all G-03 GPU actions fail closed. The separately authorized immutable
+  public-TemporalUNet substrate/ensembling run remains in scope. (Owner + Codex
+  root)
+
+- 2026-08-03 — **PUBLIC TEMPORALUNET SERIAL CONTINUATION HEARTBEAT ACTIVE.**
+  An hourly same-task heartbeat now continues the long Kaggle reproduction
+  under the existing standing authorization: at most one status read per hour,
+  atomic output validation and quota reconciliation before each next serial
+  shard, no RunPod, and automatic removal at a terminal outcome. This is an
+  operational monitor only; no score, gate, promotion, submission, or weight
+  refinement changed.
+
+- 2026-08-03 — **SYNTH-DIV-SIM2REAL-V2 REACHABILITY PASS / ONE FIT OPEN.**
+  Exact all-2,174-sequence audit SHA `1008e6ea…4565eb2` found
+  165,148/165,267 reachable labelled forks (`99.927995%`): train
+  131,218/131,311, validation 16,679/16,692, synthetic-test 17,251/17,264.
+  Every frozen `>=95%` gate passes. The report is bound to every label hash;
+  nearest-8 and all downstream gates remain unchanged. The 27-test combined
+  suite is green, opening exactly one local CPU fit. (Owner + Codex root)
+
+- 2026-08-03 — **PUBLIC TEMPORALUNET COMPARISON PACKAGES READY / FOUR-WAY
+  DIAGNOSTIC CONTROL PASS.** Six single-seed and six detection-only 50/50
+  blend packages joined the six V32 packages at inline-prelaunch PASS; none of
+  the 12 comparison shards has launched. Detection-only skips the secondary
+  association head while preserving aligned 50/50 detection logits. Exact
+  18-package set SHA is `c1cbfee6…4273e`. The
+  expanded frozen scorer reproduced APNCC CV57 exactly at
+  `0.8815220699597315` and separately sealed detection, ordinary association,
+  matched-lineage fragmentation, and division counts (SHA
+  `60a1f283…1b5d4`). No weight refinement, score promotion, machinery re-point,
+  or submission occurred.
+
+- 2026-08-03 — **SYNTH-DIV-SIM2REAL-V1 STRUCTURAL FAIL / V2-REACHABLE FROZEN.**
+  The first full fit stopped before any optimizer/model artifact when
+  `seq_0019` parent 1834's exact daughters were not both in the preregistered
+  nearest-8 inference universe. V1 is PARK-C. Before aggregate coverage or any
+  model/real outcome, amendment 2 froze the named v2 correction: keep nearest-8,
+  exclude only unreachable divisions from pair-head loss, retain every eligible
+  parent in event-head loss, and require `>=95%` reachability overall and in each
+  SHA split. No real label, graph, score, GPU, submission, or RunPod action
+  occurred. (Owner + Codex root)
+
+- 2026-08-03 — **SYNTH-DIV-SIM2REAL-V1 PAYLOAD AUTHENTICATED / LOCAL TRAINING
+  OPEN.** The public generator-v3 output completed at exactly 3,716 files and
+  19,868,008,592 bytes. Streamed SHA-256/CRC/schema authentication returned
+  `AUTHENTICATED`, tree SHA `9a87684a…029865ec`, and exact aggregates
+  1,539/2,174/4,056,226/165,267 (static/sequences/nodes/divisions), while never
+  materializing image arrays. The 24-test model/authenticator/adapter suite is
+  green; full CPU training may now run under the frozen four-hour kill. CTC
+  remains permission-blocked and unused; real labels, graphs, scores, GPUs,
+  submissions, and RunPod remain untouched. (Owner + Codex root)
+
+- 2026-08-03 — **PUBLIC TEMPORALUNET V32 FULL REPRODUCTION SHARD 0/6
+  LAUNCHED.** All six disjoint 27-video packages compile and pass the shared
+  inline prelaunch guard. Fresh slug
+  `onebitbrain/g02-public-temporalunet-v32-full-s00-v1` Version 1 launched with
+  exact code SHA `a5467ae7…37f`, shard manifest `eeaf0ed5…fee5`, post-receipt
+  scratch cleanup, and a 10,800 s whole-kernel hard kill. The authoritative
+  bracket stayed `1.37/30.00 h` at push. Shards remain serial; no score,
+  promotion, machinery re-point, submission, or weight refinement exists.
+
+- 2026-08-03 — **PUBLIC TEMPORALUNET V32 ONE-VIDEO PARITY SMOKE PASS / FULL
+  FROZEN REPRODUCTION OPEN.** Exact fresh-slug Version 1 completed with pinned
+  V32, primary, secondary, population, and runtime hashes; emitted 50,304 nodes
+  and 48,724 edges for `6bba_edf14583` in `284.650 s`. Downloaded CSV SHA
+  `09c63601…3325` matches its atomic receipt and passes the strict validator
+  with zero errors, warnings, merges, or outdegree violations. Quota moved
+  `1.26→1.37/30.00 h` (`0.11 h` debit). This opens the sharded 105+57
+  immutable-weight run only; there is no local score, promotion, machinery
+  re-point, submission, or weight refinement. Terminal adjudication:
+  `tiered_surface/branches/public_temporalunet_baseline_v1/SMOKE_TERMINAL_ADJUDICATION.json`.
+
+- 2026-08-03 — **PUBLIC TEMPORALUNET V32 ONE-VIDEO PARITY SMOKE LAUNCHED.**
+  Fresh slug Version 1 passed exact artifact/population binding, no-training
+  static checks, focused scorer tests, 17 shared prelaunch tests, and inline
+  guard (`d0c494a4…222e6` code; 3,300 s hard kill). All queried prior GPU
+  kernels are terminal; the stale 2026-07-31 lock was preserved and archived
+  after its kernel and PID were proven dead. Bracketed quota remained
+  `1.26/30.00 h` at push. No score, promotion, re-point, weight refinement, or
+  submission yet.
+
+- 2026-08-03 — **G-04 TRACK VISUALISER V1 READY.** Rendered and validated
+  57/57 seekable H.264 animations (117 MiB bundle) plus a worst-first HTML
+  index with exact score/edge/division counts, sparse-GT semantics, error
+  timelines, and explicit Prompt-3-unavailable state. Browser acceptance found
+  57/57 valid media elements, top-10 seeking, no failed videos, no page overflow,
+  and no console errors. Observed raw SHA-256 matched the registered 87 GB archive;
+  media/fragment hashes and render contracts now fail closed against stale reuse.
+  Diagnostic only; no model, score, gate, GPU, submission, or external action
+  changed. (Owner + Codex root)
+
+- 2026-08-03 — Owner opened `SYNTH-DIV-SIM2REAL-v1` in parallel with Prompt 1.
+  Explorer v6 and generator v3 sources were acquired and hashed; the CC0
+  payload download started. The pre-outcome contract freezes real-rate loss
+  weighting, geometry/lineage/motion features, real AUROC `>=0.85`, and a full
+  TP/FP/J/S frontier on the eventual authenticated Prompt-1 parent. CTC remains
+  permission-blocked and unused. No model, graph, score, GPU, submission, or
+  RunPod action occurred. (Owner + Codex root)
+
+- 2026-08-03 — **PUBLIC TEMPORALUNET3D OWNER SUPERSESSION OPENED / IMMUTABLE
+  V32 PINNED.** Recorded as adoption of an independently trained public
+  pipeline, not a DEAD-mechanism re-screen. Exact public Version 32 is local
+  (`3f995a97…b7847d`); primary and seed-314159 checkpoint hashes match their
+  public manifests (`12f6881e…e771`, `9bac2fa0…e305f`). No local score, base
+  promotion, machinery re-point, GPU launch, submission, or weight refinement
+  has occurred. Owner gate: substrate/ensembling only below local `0.916`.
+
+- 2026-08-03 — **G-04 LANE-A HIDDEN-COMPATIBLE OUTPUT PASS / SUBMISSION
+  PENDING.** Exact kernel version 1 completed.  Downloaded `submission.csv` is
+  byte-identical to the promoted public artifact (`13,713,344` bytes,
+  `263,297` data rows, SHA `da73c754…84509`); package identity, prelaunch, and
+  runtime receipts all pass.  The sole authorized code submission was created
+  as ref `55203439` and is PENDING.  Submission receipt `90d2c8a7…0bd88`;
+  no retry is authorized.
+
+- 2026-08-03 — **G-04 LANE-B V2 TIMING PASS / FULL KAGGLE PRODUCTION CLOSED.**
+  Exact version 1 returned byte-identical computed labels and per-mask features
+  across repeats (`43.460/42.774 s`; initialization `30.217 s`), confirmed
+  planar labels `26/42/99`, and populated finite native wrfeat plus voxel-cell
+  morphology.  CV57 projects `67.734 h` steady (`68.820 h` worst), held-fit105
+  `124.767 h` steady (`126.766 h` worst), and combined worst `195.586 h`, all
+  beyond the remaining `28.74 h` Kaggle quota.  Kaggle production is closed;
+  RunPod remains explicit-owner-gated.  Terminal adjudication
+  `0af02b7e…b966f`.
+
+- 2026-08-03 — **G-04 LANE-B CHANGED-SIGNATURE TIMING V2 LAUNCHED.** The
+  fresh private slug `onebitbrain/g04-computed-segmentation-timing-v2` passed
+  an independently rerun 37-test suite and fresh launch-eligible inline guard
+  (`7ecd6778…b3d07`).  Exact version 1 launched under the shared serial/quota
+  bracket with code `b33942da…c0f43`; initial status is RUNNING and quota was
+  `1.21→1.21/30 h`.  It is timing/diagnostic-only and cannot access detections,
+  GT, metrics, or submissions.  Production remains blocked until terminal PASS.
+
+- 2026-08-03 — **G-04 LANE-B V1 DIAGNOSED / CHANGED-SIGNATURE TIMING V2
+  SEALED LOCALLY.** Exact raw/config CPU reproduction found planar computed
+  labels `26/42/99` (`47/18/42` voxels) with finite checkpoint-native diameter,
+  intensity, and inertia; only legacy scikit-image 3-D center-hull solidity was
+  `inf`.  V2 replaces that descriptive field with explicitly named voxel-cell
+  3-D convex-hull solidity, uses no sentinel, and records affine-dimension plus
+  legacy diagnostics.  Native wrfeat12 is unchanged.  The new private slug has
+  exactly four files, 37 tests pass, and the shared static guard reports PASS
+  with zero failures.  Production remains closed pending terminal v2 timing.
+
+- 2026-08-03 — **G-04 POST-FAILURE QUOTA RECONCILED.** Authenticated Kaggle
+  quota is `1.21/30.00 h` used (`28.79 h` remaining; refresh 2026-08-08),
+  receipt `18e707b5…80b191`.  This is a rounded `+0.19 h` since the pre-Lane-B
+  launch baseline; Lane A is still running, so exact per-kernel attribution is
+  deferred.
+
+- 2026-08-03 — **G-04 LANE-B RAW-ONLY TIMING V1 FAIL-CLOSED.** Authenticated
+  Step 0 passed in `3.516 s`, including all 30 runtime files and the exact three
+  organizer raw-Zarr files with no GT, detection, or metric access.  The worker
+  then failed after `75.597 s` at the finite-feature guard
+  (`ComputedSegmentationError: computed region features are non-finite`); the
+  supervisor terminated at `90.598 s`.  No valid frame time or production gate
+  exists.  The exact offending field/object and a provenance-explicit handling
+  rule are required before any changed-signature v2; same-signature retry is
+  forbidden.  Lane A remains in flight.
+
+- 2026-08-03 — **G-04 LANE-A HIDDEN-COMPATIBLE V1 LAUNCHED.** The exact scored
+  APNCC monolith now runs against mounted hidden test Zarrs before the frozen
+  label-blind cap5 transform.  Public raw-Zarr parity is byte-exact to
+  `da73c754…84509`, an unseen-ID test passes, and all 27 Lane-A tests pass.
+  Exact kernel version 1 launched under the shared lock; submission is blocked
+  until terminal output authentication.  Quota was `1.05→1.05/30 h`; the
+  in-flight timing lane accounts for the earlier `1.02→1.05 h` movement.
+
+- 2026-08-03 — **G-04 LANE-B RAW-ONLY TIMING V1 LAUNCHED.** Final code
+  `12fe418f…f355` passed shared static/inline guards and 25 tests, attaches only
+  the organizer competition raw source plus authenticated runtime dataset v1,
+  and reads no GEFF, learned detections, targets, or metrics.  Exact kernel
+  version 1 launched under the shared lock; quota bracket was
+  `1.02→1.02/30 h`.  Terminal timing and supervisor receipts are pending.
+
+- 2026-08-03 — **G-04 LANE-B RUNTIME READY / SAFER RAW-INPUT REFACTOR.** The
+  corrected private Cellpose runtime carrier is READY at exact version 1 and
+  round-trips all 30 files / 223,211,151 bytes byte-for-byte.  The separately
+  declared CV57-cache source was absent remotely; exporting the 595 MB local
+  derived cache was safety-rejected and will not be retried.  The timing node
+  is being changed to authenticate and read the organizer-hosted competition
+  Zarr directly.  Zero Lane-B GPU kernels launched; quota remains
+  `1.02/28.98 h`.
+
+- 2026-08-03 — **G-04 LANE-A TERMINAL UNSCORED / FORMAT DIAGNOSIS.** Kaggle ref
+  `55201829` reached `COMPLETE` with a blank score, `total_bytes=0`, and the
+  generic notebook-output incorrect-format diagnostic.  The downloaded output
+  remains byte-identical and organizer graph parsing passes, so transport versus
+  format is under diagnosis; no blind retry.
+
+- 2026-08-03 — **G-04 LANE-A SUBMISSION CREATED / SCORE PENDING.** The private
+  dataset and CPU/no-network code kernel both reached exact version 1, terminal
+  output reproduced candidate SHA `da73c754…84509`, and the serial-locked code
+  submission created Kaggle ref `55201829`.  Authenticated reconciliation shows
+  `PENDING` with no public score yet; GPU quota was unchanged.  Lane B has not
+  launched while its timing-kernel prelaunch contract is being corrected.
+
+- 2026-08-03 — **G-04 LANE-A DIRECT FILE TRANSPORT REJECTED / NO SUBMISSION
+  CREATED.** Exact candidate SHA `da73c754…84509` passed the remote CSV validator
+  with four datasets, 134,409 nodes, 128,888 edges, 15 forks, zero merges, and no
+  outdegree above two.  The shared serial guard uploaded the file, but Kaggle
+  returned HTTP 400; authenticated submission history remained unchanged with
+  latest ref `54942864`.  No slot or score was created.  The likely code-competition
+  transport is being packaged and will be validated before any distinct retry.
+  (Codex root)
+
+- 2026-08-03 — **G-04 LANE-A LOCAL CANDIDATE / LANE-B REAL 3-D PILOT PASS.**
+  The official 57-video APNCC baseline reproduced exactly `0.881522069960`.
+  Permissive `unfiltered_geometry_cap5` scored `0.881635476737`
+  (`+0.000113406777`), division `0/11/42`, after 239 fork edits; it qualifies
+  under the owner rule and is being packaged, but no submission has occurred.
+  Authenticated Cellpose3 `cyto3` SHA `2dc3087a…b93c` segmented one real
+  `64x256x256` frame in `881.161 s` CPU: 171 masks, 224,324 foreground voxels,
+  and `234/243` matches at radius 15.  Radius 30 covers all 243 with honest
+  nearest-region provenance; the one-frame pilot remains partial and cannot
+  enter the production manifest.  (Codex root)
+
+- 2026-08-03 — **G-04 OWNER REFRAME RECORDED / PARALLEL EXECUTION OPEN.** Banked
+  local/public `0.881522069960/0.881` is below median at approximately rank
+  `1100/1800`; the exhausted-surface conclusion and legacy association-continuity,
+  44b6-first, `+0.005`, near-zero-FP, and local-0.89 gates are withdrawn for G-04.
+  Opened independent permissive-division and computed-segmentation/wrfeat lanes.
+  Any observation-distinct lane winner strictly above the incumbent locally is a
+  submission candidate.  No score, GPU launch, or submission has occurred yet.
+  (Owner + Codex)
+
+- 2026-08-03 — G-03 h005 V2 failed top-level STEP0 after `3.5865 s` because
+  its four-source GPU-worker runtime manifest was absent or byte-divergent; no
+  output, install, scientific import, CUDA/data/optimizer/checkpoint, held-fit36,
+  CV57, score, or slope exists. V2 cost `0.00 h`; quota is `1.02/28.98 h`.
+  Frozen no-V3 closes Lane 0 infrastructure-terminal and preserves h030's 25 h.
+  No G-02 gate, tier, CV57, submission, hybrid, or RunPod action changed.
+  (Codex root)
+
+- 2026-08-03 — G-03's sole dependency-repaired h005 version 2 launched after
+  exact CPU-probe, static, inline, serial, and quota guards; Kaggle accepted it
+  at `2026-08-02T21:32:20Z` and quota stayed `1.02/28.98 h` immediately after
+  push. It is the only live GPU job and is monitored no more than hourly. No
+  G-02 gate/tier/CV57/submission/hybrid/RunPod action changed. (Codex root)
+
+- 2026-08-03 — G-03's CPU-only h005 runtime probe passed exact 14-wheel,
+  8-wheel-install, numeric-stack, and fixed 6bba raw+GEFF checks in `9.223 s`;
+  GPU/optimizer/checkpoint/held/CV57/metric access and quota debit were zero.
+  The unchanged-core sole V2 passed static release audit but still awaits fresh
+  serial/quota/inline guards. G-02 remains unchanged. (Codex root)
+
+- 2026-08-03 — G-03's frozen CPU-only h005 runtime probe version 1 launched
+  after fresh inline and quota guards; GPU quota stayed `1.02/28.98 h`. Its
+  terminal result is pending and the sole GPU repair remains closed. No G-02
+  gate, tier, CV57, submission, hybrid, or RunPod action changed. (Codex root)
+
+- 2026-08-03 — G-03 published and authenticated a private hash-pinned h005
+  runtime carrier with no quota movement and froze a CPU-only release-path
+  probe as the mandatory gate before any one dependency-repaired version 2.
+  No GPU repair, checkpoint, held-fit36 score, slope, h030, CV57, submission,
+  hybrid, RunPod, or G-02 reopening occurred. (Codex root)
+
+- 2026-08-03 — G-03 h005 v1 passed authenticated STEP0 but failed importing its
+  frozen training core because `zarr` was not installed. Training, checkpoint,
+  held-fit36 score, and slope are absent; quota moved `1.01→1.02 h` used. V1 is
+  infrastructure-invalid, with evaluation/h030 closed and no G-02 reopening.
+  (Codex root)
+
+- 2026-08-03 — G-03 dense deformable motion completed all 41 frozen 44b6
+  identities and returned `FAIL_PARK_C` for DELETE and occupied SWAP under the
+  unchanged B0→A1→A0 consumer. No learned displacement, graph, GPU, 6bba,
+  CV57, hybrid, RunPod, or submission followed; G-02 remains archived and
+  unchanged. (Codex root)
+
+- 2026-08-03 — G-03 fixed h005 training-kernel version 1 launched under its
+  fresh inline STEP0 and serial/quota guards (`1.01/28.99 T4-h` used/remaining
+  before and immediately after push). This owner-amended G-03 action does not
+  reopen any G-02 mechanism or change any G-02 gate, tier, CV57 action, or
+  submission. (Codex root)
+
+- 2026-08-03 — G-03 owner-amended orthogonal lanes recorded without reopening
+  G-02. The trained raw-intensity fork probe failed cross-family 44b6 and stopped
+  before final 38/GPU/graph access; dense deformable registration remains a
+  CPU-only frozen-gate run; fixed h005 has a corrected version-2 carrier and
+  eligible inline prelaunch receipt but has not launched. No archived G-02
+  verdict, gate, tier, CV57 action, or submission changed. (Codex root)
+
+- 2026-08-03 — **G-03 ZERO-INIT H000 RECONCILED / G-02 UNCHANGED.** Frozen
+  native CUDA banks give 36/36 byte-identical held-fit graphs and corrected
+  G-03 h000 `0.7630876414338513`; the archived `0.829194058080` is CV57 and not
+  its same-population baseline. G-03's Branch-B dossier fails and h005/h030 stay
+  unfunded. No G-02 mechanism, tier, gate, CV57, GPU, or submission reopened.
+  (Codex root)
+
+- 2026-08-03 — **OWNER BARRIER DECISIONS RECORDED / A7 FROZEN SEPARATION FAIL /
+  EVIDENCE PARK.** Owner accepted the R9 and AE-P3/R0 park retractions and all five
+  D3 “no” recommendations. After G-03 R4 terminated, A7's exact 45,961/134 occupied-
+  swap universe ran through the inherited B0-first/A1/A0 five-fold gate. A1 AUC was
+  `0.627866/0.828496/0.610208/0.659067/0.654961`, retention `0` throughout, and all
+  absolute/lift clauses failed. A7 is now evidence-parked; no threshold or graph was
+  opened. Result `../../g03/screening/a7_separation_measurement_v1/run_v1/SEPARATION_RESULT.json`
+  (`3143a31d…f96d`). The proposed node `>=-0.002` amendment remains owner-only draft,
+  unapplied, with no historical verdict change. (Codex root)
+
+- 2026-08-03 — Adopted the durable **CEILING BEFORE MACHINERY** and
+  atomic-receipt monitoring rules in `tiered_surface/ALIGNMENT.md`: below-gate
+  ceilings do not fund promotion machinery; receipt jobs are event-waited with
+  at most hourly status checks and no unchanged narration. No scientific gate,
+  tier, experiment, or external action changed. (Codex root)
+
+- 2026-08-02 — **44B6 GATE VALIDITY FAIL / ABSTENTION ORACLES COMPLETE / OWNER BARRIER.** Existing authenticated caches show APNCC-DIRECT versus the exact pre-APNCC `c=0.25` control at held-44b6 adjusted/raw/node `+0.006949544395/+0.006411258660/-0.001307630206`; the known full-CV57 winner would have failed the locked `>=+0.005/0/0` gate on node recall. This is recorded as a methodological false-negative finding, with no autonomous gate change or reopening. Exact own-candidate oracles are A7 `134/45,961`, reverse literal passes `0/268` beneficial (all neutral; selected `0/53`), and R0 `5/38,081`; thus A7 and R0 were threshold misses and cannot justify evidence-parks, while authentic literal reverse consensus is evidence-negative. The earlier R9/AE-P3/R0 cause reclassifications are retracted and the park audit remains `22/4/6/1/2`; zero tier moves. The valid near-zero 44b6 review contains SWAP, NODETOPO, PEFT, DELETE, and historical DIV-A; none merits CV57 under current scope, and no CV57 object, GPU, Kaggle, RunPod, 6bba, submission, or gate was opened. Report `tiered_surface/diagnostics/gate_validity_abstention_oracle_20260802/REPORT.md` (`71591478…b969e`); machine result `e51a9db9…6ba9`. (Codex root)
+
+- 2026-08-02 — **FOUR NARROW CPU LANES TERMINAL / ALL SCIENTIFIC CANDIDATES KILLED / ZERO TIER MOVES.** A7 phase-template selected `0/45,961` occupied swaps and is byte-identical to APNCC on 36/36 videos. Authentic reverse endpoint consensus sealed 53 swaps but found `0/53` beneficial, closing the graph and leaving AE-P6/R8/C3 blocked. The distinct R0 topology-0 shell no-link screen evaluated 38,081/2,514,005 held-44b6 shell rows and failed fixed B=4 precision at `0/4`; its perfect-B4 adjusted ceiling was only `+0.000367524`, so the graph remained closed. All exact deployed adjusted/raw/node deltas are `0/0/0`; the four requested properties pass for A7 and R0, while reverse is not appearance-grounded because historical `wrfeat` is zero-filled. The parallel 35-row park-audit snapshot was evidence/dependency/control/policy/owner-override `22/4/6/1/2`; joining A7 and R0 reclassifies R9 plus AE-P3/R0 as evidence, making the final cause census `25/3/6/1/0`, with only DIV-F2, R2, and R3 dependency-parked and no tier move. Strict swap guards and resumable label-blind shards allowed completion alongside G-03. No GPU, Kaggle, RunPod, 6bba, CV57, submission, DEAD, or plan action. (Codex root)
+
+- 2026-08-01 — **GLOBAL-REASSIGN ORACLE TERMINAL / COMPILER ESCALATION / PROPOSAL ONLY.** The full 36-video local-CPU GT-dependent node passed T0/T1 controls and measured T2∞ `+0.09641286660426185` [GT-DEPENDENT] versus T3 `+0.10497364637634421` [GT-DEPENDENT]. Section 4 is `CONTINUE_PROPOSAL_ONLY`: precedent-adjusted `+0.01906337599412862` [GT-DEPENDENT] before raw T2∞−T0 `+0.0778414699637755` [GT-DEPENDENT]. Terminal status remains `ESCALATE_COMPILER_INEXPRESSIBLE`: the frozen batch compiler rejects same-action retained division anchors, not under-merged chains. T2 tiers are identical with histogram `{1:453,2:6}` [GT-DEPENDENT], correcting the banked chain-depth diagnosis; T2/T3 install the same 465 correct edges [GT-DEPENDENT]. No selector, training, GPU/Kaggle, 6bba, CV57, submission, tier, DEAD, plan, or LEDGER action. Report: `../../../dag_prompts/2026-08-01-global-reassign-oracle/runs/N0_GLOBAL_REASSIGN_ORACLE.md`. (Codex root)
+
+- 2026-08-01 — **ARCHIVED PARK-A/UNEXPLORED AUDIT / NO G-02 REOPENING.** All 14 machine PARK-A entries and 18 PARK-B entries were reconciled against the newer terminal closeout under the owner's corrected G-03 continuation gates (`>=+0.010` at 30 T4-h; `>=+0.035` at 90). Governance entries remain controls; no archived scientific parent is a standalone 90-hour route, `NODETOPO-O0`'s `+0.009812493` oracle is below even the 30-hour line, and stale DINOv2/PEFT supplier rows remain superseded by terminal failures. AE-P7 crop-interface evidence may inform G-03 Phase-2 preparation only. No G-02 node, graph, CV57, GPU, submission, tier, or DEAD mechanism reopened. Kaggle failure coverage is now 28 incidents / 22 families after a pre-GPU G-03 KFG-08 carrier-layout incident exposed and corrected archive-prefix stripping. Audit: `../../g03/screening/UNEXPLORED_PARKA_DIRECTION_AUDIT_20260801.md`. (Codex root)
+
+- 2026-08-01 — **KAGGLE KERNEL REVIEW / NO G-02 RETRY OR SUBMISSION.** Live status reconciliation confirms native-fit v1 and PEFT v1 are COMPLETE; their valid outputs remain respectively native-base REJECT and PEFT PARK-C. All screenshot G-02 error lineages are terminal, superseded by valid local outcomes, or infrastructure-only artifacts with closed authority. APNCC ref `54942864` remains the distinct public `0.881` final; no completed cache/preflight/proof kernel is submission-eligible. The failure registry now covers 27 incidents / 22 families, including nested-output supervisor drift, and `cmux_ops.py` structurally refuses a kernel push without a fresh eligible guard receipt whose metadata/code hashes still match. No Kaggle mutation or submission occurred. (Codex root)
+- 2026-08-01 — **LOCAL CV57 ONE-SHOT COMPLETE / NATIVE REJECT / HYBRID NO-OP.**
+  The sole sealed `r08_c08_a035_off` measurement scored `0.829194058080`
+  adjusted/combined, `0.834460844608` raw, recall `0.987196658416`, edge
+  TP/FP/FN `32564/2756/3704`, and division `0/0/42/0`, trailing APNCC by
+  `-0.052328011880`. All 57 selected graphs had zero forks, so the preregistered
+  hybrid is graph-identical to APNCC at `0.881522069960`. Independent pre/post
+  audits pass; there was no alternative, tuning, repeat, GPU/Kaggle action,
+  RunPod, or submission. Frozen-result execution-field mislabel is adjudicated
+  without rewrite or rerun. Terminal SHA `0add0c3f…60af95a`. (Codex root)
+- 2026-08-01 — **LOCAL CV57 ONE-SHOT READY PREACCESS / REMOTE V2-LAST
+  UNCHANGED.** The complete 57-video cache, exact checkpoint/config, and source
+  are already local. CPU fit-only parity passed 3/3 across both families and
+  threshold-stress cases with zero selected-edge differences and zero threshold
+  flips versus the T4 bank. Runner/scorer/source/population are sealed in
+  `CV57_LOCAL_ONE_SHOT_CONTRACT.json` SHA `2ca77e53…a1c6e`; preflight loaded all
+  27,456,880 parameters without a CV57 cache-file or GT read. No v3, tuning,
+  alternative, submission, RunPod, or Kaggle action. (Codex root)
+- 2026-08-01 — **CV57 V2 TERMINAL PREACCESS INFRASTRUCTURE FAIL / EXCEPTION
+  CLOSED.** V2 version 1 found zero of its three exact kernel-source cache roots
+  and failed Step 0 in `0.000216127 s`. Heavy work=false; cache/model/GT/graph/
+  scorer access and measurements are all zero. Native and hybrid CV57 remain
+  NOT EVALUATED. Terminal global quota is `7.20/22.80 h`; its `0.03 h` movement
+  is only an upper bound because G-03 A v2 is concurrent. V2 was the last repair:
+  no v3, submission, or RunPod. Terminal SHA `2abce8f4…46e928`. (Codex root)
+- 2026-08-01 — **CV57 V2 VERSION 1 LAUNCHED / RUNNING.** The fresh final-repair
+  slug accepted exactly one version after the preaccess freeze and both guards.
+  First authenticated status is RUNNING; bracketed quota remained
+  `7.17/22.83 h` used/remaining with zero immediate debit. G-03 A v2 is concurrent,
+  so later quota movement requires attribution caution. No v3, submission, or
+  RunPod. Launch receipt `CV57_V2_LAUNCH_RECEIPT.json`. (Codex root)
+- 2026-08-01 — **CV57 V2 PREACCESS INFRASTRUCTURE REPAIR READY / MEASUREMENT
+  COUNT STILL ZERO.** Downloaded v1 evidence proves no cache, GT, model, graph,
+  or score access, so it did not consume the owner's single authorized CV57
+  measurement. Final v2 changes only exact allowlisted kernel-source mount
+  resolution and requires the complete 57-video/114-file hash manifest before
+  heavy work. Seven scientific functions are AST-identical; static+inline guards,
+  manifest validation, and 29/29 cmux tests pass. V2 is unpushed; no v3,
+  alternative, tuning, post-access repeat, submission, or RunPod. Repair SHA
+  `58277d7d…134a68`. (Codex root)
+- 2026-08-01 — **SELECTED-ONLY CV57 V1 TERMINAL PRE-HEAVY-WORK FAIL / NO
+  MEASUREMENT / NO RELAUNCH.** Version 1 failed Step 0 in `0.000177395 s` with
+  `exact asset or kernel-source mount is absent`; heavy work=false, competition
+  visits=0, fragments=0, and native/hybrid CV57 remain NOT EVALUATED. The push
+  bracket was unchanged at `7.00/23.00 h`; terminal global quota `7.03/22.97 h`
+  includes concurrent G-03 A v2 accrual and is not attributable to this failure.
+  The precommitted no-relaunch decision closes the exception; no submission.
+  Terminal report SHA `d661b43e…0136c1`. (Codex root)
+- 2026-08-01 — **SEALED SELECTED-ONLY CV57 V1 LAUNCHED / RUNNING.** Fresh slug
+  `onebitbrain/g02-trackastra-native-cv57-v1` accepted exactly version 1 under
+  the shared serial lock. Push-bracket quota stayed `7.00/23.00 h`
+  used/remaining (`0.0` immediate debit). It runs as the owner-preferred second
+  session and can emit only the sealed graph. Post-push asset status confirmed
+  READY version 4 versus the launched descriptive version-1 label; exact payload
+  hashes remain the Step-0 gate, the bookkeeping defect is recorded, and no
+  relaunch is permitted. No submission. (Codex root)
+- 2026-08-01 — **NATIVE CV57 OUTPUT SURFACE HARDENED TO SELECTED-ONLY.** Before
+  launch, the package was narrowed from returning a reusable candidate-edge bank
+  to returning only the 57 graph fragments for sealed `r08_c08_a035_off`. The
+  original fit/hybrid evaluator remains byte-pinned; the new exact one-shot local
+  evaluator, package, contract, and freeze are hash-bound, and current static+
+  inline guards pass code SHA `6a4bf65b…2734d1`. The asset dataset's remote
+  version declaration was reconciled to authenticated current version 4 before
+  launch; exact payload hashes remain fail-closed in Step 0. No remote action or CV57
+  outcome occurred; the shared lane remains occupied by G-03 A v2. (Codex root)
+- 2026-08-01 — **NATIVE ONE-SHOT CV57 PACKAGE READY / WAITING FOR SERIAL GPU
+  LANE.** The independently validated 108-way fit result and irrevocable
+  `r08_c08_a035_off` selection are bound into a fresh private 2×T4 kernel. Its
+  exact 57-cache source authentication, immutable cache manifest, code/metadata/
+  contract hashes, internal `17,100 s` deadline, and static+inline prelaunch
+  guards all pass. No kernel push, GPU debit, CV57 measurement, tuning, repeat,
+  or submission has occurred; G-03 A v2 still owns the shared GPU lane. (Codex root)
+- 2026-08-01 — **NATIVE FIT105 EXACT SWEEP COMPLETE / SELECTION SEALED BEFORE
+  CV57.** All 108 frozen names (76 distinct aggregate graphs) were officially
+  scored. The frozen rule selected `r08_c08_a035_off`, score `0.811024400045`
+  (`-0.049492037080` vs fit APNCC), with divisions OFF and division Jaccard `0`.
+  The preregistered hybrid inserts zero forks and is byte-equivalent in score to
+  fit APNCC. Independent ranking replay passed; seal SHA `0c1b3ed…9836bcc`.
+  Exactly one selected native+hybrid CV57 measurement is now open, still subject
+  to the shared no-concurrent-launch controls. (Codex root)
+- 2026-08-01 — **NATIVE FIT105 MATERIALIZATION COMPLETE / PRE-SCORE INFRASTRUCTURE
+  RESUME REPAIR 2.** All `108 × 105` frozen variant fragments and manifests were
+  written before macOS denied `SC_SEM_NSEMS_MAX` at exact-score worker-pool creation;
+  zero candidate scores existed. A hash-pinned adapter now attests and reuses the
+  complete materialization, then invokes the frozen evaluator's exact scorer,
+  selection, hybrid, and report assembly unchanged outside that sandbox. This is an
+  infrastructure-only repair: no scientific parameter, population, rule, fit outcome,
+  or CV57 access changed. (Codex root)
+- 2026-08-01 — The G-03 owner-authorized self-contained A v2 transport repair
+  was accepted and remains RUNNING on two authenticated status probes; B v2
+  remains contingent on a verified A handoff. G-02 scope is unchanged. (Codex root)
+- 2026-08-01 — G-03 state corrected after owner amendment: A v1 remains a
+  terminal pre-GPU packaging failure, while exactly one self-contained A v2 and
+  contingent B v2 transport repair has been preregistered. G-02's narrowly
+  scoped native-base exception is unchanged. (Codex root)
+- 2026-07-31 — **NATIVE SWEEP PRE-OUTCOME SCORER-MANIFEST REPAIR 1.** The first
+  invocation failed before output creation, native-bank load, graph materialization,
+  or score because the old split manifest attested superseded upstream scorer hashes.
+  A metadata-only execution manifest now supplies the three hashes already pinned in
+  the outcome-blind fit scorer freeze. Code, scorer, population, 108-grid, thresholds,
+  ranking, and selection are unchanged; one repaired invocation is authorized. (Codex root)
+- 2026-07-31 — **APNCC FIT105 CONTROL COMPLETE / 66-FRAGMENT RESUME PARITY PASS.**
+  The unchanged frozen CPU implementation completed 105/105; every preserved
+  fragment is byte-identical to its recomputation. Exact control combined/adjusted
+  is `0.860516437125`, raw `0.867176587961`, recall `0.988149479570`, and
+  division `0/0/76`, Jaccard `0`. No GPU, Kaggle, CV57, or submission action.
+  The frozen native 108-variant scorer is now active. (Codex root)
+- 2026-07-31 — G-03 Phase 1's sole infrastructure A kernel terminalized at 0.70 s
+  before Torch/CUDA/data work (`ModuleNotFoundError` from Kaggle's code-file-only
+  packaging); terminal quota is unchanged at `5.43/24.57 h` (0.0 debit). G-03 is
+  stopped by its own locked no-retry gate. This changes neither the narrow G-02
+  native-scorer exception nor the locked final slot. (Codex root)
+- 2026-07-31 — **OWNER-SCOPED NATIVE SCORER + ONE-SHOT CV57 EXCEPTION OPEN.**
+  The owner expressly authorized completing the preserved fit105 APNCC control,
+  scoring the frozen 108 native variants and preregistered hybrids from the existing
+  bank, sealing exactly one selection, and then measuring only that native variant
+  and hybrid once on CV57. G-03 Phase 1 is unchanged. GPU is conditional on the
+  selected CV57 bank being absent and remains subject to all standing launch gates;
+  no quota soak, CELLECT, RunPod, tuning, repeat CV57, or public submission. Authority:
+  `tiered_surface/branches/sa_native_base_wave_v1/OWNER_SCOPE_AMENDMENT_20260731.json`.
+  (Owner + Codex root)
+- 2026-07-31 — **LEGACY TRACKASTRA V1 TERMINAL RECONCILED / QUARANTINED UNSCORED.**
+  Remote v1 is COMPLETE with exact version delta `0→1`; the downloaded 105-video
+  bank passes SHA/schema validation with 2,732,827 nodes and 12,523,336 candidate
+  edges. Quota is `5.43/24.57 h` used/remaining (`0.37 GPU-h` debit), and the
+  serial lock is released. Under the newer G-03 owner charter, no graph was
+  materialized or scored, no variant/CV57/submission/dataset action occurred, and
+  the APNCC control was stopped at 66/105 with partials preserved. Receipt:
+  `tiered_surface/branches/sa_native_base_wave_v1/TERMINAL_OUTPUT_ADJUDICATION.json`.
+  (Codex root)
+- 2026-07-31 — Owner's G-03 end-to-end association-training charter supersedes G-02. G-02 is archived: retain its evidence, requirement surface, and byte-exact transport, but do not continue its native Trackastra wave. G-03 Phase 0 architecture dossier selected a new crop-adapter mechanism with no GPU work. (Codex root)
+- 2026-07-31 — **FIT105 CONTROL + 108-VARIANT SCORER FROZEN OUTCOME-BLIND.**
+  APNCC identical-population control code `a8f6ed7…37e` and native materialize /
+  exact-score / hybrid code `458e958…63e` were pinned while Trackastra v1 was
+  still RUNNING and before either score outcome. All variants emit 105 fragments;
+  score reuse is allowed only for an all-105 SHA-256-identical graph class. A
+  pre-outcome amendment added only the fit105-control delta field; selection logic
+  did not change.
+  APNCC CPU control is advancing; no CV57 or submission access. Freeze:
+  `tiered_surface/branches/sa_native_base_wave_v1/FIT_SCORING_IMPLEMENTATION_FREEZE.json`.
+  (Codex)
+- 2026-07-31 — **TRACKASTRA NATIVE FIT V1 LAUNCHED / RUNNING.** Fresh remote
+  slug `onebitbrain/g02-trackastra-native-fit-v1` moved exactly `0→1` at
+  `07:36:41Z`; first poll is RUNNING. The owner-authorized supervisor holds the
+  shared serial lock through terminal download, with prelaunch quota
+  `5.06/24.94 h` used/remaining and `18,000 s` server hard timeout. A first
+  attempt stopped before push because Kaggle's empty-search literal `Not found`
+  was not parsed; the target-aware repair consumed no version or GPU and is
+  durably recorded. No competition source, public submission, or RunPod. (Codex)
+- 2026-07-31 — **NATIVE-BASE WINDOW OPEN / TRACKASTRA FIT PREREGISTERED / CELLECT
+  NO-SPEND.** Owner-authorized Q1/Q2 asks whether a pretrained tracker's native graph
+  and forks beat APNCC `0.881522069960`. Fit105 selection, one-shot CV57 exposure,
+  hybrid overlay, exact scorer vector, `17,100 s` internal / `18,000 s` external kill,
+  and immediate above-control halt are frozen in preregistration
+  `f1ab1f5…9c0` / `8fec69e…1ef`. Trackastra fit code is `57117bf…b731a`; both guards
+  PASS. CELLECT B is abandoned at `0.0` new GPU-h under the same-signature stop rule;
+  its prior full inventory already found zero checkpoint/loader bytes and no carrier
+  changed. No public submission or RunPod action. (Codex)
+- 2026-07-31 — **RAW3D STAGE 0 PARK-C / CAMPAIGN CONSOLIDATED; BANKED FINAL
+  EXPLICITLY SELECTED.** Pre-outcome preregistration `5b76da90…8588dd` fixed a
+  `+0.010` margin over DINOv2 on both mean and fold-floor AUC. The CPU-only,
+  label-blind raw-Zarr stream completed all 41 DELETE videos in `254.704 s`:
+  A1 mean/floor AUC `0.677967209/0.599374874`, mean retention `0.006094647`,
+  full-pop retention `5/1,118`; A0 mean `0.646573736`. Both advance clauses
+  and measured `0.85/0.020394` fail, so RAW3D-NOLINK-MVE is PARK-C, Stage 1
+  remains closed, and the campaign consolidates. Separately, Kaggle final
+  selection changed `0/2→1/2` with banked `bhap-submit` v1 / ref `54942864`
+  checked; deadline `2026-09-29 23:59 UTC`. No new submission, training,
+  acquisition, GPU, full cache, RunPod, or DEAD action. The owner-approved
+  RAW3D exception is now recorded as scoped plan amendment §6.6; it changes no
+  authority outside this terminal node.
+  (Codex)
+- 2026-07-31 — **CODEX AUTONOMOUS CMUX PACK AUTHORED / NO EXTERNAL CALL.** Added
+  `dag_prompts/2026-07-31-gpu-window/codex/` (`STATUS`, `C0`–`C4`) so an approved
+  node can run unattended under the `AGENTS.md` standing authorization. Doctrine
+  follows the existing `run_cellect_cmux_roundtrip.py`: **bounded `command_plan()`
+  argv whitelist, never free-form shell** in the owner's authenticated session.
+  `C0` specifies shared `kaggle_prelaunch/cmux_ops.py` — nine enumerated ops,
+  `O_CREAT|O_EXCL` serial lockfile, credential-scrubbed receipts carrying argv and
+  output hashes, **no retry logic**, `kernel_push` refusing while a version is
+  `RUNNING`/`QUEUED` (direct fix for the `0.74` GPU-h race), and
+  `competition_submit` refusing without an `eligible: true` predicate receipt.
+  `C0` remains **unbuilt** and is still the open `KFG-18` fix: the v1 run again met
+  the known owner `403` on first dataset status and correctly did not retry, which
+  is exactly the endpoint-scope behavior `C1` encodes (verify by
+  **download-and-hash**, never `datasets files`, never "accept the rules").
+  `C4` encodes submission predicate `P1`–`P7`. Pack reconciled to the terminal PEFT
+  FAIL and is now **lane-parameterized**; `C1`–`C3` have **no authorized target**
+  until the owner resolves the `training_feasibility_v1/DECISION_DOSSIER.md`
+  Option 1 / Option 2 barrier. No cmux invocation, Kaggle asset, kernel, push, GPU
+  debit, or submission occurred. (Claude)
+- 2026-07-31 — **PEFT TERMINAL AUTHORITY SUPERSESSION SEALED / DOSSIER
+  RECALIBRATED / HUMAN BARRIER.** The 12:04 no-amendment reconciliation is now
+  explicitly historical; owner Amendment A at 12:12 superseded it for the
+  PEFT node only, before the 12:19 push and 12:27 terminal result. Fresh
+  authoritative quota is `5.06/24.94 h` used/remaining, so the `0.04 T4-h`
+  debit is fully reflected. The training dossier now separates PEFT's
+  workload-specific `118.6×` miss from Trackastra's relevant `2.72×`
+  full-cache projection miss, banks the measured CPU-cheap but DEAD 30k crop
+  model, and recommends only a zero-GPU warm-start asset gate before any
+  proposed raw-3D fit. No plan amendment, training, GPU launch, or submission.
+  (Codex)
+- 2026-07-31 — **OWNER STANDING KAGGLE AUTHORIZATION / NO DUPLICATE
+  SUBMISSION.** Productive authenticated Kaggle kernel launches, competition
+  submissions, and monitoring no longer require a repeated permission prompt;
+  scientific/plan gates, serial lock, authoritative quota, prelaunch integrity,
+  hard kill, and terminal monitoring remain binding. Fresh reads show
+  `5.06/24.94 h` used/remaining, refresh `2026-08-01T00:00:00Z`, competition
+  deadline `2026-09-29T23:59:00`, and no in-flight recent G-02 kernel. The sole
+  ready CSV is exactly the already-scored public-`0.881` artifact
+  (`6944ed58…bea3`), so no submission or GPU launch occurred. (Owner + Codex)
+- 2026-07-31 — **TRAINING FEASIBILITY DOSSIER / HUMAN AMENDMENT BARRIER.**
+  Banked PEFT's `0.634749` AUC plateau, graph-selection paradox
+  (`1/2/2/2/2`, selected AUC `0.496495`, graph effects order `1e-4`), and
+  `4.8 h→145.680 s` projection miss. Re-costed Trackastra useful-checkpoint
+  fine-tuning at `4.05–5.96 T4-h` and a compact raw-3D/no-link MVE at
+  provisional `2–6 T4-h` after matched calibration. An exactly two-option
+  primary-source dossier recommends Option 1 (`RAW3D-NOLINK-MVE`) as the only
+  new-information falsifier. No plan amendment, training, GPU kernel,
+  submission, DEAD change, or RunPod action occurred. (Codex root)
+- 2026-07-31 — **§6.2 PEFT V1 TERMINAL FAIL / CASE B / PARK-C.** Sole v1
+  completed; exact version delta `+1`, Step 0 `1.500973 s`, zero competition
+  visits, training `145.680 s`, and authoritative debit `0.04` T4-h
+  (`24.98→24.94 h` remaining). The frozen 100:1 sample and full 1,345,497-action
+  evaluation authenticate. Descriptive AUC reached `0.634749` at epoch 8, but
+  graph-only nested selection (epochs `1/2/2/2/2`) yields AUC `0.496495`,
+  retention `0.002683`, and adjusted/raw/node deltas
+  `+0.000133827/+0.000133160/0`; adjusted misses `+0.005`. Frozen case B is
+  binding: no larger adapter/full-finetune proposal on this backbone. Local
+  replay passes 15/15. 6bba/CV57/package/submission did not run. (Codex)
+- 2026-07-31 — **§6.2 PEFT V1 LAUNCHED / EXACT VERSION DELTA ONE / RUNNING.**
+  The exclusive audit found zero in-flight campaign GPU kernels, zero target
+  versions, and authoritative quota `5.02/24.98 h` used/remaining. The fresh
+  private asset create returned zero; the first status query returned the known
+  owner 403 and was not retried. Same-kernel inline Step 0 therefore remains
+  mandatory before CUDA imports. One push produced server-assigned v1 and
+  post-count delta `+1`; hard timeout is 18,000 s and the serial supervisor
+  retains the lock. No scientific result, debit, downstream gate, or
+  submission yet. (Codex)
+- 2026-07-31 — **§6.2 PEFT SURVIVABLE ENVELOPE FROZEN / ONE SERIAL VERSION
+  AUTHORIZED / PRELAUNCH READY.** Before any adapter score, fixed a 100:1
+  DELETE training sample (all `1,118` positives + `111,800` deterministic
+  negatives, digest `a1e1f638…51571`) and complete-population evaluation.
+  The sealed five-fold correction resolves the prior empty grouped fold under
+  explicit owner authority. The 2,665-parameter adapter remains `<1%`, with
+  3,744 optimizer steps, eight epochs, 25-step atomic resume, a conservative
+  `2.25` T4-h projection, at-step-250 `>3 h` abort, and hard `5 h` kill.
+  Targeted Step 0 passes tar/expanded at `0.084/0.068 s` with zero competition
+  visits; focused tests pass 6/6 and guard tests 16/16. Fresh authoritative
+  quota and in-flight/version checks remain mandatory immediately before the
+  sole push. No remote mutation, fitting outcome, or debit yet. (Codex)
+- 2026-07-31 — **OWNER OVERRIDE: §6.2 PEFT REOPENED / H0 OPTION A / STILL NOT
+  LAUNCHED.** Shown the adjudication against it, the owner overrode the
+  `TERMINAL_CAMPAIGN_REPORT.md` closure **for `sa_peft_adapter_v1` only** — no
+  general reopening of the tiered surface, DEAD register, PARK-C suppliers, `6bba`,
+  CV57, submission, or RunPod — and chose **H0 Option A**: five frozen hash folds
+  over the unchanged `1,345,497`-action DELETE population, five-outer-fold kill
+  clause, all other preregistered fields unchanged, **`8.0` T4-h** projected and
+  authorized above the `5` h auto-ceiling. Receipt
+  `sa_peft_adapter_v1/PREREGISTRATION_AMENDMENT_A.json` is pre-outcome and leaves
+  `PREREGISTRATION.json` (`0d96b336…1ad8`) byte-unchanged; every fold has nonzero
+  support (`306/99/167/195/351` beneficial). **Permanent caveat: those five hash
+  folds are not naive** — the supplier separation gate already used them, including
+  for the DINOv2 and C2 `FAIL_PARK_C` results on this same population; any PEFT
+  result must carry this and may not be presented as a clean-room nested-OOF
+  estimate. K0 done: the authenticated Trackastra backbone is rescued to
+  `assets/trackastra-authentic-v1/` with `24c290ce…981f` / `2ede0848…a0e` verified
+  post-copy and gitignored. No fitting, projection, Kaggle asset, kernel, push, GPU
+  debit, or submission; quota unchanged at `5.02/24.98 h`. Next node is K1
+  (implementation, CPU-only). (Claude + owner)
+- 2026-07-31 — **GPU-WINDOW ALLOCATION ADJUDICATED / NO LAUNCH / RECOMMEND EXPIRY.**
+  Cross-worktree survey of `main` plus all nine `codex/*` branches found **no
+  unreconciled science**: their artifacts are already in `main`'s tree and every
+  lane is terminal, PARK-C, or needs a newly named mechanism. Under the freshly
+  frozen `TERMINAL_CAMPAIGN_REPORT.md`, **`0` of the `24.98` remaining T4-h is
+  spendable**; the §6.2 PEFT node is closed both by its own
+  `PRELAUNCH_HARD_STOP_INVALID_EXPERIMENT` fold envelope and as an
+  "architectural substitution" under the reopening condition. The `0.670412` /
+  `0.670235` convergence across two information-disjoint suppliers is read here as
+  label-side, not feature-side, and the `+0.075828 → +0.018571397` (`24.49%`)
+  oracle-to-realized collapse is offered as independent support that the pointwise
+  estimand is the bottleneck. Recommendation: let the quota expire at the
+  `2026-08-01T00:00:00` refresh and spend the window on reopening-clause-1 design
+  (batch/sequential action valuation), leaving next week's full `30` h to fund it.
+  Also found: the authenticated Trackastra checkpoint `24c290ce…981f`
+  (`109,906,058` B, `27,456,880` params) and `ctc.zip` `2ede0848…a0e` exist **only**
+  under `/private/tmp/trackastra-owner-roundtrip.20260729/resolved/`, with the repo's
+  `trackastra-6bba-assets-v1/` empty — a reboot forces another owner-cmux retrieval.
+  No Kaggle asset, kernel, push, GPU debit, or submission occurred; quota unchanged
+  at `5.02/24.98 h`. Prompt pack: `dag_prompts/2026-07-31-gpu-window/`. (Claude)
 - 2026-07-31 — **G-02 TIERED-SURFACE CAMPAIGN TERMINAL / APNCC BANKED /
   NO FURTHER WAVES.** Frozen `TERMINAL_CAMPAIGN_REPORT.md`
   (`9b0a7819…1a961`): APNCC-DIRECT remains local `0.881522069960` / public

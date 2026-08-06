@@ -1,0 +1,188 @@
+{
+  "schema": "celltrack-alpha.global-reassign-oracle-infrastructure-only-execution-repair.v1",
+  "recorded_at_utc": "2026-08-01T02:06:42Z",
+  "status": "FROZEN_BEFORE_RESUMED_T3_OUTPUT",
+  "scope": "GLOBAL-REASSIGN-ORACLE-V1 local-CPU strict-JSON per-video fragment serialization",
+  "trigger": {
+    "attempt_guard_status": "INVALID_HARNESS_COMMAND",
+    "attempt_returncode": 2,
+    "failure_stage": "T3 first-video atomic fragment serialization, after metrics were computed but before any fragment or aggregate oracle value was emitted",
+    "identity": "train:44b6_cf8fed6b",
+    "exception": "ValueError: Out of range float values are not JSON compliant: nan",
+    "warning_count": 2,
+    "oracle_value_observed": false,
+    "scientific_output_consumed": false,
+    "t3_fragments_emitted": 0
+  },
+  "diagnosis": {
+    "case": "a_SERIALIZATION_ONLY",
+    "nonfinite_quantity": "per-video division_jaccard diagnostic",
+    "definition": "division_tp / (division_tp + division_fp + division_fn), NaN only when the per-video denominator is zero",
+    "first_video_evidence": {
+      "identity": "train:44b6_cf8fed6b",
+      "ground_truth_dividing_nodes": 0,
+      "ground_truth_edges": 188,
+      "baseline_metric": {
+        "nonfinite_fields": [
+          "division_jaccard"
+        ],
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "edge_tp": 181.0,
+        "edge_fp": 10.0,
+        "edge_fn": 7.0
+      },
+      "t3_metric": {
+        "nonfinite_fields": [
+          "division_jaccard"
+        ],
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 0.0,
+        "edge_tp": 186.0,
+        "edge_fp": 0.0,
+        "edge_fn": 2.0
+      },
+      "all_other_metric_fields_finite": true
+    },
+    "affected_division_free_44b6_videos": [
+      "train:44b6_cf8fed6b",
+      "train:44b6_c771cb04",
+      "train:44b6_8f5ab931",
+      "train:44b6_949adeb1",
+      "train:44b6_1574802b",
+      "train:44b6_d78e09d9",
+      "train:44b6_e35b117d",
+      "train:44b6_1d530831",
+      "train:44b6_81c256f0",
+      "train:44b6_9bfa6a0a",
+      "train:44b6_abf82518",
+      "train:44b6_0db75fae",
+      "train:44b6_db3c847b",
+      "train:44b6_90724892",
+      "train:44b6_c15fded2",
+      "train:44b6_3a861e03",
+      "train:44b6_551a5dba",
+      "train:44b6_97725144",
+      "train:44b6_808952d6",
+      "train:44b6_415c0a3a",
+      "train:44b6_144b256d",
+      "train:44b6_e29f0176",
+      "train:44b6_7e557709",
+      "train:44b6_18ced818",
+      "train:44b6_d29c9ab2",
+      "train:44b6_5740d24b",
+      "train:44b6_a2bb48bb",
+      "train:44b6_40c45f5a",
+      "train:44b6_e31261b4"
+    ],
+    "affected_video_count": 29,
+    "aggregate_is_defined_evidence": {
+      "frozen_code_path": "tracking_cellmot.metrics.summarise",
+      "behavior": "ignores the per-video division_jaccard field, sums division_tp/division_fp/division_fn across valid rows, then computes the run-level micro-Jaccard",
+      "banked_36_video_control": {
+        "report": "reports/g02/screening/ga_h1_zero_wrfeat_graph/44b6/report.json",
+        "scope_videos": 36,
+        "division_tp": 0.0,
+        "division_fp": 0.0,
+        "division_fn": 9.0,
+        "division_jaccard": 0.0,
+        "score": 0.8665345260361912
+      },
+      "banked_fit105_precedent": {
+        "receipt": "reports/g02/screening/tiered_surface/branches/sa_native_base_wave_v1/APNCC_FIT105_CONTROL_COMPLETION.json",
+        "scope_videos": 105,
+        "division_tp": 0,
+        "division_fp": 0,
+        "division_fn": 76,
+        "division_jaccard": 0.0,
+        "score": 0.8605164371250335,
+        "status": "PASS_COMPLETE"
+      }
+    },
+    "warning_attribution": {
+      "attempt_identity": "train:44b6_cf8fed6b",
+      "first_warning_call": "cache-node official_node_matching",
+      "second_warning_call": "APNCC-graph official_node_matching",
+      "specific_rule": "selector_requirement_class.official_node_matching intentionally calls prediction_to_graph(nodes, []) so matching is node-only; tracksdata BaseGraph.match therefore logs No matching edges found even when node matches succeed",
+      "videos_that_will_emit": "all 36 experimental videos, twice per fresh T3 video, because both node-matching calls deliberately pass an edge-empty graph",
+      "scored_baseline_has_no_matched_edges": false,
+      "t3_subgraph_has_no_matched_edges": false,
+      "evidence": {
+        "first_video_baseline_edge_tp": 181,
+        "first_video_t3_edge_tp": 186,
+        "zero_baseline_edge_tp_videos": 0,
+        "zero_banked_clean_reachable_videos": 0,
+        "minimum_baseline_edge_tp": 45,
+        "minimum_banked_clean_reachable_edges": 48
+      }
+    }
+  },
+  "repair": {
+    "kind": "infrastructure_only_strict_json_diagnostic_encoding",
+    "implementation": "dag_prompts/2026-08-01-global-reassign-oracle/global_reassign_oracle.py",
+    "behavior": "Before atomically writing a per-video fragment, encode only a NaN division_jaccard whose division TP+FP+FN denominator is exactly zero as JSON null; preserve all division sufficient-statistic counts exactly. Reject every other non-finite field, and reject a non-finite division_jaccard when its denominator is nonzero.",
+    "precedent": "native-wave safe_number/_json_safe strict-JSON writers encode non-finite diagnostics as JSON null; no allow_nan=True is used",
+    "fresh_run_aggregation": "unchanged in-memory scorer rows are passed to the frozen official_summary",
+    "resume_aggregation": "the frozen official_summary ignores the per-video division_jaccard field and consumes the unchanged division counts",
+    "zero_fill_used": false,
+    "nan_to_num_used": false,
+    "allow_nan_enabled": false,
+    "integrity_check_loosened": false
+  },
+  "file_identities": {
+    "global_reassign_oracle.py": {
+      "old_sha256": "c3dd315f58ec2e47c3b492b890a0215ef48957d623f68462afd1d73461d4d29f",
+      "new_sha256": "b49f80315229dbb32752a8c690082852f0b06d8722a446cfa74ed8a8af1a5351"
+    },
+    "test_global_reassign_oracle.py": {
+      "old_sha256": "29a7c1a46831aa611bff2dc3fbec1e85cdf9caa0db13793947d2641f412fc300",
+      "new_sha256": "c83873184f04e4bcd2ae5e83924742864f99aeae5aab1940d3abf1074f4e641a"
+    },
+    "sealed_preregistration_sha256_unchanged": "6fe5ec6e6b11ad833f84988a2535d0dcfea1900c6a962db25c4ba6da97d7e879",
+    "run_guarded.py_sha256_unchanged": "c5fbbc5b0036e07340f4b66a200a78a0fa1abe1e3c95b145019039324bfc1758",
+    "official_eval.py_sha256_unchanged": "22f12e0eb7568c364a8503b8eeb9167147c152f182c2aa10dc10aef588bc01e6",
+    "action_compiler.py_sha256_unchanged": "457f6607a493d51d972913fa155d687e9ffc4045475605bc109a4ca9e90124f5"
+  },
+  "scientific_change_flags": {
+    "science_changed": false,
+    "population_changed": false,
+    "scope_changed": false,
+    "estimand_changed": false,
+    "tier_definition_changed": false,
+    "threshold_changed": false,
+    "tolerance_changed": false,
+    "decision_arithmetic_changed": false,
+    "selection_rule_changed": false,
+    "scorer_changed": false,
+    "compiler_changed": false,
+    "preregistration_changed": false
+  },
+  "verification_before_resumed_outcome": {
+    "unit_suite": {
+      "status": "PASS",
+      "passed": 12,
+      "failed": 0,
+      "includes_banked_117995_regression": true,
+      "includes_strict_json_null_regression": true,
+      "includes_nonfinite_scientific_field_fail_closed_regression": true,
+      "includes_resume_summary_equivalence_regression": true
+    },
+    "python_compile": "PASS",
+    "diff_check": "PASS"
+  },
+  "resume_precondition": {
+    "guard_command_must_remain_exact": ".venv/bin/python dag_prompts/2026-08-01-global-reassign-oracle/run_guarded.py",
+    "preserve_then_clear_reserved_attempt_paths_before_resume": [
+      "dag_prompts/2026-08-01-global-reassign-oracle/runs/N0_IDLE_PREFLIGHT.json",
+      "dag_prompts/2026-08-01-global-reassign-oracle/runs/N0_RUN_GUARD.json"
+    ],
+    "reason": "the sealed guard refuses to overwrite its reserved receipt path"
+  },
+  "external_action": false,
+  "gpu_action": false,
+  "kaggle_action": false,
+  "runpod_action": false,
+  "submission_action": false
+}

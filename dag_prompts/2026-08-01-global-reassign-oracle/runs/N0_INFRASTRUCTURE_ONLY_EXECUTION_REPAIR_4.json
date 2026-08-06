@@ -1,0 +1,156 @@
+{
+  "schema": "celltrack-alpha.global-reassign-oracle-infrastructure-only-execution-repair.v1",
+  "recorded_at_utc": "2026-08-01T02:33:39Z",
+  "status": "FROZEN_BEFORE_RESUMED_T3_CONTEXT_EXIT_AND_T1_OUTPUT",
+  "scope": "GLOBAL-REASSIGN-ORACLE-V1 local-CPU zarr ZipStore lifecycle and fail-closed traceback reporting",
+  "trigger": {
+    "attempt_guard_status": "INVALID_HARNESS_COMMAND",
+    "attempt_returncode": 2,
+    "exception": "AttributeError: 'ZipStore' object has no attribute '_lock'",
+    "captured_output_had_traceback": false,
+    "elapsed_seconds": 2.928191900253296,
+    "peak_process_tree_rss_gib": 0.245849609375,
+    "swap_growth_mib": 0.0
+  },
+  "diagnosis": {
+    "case": "INFRASTRUCTURE_ONLY_EXECUTION_REPAIR_4",
+    "root_cause": "zarr 3.2.1 Store.__enter__ only returns the lazy ZipStore; it does not call ZipStore._open or _sync_open. On a fully resumed stage the store is never read, so _lock and _zf are never initialized. Store.__exit__ nevertheless calls ZipStore.close, which accesses self._lock and raises AttributeError.",
+    "actual_no_gt_reproduction_traceback": [
+      "Traceback (most recent call last):",
+      "  File \"<stdin>\", line 7, in <module>",
+      "  File \".venv/lib/python3.14/site-packages/zarr/abc/store.py\", line 125, in __exit__",
+      "    self.close()",
+      "  File \".venv/lib/python3.14/site-packages/zarr/storage/_zip.py\", line 124, in close",
+      "    with self._lock:",
+      "AttributeError: 'ZipStore' object has no attribute '_lock'"
+    ],
+    "reproduction_fixture": "the same RAW_ARCHIVE was opened with `with ZipStore(path, mode='r'):` and deliberately left unused; no zarr group, image, GT, graph, fragment, or metric was read",
+    "stage": {
+      "failed_stage": "T3 fully-resumed archive context exit",
+      "not_t1": true,
+      "evidence": [
+        "run_node calls run_t3 before T0 or T1",
+        "run_t3 enters the ZipStore context before checking any per-video resume fragment",
+        "all 36 T3 fragments existed, so the context body never touched the lazy store",
+        "the no-progress failure occurred on context exit",
+        "T0_RESULT.json did not exist and the T1 fragment count remained zero"
+      ]
+    }
+  },
+  "repair": {
+    "kind": "infrastructure_only_supported_zarr3_store_lifecycle_and_traceback_capture",
+    "implementation": "dag_prompts/2026-08-01-global-reassign-oracle/global_reassign_oracle.py",
+    "zipstore_behavior": "All three archive call sites now use one opened_zip_store context helper. It eagerly opens with the public async ZipStore.open API through zarr's synchronous bridge, then closes the initialized store in finally.",
+    "zipstore_call_sites": [
+      "run_t3",
+      "score_control_graphs",
+      "run_t2"
+    ],
+    "traceback_behavior": "The single main fail-closed handler now calls traceback.print_exception before the terminal failure line. run_guarded.py already merges stderr into captured stdout and writes that byte stream to guard.captured_output, so the full traceback will appear both live and in N0_RUN_GUARD.json without modifying the frozen guard.",
+    "scientific_code_path_changed": false,
+    "archive_bytes_changed": false,
+    "archive_read_semantics_changed": false,
+    "integrity_check_loosened": false
+  },
+  "interpreter_determination": {
+    "matters": false,
+    "chosen_interpreter": "/Users/agent/Desktop/cell_tracking/.venv/bin/python",
+    "choice_changed": false,
+    "reason": "retain the coordinator's declared guard command; no interpreter switch is required or justified",
+    "evidence": {
+      "venv_python": "3.14.6",
+      "venv313_python": "3.13.7",
+      "matching_dependency_versions": {
+        "numpy": "2.4.6",
+        "scipy": "1.18.0",
+        "polars": "1.42.1",
+        "zarr": "3.2.1",
+        "tracksdata": "0.1.0rc6"
+      },
+      "invalid_lazy_context_traceback_reproduced_in_both": true,
+      "supported_eager_open_close_passed_in_both": true,
+      "existing_36_fragment_t0_summaries_bit_identical_in_both": true,
+      "existing_t0_adjusted_delta_in_both": 0.01857139664048635,
+      "sealed_t0_expected": 0.018571397,
+      "absolute_error": 3.5951365148778613e-10,
+      "within_1e_9_tolerance": true,
+      "t1_runtime_requirement": "T1 must still reproduce the sealed +0.081897667 under the unchanged 1e-9 integrity gate or the node is INVALID_HARNESS"
+    }
+  },
+  "preserved_artifacts": {
+    "t3_result": {
+      "path": "dag_prompts/2026-08-01-global-reassign-oracle/runs/T3_RESULT.json",
+      "sha256": "6f450226b5b2c1bfed7f6b74600ba89736b7ce1fb168fdf587f17130581d9012",
+      "modified_by_repair": false
+    },
+    "t3_fragments": {
+      "count": 36,
+      "aggregate_sha256": "273bd72f6260e24cd5ed15f64e235b5e972e27648d0604ad5cf4bd8b4e6d65e6",
+      "modified_by_repair": false
+    },
+    "t0_fragments": {
+      "count": 36,
+      "aggregate_sha256": "773656917c50971cf22fec0b5439c898749074461bffa775c08326c60060e578",
+      "modified_by_repair": false
+    },
+    "fragment_aggregate_definition": "SHA-256 over sorted fragment filename, NUL, and binary per-file SHA-256 digest"
+  },
+  "file_identities": {
+    "global_reassign_oracle.py": {
+      "old_sha256": "3090082c64fa3ea19c7966feeeec514b927b3317e23ea1aad23e2cda73a0b28d",
+      "new_sha256": "d8f9e764de29074b21ad94411fe74b97150b4a5fb9f0b8db7988dc9e3bacba32"
+    },
+    "test_global_reassign_oracle.py": {
+      "old_sha256": "9ab6149da04d98451cd6bb9f0e6ba83b4dd6865764c1dac5f685b2e4a17b5db5",
+      "new_sha256": "4177c87d787c3b7b31dc4416de7523aa0720e3fa4383359b792a76467498679d"
+    },
+    "sealed_preregistration_sha256_unchanged": "6fe5ec6e6b11ad833f84988a2535d0dcfea1900c6a962db25c4ba6da97d7e879",
+    "run_guarded.py_sha256_unchanged": "c5fbbc5b0036e07340f4b66a200a78a0fa1abe1e3c95b145019039324bfc1758",
+    "official_eval.py_sha256_unchanged": "22f12e0eb7568c364a8503b8eeb9167147c152f182c2aa10dc10aef588bc01e6",
+    "action_compiler.py_sha256_unchanged": "457f6607a493d51d972913fa155d687e9ffc4045475605bc109a4ca9e90124f5"
+  },
+  "scientific_change_flags": {
+    "science_changed": false,
+    "population_changed": false,
+    "scope_changed": false,
+    "estimand_changed": false,
+    "tier_definition_changed": false,
+    "threshold_changed": false,
+    "tolerance_changed": false,
+    "decision_arithmetic_changed": false,
+    "selection_rule_changed": false,
+    "scorer_changed": false,
+    "compiler_changed": false,
+    "preregistration_changed": false
+  },
+  "verification_before_resumed_outcome": {
+    "unit_suite_venv": {
+      "status": "PASS",
+      "passed": 15,
+      "failed": 0
+    },
+    "unit_suite_venv313": {
+      "status": "PASS",
+      "passed": 15,
+      "failed": 0
+    },
+    "includes_unused_zipstore_open_close_regression": true,
+    "includes_full_traceback_regression": true,
+    "real_archive_unused_supported_open_close_no_gt": "PASS",
+    "python_compile": "PASS",
+    "diff_check": "PASS"
+  },
+  "resume_precondition": {
+    "guard_command_must_remain_exact": ".venv/bin/python dag_prompts/2026-08-01-global-reassign-oracle/run_guarded.py",
+    "preserve_then_clear_reserved_attempt_paths_before_resume": [
+      "dag_prompts/2026-08-01-global-reassign-oracle/runs/N0_IDLE_PREFLIGHT.json",
+      "dag_prompts/2026-08-01-global-reassign-oracle/runs/N0_RUN_GUARD.json"
+    ],
+    "preserve_completed_t3_and_t0_fragments": true
+  },
+  "external_action": false,
+  "gpu_action": false,
+  "kaggle_action": false,
+  "runpod_action": false,
+  "submission_action": false
+}

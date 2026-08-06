@@ -10,7 +10,7 @@ physical-distance gates of 6 um and 10 um.
 
 from __future__ import annotations
 
-from collections import Counter, defaultdict, deque
+from collections import defaultdict, deque
 from collections.abc import Callable, Iterable, Mapping, Sequence
 from dataclasses import dataclass, fields
 import math
@@ -588,8 +588,6 @@ def sparse_min_cost_max_cardinality(
         raise SparseAssignmentError("duplicate source or target ID")
     source_set = set(sources)
     target_set = set(targets)
-    source_rank = {node_id: index for index, node_id in enumerate(sources)}
-    target_rank = {node_id: index for index, node_id in enumerate(targets)}
     pair_cost: dict[tuple[int, int], float] = {}
     source_neighbors: dict[int, set[int]] = defaultdict(set)
     target_neighbors: dict[int, set[int]] = defaultdict(set)
@@ -691,19 +689,13 @@ def sparse_min_cost_max_cardinality(
             cost / cost_scale + 2.0 for _, _, cost in component_pairs
         ]
         max_real_weight = max(base_real_weights)
-        # Keep sparse ties deterministic while leaving near-but-distinct
-        # learned/motion costs untouched.  Dense LAPJV's tie outcome also
-        # depends on its full matrix of infeasible filler entries; exact replay
-        # of that implementation artifact is isolated above as a diagnostic.
+        # A deterministic secondary key is safe only when every feasible edge
+        # in the component has the same original cost. Then all maximum-
+        # cardinality matchings have exactly the same primary objective. Never
+        # add epsilon noise to mixed-cost components: it can overturn a real,
+        # sub-ulp-small cost difference.
+        uniform_cost_component = len({cost for _, _, cost in component_pairs}) == 1
         tie_unit = 8.0 * float(np.spacing(max_real_weight))
-        duplicate_costs = {
-            cost
-            for cost, count in Counter(
-                cost for _, _, cost in component_pairs
-            ).items()
-            if count > 1
-        }
-        endpoint_priority_scale = len(sources) + len(targets) + 1
         reciprocal_weight = 1.0
         cardinality_bound = min(left_count, right_count)
         unmatched_penalty = (
@@ -722,23 +714,11 @@ def sparse_min_cost_max_cardinality(
             target_column = right_index[target]
             rows.extend((source_row, left_count + target_column))
             columns.extend((target_column, right_count + source_row))
-            tie_rank = 0
-            if cost in duplicate_costs:
-                if len(sources) > len(targets):
-                    # LAPJV transposes tall rectangular inputs.  Mirror that
-                    # target-row ordering, including scarce-target priority,
-                    # instead of comparing unrelated source/target ranks.
-                    tie_rank = abs(source_rank[source] - target_rank[target])
-                    tie_rank += endpoint_priority_scale * (
-                        source_rank[source]
-                        + target_rank[target]
-                        + endpoint_priority_scale
-                        * (len(target_neighbors[target]) - 1)
-                    )
-                else:
-                    tie_rank = abs(source_rank[source] - target_rank[target])
-                    tie_rank += endpoint_priority_scale * source_rank[source]
-            tie_cost = tie_unit * tie_rank
+            tie_cost = 0.0
+            if uniform_cost_component:
+                tie_rank = abs(source_row - target_column)
+                tie_rank += (dimension + 1) * source_row
+                tie_cost = tie_unit * tie_rank
             weights.extend(
                 (cost / cost_scale + 2.0 + tie_cost, reciprocal_weight)
             )

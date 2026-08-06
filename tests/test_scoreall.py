@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import csv
 import gc
 import hashlib
@@ -31,6 +32,20 @@ def node_row(identity: str, node_id: int = 1, t: int = 0) -> dict[str, object]:
         "x": 0,
         "source_id": -1,
         "target_id": -1,
+    }
+
+
+def edge_row(identity: str, source_id: int, target_id: int) -> dict[str, object]:
+    return {
+        "dataset": identity,
+        "row_type": "edge",
+        "node_id": -1,
+        "t": -1,
+        "z": -1,
+        "y": -1,
+        "x": -1,
+        "source_id": source_id,
+        "target_id": target_id,
     }
 
 
@@ -230,6 +245,43 @@ class ScoreAllTests(unittest.TestCase):
             with self.assertRaisesRegex(scoreall.ScoreAllError, "recurs out of order"):
                 list(scoreall.iter_aggregate_graphs(path))
 
+    def test_final_input_gateways_reject_invalid_edge_contracts(self) -> None:
+        cases = (
+            (
+                "missing_endpoint",
+                [node_row("train:a"), edge_row("train:a", 1, 2)],
+                "missing edge endpoint",
+            ),
+            (
+                "duplicate_edge",
+                [
+                    node_row("train:a", 1, 0),
+                    node_row("train:a", 2, 1),
+                    edge_row("train:a", 1, 2),
+                    edge_row("train:a", 1, 2),
+                ],
+                "duplicate edge",
+            ),
+            (
+                "self_edge",
+                [node_row("train:a", 1, 0), edge_row("train:a", 1, 1)],
+                "non-forward edge",
+            ),
+        )
+        for gateway in ("aggregate", "fragment"):
+            for name, rows, message in cases:
+                with (
+                    self.subTest(gateway=gateway, malformed_graph=name),
+                    tempfile.TemporaryDirectory() as raw,
+                ):
+                    path = Path(raw) / "train__a.csv"
+                    write_csv(path, rows)
+                    with self.assertRaisesRegex(scoreall.ScoreAllError, message):
+                        if gateway == "aggregate":
+                            list(scoreall.iter_aggregate_graphs(path))
+                        else:
+                            scoreall._fragment_graph(path, "train:a")
+
     def test_aggregate_requires_exact_selected_coverage(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
             path = Path(raw) / "partial.csv"
@@ -251,6 +303,134 @@ class ScoreAllTests(unittest.TestCase):
         common = ["--zip", "x.zip", "--split", "s.json", "--output", "o.json"]
         with redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
             scoreall.parse_args(["--frags", "f", "--submission", "a.csv", *common])
+
+    def test_post_scoring_review_cli_defaults_and_overrides(self) -> None:
+        args = scoreall.parse_args(
+            ["--frags", "f", "--zip", "x.zip", "--split", "s.json", "--output", "o.json"]
+        )
+        self.assertTrue(args.visual_review)
+        self.assertEqual(args.event_kind, "submission_candidate")
+        self.assertEqual(args.review_clip_seconds, 15.0)
+        self.assertIsNone(args.review_fps)
+        self.assertTrue(args.review_hud)
+        self.assertEqual(args.review_hud_corner, "tr")
+        disabled = scoreall.parse_args(
+            [
+                "--frags", "f", "--zip", "x.zip", "--split", "s.json", "--output", "o.json",
+                "--no-visual-review", "--review-fps", "9.5", "--no-review-hud",
+            ]
+        )
+        self.assertFalse(disabled.visual_review)
+        self.assertEqual(disabled.review_fps, 9.5)
+        self.assertFalse(disabled.review_hud)
+
+    def test_default_hook_runs_after_score_file_exists_and_never_uses_all_scope(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw)
+            output = root / "score.json"
+            fragment = root / "train__a.csv"
+            fragment.write_text("fragment", encoding="utf-8")
+            output.write_text("{\"status\":\"completed\"}\n", encoding="utf-8")
+            args = argparse.Namespace(
+                zip=root / "raw.zip",
+                output=output,
+                frags=str(root),
+                submission=None,
+                review_bundle=root / "latest",
+                review_frame_flags=None,
+                event_kind="snapshot",
+                review_clip_seconds=15.0,
+                review_fps=None,
+                review_hud=True,
+                review_hud_corner="tr",
+                review_metrics="frame_index",
+                review_metric_corner=None,
+                review_workers=1,
+                review_ffmpeg="ffmpeg",
+            )
+            result = {"samples": [{"identity": "train:a", "source": {"mode": "fragment", "path": str(fragment)}}]}
+
+            def fake_build(review_args: argparse.Namespace) -> dict[str, object]:
+                self.assertTrue(output.exists())
+                self.assertEqual(json.loads(output.read_text(encoding="utf-8"))["status"], "completed")
+                self.assertEqual(review_args.scope, "default")
+                self.assertEqual(review_args.event_kind, "snapshot")
+                return {"status": "complete", "scope": review_args.scope}
+
+            with mock.patch("scripts.build_track_visualizer.build_review", side_effect=fake_build):
+                receipt = scoreall.run_visual_review_hook(args, result)
+            self.assertEqual(receipt, {"status": "complete", "scope": "default"})
+
+    def test_run_publishes_authoritative_score_before_invoking_hook(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw)
+            archive = root / "raw.zip"
+            split = root / "split.json"
+            submission = root / "submission.csv"
+            output = root / "score.json"
+            archive.write_bytes(b"zip")
+            split.write_text("{}", encoding="utf-8")
+            submission.write_text("csv", encoding="utf-8")
+            args = argparse.Namespace(
+                zip=archive,
+                split=split,
+                submission=submission,
+                frags=None,
+                output=output,
+                subset="all",
+                max_datasets=None,
+                visual_review=True,
+            )
+            selection = scoreall.Selection("all", ("train:a",), ("train:a",), None, ())
+            row = {"identity": "train:a", "edge_tp": 1.0, "edge_fp": 0.0, "edge_fn": 0.0}
+
+            def hook(_args: argparse.Namespace, result: dict[str, object]) -> dict[str, object]:
+                self.assertTrue(output.exists())
+                published = json.loads(output.read_text(encoding="utf-8"))
+                self.assertEqual(published["status"], "completed")
+                self.assertNotIn("visual_review", published)
+                self.assertEqual(published["samples"], [row])
+                self.assertEqual(result["samples"], [row])
+                return {"status": "complete", "scope": "default"}
+
+            store = mock.MagicMock()
+            with (
+                mock.patch.object(scoreall, "sha256_file", return_value="h" * 64),
+                mock.patch.object(scoreall, "verify_scorer_sources", return_value={}),
+                mock.patch.object(scoreall, "archive_train_video_ids", return_value=("train:a",)),
+                mock.patch.object(scoreall, "select_video_ids", return_value=selection),
+                mock.patch.object(scoreall, "ZipStore", return_value=store),
+                mock.patch.object(
+                    scoreall,
+                    "score_aggregate_input",
+                    return_value=([row], {"mode": "aggregate"}, {"missing_relevant_fragments": [], "extra_relevant_fragments": []}),
+                ),
+                mock.patch.object(scoreall, "official_summary", return_value={"score": 1.0}),
+                mock.patch.object(scoreall, "run_visual_review_hook", side_effect=hook),
+            ):
+                result = scoreall.run(args)
+            self.assertEqual(result["visual_review"]["scope"], "default")
+            store.close.assert_called_once()
+
+    def test_hook_failure_preserves_published_score_artifact(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw)
+            output = root / "score.json"
+            fragment = root / "train__a.csv"
+            fragment.write_text("fragment", encoding="utf-8")
+            original = b'{"status":"completed"}\n'
+            output.write_bytes(original)
+            args = argparse.Namespace(
+                zip=root / "raw.zip", output=output, frags=str(root), submission=None,
+                review_bundle=None, review_frame_flags=None,
+            )
+            result = {"samples": [{"identity": "train:a", "source": {"mode": "fragment", "path": str(fragment)}}]}
+            with (
+                mock.patch("scripts.build_track_visualizer.build_review", side_effect=RuntimeError("render failed")),
+                self.assertRaisesRegex(scoreall.ScoreAllError, "score artifact was written"),
+            ):
+                scoreall.run_visual_review_hook(args, result)
+            self.assertEqual(output.read_bytes(), original)
 
 
 if __name__ == "__main__":

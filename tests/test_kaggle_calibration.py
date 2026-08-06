@@ -18,6 +18,7 @@ from celltrack_alpha.kaggle_calibration import (  # noqa: E402
     read_submission,
     rescue_divisions,
     thin_edges,
+    validate_graphs,
     write_submission,
 )
 
@@ -39,6 +40,21 @@ class KaggleCalibrationTests(unittest.TestCase):
             loaded = read_submission(path)["sample"]
         self.assertEqual(loaded.nodes, graph.nodes)
         self.assertEqual(loaded.edges, graph.edges)
+
+    def test_higher_degree_parent_requires_explicit_parser_policy(self) -> None:
+        graph = SubmissionGraph(
+            "sample",
+            {
+                1: node(1, 0, 0, 0, 0),
+                2: node(2, 1, 0, 1, 0),
+                3: node(3, 1, 0, 2, 0),
+                4: node(4, 1, 0, 3, 0),
+            },
+            [SubmissionEdge(1, 2), SubmissionEdge(1, 3), SubmissionEdge(1, 4)],
+        )
+        with self.assertRaisesRegex(ValueError, "out-degree greater than 2"):
+            validate_graphs({"sample": graph})
+        validate_graphs({"sample": graph}, max_outdegree=None)
 
     def test_edge_thinning_is_deterministic(self) -> None:
         nodes = {index: node(index, index, 0, index, 0) for index in range(1, 102)}

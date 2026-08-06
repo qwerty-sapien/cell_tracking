@@ -1,0 +1,3 @@
+| Date | ID | Mechanism | Gate/result | Status | Note |
+|---|---|---|---|---|---|
+| 2026-08-01 | `GLOBAL-REASSIGN-ORACLE-V1` | full-36-video local-CPU GT-dependent global-reassign ceiling | T2∞ +0.09641286660426185 [GT-DEPENDENT]; T3 +0.10497364637634421 [GT-DEPENDENT]; T2∞−T0 +0.0778414699637755 [GT-DEPENDENT]; precedent-adjusted +0.01906337599412862 [GT-DEPENDENT] | `ESCALATE_COMPILER_INEXPRESSIBLE`; Section 4 `CONTINUE_PROPOSAL_ONLY` | Frozen batch compiler rejects same-action retained-anchor swaps; no repair/rerun. Histogram {1:453,2:6} [GT-DEPENDENT] corrects the banked chain-depth diagnosis. Written proposal only; no tier/DEAD/plan/external action. |

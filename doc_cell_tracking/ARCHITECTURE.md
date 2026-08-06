@@ -2,14 +2,14 @@
 
 ## Audited repository structure
 
-The repository has three active paths plus historical duplicate-route evidence:
+The repository has two active paths plus historical prototype evidence:
 
 1. `src/celltrack_baseline/rule_based.py` is the dependency-light DoG plus adjacent Hungarian baseline used by local and Kaggle scripts.
 2. `src/celltrack_alpha/` profiles a video, routes it, fuses point proposals, selects edges/divisions, and evaluates sparse graphs.
-3. `src/celltrack_ultrack/` creates foreground/contour clips and lazily invokes the optional Ultrack backend.
+3. The former `src/celltrack_ultrack/` prototype is archived intact under `_ARCHIVE/unused_ultrack/`; it is not an active fallback.
 4. Historical duplicate-route reports document a removed GEFF-copy shortcut that matched ZIP member names, uncompressed sizes, and CRC32. This remains leakage evidence only; the executable duplicate-copy source and script are no longer active.
 
-No packaging manifest or original automated test suite was present. The local `.venv` uses Python 3.14; Ultrack is not installed, and the existing runbook records that published Ultrack releases used by this project require an older supported Python. The repository contains an 81 GB ZIP and extensive derived reports; these remain untouched.
+`pyproject.toml` now declares the active pytest roots; dependency locking and installable-package metadata remain unresolved debt rather than an invented partial contract. The local `.venv` uses Python 3.14; the unused Ultrack implementation and its unsupported-runtime notes remain archived. The repository contains a large raw-data ZIP and extensive derived reports; these remain untouched.
 
 ## Coordinate contract
 

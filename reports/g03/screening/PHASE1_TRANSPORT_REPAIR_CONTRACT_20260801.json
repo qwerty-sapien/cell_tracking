@@ -1,0 +1,71 @@
+{
+  "schema": "celltrack-alpha.g03-phase1-transport-repair-contract.v2",
+  "status": "LOCKED_PRE_GPU_TRANSPORT_REPAIR",
+  "amends": {
+    "terminal_attempt": "onebitbrain/g03-phase1-resume-a-v1",
+    "reason": "ModuleNotFoundError: g03_resume_torch before Torch/CUDA/dataset/training",
+    "owner_authorized_attempts": [
+      "onebitbrain/g03-phase1-resume-a-v2",
+      "onebitbrain/g03-phase1-resume-b-v2 (contingent on A v2 handoff pass)"
+    ]
+  },
+  "preregistration": {
+    "path": "reports/g03/screening/PHASE1_TRANSPORT_REPAIR_PREREGISTRATION_20260801.md",
+    "sha256": "66e4dde2824f455a08036f611d5fe4009d65d260b8038be25846aa68cbd42266"
+  },
+  "source_hashes": {
+    "scripts/build_g03_phase1_resume_proof.py": "ad965a56794f38922ec6dfb96d6e71c8d3f87f84df2b2bad06743918a0471e8b",
+    "scripts/g03_checkpoint_resume.py": "cb0d1de34b5db9a50fea57f5406c68e6baaa0e559fa8266e016c9cccaa333d61",
+    "scripts/g03_resume_torch.py": "0d6de8494511985e49fd20c60cf7764f57e1af73adb75526d88c9089c0e8343e"
+  },
+  "runtime_source_bundle_sha256": "a907453e4c5cf16e53afcee3c2ab2445038b48886ce36e42b5e2fdaee3ccc84b",
+  "kernels": {
+    "a": {
+      "id": "onebitbrain/g03-phase1-resume-a-v2",
+      "code_file": "script.py",
+      "code_file_sha256": "088a5075961583b31674c94af845da28324a4c398ba49cbd4c497ff5a31e8a20",
+      "metadata_sha256": "a97fcb073ea322c96b35337bcb87df8cc837825702e4da59063d0b7802b7c4e9",
+      "embedded_contract_sha256": "079301bdac0184cbbf7dbe427fa6b6b81dce4d87553ba6304f29dd2369849e5a",
+      "dataset_sources": []
+    },
+    "b": {
+      "id": "onebitbrain/g03-phase1-resume-b-v2",
+      "code_file": "script.py",
+      "code_file_sha256": "9bf7e81255ef7d4a2aef48d4644f3e252101b67745eb3e37f83c521d4446f6f2",
+      "metadata_sha256": "9f83bdfa1fc5a7c42daa4efa604f7404b002907cb083691b3c345908b203bed5",
+      "embedded_contract_sha256": "201f1bdfd1d151ef970557a8e1437c7dbf642c5d16f5695adb28eadd82a3f2a4",
+      "dataset_sources": [
+        "onebitbrain/g03-phase1-handoff-v2",
+        "onebitbrain/trackastra-h1-fit105-cache-v1"
+      ]
+    }
+  },
+  "handoff": {
+    "id": "g03-phase1-a-to-b-v2",
+    "dataset_id": "onebitbrain/g03-phase1-handoff-v2",
+    "publication": "atomic MANIFEST + INVENTORY + READY with full SHA-256 tree verification"
+  },
+  "held_fit_emission": {
+    "source_dataset": "onebitbrain/trackastra-h1-fit105-cache-v1",
+    "manifest_sha256": "ff7b205f58ad70c69954fed1c3e60a100d246c1e374a849c6ea7183934e98f28",
+    "family": "44b6",
+    "identity_count": 36,
+    "expected_structural_delta": {
+      "adjusted_edge_jaccard": 0.0,
+      "raw_edge_jaccard": 0.0,
+      "node_recall": 0.0
+    },
+    "official_frozen_graph_objective_evaluated": false,
+    "selection_authorized": false
+  },
+  "limits": {
+    "phase1_total_t4_hours_max": 20.0,
+    "amended_attempt_t4_hours_max": 4.0,
+    "a_minimum_training_seconds": 3600.0,
+    "checkpoint_interval_seconds": 600.0,
+    "session_cap_hours": 12.0,
+    "sustained_swapout_limit_bytes": 268435456,
+    "sustain_seconds": 15.0,
+    "retry_permitted_after_v2": false
+  }
+}

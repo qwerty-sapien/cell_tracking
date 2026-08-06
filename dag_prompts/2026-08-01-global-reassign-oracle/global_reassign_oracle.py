@@ -10,7 +10,8 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter, defaultdict, deque
-from collections.abc import Iterable, Mapping, Sequence
+from collections.abc import Iterable, Iterator, Mapping, Sequence
+from contextlib import contextmanager
 from dataclasses import dataclass
 import hashlib
 import json
@@ -20,11 +21,13 @@ from pathlib import Path
 import subprocess
 import sys
 import time
+import traceback
 from typing import Any
 
 import numpy as np
 from scipy.spatial import cKDTree
 import zarr
+from zarr.core.sync import sync
 from zarr.storage import ZipStore
 
 
@@ -46,6 +49,7 @@ for location in (
 import scoreall  # noqa: E402
 import selector_requirement as selector_base  # noqa: E402
 import selector_requirement_class as selector_class  # noqa: E402
+from celltrack_alpha import bh_model  # noqa: E402
 from celltrack_alpha.action_compiler import (  # noqa: E402
     ActionCompileError,
     ActionKind,
@@ -57,6 +61,7 @@ from celltrack_alpha.action_compiler import (  # noqa: E402
 from celltrack_alpha.kaggle_calibration import (  # noqa: E402
     SubmissionEdge,
     SubmissionGraph,
+    SubmissionNode,
     read_submission,
     validate_graphs,
 )
@@ -79,6 +84,7 @@ GUARD_RECEIPT = RUNS / "N0_RUN_GUARD.json"
 
 APNCC_REPORT = ROOT / "reports/g02/screening/ga_h1_zero_wrfeat_graph/44b6/report.json"
 REACHABILITY = ROOT / "reports/g02/extended_radius_reachability_v1.json"
+CANDIDATE_CACHE = ROOT / "reports/g02/fitcache_117/bh9out/cache"
 P0_REPORT = ROOT / "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json"
 RAW_ARCHIVE = ROOT / "data/kaggle/raw/biohub-cell-tracking-during-development.zip"
 ACTION_POPULATION = (
@@ -180,6 +186,88 @@ def atomic_text(path: Path, text: str) -> None:
 
 def atomic_json(path: Path, value: Mapping[str, Any]) -> None:
     atomic_text(path, json.dumps(value, indent=2, allow_nan=False) + "\n")
+
+
+@contextmanager
+def opened_zip_store(path: Path) -> Iterator[ZipStore]:
+    """Open a zarr v3 ZipStore eagerly before entering a sync context."""
+
+    store = sync(ZipStore.open(path, mode="r"))
+    try:
+        yield store
+    finally:
+        store.close()
+
+
+def serializable_metric_row(row: Mapping[str, Any]) -> dict[str, Any]:
+    """Encode the scorer's division-free per-video diagnostic as strict JSON.
+
+    The frozen scorer defines per-video ``division_jaccard`` as NaN when its
+    TP+FP+FN denominator is zero.  Its run-level summary never consumes that
+    ratio: it sums the three division counts and computes the micro-Jaccard.
+    Preserve those sufficient statistics and use the native-wave JSON ``null``
+    precedent for this diagnostic alone.  Any other non-finite value remains a
+    closed harness failure.
+    """
+
+    result = dict(row)
+    nonfinite = {
+        str(key)
+        for key, value in result.items()
+        if isinstance(value, (int, float))
+        and not isinstance(value, bool)
+        and not math.isfinite(float(value))
+    }
+    division_denom = sum(
+        float(result[key])
+        for key in ("division_tp", "division_fp", "division_fn")
+    )
+    if nonfinite:
+        if nonfinite != {"division_jaccard"} or division_denom != 0.0:
+            raise OracleError(
+                "metric row contains a non-finite scientific quantity: "
+                + ", ".join(sorted(nonfinite))
+            )
+        result["division_jaccard"] = None
+    return result
+
+
+def aggregate_fragment_metric_counts(
+    fragments: Sequence[Mapping[str, Any]],
+) -> dict[str, dict[str, int]]:
+    """Sum per-video sufficient statistics for non-scoring diagnostics.
+
+    The frozen ``official_summary`` consumes these count fields but deliberately
+    does not return aggregate edge TP/FP/FN. Read the unchanged fragment rows
+    instead of treating the summary as if it had the per-sample schema.
+    """
+
+    fields = (
+        "edge_tp",
+        "edge_fp",
+        "edge_fn",
+        "division_tp",
+        "division_fp",
+        "division_fn",
+        "num_pred_nodes",
+    )
+    totals: dict[str, dict[str, int]] = {
+        side: {field: 0 for field in fields}
+        for side in ("baseline_metric", "candidate_metric")
+    }
+    for fragment in fragments:
+        for side in totals:
+            row = fragment.get(side)
+            if not isinstance(row, Mapping):
+                raise OracleError(f"control fragment lacks {side}")
+            for field in fields:
+                value = float(row[field])
+                if not math.isfinite(value) or value < 0.0 or not value.is_integer():
+                    raise OracleError(
+                        f"control fragment has invalid {side}.{field}: {value}"
+                    )
+                totals[side][field] += int(value)
+    return totals
 
 
 def canonical_hash(value: Any) -> str:
@@ -301,29 +389,60 @@ def graph_with_edges(graph: SubmissionGraph, edges: Iterable[Edge]) -> Submissio
     return result
 
 
-def candidate_tensor(graph: SubmissionGraph, scale: tuple[float, float, float]) -> set[Edge]:
-    frames: dict[int, list[Any]] = defaultdict(list)
-    for node in graph.nodes.values():
-        frames[int(node.t)].append(node)
+def candidate_cache(identity: str) -> bh_model.SparseInferenceCache:
+    slug = identity.replace(":", "__", 1)
+    cache_path = CANDIDATE_CACHE / f"{slug}.bhc"
+    metadata = load_json(CANDIDATE_CACHE / f"{slug}.json")
+    model = metadata.get("contract", {}).get("model")
+    if not isinstance(model, Mapping):
+        raise OracleError(f"candidate cache metadata lacks model identity: {identity}")
+    try:
+        expected = bh_model.CacheIdentity(**dict(model))
+        return bh_model.load_sparse_cache(cache_path, expected_identity=expected)
+    except (TypeError, ValueError, bh_model.BHModelError) as exc:
+        raise OracleError(f"candidate cache authentication failed: {identity}: {exc}") from exc
+
+
+def cache_node_graph(
+    dataset: str, cache: bh_model.SparseInferenceCache
+) -> SubmissionGraph:
+    nodes: dict[int, SubmissionNode] = {}
+    for frame in cache.detections:
+        for node in frame.nodes:
+            if int(node.node_id) in nodes:
+                raise OracleError(f"candidate cache repeats node ID {node.node_id}")
+            nodes[int(node.node_id)] = SubmissionNode(
+                int(node.node_id), int(node.t), int(node.z), int(node.y), int(node.x)
+            )
+    return SubmissionGraph(dataset, nodes, [])
+
+
+def candidate_tensor(cache: bh_model.SparseInferenceCache) -> set[Edge]:
+    """Enumerate the frozen fitcache r10/k8 tensor exactly.
+
+    This mirrors ``bh_edge.gate_sparse_candidates`` and the banked
+    ``audit_extended_radius_reachability._candidate_pool_counts`` source object:
+    adjacent ``SparseInferenceCache.detections``, physical radius 10.0, then
+    deterministic distance / target-ID / target-input-index cap-8 ranking.
+    """
+
     result: set[Edge] = set()
-    scale_array = np.asarray(scale, dtype=np.float64)
-    for frame_index, sources in frames.items():
-        targets = frames.get(frame_index + 1)
-        if not targets:
+    retained_count = 0
+    scale_array = np.asarray((1.625, 0.40625, 0.40625), dtype=np.float64)
+    for source, target in zip(
+        cache.detections[:-1], cache.detections[1:], strict=True
+    ):
+        if int(target.frame_index) != int(source.frame_index) + 1:
+            raise OracleError("candidate cache frames are not adjacent")
+        if not len(source.node_ids) or not len(target.node_ids):
             continue
-        sources = sorted(sources, key=lambda node: int(node.node_id))
-        targets = sorted(targets, key=lambda node: int(node.node_id))
-        target_ids = np.asarray([int(node.node_id) for node in targets], dtype=np.int64)
-        target_points = np.asarray(
-            [[int(node.z), int(node.y), int(node.x)] for node in targets],
-            dtype=np.float64,
-        ) * scale_array
+        source_ids = np.asarray(source.node_ids, dtype=np.int64)
+        source_points = np.asarray(source.coords_zyx, dtype=np.float64) * scale_array
+        target_ids = np.asarray(target.node_ids, dtype=np.int64)
+        target_points = np.asarray(target.coords_zyx, dtype=np.float64) * scale_array
         tree = cKDTree(target_points)
-        for source in sources:
-            source_point = np.asarray(
-                [int(source.z), int(source.y), int(source.x)], dtype=np.float64
-            ) * scale_array
-            indices = tree.query_ball_point(source_point, RADIUS_UM + 1.0e-9)
+        for source_id, source_point in zip(source_ids, source_points, strict=True):
+            indices = tree.query_ball_point(source_point, RADIUS_UM)
             indices = sorted(
                 indices,
                 key=lambda index: (
@@ -332,7 +451,10 @@ def candidate_tensor(graph: SubmissionGraph, scale: tuple[float, float, float]) 
                     int(index),
                 ),
             )[:NEIGHBOR_CAP]
-            result.update((int(source.node_id), int(target_ids[index])) for index in indices)
+            retained_count += len(indices)
+            result.update((int(source_id), int(target_ids[index])) for index in indices)
+    if len(result) != retained_count:
+        raise OracleError("frozen candidate tensor contains duplicate directed pairs")
     return result
 
 
@@ -523,6 +645,15 @@ def stage_fragment_path(stage: str, identity: str) -> Path:
 
 def reachability_records() -> dict[str, dict[str, Any]]:
     report = load_json(REACHABILITY)
+    provenance = report.get("provenance", {})
+    contract = report.get("baseline_candidate_contract", {})
+    if (
+        Path(str(provenance.get("cache", ""))).resolve() != CANDIDATE_CACHE.resolve()
+        or float(contract.get("radius_um", -1.0)) != RADIUS_UM
+        or int(contract.get("neighbor_cap", -1)) != NEIGHBOR_CAP
+        or contract.get("ordering") != "distance, target node ID, target input index"
+    ):
+        raise OracleError("banked candidate-cache provenance or r10/k8 contract drifted")
     rows = report.get("videos")
     if not isinstance(rows, list):
         raise OracleError("reachability video table missing")
@@ -549,7 +680,7 @@ def run_t3() -> dict[str, Any]:
     baseline_rows: list[dict[str, Any]] = []
     t3_rows: list[dict[str, Any]] = []
     counts = Counter()
-    with ZipStore(RAW_ARCHIVE, mode="r") as store:
+    with opened_zip_store(RAW_ARCHIVE) as store:
         for ordinal, identity in enumerate(identities, start=1):
             path = stage_fragment_path("t3", identity)
             resumed = validate_resume_fragment(path, "T3", identity)
@@ -560,22 +691,38 @@ def run_t3() -> dict[str, Any]:
                 continue
             dataset = identity.split(":", 1)[1]
             graph = read_submission(Path(records[identity]["resolved_path"]))[dataset]
+            cache = candidate_cache(identity)
             gt_arrays = read_geff_arrays(store, "train", dataset)
             group = zarr.open_group(store=store, path=f"train/{dataset}.zarr", mode="r")
             scale = tuple(float(value) for value in parse_scale(dict(group.attrs)))
             baseline_metric = metric(graph, gt_arrays, scale)
-            pairs = candidate_tensor(graph, scale)
-            pred_to_gt, truth, gt_out, gt_in = edge_truth(graph, gt_arrays, scale)
-            correct = correct_edges(pairs, pred_to_gt, truth)
+            pairs = candidate_tensor(cache)
+            cache_graph = cache_node_graph(dataset, cache)
+            cache_pred_to_gt, truth, gt_out, gt_in = edge_truth(
+                cache_graph, gt_arrays, scale
+            )
+            cache_correct = correct_edges(pairs, cache_pred_to_gt, truth)
+            graph_pred_to_gt, graph_truth, _graph_out, _graph_in = edge_truth(
+                graph, gt_arrays, scale
+            )
+            if graph_truth != truth:
+                raise OracleError(f"{identity}: GT topology changed between matchings")
+            # The frozen tensor is enumerated on the authenticated fitcache, while
+            # graph-valid interventions retain only endpoints and GT mappings on
+            # the scored APNCC node set.  This is the established action-oracle
+            # boundary in analyze_action_class_oracle.build_action_graphs.
+            correct = correct_edges(pairs, graph_pred_to_gt, truth)
             baseline_edges = {(int(edge.source_id), int(edge.target_id)) for edge in graph.edges}
             baseline_true = {
-                edge for edge in baseline_edges if edge_is_true(edge, pred_to_gt, truth)
+                edge
+                for edge in baseline_edges
+                if edge_is_true(edge, graph_pred_to_gt, truth)
             }
             clean = {
                 edge
-                for edge in correct
-                if len(gt_out[int(pred_to_gt[edge[0]])]) == 1
-                and len(gt_in[int(pred_to_gt[edge[1]])]) == 1
+                for edge in cache_correct
+                if len(gt_out[int(cache_pred_to_gt[edge[0]])]) == 1
+                and len(gt_in[int(cache_pred_to_gt[edge[1]])]) == 1
             }
             expected_row = reach.get(identity, {}).get("metrics", {})
             if (
@@ -590,6 +737,7 @@ def run_t3() -> dict[str, Any]:
             candidate_metric = metric(candidate_graph, gt_arrays, scale)
             local_counts = {
                 "candidate_pairs": len(pairs),
+                "cache_correct_candidate_edges": len(cache_correct),
                 "correct_candidate_edges": len(correct),
                 "clean_correct_candidate_edges": len(clean),
                 "correct_edges_installed": len(correct - baseline_edges),
@@ -607,8 +755,8 @@ def run_t3() -> dict[str, Any]:
                 "baseline_fragment_sha256": records[identity]["sha256"],
                 "baseline_graph_sha256": graph_sha256(graph),
                 "candidate_graph_sha256": graph_sha256(candidate_graph),
-                "baseline_metric": baseline_metric,
-                "candidate_metric": candidate_metric,
+                "baseline_metric": serializable_metric_row(baseline_metric),
+                "candidate_metric": serializable_metric_row(candidate_metric),
                 "correct_candidate_edges": [list(edge) for edge in sorted(correct)],
                 "baseline_true_edges": [list(edge) for edge in sorted(baseline_true)],
                 "counts": local_counts,
@@ -662,7 +810,7 @@ def score_control_graphs(
     rows: list[dict[str, Any]] = []
     baseline_rows: list[dict[str, Any]] = []
     fragments: list[dict[str, Any]] = []
-    with ZipStore(RAW_ARCHIVE, mode="r") as store:
+    with opened_zip_store(RAW_ARCHIVE) as store:
         for video_index, identity in enumerate(population.identities):
             graph = population.graphs[video_index]
             indices = by_video.get(video_index, [])
@@ -729,8 +877,8 @@ def score_control_graphs(
                 "candidate_graph_sha256": graph_sha256(candidate),
                 "selected_actions": len(indices),
                 "selection_sha256": selection_sha256,
-                "baseline_metric": baseline_metric,
-                "candidate_metric": candidate_metric,
+                "baseline_metric": serializable_metric_row(baseline_metric),
+                "candidate_metric": serializable_metric_row(candidate_metric),
             }
             atomic_json(fragment_path, fragment)
             fragments.append(fragment)
@@ -760,6 +908,15 @@ def run_control(stage: str) -> dict[str, Any]:
     if not math.isclose(delta["adjusted"], analytic_adjusted, abs_tol=1e-12):
         raise OracleError(f"{stage} analytic and official replay disagree")
     error = abs(delta["adjusted"] - expected)
+    metric_counts = aggregate_fragment_metric_counts(fragments)
+    baseline_counts = metric_counts["baseline_metric"]
+    candidate_counts = metric_counts["candidate_metric"]
+    for field in ("division_tp", "division_fp", "division_fn"):
+        if (
+            float(baseline_counts[field]) != float(official_baseline[field])
+            or float(candidate_counts[field]) != float(official_candidate[field])
+        ):
+            raise OracleError(f"{stage} fragment count aggregation drifted: {field}")
     result = {
         "stage": stage,
         "action_class": action_class,
@@ -770,10 +927,10 @@ def run_control(stage: str) -> dict[str, Any]:
         "candidate": official_candidate,
         "delta": delta,
         "counts": {
-            "correct_edges_installed": int(official_candidate["edge_tp"])
-            - int(official_baseline["edge_tp"]),
-            "fps_removed": int(official_baseline["edge_fp"])
-            - int(official_candidate["edge_fp"]),
+            "correct_edges_installed": candidate_counts["edge_tp"]
+            - baseline_counts["edge_tp"],
+            "fps_removed": baseline_counts["edge_fp"]
+            - candidate_counts["edge_fp"],
             "compiled_chains": len(selected),
         },
         "expected_adjusted_delta": expected,
@@ -807,7 +964,7 @@ def run_t2(run_started: float) -> dict[str, Any]:
         for identity in identities
     )
     t2_started = time.perf_counter()
-    with ZipStore(RAW_ARCHIVE, mode="r") as store:
+    with opened_zip_store(RAW_ARCHIVE) as store:
         for ordinal, identity in enumerate(identities, start=1):
             output_path = stage_fragment_path("t2", identity)
             resumed = validate_resume_fragment(output_path, "T2", identity)
@@ -829,7 +986,7 @@ def run_t2(run_started: float) -> dict[str, Any]:
                     tiers[name] = {
                         "limit": limit,
                         "candidate_graph_sha256": graph_sha256(candidate),
-                        "candidate_metric": candidate_metric,
+                        "candidate_metric": serializable_metric_row(candidate_metric),
                         "correct_edges_installed": sum(chain.length for chain in selected),
                         "fps_removed": int(baseline_metric["edge_fp"]) - int(candidate_metric["edge_fp"]),
                         "chains": len(selected),
@@ -844,7 +1001,7 @@ def run_t2(run_started: float) -> dict[str, Any]:
                     "preregistration_sha256": sha256(PREREG),
                     "baseline_fragment_sha256": records[identity]["sha256"],
                     "baseline_graph_sha256": graph_sha256(graph),
-                    "baseline_metric": baseline_metric,
+                    "baseline_metric": serializable_metric_row(baseline_metric),
                     "available_chain_histogram": {
                         str(key): value for key, value in sorted(Counter(chain.length for chain in chains).items())
                     },
@@ -1183,6 +1340,15 @@ def run_node() -> int:
     return 0
 
 
+def fail_closed(exc: Exception) -> int:
+    traceback.print_exception(type(exc), exc, exc.__traceback__, file=sys.stderr)
+    print(
+        f"GLOBAL-REASSIGN-ORACLE failed closed: {type(exc).__name__}: {exc}",
+        file=sys.stderr,
+    )
+    return 2
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--finalize-guard", action="store_true")
@@ -1190,8 +1356,7 @@ def main() -> int:
     try:
         return finalize_guard() if args.finalize_guard else run_node()
     except Exception as exc:
-        print(f"GLOBAL-REASSIGN-ORACLE failed closed: {type(exc).__name__}: {exc}", file=sys.stderr)
-        return 2
+        return fail_closed(exc)
 
 
 if __name__ == "__main__":

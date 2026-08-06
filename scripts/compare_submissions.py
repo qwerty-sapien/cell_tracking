@@ -892,7 +892,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--scorer-parity",
         type=Path,
-        default=ROOT / "reports/g02/scorer_parity_v1.json",
+        default=ROOT / "reports/g02/scorer_parity_v2.json",
     )
     parser.add_argument("--expect-a-score", type=float)
     parser.add_argument("--expect-b-score", type=float)

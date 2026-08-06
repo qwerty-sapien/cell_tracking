@@ -1139,10 +1139,33 @@
       "priority": 1,
       "resume_condition": "The separately frozen target-blind NODETOPO-RECALL61-TARGETBLIND-GEN-V1 population must first contain >0 beneficial actions and have a positive oracle ceiling; only then may a selector preregistration return for human review.",
       "tier": "PARK_A"
+    },
+    {
+      "banked": true,
+      "blocked_on": [],
+      "branch": "raw3d_information",
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/raw3d_nolink_mve_v1/STAGE0_RESULT.json",
+      "evidence_basis": "The owner-authorized zero-weight raw-3D Stage-0 falsifier completed the exact frozen 1,345,497-action DELETE population on CPU. A1 mean/fold-floor AUC 0.677967209/0.599374874 failed the frozen 0.680411743 conjunctive advance line; full-pop retention was 5/1,118=0.004472272 versus the measured 0.020394 requirement.",
+      "evidence_sha256": "e651688be773a91cb7ac838a64e349951d38b450dfb607a8c0e36e25616a238a",
+      "graph_result": null,
+      "id": "RAW3D-NOLINK-MVE",
+      "kill_line": "Stage 1 opens only if crude raw-3D A1 mean and fold-floor AUC are each at least DINOv2-XY 0.670411743 plus 0.010; both clauses must pass.",
+      "last_change_utc": "2026-07-31T07:25:42.565178Z",
+      "oracle_headroom": {
+        "control": "DINOv2-XY frozen separation falsifier",
+        "measured_delete_auc_requirement": 0.85,
+        "measured_delete_retention_requirement": 0.02039355992844365,
+        "raw3d_a1_mean_auc": 0.6779672087158933,
+        "raw3d_a1_fold_floor_auc": 0.5993748742136891
+      },
+      "owner_agent": "ROOT-COORDINATOR",
+      "priority": 4,
+      "resume_condition": "Do not rerun this crude raw-3D realization or open asset acquisition. Reopen only under new human authority for a new action-labeling formulation or independent exact-task AUC >=0.85 evidence.",
+      "tier": "PARK_C"
     }
   ],
   "objective": "S(G)=weighted_adjusted_edge_Jaccard + 0.1*division_Jaccard",
-  "phase": "WAVE3_CPU_BARRIER_COMPLETE",
+  "phase": "CAMPAIGN_CONSOLIDATED_AFTER_RAW3D_STAGE0",
   "phase1_worktrees_manifest": {
     "path": "reports/g02/screening/tiered_surface/phase1_worktrees_manifest.json",
     "sha256": "f88524685301da8a365f09b04efced23f83485e621e49459f62905b06fad7a63"
@@ -1152,8 +1175,8 @@
     "DEAD": 1,
     "PARK_A": 14,
     "PARK_B": 18,
-    "PARK_C": 12
+    "PARK_C": 13
   },
   "schema_version": 1,
-  "updated_utc": "2026-07-31T03:56:43Z"
+  "updated_utc": "2026-07-31T07:25:42.565178Z"
 }

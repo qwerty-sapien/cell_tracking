@@ -61,13 +61,24 @@ results-*.zip
 !/reports/g02/screening/LIVE_STATE.md
 !/reports/g02/screening/LEDGER.md
 !/reports/g02/screening/p0_parity.md
+!/reports/g02/scorer_parity_v2.json
 !/reports/g02/screening/campaign_narrowing_and_hypothesis_dag_v1.md
 !/reports/g02/screening/**/FINAL_REPORT.md
 !/reports/g02/screening/**/FINAL_REPORT.json
 !/reports/g02/screening/**/TERMINAL_REPORT.md
 !/reports/g02/screening/**/TERMINAL_REPORT.json
 !/reports/g02/screening/**/BARRIER.json
+!/reports/**/PARK_COST_DECISION.md
 !/reports/g02/screening/MARGINAL_VALUE_GATE.md
+!/reports/g03/screening/LIVE_STATE.md
+!/reports/g03/screening/LEDGER.md
+!/reports/g03/screening/ARCHITECTURE_DOSSIER_*.md
+!/reports/g03/screening/PHASE1_*.md
+!/reports/g03/screening/PHASE1_*.json
 # Kaggle launch-reliability guard: standing infra, not a per-run working file.
 !/reports/g02/screening/tiered_surface/kaggle_prelaunch/**
 /reports/g02/screening/tiered_surface/kaggle_prelaunch/**/__pycache__/
+/reports/g02/screening/tiered_surface/kaggle_prelaunch/.cmux_serial.lock
+!/reports/code_quality/
+!/reports/code_quality/REPO_DEBUG_AUDIT_*.md
+!/reports/code_quality/TEST_SUITE_TRIAGE_*.md

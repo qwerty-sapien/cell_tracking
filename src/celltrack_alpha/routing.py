@@ -15,6 +15,25 @@ from celltrack_baseline.rule_based import BaselineConfig, dog_response, normaliz
 from .types import RouteConfig, RouteDecision, ScenarioProfile
 
 
+_AUTO_ROUTE_LABELS = frozenset(
+    {
+        "balanced_axial_compact",
+        "balanced_compact",
+        "balanced_dog_tight",
+        "balanced_local",
+        "balanced_midpoint",
+        "clean_compact",
+        "clean_point",
+        "dense_fusion",
+        "division_likely",
+        "high_motion_gap",
+        "hybrid_rescue_compact",
+        "low_signal",
+        "template_point_compact",
+    }
+)
+
+
 def default_route_configs() -> dict[str, RouteConfig]:
     """Return deterministic route configs for the first alpha."""
 
@@ -502,7 +521,12 @@ def route_for_profile(
 ) -> RouteDecision:
     """Choose a route. The heuristic labels become training targets later."""
 
-    configs = configs or default_route_configs()
+    configs = default_route_configs() if configs is None else configs
+    label_drift = sorted(
+        key for key, config in configs.items() if key != config.label
+    )
+    if label_drift:
+        raise ValueError(f"route config keys do not match config labels: {label_drift}")
     if forced_label and forced_label != "auto":
         if forced_label not in configs:
             raise ValueError(f"Unknown forced route {forced_label!r}; expected one of {sorted(configs)}")
@@ -512,6 +536,13 @@ def route_for_profile(
             reason="forced by CLI",
             alternatives=tuple(k for k in configs if k != forced_label),
             config=configs[forced_label],
+        )
+
+    missing = sorted(_AUTO_ROUTE_LABELS - configs.keys())
+    if missing:
+        raise ValueError(
+            "automatic routing requires a complete config map; "
+            f"missing {missing}. Use forced_label for a partial map."
         )
 
     scores = {label: 0.0 for label in configs}

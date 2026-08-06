@@ -305,7 +305,9 @@ class G02IntegrityTests(unittest.TestCase):
         cases = {
             "self": (DIVISION_EDGES, (1, 0, 0)),
             "missing_fork": ([(1, 2), (2, 3), (3, 5), (4, 6)], (0, 1, 0)),
-            "extra_fork": ([*DIVISION_EDGES, (1, 3)], (1, 0, 1)),
+            # The extra 1->3 edge makes node 3 a shared child. The organizer
+            # rejects both resulting malformed forks: one FN and two FP.
+            "extra_fork": ([*DIVISION_EDGES, (1, 3)], (0, 1, 2)),
         }
         for name, (edges, expected) in cases.items():
             with self.subTest(name=name):

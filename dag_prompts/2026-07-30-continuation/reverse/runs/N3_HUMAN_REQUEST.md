@@ -1,21 +1,23 @@
 # Reverse N3 — owner decision request
 
 **Date:** 2026-07-30
-**Verdict:** **HUMAN-DECISION** — no action may follow without explicit owner
-approval. This is a request only; no external computation or state change occurred.
+**Verdict:** **TERMINAL BEFORE COMPUTE** — the owner approved the named bounded
+pilot, but source/rights preflight showed no released deterministic checkpoint
+or self-contained <=2-GPU-hour inference witness. See
+[`N3_SOURCE_AUDIT_TERMINAL.md`](N3_SOURCE_AUDIT_TERMINAL.md). No Kaggle asset,
+kernel, data download, GPU use, campaign data access, or campaign outcome
+occurred.
 
-## Decision requested
+## Recorded decision and result
 
-Choose one:
-
-1. **APPROVE** one bounded, source-only Kaggle T4 compatibility pilot for the named
-   **MCC contour-return witness**, exactly as specified in
-   `N2_KAGGLE_PROTOCOL_DRAFT.md`; or
-2. **REJECT/PARK** the mechanism. No work will be undertaken.
-
-Approval is limited to a source-authentication and reproducibility receipt. It does
-not approve a campaign data read, a feature cache, a graph/scorer run, a second
-family, CV57, a tier change, a submission, a GPU retry, or any downstream request.
+The owner approved the one bounded source-only Kaggle T4 compatibility pilot.
+The required source/rights audit then stopped it before compute: the pinned
+repository has no released deterministic checkpoint and requires ordered
+contour-label preprocessing plus training. It cannot satisfy the declared
+<=2-GPU-hour witness without replacing the mechanism or changing the budget.
+Approval never extended to a campaign data read, a feature cache, a graph/scorer
+run, a second family, CV57, a tier change, a submission, a GPU retry, or any
+downstream request.
 
 ## New source, rights, and evidence independence
 

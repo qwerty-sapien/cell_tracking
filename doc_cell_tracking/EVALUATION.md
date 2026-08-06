@@ -1,4 +1,9 @@
-# Evaluation Record
+# Historical evaluation record (superseded)
+
+This document is the 2026-07-11 audit snapshot. Current test counts, package
+inventory, and supported entrypoints are recorded in
+`reports/code_quality/REPO_DEBUG_AUDIT_20260803.md`; statements below about an
+active Ultrack integration or absent pytest/package configuration are historical.
 
 ## Audit baseline
 
@@ -91,17 +96,17 @@ The repository metric defines `r = (N_pred - N_estimated) / N_estimated` and `J_
 
 Historical duplicate-data evidence remains in `reports/duplicate_geff_submission_report.json` and `data/kaggle/predictions/duplicate_geff_submission.csv`. G-01 removed the executable GEFF-copy route from the active code path because that score came from train/test data identity, not from a general tracker. The upstream duplicate gate matched member names, uncompressed sizes, and CRC32; CRC32 is not collision-resistant proof of source byte identity.
 
-## Backend status
+## Backend status at the 2026-07-11 snapshot
 
-`celltrack_baseline`, `celltrack_alpha`, and the Ultrack integration module import successfully in the current environment. Full Ultrack solving was not run because the optional package is absent and the project's documented release is incompatible with Python 3.14. The controlled-error tests cover both missing-package and import-time type-crash paths; they do not substitute for a real Ultrack run on a supported Python version.
+At that time, `celltrack_baseline`, `celltrack_alpha`, and the Ultrack integration module imported successfully in the inspected environment. The integration has since been archived and is not a supported entrypoint.
 
 ## Security and privacy audit boundary
 
 The application is a local Python CLI/scientific stack, not a web server, so no framework-specific web-security guidance applies. The filename-only inventory found `.env` and `gurobi.lic`; neither file was opened. Source-code credential names are `GUROBI_API_KEY`, `GRB_LICENSE_FILE`, `WLSACCESSID`, `WLSSECRET`, `LICENSEID`, `GUROBI_WLSACCESSID`, `GUROBI_WLSSECRET`, and `GUROBI_LICENSEID`; no values were inspected. Network download and Kaggle push scripts were inventoried but never executed. Microscopy data was not uploaded, extracted, or copied.
 
-Closed construction-time validation now covers every public `RouteConfig` and `UltrackConfig` field, including finite/type checks, supported modes, tuple shapes, and cross-field bounds; dedicated tests require one rejected malformed value per field. Release blockers remain: Ultrack array/resource preflight before allocation, atomic CSV/JSON writes, explicit overwrite policy, decompressed-size limits for untrusted archives, and packaging/dependency audit infrastructure. The safe-path scan found argument-list subprocess calls and no `shell=True`, pickle loading, or archive extraction in the core execution paths, but that inventory is not a full adversarial audit.
+At that snapshot, construction-time validation covered public `RouteConfig` and `UltrackConfig` fields. The current audit supersedes those test counts and Ultrack release blockers.
 
-## Final verification after independent review
+## Final verification for the historical snapshot
 
 An independent read-only review found unit/axis ambiguity, incomplete invariant and unmatched/gap coverage, a non-discriminating synthetic digest, CRC wording, metric terminology, and large gap-matrix risk. The implementation and documents were revised: units normalize to micrometers, raw metadata must be `T/Z/Y/X`, edge `dt` is integral, invariant/birth-death/global-gap/nested-import tables were added, the benchmark now golden-gates an anisotropy-discriminating manifest, gap LAPs decompose by connected component, and claims were narrowed.
 

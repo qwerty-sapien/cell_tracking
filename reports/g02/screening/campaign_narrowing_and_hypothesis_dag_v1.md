@@ -29,7 +29,7 @@ scorer. The redesigned DAG turns on that axis.
 | Mechanism | Decisive evidence | New status |
 |---|---|---|
 | Detection / segmentation front-end | E1 **ASSOCIATION-BOUND**; fixed-node oracle **0.975**; FN lower bound 61.9% | Deprioritize `GD`; not a lever for an association-bound residual. |
-| Division / lineage postprocessing | B1 **0/51** counterfactual restores; downstream of association fragmentation | Keep OFF until association improves. |
+| Division / lineage postprocessing | B1 **0/51** counterfactual restores was measured before the 38 exact frozen-N1 repair bundles and before six association mechanisms plus four representation suppliers failed | **AMENDED 2026-07-31 (§6.4):** fit-only division realizers are unlocked from the association-continuity prerequisite; 44b6-first graph/scorer gates remain binding. |
 | Scalar recalibration / threshold / distribution normalization | `SCENCAL` −195 utility; `POINTCTX-THRESH` no transferable floor; `APNCC-POLICY` score-neutral | **DEAD** as a modeling lever. |
 | Hand-tuned graph-cost / motion knobs | sweeps +0.00003…+0.002; `GA-SP` **−0.033**; `LC-P4CTRL` two-arm oracle **0.8768** | **DEAD**: existing-output selection cannot cross 0.88. |
 | Geometry/NCC/constant-velocity abstention on the extended-radius shell | `R12SHELL` 0.14 prec; `MGSHELL` 0.015 prec; `TEMPBG` over-abstains | **DEAD** without a learned no-link model. |
@@ -203,9 +203,9 @@ without a new, named mechanism (LEDGER decision columns to be updated by the coo
   under the 30-h/model cap).
 
 **Conditional PARK (revisitable, NOT dead):** detection front-end (only if association
-is solved and detection becomes the new bottleneck); division postprocessing (only
-after association improves); GT-conflict-trained gates (only with unlabeled-abstention
-regularization).
+is solved and detection becomes the new bottleneck); division postprocessing is
+superseded by the explicit fit-only unlock in §6.4; GT-conflict-trained gates (only
+with unlabeled-abstention regularization).
 
 ### 6.2 Warm-start / convergence (decision 2)
 
@@ -261,3 +261,101 @@ dataset) + scripts + data access is required, and the launch is human-executed. 
 clean packaged kernel cannot be verified before the reset, **reserve the quota** — sunk
 free-quota is not a reason to launch a job that risks a mid-run guillotine or an
 un-preregistered spend.
+
+### 6.4 Division fitting dependency amendment (decision 4; approved 2026-07-31)
+
+The human owner **unlocks fit-only division realizers from the
+association-continuity prerequisite**. This supersedes only the sequencing rule
+that required one association-continuity arm to pass both families before division
+fitting. It does not promote a division mechanism or weaken any outcome gate.
+
+Evidence basis:
+
+- the frozen-N1 oracle repaired `38/42` division events at TP/FP/FN `38/0/4`,
+  division Jaccard `0.904761904762`, and exact combined delta
+  `+0.092067841519`;
+- the edge-only current-pool projection caps near `0.896`, below the local
+  planning range `0.9255–0.9422` at every realization;
+- six subsequent association mechanisms realized approximately zero or negative
+  usable graph lift; and
+- four independent representations failed at the binding roughly `10^-4`
+  prevalence operating point.
+
+The authorized first wave consists of four separately preregistered,
+CPU-first realizers against the same 38-event target: geometry/motion,
+late-persistence, frozen-cache appearance, and their high-precision consensus.
+GT repair bundles define outcomes only and are forbidden as input features.
+Every arm runs `44b6` first, suppresses to one candidate per scorer-equivalence
+event, requires zero duplicate survivors, and emits forks atomically through
+frozen N1. PASS remains exact combined delta `>0`, division Jaccard `>=0.30`,
+and nonnegative adjusted-edge, raw-edge, and node-recall deltas.
+
+All other authority is unchanged: the frozen scorer and N1 compiler remain
+immutable; `6bba` and CV57 stay closed until the 44b6 human barrier; submission,
+Kaggle/GPU, RunPod, and any `>=5 h` GPU action retain their human gates; DEAD
+authority and the §6.1 register remain unchanged.
+
+### 6.5 Division falsifier population correction (decision 5; approved 2026-07-31)
+
+The human owner corrects the **division falsifier scope only**. The prior
+`44b6`-first rule is a cross-family generalization guard designed for
+association mechanisms. It is not a valid falsifier for division when only
+`9/38` repair-target events are in `44b6` and `29/38` are in `6bba`.
+
+Accordingly, a division realizer is now screened once on the complete frozen
+38-event repair-target population across both families. Its binding result is
+the all-38 TP/FP/FN and division Jaccard together with the frozen-scorer
+adjusted-edge, raw-edge, node-recall, and exact combined deltas over the
+authenticated 57-fragment population. `44b6` and `6bba` results are still
+reported separately as generalization diagnostics, but neither family alone
+is a promotion or falsification gate.
+
+This correction does not change any association arm: association mechanisms
+retain their existing `44b6`-first kill line and may not open `6bba` after a
+`44b6` failure. It also does not change the division PASS line, frozen N1 or
+scorer, one-to-one/zero-duplicate rule, information firewall, or any external
+human gate.
+
+The first wave's geometry/motion observation—zero exact target matches among
+the nine `44b6` targets—is therefore reclassified from a surface kill to
+**INCONCLUSIVE-UNDERPOWERED**. Its measured `0/1/11` official `44b6` division
+result and negative edge deltas remain immutable historical facts; only the
+scope-level interpretation is corrected. A full-population application of the
+unchanged frozen geometry/motion rule is required before the arm can receive a
+division-surface verdict.
+
+### 6.6 RAW3D-NOLINK-MVE scoped training decision (decision 6; approved 2026-07-31)
+
+The human owner selects **Option 1** from the locked training-feasibility dossier and
+opens the named, observation-distinct `RAW3D-NOLINK-MVE` node. This is a scoped
+exception to the campaign closeout, not a reopening of the DEAD learned crop-linker
+or any other representation supplier. The node must begin with a zero-weight crude
+3-D endpoint-information probe on the complete frozen 44b6 DELETE population before
+any weight acquisition, training, or GPU spend.
+
+Before any outcome, the probe freezes its population, five video-group folds, raw
+endpoint feature contract, sealed B0→A1→A0 order, metrics, and continuation line.
+It reports against DINOv2-XY mean AUC `0.670411743453` and the measured operating
+requirement AUC/CG0-budget retention `0.85/0.020393559928`. AUC may decide only
+whether this zero-weight information source warrants a provenance stage; it may
+never select a learned checkpoint. Any learned stage must select exclusively on
+nested-OOF 44b6 held-fit graph delta. The H0 proxy ban explicitly covers
+within-trajectory checkpoint selection: training loss, proposal metrics, and AUC
+are reporting-only.
+
+The provisional GPU envelope is `2–6` T4-hours. A projection below `5 h` may launch
+under the standing authority only with the serial lock, authoritative quota
+reconciliation, and a hard `5 h` kill; a projection at or above `5 h` returns to the
+human barrier. Passing a learned 44b6 graph gate requires adjusted/raw/node deltas
+`>=+0.005/0/0`, then and only then opens `6bba` and CV57. A prediction may be
+submitted only if it is observation-distinct and local CV57 is at least `0.895`.
+Quota expiry does not widen any scientific scope.
+
+The preregistered zero-weight realization is now terminal. It completed all `41`
+videos / `1,345,497` actions / `1,118` beneficial actions on CPU in `254.704 s`.
+Its A1 mean/fold-floor AUC was `0.677967209/0.599374874`, full-population retention
+was `5/1,118 = 0.004472272`, and A0 mean AUC was `0.646573736`. It therefore failed
+the frozen `0.680411743` mean-and-fold-floor continuation line and the measured
+`0.85/0.020394` surface. The RAW3D GPU/training branch did not open and consumed
+zero Kaggle quota. This terminal result does not change any other human authority
+recorded after this scoped decision.

@@ -59,7 +59,7 @@ DEFAULT_EDGE = (
 )
 DEFAULT_AUXILIARY = ROOT / "_ARCHIVE/compact_head/reports/g02/v45f4.pt"
 DEFAULT_SUPPORT = ROOT / "external/Tracking_Support"
-DEFAULT_PARITY = ROOT / "reports/g02/scorer_parity_v1.json"
+DEFAULT_PARITY = score_bh_cv57.DEFAULT_SCORER_PARITY
 DEFAULT_BASELINE_SCORES = (
     ROOT
     / "_ARCHIVE/conflict_residual/reports/g02/"

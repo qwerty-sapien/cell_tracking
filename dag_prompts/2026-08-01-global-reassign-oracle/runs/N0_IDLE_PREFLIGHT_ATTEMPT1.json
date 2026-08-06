@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "required_seconds": 45.0,
+  "elapsed_seconds": 45.16050982475281,
+  "initial_swap_mib": 5552.25,
+  "peak_swap_mib": 5552.25,
+  "ending_swap_mib": 5552.25,
+  "swap_growth_mib": 0.0,
+  "minimum_system_memory_free_percent": 54.0
+}

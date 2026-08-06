@@ -118,35 +118,6 @@ def _nan_row(gt: dict[str, Any], num_pred_nodes: int) -> dict[str, float]:
     return row
 
 
-def _match_graph_without_edge_requirement(
-    pred_graph: td.graph.BaseGraph,
-    gt_graph: td.graph.BaseGraph,
-    scale_zyx: tuple[float, float, float],
-    max_distance: float = 7.0,
-) -> None:
-    """Match graph nodes even when the official edge scorer short-circuits.
-
-    The official `_evaluate` helper does not call `graph.match` when the
-    prediction has no edges. That is correct for edge counts, but our wrapper
-    also reports node recall, so edge-only diagnostics need a node-only fallback
-    to avoid missing match attributes.
-    """
-
-    if pred_graph.num_nodes() == 0:
-        return
-
-    from tracksdata.metrics import DistanceMatching
-    from tracksdata.options import get_options, set_options
-
-    matching = DistanceMatching(max_distance=max_distance, scale=scale_zyx)
-    prev_show_progress = get_options().show_progress
-    set_options(show_progress=False)
-    try:
-        pred_graph.match(gt_graph, matching=matching)
-    finally:
-        set_options(show_progress=prev_show_progress)
-
-
 def _safe_node_recall(
     pred_graph: td.graph.BaseGraph,
     gt_graph: td.graph.BaseGraph,
@@ -179,10 +150,10 @@ def official_edge_metric_row(
     gt_graph = geff_arrays_to_graph(gt)
 
     if pred_graph.num_edges() == 0 or pred_graph.num_nodes() == 0:
-        _match_graph_without_edge_requirement(pred_graph, gt_graph, scale_zyx)
         edge_tp = 0
         edge_fp = 0
         edge_fn = gt_graph.num_edges()
+        recall = 0.0
     else:
         _evaluate(pred_graph, gt_graph, "jaccard", scale_zyx, 7.0)
         edge_attrs = _evaluate_matched_graph(pred_graph, gt_graph)
@@ -190,6 +161,7 @@ def official_edge_metric_row(
         edge_valid_pred = int(edge_attrs["pred_valid"].sum())
         edge_fp = edge_valid_pred - edge_tp
         edge_fn = gt_graph.num_edges() - edge_tp
+        recall = _safe_node_recall(pred_graph, gt_graph)
 
     estimated_float = _estimated_number_of_nodes(gt)
     er = EvaluationResult(
@@ -201,7 +173,7 @@ def official_edge_metric_row(
         division_fn=0,
         num_pred_nodes=pred_graph.num_nodes(),
     )
-    row = per_sample_metrics(er, estimated_float, _safe_node_recall(pred_graph, gt_graph))
+    row = per_sample_metrics(er, estimated_float, recall)
     row["division_jaccard"] = float("nan")
     row["estimated_number_of_nodes"] = estimated_float
     return {key: float(value) if isinstance(value, (int, float)) else value for key, value in row.items()}
@@ -227,7 +199,16 @@ def official_metric_row(
     pred_graph = prediction_to_graph(nodes, edges)
     gt_graph = geff_arrays_to_graph(gt)
     er = evaluate(pred_graph, gt_graph, scale=scale_zyx)
-    recall = node_recall(pred_graph, gt_graph)
+    # Match the organizer's full-evaluation contract exactly. ``evaluate``
+    # intentionally skips node matching when the prediction has no edges, so
+    # calling ``node_recall`` in that state reads absent match attributes and
+    # raises. The official CLI records zero recall for both node-only and empty
+    # predictions instead (external/.../scripts/evaluate.py::evaluate_pairs).
+    recall = (
+        node_recall(pred_graph, gt_graph)
+        if pred_graph.num_edges() > 0 and pred_graph.num_nodes() > 0
+        else 0.0
+    )
     estimated_float = _estimated_number_of_nodes(gt)
     row = per_sample_metrics(er, estimated_float, recall)
     denom = row["division_tp"] + row["division_fp"] + row["division_fn"]

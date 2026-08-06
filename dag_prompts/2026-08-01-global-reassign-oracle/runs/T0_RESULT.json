@@ -1,0 +1,47 @@
+{
+  "stage": "T0",
+  "action_class": "occupied_swap",
+  "scope_videos": 36,
+  "prefix": 32768,
+  "selected_actions": 29574,
+  "baseline": {
+    "n": 36,
+    "edge_jaccard": 0.862596057467424,
+    "division_jaccard": 0.0,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 9.0,
+    "node_recall": 0.9926180002844743,
+    "adj_edge_jaccard": 0.8665345260361912,
+    "n_adj": 36,
+    "score": 0.8665345260361912
+  },
+  "candidate": {
+    "n": 36,
+    "edge_jaccard": 0.88106960950764,
+    "division_jaccard": 0.0,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 9.0,
+    "node_recall": 0.9926180002844743,
+    "adj_edge_jaccard": 0.8851059226766775,
+    "n_adj": 36,
+    "score": 0.8851059226766775
+  },
+  "delta": {
+    "adjusted": 0.01857139664048635,
+    "raw": 0.018473552040216057,
+    "node": 0.0,
+    "combined": 0.01857139664048635
+  },
+  "counts": {
+    "correct_edges_installed": 52,
+    "fps_removed": 192,
+    "compiled_chains": 29574
+  },
+  "expected_adjusted_delta": 0.018571397,
+  "absolute_error": 3.5951365148778613e-10,
+  "tolerance": 1e-09,
+  "reproduced": true,
+  "fragment_count": 36
+}

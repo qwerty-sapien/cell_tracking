@@ -1,0 +1,7 @@
+[tool.pytest.ini_options]
+testpaths = [
+  "tests",
+  "reports/g02/screening/tiered_surface/kaggle_prelaunch",
+  "dag_prompts/2026-08-01-global-reassign-oracle/test_global_reassign_oracle.py",
+]
+pythonpath = [".", "src", "scripts"]

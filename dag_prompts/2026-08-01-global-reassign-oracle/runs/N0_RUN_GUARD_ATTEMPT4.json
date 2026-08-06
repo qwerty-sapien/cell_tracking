@@ -1,0 +1,27 @@
+{
+  "schema": "celltrack-alpha.global-reassign-oracle-guard.v1",
+  "status": "INVALID_HARNESS_COMMAND",
+  "command": [
+    "/Users/agent/Desktop/cell_tracking/.venv/bin/python",
+    "/Users/agent/Desktop/cell_tracking/dag_prompts/2026-08-01-global-reassign-oracle/global_reassign_oracle.py"
+  ],
+  "returncode": 2,
+  "captured_output": "GLOBAL-REASSIGN-ORACLE failed closed: AttributeError: 'ZipStore' object has no attribute '_lock'\n",
+  "preflight_elapsed_seconds": 45.21294569969177,
+  "elapsed_seconds": 2.928191900253296,
+  "initial_swap_mib": 5440.25,
+  "peak_swap_mib": 5440.25,
+  "ending_swap_mib": 5440.25,
+  "swap_growth_mib": 0.0,
+  "peak_process_tree_rss_gib": 0.245849609375,
+  "wall_clock_limit_seconds": 21600,
+  "sustained_swap_threshold_mib": 256,
+  "sustained_seconds": 15.0,
+  "immediate_swap_threshold_mib": 384,
+  "local_cpu_only": true,
+  "external_action": false,
+  "gpu_action": false,
+  "kaggle_action": false,
+  "runpod_action": false,
+  "submission_action": false
+}

@@ -915,7 +915,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--scorer-parity",
         type=Path,
-        default=ROOT / "reports/g02/scorer_parity_v1.json",
+        default=score_bh_cv57.DEFAULT_SCORER_PARITY,
     )
     parser.add_argument(
         "--output-json",

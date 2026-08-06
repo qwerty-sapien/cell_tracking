@@ -61,7 +61,7 @@ DEFAULT_FRAGMENTS = (
     / "reports/g02/learned_bonus_sweep_holdout57_workers/bonus_1/"
     "learned_bonus_1__raw_distance_weight_0p05/fragments"
 )
-DEFAULT_PARITY = ROOT / "reports/g02/scorer_parity_v1.json"
+DEFAULT_PARITY = score_bh_cv57.DEFAULT_SCORER_PARITY
 DEFAULT_OUTPUT = ROOT / "reports/g02/erlang_division_prior_cv57_v1.json"
 
 

@@ -6,11 +6,12 @@ Kaggle kernel push, for every lane, in every worktree/branch.**
 ## The finding
 
 The technical knowledge to prevent every observed Kaggle failure already exists:
-`kaggle_prelaunch_guard.py` encodes **18** root-cause families (`KFG-01`..`KFG-18`,
-`KAGGLE_FAILURE_REGISTRY.json`) with a 14+2-fixture regression suite, all passing
-(`test_kaggle_prelaunch_guard.py`, `.venv/bin/python -m unittest`, 14/14 OK, verified
-2026-07-30). **The problem is not missing knowledge. It is that this guard is never
-structurally invoked.** Two confirmed gaps, found by direct inspection, not inference:
+The shared failure registry now contains **25** root-cause families
+(`KFG-01`..`KFG-25`) and the launch path is structurally enforced by
+`scripts/cmux_ops.py`: every kernel push requires a fresh eligible receipt bound
+to the exact metadata and code bytes. The G-02 guard suite has 17 fixtures; CMUX
+and the G-03 protocol guard add their own focused fixtures. The original finding
+below explains why structural enforcement was added.
 
 1. **`KFG-18` — the guard has zero external call sites.** `grep -rln
    "kaggle_prelaunch_guard"` across the whole repo returns only its own directory and
@@ -84,10 +85,12 @@ by a different route, in real time.
      --output <path/to/GUARD_RECEIPT.json>
    ```
    Exit code `0` and `"status": "PASS"` in the receipt are required. **Do not write a new
-   lane-local preflight script that duplicates these checks.** If the shared guard is
-   missing a check a new lane needs, extend the shared module and its registry — do not
-   fork it. A bespoke per-lane validator is exactly the pattern that let `KFG-01`..`16`'s
-   already-solved failure modes recur in a new lane.
+   lane-local preflight script that duplicates these checks.** If a protocol is
+   structurally incompatible with the G-02 single-dataset/step-0 contract (for
+   example G-03's two-source atomic checkpoint handoff), add one repository-level,
+   tested protocol validator that emits the same CMUX predicate schema, registers
+   every asset/failure family, and verifies the protocol-specific bytes. It is a
+   companion to the shared guard, not a weaker receipt or a CMUX bypass.
 
 3. After a remote/launch-phase attestation, re-run the guard with `--phase launch` and
    bind it to the exact kernel ID (`KFG-15`) before any scientific kernel is trusted.
@@ -100,6 +103,28 @@ by a different route, in real time.
    add a new `KFG-N` family entry (root cause, exact symptom, enforced prevention) and a
    regression fixture in the same change that fixes it — before retrying. A same-signature
    retry remains forbidden per the existing policy.
+
+6. **Dataset directory transport is a two-boundary contract.** Kaggle CLI defaults
+   to `--dir-mode skip`, may print `Dataset creation error: ...` while exiting zero,
+   and strips the one directory used as the archive root. Therefore:
+
+   - CMUX dataset create/version always uses explicit zip mode and treats mutation
+     error text as a failed operation even when the process status is zero;
+   - to expose runtime path `<dataset-root>/handoff/...`, stage
+     `<upload-root>/<wrapper>/handoff/...` (one wrapper deeper); and
+   - after READY, enumerate remote member paths, download the exact version to a
+     fresh directory, and verify the full declared tree before any consumer push.
+
+   A READY status alone is not evidence that nested paths or bytes survived.
+
+7. **Code submissions are hidden reruns, not uploads of public output.** A
+   submission kernel must discover the mounted test population dynamically and
+   generate a fresh output for those identities. A terminal predicate must bind
+   the downloaded output to the exact `owner/slug/version` CMUX receipt and
+   attest `public_only_output_copy:false`. The shared lifecycle atomically
+   consumes that predicate before the external mutation, submits once, and
+   requires exactly one new competition submission reference. CLI exit status
+   zero or kernel `COMPLETE` without a score is not success.
 
 ## Interaction with the marginal-value gate
 

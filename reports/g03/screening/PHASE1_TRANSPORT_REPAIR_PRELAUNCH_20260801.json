@@ -1,0 +1,68 @@
+{
+  "schema": "celltrack-alpha.g03-phase1-transport-repair-prelaunch.v1",
+  "status": "A_V2_RUNNING_MONITOR_ONLY",
+  "node": "G03-PHASE1-TRANSPORT-REPAIR-V2-20260801",
+  "owner_amendment": "2026-08-01 single v2 replacement after A v1 pre-GPU code_file import failure",
+  "worktree": "/private/tmp/g03_phase1_singlefile_retry",
+  "commit": "2241c72b7f4bf23f1b8118183d735b99476a35bf",
+  "launch": {
+    "kernel_id": "onebitbrain/g03-phase1-resume-a-v2",
+    "package_path": "/private/tmp/g03_phase1_transport_v2_packages_20260801/a",
+    "code_file": "script.py",
+    "code_file_sha256": "088a5075961583b31674c94af845da28324a4c398ba49cbd4c497ff5a31e8a20",
+    "metadata_sha256": "a97fcb073ea322c96b35337bcb87df8cc837825702e4da59063d0b7802b7c4e9",
+    "build_receipt_sha256": "a6b64559e6225101e3fca1d1181170e4c1495f2936fdd7843bd4de048385bdae",
+    "embedded_contract_sha256": "079301bdac0184cbbf7dbe427fa6b6b81dce4d87553ba6304f29dd2369849e5a"
+  },
+  "package_checks": {
+    "expected_regular_files": [
+      "kernel-metadata.json",
+      "script.py"
+    ],
+    "isolated_script_selftest": "PASS_G03_SINGLE_FILE_SELFTEST",
+    "project_local_imports": false
+  },
+  "controls": {
+    "kaggle_executable": "/Users/agent/Desktop/cell_tracking/.venv/bin/kaggle",
+    "default_path_probe": "no kaggle executable; no quota query or mutation was attempted",
+    "rejected_kaggle_executable": "/Library/Frameworks/Python.framework/Versions/3.13/bin/kaggle (installed 2.1.0 lacks the quota command; rejected before push)",
+    "cmux_ops_sha256": "7521a01accc5b298715309a55b52e0886bf36067cc8275d5c20b7e0b370d44e2",
+    "cmux_ops_test": "tests/test_cmux_ops.py: 28 PASS (including credential forwarding refusal tests)",
+    "fresh_authoritative_quota_required": true,
+    "fresh_no_running_kernel_required": true,
+    "serial_lock_and_pre_action_post_quota_bracket_required": true,
+    "no_retry_after_v2": true
+  },
+  "authoritative_launch_receipt": {
+    "path": "phase1_transport_repair_ops/kernel_push_2026-07-31T165715608320Z.json",
+    "sha256": "9d4f37a549fee228cdb837c3c05cda24086b1de80a39906bbc21785ebaba33ed",
+    "remote_kernel_version": 1,
+    "quota_pre": {
+      "used_h": 5.43,
+      "remaining_h": 24.57,
+      "total_h": 30.0,
+      "refresh_at": "2026-08-01T00:00:00"
+    },
+    "quota_post": {
+      "used_h": 5.43,
+      "remaining_h": 24.57,
+      "total_h": 30.0,
+      "refresh_at": "2026-08-01T00:00:00"
+    },
+    "immediate_authoritative_debit_h": 0.0
+  },
+  "first_remote_status": {
+    "state": "RUNNING",
+    "path": "phase1_transport_repair_ops/kernel_status_2026-07-31T165755507134Z.json",
+    "sha256": "81a3ffcfc84177becdc9f911bf3ef8ed7bbff280c5978fc8ce8286f00b9a8c1b"
+  },
+  "latest_remote_status": {
+    "state": "RUNNING",
+    "path": "phase1_transport_repair_ops/kernel_status_2026-07-31T165927459851Z.json",
+    "sha256": "2d685ae254cd522909c80ee043b6e4d3324251edd0f73917a92562a33e5a7813"
+  },
+  "non_goals": [
+    "No B v2 before verified A v2 handoff dataset.",
+    "No Phase 2 training, graph selection, CV57, submission, or final-slot action."
+  ]
+}

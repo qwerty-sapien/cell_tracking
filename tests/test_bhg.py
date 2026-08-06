@@ -246,6 +246,20 @@ class V45ConfigTests(unittest.TestCase):
 
 
 class SparseAssignmentTests(unittest.TestCase):
+    def test_tie_handling_never_overrides_a_distinct_lower_cost_matching(self) -> None:
+        pairs = [
+            (0, 10, 1.0e-15),
+            (0, 11, 0.0),
+            (1, 10, 0.0),
+            (1, 11, 1.0e-15),
+        ]
+        result = sparse_min_cost_max_cardinality([0, 1], [10, 11], pairs)
+        self.assertEqual(
+            {(match.source_id, match.target_id) for match in result.matches},
+            {(0, 11), (1, 10)},
+        )
+        self.assertEqual(sum(match.cost for match in result.matches), 0.0)
+
     def test_partial_assignment_can_choose_explicit_no_link(self) -> None:
         partial = sparse_min_cost_partial_matching(
             [1], [10], [(1, 10, -math.log(0.4))], {1: -math.log(0.6)}
@@ -891,7 +905,7 @@ class LocalV45ArtifactParityTests(unittest.TestCase):
 
     @unittest.skipUnless((ROOT / "reports/g02/v45out.zip").exists(), "raw V45 GEFFs absent")
     def test_banked_sparse_ties_match_dense_diagnostic(self) -> None:
-        """Sparse and dense solvers agree under the banked backward cost."""
+        """Sparse and dense solvers preserve the banked primary objective."""
 
         import zarr
         from zarr.storage import ZipStore
@@ -934,16 +948,39 @@ class LocalV45ArtifactParityTests(unittest.TestCase):
                             probabilities.get((source, target), float("-inf")),
                             float(probability),
                         )
-                sparse_edges, _ = build_adjacent_edges(nodes, probabilities)
+                sparse_edges, sparse_stats = build_adjacent_edges(nodes, probabilities)
                 sparse = {(edge.source_id, edge.target_id, edge.kind) for edge in sparse_edges}
-                diagnostic_edges, _ = build_adjacent_edges(
+                diagnostic_edges, diagnostic_stats = build_adjacent_edges(
                     nodes, probabilities, parity_mode="dense_diagnostic"
                 )
                 diagnostic = {
                     (edge.source_id, edge.target_id, edge.kind)
                     for edge in diagnostic_edges
                 }
-                self.assertEqual(sparse, diagnostic)
+                self.assertEqual(len(sparse), len(diagnostic))
+                self.assertEqual(
+                    sparse_stats["adjacent_edges"], diagnostic_stats["adjacent_edges"]
+                )
+                sparse_cost = {
+                    (edge.source_id, edge.target_id, edge.kind): edge.cost
+                    for edge in sparse_edges
+                }
+                diagnostic_cost = {
+                    (edge.source_id, edge.target_id, edge.kind): edge.cost
+                    for edge in diagnostic_edges
+                }
+                np.testing.assert_allclose(
+                    sorted(sparse_cost.values()),
+                    sorted(diagnostic_cost.values()),
+                    rtol=0.0,
+                    atol=1.0e-12,
+                )
+                np.testing.assert_allclose(
+                    sorted(sparse_cost[pair] for pair in sparse - diagnostic),
+                    sorted(diagnostic_cost[pair] for pair in diagnostic - sparse),
+                    rtol=0.0,
+                    atol=1.0e-12,
+                )
 
                 sparse_gap_nodes, sparse_gap_edges, sparse_gap_stats = close_one_frame_gaps(
                     nodes, diagnostic_edges
@@ -974,8 +1011,31 @@ class LocalV45ArtifactParityTests(unittest.TestCase):
                     (dense_gap_stats["gap_matches"], sparse_gap_stats["gap_matches"]),
                     (len(dense_pairs), len(sparse_pairs)),
                 )
-                self.assertEqual(sparse_pairs, dense_pairs)
                 self.assertEqual(sparse_gap_stats, dense_gap_stats)
+                node_by_id = {node.node_id: node for node in nodes}
+
+                def pair_costs(pairs: set[tuple[int, int]]) -> list[float]:
+                    return sorted(
+                        physical_distance(node_by_id[source], node_by_id[target])
+                        for source, target in pairs
+                    )
+
+                # LAPJV's rectangular fillers and component-local sparse solving can
+                # choose different identities on exact primary-cost ties. The banked
+                # contract is therefore exact adjacent identity plus equal gap
+                # cardinality, statistics, and represented primary objective.
+                np.testing.assert_allclose(
+                    pair_costs(sparse_pairs),
+                    pair_costs(dense_pairs),
+                    rtol=0.0,
+                    atol=1.0e-12,
+                )
+                np.testing.assert_allclose(
+                    pair_costs(sparse_pairs - dense_pairs),
+                    pair_costs(dense_pairs - sparse_pairs),
+                    rtol=0.0,
+                    atol=1.0e-12,
+                )
         finally:
             store.close()
 

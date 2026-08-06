@@ -1065,25 +1065,6 @@ def _validate_encode_output(torch: Any, value: Any, input_shape: tuple[int, ...]
     return features, list(logits)
 
 
-def _detect_logits(torch: Any, logits: Any) -> tuple[Any, Any]:
-    if not isinstance(logits, torch.Tensor) or logits.ndim != 3:
-        raise ModelValidationError("detection logits must have shape (Z, Y, X)")
-    kernel = V45_CONFIG.pool_kernel_downsampled_zyx
-    pooled = torch.nn.functional.max_pool3d(
-        logits[None, None], kernel_size=kernel, stride=1, padding=tuple(k // 2 for k in kernel)
-    )
-    mask = (logits[None, None] == pooled) & (
-        torch.sigmoid(logits[None, None]) > V45_CONFIG.detection_threshold
-    )
-    coords = torch.nonzero(mask[0, 0], as_tuple=False)
-    if len(coords) == 0:
-        return coords.to(dtype=torch.int64), torch.empty(0, dtype=torch.float32, device=logits.device)
-    scores = torch.sigmoid(logits[coords[:, 0], coords[:, 1], coords[:, 2]])
-    if not bool(torch.isfinite(scores).all().item()):
-        raise ModelValidationError("detection scores contain nonfinite values")
-    return coords.to(dtype=torch.int64), scores.to(dtype=torch.float32)
-
-
 def _detect_batch(torch: Any, logits: Any) -> list[tuple[Any, Any]]:
     """Detect peaks for a batch while pooling all samples in one operation."""
 

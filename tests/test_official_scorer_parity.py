@@ -114,9 +114,35 @@ class OfficialScorerParityTests(unittest.TestCase):
         self.assertEqual(row["edge_fp"], 0.0)
         self.assertEqual(row["edge_fn"], 2.0)
         self.assertEqual(row["num_pred_nodes"], 3.0)
-        self.assertEqual(row["node_recall"], 1.0)
+        self.assertEqual(row["node_recall"], 0.0)
         self.assertEqual(row["edge_jaccard"], 0.0)
         self.assertEqual(row["adj_edge_jaccard"], 0.0)
+
+    def test_full_scorer_handles_node_only_prediction_like_official_cli(self) -> None:
+        row = official_metric_row(
+            _pred_nodes(LINE_NODES),
+            [],
+            _gt(LINE_NODES, LINE_EDGES, 10.0),
+            SCALE_ZYX,
+        )
+        self.assertEqual(row["edge_tp"], 0.0)
+        self.assertEqual(row["edge_fp"], 0.0)
+        self.assertEqual(row["edge_fn"], 2.0)
+        self.assertEqual(row["num_pred_nodes"], 3.0)
+        self.assertEqual(row["node_recall"], 0.0)
+
+    def test_full_scorer_handles_empty_prediction_like_official_cli(self) -> None:
+        row = official_metric_row(
+            [],
+            [],
+            _gt(LINE_NODES, LINE_EDGES, 10.0),
+            SCALE_ZYX,
+        )
+        self.assertEqual(row["edge_tp"], 0.0)
+        self.assertEqual(row["edge_fp"], 0.0)
+        self.assertEqual(row["edge_fn"], 2.0)
+        self.assertEqual(row["num_pred_nodes"], 0.0)
+        self.assertEqual(row["node_recall"], 0.0)
 
     def test_official_scorer_accepts_image_support_corrected_rows(self) -> None:
         from scripts import run_bh

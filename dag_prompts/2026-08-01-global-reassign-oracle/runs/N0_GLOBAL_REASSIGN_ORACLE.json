@@ -1,0 +1,709 @@
+{
+  "schema": "celltrack-alpha.global-reassign-oracle.v1",
+  "status": "ESCALATE_COMPILER_INEXPRESSIBLE",
+  "scientific_number_label": "[GT-DEPENDENT]",
+  "preregistration": {
+    "path": "dag_prompts/2026-08-01-global-reassign-oracle/runs/N0_PREREGISTRATION.md",
+    "sha256": "6fe5ec6e6b11ad833f84988a2535d0dcfea1900c6a962db25c4ba6da97d7e879",
+    "commit": "c493a676bfc415aa4f221eb51469c410307238c9"
+  },
+  "frozen_inputs": {
+    "reports/g02/screening/ga_h1_zero_wrfeat_graph/44b6/report.json": "530117276bbea4911c4ed2422a6b5b2d6cfc76120dfb28bd8a0185f85b19619d",
+    "reports/g02/extended_radius_reachability_v1.json": "22a70e0b750d3d59bdd92ca5a82967d35c5d866fafe1c867dbb09b936efc2803",
+    "reports/g02/screening/action_class_oracle/p0_action_class_oracle_v1.json": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06",
+    "reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/run_v1/population_manifest.json": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c",
+    "reports/g02/screening/tiered_surface/branches/sa_delete/graph_result.json": "28517a7c9170cedbf550d55395f38ac330888949ead7467086c3e306c7f7485a",
+    "reports/g02/screening/tiered_surface/branches/sa_swap/PREREGISTRATION.json": "00e6036ef076482a39266d797c5fea3e2e4845ba4262c8532cfe70bb8ccb4628",
+    "reports/g02/screening/tiered_surface/n1_feasibility_compiler/interface_v1.json": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865",
+    "src/celltrack_alpha/action_compiler.py": "457f6607a493d51d972913fa155d687e9ffc4045475605bc109a4ca9e90124f5",
+    "src/celltrack_alpha/official_eval.py": "22f12e0eb7568c364a8503b8eeb9167147c152f182c2aa10dc10aef588bc01e6",
+    "scripts/scoreall.py": "7b92fed9fe66e9a2faf062528a78b04a65bc1be50f806dff44f51c780da5ac6c",
+    "external/kaggle-cell-tracking-competition/src/tracking_cellmot/metrics.py": "cfdd596e3f8909cca14db0682889738b19ff75c3808b3773175aba9367ca7444",
+    "external/kaggle-cell-tracking-competition/src/tracking_cellmot/division_metrics.py": "0635c38621a38f1eb4b55a302b4a817a88e9094930dfc2dab16faeeee60f4dc9",
+    "data/kaggle/raw/biohub-cell-tracking-during-development.zip": "538ed8a4d7b6669fa948865f947ed43c23aba7ee006fea8826d6ddd1277dfd19"
+  },
+  "scope": {
+    "local_cpu_only": true,
+    "experimental_videos": 36,
+    "subsampling": false,
+    "selector": false,
+    "auc": false,
+    "training": false,
+    "representation": false,
+    "kaggle_action": false,
+    "gpu_action": false,
+    "runpod_action": false,
+    "submission_action": false
+  },
+  "finalization": {
+    "case_determination": "b_GENUINE_FROZEN_COMPILER_EXPRESSIVE_LIMIT",
+    "terminal_status": "ESCALATE_COMPILER_INEXPRESSIBLE",
+    "repair_5_required": false,
+    "repair_5_receipt": null,
+    "t2_rerun_required": false,
+    "self_executed_rerun": false,
+    "reason": "The closure is fixed-point complete. The five failing edges are retained baseline-true division anchors that occur in the add set and conflict set of the same single chain, not edges shared by distinct chains. The frozen batch compiler rejects this valid same-action remove-and-readd form even when the batch contains only that action; the frozen individual compiler accepts it.",
+    "proposal_only_boundary": "CONTINUE_PROPOSAL_ONLY authorizes a written proposal only; it authorizes no selector, training, representation, GPU, Kaggle, 6bba, CV57, submission, tier move, DEAD change, or plan amendment."
+  },
+  "integrity_controls": {
+    "tolerance": {
+      "value": 1e-09,
+      "label": "[GT-DEPENDENT]"
+    },
+    "T0": {
+      "expected_adjusted_delta": {
+        "value": 0.018571397,
+        "label": "[GT-DEPENDENT]"
+      },
+      "observed_adjusted_delta": {
+        "value": 0.01857139664048635,
+        "label": "[GT-DEPENDENT]"
+      },
+      "absolute_error": {
+        "value": 3.5951365148778613e-10,
+        "label": "[GT-DEPENDENT]"
+      },
+      "reproduced": true
+    },
+    "T1": {
+      "expected_adjusted_delta": {
+        "value": 0.081897667,
+        "label": "[GT-DEPENDENT]"
+      },
+      "observed_adjusted_delta": {
+        "value": 0.0818976668050011,
+        "label": "[GT-DEPENDENT]"
+      },
+      "absolute_error": {
+        "value": 1.949988920335599e-10,
+        "label": "[GT-DEPENDENT]"
+      },
+      "reproduced": true,
+      "scope_note": "Integrity-only replay of the distinct run_v6 population; excluded from T2-minus-T0 decision arithmetic."
+    },
+    "harness_validated": true
+  },
+  "tiers": {
+    "T3": {
+      "label": "[GT-DEPENDENT]",
+      "delta": {
+        "adjusted": {
+          "value": 0.10497364637634421,
+          "label": "[GT-DEPENDENT]"
+        },
+        "raw": {
+          "value": 0.10444588914597719,
+          "label": "[GT-DEPENDENT]"
+        },
+        "node": {
+          "value": 0.0,
+          "label": "[GT-DEPENDENT]"
+        },
+        "combined": {
+          "value": 0.17164031304301086,
+          "label": "[GT-DEPENDENT]"
+        }
+      },
+      "correct_edges_installed": {
+        "value": 465,
+        "label": "[GT-DEPENDENT]"
+      },
+      "fps_removed": {
+        "value": 958,
+        "label": "[GT-DEPENDENT]"
+      },
+      "chains_compiled": {
+        "value": 0,
+        "label": "[GT-DEPENDENT]"
+      },
+      "chain_length_histogram": {},
+      "early_stop_threshold": {
+        "value": 0.03,
+        "label": "[GT-DEPENDENT]"
+      },
+      "early_stop_triggered": false,
+      "scope_videos": {
+        "value": 36,
+        "label": "[GT-DEPENDENT]"
+      }
+    },
+    "T0": {
+      "label": "[GT-DEPENDENT]",
+      "delta": {
+        "adjusted": {
+          "value": 0.01857139664048635,
+          "label": "[GT-DEPENDENT]"
+        },
+        "raw": {
+          "value": 0.018473552040216057,
+          "label": "[GT-DEPENDENT]"
+        },
+        "node": {
+          "value": 0.0,
+          "label": "[GT-DEPENDENT]"
+        },
+        "combined": {
+          "value": 0.01857139664048635,
+          "label": "[GT-DEPENDENT]"
+        }
+      },
+      "correct_edges_installed": {
+        "value": 52,
+        "label": "[GT-DEPENDENT]"
+      },
+      "fps_removed": {
+        "value": 192,
+        "label": "[GT-DEPENDENT]"
+      },
+      "chains_compiled": {
+        "value": 29574,
+        "label": "[GT-DEPENDENT]"
+      },
+      "chain_length_histogram": {},
+      "scope_videos": {
+        "value": 36,
+        "label": "[GT-DEPENDENT]"
+      },
+      "absolute_control_error": {
+        "value": 3.5951365148778613e-10,
+        "label": "[GT-DEPENDENT]"
+      },
+      "reproduced_to_1e-9": true
+    },
+    "T1": {
+      "label": "[GT-DEPENDENT]",
+      "delta": {
+        "adjusted": {
+          "value": 0.0818976668050011,
+          "label": "[GT-DEPENDENT]"
+        },
+        "raw": {
+          "value": 0.08148958008096019,
+          "label": "[GT-DEPENDENT]"
+        },
+        "node": {
+          "value": 0.0,
+          "label": "[GT-DEPENDENT]"
+        },
+        "combined": {
+          "value": 0.08965524256257684,
+          "label": "[GT-DEPENDENT]"
+        }
+      },
+      "correct_edges_installed": {
+        "value": 0,
+        "label": "[GT-DEPENDENT]"
+      },
+      "fps_removed": {
+        "value": 1118,
+        "label": "[GT-DEPENDENT]"
+      },
+      "chains_compiled": {
+        "value": 2048,
+        "label": "[GT-DEPENDENT]"
+      },
+      "chain_length_histogram": {},
+      "scope_videos": {
+        "value": 41,
+        "label": "[GT-DEPENDENT]"
+      },
+      "integrity_only_original_run_v6_population": true,
+      "absolute_control_error": {
+        "value": 1.949988920335599e-10,
+        "label": "[GT-DEPENDENT]"
+      },
+      "reproduced_to_1e-9": true
+    },
+    "T2_L2": {
+      "label": "[GT-DEPENDENT]",
+      "delta": {
+        "adjusted": {
+          "value": 0.09641286660426185,
+          "label": "[GT-DEPENDENT]"
+        },
+        "raw": {
+          "value": 0.0959260137644794,
+          "label": "[GT-DEPENDENT]"
+        },
+        "node": {
+          "value": 0.0,
+          "label": "[GT-DEPENDENT]"
+        },
+        "combined": {
+          "value": 0.1630795332709285,
+          "label": "[GT-DEPENDENT]"
+        }
+      },
+      "correct_edges_installed": {
+        "value": 465,
+        "label": "[GT-DEPENDENT]"
+      },
+      "fps_removed": {
+        "value": 713,
+        "label": "[GT-DEPENDENT]"
+      },
+      "chains_compiled": {
+        "value": 459,
+        "label": "[GT-DEPENDENT]"
+      },
+      "chain_length_histogram": {
+        "1": {
+          "value": 453,
+          "label": "[GT-DEPENDENT]"
+        },
+        "2": {
+          "value": 6,
+          "label": "[GT-DEPENDENT]"
+        }
+      },
+      "scope_videos": {
+        "value": 36,
+        "label": "[GT-DEPENDENT]"
+      }
+    },
+    "T2_L3": {
+      "label": "[GT-DEPENDENT]",
+      "delta": {
+        "adjusted": {
+          "value": 0.09641286660426185,
+          "label": "[GT-DEPENDENT]"
+        },
+        "raw": {
+          "value": 0.0959260137644794,
+          "label": "[GT-DEPENDENT]"
+        },
+        "node": {
+          "value": 0.0,
+          "label": "[GT-DEPENDENT]"
+        },
+        "combined": {
+          "value": 0.1630795332709285,
+          "label": "[GT-DEPENDENT]"
+        }
+      },
+      "correct_edges_installed": {
+        "value": 465,
+        "label": "[GT-DEPENDENT]"
+      },
+      "fps_removed": {
+        "value": 713,
+        "label": "[GT-DEPENDENT]"
+      },
+      "chains_compiled": {
+        "value": 459,
+        "label": "[GT-DEPENDENT]"
+      },
+      "chain_length_histogram": {
+        "1": {
+          "value": 453,
+          "label": "[GT-DEPENDENT]"
+        },
+        "2": {
+          "value": 6,
+          "label": "[GT-DEPENDENT]"
+        }
+      },
+      "scope_videos": {
+        "value": 36,
+        "label": "[GT-DEPENDENT]"
+      }
+    },
+    "T2_L4": {
+      "label": "[GT-DEPENDENT]",
+      "delta": {
+        "adjusted": {
+          "value": 0.09641286660426185,
+          "label": "[GT-DEPENDENT]"
+        },
+        "raw": {
+          "value": 0.0959260137644794,
+          "label": "[GT-DEPENDENT]"
+        },
+        "node": {
+          "value": 0.0,
+          "label": "[GT-DEPENDENT]"
+        },
+        "combined": {
+          "value": 0.1630795332709285,
+          "label": "[GT-DEPENDENT]"
+        }
+      },
+      "correct_edges_installed": {
+        "value": 465,
+        "label": "[GT-DEPENDENT]"
+      },
+      "fps_removed": {
+        "value": 713,
+        "label": "[GT-DEPENDENT]"
+      },
+      "chains_compiled": {
+        "value": 459,
+        "label": "[GT-DEPENDENT]"
+      },
+      "chain_length_histogram": {
+        "1": {
+          "value": 453,
+          "label": "[GT-DEPENDENT]"
+        },
+        "2": {
+          "value": 6,
+          "label": "[GT-DEPENDENT]"
+        }
+      },
+      "scope_videos": {
+        "value": 36,
+        "label": "[GT-DEPENDENT]"
+      }
+    },
+    "T2_Lunbounded": {
+      "label": "[GT-DEPENDENT]",
+      "delta": {
+        "adjusted": {
+          "value": 0.09641286660426185,
+          "label": "[GT-DEPENDENT]"
+        },
+        "raw": {
+          "value": 0.0959260137644794,
+          "label": "[GT-DEPENDENT]"
+        },
+        "node": {
+          "value": 0.0,
+          "label": "[GT-DEPENDENT]"
+        },
+        "combined": {
+          "value": 0.1630795332709285,
+          "label": "[GT-DEPENDENT]"
+        }
+      },
+      "correct_edges_installed": {
+        "value": 465,
+        "label": "[GT-DEPENDENT]"
+      },
+      "fps_removed": {
+        "value": 713,
+        "label": "[GT-DEPENDENT]"
+      },
+      "chains_compiled": {
+        "value": 459,
+        "label": "[GT-DEPENDENT]"
+      },
+      "chain_length_histogram": {
+        "1": {
+          "value": 453,
+          "label": "[GT-DEPENDENT]"
+        },
+        "2": {
+          "value": 6,
+          "label": "[GT-DEPENDENT]"
+        }
+      },
+      "scope_videos": {
+        "value": 36,
+        "label": "[GT-DEPENDENT]"
+      }
+    }
+  },
+  "section4_decision": {
+    "label": "[GT-DEPENDENT]",
+    "precedent_adjusted_gain_first": {
+      "value": 0.01906337599412862,
+      "label": "[GT-DEPENDENT]"
+    },
+    "collapse_ratio": {
+      "value": 0.2449,
+      "label": "[GT-DEPENDENT]"
+    },
+    "raw_oracle_increment_T2_unbounded_minus_T0": {
+      "value": 0.0778414699637755,
+      "label": "[GT-DEPENDENT]"
+    },
+    "actionability_floor": {
+      "value": 0.005,
+      "label": "[GT-DEPENDENT]"
+    },
+    "verdict": "CONTINUE_PROPOSAL_ONLY",
+    "stop_class_emitted": false
+  },
+  "compiler_expressibility": {
+    "finding": "INEXPRESSIBLE_IN_FROZEN_COMPILER",
+    "expressible": false,
+    "escalate": true,
+    "failures": [
+      {
+        "identity": "train:44b6_12dfb391",
+        "tier": "2",
+        "reason": "ActionCompileError: edge (33371, 33890) is added by another action"
+      },
+      {
+        "identity": "train:44b6_12dfb391",
+        "tier": "3",
+        "reason": "ActionCompileError: edge (33371, 33890) is added by another action"
+      },
+      {
+        "identity": "train:44b6_12dfb391",
+        "tier": "4",
+        "reason": "ActionCompileError: edge (33371, 33890) is added by another action"
+      },
+      {
+        "identity": "train:44b6_12dfb391",
+        "tier": "unbounded",
+        "reason": "ActionCompileError: edge (33371, 33890) is added by another action"
+      },
+      {
+        "identity": "train:44b6_e28840c6",
+        "tier": "2",
+        "reason": "ActionCompileError: edge (21048, 21334) is added by another action"
+      },
+      {
+        "identity": "train:44b6_e28840c6",
+        "tier": "3",
+        "reason": "ActionCompileError: edge (21048, 21334) is added by another action"
+      },
+      {
+        "identity": "train:44b6_e28840c6",
+        "tier": "4",
+        "reason": "ActionCompileError: edge (21048, 21334) is added by another action"
+      },
+      {
+        "identity": "train:44b6_e28840c6",
+        "tier": "unbounded",
+        "reason": "ActionCompileError: edge (21048, 21334) is added by another action"
+      },
+      {
+        "identity": "train:44b6_d754aa59",
+        "tier": "2",
+        "reason": "ActionCompileError: edge (3729, 3795) is added by another action"
+      },
+      {
+        "identity": "train:44b6_d754aa59",
+        "tier": "3",
+        "reason": "ActionCompileError: edge (3729, 3795) is added by another action"
+      },
+      {
+        "identity": "train:44b6_d754aa59",
+        "tier": "4",
+        "reason": "ActionCompileError: edge (3729, 3795) is added by another action"
+      },
+      {
+        "identity": "train:44b6_d754aa59",
+        "tier": "unbounded",
+        "reason": "ActionCompileError: edge (3729, 3795) is added by another action"
+      },
+      {
+        "identity": "train:44b6_c50204e0",
+        "tier": "2",
+        "reason": "ActionCompileError: edge (11484, 11985) is added by another action"
+      },
+      {
+        "identity": "train:44b6_c50204e0",
+        "tier": "3",
+        "reason": "ActionCompileError: edge (11484, 11985) is added by another action"
+      },
+      {
+        "identity": "train:44b6_c50204e0",
+        "tier": "4",
+        "reason": "ActionCompileError: edge (11484, 11985) is added by another action"
+      },
+      {
+        "identity": "train:44b6_c50204e0",
+        "tier": "unbounded",
+        "reason": "ActionCompileError: edge (11484, 11985) is added by another action"
+      },
+      {
+        "identity": "train:44b6_5f15d135",
+        "tier": "2",
+        "reason": "ActionCompileError: edge (12266, 12556) is added by another action"
+      },
+      {
+        "identity": "train:44b6_5f15d135",
+        "tier": "3",
+        "reason": "ActionCompileError: edge (12266, 12556) is added by another action"
+      },
+      {
+        "identity": "train:44b6_5f15d135",
+        "tier": "4",
+        "reason": "ActionCompileError: edge (12266, 12556) is added by another action"
+      },
+      {
+        "identity": "train:44b6_5f15d135",
+        "tier": "unbounded",
+        "reason": "ActionCompileError: edge (12266, 12556) is added by another action"
+      }
+    ],
+    "reconciliation": {
+      "determination": "b_GENUINE_FROZEN_COMPILER_EXPRESSIVE_LIMIT",
+      "closure_under_merge": "PASS_NO_UNDER_MERGE",
+      "failure_shape": "Each conflicting edge is a retained baseline-true division anchor in both add_edges and expected_conflict_edges of one chain. No conflicting edge has a second chain owner.",
+      "frozen_compiler_behavior": {
+        "individual_compile": "PASS",
+        "single_action_batch_compile": "FAIL",
+        "batch_rule": "compile_batch registers an action's add_edges before iterating the same action's removed conflicts, then rejects any removed edge already present in added_edge_owner as 'added by another action'.",
+        "analysis_graph_semantics": "The retained anchor is removed by the replacement boundary and re-added atomically, exactly as the sealed T2 definition requires."
+      },
+      "decisive_single_chain_control": {
+        "identity": "train:44b6_d754aa59",
+        "selected_chain_count": {
+          "value": 1,
+          "label": "[GT-DEPENDENT]"
+        },
+        "chain_index": "0",
+        "missing_correct_edge": "(3729, 3788) [GT-DEPENDENT]",
+        "retained_baseline_true_anchor": "(3729, 3795) [GT-DEPENDENT]",
+        "evidence": "The only selected chain passes compile_action and fails compile_batch on its own retained anchor, so a distinct-chain under-merge is impossible."
+      },
+      "five_video_evidence": [
+        {
+          "identity": "train:44b6_12dfb391",
+          "chain_index": "15",
+          "missing_correct_edge": "(33371, 33915) [GT-DEPENDENT]",
+          "retained_baseline_true_anchor": "(33371, 33890) [GT-DEPENDENT]",
+          "add_owner": "same chain 15 only",
+          "conflict_owner": "same chain 15 only"
+        },
+        {
+          "identity": "train:44b6_e28840c6",
+          "chain_index": "9",
+          "missing_correct_edge": "(21048, 21333) [GT-DEPENDENT]",
+          "retained_baseline_true_anchor": "(21048, 21334) [GT-DEPENDENT]",
+          "add_owner": "same chain 9 only",
+          "conflict_owner": "same chain 9 only"
+        },
+        {
+          "identity": "train:44b6_d754aa59",
+          "chain_index": "0",
+          "missing_correct_edge": "(3729, 3788) [GT-DEPENDENT]",
+          "retained_baseline_true_anchor": "(3729, 3795) [GT-DEPENDENT]",
+          "add_owner": "same chain 0 only",
+          "conflict_owner": "same chain 0 only"
+        },
+        {
+          "identity": "train:44b6_c50204e0",
+          "chain_index": "1",
+          "missing_correct_edge": "(11484, 12028) [GT-DEPENDENT]",
+          "retained_baseline_true_anchor": "(11484, 11985) [GT-DEPENDENT]",
+          "add_owner": "same chain 1 only",
+          "conflict_owner": "same chain 1 only"
+        },
+        {
+          "identity": "train:44b6_5f15d135",
+          "chain_index": "5",
+          "missing_correct_edge": "(12266, 12553) [GT-DEPENDENT]",
+          "retained_baseline_true_anchor": "(12266, 12556) [GT-DEPENDENT]",
+          "add_owner": "same chain 5 only",
+          "conflict_owner": "same chain 5 only"
+        }
+      ],
+      "sealed_definition_alignment": "Every pair is a correct division-daughter pair sharing a source. Re-adding the displaced baseline-true daughter as a retained anchor is expressly required by the sealed fixed-point definition.",
+      "disposition": "ESCALATE_COMPILER_INEXPRESSIBLE; do not edit the compiler, drop chains, loosen compilation, or rerun T2."
+    },
+    "frozen_interface_sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865",
+    "frozen_implementation_sha256": "457f6607a493d51d972913fa155d687e9ffc4045475605bc109a4ca9e90124f5"
+  },
+  "scientific_findings": {
+    "chain_depth": {
+      "all_t2_tiers_byte_identical": true,
+      "histogram": {
+        "1": {
+          "value": 453,
+          "label": "[GT-DEPENDENT]"
+        },
+        "2": {
+          "value": 6,
+          "label": "[GT-DEPENDENT]"
+        }
+      },
+      "single_edge_chain_fraction": {
+        "value": 0.9869281045751634,
+        "label": "[GT-DEPENDENT]"
+      },
+      "single_edge_installed_edge_fraction": {
+        "value": 0.9741935483870968,
+        "label": "[GT-DEPENDENT]"
+      },
+      "finding": "Chain depth is not the unlock. The binding restriction is the both-ends-free/node-disjoint rule on a single install.",
+      "correction_to_banked_conclusion": "This directly corrects dag_prompts/2026-07-30-recall-and-division/recall/runs/N0B_RECONCILIATION.md: the dominant blocked case is not a chain of other wrong edges; almost all closure components are single-edge installs."
+    },
+    "install_vs_delete": {
+      "same_correct_edges_installed_T2_and_T3": {
+        "value": 465,
+        "label": "[GT-DEPENDENT]"
+      },
+      "T2_false_positives_removed": {
+        "value": 713,
+        "label": "[GT-DEPENDENT]"
+      },
+      "T3_false_positives_removed": {
+        "value": 958,
+        "label": "[GT-DEPENDENT]"
+      },
+      "additional_T3_false_positives_removed": {
+        "value": 245,
+        "label": "[GT-DEPENDENT]"
+      },
+      "adjusted_delta_T3_minus_T2": {
+        "value": 0.00856077977208236,
+        "label": "[GT-DEPENDENT]"
+      },
+      "raw_delta_T3_minus_T2": {
+        "value": 0.00851987538149779,
+        "label": "[GT-DEPENDENT]"
+      },
+      "T2_fraction_of_T3_adjusted_ceiling": {
+        "value": 0.9184482956666014,
+        "label": "[GT-DEPENDENT]"
+      },
+      "finding": "T2 and T3 install the same correct edges and differ only in false-positive removal. Roughly 92% of measured headroom is already present with the install set; extra deletion is worth only the T3-minus-T2 increment.",
+      "campaign_context": "This reverses the emphasis implied by the DELETE-selector history: the next written proposal must target feasible correct-edge installation, while respecting the measured DELETE AUC requirement of 0.85 [GT-DEPENDENT]."
+    }
+  },
+  "repair_chain": {
+    "repair_1": {
+      "receipt": "dag_prompts/2026-08-01-global-reassign-oracle/runs/N0_INFRASTRUCTURE_ONLY_EXECUTION_REPAIR_1.json",
+      "receipt_sha256": "932556d2f2f5ef01dcf15780f42a521d87414c71aa53a4ce96667354ea95d5ad",
+      "harness_old_sha256": "674a44b82bb862369a47d1745d442f8c40d0a668149ed5ecfbf4bc21384a4db0",
+      "harness_new_sha256": "c3dd315f58ec2e47c3b492b890a0215ef48957d623f68462afd1d73461d4d29f"
+    },
+    "repair_2": {
+      "receipt": "dag_prompts/2026-08-01-global-reassign-oracle/runs/N0_INFRASTRUCTURE_ONLY_EXECUTION_REPAIR_2.json",
+      "receipt_sha256": "979a6f1e840659e6777f8ab7e0e2820f1b04f1f5d375453365944fa7f0eba979",
+      "harness_old_sha256": "c3dd315f58ec2e47c3b492b890a0215ef48957d623f68462afd1d73461d4d29f",
+      "harness_new_sha256": "b49f80315229dbb32752a8c690082852f0b06d8722a446cfa74ed8a8af1a5351"
+    },
+    "repair_3": {
+      "receipt": "dag_prompts/2026-08-01-global-reassign-oracle/runs/N0_INFRASTRUCTURE_ONLY_EXECUTION_REPAIR_3.json",
+      "receipt_sha256": "3fcb9bfb17a31a7dc15277c78d47adef6e11a4d338384f2cd20e300db8ef217c",
+      "harness_old_sha256": "b49f80315229dbb32752a8c690082852f0b06d8722a446cfa74ed8a8af1a5351",
+      "harness_new_sha256": "3090082c64fa3ea19c7966feeeec514b927b3317e23ea1aad23e2cda73a0b28d"
+    },
+    "repair_4": {
+      "receipt": "dag_prompts/2026-08-01-global-reassign-oracle/runs/N0_INFRASTRUCTURE_ONLY_EXECUTION_REPAIR_4.json",
+      "receipt_sha256": "1373088254b3179cb6f0e2ade9ca0a3f9e825833832ca2a3c12961d2569e4b8d",
+      "harness_old_sha256": "3090082c64fa3ea19c7966feeeec514b927b3317e23ea1aad23e2cda73a0b28d",
+      "harness_new_sha256": "d8f9e764de29074b21ad94411fe74b97150b4a5fb9f0b8db7988dc9e3bacba32"
+    },
+    "repair_5": {
+      "status": "NOT_APPLICABLE_CASE_B_NO_FILE_CHANGE",
+      "receipt": null,
+      "harness_old_sha256": "d8f9e764de29074b21ad94411fe74b97150b4a5fb9f0b8db7988dc9e3bacba32",
+      "harness_new_sha256": "d8f9e764de29074b21ad94411fe74b97150b4a5fb9f0b8db7988dc9e3bacba32",
+      "reason": "The closure is correct; changing the frozen compiler or dropping retained anchors is prohibited."
+    },
+    "final_harness_sha256": "d8f9e764de29074b21ad94411fe74b97150b4a5fb9f0b8db7988dc9e3bacba32",
+    "final_test_sha256": "4177c87d787c3b7b31dc4416de7523aa0720e3fa4383359b792a76467498679d",
+    "no_science_changed": true
+  },
+  "artifact_identities": {
+    "T0_RESULT.json": "da63fd8fdc5a93d3844bb391fcc88d0e3f86e28ed42d58f5c695169d598fb958",
+    "T1_RESULT.json": "3ad340854b135a6c1a0ed1bd5843147e2d023a095d8bfc37e05d5131303f6423",
+    "T2_RESULT.json": "ca541fc9ee64cd35b0948832ee4a00c59bc84c00d4a76032a994d6a312d017c6",
+    "T3_RESULT.json": "6f450226b5b2c1bfed7f6b74600ba89736b7ce1fb168fdf587f17130581d9012"
+  },
+  "execution": {
+    "scientific_child_elapsed_seconds": 2197.5988094589557,
+    "wall_clock_seconds": 2200.629405975342,
+    "peak_rss_gib": 1.140411376953125,
+    "preflight_seconds": 45.131184816360474,
+    "swap_growth_mib": 0.0,
+    "guard_status": "PASS"
+  }
+}

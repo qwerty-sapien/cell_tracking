@@ -54,7 +54,7 @@ DEFAULT_SCORES = (
     / "_ARCHIVE/conflict_residual/reports/g02/"
     "run_bh_d4_conflict_edge_f0_holdout57_v1/scores_postpatch.json"
 )
-DEFAULT_PARITY = ROOT / "reports/g02/scorer_parity_v1.json"
+DEFAULT_PARITY = score_bh_cv57.DEFAULT_SCORER_PARITY
 DEFAULT_OUTPUT = (
     ROOT / "reports/g02/phase1_e6_affine_motion_residual_raw_cv57_v2.json"
 )

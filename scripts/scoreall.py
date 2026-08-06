@@ -8,6 +8,7 @@ import csv
 import glob
 import hashlib
 import json
+import os
 import re
 import sys
 import time
@@ -728,7 +729,56 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     args.output.write_text(
         json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
+    if bool(getattr(args, "visual_review", True)):
+        result["visual_review"] = run_visual_review_hook(args, result)
     return result
+
+
+def run_visual_review_hook(args: argparse.Namespace, result: Mapping[str, Any]) -> dict[str, Any]:
+    """Invoke the cached default review only after the score artifact is durable."""
+
+    try:
+        from scripts import build_track_visualizer as visualizer
+
+        predictions: Path
+        if getattr(args, "submission", None) is not None:
+            predictions = Path(args.submission)
+        else:
+            source_paths = [
+                Path(str(row.get("source", {}).get("path")))
+                for row in result.get("samples", [])
+                if isinstance(row.get("source"), Mapping) and row.get("source", {}).get("path")
+            ]
+            frags_value = Path(str(getattr(args, "frags", "")))
+            if frags_value.is_dir():
+                predictions = frags_value
+            elif source_paths:
+                predictions = source_paths[0].parent
+            else:
+                raise ScoreAllError("scored fragment rows lack source paths for visual review")
+        review_args = argparse.Namespace(
+            zip=Path(args.zip),
+            predictions=predictions,
+            scores=Path(args.output),
+            bundle=getattr(args, "review_bundle", None),
+            frame_flags=getattr(args, "review_frame_flags", None) or visualizer.DEFAULT_FRAME_FLAGS,
+            scope="default",
+            event_kind=getattr(args, "event_kind", "submission_candidate"),
+            clip_seconds=float(getattr(args, "review_clip_seconds", visualizer.DEFAULT_CLIP_SECONDS)),
+            fps=getattr(args, "review_fps", None),
+            hud=bool(getattr(args, "review_hud", True)),
+            hud_corner=getattr(args, "review_hud_corner", "tr"),
+            metrics=getattr(args, "review_metrics", ",".join(visualizer.DEFAULT_METRICS)),
+            metric_corner=getattr(args, "review_metric_corner", None),
+            cache=True,
+            workers=int(getattr(args, "review_workers", max(1, min(4, (os.cpu_count() or 2) // 2)))),
+            ffmpeg=getattr(args, "review_ffmpeg", "ffmpeg"),
+        )
+        return visualizer.build_review(review_args)
+    except Exception as exc:  # noqa: BLE001 - normalize hook failure for scorer CLI
+        raise ScoreAllError(
+            f"score artifact was written, but the post-scoring visual review failed: {exc}"
+        ) from exc
 
 
 def positive_int(value: str) -> int:
@@ -752,6 +802,30 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         default="all",
     )
     parser.add_argument("--max-datasets", type=positive_int, default=None)
+    parser.add_argument(
+        "--visual-review",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="automatically refresh the cached default-scope visual review after scoring",
+    )
+    parser.add_argument(
+        "--event-kind",
+        choices=("submission_candidate", "training_checkpoint", "snapshot"),
+        default="submission_candidate",
+    )
+    parser.add_argument("--review-bundle", type=Path, default=None)
+    parser.add_argument("--review-frame-flags", type=Path, default=None)
+    parser.add_argument("--review-clip-seconds", type=float, default=15.0)
+    parser.add_argument("--review-fps", type=float, default=None)
+    parser.add_argument("--review-hud", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--review-hud-corner", choices=("tl", "tr", "bl", "br"), default="tr")
+    parser.add_argument(
+        "--review-metrics",
+        default="edge_adjusted_jaccard,division_jaccard,gt_division_count",
+    )
+    parser.add_argument("--review-metric-corner", default=None)
+    parser.add_argument("--review-workers", type=positive_int, default=max(1, min(4, (os.cpu_count() or 2) // 2)))
+    parser.add_argument("--review-ffmpeg", default="ffmpeg")
     return parser.parse_args(argv)
 
 
@@ -768,6 +842,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 "output": str(args.output),
                 "summary": result["summary"],
                 "selection": result["selection"],
+                "visual_review": result.get("visual_review"),
             },
             indent=2,
         )

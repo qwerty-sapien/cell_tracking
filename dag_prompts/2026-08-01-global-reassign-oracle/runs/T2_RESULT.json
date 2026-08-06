@@ -1,0 +1,247 @@
+{
+  "stage": "T2",
+  "status": "COMPLETE",
+  "scope_videos": 36,
+  "baseline": {
+    "n": 36,
+    "edge_jaccard": 0.862596057467424,
+    "division_jaccard": 0.0,
+    "division_tp": 0.0,
+    "division_fp": 0.0,
+    "division_fn": 9.0,
+    "node_recall": 0.9926180002844743,
+    "adj_edge_jaccard": 0.8665345260361912,
+    "n_adj": 36,
+    "score": 0.8665345260361912
+  },
+  "tiers": {
+    "2": {
+      "limit": 2,
+      "candidate": {
+        "n": 36,
+        "edge_jaccard": 0.9585220712319034,
+        "division_jaccard": 0.6666666666666666,
+        "division_tp": 6.0,
+        "division_fp": 0.0,
+        "division_fn": 3.0,
+        "node_recall": 0.9926180002844743,
+        "adj_edge_jaccard": 0.962947392640453,
+        "n_adj": 36,
+        "score": 1.0296140593071197
+      },
+      "delta": {
+        "adjusted": 0.09641286660426185,
+        "raw": 0.0959260137644794,
+        "node": 0.0,
+        "combined": 0.1630795332709285
+      },
+      "counts": {
+        "correct_edges_installed": 465,
+        "fps_removed": 713,
+        "chains": 459,
+        "compiled_chains": 459
+      },
+      "chain_length_histogram": {
+        "1": 453,
+        "2": 6
+      }
+    },
+    "3": {
+      "limit": 3,
+      "candidate": {
+        "n": 36,
+        "edge_jaccard": 0.9585220712319034,
+        "division_jaccard": 0.6666666666666666,
+        "division_tp": 6.0,
+        "division_fp": 0.0,
+        "division_fn": 3.0,
+        "node_recall": 0.9926180002844743,
+        "adj_edge_jaccard": 0.962947392640453,
+        "n_adj": 36,
+        "score": 1.0296140593071197
+      },
+      "delta": {
+        "adjusted": 0.09641286660426185,
+        "raw": 0.0959260137644794,
+        "node": 0.0,
+        "combined": 0.1630795332709285
+      },
+      "counts": {
+        "correct_edges_installed": 465,
+        "fps_removed": 713,
+        "chains": 459,
+        "compiled_chains": 459
+      },
+      "chain_length_histogram": {
+        "1": 453,
+        "2": 6
+      }
+    },
+    "4": {
+      "limit": 4,
+      "candidate": {
+        "n": 36,
+        "edge_jaccard": 0.9585220712319034,
+        "division_jaccard": 0.6666666666666666,
+        "division_tp": 6.0,
+        "division_fp": 0.0,
+        "division_fn": 3.0,
+        "node_recall": 0.9926180002844743,
+        "adj_edge_jaccard": 0.962947392640453,
+        "n_adj": 36,
+        "score": 1.0296140593071197
+      },
+      "delta": {
+        "adjusted": 0.09641286660426185,
+        "raw": 0.0959260137644794,
+        "node": 0.0,
+        "combined": 0.1630795332709285
+      },
+      "counts": {
+        "correct_edges_installed": 465,
+        "fps_removed": 713,
+        "chains": 459,
+        "compiled_chains": 459
+      },
+      "chain_length_histogram": {
+        "1": 453,
+        "2": 6
+      }
+    },
+    "unbounded": {
+      "limit": null,
+      "candidate": {
+        "n": 36,
+        "edge_jaccard": 0.9585220712319034,
+        "division_jaccard": 0.6666666666666666,
+        "division_tp": 6.0,
+        "division_fp": 0.0,
+        "division_fn": 3.0,
+        "node_recall": 0.9926180002844743,
+        "adj_edge_jaccard": 0.962947392640453,
+        "n_adj": 36,
+        "score": 1.0296140593071197
+      },
+      "delta": {
+        "adjusted": 0.09641286660426185,
+        "raw": 0.0959260137644794,
+        "node": 0.0,
+        "combined": 0.1630795332709285
+      },
+      "counts": {
+        "correct_edges_installed": 465,
+        "fps_removed": 713,
+        "chains": 459,
+        "compiled_chains": 459
+      },
+      "chain_length_histogram": {
+        "1": 453,
+        "2": 6
+      }
+    }
+  },
+  "compiler_expressible": false,
+  "compiler_failures": [
+    {
+      "identity": "train:44b6_12dfb391",
+      "tier": "2",
+      "reason": "ActionCompileError: edge (33371, 33890) is added by another action"
+    },
+    {
+      "identity": "train:44b6_12dfb391",
+      "tier": "3",
+      "reason": "ActionCompileError: edge (33371, 33890) is added by another action"
+    },
+    {
+      "identity": "train:44b6_12dfb391",
+      "tier": "4",
+      "reason": "ActionCompileError: edge (33371, 33890) is added by another action"
+    },
+    {
+      "identity": "train:44b6_12dfb391",
+      "tier": "unbounded",
+      "reason": "ActionCompileError: edge (33371, 33890) is added by another action"
+    },
+    {
+      "identity": "train:44b6_e28840c6",
+      "tier": "2",
+      "reason": "ActionCompileError: edge (21048, 21334) is added by another action"
+    },
+    {
+      "identity": "train:44b6_e28840c6",
+      "tier": "3",
+      "reason": "ActionCompileError: edge (21048, 21334) is added by another action"
+    },
+    {
+      "identity": "train:44b6_e28840c6",
+      "tier": "4",
+      "reason": "ActionCompileError: edge (21048, 21334) is added by another action"
+    },
+    {
+      "identity": "train:44b6_e28840c6",
+      "tier": "unbounded",
+      "reason": "ActionCompileError: edge (21048, 21334) is added by another action"
+    },
+    {
+      "identity": "train:44b6_d754aa59",
+      "tier": "2",
+      "reason": "ActionCompileError: edge (3729, 3795) is added by another action"
+    },
+    {
+      "identity": "train:44b6_d754aa59",
+      "tier": "3",
+      "reason": "ActionCompileError: edge (3729, 3795) is added by another action"
+    },
+    {
+      "identity": "train:44b6_d754aa59",
+      "tier": "4",
+      "reason": "ActionCompileError: edge (3729, 3795) is added by another action"
+    },
+    {
+      "identity": "train:44b6_d754aa59",
+      "tier": "unbounded",
+      "reason": "ActionCompileError: edge (3729, 3795) is added by another action"
+    },
+    {
+      "identity": "train:44b6_c50204e0",
+      "tier": "2",
+      "reason": "ActionCompileError: edge (11484, 11985) is added by another action"
+    },
+    {
+      "identity": "train:44b6_c50204e0",
+      "tier": "3",
+      "reason": "ActionCompileError: edge (11484, 11985) is added by another action"
+    },
+    {
+      "identity": "train:44b6_c50204e0",
+      "tier": "4",
+      "reason": "ActionCompileError: edge (11484, 11985) is added by another action"
+    },
+    {
+      "identity": "train:44b6_c50204e0",
+      "tier": "unbounded",
+      "reason": "ActionCompileError: edge (11484, 11985) is added by another action"
+    },
+    {
+      "identity": "train:44b6_5f15d135",
+      "tier": "2",
+      "reason": "ActionCompileError: edge (12266, 12556) is added by another action"
+    },
+    {
+      "identity": "train:44b6_5f15d135",
+      "tier": "3",
+      "reason": "ActionCompileError: edge (12266, 12556) is added by another action"
+    },
+    {
+      "identity": "train:44b6_5f15d135",
+      "tier": "4",
+      "reason": "ActionCompileError: edge (12266, 12556) is added by another action"
+    },
+    {
+      "identity": "train:44b6_5f15d135",
+      "tier": "unbounded",
+      "reason": "ActionCompileError: edge (12266, 12556) is added by another action"
+    }
+  ],
+  "fragment_count": 36
+}

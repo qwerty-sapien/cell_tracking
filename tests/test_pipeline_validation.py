@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import hashlib
+import json
 import sys
 import unittest
 from pathlib import Path
@@ -32,7 +34,38 @@ from celltrack_alpha.pipeline import (  # noqa: E402
 from celltrack_alpha.proposals import _validate_volume  # noqa: E402
 
 
+def _successful_predict_dataset_window_input() -> np.ndarray:
+    """Return the smallest deterministic window that exercises the full pipeline."""
+
+    array = np.zeros((2, 7, 33, 33), dtype=np.float32)
+    for t, y in enumerate((15, 16)):
+        array[t, 3, y, 16] = 100.0
+    return array
+
+
 class PipelineValidationTests(unittest.TestCase):
+    def test_predict_dataset_window_small_end_to_end_fixture(self) -> None:
+        result = predict_dataset_window(
+            "fixture_window",
+            _successful_predict_dataset_window_input(),
+            None,
+            forced_route="clean_point",
+        )
+
+        graph_bytes = json.dumps(
+            {"edges": result.edges, "nodes": result.nodes},
+            sort_keys=True,
+            separators=(",", ":"),
+        ).encode("utf-8")
+        self.assertEqual(result.route.label, "clean_point")
+        self.assertEqual(len(result.nodes), 14)
+        self.assertEqual(len(result.edges), 7)
+        self.assertEqual(result.diagnostics["num_edge_candidates"], 13)
+        self.assertEqual(
+            hashlib.sha256(graph_bytes).hexdigest(),
+            "97c218aefe8ff5449f0b1367289e3db9ceca6659e092a5be13664204b98082bf",
+        )
+
     def test_valid_tzyx_window(self) -> None:
         array = np.zeros((3, 2, 4, 5), dtype=np.uint16)
         self.assertEqual(_validate_array_window("sample", array, 1, 3), (1, 3))

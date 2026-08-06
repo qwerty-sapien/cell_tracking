@@ -1,0 +1,124 @@
+{
+  "schema": "celltrack-alpha.global-reassign-oracle-infrastructure-only-execution-repair.v1",
+  "recorded_at_utc": "2026-08-01T01:55:40Z",
+  "status": "FROZEN_BEFORE_RESUMED_T3_OUTPUT",
+  "scope": "GLOBAL-REASSIGN-ORACLE-V1 local-CPU T3 tensor replay",
+  "trigger": {
+    "attempt_guard_status": "INVALID_HARNESS_COMMAND",
+    "attempt_returncode": 2,
+    "failure_stage": "T3 first-video candidate-pool integrity check, before any per-video fragment or aggregate oracle value",
+    "identity": "train:44b6_cf8fed6b",
+    "expected_candidate_pairs": 117995,
+    "faulty_replay_candidate_pairs": 120065,
+    "banked_clean_reachable": 186,
+    "faulty_replay_clean_reachable": 186,
+    "oracle_value_observed": false,
+    "scientific_output_consumed": false,
+    "t3_fragments_emitted": 0
+  },
+  "diagnosis": {
+    "rule_difference": "source object, not radius/cap/rank/dedup/direction/terminal-frame semantics",
+    "banked_source_object": "adjacent FrameDet objects in authenticated reports/g02/fitcache_117/bh9out/cache/*.bhc SparseInferenceCache.detections",
+    "faulty_source_object": "nodes reconstructed from the scored APNCC control-fragment SubmissionGraph",
+    "banked_provenance": {
+      "report": "reports/g02/extended_radius_reachability_v1.json",
+      "report_sha256": "22a70e0b750d3d59bdd92ca5a82967d35c5d866fafe1c867dbb09b936efc2803",
+      "generator": "scripts/audit_extended_radius_reachability.py::_candidate_pool_counts",
+      "generator_sha256": "ace0a4a214fee258d4b138fa19283bac60faabee1f017b162da86b1cf07c9ef0",
+      "declared_cache": "/Users/agent/Desktop/cell_tracking/reports/g02/fitcache_117/bh9out/cache",
+      "radius_um": 10.0,
+      "neighbor_cap": 8,
+      "ordering": "distance, target node ID, target input index"
+    },
+    "established_graph_boundary": {
+      "source": "scripts/analyze_action_class_oracle.py::build_action_graphs",
+      "source_sha256": "d8118a5da0d63b194e8c5121773de3ed5a342b3de9cdd8abf06ee3078b96ab5f",
+      "behavior": "enumerate the frozen candidate tensor on SparseInferenceCache.detections, then retain only candidate endpoints and GT mappings valid on the scored graph node set"
+    },
+    "failing_video_object_evidence": {
+      "cache_frames": 100,
+      "apncc_graph_frames": 100,
+      "cache_nodes": 46460,
+      "apncc_graph_nodes": 45894,
+      "cache_only_node_ids": 1493,
+      "apncc_only_node_ids": 927,
+      "shared_node_ids_with_different_coordinates": 43576,
+      "cache_replay_candidate_pairs": 117995,
+      "apncc_graph_replay_candidate_pairs": 120065
+    },
+    "rejected_alternatives": {
+      "radius_inclusivity": "both banked and repaired enumeration call cKDTree.query_ball_point at exactly 10.0 um",
+      "cap_tie_break": "both use distance, target node ID, then target input index and retain at most 8",
+      "deduplication": "the repaired enumerator asserts retained row count equals unique directed-pair count",
+      "directionality": "both enumerate directed source(t) to target(t+1) pairs only",
+      "terminal_frame": "both enumerate adjacent detection-frame pairs, so the terminal frame is never a source"
+    },
+    "full_experimental_scope_label_free_reconciliation": {
+      "video_count": 36,
+      "mismatched_videos": 0,
+      "banked_candidate_pair_total": 3617372,
+      "repaired_candidate_pair_total": 3617372,
+      "gt_opened": false
+    }
+  },
+  "repair": {
+    "kind": "infrastructure_only_candidate_source_object_correction",
+    "implementation": "dag_prompts/2026-08-01-global-reassign-oracle/global_reassign_oracle.py",
+    "behavior": "Authenticate and enumerate the banked fitcache SparseInferenceCache detections for r10/k8 integrity and candidate pairs; retain the unchanged APNCC graph as the scored node set and apply the established graph-valid endpoint/GT-mapping boundary.",
+    "integrity_check_loosened": false,
+    "expected_value_changed": false,
+    "expected_value_derived_from_faulty_output": false
+  },
+  "file_identities": {
+    "global_reassign_oracle.py": {
+      "old_sha256": "674a44b82bb862369a47d1745d442f8c40d0a668149ed5ecfbf4bc21384a4db0",
+      "new_sha256": "c3dd315f58ec2e47c3b492b890a0215ef48957d623f68462afd1d73461d4d29f"
+    },
+    "test_global_reassign_oracle.py": {
+      "old_sha256": "1cecab618ad717df4f336dc645d188be7967f14bdae13faf610e33b004c4c471",
+      "new_sha256": "29a7c1a46831aa611bff2dc3fbec1e85cdf9caa0db13793947d2641f412fc300"
+    },
+    "sealed_preregistration_sha256_unchanged": "6fe5ec6e6b11ad833f84988a2535d0dcfea1900c6a962db25c4ba6da97d7e879",
+    "run_guarded.py_sha256_unchanged": "c5fbbc5b0036e07340f4b66a200a78a0fa1abe1e3c95b145019039324bfc1758",
+    "official_eval.py_sha256_unchanged": "22f12e0eb7568c364a8503b8eeb9167147c152f182c2aa10dc10aef588bc01e6",
+    "action_compiler.py_sha256_unchanged": "457f6607a493d51d972913fa155d687e9ffc4045475605bc109a4ca9e90124f5"
+  },
+  "scientific_change_flags": {
+    "science_changed": false,
+    "population_changed": false,
+    "scope_changed": false,
+    "estimand_changed": false,
+    "tier_definition_changed": false,
+    "threshold_changed": false,
+    "tolerance_changed": false,
+    "decision_arithmetic_changed": false,
+    "selection_rule_changed": false,
+    "scorer_changed": false,
+    "compiler_changed": false,
+    "preregistration_changed": false
+  },
+  "verification_before_resumed_outcome": {
+    "unit_suite": {
+      "status": "PASS",
+      "passed": 8,
+      "failed": 0,
+      "includes_banked_117995_regression": true
+    },
+    "full_36_video_label_free_pool_reconciliation": "PASS",
+    "python_compile": "PASS",
+    "diff_check": "PASS"
+  },
+  "resume_precondition": {
+    "guard_command_must_remain_exact": ".venv/bin/python dag_prompts/2026-08-01-global-reassign-oracle/run_guarded.py",
+    "preserve_then_clear_reserved_attempt_paths_before_resume": [
+      "dag_prompts/2026-08-01-global-reassign-oracle/runs/N0_IDLE_PREFLIGHT.json",
+      "dag_prompts/2026-08-01-global-reassign-oracle/runs/N0_RUN_GUARD.json"
+    ],
+    "reason": "the sealed guard refuses to overwrite its reserved receipt path"
+  },
+  "external_action": false,
+  "gpu_action": false,
+  "kaggle_action": false,
+  "runpod_action": false,
+  "submission_action": false
+}

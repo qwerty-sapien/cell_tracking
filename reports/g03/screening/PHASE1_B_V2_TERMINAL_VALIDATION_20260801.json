@@ -1,0 +1,13 @@
+{
+  "b_receipt_sha256": "8d6781045b9a6780de2929ecb94479b9ebff07e301a101f20bf21456a8db3e69",
+  "final_state_digest": "816acee4efb6d0c757308bf27d9e0b912e30caee7dba0bfbdec3c80d3c80387b",
+  "graph_emission_sha256": "8863ea78a7bdb30e148c2864667b30f56aa61175eafb8bca786b50d55752b3cd",
+  "handoff_tree_sha256": "73a6cc566ba91894cd1da0ace59581ffa89ba63cd324b829c6e2ed860b5b56ac",
+  "kernel_id": "onebitbrain/g03-phase1-resume-b-v2",
+  "official_frozen_graph_objective_evaluated": false,
+  "resumed_global_step": 1953711,
+  "schema": "celltrack-alpha.g03-phase1-b-v2-terminal-validation.v1",
+  "selection_authorized": false,
+  "status": "PASS_B_BIT_IDENTICAL_AND_44B6_EMITTED",
+  "swap_growth_bytes": 0
+}
