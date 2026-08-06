@@ -1,0 +1,17 @@
+{
+  "frontier": "DIVISION VALUE DIAGNOSTIC TERMINAL / FITTING LOCKED. Exact GT-dependent 38-event ceiling is +0.092067842 combined (38/0/4, Jaccard 0.904762), but current-pool tier (a) contains 1/38 event and yields only +0.002406490 even at perfect selection. The remaining 37/38 require a stronger representation that was not built; its +0.092067842 value is a representation-conditioned upper bound, not a realized selector gain. DAG-2 division requirement is NOT_EVALUABLE_NO_DIVISION_SELECTOR. No amendment proposal, tier move, fitting unlock, DEAD, GPU, Kaggle, budget debit, RunPod, submission, N1/fold/P0, or plan action.",
+  "information_label": "NON-GT-IDENTIFIABLE",
+  "log": "2026-07-29 \u2014 Division-value DAG terminal: GT ceiling +0.092067842; current-pool perfect-selection +0.002406490 (<+0.005); stronger-representation selector achievability unestablished; fitting remains locked.",
+  "numeric_framing": {
+    "current_pool": {
+      "combined_score_delta": 0.002406489981796045,
+      "information_label": "NON-GT-IDENTIFIABLE"
+    },
+    "gt_ceiling": {
+      "combined_score_delta": 0.09206784151854919,
+      "information_label": "GT-DEPENDENT"
+    }
+  },
+  "schema": "g02.live-state-fragment.v1",
+  "status": "ROOT_MERGED"
+}

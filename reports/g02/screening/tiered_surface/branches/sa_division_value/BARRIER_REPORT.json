@@ -1,0 +1,37 @@
+{
+  "concurrent_barrier_pins": {
+    "dag1_cellect_terminal_invalid_sha256": "40aa6dca1f6bb8ab98d9f330c4c22445ec343ce846cfc482636487039aa5c162",
+    "dag1_dinov2_terminal_invalid_resource_sha256": "9b3f4b455ef6b85f5f1d304a5e6c05742b8cd07540508607407f65ddd0d47ef4",
+    "dag2_barrier_sha256": "d07ef7ef2c9be381e22c18c76ed683844bf018ed194e2c393dae15895d70bd54",
+    "dag2_requirement_surface_sha256": "6e62a29ce3effdd2a3748716a9843f10f5f5954a322d10547f7a4cafc4d6c71b",
+    "dag3_barrier_sha256": "40dca12b4cfcc3e98b8d35508d6fc1f521f5e50e0e035336bc7bfd4cb0914d7a",
+    "dag3_root_commit": "ad35a0e9fd9b60bd1ccfd007e39855c7b4e06dab"
+  },
+  "date": "2026-07-29",
+  "division_artifacts": {
+    "FINAL_REPORT.md": "8b7b7cb92c2c10c25cd9f381a866d50093f16e48002a35dadfd33aead4c25ef3",
+    "FP_SENSITIVITY.json": "6015a1a6440af4d4da705a416472f3f6b3dab7be764549a969bf507b4e1ddd76",
+    "GT_DEPENDENCY_TABLE.json": "d83e32fb610f3be3236de6abb70d88d5101da1776c3542e034a83cb5600ec06c",
+    "N0_N3_RESULTS.json": "6f9cad08202bec5d46554f7aad668ff9fd44005e608712e7932ce2ccd601ff10",
+    "N4_REQUIREMENT_HANDOFF.json": "2cf31eedbb803e9ba7d5a0a84fe2022b629915e8af7a28e3254ce36fff05f1a5",
+    "N5_VERDICT.json": "c70fdc666c5b369b3983a3b6ab81fc1da3d83025eaaf8d2d6d457d89467e7422",
+    "PROPOSED_LEDGER_ROW.md": "b5d373ed1464ab85c4b51da27c1cf8516baba0ae9339dd13aecb9e5846fe530b",
+    "state_fragment.json": "cf40fadad1938390849216952ff167733379dd0c34fce5ca7abf7944804e03eb"
+  },
+  "governance": {
+    "budget_debit": 0,
+    "dag3_commit_merged": true,
+    "dead_actions": 0,
+    "division_fitting_locked": true,
+    "gpu_actions": 0,
+    "kaggle_actions": 0,
+    "ledger_reconciled": true,
+    "live_state_reconciled": true,
+    "plan_amendments": 0,
+    "runpod_actions": 0,
+    "tier_moves": 0
+  },
+  "information_label": "NON-GT-IDENTIFIABLE",
+  "schema": "g02.division-value.root-barrier.v1",
+  "status": "COMPLETE"
+}

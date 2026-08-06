@@ -1,0 +1,13 @@
+{
+  "schema": "celltrack-alpha.division-value-preregistration-freeze.v1",
+  "status": "FROZEN",
+  "path": "reports/g02/screening/tiered_surface/branches/sa_division_value/PREREGISTRATION.json",
+  "sha256": "ffe7b4dbef0b34c11593fe340faa3903b78b7719c1b18a74c28892ccb1fe0f78",
+  "frozen_before": [
+    "candidate probability extraction",
+    "tier assignment",
+    "N0 official score replay",
+    "N2 subset replay",
+    "N3 precision curve"
+  ]
+}

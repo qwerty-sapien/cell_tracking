@@ -1,0 +1,18 @@
+{
+  "artifact_sha256": {
+    "BARRIER_REPORT.json": "f57047e229f87f317609b85db220186d08833626df28be8748f1e78735940c48",
+    "FINAL_REPORT.md": "8b7b7cb92c2c10c25cd9f381a866d50093f16e48002a35dadfd33aead4c25ef3",
+    "FP_SENSITIVITY.json": "6015a1a6440af4d4da705a416472f3f6b3dab7be764549a969bf507b4e1ddd76",
+    "GT_DEPENDENCY_TABLE.json": "d83e32fb610f3be3236de6abb70d88d5101da1776c3542e034a83cb5600ec06c",
+    "N0_N3_RESULTS.json": "6f9cad08202bec5d46554f7aad668ff9fd44005e608712e7932ce2ccd601ff10",
+    "N4_REQUIREMENT_HANDOFF.json": "2cf31eedbb803e9ba7d5a0a84fe2022b629915e8af7a28e3254ce36fff05f1a5",
+    "N5_VERDICT.json": "c70fdc666c5b369b3983a3b6ab81fc1da3d83025eaaf8d2d6d457d89467e7422",
+    "PROPOSED_LEDGER_ROW.md": "b5d373ed1464ab85c4b51da27c1cf8516baba0ae9339dd13aecb9e5846fe530b",
+    "state_fragment.json": "cf40fadad1938390849216952ff167733379dd0c34fce5ca7abf7944804e03eb"
+  },
+  "checks": 39,
+  "information_label": "NON-GT-IDENTIFIABLE",
+  "labeled_numeric_leaves": 2347,
+  "passed": true,
+  "schema": "celltrack-alpha.division-value-final-validation.v1"
+}

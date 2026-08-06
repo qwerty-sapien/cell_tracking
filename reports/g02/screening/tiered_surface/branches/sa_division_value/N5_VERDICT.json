@@ -1,0 +1,42 @@
+{
+  "current_pool": {
+    "combined_score_delta": 0.002406489981796045,
+    "event_count": 1,
+    "information_label": "NON-GT-IDENTIFIABLE",
+    "interpretation": "Near-zero current-pool reachability: division is presently as unreachable as node restoration for an actionable +0.005 gain.",
+    "target_plus_0_005_achievable_at_perfect_selection": false
+  },
+  "decision": {
+    "amendment_condition_satisfied": false,
+    "amendment_proposal_emitted": false,
+    "dead_actions": 0,
+    "division_fitting": "LOCKED",
+    "materially_large_realizable_subset": false,
+    "plan_amendments": 0,
+    "required_selector_precision_achievable_per_dag2": false,
+    "tier_moves": 0
+  },
+  "gt_ceiling": {
+    "combined_score_delta": 0.09206784151854919,
+    "division_fn": 4,
+    "division_fp": 0,
+    "division_jaccard": 0.9047619047619048,
+    "division_tp": 38,
+    "event_count": 38,
+    "information_label": "GT-DEPENDENT",
+    "interpretation": "Oracle ceiling only; not evidence of reachable gain."
+  },
+  "information_label": "NON-GT-IDENTIFIABLE",
+  "reason": "Tier (a) contributes only +0.00240649 at perfect selection, below the +0.005 target. Tier (b) contains material headroom but has no built representation or measured selector, so achievability is not established by DAG 2.",
+  "schema": "celltrack-alpha.division-value-n5-verdict.v1",
+  "status": "COMPLETE_DIAGNOSTIC_HALT",
+  "stronger_representation": {
+    "combined_score_delta_upper_bound": 0.09206784151854919,
+    "event_count": 38,
+    "information_label": "NON-GT-IDENTIFIABLE",
+    "minimum_edge_neutral_precision_for_plus_0_005": 0.03423423423423423,
+    "representation_built": false,
+    "selector_achievability": "NOT_ESTABLISHED",
+    "selector_measured": false
+  }
+}
