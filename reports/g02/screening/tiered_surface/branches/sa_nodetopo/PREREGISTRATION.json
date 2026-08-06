@@ -1,0 +1,129 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-preregistration.v1",
+  "status": "FROZEN_BEFORE_SCORE_OR_HELD_OUTCOME",
+  "frozen_utc": "2026-07-28T02:05:00Z",
+  "node": "NODETOPO-O0 / NODERESTORE-O0 prerequisite",
+  "objective": "S(G)=weighted_adjusted_edge_Jaccard(G)+0.1*division_Jaccard(G)",
+  "scope": {
+    "fit_only": true,
+    "first_family": "44b6",
+    "second_family_if_and_only_if_44b6_go": "6bba",
+    "forbidden": [
+      "audit groups",
+      "test split",
+      "CV57",
+      "GT-derived proposal identity",
+      "P0 GT node oracle as a proposal source",
+      "pseudo-segmentation or pseudo-mask generation",
+      "coordinate-only or edge-only node actions",
+      "sibling live outputs",
+      "external download or service",
+      "Kaggle or RunPod launch",
+      "public submission",
+      "DEAD mechanism rescreen",
+      "root single-writer files"
+    ]
+  },
+  "frozen_inputs": {
+    "n1_interface_sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865",
+    "n1_implementation_sha256": "457f6607a493d51d972913fa155d687e9ffc4045475605bc109a4ca9e90124f5",
+    "grouped_folds_sha256": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769",
+    "p0_sha256": "8ad548c134c419e2e76b8661848e90493d674731ceb34aab231c5c18c8889c06",
+    "fit_provenance_sha256": "6a9139bf281b98d2c3869c8f12f80fb9655f85ba1c0f7f91f0a51acd7c37f14f",
+    "locked_plan_sha256": "a322724e77dd77f53c36e918e5345e86e8394a3848033a9a2225c21924e75116"
+  },
+  "proposal_origin": {
+    "eligible": "pre-existing local raw-image or detector artifact whose candidate generation is demonstrably label-independent and predates this audit",
+    "ineligible": "GT coordinates, GT-matched rows selected by label, the P0 oracle, newly invented coordinates, pseudo-masks, or a proposal routine whose raw-image inputs are absent"
+  },
+  "candidate_identity_and_join": {
+    "identity": [
+      "split=train",
+      "family",
+      "dataset",
+      "time",
+      "candidate-source",
+      "source-local-node-id",
+      "z",
+      "y",
+      "x"
+    ],
+    "join": "exact dataset identity plus immutable candidate identity; no nearest-GT or matched-GT field may participate",
+    "deduplication": "canonical identity equality only; ambiguous collisions fail closed",
+    "required_coverage": "all fixed fit-only groups needed by a 44b6-first grouped-fold run, with zero audit/test/CV57 identities"
+  },
+  "unlabeled_background": {
+    "definition": "every frozen proposal not selected as a positive fit label, counted from the deployment candidate universe before any GT join",
+    "required": "finite exact count per dataset and family from the same immutable candidate bank",
+    "forbidden_substitutes": [
+      "P0 raw_background_actions=null",
+      "GT complement constructed from restored GT nodes",
+      "only far-from-sparse-GT rows",
+      "audit/test candidates"
+    ]
+  },
+  "controls": {
+    "noop": "compile no actions against the frozen baseline",
+    "isolated_node_add": "same selected node identities with zero incident edges; expected scientific negative control only",
+    "topology_complete_restore": "same selected node identities with every declared incident addition, deletion, incoming/outgoing replacement, and expected conflict edge in one N1 restore_topology action"
+  },
+  "topology_completion_rule": {
+    "atomicity": "one action owns its added node, all added incident edges, all removed/replaced incident conflicts, and the exact expected conflict boundary",
+    "minimum_topology": "at least one time-forward incident edge per restored node",
+    "n1_kind": "restore_topology",
+    "validity": "100% of retained single actions and their combined deterministic batch must compile under frozen N1; otherwise PARK_CONTRACT"
+  },
+  "n1_action_fields": [
+    "action_id",
+    "kind",
+    "add_nodes",
+    "add_edges",
+    "delete_edges",
+    "replace_outgoing_from",
+    "replace_incoming_to",
+    "expected_conflict_edges"
+  ],
+  "false_node_stress": {
+    "ordering": "sha256(canonical candidate identity) ascending",
+    "budgets": [
+      0,
+      1,
+      2,
+      5,
+      10,
+      20,
+      50
+    ],
+    "construction": "add the first k deterministically designated harmful/background node actions without changing positives or choosing k from outcomes",
+    "report": "for each k, exact node/action count, graph hash, adjusted/raw/node deltas, and validity",
+    "selection": "stress diagnostics never choose a threshold or gate"
+  },
+  "folds_and_seeds": {
+    "fold_contract": "grouped_3fold_audit20_v1.json by hash",
+    "seeds": [
+      20260728
+    ],
+    "fit_source_rule": "training/calibration/router/threshold sources are fold-fit groups only",
+    "held_gate_rule": "44b6 held-fit graph first; no family pooling"
+  },
+  "decision_lines": {
+    "candidate_prerequisite_go": "authentic label-independent origin, exact unlabeled background, complete fit-only 44b6 coverage, unambiguous join, and 100% N1-valid atomic actions",
+    "candidate_prerequisite_park": "any missing origin proof, missing raw/detection artifact, GT-contaminated selection, incomplete family coverage, undefined background, ambiguous join, or N1-invalid action",
+    "graph_go_44b6": "adjusted_delta>=0.005 and raw_delta>=0 and node_recall_delta>=0",
+    "graph_kill_44b6": "adjusted_delta<0.005 or raw_delta<0 or node_recall_delta<0; keep 6bba closed",
+    "graph_go_6bba": "identical adjusted/raw/node rule after 44b6 GO only",
+    "null": "no candidate actions or result graph byte-identical to no-op => PARK_NULL",
+    "proposal_diagnostics": "candidate recall, precision, AUC, support, stability, and node diagnostics are report-only and never gate"
+  },
+  "external_compute": {
+    "gpu_eligible": true,
+    "launch_authority": "root coordinator only",
+    "request_condition": "only after an authenticated candidate path and credible measured runtime projection",
+    "under_5h": "request must carry a hard five-hour kill",
+    "at_or_above_5h": "explicit human approval required"
+  },
+  "quarantine": [
+    "memo C2/K-best deltas",
+    "memo Branch-B 66/223"
+  ]
+}

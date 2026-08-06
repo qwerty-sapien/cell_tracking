@@ -1,0 +1,23 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-raw-universe-attempt-note.v1",
+  "status": "INVALID_TERMINATED_BEFORE_FIRST_VIDEO",
+  "attempt": 1,
+  "started_after_execution_manifest_commit": "8bf4f50c77cd9286382ad120719453d150c6dff2",
+  "termination_reason": "The inner topology-candidate loop invoked frozen-N1 compile_action for every joinable raw candidate. Each call hashes the full baseline graph, producing candidate_count times graph_size work before the first video could close.",
+  "scientific_result": null,
+  "completed_video_count": 0,
+  "partial_artifacts": [
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/raw_universe_attempt1_invalid/raw_universe/videos/train__44b6_0db75fae.jsonl.gz",
+      "bytes": 0,
+      "usable": false
+    }
+  ],
+  "stress_curve_opened": false,
+  "graph_metric_opened": false,
+  "second_family_opened": false,
+  "swap_failure_observed": false,
+  "gpu_action": false,
+  "external_action": false,
+  "remediation": "Move exhaustive frozen-N1 compilation after deterministic hash ordering and compatibility filtering, so only the retained 50-action diagnostic bank is compiled singly; keep candidate generation, topology construction, ordering, budgets, labels, scorer, and every scientific rule unchanged."
+}

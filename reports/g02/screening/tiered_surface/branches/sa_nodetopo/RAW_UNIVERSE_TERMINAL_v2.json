@@ -1,0 +1,134 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-raw-universe-terminal.v2",
+  "created_utc": "2026-07-28T07:26:37Z",
+  "verdict": "PARK_RESOURCE_GUARD",
+  "tier_move_proposed": false,
+  "scientific_result": null,
+  "completed_video_count": 0,
+  "raw_universe_complete": false,
+  "false_node_stress_curve_opened": false,
+  "graph_metric_opened": false,
+  "family_execution": {
+    "44b6_ran": false,
+    "6bba_ran": false,
+    "cv57_ran": false
+  },
+  "frozen_contract": {
+    "family": "44b6",
+    "fit105_video_count": 36,
+    "preregistration_path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/PREREGISTRATION_RAW_UNIVERSE_v2.json",
+    "preregistration_sha256": "b85129a75905c8efb29e4068455d76a4da5917b3f0b8ddefa69819710f4afd06",
+    "probe_configuration": "balanced_compact",
+    "frames": "all",
+    "pseudo_masks_or_segmentation": false,
+    "n1_interface_sha256": "2a72950c97792b90df8fcf1b6a3739ee27865c98233e6425041192dbcb24f865",
+    "n1_implementation_sha256": "457f6607b1b2664ce6e7de8577b4789544584c7b2872fe05db75ae8d08c24f5",
+    "folds_sha256": "ddb313cbe2523f33169563e39f7ddbeee7af747907bff41e0d69b9aa82a8769",
+    "p0_sha256": "8ad548c11d28157fc9f14d83748cbbec013072bf9b5e5514d4b3562ccb6e9c06",
+    "plan_sha256": "a322724e77dd77f53c36e918e5345e86e8394a3848033a9a2225c21924e75116",
+    "raw_archive_bytes": 87393127165,
+    "raw_archive_sha256": "538ed8a4d7b6669fa948865f947ed43c23aba7ee006fea8826d6ddd1277dfd19",
+    "raw_archive_central_directory_sha256": "5edffe557769a110b7804f84a2a5c2f2383843cce43f7a86bb52153d5f67dc77",
+    "raw_archive_entry_count": 24886
+  },
+  "fail_fast_authentication": {
+    "status": "PASS",
+    "exact_fit105_44b6_videos": 36,
+    "baseline_coverage_complete": true,
+    "archive_bytes_match": true,
+    "archive_central_directory_match": true
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "INVALID_TERMINATED_BEFORE_FIRST_VIDEO",
+      "completed_video_count": 0,
+      "cause": "Candidate-by-full-graph N1 compilation produced pathological work before the first video closed.",
+      "note_path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/ATTEMPT1_RAW_UNIVERSE_NOTE.json",
+      "note_sha256": "efdcfd337be561cbca1fda7ae3d53d94dab662b9dedd3ebd119e5deb09fbeac2",
+      "partial_bytes": 0,
+      "partial_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "usable": false
+    },
+    {
+      "attempt": 2,
+      "status": "INVALID_TERMINATED_THROUGHPUT_PREFLIGHT",
+      "completed_video_count": 0,
+      "cause": "Serial forward progress projected beyond the frozen five-hour wall.",
+      "note_path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/ATTEMPT2_RAW_UNIVERSE_NOTE.json",
+      "note_sha256": "25e2a70fb3c2dcbc370664ab9e81ba34893f926862ec07cf61191e742a6ce22f",
+      "partial_bytes": 117667,
+      "partial_sha256": "3c809c28c831cb622c4f51e9cbc2121c42fd27525101258059da13f36130a544",
+      "usable": false
+    },
+    {
+      "attempt": 3,
+      "status": "INVALID_RESOURCE_GUARD_SWAP_GROWTH",
+      "completed_video_count": 0,
+      "cause": "Bounded four-frame CPU execution crossed the binding zero-swap-growth guard.",
+      "note_path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/ATTEMPT3_RAW_UNIVERSE_NOTE.json",
+      "note_sha256": "4b235c6efd8155dbd21253f8fe28768ba2d02b0dff4d5d1e8c09a1fc40d15c94",
+      "partial_bytes": 59012,
+      "partial_sha256": "c0e56c4fa9f0c95c23867e2877252917c32faeaaaa1d5e43c912e3a5110c3ac8",
+      "usable": false
+    }
+  ],
+  "resource_report": {
+    "preflights": [
+      {
+        "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/raw_universe_idle_preflight_v2.json",
+        "sha256": "8902e43e69107993e8b97004b39f85b800481cd4e648f2874784f677703d597c",
+        "status": "PASS_ZERO_SWAP_GROWTH",
+        "elapsed_seconds": 45.630043029785156,
+        "swap_growth_mib": 0.0,
+        "minimum_system_memory_free_percent": 40.0
+      },
+      {
+        "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/raw_universe_idle_preflight_retry_v2.json",
+        "sha256": "754a9b384ea6a8fb8772308151a0f2d1a4bcb6942bb92e8db1a7c4ab162b2c4b",
+        "status": "PASS_ZERO_SWAP_GROWTH",
+        "elapsed_seconds": 45.69091296195984,
+        "swap_growth_mib": 0.0,
+        "minimum_system_memory_free_percent": 41.0
+      },
+      {
+        "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/raw_universe_idle_preflight_retry3_v2.json",
+        "sha256": "e22f2dd4554116bfd673b567f2afdda940fcf0a8dfffc25177b8061a09fb0697",
+        "status": "PASS_ZERO_SWAP_GROWTH",
+        "elapsed_seconds": 45.50242590904236,
+        "swap_growth_mib": 0.0,
+        "minimum_system_memory_free_percent": 42.0
+      }
+    ],
+    "terminal_guard": {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/raw_universe_guard_retry3_v2.json",
+      "sha256": "9215e605f8b36bd3cdece69628e5dd40af5b1f323326cbb1e6dc0704b23c1df7",
+      "status": "FAIL_SWAP_GROWTH",
+      "elapsed_seconds": 295.5437259674072,
+      "initial_swap_mib": 3604.0,
+      "peak_swap_mib": 3628.5,
+      "swap_growth_mib": 24.5,
+      "peak_process_tree_rss_gib": 0.7388916015625,
+      "minimum_system_memory_free_percent": 33.0,
+      "returncode": -15,
+      "wall_clock_limit_seconds": 18000
+    }
+  },
+  "partial_metric_consumed": false,
+  "authoritative_comparison_rules_changed": false,
+  "forbidden_scope": {
+    "audit_used": false,
+    "test_split_used": false,
+    "cv57_used": false,
+    "submission_action": false,
+    "runpod_action": false,
+    "kaggle_gpu_action": false,
+    "external_download_or_service": false,
+    "dead_rescreen": false,
+    "pseudo_mask_or_segmentation": false,
+    "sibling_live_output_used": false,
+    "root_single_writer_mutation": false
+  },
+  "resume_condition": "A new named resource-safe execution mechanism or root-approved environment must satisfy the unchanged zero-swap-growth preflight and five-hour wall before the frozen raw-universe contract may be retried.",
+  "coordinator_instruction": "Retain NODETOPO-O0 at PARK_A and NODERESTORE-O0 at PARK_B. Do not infer a graph result, family gate pass, tier move, DEAD verdict, or GPU authorization."
+}

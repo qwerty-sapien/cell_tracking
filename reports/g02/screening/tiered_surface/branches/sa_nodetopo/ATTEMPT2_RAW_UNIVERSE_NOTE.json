@@ -1,0 +1,24 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-raw-universe-attempt-note.v1",
+  "status": "INVALID_TERMINATED_THROUGHPUT_PREFLIGHT",
+  "attempt": 2,
+  "started_after_post_repair_manifest_commit": "3375a22ad06a157ebad890532ea4cadf72fe5930",
+  "termination_reason": "The repaired serial implementation made forward raw-bank progress but measured approximately 8-12 minutes for one 100-frame video, projecting beyond the frozen five-hour wall for 36 videos before scoring.",
+  "scientific_result": null,
+  "completed_video_count": 0,
+  "partial_artifacts": [
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/raw_universe_attempt2_invalid/raw_universe/videos/train__44b6_0db75fae.jsonl.gz",
+      "final_bytes": 117667,
+      "sha256": "3c809c28c831cb622c4f51e9cbc2121c42fd27525101258059da13f36130a544",
+      "usable": false
+    }
+  ],
+  "stress_curve_opened": false,
+  "graph_metric_opened": false,
+  "second_family_opened": false,
+  "swap_failure_observed": false,
+  "gpu_action": false,
+  "external_action": false,
+  "remediation": "Use a bounded four-frame CPU thread window. Read raw frames serially, run the unchanged frozen candidate detector concurrently, collect results in exact frame order, and assign the same consecutive per-video node IDs as the serial reference."
+}

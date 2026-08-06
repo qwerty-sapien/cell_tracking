@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "updated_utc": "2026-07-28T07:26:37Z",
+  "plan_sha256": "a322724e77dd77f53c36e918e5345e86e8394a3848033a9a2225c21924e75116",
+  "objective": "S(G)=weighted_adjusted_edge_Jaccard + 0.1*division_Jaccard",
+  "gate": "44b6->6bba->CV57; adj>=+0.005 both families; raw,node>=0",
+  "forbidden_scope": {
+    "audit_used": false,
+    "test_split_used": false,
+    "cv57_used": false,
+    "submission_action": false,
+    "runpod_action": false,
+    "kaggle_gpu_action": false,
+    "external_download_or_service": false,
+    "dead_rescreen": false,
+    "pseudo_mask_or_segmentation": false,
+    "sibling_live_output_used": false,
+    "root_single_writer_mutation": false
+  },
+  "family_execution": {
+    "44b6_ran": false,
+    "family_44b6_gate": {
+      "status": "NOT_OPENED_RESOURCE_GUARD",
+      "adjusted_delta": null,
+      "raw_delta": null,
+      "node_delta": null
+    },
+    "6bba_ran": false,
+    "cv57_ran": false
+  },
+  "memo_quarantine": true,
+  "nodes": [
+    {
+      "id": "NODETOPO-O0",
+      "branch": "atomic_p0",
+      "owner_agent": "SA-NODETOPO",
+      "tier": "PARK_A",
+      "banked": true,
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+      "evidence_sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d",
+      "evidence_basis": "The frozen 36-video raw contract authenticated, but all three attempts completed zero videos; the bounded CPU attempt hit the binding +24.5 MiB swap-growth guard before any metric opened.",
+      "oracle_headroom": {
+        "family_44b6_dS": 0.009812493435202185,
+        "family_6bba_dS": 0.02404,
+        "control": "CG0_fit117"
+      },
+      "graph_result": null,
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "resume_condition": "A new named resource-safe execution mechanism or root-approved environment satisfies unchanged zero-swap-growth and five-hour guards for the frozen raw-universe contract.",
+      "blocked_on": [
+        "ZERO_SWAP_AUTHENTIC_UNIVERSE_EXECUTION",
+        "COMPLETE_AUTHENTIC_NODE_PROPOSAL_UNIVERSE",
+        "FALSE_NODE_STRESS_CURVE"
+      ],
+      "priority": 1,
+      "last_change_utc": "2026-07-28T07:26:37Z",
+      "latest_audit_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+      "latest_audit_sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d",
+      "latest_audit_verdict": "PARK_RESOURCE_GUARD"
+    },
+    {
+      "id": "NODERESTORE-O0",
+      "branch": "event_node_actions",
+      "owner_agent": "SA-NODETOPO",
+      "tier": "PARK_B",
+      "banked": true,
+      "evidence_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+      "evidence_sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d",
+      "evidence_basis": "The authentic raw proposal-universe execution terminated at the binding resource guard before one complete video, so no restoration action bank or graph result exists.",
+      "oracle_headroom": {
+        "family_44b6_dS": 0.0,
+        "family_6bba_dS": 0.0,
+        "control": "not_measured_or_governance"
+      },
+      "graph_result": null,
+      "kill_line": "44b6 adjusted>=+0.005, raw>=0, node>=0; then identical 6bba gate",
+      "resume_condition": "A new named resource-safe execution mechanism or root-approved environment completes the frozen proposal universe under unchanged guards.",
+      "blocked_on": [
+        "ZERO_SWAP_AUTHENTIC_UNIVERSE_EXECUTION",
+        "COMPLETE_AUTHENTIC_NODE_PROPOSAL_UNIVERSE"
+      ],
+      "priority": 2,
+      "last_change_utc": "2026-07-28T07:26:37Z",
+      "latest_audit_artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+      "latest_audit_sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d",
+      "latest_audit_verdict": "PARK_RESOURCE_GUARD"
+    }
+  ]
+}

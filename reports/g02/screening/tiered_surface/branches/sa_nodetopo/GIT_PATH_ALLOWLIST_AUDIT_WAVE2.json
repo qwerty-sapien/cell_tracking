@@ -1,0 +1,10 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-path-audit.v1",
+  "audited_utc": "2026-07-28T07:26:37Z",
+  "base_commit": "26b0dbca",
+  "allowed_prefix": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/",
+  "status": "PASS",
+  "changed_path_count": 27,
+  "outside_allowlist": [],
+  "root_single_writer_mutation": false
+}

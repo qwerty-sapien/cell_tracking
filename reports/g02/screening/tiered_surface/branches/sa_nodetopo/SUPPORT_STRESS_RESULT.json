@@ -1,0 +1,39 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-support-stress.v2",
+  "status": "PARK_RESOURCE_GUARD",
+  "scientific_result": null,
+  "raw_universe": {
+    "required_fit105_44b6_videos": 36,
+    "completed_videos": 0,
+    "complete": false,
+    "partial_metric_consumed": false
+  },
+  "preregistered_false_node_stress_budgets": [
+    0,
+    1,
+    2,
+    5,
+    10,
+    20,
+    50
+  ],
+  "stress_curve": {
+    "executed": false,
+    "points": [],
+    "reason": "The authentic raw proposal universe did not complete before the binding zero-swap-growth resource guard fired."
+  },
+  "graph_vectors": {
+    "44b6": null,
+    "6bba": null
+  },
+  "family_gates": {
+    "44b6": "NOT_OPENED_RESOURCE_GUARD",
+    "6bba": "NOT_OPENED",
+    "cv57": "NOT_OPENED"
+  },
+  "tier_move_proposed": false,
+  "source": {
+    "artifact": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/RAW_UNIVERSE_TERMINAL_v2.json",
+    "sha256": "54e6babd814e1c84935710db47f758edf8b2886e32f6e8f2565d31f42478855d"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "celltrack-alpha.sa-nodetopo-raw-universe-attempt-note.v1",
+  "status": "INVALID_RESOURCE_GUARD_SWAP_GROWTH",
+  "attempt": 3,
+  "started_after_post_repair_manifest_commit": "1ed22fb58e6bf4c045d0992f98b78a7ce879b995",
+  "termination_reason": "The bounded four-frame CPU implementation crossed the binding zero-swap-growth guard after 295.544 seconds. The guard terminated the process tree at +24.5 MiB swap growth before the first video completed.",
+  "scientific_result": null,
+  "completed_video_count": 0,
+  "partial_artifacts": [
+    {
+      "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/raw_universe_attempt3_invalid/raw_universe/videos/train__44b6_0db75fae.jsonl.gz",
+      "final_bytes": 59012,
+      "sha256": "c0e56c4fa9f0c95c23867e2877252917c32faeaaaa1d5e43c912e3a5110c3ac8",
+      "usable": false
+    }
+  ],
+  "guard": {
+    "path": "reports/g02/screening/tiered_surface/branches/sa_nodetopo/raw_universe_guard_retry3_v2.json",
+    "sha256": "9215e605f8b36bd3cdece69628e5dd40af5b1f323326cbb1e6dc0704b23c1df7",
+    "initial_swap_mib": 3604.0,
+    "peak_swap_mib": 3628.5,
+    "swap_growth_mib": 24.5,
+    "peak_process_tree_rss_gib": 0.7388916015625,
+    "minimum_system_memory_free_percent": 33.0,
+    "returncode": -15
+  },
+  "stress_curve_opened": false,
+  "graph_metric_opened": false,
+  "second_family_opened": false,
+  "gpu_action": false,
+  "kaggle_action": false,
+  "runpod_action": false,
+  "submission_action": false,
+  "external_action": false,
+  "terminal_hard_stop": true,
+  "terminal_verdict": "PARK_RESOURCE_GUARD",
+  "resume_condition": "A new named resource-safe execution mechanism or root-approved environment must satisfy the unchanged zero-swap-growth preflight and five-hour wall before the frozen raw-universe contract may be retried."
+}
