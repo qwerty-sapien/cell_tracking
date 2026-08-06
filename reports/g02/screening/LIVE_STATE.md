@@ -1713,6 +1713,36 @@ do not run 6bba or re-screen it without a new named mechanism.
 
 ## Log (newest first)
 
+- 2026-08-06 — **BRANCH CONSOLIDATION: 13/14 LOCAL CODEX BRANCHES MERGED TO MAIN / NO
+  CODE OR SCIENTIFIC-STATE CHANGE / NOT YET PUSHED.** Human-directed repo hygiene task,
+  no new screening action. All 14 local `codex/*` branches (none previously pushed to
+  `origin`) were additive-only against disjoint report/script paths; none touched
+  `src/`; none named a DEAD mechanism (DAG §6.1) — this merges already-completed
+  evidence into history, it does not re-open or re-screen anything. 13 branches merged
+  cleanly (one trivial `.gitignore` conflict in duplicate `PHASE1_*` patterns, resolved
+  by keeping main's broader pattern; `codex/g03-phase1-resume-proof` was a strict
+  ancestor of `codex/g03-phase1-singlefile-retry` and is subsumed by it).
+  `codex/sa-reverse-authentic-44b6` was **not** full-merged: its tip modified
+  `LEDGER.md`, `LIVE_STATE.md`, and `.cruise/{FLIGHT,ORIGIN}.md` with content that
+  predates and would regress the current authoritative state (`.cruise/` is
+  deliberately untracked on main since `085b591c`). Only its two genuinely new report
+  dirs were pulled: `tiered_surface/branches/sa_division_value/**` (23 files, new) and
+  `tiered_surface/branches/sa_reverse_authentic/**` (146 files — already present on
+  main byte-identical via commit `bcc9a6d9`, so no-op). That branch is kept
+  un-deleted, un-merged for provenance; the other 13 were deleted after merge.
+  Several merged dirs carry their own `PROPOSED_LEDGER_ROW(S)` files
+  (`sa_division`, `sa_nodetopo`, `cellect_bleed_stop_v1`, `sa_division_value`) —
+  **unreconciled**, left for the root coordinator per the LEDGER.md-sole-writer rule.
+  Full `tests/` suite: **1231 passed, 10 failed, 39 xfailed, 273 subtests passed**
+  (143s). All 10 failures reproduce identically on pre-merge main (`8d02aecb`, verified
+  in an isolated worktree) — pre-existing, unrelated to this consolidation, not fixed
+  here. Secret-pattern scan across all 14 branch diffs and the two most recent main
+  commits found no credential values, only existing redaction infrastructure. Untracked
+  `.playwright-cli/` (9 ephemeral browser-automation snapshots, unrelated to any
+  branch here — pre-existing on main) and added it to `.gitignore`; files kept on
+  disk. No Kaggle/RunPod/GPU action; no submission; no DEAD promotion; no LEDGER.md
+  edit. Awaiting explicit human confirmation before `git push`. (Claude)
+
 - 2026-08-06 — **N0b FIX PREPARED AS UNAPPLIED DIFF / 9 LIVE SITES NOT 3 / SECOND
   INDEPENDENT FAILURE MODE (H2) CONFIRMED SEVERE / NOTHING APPLIED, NO KAGGLE ACTION.**
   Verified untouched: `scripts/`, `src/`, `kaggle_kernel/` and the prelaunch guard are
