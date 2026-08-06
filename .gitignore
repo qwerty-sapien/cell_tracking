@@ -82,3 +82,6 @@ results-*.zip
 !/reports/code_quality/
 !/reports/code_quality/REPO_DEBUG_AUDIT_*.md
 !/reports/code_quality/TEST_SUITE_TRIAGE_*.md
+
+# Ephemeral browser-automation session snapshots, not campaign evidence.
+/.playwright-cli/
