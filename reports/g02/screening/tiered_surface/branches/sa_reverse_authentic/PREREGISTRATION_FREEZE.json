@@ -1,0 +1,13 @@
+{
+  "schema": "g02.sa-reverse-authentic.preregistration-freeze.v1",
+  "status": "FROZEN",
+  "path": "reports/g02/screening/tiered_surface/branches/sa_reverse_authentic/PREREGISTRATION.json",
+  "sha256": "8464cb2417b5f04e2471968dcf891505c9cc5c66248361e10af7a9428df604de",
+  "frozen_before": [
+    "checkpoint filesystem search",
+    "checkpoint authentication",
+    "reverse inference",
+    "cycle evidence",
+    "separation outcome"
+  ]
+}

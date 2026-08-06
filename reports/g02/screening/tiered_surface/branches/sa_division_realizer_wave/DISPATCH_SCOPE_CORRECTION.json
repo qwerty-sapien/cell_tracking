@@ -1,0 +1,22 @@
+{
+  "schema": "celltrack-alpha.division-realizer-dispatch-correction.v1",
+  "recorded_at": "2026-07-31T01:00:00+08:00",
+  "status": "CORRECTED_BEFORE_ARM_OUTCOMES",
+  "shared_contract_sha256_unchanged": "08f3e875e77a5c7f93c56ce779df93f4cbbed1bb8a9a7f183369452c9e29e647",
+  "incorrect_dispatch_phrase": "all 36 44b6 baseline graphs",
+  "authenticated_inventory": {
+    "fragment_count": 57,
+    "44b6_fragment_count": 21,
+    "6bba_fragment_count": 36,
+    "sorted_44b6_path_list_sha256": "077cb9d627b3013ed3ca3dfccb258d992d6d8dca7159689de91f8136cf7f8c50",
+    "fragment_set_aggregate_sha256": "d0eac26d00052a00f84078372f63fa7e48c3cdd028912462b0eb634a40e023c5"
+  },
+  "corrected_execution_scope": "Scan every one of the 21 authenticated train__44b6_*.csv fragments and fail closed if any train__6bba_*.csv path enters prediction or scoring.",
+  "gate_effect": "NONE",
+  "information_firewall_effect": "NONE",
+  "arm_notifications": [
+    "A",
+    "B",
+    "C"
+  ]
+}

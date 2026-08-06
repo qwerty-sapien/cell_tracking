@@ -1,0 +1,36 @@
+{
+  "schema": "g02.sa-reverse-authentic.validation.v2",
+  "status": "PASS",
+  "validator": {
+    "path": "reports/g02/screening/tiered_surface/branches/sa_reverse_authentic/validate_actual.py",
+    "sha256": "e955bee306310ce7353b817ab766acf85be9219c15b90cbe9d2c3fde2fd60be6"
+  },
+  "raw_receipt": {
+    "path": "reports/g02/screening/tiered_surface/branches/sa_reverse_authentic/VALIDATION_RECEIPT_ACTUAL.json",
+    "sha256": "f2c8ead8bfd9b7d51786b804ad81ba77f8cfac781883fdf22bb23a502c0e686f"
+  },
+  "checks_total": 19,
+  "checks_passed": 19,
+  "checks_failed": 0,
+  "checks": {
+    "authentic_reverse_contract": true,
+    "both_classes_fail_all_folds": true,
+    "feature_files": true,
+    "feature_manifest_pin": true,
+    "feature_scope": true,
+    "frozen_gate": true,
+    "n0_exact_assets": true,
+    "no_separation_graph": true,
+    "raw_result_pin": true,
+    "root_ledger": true,
+    "root_live_state": true,
+    "state_no_tier_move": true,
+    "supplier_exact_scope": true,
+    "supplier_file_totals": true,
+    "supplier_files": true,
+    "supplier_forbidden_actions": true,
+    "supplier_manifest_pin": true,
+    "supplier_repeat": true,
+    "tier_census_unchanged": true
+  }
+}

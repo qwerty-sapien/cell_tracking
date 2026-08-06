@@ -1,0 +1,24 @@
+{
+  "schema": "g02.sa-reverse-authentic.download-verifier-repair.v1",
+  "status": "FROZEN_BEFORE_LOCAL_REVERIFICATION",
+  "scope": "LOCAL_VERIFIER_ONLY_NO_EXTERNAL_ACTION",
+  "trigger": "Kaggle SDK unzip retained ctc.zip.bin and also materialized ctc/ctc/model.pt, so the exact historical model hash appeared at two paths.",
+  "observed_download": {
+    "dataset_download_files_calls": 1,
+    "download_completed": true,
+    "list_dataset_files_calls": 0,
+    "kernel_launches": 0,
+    "dataset_mutations": 0,
+    "submissions": 0
+  },
+  "repair": {
+    "accept_multiple_paths_only_when_each_has_the_exact_required_content_hash": true,
+    "select_lexicographically_first_content_match": true,
+    "filename_used_for_identity": false,
+    "archive_sha_still_required": true,
+    "archive_model_member_sha_still_required": true,
+    "redownload": false
+  },
+  "scientific_contract_changed": false,
+  "n1_n3_opened": false
+}

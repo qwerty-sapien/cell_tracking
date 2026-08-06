@@ -1,0 +1,69 @@
+{
+  "schema": "g02.sa-reverse-authentic.supplier-contract.v1",
+  "status": "COMPLETE_AUTHENTIC_NON_GT_IDENTIFIABLE",
+  "supplier": "TRACKASTRA-AUTHENTIC-REVERSE-44B6-V1",
+  "classification": "NON-GT-IDENTIFIABLE",
+  "scope": {
+    "family": "44b6",
+    "fit_only": true,
+    "videos": 36,
+    "transitions": 3539,
+    "proposals": 84883,
+    "rows": 121534,
+    "labels_read_by_supplier": false,
+    "graph_read_or_run": false,
+    "second_family_opened": false
+  },
+  "sha_pins": {
+    "checkpoint_member": "24c290ce74289ee6dac952a3355c9fb7a0a477fda3012656a2c6d80af892981f",
+    "release_archive": "2ede08481b2e1f4ea23a41dd3001e2151ecbce7d978be9829ad230f0a60aea0e",
+    "trackastra_source_commit": "fb265888c8fce2ac16a362ebf182ccd5ea48e936",
+    "trackastra_license": "cc9ea92a72a63101ff425cc525faeace28ec9fc9c658a0fc01daf236e06326c9",
+    "forward_cache_report": "d52a4a42cf16c4e43d146d1cebfde68192db095c7cf6dfa3cfd9b7e4d820c0cf",
+    "sparse_cache_manifest": "ff7b205f58ad70c69954fed1c3e60a100d246c1e374a849c6ea7183934e98f28",
+    "endpoint_return_contract": "4eaf9d8f13eb0121d804be4252e6b53667ae65f7955c3eadf858d257804fd294",
+    "reverse_manifest": "654cb499d65db137d71e3915850d4bc94a5373660cb2026507ad070275fb6fe1",
+    "separation_preregistration_v3": "9fb030bdcffbf95e242c71aa8b2c14bf8254b42730acbb489d66e2fe35a3310e",
+    "separation_population": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c",
+    "sealed_b0": "a9ce8c0be5afe4c2d2bfb37f3878691956ea458964788776af2ae9358f6b4ff2"
+  },
+  "endpoint_return_mapping": {
+    "canonical_forward_endpoint": "(u_t, v_t_plus_1)",
+    "reverse_time": "t_rev = min(t_original) + max(t_original) - t_original",
+    "preserved_fields": [
+      "z",
+      "y",
+      "x",
+      "node_id"
+    ],
+    "execution": "a separate frozen Trackastra call on coordinates [t_rev,z,y,x]",
+    "return": "R_return(u,v) = A_reverse[index(v),index(u)]",
+    "no_link": "1 - sum A_reverse[index(v),index(u)] over all packed original-time t+1 endpoints, guarded before clipping",
+    "missing_endpoint": "fail closed",
+    "division": "parent-child endpoints returned independently; disagreement is evidence only"
+  },
+  "emitted_cycle_fields": [
+    "reverse_challenger_score",
+    "reverse_conflict_score",
+    "reverse_margin",
+    "reverse_challenger_null",
+    "reverse_conflict_null",
+    "cycle_min_margin",
+    "cycle_abs_disagreement",
+    "cycle_sign_agreement"
+  ],
+  "anti_fabrication": {
+    "negate_forward_margin": false,
+    "transpose_forward_matrix": false,
+    "duplicate_forward_evidence": false,
+    "scalar_recalibration": false,
+    "authentic_separate_reverse_pass": true
+  },
+  "materialization": {
+    "checkpoint_authenticated": true,
+    "reverse_calls": 3539,
+    "reverse_rows": 121534,
+    "supplier_available": true,
+    "manifest_path": "reports/g02/screening/tiered_surface/branches/sa_reverse_authentic/reverse_cache/manifest.json"
+  }
+}

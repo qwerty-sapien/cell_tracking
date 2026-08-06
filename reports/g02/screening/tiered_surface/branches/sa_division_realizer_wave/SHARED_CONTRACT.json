@@ -1,0 +1,105 @@
+{
+  "schema": "celltrack-alpha.division-realizer-wave-contract.v1",
+  "status": "FROZEN_BEFORE_ARM_OUTCOMES",
+  "scope": {
+    "family": "44b6",
+    "target_fragmented_events_all_families": 38,
+    "target_fragmented_events_44b6": 9,
+    "official_divisions_all_families": 42,
+    "worktree_count": 4,
+    "cpu_first": true,
+    "full_pool_cache": false
+  },
+  "frozen_inputs": {
+    "amended_plan_sha256": "352b101d0d787ce8c922b903481db519847a76cd8e67a4450d10d5af288183c4",
+    "target_spec_sha256": "0926ab647915ad4e2e790252c040867e0bbc45a396155cecfe7f5813d6efe221",
+    "oracle_audit_sha256": "6d1a2754bbe597d53c29863290cba51225d3138b002b83ac4d4ad9c5d306c119",
+    "baseline_scores_sha256": "94d7b9823fbc9780ea7c0f07fd1d27079b5d58a2c4ef7d500ac6e2106ef6c075",
+    "fragment_set_aggregate_sha256": "d0eac26d00052a00f84078372f63fa7e48c3cdd028912462b0eb634a40e023c5",
+    "fragment_count": 57,
+    "raw_archive_sha256": "538ed8a4d7b6669fa948865f947ed43c23aba7ee006fea8826d6ddd1277dfd19",
+    "raw_archive_bytes": 87393127165,
+    "grouped_folds_sha256": "ddb313cbecb11e64a05f836f503b8cb30605143ef3b3e64ab9358ea9d8af8769",
+    "n1_interface_sha256": "2a72950c65b5fd338f4d8935e086afcb9bba884365224e014e86e7900509f865",
+    "n1_implementation_sha256": "457f6607a493d51d972913fa155d687e9ffc4045475605bc109a4ca9e90124f5",
+    "scorer_sha256": "7b92fed9fe66e9a2faf062528a78b04a65bc1be50f806dff44f51c780da5ac6c"
+  },
+  "information_firewall": {
+    "prediction_stage_may_read": [
+      "baseline graph nodes and edges",
+      "frozen non-GT cache values",
+      "read-only raw intensities only for the appearance arm",
+      "arm preregistration"
+    ],
+    "prediction_stage_forbidden": [
+      "continuity_target_spec.json",
+      "oracle_audit_v2.json",
+      "DIVISION_REPAIR_BUNDLES.json",
+      "GT node or edge identities",
+      "official scorer outcomes",
+      "another arm's outcome except arm D's post-freeze consensus inputs"
+    ],
+    "evaluation_stage_may_read_targets_only_after_prediction_sha_frozen": true,
+    "gt_bundles_are_features": false
+  },
+  "candidate_contract": {
+    "label_safe_key": "sha256(identity, timing-neutral observed parent node, sorted observed branch terminal nodes)",
+    "one_candidate_per_key": true,
+    "occupied_node_ownership": true,
+    "atomic_fork_through_frozen_n1": true,
+    "duplicate_survivors_must_equal": 0,
+    "duplicate_failure": "FAIL_CLOSED_DUPLICATE_FORK"
+  },
+  "evaluation": {
+    "family_order": [
+      "44b6",
+      "6bba",
+      "CV57"
+    ],
+    "this_wave_stops_after": "44b6",
+    "required_metrics": [
+      "division_tp",
+      "division_fp",
+      "division_fn",
+      "division_jaccard",
+      "adjusted_edge_jaccard_delta",
+      "raw_edge_jaccard_delta",
+      "node_recall_delta",
+      "combined_score_delta",
+      "duplicate_survivors"
+    ],
+    "pass": {
+      "combined_score_delta_gt": 0.0,
+      "division_jaccard_gte": 0.3,
+      "edge_deltas_gte": 0.0,
+      "duplicate_survivors": 0
+    }
+  },
+  "fp_sensitivity": {
+    "true_positive_forks": 25,
+    "points": [
+      {
+        "false_positive_forks": 0,
+        "division_only_combined_addition": 0.05952380952380952
+      },
+      {
+        "false_positive_forks": 5,
+        "division_only_combined_addition": 0.05319148936170213
+      },
+      {
+        "false_positive_forks": 10,
+        "division_only_combined_addition": 0.04807692307692308
+      }
+    ]
+  },
+  "forbidden_actions": {
+    "six_bba": true,
+    "cv57": true,
+    "submission": true,
+    "kaggle": true,
+    "gpu": true,
+    "runpod": true,
+    "full_pool_cache": true,
+    "dead_promotion": true
+  }
+}

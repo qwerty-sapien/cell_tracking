@@ -1,0 +1,10 @@
+{
+  "schema": "celltrack-alpha.division-arm-test-receipt.v1",
+  "arm": "C",
+  "command": "PYTHONDONTWRITEBYTECODE=1 /Users/agent/Desktop/cell_tracking/.venv313/bin/python -m unittest -v reports/g02/screening/tiered_surface/branches/sa_division_realizer_wave/arm_c_appearance/test_arm_c.py",
+  "tests_run": 3,
+  "passed": 3,
+  "failed": 0,
+  "prediction_gate_expected_exit": "FAIL_CLOSED_NO_ADEQUATE_FROZEN_INTENSITY_CACHE",
+  "predictions_file_exists": false
+}

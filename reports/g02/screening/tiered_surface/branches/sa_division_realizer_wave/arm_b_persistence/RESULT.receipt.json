@@ -1,0 +1,8 @@
+{
+  "atomic": true,
+  "bytes": 24135,
+  "diagnostic_science_pre_disclosure_sha256": "7e02a8de24351d4e9e0e239a167a60f66dba5e41209513bdf61d6d5a08f16153",
+  "finalization": "Only execution-code receipts and the fail-closed information-firewall disclosure/status were added after scoring; diagnostic metric values were unchanged.",
+  "path": "reports/g02/screening/tiered_surface/branches/sa_division_realizer_wave/arm_b_persistence/RESULT.json",
+  "sha256": "3787a7652217a906e56592972960355191cf47a2f8009716f0ef1e90a92142eb"
+}

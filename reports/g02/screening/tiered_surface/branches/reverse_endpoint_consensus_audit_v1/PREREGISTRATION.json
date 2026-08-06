@@ -1,0 +1,102 @@
+{
+  "schema": "g02.reverse-endpoint-consensus-audit.preregistration.v1",
+  "status": "FROZEN_BEFORE_LITERAL_CONSENSUS_LABEL_OR_GRAPH_READ",
+  "frozen_date": "2026-08-01",
+  "lane": "LANE-2-REVERSE-SUPPLIER-BIDIRECTIONAL-CONSENSUS",
+  "objective": "Test whether authentic Trackastra time reversal is useful as a fixed, high-precision abstention predicate on exact occupied-endpoint swaps, without learning over or reranking the full action population.",
+  "governing_lesson": "Prefer the smallest local node-disjoint replacement. The selector may only abstain from a frozen occupied-swap population; it may not rescore or rerank the full pool.",
+  "frozen_inputs": {
+    "authentic_supplier_contract": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/branches/sa_reverse_authentic/SUPPLIER_CONTRACT.json",
+      "sha256": "499f022666211d339bbe9a1ff551bcaea20a88a66ae18b0cc0b030b543376918"
+    },
+    "authentic_reverse_manifest": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/branches/sa_reverse_authentic/reverse_cache/manifest.json",
+      "sha256": "654cb499d65db137d71e3915850d4bc94a5373660cb2026507ad070275fb6fe1"
+    },
+    "occupied_swap_population_manifest": {
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/run_v1/population_manifest.json",
+      "sha256": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c"
+    },
+    "n1_implementation": {
+      "path": "src/celltrack_alpha/action_compiler.py",
+      "sha256": "457f6607a493d51d972913fa155d687e9ffc4045475605bc109a4ca9e90124f5"
+    }
+  },
+  "candidate_population": {
+    "family": "44b6",
+    "fit_only": true,
+    "action_class": "occupied_swap",
+    "expected_actions": 45961,
+    "expected_videos": 36,
+    "scope": "Only N1-valid occupied swaps already frozen in the population manifest. DELETE, raw-shell additions, free adds, divisions, restores, and every other action class are excluded.",
+    "labels_forbidden_until_selection_is_sealed": [
+      "oracle_label",
+      "oracle_delta_S",
+      "ground truth",
+      "official graph outcome"
+    ]
+  },
+  "authentic_endpoint_contract": {
+    "forward_pair": "exact candidate edge (u_t,v_t+1)",
+    "reverse_pair": "the separately inferred returned entry A_reverse[index(v),index(u)]",
+    "anti_fabrication": [
+      "no negation of forward evidence",
+      "no transpose of a forward association matrix",
+      "no duplication or scalar recalibration",
+      "no synthetic reverse rows"
+    ],
+    "action_alignment": "The reverse row's challenger must equal the frozen action endpoints and its conflict set must equal the exact baseline edges removed by that N1 SWAP action. Missing, extra, or duplicated conflicts fail the action closed."
+  },
+  "fixed_abstention_rule": {
+    "per_removed_edge_requirements": [
+      "forward_margin >= 0.50",
+      "reverse_margin >= 0.50",
+      "reverse_challenger_score - reverse_challenger_null >= 0.25",
+      "cycle_sign_agreement == 1"
+    ],
+    "action_rule": "Every exact removed-edge comparison for the action must satisfy every requirement. One failed or missing comparison rejects the action.",
+    "ranking": "forbidden",
+    "threshold_tuning": "forbidden",
+    "disabled_reverse_null": "Replacing every reverse-derived value by zero must accept zero actions."
+  },
+  "tiny_support_and_node_ownership": {
+    "canonical_order": [
+      "identity",
+      "source_t",
+      "source_id",
+      "target_id"
+    ],
+    "ownership": "Within each video, an accepted action owns the candidate source and target plus every endpoint of every removed baseline edge. Any ownership overlap abstains on the later action.",
+    "per_video_cap": 2,
+    "global_cap": 64,
+    "cap_policy": "Canonical truncation only; evidence values never order candidates."
+  },
+  "label_gate_after_seal": {
+    "minimum_edit_count": 4,
+    "maximum_edit_count": 64,
+    "minimum_beneficial": 4,
+    "maximum_harmful": 0,
+    "minimum_precision": 1.0,
+    "minimum_sum_oracle_delta_S": 0.0,
+    "open_graph_only_if_all_pass": true,
+    "kill_line": "If fewer than four edits survive, or any sealed edit is harmful/nonpositive, the graph gate stays closed and the scientifically correct candidate is the exact APNCC no-op vector 0/0/0."
+  },
+  "graph_gate_if_open": {
+    "baseline": "exact frozen 44b6 APNCC held-fit graph",
+    "compiler": "frozen N1 SWAP batch; local node-disjoint edits only",
+    "objective_vector": [
+      "adjusted_edge_jaccard_delta",
+      "raw_edge_jaccard_delta",
+      "node_recall_delta"
+    ],
+    "pass": "adjusted delta > 0, raw delta >= 0, node delta >= 0, all emitted graphs observation-distinct where edits exist",
+    "stop": "No 6bba, CV57, Kaggle, GPU, submission, tier move, or shared-state mutation."
+  },
+  "property_contract": {
+    "appearance_grounded": "PASS only because both directions are authentic frozen Trackastra appearance+motion inference; no claim that literal endpoint IDs encode morphology alone.",
+    "narrow": "PASS only if edit count is 4..64 from 45,961 occupied swaps.",
+    "node_disjoint": "PASS only if exact removed-edge endpoint ownership has no overlap and N1 accepts the batch.",
+    "recall_preserving": "PASS only for SWAP actions: each edit adds one candidate edge while removing occupied conflicts and never deletes without a replacement; node set is invariant."
+  }
+}

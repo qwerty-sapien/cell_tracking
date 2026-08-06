@@ -1,0 +1,22 @@
+{
+  "arm": "D",
+  "cpu_only": true,
+  "elapsed_seconds": 45.59313106536865,
+  "load_after": [
+    10.58740234375,
+    9.14453125,
+    7.9580078125
+  ],
+  "load_before": [
+    12.60595703125,
+    9.22119140625,
+    7.9228515625
+  ],
+  "passed": true,
+  "requested_seconds": 45,
+  "schema": "celltrack-alpha.idle-preflight.v1",
+  "swap_after_mib": 5048.44,
+  "swap_before_mib": 5048.44,
+  "swap_growth_mib": 0.0,
+  "swap_peak_mib": 5048.44
+}

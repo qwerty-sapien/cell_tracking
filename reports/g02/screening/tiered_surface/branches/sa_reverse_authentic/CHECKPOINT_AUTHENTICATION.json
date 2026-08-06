@@ -1,0 +1,46 @@
+{
+  "schema": "g02.sa-reverse-authentic.checkpoint-authentication.v1",
+  "status": "PASS_EXACT_HISTORICAL_ASSETS",
+  "node": "N0",
+  "dataset": "onebitbrain/trackastra-6bba-assets-v1",
+  "method": "authenticated owner-cmux Kaggle SDK dataset_download_files",
+  "list_dataset_files_called": false,
+  "required_checkpoint_sha256": "24c290ce74289ee6dac952a3355c9fb7a0a477fda3012656a2c6d80af892981f",
+  "required_release_archive_sha256": "2ede08481b2e1f4ea23a41dd3001e2151ecbce7d978be9829ad230f0a60aea0e",
+  "authenticated_checkpoint": true,
+  "content_hash_resolution": {
+    "standalone_model_matches": [
+      "ctc/ctc/model.pt",
+      "model.pt"
+    ],
+    "archive_match": "ctc.zip.bin",
+    "filename_used_as_identity": false,
+    "archive_member": "ctc/model.pt",
+    "archive_member_equals_standalone": true
+  },
+  "inventory": {
+    "tensor_count": 280,
+    "parameter_count": 27456880,
+    "tensor_bytes": 109827520,
+    "safe_mmap_meta_loader": true,
+    "weights_only": true
+  },
+  "source_contract": {
+    "trackastra_source_commit": "fb265888c8fce2ac16a362ebf182ccd5ea48e936",
+    "license_sha256": "cc9ea92a72a63101ff425cc525faeace28ec9fc9c658a0fc01daf236e06326c9",
+    "forward_cache_report_sha256": "d52a4a42cf16c4e43d146d1cebfde68192db095c7cf6dfa3cfd9b7e4d820c0cf",
+    "endpoint_contract_sha256": "4eaf9d8f13eb0121d804be4252e6b53667ae65f7955c3eadf858d257804fd294"
+  },
+  "receipt": {
+    "path": "/private/tmp/trackastra-owner-roundtrip.20260729/DOWNLOAD_RECEIPT.json",
+    "sha256": "1463733232f424cb5a77966b389e0ad7b38fe2ef2634bbed7b0c2f2319272234"
+  },
+  "actions": {
+    "dataset_downloads": 1,
+    "dataset_lists": 0,
+    "dataset_mutations": 0,
+    "kernel_launches": 0,
+    "submissions": 0,
+    "gpu_actions": 0
+  }
+}

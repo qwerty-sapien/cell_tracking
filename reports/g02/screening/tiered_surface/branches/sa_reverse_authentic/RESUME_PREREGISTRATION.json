@@ -1,0 +1,73 @@
+{
+  "schema": "g02.sa-reverse-authentic.resume-preregistration.v1",
+  "status": "FROZEN_BEFORE_OWNER_DATASET_DOWNLOAD_OR_HASH_OUTCOME",
+  "date": "2026-07-29",
+  "branch": "codex/sa-reverse-authentic-44b6",
+  "resume_base_commit": "a388e09b30e288976542cc3ca374b98b554d3679",
+  "prior_preregistration_sha256": "8464cb2417b5f04e2471968dcf891505c9cc5c66248361e10af7a9428df604de",
+  "prior_barrier_report_sha256": "c5fd718154f91e0ea14ecad1517a1d3840be9bbd714f3da8835974c44820b845",
+  "corrected_n0_source": {
+    "dataset": "onebitbrain/trackastra-6bba-assets-v1",
+    "owner_authenticated_session": "computer-use cmux",
+    "download_api": "kaggle.KaggleApi.dataset_download_files",
+    "download_only": true,
+    "list_dataset_files_called": false,
+    "dataset_mutation": false,
+    "kernel_launch": false,
+    "content_hash_resolution_required": true,
+    "filename_trust_forbidden": true
+  },
+  "required_assets": {
+    "historical_model": {
+      "sha256": "24c290ce74289ee6dac952a3355c9fb7a0a477fda3012656a2c6d80af892981f",
+      "bytes": 109906058,
+      "expected_remote_name_only": "model.pt"
+    },
+    "historical_release_archive": {
+      "sha256": "2ede08481b2e1f4ea23a41dd3001e2151ecbce7d978be9829ad230f0a60aea0e",
+      "bytes": 101957234,
+      "expected_remote_name_only": "ctc.zip.bin"
+    }
+  },
+  "hash_fork": {
+    "both_match": "open preregistered N1-N3",
+    "either_missing_or_mismatched": "STOP before model load and propose TRACKASTRA-COUPLED-FWDREV-V1, which regenerates forward and reverse from one authenticated model",
+    "mixed_historical_forward_new_reverse_forbidden": true
+  },
+  "n1_n3_contract": {
+    "family": "44b6",
+    "fit_only": true,
+    "reverse_inference_calls": 3539,
+    "repeat_witness_calls": 99,
+    "cpu_only": true,
+    "projected_cpu_hours": 0.7579166666666667,
+    "gpu_hours": 0,
+    "endpoint_return_contract_sha256": "4eaf9d8f13eb0121d804be4252e6b53667ae65f7955c3eadf858d257804fd294",
+    "separation_preregistration_v3_sha256": "9fb030bdcffbf95e242c71aa8b2c14bf8254b42730acbb489d66e2fe35a3310e",
+    "separation_population_sha256": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c",
+    "sealed_b0_sha256": "a9ce8c0be5afe4c2d2bfb37f3878691956ea458964788776af2ae9358f6b4ff2",
+    "thresholds_unchanged": true
+  },
+  "hard_stops": [
+    "download failure",
+    "missing exact historical model hash",
+    "missing exact historical archive hash",
+    "archive member not identical to exact historical model",
+    "unsafe checkpoint structure",
+    "swap growth",
+    "endpoint-return coverage loss",
+    "nonfinite reverse evidence",
+    "non-byte-identical repeat",
+    "frozen separation input drift",
+    "kernel launch",
+    "GPU debit",
+    "graph",
+    "6bba",
+    "CV57",
+    "tier move",
+    "DEAD",
+    "plan amendment",
+    "RunPod",
+    "submission"
+  ]
+}

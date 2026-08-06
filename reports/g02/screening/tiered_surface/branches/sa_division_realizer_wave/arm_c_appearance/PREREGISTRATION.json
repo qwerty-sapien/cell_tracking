@@ -1,0 +1,103 @@
+{
+  "schema": "celltrack-alpha.division-realizer-arm-preregistration.v1",
+  "arm": "C",
+  "name": "appearance-intensity-redistribution-existing-cache-only",
+  "status": "FROZEN_BEFORE_PREDICTION_OR_TARGET_EVALUATION",
+  "date": "2026-07-31",
+  "shared_contract": {
+    "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/branches/sa_division_realizer_wave/SHARED_CONTRACT.json",
+    "sha256": "08f3e875e77a5c7f93c56ce779df93f4cbbed1bb8a9a7f183369452c9e29e647"
+  },
+  "amended_plan_sha256": "352b101d0d787ce8c922b903481db519847a76cd8e67a4450d10d5af288183c4",
+  "scope": {
+    "family": "44b6",
+    "fragment_root": "kaggle_kernel/bhcv57out_v3/fragments",
+    "fragment_count": 21,
+    "inventory_correction": "The frozen 57-fragment inventory is 21 44b6 plus 36 6bba, not 36 44b6. Arm C must authenticate and inspect exactly the 21 train__44b6_*.csv identities and fail closed if any 6bba identity enters.",
+    "cpu_first": true,
+    "prediction_stage_target_access": false,
+    "full_pool_cache_creation_or_extension": false
+  },
+  "mechanism": {
+    "hypothesis": "A pre-existing, held-44b6 cache of physical intensity summaries can expose parent-to-two-daughter intensity redistribution strongly enough to realize high-precision forks.",
+    "required_cached_observables": [
+      "parent physical-intensity mass or equivalent fixed voxel summary at t",
+      "each proposed daughter's physical-intensity mass or equivalent fixed voxel summary at t+1",
+      "cache-level node identities sufficient to bind those summaries to observed graph nodes"
+    ],
+    "forbidden_substitutions": [
+      "raw image or raw archive reads",
+      "new or extended cache materialization",
+      "GT-selected parent or daughter identities",
+      "treating V45 latent embeddings as additive physical intensity",
+      "using a fit105 cache for held-44b6 identities it does not contain"
+    ],
+    "selection_rule_if_and_only_if_cache_is_adequate": {
+      "candidate_universe": "all label-safe parent-to-two-branch motifs in all 21 frozen 44b6 graphs",
+      "score": "fixed physical-intensity redistribution residual from cached parent and daughter summaries",
+      "policy": "high precision, abstain unless all required cached values and node bindings are present",
+      "one_to_one_event_suppression": true,
+      "occupied_node_ownership": true,
+      "duplicate_survivors_must_equal": 0
+    }
+  },
+  "preprediction_cache_audit": {
+    "candidate_1": {
+      "path": "reports/g02/trackastra_h1_feature_cache/videos",
+      "manifest_path": "reports/g02/screening/h1_existing_cache_feature_report.json",
+      "manifest_sha256": "d52a4a42cf16c4e43d146d1cebfde68192db095c7cf6dfa3cfd9b7e4d820c0cf",
+      "declared_44b6_files": 36,
+      "held_44b6_identity_overlap": 0,
+      "adequacy_condition": "must cover all 21 held-44b6 identities and expose the required cached observables"
+    },
+    "candidate_2": {
+      "path": "kaggle_kernel/bhcv57out_v3/cache",
+      "held_44b6_files": 21,
+      "authenticated_record_set_sha256": "9357342bed7ba13584bc71f71e715759775466d1f1c478c5415c3833079728a2",
+      "bytes": 253265784,
+      "adequacy_condition": "coverage alone is insufficient; the payload must expose physical intensity summaries, not only coordinates, confidence scores, and learned latent association features"
+    },
+    "candidate_3": {
+      "path": "_ARCHIVE/conflict_residual/reports/g02/run_bh_conflict_edge_f0_parity3_v1",
+      "held_44b6_cache_files": 3,
+      "adequacy_condition": "must cover all 21 held-44b6 identities and expose the required cached observables"
+    },
+    "decision_rule": "If no already-existing frozen cache both covers exactly all 21 held-44b6 identities and exposes the required physical-intensity summaries, emit FAIL_CLOSED_NO_ADEQUATE_FROZEN_INTENSITY_CACHE. Emit no predictions, read no target, run no N1/scorer evaluation, and do not fall back to raw data."
+  },
+  "prediction_output": {
+    "path": "PREDICTIONS.json",
+    "atomic": true,
+    "required_before_target_evaluation": true,
+    "permitted_only_after_cache_audit_pass": true
+  },
+  "evaluation": {
+    "only_after_prediction_sha_frozen": true,
+    "target_is_label_only": true,
+    "compile_through_frozen_n1": true,
+    "official_scorer": true,
+    "pass": {
+      "combined_score_delta_gt": 0.0,
+      "division_jaccard_gte": 0.3,
+      "adjusted_edge_jaccard_delta_gte": 0.0,
+      "raw_edge_jaccard_delta_gte": 0.0,
+      "node_recall_delta_gte": 0.0,
+      "duplicate_survivors": 0
+    }
+  },
+  "fp_sensitivity": {
+    "true_positive_forks": 25,
+    "false_positive_forks_0": 0.05952380952380952,
+    "false_positive_forks_5": 0.05319148936170213,
+    "false_positive_forks_10": 0.04807692307692308
+  },
+  "hard_stops": {
+    "six_bba": true,
+    "cv57": true,
+    "submission": true,
+    "kaggle": true,
+    "gpu": true,
+    "runpod": true,
+    "full_pool_cache": true,
+    "dead_promotion": true
+  }
+}

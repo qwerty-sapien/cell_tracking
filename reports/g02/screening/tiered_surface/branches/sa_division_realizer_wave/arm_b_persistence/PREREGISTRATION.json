@@ -1,0 +1,95 @@
+{
+  "schema": "celltrack-alpha.division-realizer-arm-preregistration.v1",
+  "arm": "B",
+  "name": "D1_LATE_PERSISTENT_ONE_TO_ONE_FORK",
+  "status": "FROZEN_BEFORE_PREDICTION_OR_TARGET_EVALUATION",
+  "frozen_at_utc": "2026-07-31T00:00:00Z",
+  "shared_contract": {
+    "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/branches/sa_division_realizer_wave/SHARED_CONTRACT.json",
+    "sha256": "08f3e875e77a5c7f93c56ce779df93f4cbbed1bb8a9a7f183369452c9e29e647"
+  },
+  "scope": {
+    "family": "44b6",
+    "fragment_count_expected": 21,
+    "cpu_first": true,
+    "fit": "none",
+    "target_events_are_features": false
+  },
+  "dispatch_correction": {
+    "frozen_fragment_inventory_total": 57,
+    "family_44b6_fragments": 21,
+    "family_6bba_fragments_forbidden_this_wave": 36,
+    "note": "The original arm dispatch said 36 44b6 graphs. The root corrected that count before preregistration was committed or predictions ran. This preregistration freezes the authenticated 21-graph 44b6 inventory and fails closed on any 6bba path."
+  },
+  "prediction_information_firewall": {
+    "permitted": [
+      "baseline fragment node rows",
+      "baseline fragment edge rows",
+      "this preregistration"
+    ],
+    "forbidden": [
+      "continuity_target_spec.json",
+      "oracle_audit_v2.json",
+      "DIVISION_REPAIR_BUNDLES.json",
+      "GT node or edge identities",
+      "official scorer outcomes",
+      "other arm predictions or outcomes"
+    ],
+    "prediction_program_has_no_target_or_outcome_argument": true,
+    "target_scoring_begins_only_after_atomic_prediction_sha256_is_sealed": true
+  },
+  "candidate_rule": {
+    "graph_pattern": "Enumerate every observed one-child chain P->C1->G1 in every 44b6 graph. Pair it with every distinct observed one-child chain Q->C2->G2 at the same C1/C2 frame, with P!=Q, then require G1 and G2 each to survive by one further observed edge. P,C1,C2,G1,G2 and the two survival nodes must be distinct.",
+    "persistence": "Both proposed branches must be observed through daughter, grandchild, and one further successor. Every edge in each observed chain must be a one-frame edge and every internal branch node must have exactly one observed predecessor and successor.",
+    "label_blind_locality": "Let R be the per-video p95 Euclidean length of all observed one-frame edges, computed from baseline graph coordinates only. Require ||P-C2||<=R, ||C1-C2||<=R, and ||C1-G2||<=R.",
+    "mutual_uniqueness": "Rank eligible alternatives by the sum of the three locality distances divided by max(R,1e-12). Keep only mutual best P<->C2 pairs for which each finite runner-up cost is at least 1.25 times its best cost.",
+    "late_fork_equivalence": "Emit scorer-semantic D1 at the next frame: C1 is the late parent and G1,G2 are its children. Preserve/re-add C1->G1, replace C2->G2 by C1->G2, and own exactly all observed outgoing edges of C1 plus all observed incoming edges of G1 and G2.",
+    "candidate_key": "sha256(identity, observed P node, sorted observed G1/G2 terminal nodes)",
+    "confidence_order": "descending minimum observed branch survival depth, then descending mutual-best margin, then ascending normalized locality cost, then candidate_key"
+  },
+  "suppression": {
+    "one_candidate_per_key": true,
+    "occupied_nodes": [
+      "P",
+      "C1",
+      "C2",
+      "G1",
+      "G2",
+      "successor(G1)",
+      "successor(G2)"
+    ],
+    "selection": "Greedily accept confidence-ordered candidates only when no occupied node has been accepted before.",
+    "duplicate_survivors_required": 0,
+    "duplicate_failure": "FAIL_CLOSED_DUPLICATE_FORK"
+  },
+  "resource_guard": {
+    "idle_preflight_seconds": 45,
+    "swap_growth_mib_allowed": 0.0,
+    "atomic_prediction_checkpoint": true,
+    "gpu": false
+  },
+  "evaluation": {
+    "compiler": "frozen N1",
+    "scorer": "frozen official scoreall",
+    "family_stop": "44b6",
+    "pass": "combined_score_delta > 0 AND division_jaccard >= 0.30 AND adjusted_edge_jaccard_delta >= 0 AND raw_edge_jaccard_delta >= 0 AND node_recall_delta >= 0 AND duplicate_survivors == 0"
+  },
+  "fp_sensitivity_required": {
+    "true_positive_forks": 25,
+    "false_positive_to_division_only_combined_addition": {
+      "0": 0.05952380952380952,
+      "5": 0.05319148936170213,
+      "10": 0.04807692307692308
+    }
+  },
+  "hard_stops": [
+    "6bba",
+    "CV57",
+    "submission",
+    "Kaggle",
+    "GPU",
+    "RunPod",
+    "full-pool cache",
+    "DEAD promotion"
+  ]
+}

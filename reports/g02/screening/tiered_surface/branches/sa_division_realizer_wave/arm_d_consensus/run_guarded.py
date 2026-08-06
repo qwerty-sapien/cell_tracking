@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+"""Run an Arm-D command under wall, RSS, and zero-swap guards."""
+
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+import re
+import subprocess
+import tempfile
+import time
+
+
+def swap_mib() -> float:
+    text = subprocess.check_output(["sysctl", "-n", "vm.swapusage"], text=True)
+    match = re.search(r"used = ([0-9.]+)([MG])", text)
+    if match is None:
+        raise RuntimeError(f"cannot parse swap usage: {text!r}")
+    value = float(match.group(1))
+    return value * 1024.0 if match.group(2) == "G" else value
+
+
+def rss_mib(pid: int) -> float:
+    result = subprocess.run(
+        ["ps", "-o", "rss=", "-p", str(pid)],
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+    )
+    text = result.stdout.strip()
+    return float(text) / 1024.0 if text else 0.0
+
+
+def atomic_json(path: Path, payload: object) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(
+        mode="w", encoding="ascii", dir=path.parent, delete=False
+    ) as handle:
+        json.dump(payload, handle, sort_keys=True, indent=2, allow_nan=False)
+        handle.write("\n")
+        temporary = Path(handle.name)
+    temporary.replace(path)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--arm", default="D")
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--wall-minutes", type=float, default=30.0)
+    parser.add_argument("--rss-gib", type=float, default=4.0)
+    parser.add_argument("command", nargs=argparse.REMAINDER)
+    args = parser.parse_args()
+    command = args.command[1:] if args.command[:1] == ["--"] else args.command
+    if not command:
+        raise SystemExit("missing guarded command")
+
+    started = time.time()
+    initial_swap = swap_mib()
+    peak_swap = initial_swap
+    process = subprocess.Popen(
+        command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+    peak_rss = 0.0
+    reason = None
+    while process.poll() is None:
+        peak_rss = max(peak_rss, rss_mib(process.pid))
+        peak_swap = max(peak_swap, swap_mib())
+        if peak_swap > initial_swap:
+            reason = f"swap grew by {peak_swap - initial_swap:.3f} MiB"
+        elif peak_rss > args.rss_gib * 1024.0:
+            reason = f"RSS exceeded {args.rss_gib:.3f} GiB"
+        elif time.time() - started > args.wall_minutes * 60.0:
+            reason = f"wall time exceeded {args.wall_minutes:.3f} minutes"
+        if reason is not None:
+            process.terminate()
+            break
+        time.sleep(0.25)
+    stdout, stderr = process.communicate()
+    final_swap = swap_mib()
+    payload = {
+        "schema": "celltrack-alpha.guarded-execution.v1",
+        "arm": args.arm,
+        "command": command,
+        "elapsed_seconds": time.time() - started,
+        "exit_code": process.returncode,
+        "peak_process_rss_mib": peak_rss,
+        "swap_before_mib": initial_swap,
+        "swap_after_mib": final_swap,
+        "swap_peak_mib": peak_swap,
+        "swap_growth_mib": final_swap - initial_swap,
+        "wall_limit_minutes": args.wall_minutes,
+        "rss_limit_gib": args.rss_gib,
+        "termination_reason": reason,
+        "stdout": stdout,
+        "stderr": stderr,
+        "passed": process.returncode == 0 and reason is None and peak_swap <= initial_swap,
+        "cpu_only": True,
+    }
+    atomic_json(args.output, payload)
+    if not payload["passed"]:
+        raise SystemExit(reason or f"command exited {process.returncode}")
+    print(stdout, end="")
+
+
+if __name__ == "__main__":
+    main()

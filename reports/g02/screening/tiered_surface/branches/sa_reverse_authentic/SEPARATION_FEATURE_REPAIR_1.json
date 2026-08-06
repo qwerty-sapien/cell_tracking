@@ -1,0 +1,20 @@
+{
+  "schema": "g02.sa-reverse-authentic.separation-feature-repair.v1",
+  "status": "FROZEN_BEFORE_FEATURE_RETRY_OR_LABEL_OUTCOME",
+  "date": "2026-07-29",
+  "failed_attempt": {
+    "cause": "five delete-population identities are outside the historical 36-video H1 supplier population",
+    "feature_files_written": 0,
+    "labels_read": false,
+    "scientific_outcome_opened": false
+  },
+  "repair": {
+    "contract_basis": "the already-frozen unsupported-action rule",
+    "whole_identity_not_in_supplier": "all actions receive seven exact zeros plus support=0",
+    "fabricated_score": false,
+    "covered_identity_behavior_changed": false,
+    "gate_or_threshold_changed": false,
+    "implementation_sha256": "a3c15d89d2a5ac01f5945f65afa0008467afbe2e7bb10e1884d92188450493b3",
+    "tests": "1 passed"
+  }
+}

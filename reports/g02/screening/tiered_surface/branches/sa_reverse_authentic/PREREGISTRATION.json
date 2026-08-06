@@ -1,0 +1,127 @@
+{
+  "schema": "g02.sa-reverse-authentic.preregistration.v1",
+  "status": "FROZEN_BEFORE_CHECKPOINT_SEARCH_OR_REVERSE_OUTCOME",
+  "date": "2026-07-29",
+  "branch": "codex/sa-reverse-authentic-44b6",
+  "base_commit": "2d24c87beb3274fcd9a73129208360631705bdf9",
+  "objective": "Authenticate the exact historical Trackastra checkpoint and, only on an exact match, materialize genuine reversed-time fit-only 44b6 evidence and evaluate it through the unchanged frozen per-class separation gate.",
+  "write_scope": [
+    "reports/g02/screening/tiered_surface/branches/sa_reverse_authentic/",
+    "reports/g02/screening/LIVE_STATE.md",
+    "reports/g02/screening/LEDGER.md",
+    ".cruise/ORIGIN.md",
+    ".cruise/FLIGHT.md"
+  ],
+  "n0_checkpoint_hard_gate": {
+    "required_model_member_sha256": "24c290ce74289ee6dac952a3355c9fb7a0a477fda3012656a2c6d80af892981f",
+    "required_release_archive_sha256": "2ede08481b2e1f4ea23a41dd3001e2151ecbce7d978be9829ad230f0a60aea0e",
+    "tensor_count": 280,
+    "parameter_count": 27456880,
+    "tensor_bytes": 109827520,
+    "stop_on_absence": true,
+    "stop_on_mismatch": true,
+    "substitution_forbidden": true,
+    "network_acquisition_forbidden": true
+  },
+  "frozen_inputs": [
+    {
+      "id": "alignment",
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/ALIGNMENT.md",
+      "sha256": "eda3840ca4decf1fbc9943dcd872800852cf1ff52e0923136adb51b4f2ea6b37"
+    },
+    {
+      "id": "scope_manifest",
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/SCOPE_MANIFEST.md",
+      "sha256": "066fb71b8ead255ff061a7aa75283df27c367e08aa8fd0a0b91677537a0a7d49"
+    },
+    {
+      "id": "locked_plan",
+      "path": "reports/g02/screening/campaign_narrowing_and_hypothesis_dag_v1.md",
+      "sha256": "f1d2720e55cc806a3db5d036fa43e9972344e32c47c65a4720032868c79f2638"
+    },
+    {
+      "id": "prior_reverse_contract",
+      "path": "reports/g02/screening/tiered_surface/branches/sa_reverse/ENDPOINT_RETURN_CONTRACT.json",
+      "sha256": "4eaf9d8f13eb0121d804be4252e6b53667ae65f7955c3eadf858d257804fd294"
+    },
+    {
+      "id": "forward_cache_report",
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/trackastra_h1_feature_cache/report.json",
+      "sha256": "d52a4a42cf16c4e43d146d1cebfde68192db095c7cf6dfa3cfd9b7e4d820c0cf"
+    },
+    {
+      "id": "sparse_cache_manifest",
+      "path": "/private/tmp/trackastra-h1-fit105-cache-v1/cache_dataset_manifest.json",
+      "sha256": "ff7b205f58ad70c69954fed1c3e60a100d246c1e374a849c6ea7183934e98f28"
+    },
+    {
+      "id": "trackastra_source_license",
+      "path": "/private/tmp/trackastra-h1-full-cache-output/trackastra-source/LICENSE",
+      "sha256": "cc9ea92a72a63101ff425cc525faeace28ec9fc9c658a0fc01daf236e06326c9"
+    },
+    {
+      "id": "separation_preregistration_v3",
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/PREREGISTRATION_v3_per_class_authenticated_weight.json",
+      "sha256": "9fb030bdcffbf95e242c71aa8b2c14bf8254b42730acbb489d66e2fe35a3310e"
+    },
+    {
+      "id": "separation_population",
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/run_v1/population_manifest.json",
+      "sha256": "4ab7bb237b20dcf01c91af0771ef4022a6a3e5bacc900ce956e6b12777076f0c"
+    },
+    {
+      "id": "sealed_b0",
+      "path": "/Users/agent/Desktop/cell_tracking/reports/g02/screening/tiered_surface/branches/sa_repr/phase2_separation_gate/run_v3/B0_SEALED.json",
+      "sha256": "a9ce8c0be5afe4c2d2bfb37f3878691956ea458964788776af2ae9358f6b4ff2"
+    }
+  ],
+  "execution_contract": {
+    "cpu_only": true,
+    "projected_cpu_hours": 0.7579166666666667,
+    "hard_wall_hours": 1.5,
+    "gpu_hours": 0,
+    "kaggle": false,
+    "budget_debit": false,
+    "idle_preflight_seconds": 45,
+    "allowed_swap_growth_mib": 0,
+    "fit_only_family": "44b6",
+    "video_count": 36,
+    "reverse_inference_calls": 3539,
+    "repeat_witness_calls": 99
+  },
+  "anti_fabrication": {
+    "negation_forbidden": true,
+    "transpose_forbidden": true,
+    "duplication_forbidden": true,
+    "scalar_recalibration_forbidden": true,
+    "reverse_scores_require_separate_model_forward_pass": true
+  },
+  "n3_frozen_gate": {
+    "all_five_folds_required": true,
+    "thresholds_unchanged": true,
+    "sealed_b0_unchanged": true,
+    "per_class_result_required": true,
+    "tier_move_proposal_forbidden": true,
+    "graph_authorized": false
+  },
+  "hard_stops": [
+    "missing or mismatched exact checkpoint",
+    "any checkpoint substitution or download",
+    "swap growth",
+    "incomplete endpoint-return coverage",
+    "nonfinite reverse evidence",
+    "non-byte-identical repeat witness",
+    "frozen separation input drift",
+    "graph",
+    "6bba",
+    "CV57",
+    "GPU",
+    "Kaggle",
+    "budget debit",
+    "RunPod",
+    "submission",
+    "tier move",
+    "DEAD",
+    "plan amendment"
+  ]
+}

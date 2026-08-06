@@ -1,0 +1,55 @@
+{
+  "schema": "g02.sa-reverse-authentic.determinism-audit.v1",
+  "status": "PASS_COMPLETE",
+  "classification": "NON-GT-IDENTIFIABLE",
+  "node": "N2",
+  "checkpoint_authenticated": true,
+  "reverse_inference_ran": true,
+  "coverage": {
+    "required_videos": 36,
+    "observed_videos": 36,
+    "required_transitions": 3539,
+    "observed_transitions": 3539,
+    "required_proposals": 84883,
+    "observed_proposals": 84883,
+    "required_rows": 121534,
+    "observed_rows": 121534,
+    "finite_rows": 121534
+  },
+  "cycle_consistency_support": {
+    "sign_agreement_count": 95666,
+    "sign_agreement_rate": 0.7871542119900604,
+    "pearson_forward_reverse_margin": 0.6496437767957846,
+    "forward_margin_mean": -0.25713531832404374,
+    "forward_margin_median": -0.2750591039657593,
+    "reverse_margin_mean": -0.2752713593173728,
+    "reverse_margin_median": -0.3003392815589905,
+    "reverse_margin_positive": 32857,
+    "reverse_margin_zero": 0,
+    "reverse_margin_negative": 88677,
+    "cycle_min_mean": -0.40467482805252075,
+    "cycle_min_median": -0.4554440975189209,
+    "absolute_disagreement_mean": 0.2769429385662079,
+    "absolute_disagreement_median": 0.19647154211997986,
+    "reverse_edge_score_range": [
+      1.3244609503918186e-16,
+      0.9999947547912598
+    ],
+    "reverse_null_range": [
+      9.235466791324143e-07,
+      0.9978052377700806
+    ]
+  },
+  "repeat": {
+    "identity": "train:44b6_0db75fae",
+    "calls": 99,
+    "every_emitted_array_np_array_equal": true,
+    "receipt_sha256": "7ee5737d28ce95489503e307e4189a985fb12fc60f0aae12e2c3c9290cb92408"
+  },
+  "resource_guard": {
+    "authenticated_resume_pass": true,
+    "final_swap_growth_mib": 0.0,
+    "final_guard_sha256": "a365f45f97dea673f1019d1794014435927b5aa346f03b473ac019425dfc520a"
+  },
+  "manifest_sha256": "654cb499d65db137d71e3915850d4bc94a5373660cb2026507ad070275fb6fe1"
+}
