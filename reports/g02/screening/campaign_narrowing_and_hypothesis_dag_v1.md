@@ -6,6 +6,12 @@
 > DAG that runs on falsifiable, objective-level hypotheses instead of a falsified
 > proposal-level proxy. It does not change scorer/transfer/GPU/submission policy.
 
+> **Owner amendment 2026-08-10:** repository-root `../../../LMT.md` is now the sole
+> active authority for autonomous runtime, compute-budget, monitoring, submission,
+> and external-action limits. Older `1 h`, `5 h`, `6 h`, kill, and human-gate numbers
+> in this historical plan are superseded as operational authority. Scientific gates,
+> results, and evidence locks in this plan remain unchanged.
+
 ## 0. The finding that reorganizes the campaign
 
 **Proposal-level metrics do not predict the frozen-scorer graph objective, and the
@@ -164,12 +170,14 @@ the public 0.89 / RunPod gate needs local ≈0.895–0.900.
 
 ### Gate / governance (unchanged, carried forward)
 
-- Frozen scorer only; commit locally per node; **no Kaggle submission, Kaggle-GPU,
-  or RunPod launch without explicit human approval.**
+- Frozen scorer only; commit locally per node. Productive Kaggle actions and every
+  other external-action boundary follow repository-root `LMT.md` exclusively.
 - Zero-swap CPU discipline via two-stage isolation (never co-load V45 + Trackastra);
   meta-device/mmap loaders; 45-second clean idle preflight before any run.
-- GPU escalation stays behind measured graph-level headroom + the P1 gate; RunPod
-  only after an accepted **0.89**, ≥5% theory-backed expected gain, $10 cap.
+- GPU escalation stays behind measured graph-level headroom + the P1 gate. RunPod is
+  scientifically proposal-worthy only after an accepted **0.89** and ≥5% theory-backed
+  expected gain; any actual launch and spend require the explicit approval scoped by
+  `LMT.md`.
 - Mechanism ≠ family: a mechanism law needs ≥2 score-separated anchors; one APNCC
   point cannot establish one.
 
@@ -290,10 +298,10 @@ event, requires zero duplicate survivors, and emits forks atomically through
 frozen N1. PASS remains exact combined delta `>0`, division Jaccard `>=0.30`,
 and nonnegative adjusted-edge, raw-edge, and node-recall deltas.
 
-All other authority is unchanged: the frozen scorer and N1 compiler remain
-immutable; `6bba` and CV57 stay closed until the 44b6 human barrier; submission,
-Kaggle/GPU, RunPod, and any `>=5 h` GPU action retain their human gates; DEAD
-authority and the §6.1 register remain unchanged.
+All other scientific authority is unchanged: the frozen scorer and N1 compiler remain
+immutable; `6bba` and CV57 stay closed until the 44b6 human barrier; DEAD authority and
+the §6.1 register remain unchanged. Autonomous submission, Kaggle/GPU, RunPod, and
+external-action scope is governed only by repository-root `LMT.md`.
 
 ### 6.5 Division falsifier population correction (decision 5; approved 2026-07-31)
 
@@ -343,10 +351,9 @@ nested-OOF 44b6 held-fit graph delta. The H0 proxy ban explicitly covers
 within-trajectory checkpoint selection: training loss, proposal metrics, and AUC
 are reporting-only.
 
-The provisional GPU envelope is `2–6` T4-hours. A projection below `5 h` may launch
-under the standing authority only with the serial lock, authoritative quota
-reconciliation, and a hard `5 h` kill; a projection at or above `5 h` returns to the
-human barrier. Passing a learned 44b6 graph gate requires adjusted/raw/node deltas
+The historical provisional GPU estimate was `2–6` T4-hours. Any future launch applies
+repository-root `LMT.md`; this plan no longer defines a runtime threshold or wall-clock kill.
+Passing a learned 44b6 graph gate requires adjusted/raw/node deltas
 `>=+0.005/0/0`, then and only then opens `6bba` and CV57. A prediction may be
 submitted only if it is observation-distinct and local CV57 is at least `0.895`.
 Quota expiry does not widen any scientific scope.

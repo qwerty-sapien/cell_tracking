@@ -1,9 +1,0 @@
-{
-  "child_started": false,
-  "page_size": 16384,
-  "preflight_seconds": 45,
-  "schema": "celltrack-alpha.a7-local-resource-guard.v1",
-  "status": "PREFLIGHT_FAIL_SWAP_GROWTH",
-  "swapout_pages_end": 5362492,
-  "swapout_pages_start": 5362400
-}

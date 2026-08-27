@@ -1,6 +1,0 @@
-{
-  "schema": "celltrack-alpha.live-state-fragment.v1",
-  "status": "PROPOSED_NOT_APPLIED",
-  "frontier": "CELLECT bleed-stop local mounted-layout PASS: the single-file v6 kernel embeds all 77 request semantics and required content pins, requires zero external manifest files, resolves an 83-file opaque expanded-tar fixture, and fails closed for missing or duplicate content. Frozen post-step0 science is unchanged. No remote action; CELLECT remains launch-closed until DINOv2 Lane A reports.",
-  "log": "2026-07-30 — CELLECT bleed-stop v1 LOCAL MOUNT PASS / NO LAUNCH: self-contained embedded pins resolve all 83 required mounted objects with zero external manifests; expanded raw checkpoint and opaque names pass, missing/duplicate content fail closed, independent tests pass 7/7 and shared tests 24/24. No upload, authorization, kernel, debit, outcome, or verdict."
-}

@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import os
 import stat
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -15,6 +16,39 @@ from unittest import mock
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 import cmux_ops  # noqa: E402
+
+
+def replay_saved_guard(**kwargs):
+    return json.loads(
+        (Path(kwargs["project_root"]) / "guard-replay.json").read_text()
+    )
+
+
+class SavedGuardReplayMixin:
+    def setUp(self):
+        super().setUp()
+        self._original_visual_guard_project_root = (
+            cmux_ops.VISUAL_GUARD_PROJECT_ROOT
+        )
+        self._original_canonical_registry = (
+            cmux_ops.CANONICAL_KAGGLE_PRELAUNCH_REGISTRY
+        )
+        self._guard_replay_patch = mock.patch.object(
+            cmux_ops,
+            "_rerun_kaggle_prelaunch_guard",
+            side_effect=replay_saved_guard,
+        )
+        self._guard_replay_patch.start()
+
+    def tearDown(self):
+        self._guard_replay_patch.stop()
+        cmux_ops.VISUAL_GUARD_PROJECT_ROOT = (
+            self._original_visual_guard_project_root
+        )
+        cmux_ops.CANONICAL_KAGGLE_PRELAUNCH_REGISTRY = (
+            self._original_canonical_registry
+        )
+        super().tearDown()
 
 
 def make_kernel_package_and_predicate(
@@ -37,6 +71,21 @@ def make_kernel_package_and_predicate(
             }
         )
     )
+    contract = tmp / "contract.json"
+    registry = tmp / "registry.json"
+    contract.write_text("{}\n")
+    registry.write_text("{}\n")
+    cmux_ops.VISUAL_GUARD_PROJECT_ROOT = tmp.resolve()
+    cmux_ops.CANONICAL_KAGGLE_PRELAUNCH_REGISTRY = registry.resolve()
+    visual_receipt = tmp / "LOCAL_VISUAL_PREFLIGHT.json"
+    prediction = tmp / "prediction.csv"
+    sidecar = tmp / "video.json"
+    video = tmp / "video.mp4"
+    visual_receipt.write_text("{}\n")
+    prediction.write_text("source,target\n1,2\n")
+    sidecar.write_text("{}\n")
+    video.write_bytes(b"unit-test-video-binding")
+    package_inventory = cmux_ops._package_inventory(package, tmp)
     predicate = tmp / "kernel-predicate.json"
     predicate_payload = {
                 "schema": "celltrack-alpha.kaggle-prelaunch-guard-result.v1",
@@ -46,17 +95,45 @@ def make_kernel_package_and_predicate(
                 "failures": [],
                 "kernel_id": kernel_id,
                 "kernel_dir": str(package.resolve()),
+                "project_root": str(tmp.resolve()),
+                "package": package_inventory,
+                "package_tree_sha256": package_inventory["tree_sha256"],
                 "metadata_sha256": cmux_ops._sha256_file(metadata),
                 "code_file": str(code),
                 "code_sha256": cmux_ops._sha256_file(code),
-                "contract_sha256": "a" * 64,
-                "registry_sha256": "b" * 64,
+                "contract_path": contract.name,
+                "contract_sha256": cmux_ops._sha256_file(contract),
+                "registry_path": registry.name,
+                "registry_sha256": cmux_ops._sha256_file(registry),
+                "model_execution": True,
+                "local_visual_preflight": {
+                    "required": True,
+                    "status": "PASS",
+                    "receipt_path": visual_receipt.name,
+                    "receipt_sha256": cmux_ops._sha256_file(visual_receipt),
+                    "video_count": 1,
+                    "identities": ["train:44b6_fixture"],
+                    "artifacts": [
+                        {
+                            "role": role,
+                            "path": path.name,
+                            "sha256": cmux_ops._sha256_file(path),
+                        }
+                        for role, path in (
+                            ("visual_receipt", visual_receipt),
+                            ("prediction", prediction),
+                            ("sidecar", sidecar),
+                            ("video", video),
+                        )
+                    ],
+                },
             }
     if expected_initial_kernel_version is not None:
         predicate_payload["expected_initial_kernel_version"] = (
             expected_initial_kernel_version
         )
     predicate.write_text(json.dumps(predicate_payload))
+    (tmp / "guard-replay.json").write_text(json.dumps(predicate_payload))
     return package, predicate
 
 
@@ -137,6 +214,44 @@ def make_gpu_ledger(tmp: Path, *, active: list[dict] | None = None) -> Path:
 
 
 class TestCommandPlan(unittest.TestCase):
+    def test_visual_guard_anchor_ignores_shared_root_environment_override(self):
+        poisoned = "/private/tmp/arbitrary-visual-root"
+        environment = os.environ.copy()
+        environment["CELLTRACK_SHARED_ROOT"] = poisoned
+        script_dir = Path(__file__).resolve().parents[1] / "scripts"
+        probe = subprocess.run(
+            [
+                sys.executable,
+                "-c",
+                (
+                    "import json,sys; "
+                    f"sys.path.insert(0, {str(script_dir)!r}); "
+                    "import cmux_ops; "
+                    "print(json.dumps({"
+                    "'repo': str(cmux_ops.REPO_ROOT.resolve()), "
+                    "'visual': str(cmux_ops.VISUAL_GUARD_PROJECT_ROOT), "
+                    "'registry': str(cmux_ops.CANONICAL_KAGGLE_PRELAUNCH_REGISTRY), "
+                    "'shared': str(cmux_ops.SHARED_REPO_ROOT)}))"
+                ),
+            ],
+            capture_output=True,
+            text=True,
+            check=True,
+            env=environment,
+        )
+        payload = json.loads(probe.stdout)
+        expected_root = str(Path(__file__).resolve().parents[1])
+        self.assertEqual(payload["repo"], expected_root)
+        self.assertEqual(payload["visual"], expected_root)
+        self.assertEqual(
+            payload["registry"],
+            str(
+                Path(expected_root)
+                / "reports/g02/screening/tiered_surface/kaggle_prelaunch/KAGGLE_FAILURE_REGISTRY.json"
+            ),
+        )
+        self.assertEqual(payload["shared"], poisoned)
+
     def test_unknown_op_refused(self):
         with self.assertRaises(cmux_ops.UnknownOp):
             cmux_ops.run("kernels_delete", kaggle="/bin/true")
@@ -181,6 +296,16 @@ class TestCommandPlan(unittest.TestCase):
     def test_zero_exit_mutation_error_text_fails_closed(self):
         with tempfile.TemporaryDirectory() as td:
             tmp = Path(td)
+            dataset_id = "owner/private-carrier"
+            (tmp / "dataset-metadata.json").write_text(
+                json.dumps(
+                    {
+                        "id": dataset_id,
+                        "title": "Valid private carrier",
+                        "isPrivate": True,
+                    }
+                )
+            )
             fake = make_fake_kaggle(
                 tmp,
                 stdout="Skipping folder: handoff\nDataset creation error: Please upload at least one file\n",
@@ -189,13 +314,113 @@ class TestCommandPlan(unittest.TestCase):
             receipt = cmux_ops.run(
                 "dataset_create",
                 kaggle=fake,
-                path="/p",
+                dataset_id=dataset_id,
+                path=tmp,
                 lock_path=tmp / "mutation.lock",
             )
             self.assertEqual(receipt["process_returncode"], 0)
             self.assertEqual(receipt["returncode"], 1)
             self.assertTrue(receipt["semantic_failure"])
             self.assertIn("Dataset creation error", receipt["semantic_failure_reason"])
+
+    def test_dataset_create_rejects_51_character_title_before_subprocess(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            metadata = {
+                "id": "owner/private-carrier",
+                "title": "x" * 51,
+                "isPrivate": True,
+            }
+            (tmp / "dataset-metadata.json").write_text(json.dumps(metadata))
+            with mock.patch.object(cmux_ops.subprocess, "run") as launch:
+                with self.assertRaisesRegex(
+                    cmux_ops.DatasetMetadataNotSatisfied,
+                    "6..50 characters; observed 51",
+                ):
+                    cmux_ops.run(
+                        "dataset_create",
+                        kaggle="/bin/true",
+                        dataset_id=metadata["id"],
+                        path=tmp,
+                        lock_path=tmp / "mutation.lock",
+                    )
+            launch.assert_not_called()
+
+    def test_bracketed_dataset_create_rejects_bad_title_before_quota_subprocess(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            metadata = {
+                "id": "owner/private-carrier",
+                "title": "x" * 51,
+                "isPrivate": True,
+            }
+            (tmp / "dataset-metadata.json").write_text(json.dumps(metadata))
+            with mock.patch.object(cmux_ops.subprocess, "run") as launch:
+                with self.assertRaises(cmux_ops.DatasetMetadataNotSatisfied):
+                    cmux_ops.bracketed_launch(
+                        "dataset_create",
+                        kaggle="/bin/true",
+                        dataset_id=metadata["id"],
+                        path=tmp,
+                        lock=cmux_ops.serial_lock(tmp / "mutation.lock"),
+                    )
+            launch.assert_not_called()
+
+    def test_dataset_create_accepts_six_and_fifty_character_titles(self):
+        for length in (6, 50):
+            with self.subTest(length=length), tempfile.TemporaryDirectory() as td:
+                tmp = Path(td)
+                metadata = {
+                    "id": "owner/private-carrier",
+                    "title": "x" * length,
+                    "isPrivate": True,
+                }
+                (tmp / "dataset-metadata.json").write_text(json.dumps(metadata))
+                completed = subprocess.CompletedProcess(
+                    args=[], returncode=0, stdout="created\n", stderr=""
+                )
+                with mock.patch.object(
+                    cmux_ops.subprocess, "run", return_value=completed
+                ) as launch:
+                    receipt = cmux_ops.run(
+                        "dataset_create",
+                        kaggle="/bin/true",
+                        dataset_id=metadata["id"],
+                        path=tmp,
+                        lock_path=tmp / "mutation.lock",
+                    )
+                launch.assert_called_once()
+                self.assertEqual(receipt["returncode"], 0)
+                self.assertEqual(
+                    receipt["dataset_metadata_preflight"]["title_length"], length
+                )
+
+    def test_dataset_create_requires_matching_id_and_boolean_privacy(self):
+        cases = (
+            ({"title": "Valid title", "isPrivate": True}, "owner/slug"),
+            (
+                {"id": "owner/other", "title": "Valid title", "isPrivate": True},
+                "owner/slug",
+            ),
+            (
+                {"id": "owner/slug", "title": "Valid title", "isPrivate": "true"},
+                "owner/slug",
+            ),
+        )
+        for metadata, expected_id in cases:
+            with self.subTest(metadata=metadata), tempfile.TemporaryDirectory() as td:
+                tmp = Path(td)
+                (tmp / "dataset-metadata.json").write_text(json.dumps(metadata))
+                with mock.patch.object(cmux_ops.subprocess, "run") as launch:
+                    with self.assertRaises(cmux_ops.DatasetMetadataNotSatisfied):
+                        cmux_ops.run(
+                            "dataset_create",
+                            kaggle="/bin/true",
+                            dataset_id=expected_id,
+                            path=tmp,
+                            lock_path=tmp / "mutation.lock",
+                        )
+                launch.assert_not_called()
 
     def test_plan_is_argv_lists_never_shell_strings(self):
         plan = cmux_ops.command_plan("kaggle", dataset_id="o/d", kernel_id="o/k", path="/p")
@@ -465,10 +690,310 @@ class TestSubmissionPredicate(unittest.TestCase):
                 )
 
 
-class TestPushRace(unittest.TestCase):
+class TestPushRace(SavedGuardReplayMixin, unittest.TestCase):
     def test_push_refused_without_fresh_prelaunch_receipt(self):
         with self.assertRaises(cmux_ops.KernelPredicateNotSatisfied):
             cmux_ops.run("kernel_push", kaggle="/bin/true", kernel_id="o/k", path="/p")
+
+    def test_push_refuses_legacy_predicate_without_local_visual_result(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            package, predicate = make_kernel_package_and_predicate(tmp)
+            payload = json.loads(predicate.read_text())
+            payload.pop("local_visual_preflight")
+            predicate.write_text(json.dumps(payload))
+            with self.assertRaisesRegex(
+                cmux_ops.KernelPredicateNotSatisfied, "local visual preflight"
+            ):
+                cmux_ops._validate_kernel_push_predicate(
+                    predicate, kernel_id="o/k", kernel_dir=package
+                )
+
+    def test_push_refuses_model_predicate_with_zero_reviewed_videos(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            package, predicate = make_kernel_package_and_predicate(tmp)
+            payload = json.loads(predicate.read_text())
+            payload["local_visual_preflight"]["video_count"] = 0
+            predicate.write_text(json.dumps(payload))
+            with self.assertRaisesRegex(
+                cmux_ops.KernelPredicateNotSatisfied, "no reviewed MP4"
+            ):
+                cmux_ops._validate_kernel_push_predicate(
+                    predicate, kernel_id="o/k", kernel_dir=package
+                )
+
+    def test_push_accepts_guard_attested_pending_d2k3_remote_visual_exception(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            package, predicate = make_kernel_package_and_predicate(tmp)
+            payload = json.loads(predicate.read_text())
+            visual = payload["local_visual_preflight"]
+            visual.update(
+                {
+                    "status": "REMOTE_VISUAL_PENDING",
+                    "exception_id": "cellect-d2k3-remote-visual-only-v1",
+                    "record_sha256": "a" * 64,
+                    "video_count": 0,
+                    "identities": ["train:44b6_sparse", "train:44b6_crowded"],
+                    "post_remote_review": {
+                        "remote_mp4_retrieval_required": True,
+                        "local_visual_review_required": True,
+                        "score_or_promotion_permitted_before_review": False,
+                        "status": "PENDING_REMOTE_RETRIEVAL_AND_LOCAL_REVIEW",
+                    },
+                }
+            )
+            predicate.write_text(json.dumps(payload))
+            (tmp / "guard-replay.json").write_text(json.dumps(payload))
+            validated = cmux_ops._validate_kernel_push_predicate(
+                predicate, kernel_id="o/k", kernel_dir=package
+            )
+            self.assertEqual(
+                validated["remote_visual_only_exception"],
+                "cellect-d2k3-remote-visual-only-v1",
+            )
+
+    def test_push_refuses_pending_remote_visual_exception_without_review_lock(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            package, predicate = make_kernel_package_and_predicate(tmp)
+            payload = json.loads(predicate.read_text())
+            visual = payload["local_visual_preflight"]
+            visual.update(
+                {
+                    "status": "REMOTE_VISUAL_PENDING",
+                    "exception_id": "cellect-d2k2-remote-visual-only-v1",
+                    "record_sha256": "a" * 64,
+                    "video_count": 0,
+                    "identities": ["train:44b6_sparse", "train:44b6_crowded"],
+                    "post_remote_review": {
+                        "remote_mp4_retrieval_required": True,
+                        "local_visual_review_required": True,
+                        "score_or_promotion_permitted_before_review": True,
+                        "status": "PENDING_REMOTE_RETRIEVAL_AND_LOCAL_REVIEW",
+                    },
+                }
+            )
+            predicate.write_text(json.dumps(payload))
+            (tmp / "guard-replay.json").write_text(json.dumps(payload))
+            with self.assertRaisesRegex(
+                cmux_ops.KernelPredicateNotSatisfied,
+                "post-retrieval local-review lock",
+            ):
+                cmux_ops._validate_kernel_push_predicate(
+                    predicate, kernel_id="o/k", kernel_dir=package
+                )
+
+    def test_push_accepts_exact_m7r6_remote_certification_exception(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            kernel_id = cmux_ops.M7R6_NATIVE_T4_CERT_KERNEL_ID
+            package, predicate = make_kernel_package_and_predicate(tmp, kernel_id)
+            payload = json.loads(predicate.read_text())
+            payload["local_visual_preflight"].update(
+                {
+                    "status": "REMOTE_CERTIFICATION_PENDING",
+                    "certification_only": True,
+                    "exception_id": "m7r6-native-t4-whole-pipeline-cert-v1",
+                    "record_sha256": "849ec6df0b68b7ba3ba84edb45b971341a916aab8f304d7027f7d1dc3486296a",
+                    "video_count": 0,
+                    "identities": ["train:44b6_cf2536e8", "train:44b6_3bb3690f"],
+                    "post_remote_certification": {
+                        "downloaded_output_zip_required": True,
+                        "exact_local_seal_required": True,
+                        "production_or_score_permitted_before_seal": False,
+                        "status": "PENDING_REMOTE_RETRIEVAL_AND_LOCAL_SEAL",
+                    },
+                }
+            )
+            predicate.write_text(json.dumps(payload))
+            (tmp / "guard-replay.json").write_text(json.dumps(payload))
+            validated = cmux_ops._validate_kernel_push_predicate(
+                predicate, kernel_id=kernel_id, kernel_dir=package
+            )
+            self.assertEqual(
+                validated["remote_certification_exception"],
+                "m7r6-native-t4-whole-pipeline-cert-v1",
+            )
+
+    def test_push_accepts_exact_m7r8_runtime_tuple_successor_exception(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            kernel_id = cmux_ops.M7R8_NATIVE_T4_CERT_KERNEL_ID
+            package, predicate = make_kernel_package_and_predicate(tmp, kernel_id)
+            payload = json.loads(predicate.read_text())
+            payload["local_visual_preflight"].update(
+                {
+                    "status": "REMOTE_CERTIFICATION_PENDING",
+                    "certification_only": True,
+                    "exception_id": "m7r8-native-t4-whole-pipeline-cert-v1",
+                    "record_sha256": "71dcb5333200643f9525de8c468a18fba17addcfbc92abc704bb03fdd3552a8b",
+                    "video_count": 0,
+                    "identities": ["train:44b6_cf2536e8", "train:44b6_3bb3690f"],
+                    "post_remote_certification": {
+                        "downloaded_output_zip_required": True,
+                        "exact_local_seal_required": True,
+                        "production_or_score_permitted_before_seal": False,
+                        "status": "PENDING_REMOTE_RETRIEVAL_AND_LOCAL_SEAL",
+                    },
+                }
+            )
+            predicate.write_text(json.dumps(payload))
+            (tmp / "guard-replay.json").write_text(json.dumps(payload))
+            validated = cmux_ops._validate_kernel_push_predicate(
+                predicate, kernel_id=kernel_id, kernel_dir=package
+            )
+            self.assertEqual(
+                validated["remote_certification_exception"],
+                "m7r8-native-t4-whole-pipeline-cert-v1",
+            )
+
+    def test_push_accepts_exact_m10r3_no_input_provider_exception(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            kernel_id = cmux_ops.M10R3_PROVIDER_CERT_KERNEL_ID
+            package, predicate = make_kernel_package_and_predicate(tmp, kernel_id)
+            payload = json.loads(predicate.read_text())
+            payload["local_visual_preflight"].update(
+                {
+                    "status": "REMOTE_CERTIFICATION_PENDING",
+                    "certification_only": True,
+                    "exception_id": "m10r3-self-orchestrating-provider-cert-v1",
+                    "record_sha256": "8cd1b1ab565a680906269c50f1edaa79d2ee170e5e53ff53a47f16ac4d99ca8c",
+                    "video_count": 0,
+                    "identities": [],
+                    "target_input": False,
+                    "post_remote_certification": {
+                        "downloaded_output_zip_required": True,
+                        "exact_local_seal_required": True,
+                        "production_or_score_permitted_before_seal": False,
+                        "status": "PENDING_REMOTE_RETRIEVAL_AND_LOCAL_SEAL",
+                    },
+                }
+            )
+            predicate.write_text(json.dumps(payload))
+            (tmp / "guard-replay.json").write_text(json.dumps(payload))
+            validated = cmux_ops._validate_kernel_push_predicate(
+                predicate, kernel_id=kernel_id, kernel_dir=package
+            )
+            self.assertEqual(
+                validated["remote_certification_exception"],
+                "m10r3-self-orchestrating-provider-cert-v1",
+            )
+
+    def test_push_rejects_m10r3_target_input_drift(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            kernel_id = cmux_ops.M10R3_PROVIDER_CERT_KERNEL_ID
+            package, predicate = make_kernel_package_and_predicate(tmp, kernel_id)
+            payload = json.loads(predicate.read_text())
+            payload["local_visual_preflight"].update(
+                {
+                    "status": "REMOTE_CERTIFICATION_PENDING",
+                    "certification_only": True,
+                    "exception_id": "m10r3-self-orchestrating-provider-cert-v1",
+                    "record_sha256": "8cd1b1ab565a680906269c50f1edaa79d2ee170e5e53ff53a47f16ac4d99ca8c",
+                    "video_count": 0,
+                    "identities": [],
+                    "target_input": True,
+                    "post_remote_certification": {
+                        "downloaded_output_zip_required": True,
+                        "exact_local_seal_required": True,
+                        "production_or_score_permitted_before_seal": False,
+                        "status": "PENDING_REMOTE_RETRIEVAL_AND_LOCAL_SEAL",
+                    },
+                }
+            )
+            predicate.write_text(json.dumps(payload))
+            (tmp / "guard-replay.json").write_text(json.dumps(payload))
+            with self.assertRaisesRegex(
+                cmux_ops.KernelPredicateNotSatisfied,
+                "target-input firewall drift",
+            ):
+                cmux_ops._validate_kernel_push_predicate(
+                    predicate, kernel_id=kernel_id, kernel_dir=package
+                )
+
+    def test_push_refuses_remote_certification_exception_for_other_kernel(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            package, predicate = make_kernel_package_and_predicate(tmp, "o/not-m7r6")
+            payload = json.loads(predicate.read_text())
+            payload["local_visual_preflight"].update(
+                {
+                    "status": "REMOTE_CERTIFICATION_PENDING",
+                    "certification_only": True,
+                    "exception_id": "m7r6-native-t4-whole-pipeline-cert-v1",
+                    "record_sha256": "849ec6df0b68b7ba3ba84edb45b971341a916aab8f304d7027f7d1dc3486296a",
+                    "identities": ["train:44b6_cf2536e8", "train:44b6_3bb3690f"],
+                    "post_remote_certification": {
+                        "downloaded_output_zip_required": True,
+                        "exact_local_seal_required": True,
+                        "production_or_score_permitted_before_seal": False,
+                        "status": "PENDING_REMOTE_RETRIEVAL_AND_LOCAL_SEAL",
+                    },
+                }
+            )
+            predicate.write_text(json.dumps(payload))
+            (tmp / "guard-replay.json").write_text(json.dumps(payload))
+            with self.assertRaisesRegex(
+                cmux_ops.KernelPredicateNotSatisfied,
+                "not the exact M7R6 kernel",
+            ):
+                cmux_ops._validate_kernel_push_predicate(
+                    predicate, kernel_id="o/not-m7r6", kernel_dir=package
+                )
+
+    def test_fabricated_pass_predicate_cannot_override_real_guard_failure(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            package, predicate = make_kernel_package_and_predicate(tmp)
+            replay = json.loads((tmp / "guard-replay.json").read_text())
+            replay.update({"status": "FAIL", "eligible": False, "failures": ["real failure"]})
+            (tmp / "guard-replay.json").write_text(json.dumps(replay))
+            with self.assertRaisesRegex(
+                cmux_ops.KernelPredicateNotSatisfied,
+                "real guard replay|fabricated or stale",
+            ):
+                cmux_ops._validate_kernel_push_predicate(
+                    predicate, kernel_id="o/k", kernel_dir=package
+                )
+
+    def test_push_rejects_noncanonical_project_root_and_registry(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            package, predicate = make_kernel_package_and_predicate(tmp)
+            payload = json.loads(predicate.read_text())
+            payload["project_root"] = str(tmp.parent.resolve())
+            predicate.write_text(json.dumps(payload))
+            with self.assertRaisesRegex(
+                cmux_ops.KernelPredicateNotSatisfied,
+                "canonical shared repository root",
+            ):
+                cmux_ops._validate_kernel_push_predicate(
+                    predicate, kernel_id="o/k", kernel_dir=package
+                )
+
+            second = tmp / "second"
+            second.mkdir()
+            package, predicate = make_kernel_package_and_predicate(second)
+            root = Path(json.loads(predicate.read_text())["project_root"])
+            alternate = root / "alternate-registry.json"
+            alternate.write_text("{}\n")
+            for receipt_name in ("kernel-predicate.json", "guard-replay.json"):
+                receipt = root / receipt_name
+                value = json.loads(receipt.read_text())
+                value["registry_path"] = alternate.name
+                value["registry_sha256"] = cmux_ops._sha256_file(alternate)
+                receipt.write_text(json.dumps(value))
+            with self.assertRaisesRegex(
+                cmux_ops.KernelPredicateNotSatisfied,
+                "canonical repository registry",
+            ):
+                cmux_ops._validate_kernel_push_predicate(
+                    predicate, kernel_id="o/k", kernel_dir=package
+                )
 
     def test_push_refused_while_running(self):
         with tempfile.TemporaryDirectory() as td:
@@ -642,6 +1167,35 @@ class TestPushRace(unittest.TestCase):
                         _held_lock=held,
                     )
 
+    def test_push_rechecks_guard_after_status_and_rejects_tampering(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            package, predicate = make_kernel_package_and_predicate(tmp)
+            fake = tmp / "tampering_kaggle"
+            fake.write_text(
+                "#!/usr/bin/env python3\n"
+                "import pathlib, sys\n"
+                f"target = pathlib.Path({str(package / 'script.py')!r})\n"
+                "if sys.argv[1:3] == ['kernels', 'status']:\n"
+                "    target.write_text(\"print('tampered during status')\\n\")\n"
+                "    print('has status \\\"KernelWorkerStatus.COMPLETE\\\"')\n"
+                "sys.exit(0)\n"
+            )
+            fake.chmod(fake.stat().st_mode | stat.S_IEXEC)
+            with cmux_ops.serial_lock(tmp / "lock") as held:
+                with self.assertRaisesRegex(
+                    cmux_ops.KernelPredicateNotSatisfied,
+                    "changed after prelaunch|package inventory|fabricated or stale",
+                ):
+                    cmux_ops.run(
+                        "kernel_push",
+                        kaggle=str(fake),
+                        kernel_id="o/k",
+                        path=package,
+                        kernel_push_predicate_receipt=predicate,
+                        _held_lock=held,
+                    )
+
     def test_push_refused_when_predicate_names_another_kernel(self):
         with tempfile.TemporaryDirectory() as td:
             tmp = Path(td)
@@ -663,7 +1217,7 @@ class TestPushRace(unittest.TestCase):
                     )
 
 
-class TestBracketedLaunch(unittest.TestCase):
+class TestBracketedLaunch(SavedGuardReplayMixin, unittest.TestCase):
     def test_aborts_when_pre_query_fails(self):
         with tempfile.TemporaryDirectory() as td:
             tmp = Path(td)
@@ -796,7 +1350,15 @@ class TestBracketedLaunch(unittest.TestCase):
             )
             payload = json.loads(ledger.read_text())
             self.assertEqual(out["gpu_reservation_h"], 3.0)
-            self.assertEqual(out["projection_gate"]["disposition"], "AUTO_APPROVED_LT_8H")
+            self.assertEqual(
+                out["projection_gate"]["disposition"],
+                "AUTO_APPROVED_UNDER_LMT_CAP",
+            )
+            self.assertEqual(out["projection_gate"]["threshold_h"], 8.0)
+            self.assertEqual(
+                out["projection_gate"]["lmt_sha256"],
+                cmux_ops._sha256_file(cmux_ops.DEFAULT_LMT),
+            )
             self.assertEqual(len(payload["active_reservations"]), 1)
             self.assertEqual(payload["active_reservations"][0]["kernel_id"], "o/k")
             self.assertEqual(payload["active_reservations"][0]["status"], "LAUNCHED_ACTIVE")
@@ -870,6 +1432,14 @@ class TestBracketedLaunch(unittest.TestCase):
                 )
             self.assertEqual(json.loads(ledger.read_text())["active_reservations"], [])
 
+    def test_projection_gate_reads_strict_boundary_from_lmt(self):
+        below = cmux_ops._projection_gate(7.999999, None)
+        self.assertEqual(below["threshold_h"], 8.0)
+        self.assertFalse(below["runtime_wall_clock_kill"])
+        self.assertEqual(below["disposition"], "AUTO_APPROVED_UNDER_LMT_CAP")
+        with self.assertRaisesRegex(cmux_ops.ProjectionApprovalRequired, "LMT cap"):
+            cmux_ops._projection_gate(8.0, None)
+
     def test_terminal_reconciliation_releases_reservation(self):
         with tempfile.TemporaryDirectory() as td:
             tmp = Path(td)
@@ -911,6 +1481,40 @@ class TestBracketedLaunch(unittest.TestCase):
             payload = json.loads(ledger.read_text())
             self.assertEqual(payload["active_reservations"], [])
             self.assertEqual(payload["events"][-1]["terminal_status"], "COMPLETE")
+
+    def test_terminal_reconciliation_accepts_exact_versioned_status_reference(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            ledger = make_gpu_ledger(
+                tmp,
+                active=[
+                    {
+                        "kernel_id": "o/done",
+                        "max_gpu_h": 3.0,
+                        "status": "LAUNCHED_ACTIVE",
+                    }
+                ],
+            )
+            terminal = tmp / "terminal.json"
+            terminal.write_text(
+                json.dumps(
+                    {
+                        "schema": "celltrack-alpha.cmux-op-receipt.v1",
+                        "op": "kernel_status",
+                        "argv": ["kaggle", "kernels", "status", "o/done/1"],
+                        "returncode": 0,
+                        "stdout_scrubbed": "KernelWorkerStatus.ERROR",
+                    }
+                )
+            )
+            cmux_ops.reconcile_gpu_reservation(
+                "o/done",
+                terminal_status="ERROR",
+                ledger_path=ledger,
+                lock_path=tmp / "lock",
+                terminal_receipt=str(terminal),
+            )
+            self.assertEqual(json.loads(ledger.read_text())["active_reservations"], [])
 
     def test_active_error_reconciliation_requires_terminal_evidence(self):
         with tempfile.TemporaryDirectory() as td:

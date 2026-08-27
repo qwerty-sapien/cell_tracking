@@ -1,0 +1,8 @@
+{
+  "pid": 34258,
+  "node": "d28_terminal_reconcile",
+  "target": "onebitbrain/f2-d28-native-cert-fresh-reconciliation-time-v1",
+  "acquired_utc": "2026-08-27T07:16:32.177509Z",
+  "acquired_monotonic": 1787814992.177522,
+  "broke_stale": null
+}

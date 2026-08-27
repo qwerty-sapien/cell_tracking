@@ -1,0 +1,22 @@
+[
+  "test_ae_p5_assignment.py::test_a_uniform_margin_chain_of_five_fails_the_membership_conjunction",
+  "test_ae_p5_assignment.py::test_actions_sharing_a_source_are_not_jointly_feasible",
+  "test_ae_p5_assignment.py::test_actions_sharing_a_target_are_not_jointly_feasible",
+  "test_ae_p5_assignment.py::test_canonical_digest_is_stable_and_endpoint_specific",
+  "test_ae_p5_assignment.py::test_component_below_eight_feasible_assignments_falls_back",
+  "test_ae_p5_assignment.py::test_conflicting_pair_falls_back",
+  "test_ae_p5_assignment.py::test_cost_is_the_negated_margin",
+  "test_ae_p5_assignment.py::test_disjoint_actions_are_jointly_feasible",
+  "test_ae_p5_assignment.py::test_eight_feasible_assignments_needs_a_component_of_at_least_five",
+  "test_ae_p5_assignment.py::test_empty_subset_is_always_a_feasible_assignment",
+  "test_ae_p5_assignment.py::test_evidence_is_the_49th_feature",
+  "test_ae_p5_assignment.py::test_map_is_still_reported_when_the_rule_falls_back",
+  "test_ae_p5_assignment.py::test_map_prefers_the_negative_cost_assignment",
+  "test_ae_p5_assignment.py::test_map_rejects_a_harmful_margin",
+  "test_ae_p5_assignment.py::test_min_marginal_tolerance_scales_with_cost",
+  "test_ae_p5_assignment.py::test_no_op_costs_exactly_zero",
+  "test_ae_p5_assignment.py::test_nonfinite_evidence_sends_the_whole_component_to_apncc",
+  "test_ae_p5_assignment.py::test_singleton_component_has_exactly_two_feasible_assignments",
+  "test_ae_p5_assignment.py::test_tie_break_is_cost_then_sorted_canonical_digest",
+  "test_ae_p5_assignment.py::test_zero_margin_action_is_never_applied"
+]

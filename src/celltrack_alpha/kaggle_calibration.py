@@ -96,8 +96,20 @@ def read_submission(
     return graphs
 
 
-def write_submission(graphs: dict[str, SubmissionGraph], path: Path) -> None:
-    validate_graphs(graphs)
+def write_submission(
+    graphs: dict[str, SubmissionGraph],
+    path: Path,
+    *,
+    max_outdegree: int | None = 2,
+) -> None:
+    """Write graphs with the ordinary competition-safe topology checks.
+
+    ``max_outdegree=None`` mirrors :func:`read_submission` and is reserved for
+    losslessly materializing an externally authored, scorer-accepted graph for
+    analysis.  All submission paths retain the default cap of two.
+    """
+
+    validate_graphs(graphs, max_outdegree=max_outdegree)
     path.parent.mkdir(parents=True, exist_ok=True)
     row_id = 0
     with path.open("w", encoding="utf-8", newline="") as handle:

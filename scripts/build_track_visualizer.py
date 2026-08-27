@@ -1294,7 +1294,10 @@ def render_video_task(task: Mapping[str, Any]) -> dict[str, Any]:
     bundle = Path(task["bundle"])
     flag_info = dict(task["flag_info"])
     fragment = Path(task["fragment_path"])
-    graph_map = read_submission(fragment)
+    # The review tool must faithfully display scorer-accepted external graphs,
+    # including pristine public V32's known out-degree-above-two parents.  This
+    # opt-in does not weaken ordinary submission validation.
+    graph_map = read_submission(fragment, max_outdegree=None)
     if set(graph_map) != {dataset}:
         raise VisualizerError(f"fragment dataset mismatch in {fragment}: {sorted(graph_map)}")
     graph = graph_map[dataset]
@@ -1553,7 +1556,7 @@ def resolve_prediction_fragments(
     aggregate_hash: str | None = None
     if predictions.is_file():
         aggregate_hash = sha256_file(predictions)
-        aggregate_graphs = read_submission(predictions)
+        aggregate_graphs = read_submission(predictions, max_outdegree=None)
     elif not predictions.is_dir():
         raise VisualizerError(f"prediction input is neither a CSV nor directory: {predictions}")
 
@@ -1586,7 +1589,7 @@ def resolve_prediction_fragments(
         if not candidate.exists():
             materialized = graph.copy()
             materialized.dataset = dataset
-            write_submission({dataset: materialized}, candidate)
+            write_submission({dataset: materialized}, candidate, max_outdegree=None)
         resolved[identity] = candidate
     return resolved
 

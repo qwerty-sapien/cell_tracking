@@ -1,0 +1,383 @@
+import fnmatch
+import os.path
+from typing import Optional, Iterable, List, Any, Dict
+
+from PySide6.QtWidgets import QApplication
+from matplotlib.figure import Figure
+
+from organoid_tracker.core import UserError
+from organoid_tracker.core.experiment import Experiment
+from organoid_tracker.gui import dialog, image_resolution_dialog, option_choose_dialog
+from organoid_tracker.gui.dialog import popup_message_cancellable
+from organoid_tracker.gui.gui_experiment import GuiExperiment, SingleGuiTab
+from organoid_tracker.gui.undo_redo import UndoableAction
+from organoid_tracker.gui.window import Window
+from organoid_tracker.imaging import io
+from organoid_tracker.imaging.file_loader import FileLoaderType, LoadInto
+from organoid_tracker.linking_analysis import linking_markers
+from organoid_tracker.visualizer import activate
+from organoid_tracker.visualizer.empty_visualizer import EmptyVisualizer
+
+
+def ask_save_unsaved_changes(tabs: Iterable[SingleGuiTab]) -> bool:
+    """If there are any unsaved changes, this method will prompt the user to save them. Returns True if the user either
+    successfully saved the data, or if the user doesn't want to save. Returns False if the action must be aborted."""
+    for single_tab in tabs:
+        if not single_tab.undo_redo.has_unsaved_changes():
+            continue
+
+        answer = dialog.prompt_yes_no_cancel("Confirmation",
+                    f"There are unsaved changes to the tracking data of experiment \"{single_tab.experiment.name}\"."
+                    f" Do you want to save those first?")
+        if answer.is_yes():
+            if save_tracking_data_of_tab(single_tab):
+                continue
+            else:
+                return False
+        elif answer.is_no():
+            continue
+        else:
+            return False  # Cancelled.
+    return True
+
+
+def toggle_axis(figure: Figure):
+    """Toggles whether the axes are visible."""
+    set_visible = None
+    for axis in figure.axes:
+        if set_visible is None:
+            set_visible = not axis.get_xaxis().get_visible()
+        axis.get_xaxis().set_visible(set_visible)
+        axis.get_yaxis().set_visible(set_visible)
+    figure.canvas.draw_idle()
+
+
+def new(window: Window):
+    """Starts a new experiment."""
+    gui_experiment = window.get_gui_experiment()
+    new_index = gui_experiment.add_experiment(Experiment())
+    gui_experiment.select_experiment(new_index)
+    visualizer = EmptyVisualizer(window)
+    activate(visualizer)
+
+
+def close_experiment(window: Window):
+    """Closes the current experiment."""
+    if not ask_save_unsaved_changes([window.get_gui_experiment().get_open_tab()]):
+        return  # Cancelled
+
+    # Close the experiment
+    experiment = window.get_experiment()
+    window.get_gui_experiment().remove_experiment(experiment)
+    experiment.close()
+
+
+def load_images(window: Window):
+    """Prompts the image loader, and loads the images into the experiment."""
+    from organoid_tracker.gui import image_series_loader_dialog
+    if image_series_loader_dialog.prompt_image_series_multiple(window):
+        window.redraw_all()
+
+
+def load_tracking_data(window: Window):
+    if not ask_save_unsaved_changes([window.get_gui_experiment().get_open_tab()]):
+        return  # Cancelled
+    experiment = window.get_experiment()
+
+    # Check which formats we support, and by which loader
+    supported_formats_list = list()
+    file_loader_by_pattern = dict()
+    for file_loader in window.registry.get_registered_file_loaders():
+        if file_loader.get_type() != FileLoaderType.TRACKING:
+            continue
+        supported_formats_list.append((file_loader.get_name(), " ".join(file_loader.get_file_patterns())))
+        for pattern in file_loader.get_file_patterns():
+            file_loader_by_pattern[pattern] = file_loader
+
+    file_path = dialog.prompt_load_file("Select data file", supported_formats_list)
+    if file_path is None:
+        return  # Cancelled
+
+    # Replace the existing experiment with one with the same images, but the new data
+    for pattern, handler in file_loader_by_pattern.items():
+        if fnmatch.fnmatch(file_path, pattern):
+            # Found the right handler
+            into = LoadInto(experiment)
+            handler.load_file_interactive(file_path, into=into)
+            for extra_experiment in into.extra_experiments:
+                window.get_gui_experiment().add_experiment(extra_experiment)
+            window.redraw_data()
+            break
+
+
+def export_positions(experiment: Experiment):
+    if not popup_message_cancellable("Notice", "This export option is intended for use with the neural network. As"
+                                     " such, it uses the raw pixel coordinates (if you have specified image offsets,"
+                                     " those will be ignored) and dead cells are omitted.\n\nNote that the "
+                                     + io.FILE_EXTENSION + " files generated by this program are JSON files, so they're"
+                                     " perfectly fine as an export format themselves. If you need something simpler,"
+                                     " use the CSV export."):
+        return  # Cancelled
+    positions_file = dialog.prompt_save_file("Save positions as...", [("JSON file", "*.json")])
+    if not positions_file:
+        return  # Cancelled
+    io.save_positions_to_json(experiment, positions_file)
+
+
+def export_links_guizela(experiment: Experiment):
+    if not experiment.links.has_links():
+        raise UserError("No links", "Cannot export to this file format; there are no links created.")
+
+    links_folder = dialog.prompt_save_file("Save links as...", [("Folder", "*")])
+    if not links_folder:
+        return  # Cancelled
+    comparisons_folder = None
+    if dialog.prompt_yes_no("Track ids",
+                                   "Do you want to reuse existing track ids? This is useful for comparing data.\n\n If"
+                                   " yes, then you will be asked to select the folder containing the existing tracks."):
+        comparisons_folder = dialog.prompt_directory("Select folder with track ids to reuse")
+        if not comparisons_folder:
+            return
+
+    from organoid_tracker.guizela_tracker_compatibility import guizela_data_exporter
+    guizela_data_exporter.export_links(experiment, links_folder, comparisons_folder)
+
+
+def export_links_ctc(experiment: Experiment):
+    if experiment.images.image_loader().get_image_size_zyx() is None:
+        raise UserError("No images found", "Couldn't find an image size. Note that this data format saves the tracking"
+                                           " positions in images of the same size as the original microscopy images."
+                                           " Please load those first.")
+    if not experiment.links.has_links():
+        raise UserError("No links found", "This save format can only save tracks. Currently, there are no links"
+                                          " loaded, so we have no tracks, and therefore we cannot save anything.")
+    tracks_folder = dialog.prompt_save_file("Save tracks as...",
+                                            [("_GT or _RES folder", "*")])
+    if tracks_folder is None:
+        return
+
+    radius_um = dialog.prompt_float("Radius of the cells in micrometers", "Since the cell tracker doesn't generate"
+                                    " segmentation masks, we simply draw a sphere around the cell position. What radius"
+                                    " should we use (in micrometers)?", minimum=1, maximum=100, default=5)
+
+    from organoid_tracker.imaging import ctc_io
+    ctc_io.save_data_files(experiment, tracks_folder, mask_size_um=radius_um)
+
+
+def export_links_trackmate(experiment: Experiment):
+    tracks_file = dialog.prompt_save_file("Save tracks as...",
+                                            [("TrackMate file", "*.xml")])
+    if tracks_file is None:
+        return
+
+    from organoid_tracker.imaging import trackmate_io
+    trackmate_io.save_tracking_data(experiment, tracks_file)
+
+
+def export_links_geff(window: Window):
+    experiment = window.get_experiment()
+    if not experiment.links.has_links():
+        raise UserError("No links", "Cannot export to GEFF; there are no links created.")
+
+    geff_file = dialog.prompt_save_file("Save tracking data as...", [("GEFF file", "*.geff")])
+    if not geff_file:
+        return  # Cancelled
+
+    from organoid_tracker.imaging import geff_io
+    geff_io.save_data_file(experiment, geff_file)
+    window.set_status("Exported tracking data to \"" + geff_file + "\".")
+
+
+def save_tracking_data(window: Window, force_save_as: bool = False) -> bool:
+    """Saves the tracking data of the currently open tab. Prompts the user if no previous file name is known, or if
+    force_save_as is True. Updates the status bar afterwards. Returns whether saving was successful."""
+    saved = save_tracking_data_of_tab(window.get_gui_experiment().get_open_tab(), force_save_as)
+    if saved:
+        window.set_status("Saved to " + window.get_experiment().last_save_file + ".")
+    return saved
+
+
+def save_tracking_data_of_tab(tab: SingleGuiTab, force_save_as: bool = False):
+    """Saves the tracking data of the given tab. Prompts the user if no previous file name is known, or if
+    force_save_as is True. Returns whether saving was successful."""
+    data_file = tab.experiment.last_save_file
+    if data_file is None or force_save_as:
+        data_file = dialog.prompt_save_file("Save data as...", [
+            (io.FILE_EXTENSION.upper() + " file", "*." + io.FILE_EXTENSION)])
+    if not data_file:
+        return False  # Cancelled
+
+    io.save_data_to_json(tab.experiment, data_file)
+    tab.undo_redo.mark_everything_saved()
+    return True
+
+
+def _error_message(error: Exception):
+    return str(type(error).__name__) + ": " + str(error)
+
+
+def show_manual():
+    dialog.popup_manual()
+
+
+def about_the_program():
+    dialog.popup_message("About", "Cell detection and linking.\n\n"
+                                  "Developed by Max Betjes and Rutger Kok. Licensed as GPL v2.0.\n"
+                                  "Splines and alternative data format by Guizela Huelsz-Prince\n"
+                                  "Lineage tree drawing by Jeroen van Zon\n"
+                                  "Convolutional neural network by Laetitia Hebert and Greg Stephens\n\n"
+                                  "Various open source packages are used - see their licences, which"
+                                  " you have agreed to when you used Anaconda to install them.")
+
+
+class _RenameAction(UndoableAction):
+
+    _old_name: Optional[str]
+    _new_name: str
+
+    def __init__(self, old_name: Optional[str], new_name: str):
+        self._old_name = old_name
+        self._new_name = new_name
+
+    def do(self, experiment: Experiment) -> str:
+        experiment.name.set_name(self._new_name)
+        return f"Changed name of experiment to \"{self._new_name}\""
+
+    def undo(self, experiment: Experiment) -> str:
+        experiment.name.set_name(self._old_name)
+        if self._old_name is None:
+            return f"Removed name \"{self._new_name}\" from the expermient"
+        else:
+            return f"Changed name of the experiment back to \"{self._old_name}\""
+
+
+def rename_experiment(window: Window):
+    experiment = window.get_experiment()
+    name = dialog.prompt_str("Name of the experiment", "Enter a new name for the experiment.",
+                             default=str(experiment.name))
+    if name:
+        window.perform_data_action(_RenameAction(experiment.name.get_name(), name))
+
+
+def set_image_resolution(window: Window):
+    image_resolution_dialog.popup_resolution_setter(window)
+
+
+def view_statistics(window: Window):
+    experiment = window.get_experiment()
+    if experiment.last_time_point_number() is None:
+        raise UserError("Statistics", "No data is loaded. Cannot calculate statistics.")
+    time_point_count = experiment.last_time_point_number() - experiment.first_time_point_number() + 1
+    position_count = len(experiment.positions)
+    links_count = len(experiment.links)
+    errors_count = sum(1 for error in linking_markers.find_errored_positions(experiment))
+    errors_percentage = errors_count/position_count*100 if position_count > 0 else 0
+    dialog.popup_message("Statistics", f"There are {time_point_count} time points loaded. {position_count} positions "
+                                       f" are annotated and {links_count} links have been created."
+                                       f"\n\nThere are {errors_count} warnings and errors remaining for you to look at,"
+                                       f" so {errors_percentage:.02f}% of all positions has an error.")
+
+
+def ask_exit(gui_experiment: GuiExperiment):
+    """Asks to save unsaved changes, then exits."""
+    if ask_save_unsaved_changes(gui_experiment.get_all_tabs()):
+        QApplication.quit()
+
+
+def to_experiment_list_file_structure(tabs: Iterable[SingleGuiTab]) -> Optional[List[Dict[str, Any]]]:
+    """Prompts the user to save an unsaved changes, and then exports the currently open tabs to a data structure
+    suitable for JSON. If the user cancels the operation, then None is returned."""
+    experiments_json = list()
+
+    for tab in tabs:
+        experiment_json = dict()
+        experiment = tab.experiment
+
+        if tab.undo_redo.has_unsaved_changes() or\
+                (experiment.last_save_file is None and experiment.positions.has_positions()):
+            # Force a save if there are unsaved changes or if no file location is known to store the positions
+            option = dialog.prompt_options(f"Save experiment \"{experiment.name}\"",
+                                             f"You have unsaved changes in the experiment \"{experiment.name}\"."
+                                             f"\nDo you want to save them first?",
+                                  option_1="Save", option_2="Save As...", option_3="Skip experiment")
+            if option == 1:
+                if not save_tracking_data_of_tab(tab):
+                    return None  # Save failed
+            elif option == 2:
+                if not save_tracking_data_of_tab(tab, force_save_as=True):
+                    return None  # Save failed
+            elif option == 3:
+                continue  # Skip this experiment
+            else:
+                return None
+
+        if experiment.last_save_file is not None:
+            experiment_json["experiment_file"] = experiment.last_save_file
+
+        experiment_json.update(experiment.images.image_loader().serialize_to_dictionary())
+
+        if experiment.first_time_point_number() is not None:
+            experiment_json["min_time_point"] = experiment.first_time_point_number()
+        if experiment.last_time_point_number() is not None:
+            experiment_json["max_time_point"] = experiment.last_time_point_number()
+
+        if len(experiment_json) > 0:
+            # Only add if images, positions or both were stored
+            experiments_json.append(experiment_json)
+    return experiments_json
+
+
+def switch_experiment_tab_relative(window: Window, relative_index: int):
+    """Switches to the tab that is relative to the currently open tab. If that tab doesn't exist, an error message is
+    shown to the user."""
+    gui_experiment = window.get_gui_experiment()
+    tabs = gui_experiment.get_all_tabs()
+    if len(tabs) == 1:
+        window.set_status("Only one experiment is selected. Cannot switch to another tab.")
+        return
+    current_tab = gui_experiment.get_open_tab()
+    index = tabs.index(current_tab)
+    if index + relative_index < 0:
+        window.set_status("You're already in the first tab.")
+        return
+    if index + relative_index >= len(tabs):
+        window.set_status("You're already in the last tab.")
+        return
+    gui_experiment.select_experiment(index + relative_index)
+    window.set_status(f"Switched to experiment \"{gui_experiment.get_open_tab().experiment.name}\" (tab {index + relative_index + 1}/{len(tabs)}).")
+
+
+def drag_file(window: Window, file_path: str) -> bool:
+    """Checks whether the given file can be loaded into the current experiment, using the registered file loaders."""
+    for file_loader in window.registry.get_registered_file_loaders():
+        if not any(fnmatch.fnmatch(file_path, pattern) for pattern in file_loader.get_file_patterns()):
+            continue
+
+        return True
+    return False
+
+
+def load_dropped_file(window: Window, file_path: str) -> bool:
+    """Tries to load the given file into the current experiment, using the registered file loaders. Returns whether
+    loading was successful."""
+    for file_loader in window.registry.get_registered_file_loaders():
+        if not any(fnmatch.fnmatch(file_path, pattern) for pattern in file_loader.get_file_patterns()):
+            continue
+
+        # Found a matching file loader!
+        if file_loader.get_type() == FileLoaderType.TRACKING:
+            # Don't just overwrite tracking data, ask to save unsaved changes first
+            if not ask_save_unsaved_changes([window.get_gui_experiment().get_open_tab()]):
+                return False  # Cancelled
+
+        # Load the file (can be images or tracking data)
+        into = LoadInto(window.get_experiment())
+        if file_loader.load_file_interactive(file_path, into=into):
+            for extra_experiment in into.extra_experiments:
+                window.get_gui_experiment().add_experiment(extra_experiment)
+            window.redraw_all()
+            window.set_status(file_loader.get_name() + " loaded from " + os.path.basename(file_path) + ".")
+            return True
+        return False
+
+    return False

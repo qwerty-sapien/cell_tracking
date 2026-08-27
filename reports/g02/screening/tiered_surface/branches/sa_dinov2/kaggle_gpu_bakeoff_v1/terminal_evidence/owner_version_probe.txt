@@ -1,0 +1,6 @@
+{"error": "HTTPError: 404 Client Error: Not Found for url: https://api.kaggle.com/v1/kernels.KernelsApiService/GetKernelSessionStatus", "variant": "status_version_label", "version": "1"}
+{"error": "HTTPError: 404 Client Error: Not Found for url: https://api.kaggle.com/v1/kernels.KernelsApiService/ListKernelSessionOutput", "variant": "version_label", "version": "1"}
+{"error": "HTTPError: 403 Client Error: Forbidden for url: https://api.kaggle.com/v1/kernels.KernelsApiService/ListKernelSessionOutput", "variant": "slug_suffix", "version": "1"}
+{"error": "HTTPError: 404 Client Error: Not Found for url: https://api.kaggle.com/v1/kernels.KernelsApiService/GetKernelSessionStatus", "variant": "status_version_label", "version": "2"}
+{"error": "HTTPError: 404 Client Error: Not Found for url: https://api.kaggle.com/v1/kernels.KernelsApiService/ListKernelSessionOutput", "variant": "version_label", "version": "2"}
+{"error": "HTTPError: 403 Client Error: Forbidden for url: https://api.kaggle.com/v1/kernels.KernelsApiService/ListKernelSessionOutput", "variant": "slug_suffix", "version": "2"}

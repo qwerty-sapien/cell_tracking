@@ -1,0 +1,897 @@
+from functools import partial
+from typing import Optional, Dict, Any, Tuple
+
+import matplotlib.colors
+import numpy
+from matplotlib import cm
+from matplotlib.backend_bases import MouseEvent
+from matplotlib.collections import LineCollection
+from matplotlib.colors import Colormap
+from matplotlib.patches import Rectangle
+from numpy import ndarray
+import tifffile
+
+from organoid_tracker import core
+from organoid_tracker.core import TimePoint, UserError, COLOR_CELL_CURRENT, image_coloring
+from organoid_tracker.core.beacon_collection import Beacon
+from organoid_tracker.core.experiment import Experiment
+from organoid_tracker.core.image_loader import ImageChannel
+from organoid_tracker.core.position import Position
+from organoid_tracker.core.spline import Spline
+from organoid_tracker.core.typing import MPLColor
+from organoid_tracker.gui import dialog, option_choose_dialog
+from organoid_tracker.gui.dialog import prompt_int
+from organoid_tracker.gui.undo_redo import UndoableAction
+from organoid_tracker.gui.window import Window, DisplaySettings
+from organoid_tracker.position_analysis import position_markers
+from organoid_tracker.linking_analysis import linking_markers
+from organoid_tracker.util import bits
+from organoid_tracker.util.mpl_helper import line_infinite
+from organoid_tracker.visualizer import Visualizer, activate
+
+
+class _ChannelChangeColorAction(UndoableAction):
+    """Changes the color of a channel."""
+
+    _channel: ImageChannel
+    _old_colormap: Colormap
+    _new_colormap: Colormap
+
+    def __init__(self, channel: ImageChannel, old_colormap: Colormap, new_colormap: Colormap):
+        self._channel = channel
+        self._old_colormap = old_colormap
+        self._new_colormap = new_colormap
+
+    def undo(self, experiment: Experiment) -> str:
+        experiment.images.set_channel_description(self._channel, experiment.images.get_channel_description(self._channel)
+                                                  .with_colormap(self._old_colormap))
+        return f"Changed the colormap of channel {self._channel.index_one} back to \"{self._old_colormap.name}\"."
+
+    def do(self, experiment: Experiment) -> str:
+        experiment.images.set_channel_description(self._channel,
+                                                  experiment.images.get_channel_description(self._channel)
+                                                  .with_colormap(self._new_colormap))
+        return f"Changed the colormap of channel {self._channel.index_one} to \"{self._new_colormap.name}\"."
+
+
+class AbstractImageVisualizer(Visualizer):
+    """A generic image visualizer."""
+
+    MAX_Z_DISTANCE: int = 3
+    DEFAULT_SIZE = (30, 1000, 1000)
+    _MOUSE_WHEEL_ZOOM_SCALE = 1.2
+    _MOUSE_WHEEL_TRANSLATE_SCALE = 8
+
+    _image_slice_2d: Optional[ndarray] = None
+
+    def __init__(self, window: Window):
+        super().__init__(window)
+
+        self._clamp_time_point()
+        self._clamp_z()
+
+    def _calculate_time_point_metadata(self):
+        """Initializes additional data for this time point. For example, a viewer that shows what lineages contain
+        warnings, will override this method to check when that is the case."""
+        pass
+
+    def _refresh_2d_image(self):
+        """Loads the currently displayed 2D image slice into self._image_slice_2d, based on the display settings.
+        Modifies the currently displayed channel and z if the current settings are out of bounds."""
+        if self._experiment.first_time_point_number() is None or \
+                self._time_point.time_point_number() < self._experiment.first_time_point_number() or \
+                self._time_point.time_point_number() > self._experiment.last_time_point_number():
+            # Experiment has no data (for this time point)
+            self._image_slice_2d = None
+            return
+
+        self._clamp_channel()
+
+        if self._display_settings.max_intensity_projection:
+            # Handle max intensity projection
+            image_3d = self._return_displayed_3d_image()
+            self._image_slice_2d = image_3d.max(axis=0) if image_3d is not None else None
+            return
+
+        image_2d = None
+        if self._display_settings.show_images:
+            image_2d = self._return_2d_image(self._time_point, self._z, self._display_settings.image_channel,
+                                             self._display_settings.show_next_time_point)
+        if self.should_show_image_reconstruction():
+            if image_2d is not None:
+                # Create background based on time point images
+                image_shape = image_2d.shape[0:2] + (3,)
+                rgb_image_2d = numpy.zeros(image_shape, dtype=numpy.float32)
+
+                # Convert to colored float
+                if len(image_2d.shape) == 3:
+                    rgb_image_2d[...] = image_2d
+                else:
+                    rgb_image_2d[:, :, 0] = image_2d
+                    rgb_image_2d[:, :, 1] = image_2d
+                    rgb_image_2d[:, :, 2] = image_2d
+                rgb_image_2d /= (rgb_image_2d.max() * 2)
+                rgb_image_2d.clip(0, 0.25, out=rgb_image_2d)
+            else:
+                # No images - create empty background
+                image_for_shape = self._return_2d_image(self._time_point, self._z, self._display_settings.image_channel, show_next_time_point=False)
+                image_shape = image_for_shape.shape[0:2] + (3,) if image_for_shape is not None else self.DEFAULT_SIZE[1:] + (3,)
+                rgb_image_2d = numpy.zeros(image_shape, dtype=numpy.float32)
+
+            # Create reconstruction
+            self.reconstruct_image(self._time_point, self._z, rgb_image_2d)
+            image_2d = rgb_image_2d
+
+        self._image_slice_2d = image_2d
+        self._clamp_z()
+
+    def _return_displayed_3d_image(self) -> Optional[ndarray]:
+        """Just returns the full 3D image. Likely requites loading additional images from disk."""
+        image_3d = None
+        if self._display_settings.show_images:
+            image_3d = self._return_3d_image(self._time_point, self._display_settings.image_channel,
+                                             self._display_settings.show_next_time_point)
+        if self.should_show_image_reconstruction():
+            if image_3d is not None:
+                # Create background based on time point images
+                image_shape = image_3d.shape[0:3] + (3,)
+                rgb_image_3d = numpy.zeros(image_shape, dtype=numpy.float32)
+
+                # Convert to colored float
+                if len(image_3d.shape) == 4:
+                    rgb_image_3d[...] = image_3d
+                else:
+                    rgb_image_3d[:, :, 0] = image_3d
+                    rgb_image_3d[:, :, 1] = image_3d
+                    rgb_image_3d[:, :, 2] = image_3d
+                rgb_image_3d /= (rgb_image_3d.max() * 2)
+                rgb_image_3d.clip(0, 0.25, out=rgb_image_3d)
+            else:
+                # No images - create empty background
+                image_for_shape = self._return_3d_image(self._time_point,self._display_settings.image_channel,
+                                                        show_next_time_point=False)
+                image_shape = image_for_shape.shape[0:3] + (3,) if image_for_shape is not None else self.DEFAULT_SIZE + (3,)
+                rgb_image_3d = numpy.zeros(image_shape, dtype=numpy.float32)
+
+            # Create reconstruction
+            self.reconstruct_image_3d(self._time_point, rgb_image_3d)
+            image_3d = rgb_image_3d
+
+        return image_3d
+
+    def refresh_data(self):
+        self._calculate_time_point_metadata()
+        if self.should_show_image_reconstruction():
+            self._refresh_2d_image()  # Reload image, as image is a reconstruction of the data
+        super().refresh_data()
+
+    def refresh_all(self):
+        self._calculate_time_point_metadata()
+        self._refresh_2d_image()  # Reload image
+        super().refresh_all()
+
+    def draw_view(self):
+        self._clear_axis()
+        self._ax.set_facecolor((0.2, 0.2, 0.2))
+        self._draw_image()
+        self._draw_positions()
+        self._draw_links()
+        self._draw_connections()
+        self._draw_data_axes()
+        self._draw_beacons()
+        self._draw_extra()
+        self._draw_legend()
+        self._window.set_figure_title(self._get_figure_title())
+
+        self._fig.canvas.draw_idle()
+
+    def _draw_image(self):
+        if self._image_slice_2d is not None:
+            offset = self._experiment.images.offsets.of_time_point(self._time_point)
+            extent = (offset.x, offset.x + self._image_slice_2d.shape[1],
+                      offset.y + self._image_slice_2d.shape[0], offset.y)
+            self._ax.imshow(self._image_slice_2d, cmap=self._get_color_map(), extent=extent, interpolation="none", interpolation_stage="data")
+            self._ax.set_aspect("equal", adjustable="datalim")
+
+    def _draw_legend(self):
+        """Draws the little legend in the bottom right corner."""
+        legend_y = 0.05
+        self._ax.add_patch(Rectangle(xy=(0.895, legend_y * 1.8), width=0.105, height=-legend_y * 1.8, transform=self._fig.transFigure,
+                                     zorder=4, color="white", alpha=0.8))
+        self._ax.scatter([0.91], [legend_y], s=8**2, facecolor=core.COLOR_CELL_PREVIOUS, transform=self._fig.transFigure,
+                         edgecolors="black", linewidths=1, marker="o", zorder=4.5)
+        self._ax.scatter([0.945], [legend_y], s=7**2, facecolor=core.COLOR_CELL_CURRENT, transform=self._fig.transFigure,
+                         edgecolors="black", linewidths=1, marker="s", zorder=4.5)
+        self._ax.scatter([0.98], [legend_y], s=6**2, facecolor=core.COLOR_CELL_NEXT, transform=self._fig.transFigure,
+                         edgecolors="black", linewidths=1, marker="o", zorder=4.5)
+        self._ax.plot([0.91, 0.945], [legend_y, legend_y], transform=self._fig.transFigure, color=core.COLOR_CELL_PREVIOUS,
+                      linewidth=1, zorder=4.5)
+        self._ax.plot([0.945, 0.98], [legend_y, legend_y], transform=self._fig.transFigure, color=core.COLOR_CELL_NEXT,
+                       linewidth=1, zorder=4.5)
+        self._ax.text(0.9, legend_y + 0.015, f"t={self._time_point.time_point_number() - 1}", horizontalalignment="left",
+                      color="black", transform=self._fig.transFigure, zorder=4.5)
+        self._ax.text(0.99, legend_y + 0.015, f"t={self._time_point.time_point_number() + 1}", horizontalalignment="right",
+                      color="black", transform=self._fig.transFigure, zorder=4.5)
+
+    def _draw_selection(self, position: Position, color: MPLColor):
+        """Draws a marker for the given position that indicates that the position is selected. Subclasses can call this
+        method to show a position selection.
+
+        Note: this method will draw the selection marker even if the given position is in another time point, or even on
+        a completely different z layer. So only call this method if you want to have a marker visible."""
+        time_point_number = position.time_point_number()
+        dt = 0 if time_point_number is None else self._time_point.time_point_number() - time_point_number
+        marker_shape = 'o'
+        marker_size = 20
+        marker_alpha = 1
+        if dt < -1:
+            marker_size = 10
+            marker_alpha = 0.6
+        elif dt == -1:
+            marker_size = 15
+        elif dt == 0:
+            marker_shape = "s"
+        elif dt == 1:
+            marker_size = 25
+        elif dt > 1:
+            marker_size = 30
+            marker_alpha = 0.6
+        marker_color = matplotlib.colors.to_rgb(color) + (marker_alpha,)
+        self._ax.plot(position.x, position.y, marker_shape, markersize=marker_size, color=(0, 0, 0, 0),
+                      markeredgecolor=marker_color, markeredgewidth=5)
+
+    def _draw_beacons(self):
+        registry = self._window.registry
+
+        x_values = []
+        y_values = []
+        colors = []
+        sizes = []
+        for beacon in self._experiment.beacons.of_time_point_with_type(self._time_point):
+            dz = self._z - round(beacon.position.z)
+            if abs(dz) > self.MAX_Z_DISTANCE * 2:
+                continue
+
+            registered_type = registry.get_marker_by_save_name(beacon.beacon_type)
+            if registered_type is not None and registered_type.applies_to(Beacon):
+                color = registered_type.mpl_color
+            else:
+                color = core.COLOR_CELL_CURRENT
+
+            x_values.append(beacon.position.x)
+            y_values.append(beacon.position.y)
+            colors.append(color)
+            sizes.append((20 - abs(dz)) ** 2)
+
+        self._ax.scatter(x_values, y_values, marker='*', facecolor=colors, edgecolors="black", s=sizes, linewidths=2)
+
+    def _draw_annotation(self, position: Position, text: str, *, text_color: MPLColor = "black",
+                         background_color: MPLColor = (1, 1, 1, 0.8)):
+        """Draws an annotation with text for the given position."""
+        font_size = max(8, 12 - abs(position.z - self._z))
+        self._ax.annotate(text, (position.x, position.y), fontsize=font_size,
+                          fontweight="bold", color=text_color, backgroundcolor=background_color,
+                          horizontalalignment='center', verticalalignment='center')
+
+    def _draw_line(self, start: Position, end: Position, color: MPLColor = COLOR_CELL_CURRENT):
+        direction = end - start
+        if direction.x < 0.2 and direction.y < 0.2:
+            # Difficult to draw lines in the Z direction, so just draw a marker
+            self._ax.scatter(start.x, end.y, marker='o', facecolor=color,
+                             edgecolors="black", s=17 ** 2, linewidths=2)
+            return
+
+        line_width = 2
+        if direction.z == 0:
+            if round(start.z) == self._z:
+                line_width = 5
+        else:
+            # Just add a marker
+            dz = self._z - start.z
+            multiplier = dz / direction.z
+            marker_pos = start + direction * multiplier
+            self._ax.scatter(marker_pos.x, marker_pos.y, marker='o', facecolor=color,
+                             edgecolors="black", s=17 ** 2, linewidths=2)
+
+        line_infinite(self._ax, start.x, start.y, end.x, end.y, linewidth=line_width, color=color)
+
+    def _get_figure_title_z_str(self) -> str:
+        z_str = str(self._z)
+        if self._display_settings.max_intensity_projection:
+            z_str = "m.i.p."
+        return z_str
+
+    def _get_figure_title(self) -> str:
+        timing = ""
+        if self._experiment.images.has_timings():
+            time_m = self._experiment.images.timings().get_time_m_since_start(self._time_point)
+            timing = f", t={time_m:.1f}m" if time_m < 90 else f", t={time_m/60:.1f}h"
+        channel_name = self._experiment.images.get_channel_description(self._display_settings.image_channel).channel_name
+
+        return f"Time point {self._time_point.time_point_number()}    (z={self._get_figure_title_z_str()}, " \
+               f"c={channel_name}{timing})"
+
+    def _draw_extra(self):
+        pass  # Subclasses can override this
+
+    def _must_show_other_time_points(self) -> bool:
+        return self._display_settings.show_links_and_connections
+
+    def _must_draw_positions_of_previous_time_point(self) -> bool:
+        """Returns whether the positions of the previous time point are drawn based on the current display settings."""
+        # Only draw positions of previous time point if there is linking data, or if we're forced to.
+        can_show_other_time_points = self._must_show_other_time_points() and self._experiment.links.has_links()
+        return not self._display_settings.show_next_time_point and can_show_other_time_points
+
+    def _must_draw_positions_of_next_time_point(self) -> bool:
+        """Returns whether the positions of the next time point are drawn based on the current display settings."""
+        # Only draw positions of next time point if there is linking data, or if we're forced to.
+        can_show_other_time_points = self._must_show_other_time_points() and self._experiment.links.has_links()
+        return self._display_settings.show_next_time_point or can_show_other_time_points
+
+    def _draw_positions(self):
+        """Draws positions and links. Returns the amount of non-equal links in the image"""
+        if not self._display_settings.show_positions:
+            return
+
+        # Next time point
+        if self._must_draw_positions_of_next_time_point():
+
+            try:
+                self._draw_positions_of_time_point(self._experiment.get_next_time_point(self._time_point),
+                                                   color=core.COLOR_CELL_NEXT)
+            except ValueError:
+                pass  # There is no next time point, ignore
+
+        # Previous time point
+        if self._must_draw_positions_of_previous_time_point():
+            try:
+                self._draw_positions_of_time_point(
+                    self._experiment.get_previous_time_point(self._time_point), color=core.COLOR_CELL_PREVIOUS)
+            except ValueError:
+                pass  # There is no previous time point, ignore
+
+        # Current time point
+        self._draw_positions_of_time_point(self._time_point)
+
+    def _draw_positions_of_time_point(self, time_point: TimePoint, color: str = core.COLOR_CELL_CURRENT):
+        positions = self._experiment.positions
+        dt = time_point.time_point_number() - self._time_point.time_point_number()
+        show_errors = self._display_settings.show_errors
+        max_intensity_projection = self._display_settings.max_intensity_projection
+
+        positions_x_list, positions_y_list, positions_edge_colors, positions_edge_widths, positions_marker_sizes =\
+            list(), list(), list(), list(), list()
+        crosses_x_list, crosses_y_list = list(), list()
+
+        min_z, max_z = self._z - self.MAX_Z_DISTANCE, self._z + self.MAX_Z_DISTANCE
+        if max_intensity_projection:
+            min_z, max_z = None, None
+        for position in self._experiment.positions.of_time_point_and_z(time_point, min_z, max_z):
+            dz = self._z - round(position.z)
+
+            # Draw the position, making it selectable
+            if not self._on_position_draw(position, color, dz, dt):
+                continue
+
+            # Add error marker
+            if show_errors and linking_markers.get_error_marker(positions, position) is not None:
+                crosses_x_list.append(position.x)
+                crosses_y_list.append(position.y)
+
+            # Add marker
+            edge_color, edge_width = self._get_position_edge(position)
+
+            positions_x_list.append(position.x)
+            positions_y_list.append(position.y)
+            positions_edge_colors.append(edge_color)
+            positions_edge_widths.append(edge_width)
+            dz_penalty = 0 if dz == 0 or max_intensity_projection else abs(dz) + 1
+            positions_marker_sizes.append(max(1, 7 - dz_penalty - dt + edge_width) ** 2)
+
+        self._ax.scatter(crosses_x_list, crosses_y_list, marker='X', facecolor='black', edgecolors="white",
+                         s=17**2, linewidths=2)
+        marker = "s" if dt == 0 else "o"
+        self._ax.scatter(positions_x_list, positions_y_list, s=positions_marker_sizes, facecolor=color,
+                         edgecolors=positions_edge_colors, linewidths=positions_edge_widths, marker=marker)
+
+    def _get_position_edge(self, position: Position) -> tuple[tuple[float, float, float], float]:
+        """Gets the RGB color (0-1) and the line width"""
+        position_type = self.get_window().registry.get_marker_by_save_name(
+            position_markers.get_position_type(self._experiment.positions, position))
+        edge_color = (0.0, 0.0, 0.0) if position_type is None else position_type.mpl_color
+        edge_width = 1.0 if position_type is None else 3.0
+        return edge_color, edge_width
+
+    def _on_position_draw(self, position: Position, color: str, dz: int, dt: int) -> bool:
+        """Called whenever a position is being drawn. Return False to prevent drawing of this position."""
+        return True
+
+    def _draw_connections(self):
+        """Draws all connections. A connection indicates that two positions are not the same, but are related."""
+        if not self._display_settings.show_links_and_connections:
+            return
+        max_intensity_projection = self._display_settings.max_intensity_projection
+
+        lines = []
+        for position1, position2 in self._experiment.connections.of_time_point(self._time_point):
+            if not max_intensity_projection:
+                min_display_z = min(position1.z, position2.z) - self.MAX_Z_DISTANCE
+                max_display_z = max(position1.z, position2.z) + self.MAX_Z_DISTANCE
+                if self._z < min_display_z or self._z > max_display_z:
+                    continue
+
+            line = (position1.x, position1.y), (position2.x, position2.y)
+            lines.append(line)
+        colors = [core.COLOR_CELL_CURRENT]
+        linestyles = ["dotted"]
+        linewidths = [2]
+        self._ax.add_collection(LineCollection(lines, colors=colors, linestyles=linestyles, linewidths=linewidths))
+
+    def _draw_links(self):
+        """Draws all links. A link indicates that one position is the same a another position in another time point."""
+        if not self._display_settings.show_links_and_connections:
+            return
+        max_intensity_projection = self._display_settings.max_intensity_projection
+
+        lines = []
+        colors = []
+        for position1, position2 in self._experiment.links.of_time_point(self._time_point):
+            if not max_intensity_projection:
+                min_display_z = min(position1.z, position2.z) - self.MAX_Z_DISTANCE
+                max_display_z = max(position1.z, position2.z) + self.MAX_Z_DISTANCE
+                if self._z < min_display_z or self._z > max_display_z:
+                    continue
+
+            line = (position1.x, position1.y), (position2.x, position2.y)
+            lines.append(line)
+            color = core.COLOR_CELL_NEXT if position2.time_point_number() > position1.time_point_number()\
+                else core.COLOR_CELL_PREVIOUS
+            colors.append(color)
+
+        linewidths = [1]
+        self._ax.add_collection(LineCollection(lines, colors=colors, linewidths=linewidths))
+
+    def _draw_data_axes(self):
+        """Draws the data axis, which is usually the crypt axis."""
+        for axis_id, data_axis in self._experiment.splines.of_time_point(self._time_point):
+            self._draw_spline(data_axis, axis_id, color=core.COLOR_CELL_CURRENT, marker_size_max=10)
+
+    def _draw_spline(self, data_axis: Spline, id: int, color: str, marker_size_max: int):
+        """Draws a single data axis. Usually, we use this as the crypt axis."""
+        if not self._display_settings.show_splines:
+            return
+
+        # Draw a marker at the origin
+        origin_pos = data_axis.from_position_on_axis(0)
+        if origin_pos is not None:
+            self._ax.plot(origin_pos[0], origin_pos[1], marker="*", markerfacecolor=core.COLOR_CELL_CURRENT,
+                          markeredgecolor="black", markersize=max(11.0, 18 - abs(origin_pos[2] - self._z)))
+
+        # Draw the line
+        points_x, points_y, points_z = data_axis.get_points_3d()
+        if self._z < min(points_z):
+            z_distance_to_spline = min(points_z) - self._z
+        elif self._z > max(points_z):
+            z_distance_to_spline = self._z - max(points_z)
+        else:
+            z_distance_to_spline = 0
+        linewidth = 3 if z_distance_to_spline < 0.5 else 1
+        self._ax.plot(*data_axis.get_interpolation_2d(), color=color, linewidth=linewidth)
+
+        # Draw the marker points
+        marker = data_axis.get_direction_marker() if self._experiment.splines.is_axis(id) else "o"
+        points_size = [max(7.0, marker_size_max - abs(point_z - self._z))**2 for point_z in points_z]
+        self._ax.scatter(x=points_x, y=points_y, marker=marker, facecolors=color,
+                         linewidths=2, edgecolors="black", s=points_size)
+
+    def _get_position_at(self, x: Optional[float], y: Optional[float]) -> Optional[Position]:
+        """Wrapper of get_closest_position that makes use of the fact that we can lookup all positions ourselves."""
+        min_z = self._z - self.MAX_Z_DISTANCE
+        max_z = self._z + self.MAX_Z_DISTANCE
+        if self._display_settings.max_intensity_projection:
+            min_z, max_z = None, None
+
+        # Find all drawn positions
+        selectable_positions = set(self._experiment.positions.of_time_point_and_z(self._time_point, min_z, max_z))
+        if self._must_draw_positions_of_previous_time_point():
+            try:
+                previous_time_point = self._experiment.get_previous_time_point(self._time_point)
+            except ValueError:
+                pass
+            else:
+                for position in self._experiment.positions.of_time_point_and_z(previous_time_point, min_z, max_z):
+                    selectable_positions.add(position)
+        if self._must_draw_positions_of_next_time_point():
+            try:
+                next_time_point = self._experiment.get_next_time_point(self._time_point)
+            except ValueError:
+                pass
+            else:
+                for position in self._experiment.positions.of_time_point_and_z(next_time_point, min_z, max_z):
+                    selectable_positions.add(position)
+
+        # Find nearest position
+        return Visualizer.get_closest_position(selectable_positions, x, y, None, self._time_point, max_distance=5)
+
+    def get_extra_menu_options(self) -> Dict[str, Any]:
+        def time_point_prompt():
+            min_value = self._experiment.first_time_point_number()
+            max_value = self._experiment.last_time_point_number()
+            if min_value is None or max_value is None:
+                raise UserError("Time point switching", "No data is loaded. Cannot go to another time point.")
+            given = prompt_int("Time point", f"Which time point do you want to go to? ({min_value}-{max_value}"
+                               + ", inclusive)")
+            if given is None:
+                return
+            if not self._move_to_time(given):
+                raise UserError("Out of range", f"Oops, time point {given} is outside the range {min_value}-"
+                                f"{max_value}.")
+
+        menu_options = {
+            **super().get_extra_menu_options(),
+            "File//Export-Export image//3D TIF stack...": self._export_3d_image,
+            "View//Toggle-Toggle showing two time points [" + DisplaySettings.KEY_SHOW_NEXT_IMAGE_ON_TOP.upper() + "]":
+                self._toggle_showing_next_time_point,
+            "View//Toggle-Toggle showing images [" + DisplaySettings.KEY_SHOW_IMAGES.upper() + "]":
+                self._toggle_showing_images,
+            "View//Toggle-Toggle showing max intensity projection [Z]": self._toggle_showing_max_intensity_projection,
+            "View//Toggle-Toggle showing splines": self._toggle_showing_splines,
+            "View//Toggle-Toggle showing position markers [P]": self._toggle_showing_position_markers,
+            "View//Toggle-Toggle showing link and connection markers": self._toggle_showing_links_and_connections,
+            "View//Toggle-Toggle showing error markers": self._toggle_showing_error_markers,
+            "View//Image-View image slices [\]": self._show_slices,
+            "Navigate//Layer-Above layer [Up]": lambda: self._move_in_z(1),
+            "Navigate//Layer-Below layer [Down]": lambda: self._move_in_z(-1),
+            "Navigate//Channel-Next channel [.]": lambda: self._move_in_channel(1),
+            "Navigate//Channel-Previous channel [,]": lambda: self._move_in_channel(-1),
+            "Navigate//Time-Next time point [Right]": lambda: self._move_in_time(1),
+            "Navigate//Time-Previous time point [Left]": lambda: self._move_in_time(-1),
+            "Navigate//Time-First time point [F]": self._move_to_first_time_point,
+            "Navigate//Time-Last time point [L]": self._move_to_last_time_point,
+            "Navigate//Time-Other time point... (/t*)": time_point_prompt
+        }
+        for list_name, list_values in image_coloring.COLORMAP_LISTS.items():
+            for colormap_name in list_values:
+                menu_options[f"View//Image-Channel colormap//{list_name}-{colormap_name}"]\
+                    = partial(self._set_channel_color, colormap_name)
+        return menu_options
+
+    def _on_scroll(self, event: MouseEvent):
+        """Move in z."""
+        if event.key == "control":
+            # Zooming
+            self._scroll_zoom(event)
+        elif event.key == "shift":
+            # Move in x
+            self._scroll_shift_x(event)
+        elif event.key == "shift+ctrl" or event.key == "ctrl+shift":
+            # Move in y
+            self._scroll_shift_y(event)
+        elif event.key is None:
+            # Move in z
+            if event.button == "up":
+                self._move_in_z(1)
+            else:
+                self._move_in_z(-1)
+
+    def _scroll_shift_y(self, event: MouseEvent):
+        old_ylim = self._ax.get_ylim()
+        old_height = old_ylim[1] - old_ylim[0]
+        shift_y = old_height / self._MOUSE_WHEEL_TRANSLATE_SCALE
+        if event.button == "up":
+            shift_y *= -1  # Inverse direction
+        self._ax.set_ylim(old_ylim[0] + shift_y, old_ylim[1] + shift_y)
+        self._fig.canvas.draw_idle()
+
+    def _scroll_shift_x(self, event: MouseEvent):
+        old_xlim = self._ax.get_xlim()
+        old_width = old_xlim[1] - old_xlim[0]
+        shift_x = old_width / self._MOUSE_WHEEL_TRANSLATE_SCALE
+        if event.button == "up":
+            shift_x *= -1  # Inverse direction
+        self._ax.set_xlim(old_xlim[0] + shift_x, old_xlim[1] + shift_x)
+        self._fig.canvas.draw_idle()
+
+    def _scroll_zoom(self, event: MouseEvent):
+        old_xlim = self._ax.get_xlim()
+        old_ylim = self._ax.get_ylim()
+        old_xdata = event.xdata
+        old_ydata = event.ydata
+        if event.button == "down":
+            # Zooming out
+            scale_factor = 1 / self._MOUSE_WHEEL_ZOOM_SCALE
+        else:
+            # Zooming in
+            scale_factor = self._MOUSE_WHEEL_ZOOM_SCALE
+        # Set the new limits
+        # noinspection PyTypeChecker
+        self._ax.set_xlim([old_xdata - (old_xdata - old_xlim[0]) / scale_factor,
+                           old_xdata + (old_xlim[1] - old_xdata) / scale_factor])
+        # noinspection PyTypeChecker
+        self._ax.set_ylim([old_ydata - (old_ydata - old_ylim[0]) / scale_factor,
+                           old_ydata + (old_ylim[1] - old_ydata) / scale_factor])
+        self._fig.canvas.draw_idle()
+
+    def _on_command(self, command: str) -> bool:
+        if command.startswith("track "):
+            split = command.split(" ")
+            if len(split) != 2:
+                self.update_status("Syntax: /track <track_id>")
+                return True
+            try:
+                track_id = int(split[1])
+            except ValueError:
+                self.update_status(f"Invalid number in \"{command}\". Syntax: /track <track_id>")
+            else:
+                self._experiment.links.sort_tracks_by_x()  # Make sure track ids are in correct order
+                track = self._experiment.links.get_track_by_id(track_id)
+                if track is None:
+                    self.update_status(f"Track with id {track_id} not found.")
+                if not self._move_to_position(track.find_first_position()):
+                    self.update_status("Cannot go to point at time point " + str(t))
+            return True
+        if command.startswith("goto "):
+            split = command.split(" ")
+            if len(split) != 5:
+                self.update_status("Syntax: /goto <x> <y> <z> <t>")
+                return True
+            try:
+                x, y, z, t = float(split[1]), float(split[2]), float(split[3]), int(split[4])
+            except ValueError:
+                self.update_status(f"Invalid number in \"{command}\". Syntax: /goto <x> <y> <z> <t>")
+            else:
+                if not self._move_to_position(Position(x, y, z, time_point_number=t)):
+                    self.update_status("Cannot go to point at time point " + str(t))
+            return True
+        if command == "help":
+            self.update_status("/t20: Jump to time point 20 (also works for other time points)"
+                               "\n/z10: Jump to z position 10 (also works for other z-positions)"
+                               "\n/track <track_id>: Jump to the start of that track"
+                               "\n/goto <x> <y> <z> <t>: Directly jump to that point")
+            return True
+        if len(command) > 0 and command[0] == "t":
+            time_point_str = command[1:]
+            try:
+                new_time_point_number = int(time_point_str.strip())
+                if not self._move_to_time(new_time_point_number):
+                    self.update_status(f"Time point {new_time_point_number} doesn't exist. Available range is "
+                                       + str(self._experiment.first_time_point_number()) + " to "
+                                       + str(self._experiment.last_time_point_number()) + ", inclusive)")
+            except ValueError:
+                self.update_status("Cannot read number: " + time_point_str)
+            return True
+        if len(command) > 0 and command[0] == "z":
+            z_str = command[1:]
+            try:
+                new_z = int(z_str.strip())
+                if self._move_to_z(new_z):
+                    self.update_status(f"Moved to z {self._display_settings.z}!")
+                else:
+                    self.update_status(f"Z layer {new_z} does not exist.")
+            except ValueError:
+                self.update_status("Cannot read number: " + z_str)
+            return True
+        if command == "exit":
+            self._display_settings.show_images = True
+            self._display_settings.show_positions = True
+            self._display_settings.show_splines = True
+            self._display_settings.show_next_time_point = False
+            self.refresh_all()
+            self.update_status("You're already in the home screen. Reset most display settings.")
+            return True
+        return False
+
+    def _export_3d_image(self):
+        image_3d = self._return_displayed_3d_image()
+        if image_3d is None:
+            raise core.UserError("No images loaded", "Saving images failed: there are no images loaded.")
+        file = dialog.prompt_save_file("Save 3D file as...", [("TIF file", "*.tif")])
+        if file is None:
+            return
+
+        images: ndarray = bits.image_to_8bit(image_3d)
+        image_shape = image_3d.shape
+
+        if len(image_shape) == 3:
+            # Convert grayscale image to colored using the stored color map
+            flat_image = images.ravel()
+            images = self._get_color_map()(flat_image, bytes=True)[:, 0:3]
+            new_shape = (image_shape[0], image_shape[1], image_shape[2], 3)
+            images = images.reshape(new_shape)
+        else:
+            # Color images can be kept as is - they were already rescaled by the convertScaleAbs function, and no
+            # other transformations are necessary
+            pass
+
+        # If the three color channels are the same, just use one channel
+        # This happens if self._color_map is a grayscale color map
+        if images.shape[3] == 3 and (images[:, :, :, 0] == images[:, :, :, 1]).all()\
+                and (images[:, :, :, 0] == images[:, :, :, 2]).all():
+            images = images[:, :, :, 0]
+
+        tifffile.imwrite(file, images, compression=tifffile.COMPRESSION.ADOBE_DEFLATE, compressionargs={"level": 9})
+
+    def _toggle_showing_next_time_point(self):
+        self._display_settings.show_next_time_point = not self._display_settings.show_next_time_point
+        self._move_in_time(0)  # Refreshes image
+
+    def _toggle_showing_images(self):
+        self._display_settings.show_images = not self._display_settings.show_images
+        self._move_in_time(0)  # Refreshes image
+
+    def _toggle_showing_max_intensity_projection(self):
+        self._display_settings.max_intensity_projection = not self._display_settings.max_intensity_projection
+        self._move_in_time(0)  # Refreshes image
+
+    def _toggle_showing_splines(self):
+        self._display_settings.show_splines = not self._display_settings.show_splines
+        self.draw_view()
+
+    def _toggle_showing_position_markers(self):
+        self._display_settings.show_positions = not self._display_settings.show_positions
+        self.draw_view()
+
+    def _toggle_showing_links_and_connections(self):
+        self._display_settings.show_links_and_connections = not self._display_settings.show_links_and_connections
+        self.draw_view()
+
+    def _toggle_showing_error_markers(self):
+        self._display_settings.show_errors = not self._display_settings.show_errors
+        self.draw_view()
+
+    def _show_slices(self):
+        from organoid_tracker.visualizer.image_slice_visualizer import ImageSliceViewer
+        activate(ImageSliceViewer(self._window, self.__class__))
+
+    def _set_channel_color(self, colormap_name: str):
+        current_channel = self._display_settings.image_channel
+        new_colormap = image_coloring.get_colormap(colormap_name)
+
+        for tab in self._window.get_gui_experiment().get_active_tabs():
+            current_colormap = tab.experiment.images.get_channel_description(current_channel).colormap
+            tab.undo_redo.do(_ChannelChangeColorAction(current_channel, current_colormap, new_colormap), tab.experiment)
+        self.update_status(f"Set colormap of channel {current_channel.index_one} to {colormap_name}.")
+        self.draw_view()
+
+    def _move_in_z(self, dz: int) -> bool:
+        return self._move_to_z(self._display_settings.z + dz)
+
+    def _move_to_z(self, new_z: int) -> bool:
+        """Moves to another z and redraws. Returns false and does nothing else if the given z does not exist."""
+        old_z = self._display_settings.z
+        self._display_settings.z = new_z
+        self._clamp_z()
+        if self._display_settings.z != new_z:
+            # Failed, out of range
+            self._display_settings.z = old_z
+            return False
+
+        if self._display_settings.z != old_z:
+            self._refresh_2d_image()
+            self.draw_view()
+        return True
+
+    def _clamp_time_point(self):
+        time_point_number = self._time_point.time_point_number()
+        min_time_point_number = self._experiment.first_time_point_number()
+        max_time_point_number = self._experiment.last_time_point_number()
+        if min_time_point_number is not None and time_point_number < min_time_point_number:
+            self._display_settings.time_point = TimePoint(min_time_point_number)
+        elif max_time_point_number is not None and time_point_number > max_time_point_number:
+            self._display_settings.time_point = TimePoint(max_time_point_number)
+
+    def _clamp_z(self):
+        """Makes sure a valid z pos is selected. Changes the z if not."""
+        image_z_offset = int(self._experiment.images.offsets.of_time_point(self._time_point).z)
+        if self._display_settings.z < image_z_offset:
+            self._display_settings.z = image_z_offset
+        image_size = self._experiment.images.image_loader().get_image_size_zyx()
+        if image_size is not None\
+                and self._display_settings.z >= image_size[0] + image_z_offset - 1:
+            self._display_settings.z = image_size[0] + image_z_offset - 1
+
+    def _clamp_channel(self):
+        """Makes sure a valid channel is selected. Changes the channel if not."""
+        available_channels = set()
+        for experiment in self._window.get_active_experiments():
+            available_channels.update(experiment.images.get_channels())
+
+        # Handle the case where no channels are available
+        if len(available_channels) == 0:
+            self._display_settings.image_channel = ImageChannel(index_zero=0)
+            return
+
+        # If there are channels available, make sure the selected channel is within the range
+        if self._display_settings.image_channel.index_zero >= len(available_channels):
+            self._display_settings.image_channel = ImageChannel(index_one=len(available_channels))
+
+    def _move_to_time(self, new_time_point_number: int) -> bool:
+        """Switches to another time point: loads the data for that time point, updates the displayed images and redraws
+        everything."""
+        try:
+            time_point = self._experiment.get_time_point(new_time_point_number)
+        except ValueError:
+            return False
+        else:
+            self._display_settings.time_point = time_point
+            self._clamp_z()
+            self._refresh_2d_image()
+            self._calculate_time_point_metadata()
+            self.draw_view()
+            self.update_status("Moved to time point " + str(new_time_point_number) + "!")
+            return True
+
+    def _move_to_first_time_point(self):
+        first_time_point_number = self._experiment.first_time_point_number()
+        if first_time_point_number is None:
+            self.update_status("Cannot move to the first time point. There are no time points loaded.")
+            return
+        if first_time_point_number == self._time_point.time_point_number():
+            self.update_status("You are already in the first time point.")
+            return
+        self._move_to_time(first_time_point_number)
+
+    def _move_to_last_time_point(self):
+        last_time_point_number = self._experiment.last_time_point_number()
+        if last_time_point_number is None:
+            self.update_status("Cannot move to the last time point. There are no time points loaded.")
+            return
+        if last_time_point_number == self._time_point.time_point_number():
+            self.update_status("You are already in the last time point.")
+            return
+        self._move_to_time(last_time_point_number)
+
+    def _move_to_position(self, position: Position) -> bool:
+        try:
+            time_point = self._experiment.get_time_point(position.time_point_number())
+        except ValueError:
+            return False
+        else:
+            self._display_settings.time_point = time_point
+            self._display_settings.z = round(position.z)
+            self._clamp_z()
+            self._refresh_2d_image()
+            self._calculate_time_point_metadata()
+            self._ax.set_xlim(position.x - 50, position.x + 50)
+            self._ax.set_ylim(position.y + 50, position.y - 50)
+            self._ax.set_autoscale_on(False)
+            self.draw_view()
+            self.update_status(f"Moved to {position}")
+            return True
+
+    def _move_in_time(self, dt: int):
+        old_time_point_number = self._time_point.time_point_number()
+        new_time_point_number = old_time_point_number + dt
+        try:
+            time_point = self._experiment.get_time_point(new_time_point_number)
+        except ValueError:
+            pass
+        else:
+            self._display_settings.time_point = time_point
+            self._clamp_z()
+            self._refresh_2d_image()
+            self._calculate_time_point_metadata()
+            self.draw_view()
+            self.update_status(self.get_default_status())
+
+    def _move_in_channel(self, dc: int):
+        channels = self._experiment.images.image_loader().get_channels()
+        if len(channels) <= 1:
+            # Nothing to choose, just use the default
+            self._display_settings.image_channel = ImageChannel(index_zero=0)
+            self.update_status("There is only one image channel available, so we cannot switch channels.")
+            return
+
+        old_index = self._display_settings.image_channel.index_zero
+        new_index = (old_index + dc) % len(channels)
+        self._display_settings.image_channel = ImageChannel(index_zero=new_index)
+
+        try:
+            self._refresh_2d_image()  # Reload image
+            self.draw_view()
+            self.update_status(f"Switched to channel {new_index + 1} of {len(channels)}")
+        except ValueError:
+            pass
+
+

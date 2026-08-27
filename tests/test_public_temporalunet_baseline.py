@@ -95,13 +95,132 @@ class PublicTemporalUNetBaselineTests(unittest.TestCase):
             source = MODULE.build_hidden_script(expected_test_count=4, local_gate=gate)
             self.assertTrue(gate["eligible"])
             self.assertEqual(gate["local_score"], score["score"])
-            self.assertIn('COMPETITION_TEST = Path(', source)
+            # The hidden rerun contract: the test root is resolved against BOTH
+            # Kaggle mount conventions and the inventory cardinality is never pinned.
+            self.assertIn("COMPETITION_TEST_CANDIDATES = [", source)
+            self.assertIn("COMPETITION_TEST = COMPETITION_TEST_CANDIDATES[0]", source)
+            self.assertIn(
+                "/kaggle/input/competitions/biohub-cell-tracking-during-development/test",
+                source,
+            )
+            self.assertIn(
+                "/kaggle/input/biohub-cell-tracking-during-development/test", source
+            )
+            # No fixed-cardinality gate may reappear.  (The separate step0-vs-prediction
+            # "drifted between step 0 and prediction" consistency check is retained and
+            # is deliberately NOT matched here.)
+            self.assertNotIn("EXPECTED_TEST_COUNT", source)
+            self.assertNotIn("STEP0 hidden inventory drift", source)
+            # The env override must carry the RESOLVED root, never a hard-coded one.
+            self.assertIn(
+                'os.environ["BIOHUB_TEST_DIR"] = STEP0["competition_test_root"]', source
+            )
             self.assertIn("DYNAMIC_TEST_DISCOVERY = True", source)
             self.assertIn('PUBLIC_OUTPUT_COPIED = False', source)
             self.assertIn('RUN_LOG_PATH = Path("/kaggle/working/RUN_LOG.jsonl")', source)
             self.assertNotIn("44b6_", source)
             self.assertNotIn("6bba_", source)
             self.assertNotIn("SELECTED_TRAIN", source)
+
+    def _execute_hidden_step0(self, root: Path, *, n_datasets: int, layout: str) -> dict:
+        """Actually EXECUTE the generated STEP0 against a synthetic Kaggle mount.
+
+        A compile()/string check cannot catch unresolved names, dead fallback
+        branches or invalid paths -- the two defects this contract exists to
+        prevent were both compile-clean.  So this runs the real generated code.
+        """
+        import contextlib
+        import hashlib
+        import io
+
+        primary = root / "input/datasets/pilkwang/biohub-tracking-support-pack-50ep-v1"
+        secondary = root / "input/datasets/pilkwang/biohub-temporal-unet3d-seed314159-v1"
+        digests = {}
+        for pack, tag in ((primary, "primary"), (secondary, "secondary")):
+            (pack / "weights/unet_transformer/split_0").mkdir(parents=True, exist_ok=True)
+            manifest = pack / "ARTIFACT_MANIFEST.json"
+            weight = pack / "weights/unet_transformer/split_0/edge_predictor_best.pth"
+            manifest.write_bytes(f'{{"{tag}": true}}'.encode())
+            weight.write_bytes(f"{tag}-weights".encode())
+            digests[f"{tag}_manifest"] = hashlib.sha256(manifest.read_bytes()).hexdigest()
+            digests[f"{tag}_weight"] = hashlib.sha256(weight.read_bytes()).hexdigest()
+
+        competition = MODULE.COMPETITION
+        candidates = [
+            root / f"input/competitions/{competition}/test",
+            root / f"input/{competition}/test",
+        ]
+        chosen = candidates[0] if layout == "competitions" else candidates[1]
+        chosen.mkdir(parents=True, exist_ok=True)
+        for index in range(n_datasets):
+            dataset = chosen / f"hidden_{index:04d}.zarr"
+            dataset.mkdir(parents=True, exist_ok=True)
+            (dataset / "0").mkdir(exist_ok=True)
+
+        gate = {
+            "gate_sha256": "a" * 64,
+            "local_score": 0.9143584730207287,
+            "eligible": True,
+        }
+        script = MODULE.build_hidden_script(expected_test_count=4, local_gate=gate)
+        marker = "STEP0 = run_step0()"
+        self.assertIn(marker, script)
+        namespace: dict = {"__name__": "hidden_step0_under_test"}
+        with contextlib.redirect_stdout(io.StringIO()):
+            exec(compile(script[: script.index(marker)], "kernel.py", "exec"), namespace)
+
+        working = root / "working"
+        working.mkdir(parents=True, exist_ok=True)
+        namespace["RUN_LOG_PATH"] = working / "RUN_LOG.jsonl"
+        namespace["PRIMARY_ROOT"] = primary
+        namespace["SECONDARY_ROOT"] = secondary
+        namespace["PRIMARY_MANIFEST_SHA256"] = digests["primary_manifest"]
+        namespace["PRIMARY_WEIGHT_SHA256"] = digests["primary_weight"]
+        namespace["SECONDARY_MANIFEST_SHA256"] = digests["secondary_manifest"]
+        namespace["SECONDARY_WEIGHT_SHA256"] = digests["secondary_weight"]
+        namespace["COMPETITION_TEST_CANDIDATES"] = candidates
+        namespace["COMPETITION_TEST"] = candidates[0]
+        atomic = namespace["_atomic_json"]
+        namespace["_atomic_json"] = lambda path, value: atomic(working / Path(path).name, value)
+
+        with contextlib.redirect_stdout(io.StringIO()):
+            return namespace["run_step0"]()
+
+    def test_hidden_step0_accepts_any_positive_inventory_and_both_mount_roots(self) -> None:
+        # Regression: the hidden rerun failed because STEP0 pinned the inventory
+        # to exactly four datasets AND hard-coded a single mount root.
+        for count in (1, 3, 4, 5, 17):
+            with self.subTest(hidden_dataset_count=count):
+                with tempfile.TemporaryDirectory() as directory:
+                    receipt = self._execute_hidden_step0(
+                        Path(directory), n_datasets=count, layout="competitions"
+                    )
+                self.assertEqual(receipt["status"], "PASS")
+                self.assertEqual(len(receipt["selected_datasets"]), count)
+                self.assertEqual(receipt["request_count"], count)
+
+        for layout in ("competitions", "flat"):
+            with self.subTest(mount_layout=layout):
+                with tempfile.TemporaryDirectory() as directory:
+                    root = Path(directory)
+                    receipt = self._execute_hidden_step0(root, n_datasets=4, layout=layout)
+                expected = (
+                    f"input/competitions/{MODULE.COMPETITION}/test"
+                    if layout == "competitions"
+                    else f"input/{MODULE.COMPETITION}/test"
+                )
+                # STEP0 must resolve the root that exists, and the env override the
+                # notebook body consumes must carry that RESOLVED root.
+                self.assertTrue(receipt["competition_test_root"].endswith(expected))
+                self.assertEqual(len(receipt["selected_datasets"]), 4)
+
+    def test_hidden_step0_still_fails_closed_on_empty_inventory(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            with self.assertRaises(RuntimeError) as caught:
+                self._execute_hidden_step0(
+                    Path(directory), n_datasets=0, layout="competitions"
+                )
+        self.assertIn("empty", str(caught.exception))
 
     def test_validate_hidden_output_requires_fresh_dynamic_logged_generation(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -651,6 +770,39 @@ class PublicTemporalUNetBaselineTests(unittest.TestCase):
             "",
         )
         self.assertEqual(normalized, baseline)
+
+    def test_gap2_variant_flips_only_the_recovery_flag_and_is_otherwise_pristine(self) -> None:
+        """R1's Candidate-3-adjacent GPU test: BIOHUB_OUTPUT_GAP2_RECOVERY is an
+        existing, already-built, currently-disabled mechanism in the pristine
+        public notebook (cell 1). The gap2 variant must flip exactly that one
+        line to "1" and change nothing else -- no new code, unlike cap2."""
+        baseline = MODULE.build_script(
+            variant="public_v32",
+            identities=("train:sample",),
+            population_sha256="1" * 64,
+            global_population_sha256="2" * 64,
+        )
+        gap2 = MODULE.build_script(
+            variant=MODULE.GAP2_VARIANT,
+            identities=("train:sample",),
+            population_sha256="1" * 64,
+            global_population_sha256="2" * 64,
+        )
+        compile(gap2, "public_v32_gap2.py", "exec")
+        self.assertIn('os.environ["BIOHUB_OUTPUT_GAP2_RECOVERY"] = "0"', baseline)
+        self.assertIn('os.environ["BIOHUB_OUTPUT_GAP2_RECOVERY"] = "1"', gap2)
+        self.assertNotIn('os.environ["BIOHUB_OUTPUT_GAP2_RECOVERY"] = "0"', gap2)
+        normalized = gap2.replace(
+            'os.environ["BIOHUB_OUTPUT_GAP2_RECOVERY"] = "1"',
+            'os.environ["BIOHUB_OUTPUT_GAP2_RECOVERY"] = "0"',
+        )
+        normalized = normalized.replace(MODULE.GAP2_VARIANT, "public_v32")
+        self.assertEqual(normalized, baseline)
+
+    def test_gap2_scoring_preserves_the_competition_faithful_graph_contract(self) -> None:
+        self.assertTrue(MODULE.competition_faithful_graph_variant("public_v32"))
+        self.assertTrue(MODULE.competition_faithful_graph_variant(MODULE.GAP2_VARIANT))
+        self.assertFalse(MODULE.competition_faithful_graph_variant(MODULE.CAP2_VARIANT))
 
     def test_population_manifest_requires_exact_disjoint_105_and_57(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

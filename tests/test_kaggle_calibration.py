@@ -56,6 +56,14 @@ class KaggleCalibrationTests(unittest.TestCase):
             validate_graphs({"sample": graph})
         validate_graphs({"sample": graph}, max_outdegree=None)
 
+        with tempfile.TemporaryDirectory() as raw:
+            path = Path(raw) / "external.csv"
+            with self.assertRaisesRegex(ValueError, "out-degree greater than 2"):
+                write_submission({"sample": graph}, path)
+            write_submission({"sample": graph}, path, max_outdegree=None)
+            loaded = read_submission(path, max_outdegree=None)["sample"]
+        self.assertEqual(loaded.edges, graph.edges)
+
     def test_edge_thinning_is_deterministic(self) -> None:
         nodes = {index: node(index, index, 0, index, 0) for index in range(1, 102)}
         graph = SubmissionGraph(

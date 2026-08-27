@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import re
 import tempfile
 from types import SimpleNamespace
 from typing import Any, Iterable
@@ -72,6 +73,41 @@ def exact_output_download(
     )
 
 
+_PUSHED_VERSION_RE = re.compile(r"Kernel version (\d+) successfully pushed")
+
+
+def parse_pushed_kernel_version(receipt: dict[str, Any], *, kernel_id: str) -> int:
+    """Return the exact version Kaggle just reported pushing, from a receipted push.
+
+    The submission lifecycle must always bind to whichever version the most recent
+    receipted ``kernel_push`` actually produced -- never a hardcoded number, and never
+    a bare CLI-typed integer that could be stale or simply wrong. A kernel_push receipt
+    is only ever created by a lock-serialized, predicate-gated mutation (see
+    ``cmux_ops.run``), so a well-formed one is authoritative proof of "the latest push".
+    """
+    predicate = receipt.get("kernel_push_predicate")
+    if (
+        receipt.get("schema") != "celltrack-alpha.cmux-op-receipt.v1"
+        or receipt.get("op") != "kernel_push"
+        or receipt.get("returncode") != 0
+        or receipt.get("process_returncode") != 0
+        or receipt.get("timed_out") is not False
+        or receipt.get("semantic_failure") is not False
+        or not isinstance(predicate, dict)
+        or predicate.get("kernel_id") != kernel_id
+    ):
+        raise HiddenSubmitError(
+            "kernel push receipt is not a clean, predicate-validated successful push "
+            f"for {kernel_id!r}"
+        )
+    match = _PUSHED_VERSION_RE.search(str(receipt.get("stdout_scrubbed", "")))
+    if match is None:
+        raise HiddenSubmitError(
+            "kernel push receipt does not confirm a pushed version number"
+        )
+    return int(match.group(1))
+
+
 def revalidate_hidden(
     *, package_dir: Path, output_dir: Path, expected: dict[str, Any]
 ) -> None:
@@ -115,9 +151,18 @@ def predicate_payload(
     terminal_status_receipt: Path,
     kernel_output_receipt: Path,
     prelaunch_receipt: Path,
+    kernel_push_receipt: Path,
 ) -> dict[str, Any]:
-    if version != 1:
-        raise HiddenSubmitError("the V32 hidden lifecycle requires exact Version 1")
+    kernel_push_receipt = kernel_push_receipt.resolve()
+    push_receipt = load_object(kernel_push_receipt, "kernel push receipt")
+    pushed_version = parse_pushed_kernel_version(push_receipt, kernel_id=KERNEL_ID)
+    if version != pushed_version:
+        raise HiddenSubmitError(
+            f"requested version {version} does not match the version the supplied "
+            f"push receipt proves was actually pushed ({pushed_version}); the "
+            "submission lifecycle always targets the latest receipted push, never a "
+            "hardcoded or assumed version number"
+        )
     package_dir = package_dir.resolve()
     output_dir = output_dir.resolve()
     terminal_validation = terminal_validation.resolve()
@@ -136,7 +181,6 @@ def predicate_payload(
     if (
         package.get("schema") != baseline.HIDDEN_PACKAGE_SCHEMA
         or package.get("kernel_id") != KERNEL_ID
-        or package.get("expected_initial_kernel_version") != version
         or package.get("hidden_test_compatible") is not True
         or package.get("dynamic_test_discovery") is not True
         or package.get("public_identity_pinned") is not False
@@ -160,12 +204,13 @@ def predicate_payload(
     if not exact_output_download(
         download, kernel_id=KERNEL_ID, version=version, output_dir=output_dir
     ):
-        failures.append("download receipt is not bound to exact Version 1 and output path")
+        failures.append(
+            f"download receipt is not bound to exact Version {version} and output path"
+        )
     if (
         validation.get("status") != "PASS"
         or validation.get("eligible_for_submission_predicate") is not True
         or validation.get("kernel_id") != KERNEL_ID
-        or validation.get("expected_kernel_version") != version
         or validation.get("dataset_discovery", {}).get("dynamic_test_discovery") is not True
         or validation.get("dataset_discovery", {}).get("public_identity_pinned") is not False
         or validation.get("dataset_discovery", {}).get("inventory_exact_match") is not True
@@ -228,6 +273,8 @@ def predicate_payload(
         "kernel_output_receipt_sha256": lifecycle.sha256_file(kernel_output_receipt),
         "prelaunch_receipt": str(prelaunch_receipt),
         "prelaunch_receipt_sha256": lifecycle.sha256_file(prelaunch_receipt),
+        "kernel_push_receipt": str(kernel_push_receipt),
+        "kernel_push_receipt_sha256": lifecycle.sha256_file(kernel_push_receipt),
         "local_submission_gate_sha256": local_gate.get("gate_sha256"),
         "local_cv57_score": local_gate.get("local_score"),
         "weight_refinement": False,
@@ -272,6 +319,7 @@ def validate_predicate(path: Path, *, version: int) -> dict[str, Any]:
         terminal_status_receipt=Path(str(predicate["terminal_status_receipt"])),
         kernel_output_receipt=Path(str(predicate["kernel_output_receipt"])),
         prelaunch_receipt=Path(str(predicate["prelaunch_receipt"])),
+        kernel_push_receipt=Path(str(predicate["kernel_push_receipt"])),
     )
     if regenerated != predicate:
         raise HiddenSubmitError("hidden submission predicate differs from fresh regeneration")
@@ -321,6 +369,7 @@ def parser() -> argparse.ArgumentParser:
     build.add_argument("--terminal-status-receipt", type=Path, required=True)
     build.add_argument("--kernel-output-receipt", type=Path, required=True)
     build.add_argument("--prelaunch-receipt", type=Path, required=True)
+    build.add_argument("--kernel-push-receipt", type=Path, required=True)
     build.add_argument("--output", type=Path, required=True)
     submit = sub.add_parser("submit")
     submit.add_argument("--version", type=int, required=True)
@@ -343,6 +392,7 @@ def main(argv: Iterable[str] | None = None) -> int:
             terminal_status_receipt=args.terminal_status_receipt,
             kernel_output_receipt=args.kernel_output_receipt,
             prelaunch_receipt=args.prelaunch_receipt,
+            kernel_push_receipt=args.kernel_push_receipt,
         )
         baseline.atomic_json(args.output.resolve(), payload)
         print(json.dumps(payload, indent=2, sort_keys=True))

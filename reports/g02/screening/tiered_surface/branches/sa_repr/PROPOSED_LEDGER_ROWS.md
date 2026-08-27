@@ -1,0 +1,11 @@
+# Proposed LEDGER rows — SA-REPR Phase 1
+
+Root coordinator only may copy or adapt these rows.
+
+| Bet | Mechanism | Stage | Gate | Result | Evidence / scope | Prediction | GPU h | Submissions | Cost | Verdict | Next |
+|---|---|---|---|---|---|---|---:|---:|---:|---|---|
+| `SA-REPR-H3-LOCAL-AUDIT` | authentic mask / aligned 12-D wrfeat provenance | Phase-1 local acquisition | origin+license+hash+complete `(identity,frame,node_id)` join before any feature use | **PARK:** 0 qualifying sources; 0 candidate path hits in 10,710 fit105 manifest files, 24,886 archive entries, and 351 sparse-cache files | `provenance_manifest.json` @ `e7b9f7f1…56165d`; local/cache-only; no labels, graph, CV57, external action, or pseudo-mask | none | 0 | 0 | $0 | PARK-B family / audited local acquisition negative | Resume only with owner-supplied authentic provenance-complete artifact. |
+| `SA-REPR-F0-LOCAL-AUDIT` | DINOv2/SAM dense-image encoder provenance | Phase-1 local acquisition | exact weights+source revision+code/weight license+offline support | **PARK:** prior absence retained; no compatible authenticated DINOv2/SAM encoder | `provenance_manifest.json` @ `e7b9f7f1…56165d`; broader encoder family not falsified | none | 0 | 0 | $0 | PARK-B | Resume only with provenance-complete local weights. |
+| `SA-REPR-F2-CELLECT-SUPPLIER` | frozen published CELLECT 64-D 3-D contrastive embedding at existing detector points | Phase-1 supplier authentication | exact upstream/weight/license + strict offline load + finite 64-D point support + exact repeat + zero swap | **GO SUPPLIER ONLY:** 2,541,972 parameters; two fresh synthetic CPU loads byte-identical (`d4cf08e6…ec4dd`); point vectors `a9a10dc9…a6a97`; nonfinite fail-closed; 0 MiB swap growth | `FROZEN_SUPPLIER_CONTRACT_v1.json` @ `fffb09c2…83e70`; synthetic only; no fit image, label, held, graph, CV57, cache, GPU, swap integration, or prior archived performance evidence used | none | 0 | 0 | $0 | FROZEN FOR PHASE-2 BARRIER; R7 remains PARK-B | Root hash-freezes contract; Phase 2 measures actual fit-only support/runtime and preregisters no-feature + within-frame permutation controls before any cache. |
+
+The C2/K-best and Branch-B memo numbers are quarantined and absent from all rows.

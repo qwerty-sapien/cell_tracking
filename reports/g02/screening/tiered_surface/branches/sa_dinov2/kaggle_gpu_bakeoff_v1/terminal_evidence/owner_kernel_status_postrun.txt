@@ -1,0 +1,1 @@
+onebitbrain/g02-dinov2-r5-gpu-bakeoff-v1 has status "KernelWorkerStatus.ERROR"

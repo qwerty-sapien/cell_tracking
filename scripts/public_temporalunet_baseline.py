@@ -54,6 +54,13 @@ PRIMARY_ROOT = f"/kaggle/input/datasets/{PRIMARY_SOURCE}"
 SECONDARY_ROOT = f"/kaggle/input/datasets/{SECONDARY_SOURCE}"
 COMPETITION_TRAIN = f"/kaggle/input/competitions/{COMPETITION}/train"
 COMPETITION_TEST = f"/kaggle/input/competitions/{COMPETITION}/test"
+# Kaggle mounts competition data under either convention depending on how the
+# kernel is attached; the hidden rerun is not guaranteed to use the same one as
+# the public run.  Order is preference order, not an assertion of existence.
+COMPETITION_TEST_CANDIDATES = (
+    f"/kaggle/input/competitions/{COMPETITION}/test",
+    f"/kaggle/input/{COMPETITION}/test",
+)
 POPULATION_SCHEMA = "celltrack-alpha.public-temporalunet-populations.v1"
 MERGE_SCHEMA = "celltrack-alpha.public-temporalunet-merge.v1"
 SCORE_SCHEMA = "celltrack-alpha.public-temporalunet-frozen-score.v1"
@@ -64,7 +71,8 @@ UNSHARDED_V2_PRELOGGING_KERNEL_ID = "onebitbrain/g02-public-temporalunet-v32-uns
 UNSHARDED_V2_PRELOGGING_PACKAGE_SHA256 = "4b54dc76365e7cddf3b860bc48f58b03909be65ebd332853a98bf73aabecee3a"
 VARIANTS = ("single_seed", "detection_blend", "public_v32")
 CAP2_VARIANT = "public_v32_cap2"
-BUILD_VARIANTS = (*VARIANTS, CAP2_VARIANT)
+GAP2_VARIANT = "public_v32_gap2"
+BUILD_VARIANTS = (*VARIANTS, CAP2_VARIANT, GAP2_VARIANT)
 CAP2_EXPECTED_PARENTS = (
     {
         "dataset": "44b6_a2bb48bb",
@@ -95,6 +103,12 @@ CSV_COLUMNS = [
 
 class BaselineError(RuntimeError):
     """The immutable public-baseline contract was violated."""
+
+
+def competition_faithful_graph_variant(variant: str) -> bool:
+    """Return whether scoring must preserve V32's uncapped graph contract."""
+
+    return variant in ("public_v32", GAP2_VARIANT)
 
 
 def registered_v32_runtime_source(source: str) -> str:
@@ -530,7 +544,11 @@ import time
 
 RUN_SCHEMA = {RUN_SCHEMA!r}
 VARIANT = {variant!r}
-EXPECTED_TEST_COUNT = {expected_test_count}
+# Public dry-run inventory size.  Retained for telemetry and for the prelaunch
+# contract's exact-count declaration ONLY.  It is NOT a gate: Kaggle states the
+# hidden rerun dataset "can be larger/smaller/different than the public dataset",
+# and the hidden inventory is discovered dynamically below.
+PUBLIC_TEST_COUNT = {expected_test_count}
 REQUEST_COUNT = {expected_test_count}
 REQUEST_FILE_COUNT = {expected_test_count}
 POPULATION_FILE_COUNT = {expected_test_count}
@@ -542,7 +560,10 @@ PUBLIC_NOTEBOOK_SHA256 = {PUBLIC_NOTEBOOK_SHA256!r}
 PUBLIC_SCRIPT_VERSION_ID = 337501010
 PRIMARY_ROOT = Path({PRIMARY_ROOT!r})
 SECONDARY_ROOT = Path({SECONDARY_ROOT!r})
-COMPETITION_TEST = Path({COMPETITION_TEST!r})
+COMPETITION_TEST_CANDIDATES = [Path(_p) for _p in {COMPETITION_TEST_CANDIDATES!r}]
+# Preference-ordered default; run_step0() rebinds this to the root that actually
+# exists on the machine before any other use.
+COMPETITION_TEST = COMPETITION_TEST_CANDIDATES[0]
 PRIMARY_MANIFEST_SHA256 = {PRIMARY_MANIFEST_SHA256!r}
 PRIMARY_WEIGHT_SHA256 = {PRIMARY_WEIGHT_SHA256!r}
 SECONDARY_MANIFEST_SHA256 = {SECONDARY_MANIFEST_SHA256!r}
@@ -586,8 +607,35 @@ def run_step0() -> dict:
     }})
     inventory_input("primary_support_pack", PRIMARY_ROOT)
     inventory_input("secondary_support_pack", SECONDARY_ROOT)
-    inventory_input("competition_test", COMPETITION_TEST)
-    stage_start("step0", {{"expected_test_datasets": EXPECTED_TEST_COUNT}})
+    print("=" * 78, flush=True)
+    print("STEP0 HIDDEN-RERUN CONTRACT | mount resolution", flush=True)
+    print("=" * 78, flush=True)
+    print(f"[step0] public dry-run inventory size (telemetry only): {{PUBLIC_TEST_COUNT}}", flush=True)
+    print(f"[step0] candidate roots ({{len(COMPETITION_TEST_CANDIDATES)}}):", flush=True)
+    resolved_test = None
+    for candidate in COMPETITION_TEST_CANDIDATES:
+        exists = candidate.is_dir()
+        print(f"[step0]   {{'HIT ' if exists else 'miss'}} {{candidate}}", flush=True)
+        if exists and resolved_test is None:
+            resolved_test = candidate
+        elif not exists:
+            log_lookup(candidate, None)
+    if resolved_test is None:
+        print("[step0] FATAL: no candidate root exists on this machine.", flush=True)
+        try:
+            for entry in sorted(Path("/kaggle/input").iterdir()):
+                print(f"[step0]   /kaggle/input contains: {{entry}}", flush=True)
+        except Exception as exc:  # noqa: BLE001
+            print(f"[step0]   /kaggle/input unreadable: {{exc!r}}", flush=True)
+        raise FileNotFoundError(
+            "STEP0 hidden test root is unavailable under any known Kaggle mount: "
+            + repr([str(candidate) for candidate in COMPETITION_TEST_CANDIDATES])
+        )
+    print(f"[step0] RESOLVED competition test root -> {{resolved_test}}", flush=True)
+    globals()["COMPETITION_TEST"] = resolved_test
+    log_lookup(resolved_test, resolved_test)
+    inventory_input("competition_test", resolved_test)
+    stage_start("step0", {{"public_test_datasets": PUBLIC_TEST_COUNT}})
     exact_files = {{
         PRIMARY_ROOT / "ARTIFACT_MANIFEST.json": PRIMARY_MANIFEST_SHA256,
         PRIMARY_ROOT / "weights/unet_transformer/split_0/edge_predictor_best.pth": PRIMARY_WEIGHT_SHA256,
@@ -604,20 +652,36 @@ def run_step0() -> dict:
         if actual != expected:
             raise RuntimeError(f"STEP0 hash mismatch for {{path}}: {{actual}} != {{expected}}")
         observed[str(path)] = actual
-    if not COMPETITION_TEST.is_dir():
-        log_lookup(COMPETITION_TEST, None)
-        raise FileNotFoundError(f"STEP0 hidden test root is unavailable: {{COMPETITION_TEST}}")
     selected = sorted(
         path.name[:-5]
-        for path in COMPETITION_TEST.iterdir()
+        for path in resolved_test.iterdir()
         if path.is_dir() and path.name.endswith(".zarr")
     )
-    if len(selected) != EXPECTED_TEST_COUNT or len(set(selected)) != EXPECTED_TEST_COUNT:
+    # The hidden inventory is accepted at ANY positive cardinality.  Only an
+    # empty or self-inconsistent inventory is a genuine failure.
+    print(f"[step0] discovered {{len(selected)}} *.zarr dataset(s) under {{resolved_test}}", flush=True)
+    print(f"[step0] public dry run saw {{PUBLIC_TEST_COUNT}}; "
+          f"a different hidden count is EXPECTED and accepted", flush=True)
+    for _index, _dataset in enumerate(selected):
+        print(f"[step0]   [{{_index:03d}}] {{_dataset}}", flush=True)
+    if not selected:
+        try:
+            _listing = sorted(str(entry.name) for entry in resolved_test.iterdir())
+        except Exception as exc:  # noqa: BLE001
+            _listing = [f"<unreadable: {{exc!r}}>"]
+        print(f"[step0] FATAL: no *.zarr datasets. Root contains: {{_listing[:50]}}", flush=True)
         raise RuntimeError(
-            f"STEP0 hidden inventory drift: {{len(selected)}} != {{EXPECTED_TEST_COUNT}}"
+            f"STEP0 hidden inventory is empty under {{resolved_test}}"
+        )
+    if len(set(selected)) != len(selected):
+        _dupes = sorted({{name for name in selected if selected.count(name) > 1}})
+        print(f"[step0] FATAL: duplicate identities: {{_dupes}}", flush=True)
+        raise RuntimeError(
+            "STEP0 hidden inventory contains duplicate identities: "
+            f"{{len(selected)}} entries, {{len(set(selected))}} unique"
         )
     for dataset in selected:
-        source = COMPETITION_TEST / f"{{dataset}}.zarr"
+        source = resolved_test / f"{{dataset}}.zarr"
         if not (source / "0").exists():
             log_lookup(source, None)
             raise FileNotFoundError(f"STEP0 malformed hidden dataset: {{source}}")
@@ -642,6 +706,8 @@ def run_step0() -> dict:
         "enable_gpu": True,
         "heavy_work_started": False,
         "competition_path_visits": len(selected),
+        "competition_test_root": str(resolved_test),
+        "public_test_count": PUBLIC_TEST_COUNT,
         "artifacts": observed,
         "selected_datasets": selected,
         "hidden_test_compatible": True,
@@ -652,13 +718,23 @@ def run_step0() -> dict:
         "elapsed_seconds": time.time() - started,
     }}
     _atomic_json(Path("/kaggle/working/PUBLIC_TEMPORALUNET_STEP0.json"), value)
-    stage_end("step0", {{"expected_test_datasets": EXPECTED_TEST_COUNT}},
+    stage_end("step0", {{"public_test_datasets": PUBLIC_TEST_COUNT}},
               {{"verified_artifacts": len(observed), "discovered_datasets": len(selected)}})
     return value
 
 
 STEP0 = run_step0()
-os.environ["BIOHUB_TEST_DIR"] = str(COMPETITION_TEST)
+# Propagate the root STEP0 actually RESOLVED, never a hard-coded one.  The
+# notebook body prefers BIOHUB_TEST_DIR over its own candidate resolution, so
+# writing an unverified path here would silently disable that fallback.
+os.environ["BIOHUB_TEST_DIR"] = STEP0["competition_test_root"]
+print("=" * 78, flush=True)
+print(f"[step0] STATUS={{STEP0['status']}} "
+      f"datasets={{len(STEP0['selected_datasets'])}} "
+      f"root={{STEP0['competition_test_root']}}", flush=True)
+print(f"[step0] BIOHUB_TEST_DIR -> {{os.environ['BIOHUB_TEST_DIR']}}", flush=True)
+print(f"[step0] elapsed={{STEP0['elapsed_seconds']:.3f}}s -- proceeding to inference", flush=True)
+print("=" * 78, flush=True)
 preprocess_counts(
     "dynamic_hidden_test_inventory",
     len(SELECTED_DATASETS),
@@ -691,7 +767,7 @@ def variant_override(variant: str) -> str:
             "BIOHUB_SECONDARY_LOW_MARGIN_MAX": "0.35",
             "BIOHUB_DUAL_SEED_EDGE_THRESHOLD": "0.48",
         }
-    elif variant in ("public_v32", CAP2_VARIANT):
+    elif variant in ("public_v32", CAP2_VARIANT, GAP2_VARIANT):
         values = {
             "BIOHUB_SECONDARY_WEIGHTS": "__KEEP_MATERIALIZED_SECONDARY__",
             "BIOHUB_SECONDARY_EDGE_WEIGHT": "0.15",
@@ -714,6 +790,23 @@ def variant_override(variant: str) -> str:
     if variant == CAP2_VARIANT:
         lines.append("os.environ['BIOHUB_EXPERIMENTAL_CAP_OUTDEGREE_TWO'] = '1'")
     return "\n".join(lines) + "\n"
+
+
+def patch_gap2_experiment(source: str) -> str:
+    """Flip the pristine notebook's already-built, currently-disabled
+    2-frame gap-recovery mechanism (``recover_strict_gap2``, gated by
+    ``BIOHUB_OUTPUT_GAP2_RECOVERY``) to enabled.
+
+    Unlike ``patch_cap2_experiment`` this injects no new code -- the
+    mechanism is already fully implemented in the pristine cell; only the
+    flag it reads is flipped.
+    """
+    return replace_once(
+        source,
+        'os.environ["BIOHUB_OUTPUT_GAP2_RECOVERY"] = "0"',
+        'os.environ["BIOHUB_OUTPUT_GAP2_RECOVERY"] = "1"',
+        "enable existing gap2 recovery for the gap2 experimental variant",
+    )
 
 
 def patch_cap2_experiment(source: str) -> str:
@@ -1168,7 +1261,6 @@ def build_hidden_package(args: argparse.Namespace) -> dict[str, Any]:
         "schema": HIDDEN_PACKAGE_SCHEMA,
         "variant": "public_v32",
         "kernel_id": args.kernel_id,
-        "expected_initial_kernel_version": 1,
         "expected_test_count": args.expected_test_count,
         "hidden_test_compatible": True,
         "dynamic_test_discovery": True,
@@ -1207,6 +1299,8 @@ def build_script(
     cells[4] = patch_prediction_cell(cells[4])
     if variant == CAP2_VARIANT:
         cells[5] = patch_cap2_experiment(cells[5])
+    if variant == GAP2_VARIANT:
+        cells[1] = patch_gap2_experiment(cells[1])
     cells[3] = cells[3] + "\n" + variant_override(variant)
     pieces = [runtime_logging_source(),
         step0_source(
@@ -1789,7 +1883,6 @@ def validate_hidden_output(args: argparse.Namespace) -> dict[str, Any]:
     if (
         package.get("schema") != HIDDEN_PACKAGE_SCHEMA
         or package.get("variant") != "public_v32"
-        or package.get("expected_initial_kernel_version") != 1
         or package.get("hidden_test_compatible") is not True
         or package.get("dynamic_test_discovery") is not True
         or package.get("public_identity_pinned") is not False
@@ -1825,17 +1918,20 @@ def validate_hidden_output(args: argparse.Namespace) -> dict[str, Any]:
     run_log_path = args.output_dir / "RUN_LOG.jsonl"
     step0 = load_object(step0_path, "hidden Step-0 receipt")
     run = load_object(run_path, "hidden terminal receipt")
-    expected_count = int(package.get("expected_test_count", -1))
     selected = [str(value) for value in run.get("selected_datasets", [])]
     step0_selected = [str(value) for value in step0.get("selected_datasets", [])]
     selected_set = set(selected)
+    # The hidden rerun inventory is discovered dynamically and may legitimately
+    # differ in size from the public dry run ("the hidden dataset can be
+    # larger/smaller/different").  Require internal self-consistency at any
+    # positive cardinality, never a pinned count.
+    discovered_count = len(selected)
     if (
-        expected_count <= 0
-        or len(selected) != expected_count
-        or len(selected_set) != expected_count
+        discovered_count <= 0
+        or len(selected_set) != discovered_count
         or selected != step0_selected
     ):
-        raise BaselineError("hidden dynamic dataset inventory is not exact")
+        raise BaselineError("hidden dynamic dataset inventory is not self-consistent")
     common = (
         step0.get("schema") == "celltrack-alpha.public-temporalunet-hidden-step0.v1"
         and run.get("schema") == "celltrack-alpha.public-temporalunet-hidden-run.v1"
@@ -1843,8 +1939,8 @@ def validate_hidden_output(args: argparse.Namespace) -> dict[str, Any]:
         and run.get("status") == "PASS"
         and step0.get("variant") == "public_v32"
         and run.get("variant") == "public_v32"
-        and step0.get("request_count") == expected_count
-        and run.get("request_count") == expected_count
+        and step0.get("request_count") == discovered_count
+        and run.get("request_count") == discovered_count
         and step0.get("population_manifest_sha256") == local_gate.get("gate_sha256")
         and run.get("population_manifest_sha256") == local_gate.get("gate_sha256")
         and run.get("local_submission_gate_sha256") == local_gate.get("gate_sha256")
@@ -1939,7 +2035,6 @@ def validate_hidden_output(args: argparse.Namespace) -> dict[str, Any]:
         "status": "PASS",
         "eligible_for_submission_predicate": True,
         "kernel_id": package["kernel_id"],
-        "expected_kernel_version": 1,
         "package_manifest": {"path": str(package_path), "sha256": sha256_file(package_path)},
         "local_submission_gate_sha256": local_gate["gate_sha256"],
         "step0": {"path": str(step0_path), "sha256": sha256_file(step0_path)},
@@ -2283,7 +2378,7 @@ def score_submission(args: argparse.Namespace) -> dict[str, Any]:
     from zarr.storage import ZipStore  # noqa: PLC0415
 
     scorer = score_bh_cv57.validate_revalidated_scorer(args.scorer_parity)
-    competition_faithful_v32 = args.variant == "public_v32"
+    competition_faithful_v32 = competition_faithful_graph_variant(args.variant)
     graphs = read_submission(
         args.submission,
         max_outdegree=None if competition_faithful_v32 else 2,

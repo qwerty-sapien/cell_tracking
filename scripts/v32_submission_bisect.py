@@ -112,10 +112,11 @@ import os
 from pathlib import Path
 import time
 
-EXPECTED_TEST_COUNT = {expected_test_count}
+PUBLIC_TEST_COUNT = {expected_test_count}
 PRIMARY_ROOT = Path({baseline.PRIMARY_ROOT!r})
 SECONDARY_ROOT = Path({baseline.SECONDARY_ROOT!r})
-COMPETITION_TEST = Path({baseline.COMPETITION_TEST!r})
+COMPETITION_TEST_CANDIDATES = [Path(_p) for _p in {baseline.COMPETITION_TEST_CANDIDATES!r}]
+COMPETITION_TEST = COMPETITION_TEST_CANDIDATES[0]
 PRIMARY_MANIFEST_SHA256 = {baseline.PRIMARY_MANIFEST_SHA256!r}
 PRIMARY_WEIGHT_SHA256 = {baseline.PRIMARY_WEIGHT_SHA256!r}
 SECONDARY_MANIFEST_SHA256 = {baseline.SECONDARY_MANIFEST_SHA256!r}
@@ -154,16 +155,30 @@ def run_step0():
         if actual != expected:
             raise RuntimeError(f"STEP0 hash mismatch for {{path}}: {{actual}} != {{expected}}")
         observed[str(path)] = actual
-    if not COMPETITION_TEST.is_dir():
-        raise FileNotFoundError(f"STEP0 hidden test root is unavailable: {{COMPETITION_TEST}}")
+    resolved_test = None
+    for candidate in COMPETITION_TEST_CANDIDATES:
+        if candidate.is_dir():
+            resolved_test = candidate
+            break
+    if resolved_test is None:
+        raise FileNotFoundError(
+            "STEP0 hidden test root is unavailable under any known Kaggle mount: "
+            + repr([str(candidate) for candidate in COMPETITION_TEST_CANDIDATES])
+        )
+    globals()["COMPETITION_TEST"] = resolved_test
     selected = sorted(
-        path.name[:-5] for path in COMPETITION_TEST.iterdir()
+        path.name[:-5] for path in resolved_test.iterdir()
         if path.is_dir() and path.name.endswith(".zarr")
     )
-    if len(selected) != EXPECTED_TEST_COUNT or len(set(selected)) != EXPECTED_TEST_COUNT:
-        raise RuntimeError(f"STEP0 hidden inventory drift: {{len(selected)}} != {{EXPECTED_TEST_COUNT}}")
+    if not selected:
+        raise RuntimeError(f"STEP0 hidden inventory is empty under {{resolved_test}}")
+    if len(set(selected)) != len(selected):
+        raise RuntimeError(
+            "STEP0 hidden inventory contains duplicate identities: "
+            f"{{len(selected)}} entries, {{len(set(selected))}} unique"
+        )
     for dataset in selected:
-        source = COMPETITION_TEST / f"{{dataset}}.zarr"
+        source = resolved_test / f"{{dataset}}.zarr"
         if not (source / "0").exists():
             raise FileNotFoundError(f"STEP0 malformed hidden dataset: {{source}}")
     globals()["SELECTED_DATASETS"] = selected

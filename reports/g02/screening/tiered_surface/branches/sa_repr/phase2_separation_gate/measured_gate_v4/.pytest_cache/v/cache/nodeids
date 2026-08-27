@@ -1,0 +1,22 @@
+[
+  "test_separation_verdict.py::test_a_single_failing_fold_fails_the_unit",
+  "test_separation_verdict.py::test_amendment_binds_exactly_the_measured_surface_values",
+  "test_separation_verdict.py::test_amendment_records_that_retention_relaxed_and_auc_tightened",
+  "test_separation_verdict.py::test_auc_between_legacy_and_measured_now_fails_and_flags_divergence",
+  "test_separation_verdict.py::test_classes_are_judged_independently",
+  "test_separation_verdict.py::test_cross_class_conjunction_is_rejected",
+  "test_separation_verdict.py::test_incomplete_result_is_rejected_outright",
+  "test_separation_verdict.py::test_lift_conditions_carried_forward_unchanged",
+  "test_separation_verdict.py::test_low_retention_now_passes_because_the_measured_bar_relaxed_it",
+  "test_separation_verdict.py::test_missing_arm_is_invalid",
+  "test_separation_verdict.py::test_missing_fold_is_invalid_not_pass",
+  "test_separation_verdict.py::test_missing_lift_over_permuted_control_fails",
+  "test_separation_verdict.py::test_nonfinite_metric_is_invalid",
+  "test_separation_verdict.py::test_per_video_budget_violation_is_invalid",
+  "test_separation_verdict.py::test_rejects_an_unfrozen_amendment",
+  "test_separation_verdict.py::test_robust_p05_bar_is_reported_alongside_the_binding_bar",
+  "test_separation_verdict.py::test_single_class_result_is_rejected_outright",
+  "test_separation_verdict.py::test_supplier_clearing_the_binding_bar_passes_both_classes",
+  "test_separation_verdict.py::test_verdict_records_no_downstream_action",
+  "test_separation_verdict.py::test_wrong_schema_is_rejected_outright"
+]

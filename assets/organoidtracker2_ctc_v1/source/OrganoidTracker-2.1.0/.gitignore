@@ -1,0 +1,20 @@
+# Ignore PyCharm files
+.idea/
+
+# Ignore Python caches
+__pycache__/
+.cache/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Ignore configuration and data files
+/*.json
+organoid_tracker.ini
+/out/
+/output/
+/training_output/
+
+# Ignore auto-generated documentation files
+/manuals_build/
+/manuals/organoid_tracker*
+/manuals/modules.rst

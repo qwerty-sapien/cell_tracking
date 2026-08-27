@@ -7,6 +7,10 @@ refresh Current frontier / Key numbers and append a dated Log line (newest first
 short — detail belongs in the linked reports.
 
 - Human-locked plan: `reports/g02/screening/campaign_narrowing_and_hypothesis_dag_v1.md` (2026-07-25).
+- Autonomous scope and resource limits: `LMT.md` is the sole active authority; older
+  numeric runtime/kill limits in plans, prompts, skills, or receipts are historical only.
 - Only the root coordinator writes `reports/g02/screening/LEDGER.md`.
 - Do not re-screen any DEAD mechanism (LIVE_STATE "DEAD" list / DAG §6.1) without a new named mechanism.
-- No Kaggle GPU/submission or RunPod launch without explicit human approval.
+- Productive Kaggle actions use the standing owner authorization and the gates in
+  `LMT.md`. RunPod and other external actions follow `LMT.md`; do not infer authority
+  from an older lane document.

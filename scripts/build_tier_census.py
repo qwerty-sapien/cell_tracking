@@ -156,7 +156,7 @@ RESUME = {
     "R4": "Authenticate frozen weights, source revision, license, and offline loader.",
     "G3": "Open only one root-recorded GPU authorization at a time.",
     "G5": "Require a passing CV57 package and explicit human approval.",
-    "G6": "Do not open; RunPod is forbidden by the owner.",
+    "G6": "Do not open autonomously; RunPod requires explicit approval under LMT.md.",
 }
 
 
@@ -282,12 +282,12 @@ def main() -> int:
         "budget_kernel_h": 30.0,
         "used_kernel_h": 2.117,
         "remaining_kernel_h": 27.883,
-        "auto_approve_projected_under_h": 5.0,
-        "hard_kill_elapsed_h": 5.0,
-        "authorization_policy": (
-            "serial root-recorded authorizations only; projected <5h may auto-open "
-            "after scientific and integrity gates; projected >=5h requires human"
-        ),
+        "autonomy_policy_authority": "LMT.md",
+        "historical_policy": {
+            "auto_approve_projected_under_h": 5.0,
+            "hard_kill_elapsed_h": 5.0,
+            "status": "SUPERSEDED_BY_LMT",
+        },
         "active_authorizations": [],
         "debits": [
             {
@@ -341,8 +341,8 @@ def main() -> int:
             "budget_h": budget["budget_kernel_h"],
             "used_h": budget["used_kernel_h"],
             "remaining_h": budget["remaining_kernel_h"],
-            "auto_approve_under_h": budget["auto_approve_projected_under_h"],
-            "hard_kill_h": budget["hard_kill_elapsed_h"],
+            "autonomy_policy_authority": budget["autonomy_policy_authority"],
+            "historical_policy": budget["historical_policy"],
             "budget_artifact": str(BUDGET.relative_to(ROOT)),
         },
         "rollup": rollup,

@@ -501,18 +501,28 @@ class ProvenanceAndReuseTests(unittest.TestCase):
     def test_prefixed_aggregate_is_materialized_as_renderable_selected_fragment(self) -> None:
         graph = SubmissionGraph(
             "train:aggregate",
-            {1: SubmissionNode(1, 0, 0, 1, 1)},
-            [],
+            {
+                1: SubmissionNode(1, 0, 0, 1, 1),
+                2: SubmissionNode(2, 1, 0, 2, 1),
+                3: SubmissionNode(3, 1, 0, 3, 1),
+                4: SubmissionNode(4, 1, 0, 4, 1),
+            },
+            [SubmissionEdge(1, 2), SubmissionEdge(1, 3), SubmissionEdge(1, 4)],
         )
         with tempfile.TemporaryDirectory() as raw_tmp:
             root = Path(raw_tmp)
             aggregate = root / "aggregate.csv"
-            visualizer.write_submission({"train:aggregate": graph}, aggregate)
+            visualizer.write_submission(
+                {"train:aggregate": graph}, aggregate, max_outdegree=None
+            )
             row = {"identity": "train:aggregate"}
             resolved = visualizer.resolve_prediction_fragments([row], aggregate, root / "bundle")
-            materialized = visualizer.read_submission(resolved["train:aggregate"])
+            materialized = visualizer.read_submission(
+                resolved["train:aggregate"], max_outdegree=None
+            )
         self.assertEqual(set(materialized), {"aggregate"})
         self.assertEqual(materialized["aggregate"].dataset, "aggregate")
+        self.assertEqual(materialized["aggregate"].edges, graph.edges)
 
     def test_sidecar_reuse_requires_current_contract_input_and_video_hash(self) -> None:
         row = {

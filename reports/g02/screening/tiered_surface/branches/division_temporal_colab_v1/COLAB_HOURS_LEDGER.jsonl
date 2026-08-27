@@ -1,0 +1,1 @@
+{"at_utc":"2026-08-04T16:43:24Z","budget_scope":"colab_only_by_assigned_gpu_model","event":"LEDGER_INITIALIZED","hours_by_gpu_model":{},"kaggle_gpu_hours_included":0.0,"note":"Cross-model hours are never summed or converted without a same-workload benchmark.","provider":"Google Colab","schema":"celltrack-alpha.colab-hours-ledger.v2"}

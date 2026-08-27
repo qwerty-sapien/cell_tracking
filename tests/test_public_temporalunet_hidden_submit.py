@@ -71,6 +71,67 @@ class PublicTemporalUNetHiddenSubmitTests(unittest.TestCase):
         receipt["stdout_scrubbed"] = "KernelWorkerStatus.RUNNING"
         self.assertFalse(MODULE.exact_status_complete(receipt, kernel_id=MODULE.KERNEL_ID))
 
+    def test_parse_pushed_kernel_version_reads_the_receipted_version(self) -> None:
+        # Regression: the hidden submission lifecycle used to hardcode "version must be
+        # exactly 1" in four places. It now derives the accepted version from whichever
+        # kernel_push receipt is supplied -- always the latest receipted push, never a
+        # hardcoded or caller-typed number.
+        receipt = {
+            "schema": "celltrack-alpha.cmux-op-receipt.v1",
+            "op": "kernel_push",
+            "returncode": 0,
+            "process_returncode": 0,
+            "timed_out": False,
+            "semantic_failure": False,
+            "kernel_push_predicate": {"kernel_id": MODULE.KERNEL_ID},
+            "stdout_scrubbed": "Kernel version 7 successfully pushed.  Please check progress at https://www.kaggle.[REDACTED]\n",
+        }
+        self.assertEqual(
+            MODULE.parse_pushed_kernel_version(receipt, kernel_id=MODULE.KERNEL_ID), 7
+        )
+
+    def test_parse_pushed_kernel_version_rejects_wrong_kernel_id(self) -> None:
+        receipt = {
+            "schema": "celltrack-alpha.cmux-op-receipt.v1",
+            "op": "kernel_push",
+            "returncode": 0,
+            "process_returncode": 0,
+            "timed_out": False,
+            "semantic_failure": False,
+            "kernel_push_predicate": {"kernel_id": "onebitbrain/some-other-kernel"},
+            "stdout_scrubbed": "Kernel version 3 successfully pushed.\n",
+        }
+        with self.assertRaisesRegex(MODULE.HiddenSubmitError, "clean, predicate-validated"):
+            MODULE.parse_pushed_kernel_version(receipt, kernel_id=MODULE.KERNEL_ID)
+
+    def test_parse_pushed_kernel_version_rejects_failed_push(self) -> None:
+        receipt = {
+            "schema": "celltrack-alpha.cmux-op-receipt.v1",
+            "op": "kernel_push",
+            "returncode": 1,
+            "process_returncode": 1,
+            "timed_out": False,
+            "semantic_failure": False,
+            "kernel_push_predicate": {"kernel_id": MODULE.KERNEL_ID},
+            "stdout_scrubbed": "",
+        }
+        with self.assertRaisesRegex(MODULE.HiddenSubmitError, "clean, predicate-validated"):
+            MODULE.parse_pushed_kernel_version(receipt, kernel_id=MODULE.KERNEL_ID)
+
+    def test_parse_pushed_kernel_version_rejects_unparseable_stdout(self) -> None:
+        receipt = {
+            "schema": "celltrack-alpha.cmux-op-receipt.v1",
+            "op": "kernel_push",
+            "returncode": 0,
+            "process_returncode": 0,
+            "timed_out": False,
+            "semantic_failure": False,
+            "kernel_push_predicate": {"kernel_id": MODULE.KERNEL_ID},
+            "stdout_scrubbed": "something unexpected\n",
+        }
+        with self.assertRaisesRegex(MODULE.HiddenSubmitError, "does not confirm"):
+            MODULE.parse_pushed_kernel_version(receipt, kernel_id=MODULE.KERNEL_ID)
+
     def test_exact_output_receipt_binds_version_and_path(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory).resolve()

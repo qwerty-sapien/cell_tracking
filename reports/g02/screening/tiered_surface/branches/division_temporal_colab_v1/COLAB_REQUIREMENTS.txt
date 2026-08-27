@@ -1,0 +1,2 @@
+# PyTorch and NumPy are supplied by the selected Colab GPU runtime.
+# Add only hash-frozen dependencies required by the post-taxonomy entrypoint.
